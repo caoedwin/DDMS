@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}申請中{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+.showColor:hover{
+    color: red;
+}
+.selectMsg{
+     font-size:18px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+ .changjiaContent,.pnContent,.powerContent{
+     margin-left: 20px;
+}
+.showNum{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+ .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+      <el-backtop ></el-backtop>
+    </template>
+    <div class="tableAround" v-cloak >
+        <div style="margin-bottom:20px;">
+      <span class="showNum">已選 <span id="selectNum">0</span> 條</span> <el-button @click="CancelReturn()" v-cloak size="medium" style="background-color:#69ec57; border-color:black;color:black;margin-left: 50px">取消申請</el-button>
+      </div>
+         <el-table height="500" ref="multipleTable" border stripe :data="tableContent.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+                   :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+                   style="border-radius: 10px;word-break: keep-all">
+            <el-table-column type="selection" align="center" :reserve-selection="true" fixed></el-table-column>
+            <el-table-column type="index" :index="indexMethod" width="40" align="center" fixed></el-table-column>
+            <el-table-column prop="CollectDate" label="領用日期" align="center" width="95" fixed>
+            </el-table-column>
+            <el-table-column prop="UnifiedNumber" label="統一編號" align="center" width="90" fixed>
+            </el-table-column>
+            <el-table-column prop="Number" label="工號" align="center" width="90" fixed>
+            </el-table-column>
+            <el-table-column prop="Name" label="姓名" align="center" width="80" fixed>
+            </el-table-column>
+            <el-table-column prop="MaterialPN" label="MaterialPN" width="90" align="center">
+            </el-table-column>
+            <el-table-column prop="CPU" label="CPU" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="RAM" label="RAM" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="HDD" label="HDD" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="Wireless" label="Wireless" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="LCD" label="LCD" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="OCR" label="OCR" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Battery" label="Battery" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Adaptor" label="Adaptor" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Region" label="地區" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="OutPlant" label="攜出廠外" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Factory" label="廠區" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="ComputerUse" label="電腦用途" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="Category" label="產品類別" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="MachineStatus" label="工作機狀態" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="IdleState" label="閒置狀態" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="Years" label="年限" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="FormNumber" label="E-Form單號" align="center">
+            </el-table-column>
+          </el-table>
+        <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+        </el-pagination>
+      </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+               tableContent:[],
+               currentPage: 1,//默认显示第一页
+               pageSize:100,//默认每页显示100条
+               totalNum: null,
+               multipleSelection: [],
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/ComputerMS/R_Return/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.tableContent=res.data.content;
+                    this.totalNum=this.tableContent.length;
+                });
+            },
+            indexMethod(index) {
+                return index + 1;
+            },
+            //分页
+            handleSizeChange(val) {
+                  console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+                  this.currentPage = val;
+            },
+
+    {% comment %}
+            search5:function(){
+                   let IntfCtgry = this.$refs.IntfCtgry5.value;
+                   let DevCtgry = this.$refs.DevCtgry5.value;
+                   let Devproperties = this.$refs.Devproperties5.value;
+                   let DevVendor = this.$refs.DevVendor5.value;
+                   let Devsize = this.$refs.Devsize5.value;
+                   let data = {
+                       "isGetData": "SEARCH5",
+                       "IntfCtgry": IntfCtgry,
+                       "DevCtgry": DevCtgry,
+                       "Devproperties":Devproperties,
+                       "DevVendor":DevVendor,
+                       "Devsize":Devsize,
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/ComputerMS/R_Return/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.tableContent=res.data.content;
+                       this.moreDetails=this.tableContent;
+                       this.totalNum=this.tableContent.length;
+                   })
+                   this.showTips5=false;
+                   this.$refs.multipleTable.clearSelection();
+            },
+    {% endcomment %}
+
+            handleSelectionChange(rows) {
+                this.multipleSelection = rows;
+                var len=document.getElementById("selectNum")
+                len.innerHTML=this.multipleSelection.length;
+            },
+
+            getRowKeys (row) {
+              return row.id;
+            },
+
+            CancelReturn:function(){
+                if(this.multipleSelection.length==0){
+                    alert('未勾选数据！')
+                }else {
+                    this.$confirm('您正在取消申請, 是否繼續?', '提示', {
+                        confirmButtonText: '繼續',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                        let params = [];
+                        let self = this;
+                        checkArr.forEach(function (item) {
+                            params.push(item.id);       // 添加所有数据的id到一个数组，post提交过去
+                        });
+                        let data = {
+                            "isGetData": "CancelReturn",
+                            "Return": params,
+                            "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                        }
+                        axios.post("/ComputerMS/R_Return/",data).then((res) => {
+                            this.tableContent = res.data.content;
+                            this.totalNum = this.tableContent.length;
+                        })
+                        this.$refs.multipleTable.clearSelection()
+                        this.$message({
+                            type: 'success',
+                            message: '操作成功!'
+                        });
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消操作'
+                        });
+                    });
+                }
+            },
+
+        },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

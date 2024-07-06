@@ -1,0 +1,2230 @@
+{% extends 'base.html' %}
+{#{% load custom_tag %}#}
+{% load staticfiles %}
+{% block title %}下拉维护{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+.el-tabs--card>.el-tabs__header .el-tabs__nav {
+    background: #E6E6FA;
+    {#background: #eee8aa;#}
+    border: 1px solid #E6E6FA;
+}
+
+.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    border-bottom-color: black;
+}
+.el-tabs__nav-wrap {
+    font-size: 25px;
+}
+
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+    .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+  .fileUploadContent{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+}
+  .fileUploadContent label{
+    display: inline-block;
+    word-break: keep-all;
+    line-height: 40px;
+}
+  .fileUploadContent input{
+    line-height: 35px;
+    height: 40px;
+    border-radius: 10px;
+    width: 210px;
+    color: antiquewhite;
+}
+
+  .fileUploadContent .showFileName{
+     line-height: 40px;
+     margin-left: 20px;
+     font-size: 18px;
+     color: black;
+   }
+.selectMsg{
+     font-size:18px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+   .tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+</style>
+{% endblock %}
+{% block content1 %}
+{% endblock %}
+{% block content %}
+<div id="app">
+<hr/>
+<div style="float: right;font-size: large;color: black;">
+      <span class="showNum" style="margin-left: 30px">本頁已選 <span id="selectNum">0</span> 條</span>
+</div>
+<el-dialog title="新增介面種類" :visible.sync="append1" :before-close="closeDialog1">
+           <template>
+             <el-form ref="form1"  :model="form1" :rules="rule1" :label-position="labelPosition">
+                  <el-form-item label="介面種類:" prop="IntfCtgry">
+                          <el-input  v-model="form1.IntfCtgry" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="addSubmit1(form1)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+</el-dialog>
+
+<el-dialog title="新增設備種類" :visible.sync="append2" :before-close="closeDialog2">
+           <template>
+             <el-form ref="form2"  :model="form2" :rules="rule2" :label-position="labelPosition">
+                  <el-form-item label="介面種類" prop="IntfCtgry">
+                           <el-select v-model="form2.IntfCtgry" placeholder="请选择" >
+                                <el-option v-for="item in IntfCtgryOptions" :key="item" :label="item" :value="item"></el-option>
+                          </el-select>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                          <el-input  v-model="form2.DevCtgry" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="addSubmit2(form2)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+</el-dialog>
+
+<el-dialog title="新增設備屬性" :visible.sync="append3" :before-close="closeDialog3">
+           <template>
+             <el-form ref="form3"  :model="form3" :rules="rule3" :label-position="labelPosition">
+                  <el-form-item label="介面種類" prop="IntfCtgry">
+                           <el-select v-model="form3.IntfCtgry" @change="changeIntfCtgry3_add" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in IntfCtgryOptions3_add" :key="key" :label="key" :value="key"></el-option>
+                          </el-select>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                      <el-select v-model="form3.DevCtgry" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in DevCtgryOptions3_add" :key="item.DevCtgry" :label="item.DevCtgry" :value="item.DevCtgry"></el-option>
+                          </el-select>
+                  </el-form-item>
+                 <el-form-item label="設備属性:" prop="Devproperties">
+                          <el-input  v-model="form3.Devproperties" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="addSubmit3(form3)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+</el-dialog>
+
+<el-dialog title="新增設備廠家" :visible.sync="append4" :before-close="closeDialog4">
+           <template>
+             <el-form ref="form4"  :model="form4" :rules="rule4" :label-position="labelPosition">
+                  <el-form-item label="介面種類" prop="IntfCtgry">
+                           <el-select v-model="form4.IntfCtgry" @change="changeIntfCtgry4_add" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in IntfCtgryOptions4" :key="key" :label="key" :value="key"></el-option>
+                          </el-select>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                      <el-select v-model="form4.DevCtgry" @change="changeDevCtgry4_add" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in DevCtgryOptions4_add" :key="item.DevCtgry" :label="item.DevCtgry" :value="item.DevCtgry"></el-option>
+                          </el-select>
+                  </el-form-item>
+                 <el-form-item label="設備属性:" prop="Devproperties">
+                     <el-select v-model="form4.Devproperties" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in DevpropertiesOptions4_add" :key="item" :label="item" :value="item"></el-option>
+                          </el-select>
+                  </el-form-item>
+                  <el-form-item label="設備廠家:" prop="DevVendor">
+                          <el-input  v-model="form4.DevVendor" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="addSubmit4(form4)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+</el-dialog>
+
+<el-dialog title="新增設備容量" :visible.sync="append5" :before-close="closeDialog5">
+           <template>
+             <el-form ref="form5"  :model="form5" :rules="rule5" :label-position="labelPosition">
+                  <el-form-item label="介面種類" prop="IntfCtgry">
+                           <el-select v-model="form5.IntfCtgry" @change="changeIntfCtgry5_add" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in IntfCtgryOptions5" :key="key" :label="key" :value="key"></el-option>
+                          </el-select>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                      <el-select v-model="form5.DevCtgry" @change="changeDevCtgry5_add" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in DevCtgryOptions5_add" :key="item.DevCtgry" :label="item.DevCtgry" :value="item.DevCtgry"></el-option>
+                          </el-select>
+                  </el-form-item>
+                 <el-form-item label="設備属性:" prop="Devproperties">
+                     <el-select v-model="form5.Devproperties" @change="changeDevproperties5_add" placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in DevpropertiesOptions5_add" :key="item" :label="item" :value="item"></el-option>
+                          </el-select>
+                  </el-form-item>
+                  <el-form-item label="設備廠家:" prop="DevVendor">
+                      <el-select v-model="form5.DevVendor" {% comment %}@change="changeDevVendor5"{% endcomment %} placeholder="请选择" >
+                                <el-option v-for="(item,key,index) in DevVendorOptions5_add" :key="key" :label="key" :value="key"></el-option>
+                          </el-select>
+                  </el-form-item>
+                  <el-form-item label="設備容量:" prop="Devsize">
+                          <el-input  v-model="form5.Devsize" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="addSubmit5(form5)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+</el-dialog>
+
+<template>
+  <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <div class="row" style="white-space: nowrap;">
+        <div v-cloak class="fileUploadContent">
+            <div class="inputPackage" v-cloak>
+                  <span v-cloak>請選擇文件</span>
+                  <input v-cloak type="file" id="upload" ref="file" @change="updateFile(event)" v-model="excelFile">
+            </div>
+            <el-button @click="fileUpload" type="warning" style="height:40px" v-cloak> Excel上傳</el-button>
+            <span class="showFileName" v-cloak >${ fileName }</span>
+            <a style="margin-top: 10px;margin-left: 20px;color: #000000" href="/static/src/modelfiles/New%20DMS%20Category%20format_20210513upload.xlsx" style="color: orange;font-size: 16px">模板下载<img src="/static/src/back/document_save_2_24px_539656_easyicon.net.png" alt="..."></a>
+        </div>
+    </div>
+    <el-tab-pane name="first">
+           <span slot="label"><i class="el-icon-s-home"></i>介面種類</span>
+<div style="border-radius: 10px;border: 1px solid #c0c0c0;margin-top: 10px;">
+             <div class="selectMsg" >
+                   <div class="IntfCtgryContent">
+                         <label>介面種類: </label>
+                         <select  ref="IntfCtgry"   v-model="IntfCtgry" clearable style="height:40px;width:100px;border-radius:5px;">
+                               <option v-for="(item,key,index) in IntfCtgryOptions" >${ item }</option>
+                         </select>
+                   </div>
+                   <el-button @click="search1" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button>
+                   <el-button @click="Add1()" size="medium" style="margin-left: 100px;background-color: #69ec57" ><i class="el-icon-circle-plus"></i>新增</el-button>
+                   <el-button @click="Edit1()" size="medium" style="margin-left: 50px;background-color:#00CCFF" ><i class="el-icon-edit"></i>編輯</el-button>
+                   <el-button @click="Delete1()" size="medium" style="margin-left: 50px;background-color:#FF6666"><i class="el-icon-remove"></i>刪除</el-button>
+             </div>
+                 <el-table height="700" ref="multipleTable" border stripe :data="IntfCtgryTable" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+                    :header-cell-style="{
+                                       'background-color':'#CCDDFF',
+                                       'font-weight':'800',
+                                       'border-bottom':'1px solid rgb(103, 194, 58)'
+                                    }">
+              <el-table-column type="selection" width="50" :reserve-selection="true"></el-table-column>
+              <el-table-column type="index" :index="indexMethod" align="center"></el-table-column>
+              <el-table-column  prop="IntfCtgry" label="介面種類" align="center"></el-table-column>
+          </el-table>
+</div>
+    </el-tab-pane>
+
+    <el-tab-pane name="second">
+        <span slot="label"><i class="el-icon-s-tools"></i>設備種類</span>
+<div style="border-radius: 10px;border: 1px solid #c0c0c0;margin-top: 10px;">
+          <div class="selectMsg" >
+                   <div class="IntfCtgryContent">
+                         <label>介面種類: </label>
+                         <select  ref="IntfCtgry2" @change="changeIntfCtgry2" clearable  v-model="IntfCtgry2" style="height:40px;width:100px;border-radius:5px;">
+                               <option v-for="(item,key,index) in IntfCtgryOptions2" >${ key }</option>
+                         </select>
+                   </div>
+                   <div class="DevCtgryContent" style="margin-left:10px">
+                          <label>設備種類:</label>
+                          <select  ref="DevCtgry2" v-model="DevCtgry2" clearable style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevCtgryOptions2">${ item.DevCtgry }</option>
+                          </select>
+                   </div>
+                   <el-button @click="search2" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button><span v-if="showTips2" v-cloak class="tips">第一项不能为空</span>
+                   <el-button @click="Add2()" size="medium" style="margin-left: 100px;background-color: #69ec57" ><i class="el-icon-circle-plus"></i>新增</el-button>
+                   <el-button @click="Edit2()" size="medium" style="margin-left: 50px;background-color:#00CCFF" ><i class="el-icon-edit"></i>編輯</el-button>
+                   <el-button @click="Delete2()" size="medium" style="margin-left: 50px;background-color:#FF6666"><i class="el-icon-remove"></i>刪除</el-button>
+             </div>
+          <el-table height="700" ref="multipleTable1" border stripe :data="DevCtgryTable" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+                    :header-cell-style="{
+                                       'background-color':'#CCDDFF',
+                                       'font-weight':'800',
+                                       'border-bottom':'1px solid rgb(103, 194, 58)'
+                                    }">
+              <el-table-column type="selection" width="50" :reserve-selection="true"></el-table-column>
+              <el-table-column type="index" :index="indexMethod"></el-table-column>
+              <el-table-column  prop="IntfCtgry" label="介面種類" align="center"></el-table-column>
+              <el-table-column  prop="DevCtgry" label="設備種類" align="center"></el-table-column>
+          </el-table>
+</div>
+    </el-tab-pane>
+    <el-tab-pane name="third">
+        <span slot="label"><i class="el-icon-s-platform"></i>設備屬性</span>
+<div style="border-radius: 10px;border: 1px solid #c0c0c0;margin-top: 10px;">
+        <div class="selectMsg" >
+                   <div class="IntfCtgryContent">
+                         <label>介面種類: </label>
+                         <select  ref="IntfCtgry3" @change="changeIntfCtgry3" clearable  v-model="IntfCtgry3" style="height:40px;width:100px;border-radius:5px;">
+                               <option v-for="(item,key,index) in IntfCtgryOptions3" >${ key }</option>
+                         </select>
+                   </div>
+                   <div class="DevCtgryContent" style="margin-left:10px">
+                          <label>設備種類:</label>
+                          <select  ref="DevCtgry3" @change="changeDevCtgry3" clearable v-model="DevCtgry3" style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevCtgryOptions3">${ item.DevCtgry }</option>
+                          </select>
+                   </div>
+                   <div class="DevpropertiesContent" style="margin-left:10px">
+                          <label>設備屬性:</label>
+                          <select  ref="Devproperties3"   v-model="Devproperties3" clearable style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevpropertiesOptions3">${ item }</option>
+                          </select>
+                   </div>
+                   <el-button @click="search3" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button><span v-if="showTips3" v-cloak class="tips">前两项不能为空</span>
+                   <el-button @click="Add3()" size="medium" style="margin-left: 100px;background-color: #69ec57" ><i class="el-icon-circle-plus"></i>新增</el-button>
+                   <el-button @click="Edit3()" size="medium" style="margin-left: 50px;background-color:#00CCFF" ><i class="el-icon-edit"></i>編輯</el-button>
+                   <el-button @click="Delete3()" size="medium" style="margin-left: 50px;background-color:#FF6666"><i class="el-icon-remove"></i>刪除</el-button>
+             </div>
+          <el-table height="700" ref="multipleTable2" border stripe :data="DevpropertiesTable" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+                    :header-cell-style="{
+                                       'background-color':'#CCDDFF',
+                                       'font-weight':'800',
+                                       'border-bottom':'1px solid rgb(103, 194, 58)'
+                                    }">
+              <el-table-column type="selection" width="50" :reserve-selection="true"></el-table-column>
+              <el-table-column type="index" :index="indexMethod"></el-table-column>
+              <el-table-column  prop="IntfCtgry" label="介面種類" align="center"></el-table-column>
+              <el-table-column  prop="DevCtgry" label="設備種類" align="center"></el-table-column>
+              <el-table-column  prop="Devproperties" label="設備屬性" align="center"></el-table-column>
+          </el-table>
+</div>
+    </el-tab-pane>
+    <el-tab-pane name="fourth">
+        <span slot="label"><i class="el-icon-user-solid"></i>設備廠家</span>
+<div style="border-radius: 10px;border: 1px solid #c0c0c0;margin-top: 10px;">
+        <div class="selectMsg" >
+                   <div class="IntfCtgryContent">
+                         <label>介面種類: </label>
+                         <select  ref="IntfCtgry4" @change="changeIntfCtgry4" clearable  v-model="IntfCtgry4" style="height:40px;width:100px;border-radius:5px;">
+                               <option v-for="(item,key,index) in IntfCtgryOptions4" >${ key }</option>
+                         </select>
+                   </div>
+                   <div class="DevCtgryContent" style="margin-left:10px">
+                          <label>設備種類:</label>
+                          <select  ref="DevCtgry4" @change="changeDevCtgry4"  clearable v-model="DevCtgry4" style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevCtgryOptions4">${ item.DevCtgry }</option>
+                          </select>
+                   </div>
+                   <div class="DevpropertiesContent" style="margin-left:10px">
+                          <label>設備屬性:</label>
+                          <select  ref="Devproperties4" @change="changeDevproperties4" clearable  v-model="Devproperties4" style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevpropertiesOptions4">${ item }</option>
+                          </select>
+                   </div>
+                   <div class="DevVendorContent" style="margin-left:10px">
+                         <label>設備廠家: </label>
+                         <select  ref="DevVendor4" v-model="DevVendor4" clearable style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevVendorOptions4">${ item }</option>
+                         </select>
+                   </div>
+                   <el-button @click="search4" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button><span v-if="showTips4" v-cloak class="tips">前三项不能为空</span>
+                   <el-button @click="Add4()" size="medium" style="margin-left: 100px;background-color: #69ec57" ><i class="el-icon-circle-plus"></i>新增</el-button>
+                   <el-button @click="Edit4()" size="medium" style="margin-left: 50px;background-color:#00CCFF" ><i class="el-icon-edit"></i>編輯</el-button>
+                   <el-button @click="Delete4()" size="medium" style="margin-left: 50px;background-color:#FF6666"><i class="el-icon-remove"></i>刪除</el-button>
+             </div>
+           <el-table height="700" ref="multipleTable3" border stripe :data="DevVendorTable" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+                    :header-cell-style="{
+                                       'background-color':'#CCDDFF',
+                                       'font-weight':'800',
+                                       'border-bottom':'1px solid rgb(103, 194, 58)'
+                                    }">
+              <el-table-column type="selection" width="50" :reserve-selection="true"></el-table-column>
+              <el-table-column type="index" :index="indexMethod"></el-table-column>
+              <el-table-column  prop="IntfCtgry" label="介面種類" align="center"></el-table-column>
+              <el-table-column  prop="DevCtgry" label="設備種類" align="center"></el-table-column>
+              <el-table-column  prop="Devproperties" label="設備屬性" align="center"></el-table-column>
+              <el-table-column  prop="DevVendor" label="設備廠家" align="center"></el-table-column>
+          </el-table>
+</div>
+    </el-tab-pane>
+    <el-tab-pane name="fifth">
+        <span slot="label"><i class="el-icon-eleme"></i>設備容量</span>
+<div style="border-radius: 10px;border: 1px solid #c0c0c0;margin-top: 10px;">
+        <div class="selectMsg" >
+                   <div class="IntfCtgryContent">
+                         <label>介面種類: </label>
+                         <select  ref="IntfCtgry5" @change="changeIntfCtgry5" clearable v-model="IntfCtgry5" style="height:40px;width:100px;border-radius:5px;">
+                               <option v-for="(item,key,index) in IntfCtgryOptions5" >${ key }</option>
+                         </select>
+                   </div>
+                   <div class="DevCtgryContent" style="margin-left:10px">
+                          <label>設備種類:</label>
+                          <select  ref="DevCtgry5" @change="changeDevCtgry5" clearable v-model="DevCtgry5" style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevCtgryOptions5">${ item.DevCtgry }</option>
+                          </select>
+                   </div>
+                   <div class="DevpropertiesContent" style="margin-left:10px">
+                          <label>設備屬性:</label>
+                          <select  ref="Devproperties5" @change="changeDevproperties5" clearable v-model="Devproperties5" style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevpropertiesOptions5">${ item }</option>
+                          </select>
+                   </div>
+                   <div class="DevVendorContent" style="margin-left:10px">
+                         <label>設備廠家: </label>
+                         <select  ref="DevVendor5" @change="changeDevVendor5" clearable v-model="DevVendor5" style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevVendorOptions5">${ key }</option>
+                         </select>
+                   </div>
+                   <div class="DevsizeContent" style="margin-left:10px">
+                         <label>設備容量: </label>
+                         <select  ref="Devsize5" v-model="Devsize5" clearable style="height:40px;border-radius:5px;width:100px;">
+                               <option v-for="(item,key,index) in DevsizeOptions5">${ item }</option>
+                         </select>
+                   </div>
+                   <el-button @click="search5" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button>
+                    </div>
+                   <el-button @click="Add5()" size="medium" style="margin-left: 20px;background-color: #69ec57" ><i class="el-icon-circle-plus"></i>新增</el-button>
+                   <el-button @click="Edit5()" size="medium" style="margin-left: 10px;background-color:#00CCFF" ><i class="el-icon-edit"></i>編輯</el-button>
+                   <el-button @click="Delete5()" size="medium" style="margin-left: 10px;background-color:#FF6666"><i class="el-icon-remove"></i>刪除</el-button>
+                   <el-button size="medium" @click="exportExcel" type="info" v-if="canExport==1"><i class="el-icon-download"></i>導出</el-button>
+           <hr/>
+        <el-table height="700" id="out-table" ref="multipleTable4" border stripe :data="DevsizeTable" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+                    :header-cell-style="{
+                                       'background-color':'#CCDDFF',
+                                       'font-weight':'800',
+                                       'border-bottom':'1px solid rgb(103, 194, 58)'
+                                    }">
+              <el-table-column type="selection" width="50" :reserve-selection="true"></el-table-column>
+              <el-table-column type="index" :index="indexMethod"></el-table-column>
+              <el-table-column  prop="IntfCtgry" label="介面種類" align="center"></el-table-column>
+              <el-table-column  prop="DevCtgry" label="設備種類" align="center"></el-table-column>
+              <el-table-column  prop="Devproperties" label="設備屬性" align="center"></el-table-column>
+              <el-table-column  prop="DevVendor" label="設備廠家" align="center"></el-table-column>
+              <el-table-column  prop="Devsize" label="設備容量" align="center"></el-table-column>
+          </el-table>
+</div>
+    </el-tab-pane>
+  </el-tabs>
+</template>
+    <el-dialog title="编辑介面種類" :visible.sync="edit1" :before-close="closeDialog11">
+           <template>
+             <el-form ref="form11"  :model="form11"  :label-position="labelPosition" >
+                  <el-form-item label="介面種類:" prop="IntfCtgry">
+                          <el-input  v-model="form11.IntfCtgry" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="editSubmit1(form11)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+    </el-dialog>
+
+    <el-dialog title="编辑設備種類" :visible.sync="edit2" :before-close="closeDialog22">
+           <template>
+             <el-form ref="form22"  :model="form22"  :label-position="labelPosition" >
+                  <el-form-item label="介面種類:" prop="IntfCtgry">
+                          <el-input  v-model="form22.IntfCtgry" disabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                          <el-input  v-model="form22.DevCtgry" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="editSubmit2(form22)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+    </el-dialog>
+
+    <el-dialog title="编辑設備屬性" :visible.sync="edit3" :before-close="closeDialog33">
+           <template>
+             <el-form ref="form33"  :model="form33"  :label-position="labelPosition" >
+                  <el-form-item label="介面種類:" prop="IntfCtgry">
+                          <el-input  v-model="form33.IntfCtgry" disabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                          <el-input  v-model="form33.DevCtgry" disabled></el-input>
+                  </el-form-item>
+                 <el-form-item label="設備属性:" prop="Devproperties">
+                          <el-input  v-model="form33.Devproperties" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="editSubmit3(form33)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+    </el-dialog>
+
+    <el-dialog title="编辑設備廠家" :visible.sync="edit4" :before-close="closeDialog44">
+           <template>
+             <el-form ref="form44"  :model="form44"  :label-position="labelPosition" >
+                  <el-form-item label="介面種類:" prop="IntfCtgry">
+                          <el-input  v-model="form44.IntfCtgry" disabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                          <el-input  v-model="form44.DevCtgry" disabled></el-input>
+                  </el-form-item>
+                 <el-form-item label="設備属性:" prop="Devproperties">
+                          <el-input  v-model="form44.Devproperties" disabled></el-input>
+                  </el-form-item>
+                 <el-form-item label="設備廠家:" prop="DevVendor">
+                          <el-input  v-model="form44.DevVendor" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="editSubmit4(form44)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+    </el-dialog>
+
+    <el-dialog title="编辑設備容量" :visible.sync="edit5" :before-close="closeDialog55">
+           <template>
+             <el-form ref="form55"  :model="form55"  :label-position="labelPosition" >
+                  <el-form-item label="介面種類:" prop="IntfCtgry">
+                          <el-input  v-model="form55.IntfCtgry" disabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備種類:" prop="DevCtgry">
+                          <el-input  v-model="form55.DevCtgry" disabled></el-input>
+                  </el-form-item>
+                 <el-form-item label="設備属性:" prop="Devproperties">
+                          <el-input  v-model="form55.Devproperties" disabled></el-input>
+                  </el-form-item>
+                 <el-form-item label="設備廠家:" prop="DevVendor">
+                          <el-input  v-model="form55.DevVendor" disabled></el-input>
+                  </el-form-item>
+                 <el-form-item label="設備廠家:" prop="Devsize">
+                          <el-input  v-model="form55.Devsize" ></el-input>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="editSubmit5(form55)">確定</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+    </el-dialog>
+
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+    <script src="/static/js/xlsx/FileSaver.min.js"></script>
+ <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                canExport:null,
+                excelFile:null,
+                fileName:"未選擇文件",
+                IntfCtgryOptions3_add:[],
+                DevCtgryOptions3_add:[],
+                IntfCtgryOptions4_add:[],
+                DevCtgryOptions4_add:[],
+                DevpropertiesOptions4_add:[],
+                IntfCtgryOptions5_add:[],
+                DevCtgryOptions5_add:[],
+                DevpropertiesOptions5_add:[],
+                DevVendorOptions5_add:[],
+                activeName: 'first',
+                IntfCtgry:'',
+                IntfCtgryOptions:[],
+                IntfCtgryTable:[],
+                IntfCtgry2:'',
+                IntfCtgryOptions2:{},
+                DevCtgry2:'',
+                DevCtgryOptions2:[],
+                showTips2:false,
+                DevCtgryTable:[],
+                IntfCtgry3:'',
+                IntfCtgryOptions3:{},
+                DevCtgry3:'',
+                DevCtgryOptions3:[],
+                Devproperties3:'',
+                DevpropertiesOptions3:[],
+                showTips3:false,
+                DevpropertiesTable:[],
+                IntfCtgry4:'',
+                IntfCtgryOptions4:{},
+                DevCtgry4:'',
+                DevCtgryOptions4:[],
+                Devproperties4:'',
+                DevpropertiesOptions4:[],
+                DevVendor4:'',
+                DevVendorOptions4:[],
+                showTips4:false,
+                DevVendorTable:[],
+                IntfCtgry5:'',
+                IntfCtgryOptions5:{},
+                DevCtgry5:'',
+                DevCtgryOptions5:[],
+                Devproperties5:'',
+                DevpropertiesOptions5:[],
+                DevVendor5:'',
+                DevVendorOptions5:{},
+                Devsize5:'',
+                DevsizeOptions5:[],
+
+                DevsizeTable:[],
+                edit1:false,
+            labelPosition:'right',
+            editID:'',
+            form1: {
+                IntfCtgry:'',
+            },
+            append1:false,
+            rule1: {
+                IntfCtgry: [
+                    {required: true, message: '请输入內容'},
+                ]
+            },
+            multipleSelection:[],
+            form11: {
+                IntfCtgry:'',
+            },
+
+            form2: {
+                IntfCtgry:'',
+                DevCtgry:'',
+            },
+            append2:false,
+            rule2: {
+                IntfCtgry: [
+                    {required: true, message: '请选择內容'},
+                ],
+                DevCtgry: [
+                    {required: true, message: '请输入內容'},
+                ]
+            },
+            form22: {
+                IntfCtgry:'',
+                DevCtgry:'',
+            },
+            edit2:false,
+
+            form3: {
+                IntfCtgry:'',
+                DevCtgry:'',
+                Devproperties:'',
+            },
+            append3:false,
+            rule3: {
+                IntfCtgry: [
+                    {required: true, message: '请选择內容'},
+                ],
+                DevCtgry: [
+                    {required: true, message: '请选择內容'},
+                ],
+                Devproperties: [
+                    {required: true, message: '请输入內容'},
+                ]
+            },
+            form33: {
+                IntfCtgry:'',
+                DevCtgry:'',
+                Devproperties:'',
+            },
+            edit3:false,
+
+            form4: {
+                IntfCtgry:'',
+                DevCtgry:'',
+                Devproperties:'',
+                DevVendor:'',
+            },
+            append4:false,
+            rule4: {
+                IntfCtgry: [
+                    {required: true, message: '请选择內容'},
+                ],
+                DevCtgry: [
+                    {required: true, message: '请选择內容'},
+                ],
+                Devproperties: [
+                    {required: true, message: '请选择內容'},
+                ],
+                DevVendor: [
+                    {required: true, message: '请输入內容'},
+                ]
+            },
+            form44: {
+                IntfCtgry:'',
+                DevCtgry:'',
+                Devproperties:'',
+                DevVendor:'',
+            },
+            edit4:false,
+
+            form5: {
+                IntfCtgry:'',
+                DevCtgry:'',
+                Devproperties:'',
+                DevVendor:'',
+                Devsize:'',
+            },
+            append5:false,
+            rule5: {
+                IntfCtgry: [
+                    {required: true, message: '请选择內容'},
+                ],
+                DevCtgry: [
+                    {required: true, message: '请选择內容'},
+                ],
+                Devproperties: [
+                    {required: true, message: '请选择內容'},
+                ],
+                DevVendor: [
+                    {required: true, message: '请输入內容'},
+                ],
+                Devsize: [
+                    {required: true, message: '请输入內容'},
+                ]
+            },
+            form55: {
+                IntfCtgry:'',
+                DevCtgry:'',
+                Devproperties:'',
+                DevVendor:'',
+                Devsize:'',
+            },
+            edit5:false,
+
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+                this.getdata("first");
+        },
+        methods: {
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                console.log(data)
+                axios.post("/DeviceLNV/M_Category/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.canExport = res.data.canExport;
+                    this.IntfCtgryOptions=res.data.IntfCtgryOptions;
+                    this.IntfCtgryTable=res.data.IntfCtgryTable;
+
+                    this.IntfCtgryOptions2=res.data.IntfCtgryOptions2;
+                    this.DevCtgryTable=res.data.DevCtgryTable;
+
+                    this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                    this.DevpropertiesTable=res.data.DevpropertiesTable;
+                    this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                    this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                    this.DevVendorTable=res.data.DevVendorTable;
+                    this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                    this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+                    this.DevsizeTable=res.data.DevsizeTable;
+                    this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+
+                });
+            },
+            //Tab1 搜索
+            search1 :function(){
+               let IntfCtgry = this.$refs.IntfCtgry.value;
+               let data ={"isGetData":"SEARCH1","IntfCtgry":IntfCtgry,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/DeviceLNV/M_Category/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.IntfCtgryTable=res.data.IntfCtgryTable;
+                })
+            },
+            //Tab2 搜索
+            changeIntfCtgry2:function () {
+                 if(this.$refs.IntfCtgry2.value ==""){
+                      this.DevCtgryOptions2=[""];
+                      return false;
+                 }
+                 this.DevCtgryOptions2=this.IntfCtgryOptions2[this.$refs.IntfCtgry2.value];
+                 {#this.DevCtgry2="";#}
+            },
+            search2 :function(){
+               if(this.$refs.IntfCtgry2.value ==""){
+                   this.showTips2=true;
+               }else {
+                   let IntfCtgry = this.$refs.IntfCtgry2.value;
+                   let DevCtgry = this.$refs.DevCtgry2.value;
+                   let data = {
+                       "isGetData": "SEARCH2",
+                       "IntfCtgry": IntfCtgry,
+                       "DevCtgry": DevCtgry,
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/DeviceLNV/M_Category/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.DevCtgryTable = res.data.DevCtgryTable;
+                   })
+                   this.showTips2=false;
+               }
+            },
+            //Tab3 搜索
+            changeIntfCtgry3:function () {
+                 if(this.$refs.IntfCtgry3.value ==""){
+                      this.DevCtgryOptions3=[""];
+                      return false;
+                 }else {
+                     this.DevCtgryOptions3 = this.IntfCtgryOptions3[this.$refs.IntfCtgry3.value];
+                     {#this.DevCtgry3 = "";#}
+                 }
+            },
+            changeDevCtgry3:function(index){
+                if(this.$refs.DevCtgry3.value ==""){
+                      this.DevpropertiesOptions3=[""];
+                      return false;
+                 }
+                for(let index=0;index<this.IntfCtgryOptions3[this.IntfCtgry3].length;index++){
+                     if(this.IntfCtgryOptions3[this.IntfCtgry3][index]["DevCtgry"]==this.DevCtgry3){
+                        this.DevpropertiesOptions3=this.IntfCtgryOptions3[this.IntfCtgry3][index]["Devproperties"];
+                    }
+                }
+            },
+            search3 :function(){
+               if(this.$refs.IntfCtgry3.value ==""||this.$refs.DevCtgry3.value ==""){
+                   this.showTips3=true;
+               }else {
+                   let IntfCtgry = this.$refs.IntfCtgry3.value;
+                   let DevCtgry = this.$refs.DevCtgry3.value;
+                   let Devproperties = this.$refs.Devproperties3.value;
+                   let data = {
+                       "isGetData": "SEARCH3",
+                       "IntfCtgry": IntfCtgry,
+                       "DevCtgry": DevCtgry,
+                       "Devproperties":Devproperties,
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/DeviceLNV/M_Category/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.DevpropertiesTable=res.data.DevpropertiesTable;
+                   })
+                   this.showTips3=false;
+               }
+            },
+
+            changeIntfCtgry3_add:function () {
+                if(this.$refs.form3.model.IntfCtgry!==''){
+                     this.DevCtgryOptions3_add = this.IntfCtgryOptions3_add[this.$refs.form3.model.IntfCtgry];
+                     this.$refs.form3.model.DevCtgry3 = "";
+                 }
+            },
+            //Tab4 搜索
+            changeIntfCtgry4:function () {
+                 if(this.$refs.IntfCtgry4.value ==""){
+                      this.DevCtgryOptions4=[""];
+                      return false;
+                 }else{
+                     this.DevCtgryOptions4 = this.IntfCtgryOptions4[this.$refs.IntfCtgry4.value];
+                     {#this.DevCtgry4 = "";#}
+                 }
+            },
+            changeDevCtgry4:function(index){
+                if(this.$refs.DevCtgry4.value ==""){
+                      this.DevpropertiesOptions4=[""];
+                      return false;
+                 }else{
+                    for (let index = 0; index < this.IntfCtgryOptions4[this.IntfCtgry4].length; index++) {
+                        if (this.IntfCtgryOptions4[this.IntfCtgry4][index]["DevCtgry"] == this.DevCtgry4) {
+                            this.DevpropertiesOptions4 = this.IntfCtgryOptions4[this.IntfCtgry4][index]["Devproperties"];
+                        }
+                    }
+                }
+            },
+            changeDevproperties4:function(){
+                if(this.$refs.Devproperties4.value ==""){
+                      this.DevVendorOptions4=[""];
+                      return false;
+                 }else{
+                    let data = {
+                        "isGetData": "change4",
+                        "IntfCtgry": this.$refs.IntfCtgry4.value,
+                        "DevCtgry": this.$refs.DevCtgry4.value,
+                        "Devproperties": this.$refs.Devproperties4.value,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.DevVendorOptions4=res.data.DevVendorOptions4;
+                   })
+                }
+
+            },
+            search4 :function(){
+               if(this.$refs.IntfCtgry4.value ==""||this.$refs.DevCtgry4.value ==""||this.$refs.Devproperties4.value==''){
+                   this.showTips4=true;
+               }else {
+                   let IntfCtgry = this.$refs.IntfCtgry4.value;
+                   let DevCtgry = this.$refs.DevCtgry4.value;
+                   let Devproperties = this.$refs.Devproperties4.value;
+                   let DevVendor = this.$refs.DevVendor4.value;
+                   let data = {
+                       "isGetData": "SEARCH4",
+                       "IntfCtgry": IntfCtgry,
+                       "DevCtgry": DevCtgry,
+                       "Devproperties":Devproperties,
+                       "DevVendor":DevVendor,
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/DeviceLNV/M_Category/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.DevVendorTable=res.data.DevVendorTable;
+                   })
+                   this.showTips4=false;
+               }
+            },
+
+            changeIntfCtgry4_add:function () {
+                  if(this.$refs.form4.model.IntfCtgry!==''){
+                     this.DevCtgryOptions4_add = this.IntfCtgryOptions4_add[this.$refs.form4.model.IntfCtgry];
+
+                 }
+            },
+            changeDevCtgry4_add:function(index){
+                if(this.$refs.form4.model.DevCtgry !==''){
+                    console.log(this.$refs.form4.model.DevCtgry,'www')
+                     for (let index = 0; index < this.IntfCtgryOptions4_add[this.$refs.form4.model.IntfCtgry].length; index++) {
+                        if (this.IntfCtgryOptions4_add[this.$refs.form4.model.IntfCtgry][index]["DevCtgry"] == this.$refs.form4.model.DevCtgry) {
+                            this.DevpropertiesOptions4_add = this.IntfCtgryOptions4_add[this.$refs.form4.model.IntfCtgry][index]["Devproperties"];
+                        }
+                    }
+                }
+            },
+
+            //Tab5 搜索
+            changeIntfCtgry5:function () {
+                 if(this.$refs.IntfCtgry5.value ==""){
+                      this.DevCtgryOptions5=[""];
+                      return false;
+                 }else{
+                     this.DevCtgryOptions5 = this.IntfCtgryOptions5[this.$refs.IntfCtgry5.value];
+                     {#this.DevCtgry5 = "";#}
+                 }
+            },
+            changeDevCtgry5:function(index){
+                if(this.$refs.DevCtgry5.value ==""){
+                      this.DevpropertiesOptions5=[""];
+                      return false;
+                 }else{
+                    for (let index = 0; index < this.IntfCtgryOptions5[this.IntfCtgry5].length; index++) {
+                        if (this.IntfCtgryOptions5[this.IntfCtgry5][index]["DevCtgry"] == this.DevCtgry5) {
+                            this.DevpropertiesOptions5 = this.IntfCtgryOptions5[this.IntfCtgry5][index]["Devproperties"];
+                        }
+                    }
+                }
+            },
+            changeDevproperties5:function(){
+                if(this.$refs.Devproperties5.value ==""){
+                      this.DevVendorOptions5=[""];
+                      return false;
+                 }else{
+                    let data = {
+                        "isGetData": "change5",
+                        "IntfCtgry": this.$refs.IntfCtgry5.value,
+                        "DevCtgry": this.$refs.DevCtgry5.value,
+                        "Devproperties": this.$refs.Devproperties5.value,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", Qs.stringify(data), {
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                    }).then((res) => {
+                        this.DevVendorOptions5 = res.data.DevVendorOptions5;
+                        console.log(this.DevVendorOptions5,'wwwwwwwww')
+                    })
+                }
+
+            },
+            changeDevVendor5:function (){
+                if(this.$refs.DevVendor5.value ==""){
+                      this.DevsizeOptions5=[""];
+                      return false;
+                 }else{
+                     this.DevsizeOptions5 = this.DevVendorOptions5[this.$refs.DevVendor5.value];
+                 }
+            },
+            search5 :function(){
+
+                   let IntfCtgry = this.$refs.IntfCtgry5.value;
+                   let DevCtgry = this.$refs.DevCtgry5.value;
+                   let Devproperties = this.$refs.Devproperties5.value;
+                   let DevVendor = this.$refs.DevVendor5.value;
+                   let Devsize = this.$refs.Devsize5.value;
+                   let data = {
+                       "isGetData": "SEARCH5",
+                       "IntfCtgry": IntfCtgry,
+                       "DevCtgry": DevCtgry,
+                       "Devproperties":Devproperties,
+                       "DevVendor":DevVendor,
+                       "Devsize":Devsize,
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/DeviceLNV/M_Category/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.DevsizeTable=res.data.DevsizeTable;
+                   })
+
+            },
+
+
+            changeIntfCtgry5_add:function () {
+                 if(this.$refs.form5.model.IntfCtgry!==''){
+                     this.DevCtgryOptions5_add = this.IntfCtgryOptions5_add[this.$refs.form5.model.IntfCtgry];
+
+                 }
+            },
+            changeDevCtgry5_add:function(index){
+                if(this.$refs.form5.model.DevCtgry !==''){
+                     for (let index = 0; index < this.IntfCtgryOptions5_add[this.$refs.form5.model.IntfCtgry].length; index++) {
+                        if (this.IntfCtgryOptions5_add[this.$refs.form5.model.IntfCtgry][index]["DevCtgry"] == this.$refs.form5.model.DevCtgry) {
+                            this.DevpropertiesOptions5_add = this.IntfCtgryOptions5_add[this.$refs.form5.model.IntfCtgry][index]["Devproperties"];
+                        }
+                    }
+                }
+            },
+            changeDevproperties5_add:function(){
+                if(this.$refs.form5.model.Devproperties!==''){
+                        this.DevVendorOptions5_add = this.DevVendorOptions5;
+                }
+
+
+            },
+
+            handleClick(tab, event) {
+                console.log(tab, event);
+                this.$refs.multipleTable.clearSelection()
+                this.$refs.multipleTable1.clearSelection()
+                this.$refs.multipleTable2.clearSelection()
+                this.$refs.multipleTable3.clearSelection()
+                this.$refs.multipleTable4.clearSelection()
+            },
+            indexMethod(index) {
+                return index + 1;
+            },
+            handleSelectionChange(rows) {
+                this.multipleSelection = rows;
+                console.log(rows,'111')
+                var len=document.getElementById("selectNum")
+                len.innerHTML=this.multipleSelection.length;
+            },
+            getRowKeys (row) {
+              return row.id;
+            },
+
+          updateFile:function(e){
+                const first="未選擇文件";
+                let newValue= e.target.files;
+                {#console.log(newValue,"r");#}
+                if(newValue){
+                 let file=document.getElementById('upload');
+                 let filename= file.files[0].name;
+                 let fileType=filename.substr(filename.lastIndexOf(".")+1);
+                 {#console.log(fileType.toLowerCase());#}
+                 if((fileType.toLowerCase() === 'xlsx')||(fileType.toLowerCase() === 'xls')){
+                      //console.log(this.excelFile);
+                     this.fileName=filename;
+                     this.uploadFile=file.files[0];
+                     {#console.log(this.uploadFile,"m");#}
+                 }else{
+                     alert("上傳類型不為'xlsx'或'xls'");
+                       try{
+                       }catch(e){
+                          console.log(e);
+                       }
+                 }
+             }else{
+                 this.uploadFile=null;
+                 this.fileName=first;
+             }
+          },
+
+          fileUpload:function(){
+                    const first="未選擇文件";
+                    {#let intfCtgry = this.$refs.IntfCtgry.value;#}
+                    {#let devCtgry = this.$refs.DevCtgry.value;#}
+                    {#let devproperties = this.$refs.Devproperties.value;#}
+                    {#let devVendor = this.$refs.DevVendor.value;#}
+                    {#let devsize = this.$refs.Devsize.value;#}
+                    if(this.uploadFile){
+                       //1.解析Excel
+                       let outputResult;
+                       let _this= this;
+                       let files = this.uploadFile;
+                       let undefined_to_null=function(value){
+                           if(value == undefined){
+                               value=null;
+                           }
+                           //console.log(value,value === undefined,value == undefined);
+                           return value;
+                       };
+                       var fileReader = new FileReader ();
+                       const loading = this.$loading({
+                              lock: true,
+                              text: 'Loading',
+                              spinner: 'el-icon-loading',
+                              background: 'rgba(0, 0, 0, 0.7)'
+                       });
+                       fileReader.onload = function (ev) {
+                         try {
+                         {#_this.loading=true;#}
+                         var data = ev.target.result,
+                          workbook = XLSX.read(data, {
+                            type: 'binary'
+                         }), //以二进制流方式读取得到整份excel表格对象
+                          persons = []; //存储获取到的数据
+                       } catch (e) {
+                         {#_this.loading=false;#}
+                             loading.close();
+                         return;
+                      }
+                      for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        var fromTo = workbook.Sheets[sheet]['!ref'];
+                        // console.log(fromTo);
+                        var datas = workbook.Sheets[sheet];
+                        //如果有不规范数据可以在这里进行处理datas
+                        persons = persons.concat(XLSX.utils.sheet_to_json(datas));
+                        //break; //只读了第一张表
+                    }
+                }
+                     //数据保存在result
+                      let result=JSON.stringify(persons);
+                       //将之前张开的树形结构收起
+                          //_this.reset();
+                       //2.上傳數據
+                        axios.post("/DeviceLNV/M_Category/" ,{"ExcelData":result},{
+                        headers:{ 'X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式 ==>'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    }).then((res) => {
+                        //console.log(res.data,"first");//上传成功的操作
+                        {#_this.tableContent = res.data.content;#}
+                        {#_this.totalNum = _this.tableContent.length;#}
+                        _this.errMsg=res.data.errMsg;
+                        _this.IntfCtgryOptions=res.data.IntfCtgryOptions;
+                        _this.IntfCtgryOptions2=res.data.IntfCtgryOptions2;
+                        _this.DevCtgryTable=res.data.DevCtgryTable;
+                        _this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                        _this.DevpropertiesTable=res.data.DevpropertiesTable;
+                        _this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                        _this.DevVendorOptions4=res.data.DevVendorOptions4;
+                        _this.DevVendorTable=res.data.DevVendorTable;
+                        _this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+                        _this.DevVendorOptions5=res.data.DevVendorOptions5;
+                        _this.DevsizeTable=res.data.DevsizeTable;
+                        _this.uploadFile=null;
+                        _this.fileName=first;
+                        {#_this.loading=false;#}
+                        loading.close();
+                        //上传成功的操作
+                        if(_this.errMsg){
+                            _this.$alert(_this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            _this.$message({
+                                message: '上傳成功',
+                                type: 'success',
+                            })
+                        }
+                        //接受数据的初始化
+                        try{
+                        }catch(e)
+                        {
+                           console.log("错误异常"+e);
+                        }
+                    }).catch(function (e) {
+                            {#_this.loading=false;#}
+                            loading.close();
+                            _this.uploadFile=null;
+                            var warning =confirm("上傳異常");
+                            console.log("上傳錯誤信息"+e);
+                        });
+               };
+                       try{
+                       //console.log(fileReader.onload());
+                       fileReader.readAsBinaryString(files);
+                       //console.log(fileReader.readAsBinaryString(files));
+                       }
+                       catch(e){
+                             {#this.loading=false;#}
+                             loading.close();
+                             console.log(e);
+                             alert("文件上傳異常") ;
+                             return;
+                        }
+                      //console.log(outputResult);
+                  // }
+                 }else{
+                   loading.close();
+                  alert("未選擇文件");
+                  return false;
+              }
+                    this.excelFile='';
+          },
+
+            //Tab1 功能
+            Delete1(){
+                 if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else{
+                  this.$confirm('您正在刪除數據, 是否繼續?', '提示', {
+                          confirmButtonText: '確定',
+                          cancelButtonText: '取消',
+                          type: 'warning'
+                  }).then(() => {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                         });
+                         //console.log(params);
+                         let data ={"isGetData":"Delete1","DeleteId":params,
+                             "IntfCtgry_search":this.$refs.IntfCtgry.value,
+                             "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                         axios.post("/DeviceLNV/M_Category/",data).then((res) => {
+                             if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      dangerouslyUseHTMLString: true,
+                                      confirmButtonText: '确定',
+                                    });
+                            }else {
+                                 this.$message({
+                                     type: 'success',
+                                     message: '刪除成功!'
+                                 });
+                             }
+                                 this.IntfCtgryOptions = res.data.IntfCtgryOptions;
+                                 this.IntfCtgryOptions2=res.data.IntfCtgryOptions2;
+                                 this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                 this.IntfCtgryTable=res.data.IntfCtgryTable;
+                                this.DevCtgryTable=res.data.DevCtgryTable;
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+
+
+                                 this.$refs.multipleTable.clearSelection()
+                                })
+
+                  }).catch(() => {
+                        this.$refs.multipleTable.clearSelection()
+                        this.$message({
+                        type: 'info',
+                        message: '已取消刪除'
+                        });
+                  });
+               }
+            },
+            Add1(){
+                 this.append1=true;
+                 this.$refs.multipleTable.clearSelection()
+            },
+            addSubmit1(){
+                if(this.$refs.form1.model.IntfCtgry==''){
+                           this.append1=true;
+                }else {
+                    let data = {
+                        "isGetData": "addSubmit1",
+                        "IntfCtgry_search":this.$refs.IntfCtgry.value,
+                        "IntfCtgry": this.$refs.form1.model.IntfCtgry,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                            this.$alert(res.data.err_MSG, '提示', {
+                                  confirmButtonText: '确定',
+                                dangerouslyUseHTMLString: true,
+                                });
+                        }else{
+                                 this.IntfCtgryOptions = res.data.IntfCtgryOptions;
+
+                                 this.IntfCtgryOptions2=res.data.IntfCtgryOptions2;
+                                 this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                 this.IntfCtgryTable=res.data.IntfCtgryTable;
+                                this.DevCtgryTable=res.data.DevCtgryTable;
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+
+
+                            this.append1 = false;
+                            this.$refs.form1.resetFields();
+                            this.$message({
+                                  message: '新增成功！',
+                                  type: 'success'
+                                });
+
+                        }
+
+                    })
+                }
+            },
+            closeDialog1(){　
+                     this.append1 = false;
+                     this.$refs.form1.resetFields();
+                },
+            Edit1:function(){
+                if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else if(this.multipleSelection.length==1){
+                    this.edit1 = true;
+                    console.log(this.multipleSelection)
+                    this.form11.IntfCtgry = this.multipleSelection[0].IntfCtgry;
+                    this.editID = this.multipleSelection[0].id;
+                }else{
+                    this.$alert('只能编辑单条数据！', '提示', {
+                         type: 'warning',
+                      })
+                }
+            },
+            editSubmit1() {
+                let data = {
+                        "isGetData": "editSubmit1",
+                        "IntfCtgry_search":this.$refs.IntfCtgry.value,
+                        "IntfCtgry": this.$refs.form11.model.IntfCtgry,
+                        "editID":this.editID,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                            this.$alert(res.data.err_MSG, '提示', {
+                                  confirmButtonText: '确定',
+                                dangerouslyUseHTMLString: true,
+                                });
+                        }else{
+                            this.IntfCtgryOptions=res.data.IntfCtgryOptions;
+
+
+                            this.IntfCtgryOptions2=res.data.IntfCtgryOptions2;
+                                 this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                 this.IntfCtgryTable=res.data.IntfCtgryTable;
+                                this.DevCtgryTable=res.data.DevCtgryTable;
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                            this.edit1 = false;
+                            this.$refs.form11.resetFields();
+                            this.$refs.multipleTable.clearSelection()
+                            this.$message({
+                                  message: '编辑成功！',
+                                  type: 'success'
+                                });
+
+                        }
+
+                    })
+            },
+            closeDialog11(){　
+                     this.edit1 = false;
+                     this.$refs.form11.resetFields();
+                     this.$refs.multipleTable.clearSelection()
+                },
+            //Tab2 功能
+            Delete2(){
+                 if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else{
+                  this.$confirm('您正在刪除數據, 是否繼續?', '提示', {
+                          confirmButtonText: '確定',
+                          cancelButtonText: '取消',
+                          type: 'warning'
+                  }).then(() => {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                         });
+
+                         let data ={"isGetData":"Delete2","DeleteId":params,
+                             "IntfCtgry_search":this.$refs.IntfCtgry2.value,
+                             "DevCtgry_search":this.$refs.DevCtgry2.value,
+                             "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                         axios.post("/DeviceLNV/M_Category/",data).then((res) => {
+                             if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+
+                                 this.$message({
+                                 type: 'success',
+                                 message: '刪除成功!'
+                                 });
+                             }
+
+
+                                 this.IntfCtgryOptions2 = res.data.IntfCtgryOptions2;
+                                 this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                this.DevCtgryTable=res.data.DevCtgryTable;
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry2();
+                                  this.$refs.multipleTable1.clearSelection()
+                                })
+
+
+                  }).catch(() => {
+                        this.$refs.multipleTable1.clearSelection()
+                        this.$message({
+                        type: 'info',
+                        message: '已取消刪除'
+                        });
+                  });
+               }
+            },
+            Add2(){
+                 this.append2=true;
+                 this.$refs.multipleTable1.clearSelection()
+            },
+            addSubmit2(){
+                if(this.$refs.form2.model.IntfCtgry==''||this.$refs.form2.model.DevCtgry==''){
+                           this.append2=true;
+                }else {
+                    let data = {
+                        "isGetData": "addSubmit2",
+                        "IntfCtgry_search":this.$refs.IntfCtgry2.value,
+                        "DevCtgry_search":this.$refs.DevCtgry2.value,
+                        "IntfCtgry": this.$refs.form2.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form2.model.DevCtgry,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+
+
+                                this.IntfCtgryOptions2=res.data.IntfCtgryOptions2;
+                                this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                this.DevCtgryTable=res.data.DevCtgryTable;
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+
+                                this.changeIntfCtgry2();
+                                this.append2 = false;
+                                this.$refs.form2.resetFields();
+                                this.$message({
+                                  message: '新增成功！',
+                                  type: 'success'
+                                });
+
+                        }
+
+                    })
+                }
+            },
+            closeDialog2(){　
+                     this.append2 = false;
+                     this.$refs.form2.resetFields();
+                },
+            Edit2:function(){
+                if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else if(this.multipleSelection.length==1){
+                    this.edit2 = true;
+                    console.log(this.multipleSelection)
+                    this.form22.IntfCtgry = this.multipleSelection[0].IntfCtgry;
+                    this.form22.DevCtgry = this.multipleSelection[0].DevCtgry;
+                    this.editID = this.multipleSelection[0].id;
+                }else{
+                    this.$alert('只能编辑单条数据！', '提示', {
+                         type: 'warning',
+                      })
+                }
+            },
+            editSubmit2() {
+                let data = {
+                        "isGetData": "editSubmit2",
+                        "IntfCtgry_search":this.$refs.IntfCtgry2.value,
+                        "DevCtgry_search":this.$refs.DevCtgry2.value,
+                        "IntfCtgry": this.$refs.form22.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form22.model.DevCtgry,
+                        "editID":this.editID,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+                                this.IntfCtgryOptions2=res.data.IntfCtgryOptions2;
+                                this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                this.DevCtgryTable=res.data.DevCtgryTable;
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry2();
+                                this.edit2 = false;
+                                this.$refs.form22.resetFields();
+                                this.$refs.multipleTable1.clearSelection()
+                            this.$message({
+                                  message: '编辑成功！',
+                                  type: 'success'
+                                });
+
+                        }
+
+                    })
+            },
+            closeDialog22(){　
+                     this.edit2 = false;
+                     this.$refs.form22.resetFields();
+                     this.$refs.multipleTable1.clearSelection()
+                },
+            //Tab3 功能
+            Delete3(){
+                 if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else{
+                  this.$confirm('您正在刪除數據, 是否繼續?', '提示', {
+                          confirmButtonText: '確定',
+                          cancelButtonText: '取消',
+                          type: 'warning'
+                  }).then(() => {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                         });
+                         //console.log(params);
+                         let data ={"isGetData":"Delete3","DeleteId":params,
+                             "IntfCtgry_search":this.$refs.IntfCtgry3.value,
+                             "DevCtgry_search":this.$refs.DevCtgry3.value,
+                             "Devproperties_search":this.$refs.Devproperties3.value,
+                             "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                         axios.post("/DeviceLNV/M_Category/",data).then((res) => {
+                             if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+
+                                 this.$message({
+                                     type: 'success',
+                                     message: '刪除成功!'
+                                 });
+                             }
+                                this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry3();
+                                this.changeDevCtgry3();
+                                 this.$refs.multipleTable2.clearSelection()
+                                })
+
+                  }).catch(() => {
+                        this.$refs.multipleTable2.clearSelection()
+                        this.$message({
+                        type: 'info',
+                        message: '已取消刪除'
+                        });
+                  });
+               }
+            },
+            Add3(){
+                 this.append3=true;
+                 this.$refs.multipleTable2.clearSelection()
+            },
+            addSubmit3(){
+                if(this.$refs.form3.model.IntfCtgry==''||this.$refs.form3.model.DevCtgry==''||this.$refs.form3.model.Devproperties==''){
+                           this.append3=true;
+                }else {
+                    let data = {
+                        "isGetData": "addSubmit3",
+                        "IntfCtgry_search":this.$refs.IntfCtgry3.value,
+                        "DevCtgry_search":this.$refs.DevCtgry3.value,
+                        "Devproperties_search":this.$refs.Devproperties3.value,
+                        "IntfCtgry": this.$refs.form3.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form3.model.DevCtgry,
+                        "Devproperties": this.$refs.form3.model.Devproperties,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+                                this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry3();
+                                this.changeDevCtgry3();
+                                this.append3 = false;
+                                this.$refs.form3.resetFields();
+                                this.$message({
+                                  message: '新增成功！',
+                                  type: 'success'
+                                });
+
+                        }
+
+                    })
+                }
+            },
+            closeDialog3(){　
+                     this.append3 = false;
+                     this.$refs.form3.resetFields();
+                },
+            Edit3:function(){
+                if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else if(this.multipleSelection.length==1){
+                    this.edit3 = true;
+                    console.log(this.multipleSelection)
+                    this.form33.IntfCtgry = this.multipleSelection[0].IntfCtgry;
+                    this.form33.DevCtgry = this.multipleSelection[0].DevCtgry;
+                    this.form33.Devproperties = this.multipleSelection[0].Devproperties;
+                    this.editID = this.multipleSelection[0].id;
+                }else{
+                    this.$alert('只能编辑单条数据！', '提示', {
+                         type: 'warning',
+                      })
+                }
+            },
+            editSubmit3() {
+                let data = {
+                        "isGetData": "editSubmit3",
+                        "IntfCtgry_search":this.$refs.IntfCtgry3.value,
+                        "DevCtgry_search":this.$refs.DevCtgry3.value,
+                        "Devproperties_search":this.$refs.Devproperties3.value,
+                        "IntfCtgry": this.$refs.form33.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form33.model.DevCtgry,
+                        "Devproperties": this.$refs.form33.model.Devproperties,
+                        "editID":this.editID,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+                            this.IntfCtgryOptions3=res.data.IntfCtgryOptions3;
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+                                 this.IntfCtgryOptions3_add=this.IntfCtgryOptions3;
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+
+                                this.DevpropertiesTable=res.data.DevpropertiesTable;
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry3();
+                                this.changeDevCtgry3();
+                            this.edit3 = false;
+                            this.$refs.form33.resetFields();
+                            this.$refs.multipleTable2.clearSelection()
+                            this.$message({
+                                      message: '编辑成功！',
+                                      type: 'success'
+                                    });
+
+                        }
+
+                    })
+            },
+            closeDialog33(){　
+                     this.edit3 = false;
+                     this.$refs.form33.resetFields();
+                     this.$refs.multipleTable2.clearSelection()
+                },
+            //Tab4 功能
+            Delete4(){
+                 if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else{
+                  this.$confirm('您正在刪除數據, 是否繼續?', '提示', {
+                          confirmButtonText: '確定',
+                          cancelButtonText: '取消',
+                          type: 'warning'
+                  }).then(() => {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                         });
+                         //console.log(params);
+                         let data ={"isGetData":"Delete4","DeleteId":params,
+                             "IntfCtgry_search":this.$refs.IntfCtgry4.value,
+                             "DevCtgry_search":this.$refs.DevCtgry4.value,
+                             "Devproperties_search":this.$refs.Devproperties4.value,
+                             "DevVendor_search":this.$refs.DevVendor4.value,
+                             "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                         axios.post("/DeviceLNV/M_Category/",data).then((res) => {
+                             if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+
+                                 this.$message({
+                                     type: 'success',
+                                     message: '刪除成功!'
+                                 });
+                             }
+                                 this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+
+                                this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry4();
+                                this.changeDevCtgry4();
+                                this.changeDevproperties4();
+                                 this.$refs.multipleTable3.clearSelection()
+                                })
+
+                  }).catch(() => {
+                        this.$refs.multipleTable3.clearSelection()
+                        this.$message({
+                        type: 'info',
+                        message: '已取消刪除'
+                        });
+                  });
+               }
+            },
+            Add4(){
+                 this.append4=true;
+                 this.$refs.multipleTable3.clearSelection()
+            },
+            addSubmit4(){
+                if(this.$refs.form4.model.IntfCtgry==''||this.$refs.form4.model.DevCtgry==''||this.$refs.form4.model.Devproperties==''||this.$refs.form4.model.DevVendor==''){
+                           this.append4=true;
+                }else {
+                    let data = {
+                        "isGetData": "addSubmit4",
+                        "IntfCtgry_search":this.$refs.IntfCtgry4.value,
+                        "DevCtgry_search":this.$refs.DevCtgry4.value,
+                        "Devproperties_search":this.$refs.Devproperties4.value,
+                        "DevVendor_search":this.$refs.DevVendor4.value,
+                        "IntfCtgry": this.$refs.form4.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form4.model.DevCtgry,
+                        "Devproperties": this.$refs.form4.model.Devproperties,
+                        "DevVendor":this.$refs.form4.model.DevVendor,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+                                this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                  this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry4();
+                                this.changeDevCtgry4();
+                                this.changeDevproperties4();
+                                this.append4 = false;
+                                this.$refs.form4.resetFields();
+                                this.$message({
+                                      message: '新增成功！',
+                                      type: 'success'
+                                    });
+
+                        }
+
+                    })
+                }
+            },
+            closeDialog4(){　
+                     this.append4 = false;
+                     this.$refs.form4.resetFields();
+                },
+            Edit4:function(){
+                if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else if(this.multipleSelection.length==1){
+                    this.edit4 = true;
+                    console.log(this.multipleSelection)
+                    this.form44.IntfCtgry = this.multipleSelection[0].IntfCtgry;
+                    this.form44.DevCtgry = this.multipleSelection[0].DevCtgry;
+                    this.form44.Devproperties = this.multipleSelection[0].Devproperties;
+                    this.form44.DevVendor = this.multipleSelection[0].DevVendor;
+                    this.editID = this.multipleSelection[0].id;
+                }else{
+                    this.$alert('只能编辑单条数据！', '提示', {
+                         type: 'warning',
+                      })
+                }
+            },
+            editSubmit4() {
+                let data = {
+                        "isGetData": "editSubmit4",
+                        "IntfCtgry_search":this.$refs.IntfCtgry4.value,
+                        "DevCtgry_search":this.$refs.DevCtgry4.value,
+                        "Devproperties_search":this.$refs.Devproperties4.value,
+                        "DevVendor_search":this.$refs.DevVendor4.value,
+                        "IntfCtgry": this.$refs.form44.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form44.model.DevCtgry,
+                        "Devproperties": this.$refs.form44.model.Devproperties,
+                        "DevVendor":this.$refs.form44.model.DevVendor,
+                        "editID":this.editID,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+                                this.IntfCtgryOptions4=res.data.IntfCtgryOptions4;
+                                 this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                this.IntfCtgryOptions4_add=this.IntfCtgryOptions4;
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                  this.DevVendorTable=res.data.DevVendorTable;
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry4();
+                                this.changeDevCtgry4();
+                                this.changeDevproperties4();
+                                this.edit4 = false;
+                                this.$refs.form44.resetFields();
+                                this.$refs.multipleTable3.clearSelection();
+                            this.$message({
+                                      message: '编辑成功！',
+                                      type: 'success'
+                                    });
+
+                        }
+
+                    })
+            },
+            closeDialog44(){　
+                     this.edit4 = false;
+                     this.$refs.form44.resetFields();
+                     this.$refs.multipleTable3.clearSelection()
+                },
+            //Tab5 功能
+            Delete5(){
+                 if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else{
+                  this.$confirm('您正在刪除數據, 是否繼續?', '提示', {
+                          confirmButtonText: '確定',
+                          cancelButtonText: '取消',
+                          type: 'warning'
+                  }).then(() => {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                         });
+                         //console.log(params);
+                         let data ={"isGetData":"Delete5","DeleteId":params,
+                             "IntfCtgry_search":this.$refs.IntfCtgry5.value,
+                             "DevCtgry_search":this.$refs.DevCtgry5.value,
+                             "Devproperties_search":this.$refs.Devproperties5.value,
+                             "DevVendor_search":this.$refs.DevVendor5.value,
+                             "Devsize_search":this.$refs.Devsize5.value,
+                             "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                         axios.post("/DeviceLNV/M_Category/",data).then((res) => {
+                             if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+
+                                 this.$message({
+                                     type: 'success',
+                                     message: '刪除成功!'
+                                 });
+                             }
+                              this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+                               this.changeIntfCtgry5();
+                                this.changeDevCtgry5();
+                                this.changeDevproperties5();
+                                this.changeDevVendor5();
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                 this.$refs.multipleTable4.clearSelection()
+                                })
+
+                  }).catch(() => {
+                        this.$refs.multipleTable4.clearSelection()
+                        this.$message({
+                        type: 'info',
+                        message: '已取消刪除'
+                        });
+                  });
+               }
+            },
+            Add5(){
+                 this.append5=true;
+                 this.$refs.multipleTable4.clearSelection()
+            },
+            addSubmit5(){
+                if(this.$refs.form5.model.IntfCtgry==''||this.$refs.form5.model.DevCtgry==''||this.$refs.form5.model.Devproperties==''||this.$refs.form5.model.DevVendor==''||this.$refs.form5.model.Devsize==''){
+                           this.append5=true;
+                }else {
+                    let data = {
+                        "isGetData": "addSubmit5",
+                        "IntfCtgry_search":this.$refs.IntfCtgry5.value,
+                        "DevCtgry_search":this.$refs.DevCtgry5.value,
+                        "Devproperties_search":this.$refs.Devproperties5.value,
+                        "DevVendor_search":this.$refs.DevVendor5.value,
+                        "Devsize_search":this.$refs.Devsize5.value,
+                        "IntfCtgry": this.$refs.form5.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form5.model.DevCtgry,
+                        "Devproperties": this.$refs.form5.model.Devproperties,
+                        "DevVendor":this.$refs.form5.model.DevVendor,
+                        "Devsize":this.$refs.form5.model.Devsize,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                         if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+                         this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry5();
+                                this.changeDevCtgry5();
+                                this.changeDevproperties5();
+                                this.changeDevVendor5();
+                        this.append5 = false;
+                        this.$refs.form5.resetFields();
+                        this.$message({
+                                      message: '新增成功！',
+                                      type: 'success'
+                                    });
+
+                        }
+
+                    })
+                }
+            },
+            closeDialog5(){　
+                     this.append5 = false;
+                     this.$refs.form5.resetFields();
+                },
+            Edit5:function(){
+                if(this.multipleSelection.length==0){
+                     this.$alert('未勾选数据！', '提示', {
+                         type: 'warning',
+                      })
+                  }else if(this.multipleSelection.length==1){
+                    this.edit5 = true;
+                    console.log(this.multipleSelection)
+                    this.form55.IntfCtgry = this.multipleSelection[0].IntfCtgry;
+                    this.form55.DevCtgry = this.multipleSelection[0].DevCtgry;
+                    this.form55.Devproperties = this.multipleSelection[0].Devproperties;
+                    this.form55.DevVendor = this.multipleSelection[0].DevVendor;
+                    this.form55.Devsize = this.multipleSelection[0].Devsize;
+                    this.editID = this.multipleSelection[0].id;
+                }else{
+                    this.$alert('只能编辑单条数据！', '提示', {
+                         type: 'warning',
+                      })
+                }
+            },
+            editSubmit5() {
+                let data = {
+                        "isGetData": "editSubmit5",
+                        "IntfCtgry_search":this.$refs.IntfCtgry5.value,
+                        "DevCtgry_search":this.$refs.DevCtgry5.value,
+                        "Devproperties_search":this.$refs.Devproperties5.value,
+                        "DevVendor_search":this.$refs.DevVendor5.value,
+                        "Devsize_search":this.$refs.Devsize5.value,
+                        "IntfCtgry": this.$refs.form55.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form55.model.DevCtgry,
+                        "Devproperties": this.$refs.form55.model.Devproperties,
+                        "DevVendor":this.$refs.form55.model.DevVendor,
+                        "Devsize":this.$refs.form55.model.Devsize,
+                        "editID":this.editID,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/M_Category/", data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                         if(res.data.err_MSG!=='') {
+                                this.$alert(res.data.err_MSG, '提示', {
+                                      confirmButtonText: '确定',
+                                    dangerouslyUseHTMLString: true,
+                                    });
+                            }else {
+                         this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+
+                                this.IntfCtgryOptions5_add=this.IntfCtgryOptions5;
+
+                                this.DevsizeTable=res.data.DevsizeTable;
+                                this.changeIntfCtgry5();
+                                this.changeDevCtgry5();
+                                this.changeDevproperties5();
+                                this.changeDevVendor5();
+                        this.edit5 = false;
+                        this.$refs.form55.resetFields();
+                        this.$refs.multipleTable4.clearSelection()
+                        this.$message({
+                                      message: '编辑成功！',
+                                      type: 'success'
+                                    });
+
+                        }
+
+                    })
+            },
+            closeDialog55(){　
+                     this.edit5 = false;
+                     this.$refs.form55.resetFields();
+                     this.$refs.multipleTable4.clearSelection()
+                },
+            //導出表格
+                  exportExcel:function (){
+                       /* 从表生成工作簿对象 */
+                     let table = document.querySelector("#out-table").cloneNode(true);
+                     // 因为element-ui的表格的fixed属性导致多出一个table，会下载重复内容，这里删除掉
+                    // table.removeChild(table.querySelector(".el-table__fixed"))
+                        //let wb = XLSX.utils.table_to_book(table,{raw:true});//mytable为表格的id名
+
+                    var wb = XLSX.utils.table_to_book(table,{raw:true});
+                    /* 获取二进制字符串作为输出 */
+                    var wbout = XLSX.write(wb, {
+                        bookType: "xlsx",
+                        bookSST: true,
+                        type: "array"
+                    });
+                    try {
+                        saveAs(
+                        //Blob 对象表示一个不可变、原始数据的类文件对象。
+                        //Blob 表示的不一定是JavaScript原生格式的数据。
+                        //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                        //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                        new Blob([wbout], { type: "application/octet-stream" }),
+                        //设置导出文件名称
+                        "sheetjs.xlsx"
+                        );
+                    } catch (e) {
+                        if (typeof console !== "undefined") console.log(e, wbout);
+                    }
+                    return wbout;
+                    },
+                  test:function (row) {
+                      console.log("trt");
+                  },
+
+
+        }
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,376 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}轉賬確認{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+    <style>
+.showColor:hover{
+    color: red;
+}
+    .fullScreen{
+     position: fixed;
+     top:0;
+     left:0;
+     height:100%;
+     width: 100%;
+     background: rgba(0,0,0,0.7);
+     z-index: 101;
+     overflow:hidden;
+    }
+
+    .el-dialog {
+        width: 700px;
+    }
+
+
+    .fullScreen section {
+     position:fixed;
+     top:50%;
+     left:50%;
+     transform:translate(-50%,-50%);
+     text-align: center;
+     font-size: 18px;
+     font-weight: 800;
+     color: #337ab7;
+   }
+    .content{
+    width:25px;
+    height: 70px;
+    position: fixed;
+    right: 10px;
+    top:60px;
+    background-color:#343957;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 24px;
+    writing-mode: vertical-lr;
+    z-index: 99;
+    opacity: 0.9;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: 160px;
+}
+
+.el-table--border th.gutter:last-of-type {
+  display: block!important;
+}
+
+.el-table th.gutter{
+    display: table-cell!important;
+}
+
+    #container-yansebiaoshi{
+    display:none;
+    position: fixed;
+    right: 35px;
+    top:60px;
+    z-index: 99;
+    border: 2px solid  #deb887;
+}
+     .el-pagination__total,.el-pagination__jump{
+        color:black;
+    }
+    .gutter{
+        display:block!important;
+        width:17px!important;
+    }
+
+    .tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+    .el-table .cell {
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-break: break-all;
+    line-height: 23px;
+    }
+
+    tbody tr td:last-child {
+    text-align: left;
+    }
+
+    .el-table .my-cell {
+    vertical-align: top
+  }
+  .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+    </style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+    <el-backtop></el-backtop>
+</template>
+<div class="row" style="white-space: nowrap;">
+    <div class="col-md-4">
+        <label style="color: black;font-size: 18px;font-weight: bold;" for="Borrower">申請人</label>&nbsp;&nbsp;
+         <el-autocomplete
+                  clearable
+                  class="inline-input"
+                  v-model="selectedBorrower"
+                  ref="Borrower"
+                  :fetch-suggestions="querySearch"
+                  placeholder="请输入申請人"
+                  @select="handleSelect"
+         >
+           <template slot-scope="{ item }">
+            <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+           </template>
+         </el-autocomplete>
+
+        <el-button size="medium" style="height:35px;border-color:black;color:white;margin-left: 90px;background-color:#7fa0ff" value="Search" name="Search" @click="selectMsg">Search</el-button>
+    </div>
+</div>
+    <br />
+    <div class="tableAround" v-cloak >
+    {% csrf_token %}
+    <div class="col-md-10">
+        <span class="col-md-2" style="font-weight: bold;color: black;font-size: 16px;">已選</span><span id="SelectNum" style="font-weight: bold;color: black;font-size: 16px;">0</span><span class="col-md-4" style="font-weight: bold;color: black;font-size: 16px;">條</span>
+        <el-button size="medium" type="primary" style="color:#fff;margin: 2px;margin-left: 50px;" name="確認轉賬" @click="DeliveryChange" v-cloak>確認轉賬</el-button>
+    </div>
+    <template>
+         <el-table height="500" ref="multipleTable" border stripe :data="tableContent.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+                   :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+                   style="border-radius: 10px;word-break: keep-all">
+            <el-table-column type="selection" align="center" :reserve-selection="true" fixed></el-table-column>
+            <el-table-column type="index" :index="indexMethod" width="40" align="center" fixed></el-table-column>
+            <el-table-column prop="CollectDate" label="領用日期" align="center" width="95" fixed>
+            </el-table-column>
+            <el-table-column prop="UnifiedNumber" label="統一編號" align="center" width="90" fixed>
+            </el-table-column>
+            <el-table-column prop="Number" label="工號" align="center" width="90" fixed>
+            </el-table-column>
+            <el-table-column prop="Name" label="姓名" align="center" width="80" fixed>
+            </el-table-column>
+            {% comment %}<el-table-column prop="Transefer_per_code" label="轉賬人工號" align="center" width="80">
+            </el-table-column>
+            <el-table-column prop="Transefer_per" label="轉賬人" align="center" width="80">
+            </el-table-column>{% endcomment %}
+            <el-table-column prop="Receive_per_code" label="接收人工號" align="center" width="80">
+            </el-table-column>
+            <el-table-column prop="Receive_per" label="接收人" align="center" width="80">
+            </el-table-column>
+            <el-table-column prop="MaterialPN" label="MaterialPN" width="90" align="center">
+            </el-table-column>
+            <el-table-column prop="CPU" label="CPU" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="RAM" label="RAM" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="HDD" label="HDD" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="Wireless" label="Wireless" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="LCD" label="LCD" align="center" width="60">
+            </el-table-column>
+            <el-table-column prop="OCR" label="OCR" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Battery" label="Battery" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Adaptor" label="Adaptor" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Region" label="地區" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="OutPlant" label="攜出廠外" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="Factory" label="廠區" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="ComputerUse" label="電腦用途" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="Category" label="產品類別" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="MachineStatus" label="工作機狀態" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="IdleState" label="閒置狀態" width="80" align="center">
+            </el-table-column>
+            <el-table-column prop="Years" label="年限" width="60" align="center">
+            </el-table-column>
+            <el-table-column prop="FormNumber" label="E-Form單號" align="center">
+            </el-table-column>
+          </el-table>
+<br/>
+    <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 50, 100, 200]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+        </el-pagination>
+    </div>
+    </template>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script src="/static/js/Element/table.js"></script>
+<script src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/image.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script type="text/babel">
+ new Vue({
+     el: '#app',
+     delimiters: ['${', '}'],
+     data: function () {
+         return {
+             multipleSelection: [],
+             tableContent: [],
+             currentPage: 1,//默认显示第一页
+             pageSize:100,//默认每页显示100条
+             totalNum:null,
+             selectItem:{},
+             selectedBorrower:'',
+             selectBorrower:[],
+             loading:false,
+         }
+     },
+     mounted: function (){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+     },
+     methods: {
+        //获取数据
+        getdata: function (e) {
+            let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+            axios.post("/ComputerMS/M_Transfer/", Qs.stringify(data), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.selectItem=res.data.select;
+                this.tableContent = res.data.content;
+                this.totalNum=this.tableContent.length;
+         });
+
+        },
+        getRowKeys (row) {
+            return row.id;
+        },
+         //索引
+         indexMethod(index) {
+            return index +1;
+         },
+         //分页
+         handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+            this.pageSize = val;
+         },
+
+         handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+          this.currentPage = val;
+         },
+
+         handleRemove(file,fileList) {
+            console.log(file,fileList);
+         },
+
+         handlePreview(file) {
+            console.log(file);
+         },
+
+          beforeRemove(file,fileList) {
+            return this.$confirm(`确定移除 ${ file.name }？`);
+          },
+
+            querySearch(queryString, cb) {
+            var selectBorrower = this.selectItem;
+            var results = queryString ? selectBorrower.filter(this.createFilter(queryString)) : selectBorrower;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+          },
+          createFilter(queryString) {
+            return (restaurant) => {
+              return (
+                  restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+            };
+          },
+
+          handleSelect(item) {
+                this.number = item.number;
+          },
+
+          //上传搜索项：以此选项搜索符合条件的内容
+             selectMsg :function(){
+               let Number= this.$refs.Borrower.value;
+               let Name = (this.$refs.Borrower.value == "")?"":this.number;
+               let data ={"isGetData":"SEARCH","Number":Number,"Name":Name,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+               axios.post("/ComputerMS/M_Transfer/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.selectItem=res.data.select;
+                  this.totalNum=this.tableContent.length;
+                  this.$refs.multipleTable.clearSelection();
+
+                })
+             },
+
+           handleSelectionChange(val) {
+                this.multipleSelection = val;
+                var len=document.getElementById("SelectNum");
+                len.innerHTML=this.multipleSelection.length;
+           },
+
+           DeliveryChange() {
+                if(this.multipleSelection.length == 0){
+                     this.$alert('請至少勾選一條數據', '提示', {
+                        type: 'warning',
+                     })
+                }else {
+                        var warning=confirm('是否確認申請?');
+                        if(warning) {
+                             let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                             let params = [];
+                             let self = this;
+                             checkArr.forEach(function (item) {
+                                 console.log(item);
+                                 params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                        });
+                         {#console.log(params);#}
+                           let Number= this.$refs.Borrower.value;
+                           let Name = (this.$refs.Borrower.value == "")?"":this.number;
+                           let data = {
+                               "isGetData": "TransferConfirm",
+                               "params": params,"Number":Number,"Name":Name, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                           };
+                           axios.post('/ComputerMS/M_Transfer/', data).then((res) =>{
+                                 this.tableContent = res.data.content;
+                                 this.totalNum=this.tableContent.length;
+                                 {#console.log(this.tableContent,'mul');#}
+                                 self.$message({
+                                     message: '申請成功',
+                                     type: 'success'
+                                 });
+                           this.$refs.multipleTable.clearSelection();
+                     })
+                 }else{
+                     return false;
+                 }
+                }
+            },
+
+         ToBreak (val) {
+          if(val){
+              return val.replace('\n', '<br />')
+          }
+        }
+     }
+ })
+</script>
+{% endblock %}

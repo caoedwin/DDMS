@@ -1,0 +1,124 @@
+[v-cloak]{
+  display: none;
+}
+#app{
+padding:0;
+margin:0;
+width:100%;
+height:100%;
+display:block;
+position: relative;
+
+}
+.spec{
+color:#fff;
+/*border:3px solid #deb887;*/
+padding:6px 10px;
+position: relative;
+/*top:5px;
+right:10px;*/
+font-size:16px;
+background-image: url("/static/images/spec/blackboardback.jpg");
+
+}
+.new-title{
+  display:block;
+
+}
+.new-title p {
+  line-height:34px;
+  font-size:32px;
+  font-weight:800;
+  color:#deb887;
+}
+#publicMsg{
+    margin: 30px 0 0;
+    display:inline-block;
+}
+#publicMsg.card-body{
+    /*margin: 80px 0 0;*/
+}
+#publicMsg select,input{
+    width:90px;
+    height:30px;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 0 4px;
+}
+/*#searchContent select,input{
+    width:90px;
+    height:30px;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 0 4px;
+
+}*/
+#publicMsg label{
+    color:#fff;
+    min-width:70px;
+    text-align: center;
+}
+.err_msg{
+    margin: 0 180px;
+    font-size: 20px;
+    color: #BD362F;
+}
+
+#publicMsg button{
+    background-color: #428bca;
+    color:#fff;
+    border-radius: 5px;
+    border: 1px solid #428bca;
+    width:60px;
+    height: 30px;
+}
+.table-responsive{
+ border:3px solid #dee2e6;
+ padding: 10px 10px
+}
+.table-responsive .table-bordered{
+  border:1px solid #dee2e6
+}
+.table-responsive .table-bordered tr{
+  text-align:center;
+  white-space:pre-wrap;
+
+}
+.table-responsive .table-bordered tr th{
+  vertical-align: middle;
+  line-height:30px;
+  white-space: nowrap;
+}
+thead tr th:last-child{
+  text-align:center;
+}
+.dt-buttons{
+  display:inline-block;
+  padding-top: 4px;
+}
+.dataTables_filter{
+  position:relative;
+  float:right;
+  display:inline-block;
+  padding-bottom:10px;
+}
+.dataTables_filter label{
+  /*float:right;*/
+  margin-right:50px;
+  font-size:18px;
+  line-height:18px;
+}
+.dataTables_filter label input{
+ margin-left:5px;
+}
+.dataTables_length label {
+ font-size:17px;
+}
+.pass{
+        background-color:rgba(0,255,0,0.9);
+        color:#000;
+}
+.fail{
+ background-color:rgba(255,255,255,0.9);
+        color:red;
+}

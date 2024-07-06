@@ -1,0 +1,744 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}CQM_edit{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+    <style>
+    .content{
+    width:25px;
+    height: 70px;
+    position: fixed;
+    right: 10px;
+    top:60px;
+    background-color:#343957;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 24px;
+    writing-mode: vertical-lr;
+    z-index: 99;
+    opacity: 0.9;
+}
+    #container-yansebiaoshi{
+    display:none;
+    position: fixed;
+    right: 35px;
+    top:60px;
+    z-index: 99;
+    border: 2px solid  #deb887;
+}
+     .el-pagination__total,.el-pagination__jump{
+        color:white;
+    }
+    .gutter{
+        display:block!important;
+        width:17px!important;
+    }
+    .cell-green{
+    background: greenyellow;
+}
+    .selectItem{
+    font-size: 20px;
+    font-weight: bold;
+    color: aliceblue;
+}
+    .tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+    .el-table .cell {
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-break: break-all;
+    line-height: 23px;
+    }
+    tbody tr td:last-child {
+    text-align: left;
+    }
+     .inputError{
+    text-align: center;
+    color: crimson;
+    background-color: beige;
+    width: 50%;
+    margin: 10px auto 5px;
+    position: relative;
+}
+    .inputError,#Customer{
+        display:inline-block;
+    }
+    .el-tooltip__popper{
+    max-width: 400px;
+    white-space: pre-line;
+    }
+    .oneLine {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .el-table .my-cell {
+    vertical-align: top
+  }
+    </style>
+{% endblock %}
+{% block content %}
+    {% comment %}<div class="content" id="yincang">spec</div>
+    <div id="container-yansebiaoshi">
+    <img src="/static/src/cqmspec.png">
+    </div>{% endcomment %}
+    <div id="app">
+<div class="row" style="white-space: nowrap;">
+                    <div class="col-md-4">
+                    <label for="Customer">Customer</label>
+           <select id="Customer" ref="Customer"   v-model="selectedCustomer" style="height:30px;width:100px;border-radius:5px 5px 5px 5px;">
+               <option value=""> </option>
+               <option v-for="(item,key,index) in selectItem" >${ item }</option>
+           </select>
+                        <div class="inputError" v-cloak v-show="customerError">客戶別未選擇</div>
+                    </div>
+                    <div class="col-md-1">
+                        <el-button size="small" style="background:#428bca;color:#fff;" value="Search" name="Search" @click="SEARCHALERT()">Search</el-button>
+                    </div>
+</div>
+        <el-dialog :visible.sync="settable" >
+  <el-table border stripe :default-sort="{prop:'SS',order:'descending'}" height="500" :data="searchalert" @row-click="selectMsg">
+      {% comment %}<el-table-column type="selection"></el-table-column>{% endcomment %}
+    <el-table-column property="YEAR" label="YEAR" width="90"sortable></el-table-column>
+    <el-table-column property="COMPRJCODE" label="COMPRJCODE" width="140" sortable></el-table-column>
+    {% comment %}<el-table-column property="PHASE" label="PHASE" width="140" sortable></el-table-column>{% endcomment %}
+    <el-table-column property="PrjEngCode1" label="PRJENGCODE1" width="140" sortable></el-table-column>
+    <el-table-column property="PrjEngCode2" label="PRJENGCODE2" width="140" sortable></el-table-column>
+    <el-table-column property="PROJECT" label="MKT CODE" width="200"></el-table-column>
+    <el-table-column property="SIZE" label="SIZE" width="70"></el-table-column>
+    <el-table-column property="CPU" label="CPU" width="70"></el-table-column>
+    <el-table-column property="PLATFORM" label="PLATFORM" width="150"></el-table-column>
+    <el-table-column property="VGA" label="VGA" width="220"></el-table-column>
+    <el-table-column property="OS SUPPORT" label="OS SUPPORT" width="110"></el-table-column>
+    <el-table-column property="SS" label="SS" width="110" sortable></el-table-column>
+    <el-table-column property="LD" label="LD"></el-table-column>
+    <el-table-column property="DQA PL" label="DQA PL"></el-table-column>
+  </el-table>
+</el-dialog>
+          <span class="selectItem" v-cloak  v-if="showCustomer&&showProject">當前表格信息：${ showCustomer }/${ showProject }<span v-if="showTips" v-cloak class="tips">(您所使用的賬號沒有編輯此表單的權限)</span></span>
+    <template>
+    <el-table border stripe height="750" :data="tableContent.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+     :cell-style="addClass">
+        <el-table-column type="index" :index="indexMethod" fixed></el-table-column>
+        <el-table-column label="CG" align="center" width="120" fixed>
+            <template slot-scope="scope">
+              <el-select class="edit-cell" filterable allow-create v-if="showEdit[scope.$index]"  v-model="scope.row.Customer">
+                    <el-option value="C38A"></el-option>
+                    <el-option value="C38N"></el-option>
+                    <el-option value="A39"></el-option>
+                </el-select>
+                <span v-else="showEdit[scope.$index]">${ customer[scope.$index+(currentPage-1)*pageSize] }</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="INV_Number" align="center" width="150" fixed>
+            <template slot-scope="scope">
+{#            <el-input class="edit-cell" v-if="showEdit[scope.$index] && (statu === 4 || statu === 5)&&canEdit"    v-model="scope.row.INV_Number"></el-input>#}
+{#                <span v-else="showEdit[scope.$index] && (statu === 4 || statu === 5)&&canEdit">${ project[scope.$index+(currentPage-1)*pageSize] }</span>#}
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.INV_Number"></el-input>
+                <span v-else="showEdit[scope.$index]">${ inv_number[scope.$index+(currentPage-1)*pageSize] }</span>
+            </template>
+        </el-table-column>
+        <el-table-column label="Mo" align="center" width="90" fixed>
+            <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.INV_Model"></el-input>
+                <span v-else="showEdit[scope.$index]">${ inv_model[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column label="Prj" align="center" width="90" fixed>
+            <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Project_Name"></el-input>
+                <span v-else="showEdit[scope.$index]">${ project_name[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column  label="Unit_Origin" align="center" width="90">
+            <template slot-scope="scope">
+              <el-select class="edit-cell" filterable allow-create v-if="showEdit[scope.$index]"  v-model="scope.row.Unit_Origin">
+                    <el-option value="Self"></el-option>
+                    <el-option value="New"></el-option>
+                </el-select>
+                <span v-else="showEdit[scope.$index] ">${ unit_origin[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        {% comment %}<el-table-column label="Year" align="center" width="80">
+            <template slot-scope="scope">
+{#            <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Year"></el-input>#}
+                <el-date-picker
+                      value-format="yyyy"
+                      class="edit-cell"
+                      v-if="showEdit[scope.$index] "
+                      v-model="scope.row.Year"
+                      type="year"
+                      placeholder="选择年">
+                </el-date-picker>
+                <span v-else="showEdit[scope.$index] ">${ year[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>{% endcomment %}
+        </el-table-column>
+        <el-table-column label="Unit_Qty" align="center" width="80">
+            <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Unit_Qty"></el-input>
+                <span v-else="showEdit[scope.$index] ">${ unit_qty[scope.$index+(currentPage-1)*pageSize] }</span>
+
+       </template>
+        </el-table-column>
+        <el-table-column label="TP_Kinds" align="center" width="90">
+            <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.TP_Kinds"></el-input>
+                <span v-else="showEdit[scope.$index] ">${ tp_kinds[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column  label="Qualify_Cycles" align="center" width="120">
+            <template slot-scope="scope">
+{#                <span class="edit-cell" v-if="showEdit[scope.$index] && (statu === 4 || statu === 6)&&canEdit">${ scope.row.Testresult }</span>#}
+{#                <span v-else="showEdit[scope.$index] && (statu === 4 || statu === 6)">${ testresult[scope.$index+(currentPage-1)*pageSize] }</span>#}
+{#            <el-input class="edit-cell" v-if="showEdit[scope.$index] && (statu === 4 || statu === 5)&&canEdit"   v-model="scope.row.Qualify_Cycles"></el-input>#}
+              <el-select class="edit-cell" filterable allow-create v-if="showEdit[scope.$index]"  v-model="scope.row.Qualify_Cycles">
+                    <el-option value="New-Qualify"></el-option>
+                    <el-option value="Re-Qualify"></el-option>
+                </el-select>
+                <span v-else="showEdit[scope.$index] ">${ qualify_cycles[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column label="Status" align="center" width="110">
+            <template slot-scope="scope">
+{#            <el-input class="edit-cell" v-if="showEdit[scope.$index] && (statu === 4 || statu === 5)&&canEdit"    v-model="scope.row.Status"></el-input>#}
+              <el-select class="edit-cell" filterable allow-create v-if="showEdit[scope.$index]"  v-model="scope.row.Status">
+                    <el-option value="Pass"></el-option>
+                    <el-option value="Conditional Pass"></el-option>
+                    <el-option value="Fail"></el-option>
+                    <el-option value="Planning"></el-option>
+                    <el-option value="Pending"></el-option>
+                    <el-option value="Testing"></el-option>
+              </el-select>
+                <span v-else="showEdit[scope.$index] ">${ status[scope.$index+(currentPage-1)*pageSize] }</span>
+{#            <el-select class="edit-cell" v-if="showEdit[scope.$index] && (statu === 4 || statu === 6)&&canEdit"  @change="changeresult(scope.row,scope.$index)"  v-model="scope.row.Reliability">#}
+{#                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>#}
+{#            </el-select>#}
+{#                <span v-else="showEdit[scope.$index] && (statu === 4 || statu === 6)">${ reliability[scope.$index+(currentPage-1)*pageSize] }</span>#}
+       </template>
+        </el-table-column>
+        <el-table-column label="TP_Cat" align="center" width="140">
+            <template slot-scope="scope">
+              <el-select class="edit-cell" filterable allow-create v-if="showEdit[scope.$index]" v-model="scope.row.TP_Cat">
+                    <el-option value="adapter"></el-option>
+                    <el-option value="Battery"></el-option>
+                    <el-option value="BIOS ROM"></el-option>
+                    <el-option value="Camera"></el-option>
+                    <el-option value="Connector"></el-option>
+                    <el-option value="CPU"></el-option>
+                    <el-option value="EE"></el-option>
+                    <el-option value="FAN"></el-option>
+                    <el-option value="Finger Print"></el-option>
+                    <el-option value="HDD"></el-option>
+                    <el-option value="KB/Mouse"></el-option>
+                    <el-option value="Keyborad"></el-option>
+                    <el-option value="ME"></el-option>
+                    <el-option value="package"></el-option>
+                    <el-option value="Panel"></el-option>
+                    <el-option value="RAM"></el-option>
+                    <el-option value="SSD"></el-option>
+                    <el-option value="SSD+Opante"></el-option>
+                    <el-option value="Thermal Module"></el-option>
+                    <el-option value="Touch Panel"></el-option>
+                    <el-option value="TPM"></el-option>
+                    <el-option value="VRAM"></el-option>
+                    <el-option value="WLAN"></el-option>
+              </el-select>
+{#                <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.TP_Cat"></el-input>#}
+                  <span v-else="showEdit[scope.$index]">${ tp_cat[scope.$index+(currentPage-1)*pageSize] }</span>
+            </template>
+        </el-table-column>
+            <el-table-column label="Trial_Run_Type" width="160" align="center">
+                <template slot-scope="scope">
+                      <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Trial_Run_Type"></el-input>
+                      <span v-else="showEdit[scope.$index] ">${ trial_run_type[scope.$index+(currentPage-1)*pageSize] }</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="TP_Vendor" width="160" align="center">
+                <template slot-scope="scope">
+                      <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.TP_Vendor"></el-input>
+                      <span v-else="showEdit[scope.$index] ">${ tp_vendor[scope.$index+(currentPage-1)*pageSize] }</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="TP_Key_Parameter" width="300" align="center">
+                <template slot-scope="scope">
+                      <el-input type="textarea" class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.TP_Key_Parameter"></el-input>
+                      <span v-else="showEdit[scope.$index] ">${ tp_key_parameter[scope.$index+(currentPage-1)*pageSize] }</span>
+                </template>
+            </el-table-column>
+        </el-table-column>
+        <el-table-column label="Lenovo_TP_PN" width="140" align="center">
+                <template slot-scope="scope">
+                      <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Lenovo_TP_PN"></el-input>
+                      <span v-else="showEdit[scope.$index] ">${ lenovo_tp_pn[scope.$index+(currentPage-1)*pageSize] }</span>
+                </template>
+            </el-table-column>
+        <el-table-column  label="Compal_TP_PN" width="160" align="center">
+                <template slot-scope="scope">
+                      <el-input type="textarea" class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Compal_TP_PN"></el-input>
+                      <span v-else="showEdit[scope.$index] ">${ compal_tp_pn[scope.$index+(currentPage-1)*pageSize] }</span>
+                </template>
+            </el-table-column>
+        <el-table-column label="Issue" align="center" width="120">
+            <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Issue_Link"></el-input>
+                <span v-else="showEdit[scope.$index] ">${ issue_link[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column label="Remark" align="center" width="300">
+            <template slot-scope="scope">
+            <el-input type="textarea"  class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Remark"></el-input>
+                <span v-else="showEdit[scope.$index] ">${ remark[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column label="Attend_Time" align="center" width="110">
+            <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Attend_Time"></el-input>
+                <span v-else="showEdit[scope.$index]">${ attend_time[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column label="Get_INV" align="center" width="100">
+            <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Get_INV"></el-input>
+                <span v-else="showEdit[scope.$index] ">${ get_inv[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+        <el-table-column label="Month" align="center" width="90">
+            <template slot-scope="scope">
+{#            <el-input class="edit-cell" v-if="showEdit[scope.$index] && (statu === 4 || statu === 5)&&canEdit "    v-model="scope.row.Month"></el-input>#}
+              <el-select class="edit-cell" filterable allow-create v-if="showEdit[scope.$index]"  v-model="scope.row.Month">
+                    <el-option value="Jan"></el-option>
+                    <el-option value="Feb"></el-option>
+                    <el-option value="Mar"></el-option>
+                    <el-option value="Apr"></el-option>
+                    <el-option value="May"></el-option>
+                    <el-option value="Jun"></el-option>
+                    <el-option value="Jul"></el-option>
+                    <el-option value="Aug"></el-option>
+                    <el-option value="Sep"></el-option>
+                    <el-option value="Oct"></el-option>
+                    <el-option value="Nov"></el-option>
+                    <el-option value="Dec"></el-option>
+              </el-select>
+                <span v-else="showEdit[scope.$index]">${ month[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+{#        <el-table-column label="Test_Start" align="center" width="116">#}
+{#            <template slot-scope="scope">#}
+{#            <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Test_Start"></el-input>#}
+{#                <span v-else="showEdit[scope.$index] ">${ test_start[scope.$index+(currentPage-1)*pageSize] }</span>#}
+{#       </template>#}
+{#        </el-table-column>#}
+
+        <el-table-column label="Test_Start" align="center" width="116">
+            <template slot-scope="scope">
+                <el-date-picker
+                  value-format="yyyy-MM-dd"
+                  class="edit-cell"
+                  v-if="showEdit[scope.$index] "
+                  v-model="scope.row.Test_Start"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+{#            <el-input class="edit-cell" v-if="showEdit[scope.$index] "    v-model="scope.row.Test_Start"></el-input>#}
+                <span v-else="showEdit[scope.$index] ">${ test_start[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+
+        <el-table-column label="Test_End" align="center" width="116">
+            <template slot-scope="scope">
+                <el-date-picker
+                  value-format="yyyy-MM-dd"
+                  class="edit-cell"
+                  v-if="showEdit[scope.$index] "
+                  v-model="scope.row.Test_End"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+                <span v-else="showEdit[scope.$index] ">${ test_end[scope.$index+(currentPage-1)*pageSize] }</span>
+       </template>
+        </el-table-column>
+
+        <el-table-column label="操作" width="120" align="center" fixed="right">
+        <template slot-scope="scope">
+            <el-button type="text" size="small"     @click.native="saveRow(scope.$index, scope.row)"     v-if="showBtn[scope.$index]{% comment %}&&canEdit{% endcomment %}">保存</el-button>
+            <el-button type="text" size="small"     @click.native="cancelRow(scope.$index, scope.row)"     v-if="showBtn[scope.$index]{% comment %}&&canEdit{% endcomment %}">取消</el-button>
+
+            <el-button type="text" size="small"     @click.native="editRow(scope.$index, scope.row)"    v-if="!showBtn[scope.$index]">编辑</el-button>
+{#            <el-button type="text" size="small"     @click.native="historyRow(scope.$index, scope.row);dialogTableVisible = true"    v-if="!showBtn[scope.$index]">历史</el-button>#}
+        </template>
+    </el-table-column>
+    </el-table>
+    <div class="block">
+    <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[10, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+    </el-pagination>
+  </div>
+    </template>
+    <el-dialog :title="'ChangeId:'+changeindex" :visible.sync="dialogTableVisible">
+  <el-table border height="500" :data="historyRecord" :default-sort="{prop:'changeTime', order:'descending'}">
+    <el-table-column property="oldContent" label="oldContent"  style="white-space: pre-line" min-width="450" class-name="my-cell"></el-table-column>
+    <el-table-column property="newContent" label="newContent"  style="white-space: pre-line" min-width="450" class-name="my-cell"></el-table-column>
+    <el-table-column property="changeOwner" label="changeOwner" min-width="150" sortable></el-table-column>
+    <el-table-column property="changeTime" label="changeTime" left min-width="150" sortable></el-table-column>
+  </el-table>
+</el-dialog>
+    </div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script type="text/babel">
+$(document).ready(function() {
+    $("#yincang").click(function () {
+        $("#container-yansebiaoshi").toggle();
+    });
+    $("body").click(function (e) {
+    if (!$(e.target).closest("#yincang").length) {
+        $("#container-yansebiaoshi").hide();
+    }
+    });
+})
+ new Vue({
+     el: '#app',
+     delimiters: ['${', '}'],
+     data: function () {
+         return {
+             options: [{value: 'Qd', label: 'Qd'}, {value: 'Qd_L', label: 'Qd_L'}, {value: 'Qd_C', label: 'Qd_C'}, {value: 'T', label: 'T'}, {value: 'F', label: 'F'}, {value: 'DisQ', label: 'DisQ'}, {value: 'Drpd', label: 'Drpd'}, {value: 'Not Build', label: 'Not Build'}],
+             //權限flag
+             visible: false,
+             settable:false,
+             historyRecord:[],
+             tableContent: [],
+             searchalert:[],
+             showEdit:[], //显示编辑框
+             showBtn:[],
+             showBtnOrdinary: true,
+             //權限flag
+             canEdit:false,
+             showTips:false,
+             showCustomer:null,
+             showProject:null,
+             currentPage: 1,//默认显示第一页
+             pageSize:100,//默认每页显示100条
+             totalNum: null,
+             selectItem:{},
+             selectedCustomer:null,
+             customer:[],
+             inv_number:[],
+             inv_model:[],
+             project_name:[],
+             unit_origin:[],
+             year:[],
+             unit_qty:[],
+             tp_kinds:[],
+             qualify_cycles:[],
+             status:[],
+             tp_cat:[],
+             trial_run_type:[],
+             tp_vendor:[],
+             tp_key_parameter:[],
+             lenovo_tp_pn:[],
+             compal_tp_pn:[],
+             issue_link:[],
+             remark:[],
+             attend_time:[],
+             get_inv:[],
+             month:[],
+             test_start:[],
+             test_end:[],
+             {#comments:[],#}
+             {#comment:null,#}
+             {% comment %}statu:null,{% endcomment %}
+             flag:null,
+             dialogTableVisible:false,
+             changeindex:null,
+             customerError:false,
+         }
+     },
+     mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+     methods: {
+        //获取数据
+        getdata: function (e) {
+            let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+            axios.post("/INVGantt/INVGantt-edit/", Qs.stringify(data), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.selectItem=res.data.select;
+         });
+
+        },
+         //索引
+         indexMethod(index) {
+                    return index +1;
+            },
+         //分页
+         handleSizeChange(val) {
+                this.pageSize = val;
+         },
+         handleCurrentChange(val) {
+          this.currentPage = val;
+         },
+         //搜索customer弹出弹框
+         SEARCHALERT:function(){
+            if(this.$refs.Customer.value==''){
+                   //alert("客戶別未選擇");
+                    this.customerError = true;
+                   return false;
+               }else {
+                this.customerError = false;
+                let Customer = this.$refs.Customer.value;
+                let data = {
+                    "isGetData": "SEARCHALERT",
+                    "Customer": Customer,
+                    "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                }
+                axios.post("/INVGantt/INVGantt-edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.searchalert = res.data.sear;
+                })
+                this.settable=true;
+            }
+             },
+          //上传搜索项：以此选项搜索符合条件的内容
+         selectMsg :function(row){
+           let Customer = this.$refs.Customer.value;
+             //console.log(row);
+             let data ={"isGetData":"SEARCH","Customer":Customer,"COMPRJCODE":row.COMPRJCODE,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+           axios.post("/INVGantt/INVGantt-edit/",Qs.stringify(data), {
+           headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+               this.tableContent = res.data.content;
+               this.totalNum=this.tableContent.length;
+               this.statu=res.data.orr.statu;
+{% comment %}               this.canEdit=res.data['canEdit'];
+               console.log(this.canEdit){% endcomment %}
+                if(res.data['canEdit'] ||res.data['canEdit'] === 0){
+                      setTimeout(() =>{this.showTip()},1);
+                    }
+               for(let i=0;i<this.tableContent.length;i++) {
+                        this.customer[i] = this.tableContent[i].Customer;
+                        this.inv_number[i] = this.tableContent[i].INV_Number;
+                        this.inv_model[i] = this.tableContent[i].INV_Model;
+                        this.project_name[i] = this.tableContent[i].Project_Name;
+                        this.unit_origin[i] = this.tableContent[i].Unit_Origin;
+                        this.year[i] = this.tableContent[i].Year;
+                        this.unit_qty[i] = this.tableContent[i].Unit_Qty;
+                        this.tp_kinds[i] = this.tableContent[i].TP_Kinds;
+                        this.qualify_cycles[i] = this.tableContent[i].Qualify_Cycles;
+                        this.status[i] = this.tableContent[i].Status;
+                        this.tp_cat[i] = this.tableContent[i].TP_Cat;
+                        this.trial_run_type[i] = this.tableContent[i].Trial_Run_Type;
+                        this.tp_vendor[i] = this.tableContent[i].TP_Vendor;
+                        this.tp_key_parameter[i] = this.tableContent[i].TP_Key_Parameter;
+                        this.lenovo_tp_pn[i] = this.tableContent[i].Lenovo_TP_PN;
+                        this.compal_tp_pn[i] = this.tableContent[i].Compal_TP_PN;
+                        this.issue_link[i] = this.tableContent[i].Issue_Link;
+                        this.remark[i] = this.tableContent[i].Remark;
+                        this.attend_time[i] = this.tableContent[i].Attend_Time;
+                        this.get_inv[i] = this.tableContent[i].Get_INV;
+                        this.month[i] = this.tableContent[i].Month;
+                        this.test_start[i] = this.tableContent[i].Test_Start;
+                        this.test_end[i] = this.tableContent[i].Test_End;
+                        {#this.comments[i] = this.tableContent[i].Comments;#}
+               }
+           })
+               this.showCustomer=Customer;
+               this.showProject=row.COMPRJCODE;
+               this.settable=false;
+            console.log(Customer)
+        },
+         showTip(){
+          if( this.showCustomer&&this.showProject){
+             if(!this.canEdit){
+                this.showTips = true ;
+             }else{
+                 this.showTips = false ;
+             }
+          }else{
+              this.showTips = false ;
+          }
+      },
+          //编辑
+         editRow(index,row) {
+           this.$set(this.showEdit,index,true);
+           this.$set(this.showBtn,index,true);
+        },
+         //保存
+         saveRow(index,rows) {
+                let Customer = this.showCustomer;
+                let Project = this.showProject;
+                //console.log(rows);
+                let data = {"isGetData": "SAVE", "rows": rows,"Customer":Customer,"Project":Project, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                };
+                axios.post("/INVGantt/INVGantt-edit/", data, {
+                    //headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                     this.tableContent = res.data.content;
+                     this.flag=res.data.orn.flag;
+                    console.log(this.flag);
+                     for(let i=0;i<this.tableContent.length;i++) {
+                        this.customer[i] = this.tableContent[i].Customer;
+                        this.inv_number[i] = this.tableContent[i].INV_Number;
+                        this.inv_model[i] = this.tableContent[i].INV_Model;
+                        this.project_name[i] = this.tableContent[i].Project_Name;
+                        this.unit_origin[i] = this.tableContent[i].Unit_Origin;
+                        this.year[i] = this.tableContent[i].Year;
+                        this.unit_qty[i] = this.tableContent[i].Unit_Qty;
+                        this.tp_kinds[i] = this.tableContent[i].TP_Kinds;
+                        this.qualify_cycles[i] = this.tableContent[i].Qualify_Cycles;
+                        this.status[i] = this.tableContent[i].Status;
+                        this.tp_cat[i] = this.tableContent[i].TP_Cat;
+                        this.trial_run_type[i] = this.tableContent[i].Trial_Run_Type;
+                        this.tp_vendor[i] = this.tableContent[i].TP_Vendor;
+                        this.tp_key_parameter[i] = this.tableContent[i].TP_Key_Parameter;
+                        this.lenovo_tp_pn[i] = this.tableContent[i].Lenovo_TP_PN;
+                        this.compal_tp_pn[i] = this.tableContent[i].Compal_TP_PN;
+                        this.issue_link[i] = this.tableContent[i].Issue_Link;
+                        this.remark[i] = this.tableContent[i].Remark;
+                        this.attend_time[i] = this.tableContent[i].Attend_Time;
+                        this.get_inv[i] = this.tableContent[i].Get_INV;
+                        this.month[i] = this.tableContent[i].Month;
+                        this.test_start[i] = this.tableContent[i].Test_Start;
+                        this.test_end[i] = this.tableContent[i].Test_End;
+
+                    }
+
+                    if(this.flag==0) {
+                this.$set(this.showEdit, index, false);
+                this.$set(this.showBtn, index, false);//关闭页面
+            }else{
+                alert(this.flag);
+            }
+                });
+
+
+       },
+        //取消编辑
+        cancelRow(index, row) {
+            this.tableContent[index].Customer=this.customer[index];
+            this.tableContent[index].INV_Number=this.inv_number[index];
+            this.tableContent[index].INV_Model=this.inv_model[index];
+            this.tableContent[index].Project_Name=this.project_name[index];
+            this.tableContent[index].Unit_Origin=this.unit_origin[index];
+            this.tableContent[index].Year=this.year[index];
+            this.tableContent[index].Unit_Qty=this.unit_qty[index];
+            this.tableContent[index].TP_Kinds=this.tp_kinds[index];
+            this.tableContent[index].Qualify_Cycles=this.qualify_cycles[index];
+            this.tableContent[index].Status=this.status[index];
+            this.tableContent[index].TP_Cat=this.tp_cat[index];
+            this.tableContent[index].Trial_Run_Type=this.trial_run_type[index];
+            this.tableContent[index].TP_Vendor=this.tp_vendor[index];
+            this.tableContent[index].TP_Key_Parameter=this.tp_key_parameter[index];
+            this.tableContent[index].Lenovo_TP_PN=this.lenovo_tp_pn[index];
+            this.tableContent[index].Compal_TP_PN=this.compal_tp_pn[index];
+            this.tableContent[index].Issue_Link=this.issue_link[index];
+            this.tableContent[index].Remark=this.remark[index];
+            this.tableContent[index].Attend_Time=this.attend_time[index];
+            this.tableContent[index].Get_INV=this.get_inv[index];
+            this.tableContent[index].Month=this.month[index];
+            this.tableContent[index].Test_Start=this.test_start[index];
+            this.tableContent[index].Test_End=this.test_end[index];
+            {#this.tableContent[index].Comments=this.comments[index];#}
+            this.$set(this.showEdit,index,false);
+            this.$set(this.showBtn,index,false) ;
+       },
+        historyRow(index,row){
+             let data = {"isGetData": "history", "id":this.tableContent[index]['id'],"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                };
+                axios.post("/INVGantt/INVGantt-edit/", data, {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                     this.historyRecord = res.data.history;
+                      this.changeindex=index+1;
+                });
+        },
+         //监听变化，生成结果
+         changeresult:function(rows,index){
+                if(rows.Reliability=='No Build'|| rows.Compatibility=='No Build'){
+                    rows.Testresult='No Build';
+                    console.log(rows.Testresult)
+                }
+                else if(rows.Reliability=='Qd'&& rows.Compatibility=='Qd'){
+                    rows.Testresult=rows.Reliability;
+                }
+                else if(rows.Reliability=='Drop'&& rows.Compatibility!=='No Build'){
+                    rows.Testresult=rows.Reliability;
+                }
+                else if(rows.Reliability=='DisQ'&& rows.Compatibility!=='No Build'&& rows.Compatibility!=='Drop'){
+                    rows.Testresult=rows.Reliability;
+                }
+                else if(rows.Reliability=='F'&& rows.Compatibility!=='No Build'&& rows.Compatibility!=='Drop'&& rows.Compatibility!=='DisQ'){
+                    rows.Testresult=rows.Reliability;
+                }
+                else if(rows.Reliability=='T'&& rows.Compatibility!=='No Build'&& rows.Compatibility!=='Drop'&& rows.Compatibility!=='DisQ'&& rows.Compatibility!=='F'){
+                    rows.Testresult=rows.Reliability;
+                }
+                else if(rows.Reliability=='Qd_C'&& rows.Compatibility!=='No Build'&& rows.Compatibility!=='Drop'&& rows.Compatibility!=='DisQ'&& rows.Compatibility!=='F'&& rows.Compatibility!=='T'){
+                    rows.Testresult=rows.Reliability;
+                }
+                else if(rows.Reliability=='Qd_L'&& rows.Compatibility!=='No Build'&& rows.Compatibility=='Qd'){
+                    rows.Testresult=rows.Reliability;
+                }
+                else{
+                    rows.Testresult=rows.Compatibility;
+                }
+            },
+         //颜色变化
+           addClass({row, column, rowIndex, columnIndex}) {
+
+              if (columnIndex === 9 && row.Status === 'Pass' ) {
+                  return {
+                      background: '#00FF00'
+                  }
+              }
+
+
+              if (columnIndex === 9 && row.Status === 'Fail' ) {
+                  return {
+                      background: '#FF0000'
+                  }
+              }
+
+
+              if (columnIndex === 9 && row.Status === 'Pending' ) {
+                  return {
+                      background: '#696969'
+                  }
+              }
+
+              if (columnIndex === 9 && row.Status === 'Testing' ) {
+                  return {
+                      background: '#FFFF00'
+                  }
+              }
+
+              if (columnIndex === 9 && row.Status === 'Conditional Pass' ) {
+                  return {
+                      background: '#008000'
+                  }
+              }
+          },
+         ToBreak (val) {
+            //console.log(val,"val")
+          if(val){
+              //console.log(val.replace('\n', '<br />'),"val")
+              return val.replace('\n', '<br />')
+          }
+        }
+     }
+ })
+</script>
+{% endblock %}

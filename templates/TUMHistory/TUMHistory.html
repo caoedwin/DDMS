@@ -1,0 +1,426 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}TUMHistory{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+
+.selectMsg{
+     font-size:17px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+
+
+ .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0 0 10px #333333;
+    -webkit-box-shadow: 0 0 10px #333333;
+    box-shadow: 0 0 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+    </template>
+
+      <div class="selectMsg" >
+            <el-button v-cloak @click="addData()" v-if="canEdit_TUM===1" style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">錄入</el-button>
+            <el-button v-cloak @click="synchronous()" :loading="elbuttonloading" v-if="canEdit===1" style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">同步</el-button>
+      </div>
+    <div class="tableAround" v-cloak >
+        <div style="margin-bottom:20px;">
+{#      <span class="showNum">已選 <span id="selectNum">0</span> 條</span> <el-button @click="CancelRenew()" v-cloak size="medium" style="background-color:#69ec57; border-color:black;color:black;margin-left: 50px">取消申請</el-button>#}
+      </div>
+           <el-table border stripe :data="C38Table" :span-method="arraySpanMethod" :row-key="getRowKeys"
+           :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+           v-loading="tableloading"
+             style="border-radius: 10px;word-break: keep-all">
+              <el-table-column  prop="Item" label="Item" align="center"></el-table-column>
+              <el-table-column  prop="Customer" label="C38NB&C38(AIO)&C85" width="150" align="center"></el-table-column>
+              <el-table-column prop="Jan" label="Jan" align="center" ></el-table-column>
+              <el-table-column prop="Feb" label="Feb" align="center"  ></el-table-column>
+              <el-table-column prop="Mar" label="Mar" align="center" ></el-table-column>
+              <el-table-column prop="Apr" label="Apr" align="center" ></el-table-column>
+              <el-table-column prop="May" label="May" align="center" ></el-table-column>
+              <el-table-column prop="Jun" label="Jun" align="center" ></el-table-column>
+              <el-table-column prop="Jul" label="Jul" align="center" ></el-table-column>
+              <el-table-column prop="Aug" label="Aug" align="center" ></el-table-column>
+              <el-table-column prop="Sep" label="Sep" align="center" ></el-table-column>
+              <el-table-column prop="Oct" label="Oct" align="center" ></el-table-column>
+              <el-table-column prop="Nov" label="Nov" align="center" ></el-table-column>
+              <el-table-column prop="Dec" label="Dec" align="center" ></el-table-column>
+              <el-table-column  prop="Summary_Month" label="匯總(1-當月)" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Summary" label="匯總" align="center"></el-table-column>
+      </el-table>
+    </div>
+    <br>
+    <div class="tableAround" v-cloak >
+        <div style="margin-bottom:20px;">
+      </div>
+           <el-table border stripe :data="T88Table" :span-method="arraySpanMethod" :row-key="getRowKeys"
+           :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+           v-loading="tableloading"
+             style="border-radius: 10px;word-break: keep-all">
+              <el-table-column  prop="Item" label="Item" align="center"></el-table-column>
+              <el-table-column  prop="Customer" label="T88 AIO" width="150" align="center"></el-table-column>
+              <el-table-column prop="Jan" label="Jan" align="center" ></el-table-column>
+              <el-table-column prop="Feb" label="Feb" align="center"  ></el-table-column>
+              <el-table-column prop="Mar" label="Mar" align="center" ></el-table-column>
+              <el-table-column prop="Apr" label="Apr" align="center" ></el-table-column>
+              <el-table-column prop="May" label="May" align="center" ></el-table-column>
+              <el-table-column prop="Jun" label="Jun" align="center" ></el-table-column>
+              <el-table-column prop="Jul" label="Jul" align="center" ></el-table-column>
+              <el-table-column prop="Aug" label="Aug" align="center" ></el-table-column>
+              <el-table-column prop="Sep" label="Sep" align="center" ></el-table-column>
+              <el-table-column prop="Oct" label="Oct" align="center" ></el-table-column>
+              <el-table-column prop="Nov" label="Nov" align="center" ></el-table-column>
+              <el-table-column prop="Dec" label="Dec" align="center" ></el-table-column>
+              <el-table-column  prop="Summary_Month" label="匯總匯總(1-當月)" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Summary" label="匯總" align="center"></el-table-column>
+      </el-table>
+    </div>
+<el-dialog
+    title="信息錄入"
+    :visible.sync="insert">
+    <template>
+<el-form ref="form" :model="form" :rules="rules" label-width="120px" size="medium">
+<el-row>
+  <el-col span="10">
+  <el-form-item label="客戶別" prop="Customer">
+        <el-select v-model="form.Customer" placeholder="请选择">
+            <el-option
+                v-for="item in sectionCustomer"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="Year" prop="Year">
+        <el-date-picker
+                  v-model="form.Year"
+                  id="Year"
+                  type="year"
+                  ref="form.Year"
+                  value-format="yyyy"
+                  placeholder="选择年">
+            </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="Category" prop="Category">
+        <el-select v-model="form.Category" placeholder="请选择">
+            <el-option
+                v-for="item in sectionCategory"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+      <el-form-item label="Jan" prop="Jan">
+        <el-input v-model="form.Jan"></el-input>
+      </el-form-item>
+  </el-col>
+  <el-col span="10">
+      <el-form-item label="Feb" prop="Feb">
+        <el-input v-model="form.Feb"></el-input>
+      </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="Mar" prop="Mar">
+        <el-input v-model="form.Mar"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Apr" prop="Apr">
+        <el-input v-model="form.Apr"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="May" prop="May">
+        <el-input v-model="form.May"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Jun" prop="Jun">
+        <el-input v-model="form.Jun"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="Jul" prop="Jul">
+        <el-input v-model="form.Jul"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Aug" prop="Aug">
+        <el-input v-model="form.Aug"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="Sep" prop="Sep">
+        <el-input v-model="form.Sep"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Oct" prop="Oct">
+        <el-input v-model="form.Oct"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="Nov" prop="Nov">
+        <el-input v-model="form.Nov"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="Dec" prop="Dec">
+        <el-input v-model="form.Dec"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<div class="el-form-item__content" style="margin-left: 200px;">
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit('form')">新增</el-button>
+  </el-form-item>
+ </div>
+</el-form>
+</template>
+</el-dialog>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                C38Table: [],
+                T88Table: [],
+                insert: false,
+                sectionCustomer: [],
+                sectionCategory: [],
+                sectionYear: [],
+                canEdit: 0,
+                canEdit_TUM: 0,
+                form: {
+                    Customer: '',
+                    Year: '',
+                    Category: '',
+                    Jan: '',
+                    Feb: '',
+                    Mar: '',
+                    Apr: '',
+                    May: '',
+                    Jun: '',
+                    Jul: '',
+                    Aug: '',
+                    Sep: '',
+                    Oct: '',
+                    Nov: '',
+                    Dec: '',
+                },
+                rules: {
+                     Customer: [
+                                 { required: true, message: '请输入客戶別', trigger: 'change' },
+                               ],
+                     Year: [
+                                 { required: true, message: '请输入Year', trigger: 'change' },
+                               ],
+                     Category: [
+                                 { required: true, message: '请输入Category', trigger: 'change' },
+                               ],
+                },
+                formData:[],
+                elbuttonloading:false,
+                tableloading: false,
+            }
+        },
+
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                this.tableloading = true;
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/TUMHistory/SummaryTUM/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.C38Table = res.data.C38Table;
+                    this.T88Table = res.data.T88Table;
+                    this.canEdit = res.data.canEdit;
+                    this.canEdit_TUM = res.data.canEdit_TUM;
+                    this.sectionCustomer = res.data.sectionCustomer;
+                    this.sectionCategory = res.data.sectionCategory;
+                    this.tableloading = false;
+
+                });
+            },
+
+            indexMethod(index) {
+                return index + 1;
+            },
+
+            arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+                  if (rowIndex  === 6) {
+                      if (columnIndex === 0) {
+                        return [1, 2];
+                      } else if (columnIndex === 1) {
+                        return [0, 0];
+                      }
+                  }
+
+                  if (columnIndex === 0) {
+                      if (rowIndex === 0 || rowIndex === 3) {
+                          return {
+                              rowspan: 3,
+                              colspan: 1
+                          };
+                      }else {
+                          return {
+                              rowspan: 0,
+                              colspan: 0
+                          };
+                      }
+                  }
+
+            },
+
+            getRowKeys (row) {
+              return row.id;
+            },
+
+            addData() {
+                this.insert = true;
+            },
+
+            synchronous :function(){
+                this.elbuttonloading=true;
+               let data ={"isGetData":"synchronous","csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/TUMHistory/SummaryTUM/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.C38Table = res.data.C38Table;
+                    this.T88Table = res.data.T88Table;
+                    this.sectionCustomer = res.data.sectionCustomer;
+                    this.sectionCategory = res.data.sectionCategory;
+                    this.elbuttonloading=false;
+
+                })
+
+             },
+
+
+         onSubmit(formName) {
+            this.$refs[formName].validate((valid) => {
+              if (valid) {
+                if (this.formData.length===0){this.formData = new FormData();}
+                  this.formData.append('Customer', this.$refs.form.model.Customer);
+                  this.formData.append('Year', this.$refs.form.model.Year);
+                  this.formData.append('Category', this.$refs.form.model.Category);
+                  this.formData.append('Jan', this.$refs.form.model.Jan);
+                  this.formData.append('Feb', this.$refs.form.model.Feb);
+                  this.formData.append('Mar', this.$refs.form.model.Mar);
+                  this.formData.append('Apr', this.$refs.form.model.Apr);
+                  this.formData.append('May', this.$refs.form.model.May);
+                  this.formData.append('Jun', this.$refs.form.model.Jun);
+                  this.formData.append('Jul', this.$refs.form.model.Jul);
+                  this.formData.append('Aug', this.$refs.form.model.Aug);
+                  this.formData.append('Sep', this.$refs.form.model.Sep);
+                  this.formData.append('Oct', this.$refs.form.model.Oct);
+                  this.formData.append('Nov', this.$refs.form.model.Nov);
+                  this.formData.append('Dec', this.$refs.form.model.Dec);
+                  this.formData.append("action",'addSubmit');
+                  axios.post("/TUMHistory/SummaryTUM/", this.formData,{
+                              headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                          }).then((res)=>{
+                              this.C38Table = res.data.C38Table;
+                              this.T88Table = res.data.T88Table;
+                              this.errMsgNumber=res.data.errMsgNumber;
+                              this.formData = new FormData();
+                              if(this.errMsgNumber){
+                                  this.$alert(this.errMsgNumber, '提示', {
+                                        type: 'warning',
+                                  });
+                                  this.insert = true;
+                              }else{
+                                  try {
+                                          this.$refs.form.resetFields();
+                                  } catch (e) {
+
+                                  }
+                                  this.insert = false;
+                              }
+                  })
+                } else {
+                  console.log('error submit!!');
+                  return false;
+                }
+              });
+            },
+
+
+        },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

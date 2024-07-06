@@ -1,0 +1,1547 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}材料維護{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+<style>
+
+.showColor:hover{
+    color: red;
+}
+
+    .fullScreen{
+     position: fixed;
+     top:0;
+     left:0;
+     height:100%;
+     width: 100%;
+     background: rgba(0,0,0,0.7);
+     z-index: 101;
+     overflow:hidden;
+    }
+
+    .el-dialog {
+        width: 700px;
+    }
+
+    {#.el-tooltip {#}
+    {#    max-width: 60%!important;#}
+    {#}#}
+
+    .fullScreen section {
+     position:fixed;
+     top:50%;
+     left:50%;
+     transform:translate(-50%,-50%);
+     text-align: center;
+     font-size: 18px;
+     font-weight: 800;
+     color: #337ab7;
+   }
+    .content{
+    width:25px;
+    height: 70px;
+    position: fixed;
+    right: 10px;
+    top:60px;
+    background-color:#343957;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 24px;
+    writing-mode: vertical-lr;
+    z-index: 99;
+    opacity: 0.9;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: 160px;
+}
+
+.el-table--border th.gutter:last-of-type {
+  display: block!important;
+}
+
+.el-table th.gutter{
+    display: table-cell!important;
+  }
+
+    #container-yansebiaoshi{
+    display:none;
+    position: fixed;
+    right: 35px;
+    top:60px;
+    z-index: 99;
+    border: 2px solid  #deb887;
+}
+     .el-pagination__total,.el-pagination__jump{
+        color:black;
+    }
+    .gutter{
+        display:block!important;
+        width:17px!important;
+    }
+    .cell-green{
+    background: greenyellow;
+}
+    .tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+    .el-table .cell {
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-break: break-all;
+    line-height: 23px;
+    }
+    tbody tr td:last-child {
+    text-align: left;
+    }
+     .inputError{
+    text-align: center;
+    color: crimson;
+    background-color: beige;
+    width: 50%;
+    margin: 10px auto 5px;
+    position: relative;
+}
+    .inputError,#Customer{
+        display:inline-block;
+    }
+    {#.el-tooltip__popper{#}
+    {#max-width: 400px;#}
+    {#white-space: pre-line;#}
+    {#}#}
+    .oneLine {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .el-table .my-cell {
+    vertical-align: top
+  }
+
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+  .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+  .thStyle{
+      text-align: center;
+      height: 40px;
+      width: 240px;
+      font-size: 15px;
+      font-weight: bolder;
+  }
+
+  .thCSS{
+      text-align: center;
+      height: 40px;
+      font-size: 15px;
+      font-weight: bolder;
+  }
+
+
+  .fileUploadContent{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+}
+  .fileUploadContent label{
+    display: inline-block;
+    word-break: keep-all;
+    line-height: 40px;
+}
+  .fileUploadContent input{
+    line-height: 35px;
+    height: 40px;
+    border-radius: 10px;
+    width: 210px;
+    color: antiquewhite;
+}
+
+  .fileUploadContent .showFileName{
+     line-height: 40px;
+     margin-left: 20px;
+     font-size: 18px;
+     color: black;
+   }
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+.el-select {
+    width: 285px;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: 285px;
+}
+
+#sh {
+    font-size:18px;
+    font-family:微软雅黑;
+    border: 2px solid #9f9ca1;
+}
+
+#sh::-webkit-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh::-moz-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh:-ms-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+    </style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+      <el-backtop></el-backtop>
+    </template>
+<div class="row" style="white-space: nowrap;">
+    <div class="col-md-8">
+        <label style="color: black;font-size: 16px;font-weight: bold;" for="UnifiedNumber">統一編號</label>
+         <el-autocomplete
+                  clearable
+                  class="inline-input"
+                  v-model="selectedUnifiedNumber"
+                  ref="UnifiedNumber"
+                  :fetch-suggestions="querySearch"
+                  placeholder="请输入統一編號"
+                  @select="handleSelect">
+         </el-autocomplete>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="MachineStatus">工作機狀態</label>
+           <el-select v-model="selectedMachineStatus" ref="MachineStatus" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;" clearable v-cloak>
+              <el-option v-for="(item,key) in allMachineStatus" :label="item" :value="item"></el-option>
+           </el-select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="Number">工號</label>
+           <el-autocomplete
+                  clearable
+                  class="inline-input"
+                  v-model="selectedNumber"
+                  ref="Number"
+                  :fetch-suggestions="querySearchNumber"
+                  placeholder="请输入工號"
+                  @select="handleSelectNumber">
+               <template slot-scope="{ item }">
+                <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+               </template>
+           </el-autocomplete>
+
+{#           <select id="Devproperties" ref="Devproperties" v-model="selectedDevproperties" style="height:30px;width:90px;border-radius:5px 5px 5px 5px;margin-left: 2px;">#}
+{#               <option value="All">All</option>#}
+{#               <option v-for="(item,key,index) in allDevproperties" >${ item }</option>#}
+{#           </select>#}
+
+        <el-button size="medium" :loading="elbuttonloading" style="height:35px;border-color:black;color:white;margin-left: 10px;background-color:#7fa0ff" value="Search" name="Search" @click="selectMsg">Search</el-button>
+        <el-button size="medium" style="border-color:black;" @click="exportExcel" type="info" >Export</el-button>
+        <a style="margin-top: 10px;margin-left: 20px;color: #000000" href="/static/src/modelfiles/Computor.xlsx" style="color: orange;font-size: 16px">模板下载<img src="/static/src/back/document_save_2_24px_539656_easyicon.net.png" alt="..."></a>
+    </div>
+</div>
+<div class="row" style="white-space: nowrap;">
+    <div v-cloak class="fileUploadContent">
+        <div class="inputPackage" v-cloak>
+              <span v-cloak>請選擇文件</span>
+              <input v-cloak type="file" id="upload" ref="file" @change="updateFile(event)" v-model="excelFile">
+        </div>
+        <el-button @click="fileUpload" type="warning" style="height:40px" v-cloak> Excel上傳</el-button>
+        <span class="showFileName" v-cloak >${ fileName }</span>
+    </div>
+</div>
+<el-dialog title="歷史記錄" width="55%" :visible.sync="dialogTableVisible" center>
+  <el-table  :loading="hisloading" :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#FAFAFA','border-bottom':'1px solid rgb(103, 194, 58)'}"
+            :data="tableData">
+    <el-table-column property="UnifiedNumber" label="統一編號" align="center"></el-table-column>
+    <el-table-column property="Number" label="工號" width="120" align="center"></el-table-column>
+    <el-table-column property="Name" label="姓名" width="120" align="center"></el-table-column>
+    <el-table-column property="CollectDate" label="領用日期" width="140" align="center"></el-table-column>
+    <el-table-column property="ReturnDate" label="報廢日期" width="120" align="center"></el-table-column>
+  </el-table>
+</el-dialog>
+
+<el-dialog
+    title="數據新增"
+    width="80%"
+    :visible.sync="insert">
+    <template>
+<el-form ref="form" :model="form" :rules="rules" label-width="120px" size="medium">
+<el-row>
+  <el-col span="10">
+  <el-form-item label="領用日期" prop="CollectDate">
+      <el-date-picker
+         v-model="form.CollectDate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="統一編號" prop="UnifiedNumber">
+        <el-input v-model="form.UnifiedNumber"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+      <el-form-item label="工號" prop="Number">
+           <el-autocomplete
+                  clearable
+                  class="inline-input"
+                  v-model="form.Number"
+                  :fetch-suggestions="querySearchNumber"
+                  placeholder="请输入工號"
+                  @select="handleSelectNumber">
+           </el-autocomplete>
+{#        <el-input v-model="form.Number"></el-input>#}
+      </el-form-item>
+  </el-col>
+  <el-col span="10">
+      <el-form-item label="姓名" prop="Name" >
+        <el-input v-model="form.Name" disabled="true"></el-input>
+      </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="MaterialPN" prop="MaterialPN">
+        <el-input v-model="form.MaterialPN"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="CPU" prop="CPU">
+        <el-input v-model="form.CPU"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="RAM" prop="RAM">
+        <el-input v-model="form.RAM"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="HDD" prop="HDD">
+        <el-input v-model="form.HDD"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="Wireless" prop="Wireless">
+         <el-select v-model="form.Wireless" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="LCD" prop="LCD">
+        <el-input v-model="form.LCD"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="OCR" prop="OCR">
+         <el-select v-model="form.OCR" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Battery" prop="Battery">
+         <el-select v-model="form.Battery" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="Adaptor" prop="Adaptor">
+         <el-select v-model="form.Adaptor" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="地區" prop="Region">
+        <el-input v-model="form.Region"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="廠區" prop="Factory">
+        <el-input v-model="form.Factory"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="攜出廠外" prop="OutPlant">
+         <el-select v-model="form.OutPlant" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="電腦用途" prop="ComputerUse">
+        <el-input v-model="form.ComputerUse"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="產品類別" prop="Category">
+        <el-input v-model="form.Category"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="工作機狀態" prop="MachineStatus">
+     <el-select v-model="form.MachineStatus" placeholder="請選擇" @change="changeIdleState">
+        <el-option
+            v-for="item in allMachineStatus"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="閒置狀態" prop="IdleState">
+     <el-select v-model="form.IdleState" placeholder="請選擇" :disabled="StateFlag">
+        <el-option
+            v-for="item in sectionIdleState"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="E-Form單號" prop="FormNumber">
+        <el-input v-model="form.FormNumber"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<div class="el-form-item__content" style="margin-left: 300px;">
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit('form')">新增</el-button>
+  </el-form-item>
+ </div>
+</el-form>
+</template>
+</el-dialog>
+
+<el-dialog
+    title="材料修改"
+    width="80%"
+    :visible.sync="update">
+    <template>
+<el-form ref="form1" :model="form1" label-width="120px" size="medium">
+<el-row>
+  <el-col span="10">
+  <el-form-item label="領用日期" prop="CollectDate">
+      <el-date-picker
+         v-model="form1.CollectDate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="統一編號" prop="UnifiedNumber">
+        <el-input v-model="form1.UnifiedNumber"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+      <el-form-item label="工號" prop="Number">
+           <el-autocomplete
+                  clearable
+                  class="inline-input"
+                  v-model="form1.Number"
+                  :fetch-suggestions="querySearchNumber"
+                  placeholder="请输入工號"
+                  @select="handleSelectNumber">
+           </el-autocomplete>
+{#        <el-input v-model="form1.Number"></el-input>#}
+      </el-form-item>
+  </el-col>
+  <el-col span="10">
+      <el-form-item label="姓名" prop="Name">
+        <el-input v-model="form1.Name" disabled="true"></el-input>
+      </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="MaterialPN" prop="MaterialPN">
+        <el-input v-model="form1.MaterialPN"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="CPU" prop="CPU">
+        <el-input v-model="form1.CPU"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="RAM" prop="RAM">
+        <el-input v-model="form1.RAM"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="HDD" prop="HDD">
+        <el-input v-model="form1.HDD"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="Wireless" prop="Wireless">
+         <el-select v-model="form1.Wireless" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="LCD" prop="LCD">
+        <el-input v-model="form1.LCD"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="OCR" prop="OCR">
+         <el-select v-model="form1.OCR" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Battery" prop="Battery">
+         <el-select v-model="form1.Battery" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="Adaptor" prop="Adaptor">
+         <el-select v-model="form1.Adaptor" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="地區" prop="Region">
+        <el-input v-model="form1.Region"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="廠區" prop="Factory">
+        <el-input v-model="form1.Factory"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="攜出廠外" prop="OutPlant">
+         <el-select v-model="form1.OutPlant" placeholder="請選擇" >
+            <el-option value="Y">Y</el-option>
+            <el-option value="N">N</el-option>
+         </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="電腦用途" prop="ComputerUse">
+        <el-input v-model="form1.ComputerUse"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="產品類別" prop="Category">
+        <el-input v-model="form1.Category"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="工作機狀態" prop="MachineStatus">
+     <el-select v-model="form1.MachineStatus" placeholder="請選擇" @change="changeIdleState1">
+        <el-option
+            v-for="item in allMachineStatus"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="閒置狀態" prop="IdleState">
+     <el-select v-model="form1.IdleState" placeholder="請選擇" :disabled="StateFlag1">
+        <el-option
+            v-for="item in sectionIdleState"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="E-Form單號" prop="FormNumber">
+        <el-input v-model="form1.FormNumber"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<div class="el-form-item__content" style="margin-left: 300px;">
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit1()">保存修改</el-button>
+  </el-form-item>
+ </div>
+</el-form>
+</template>
+</el-dialog>
+    <br />
+    <div class="tableAround" v-cloak >
+    <div class="col-md-5" style="float: left">
+        <span style="font-weight: bold;color: black;font-size: 16px;">已選</span><span id="SelectNum" style="font-weight: bold;color: black;font-size: 16px;margin-left: 14px;">0</span><span class="col-md-4" style="font-weight: bold;color: black;font-size: 16px;">條</span>
+            <el-button size="medium" style="background-color:#69ec57;border-color:black;color:black;margin: 2px;margin-left: 50px;" name="新增" @click="addData()" v-cloak>新增</el-button>
+            <el-button size="medium" style="background-color:#00CCFF;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="修改" @click="updateData()" v-cloak>修改</el-button>
+            <el-button size="medium" style="background-color: #FF6666;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="刪除" @click="deleteData()" v-cloak>刪除</el-button>
+    </div>
+    {% csrf_token %}
+    <template>
+    <el-input type="text" v-model="search"  id="sh" placeholder="請輸入關鍵字搜索..."></el-input>
+    <el-table id="out-table" border  stripe ref="multipleTable"  tooltip-effect="dark"  height="700"
+     :data="datas.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+     :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+     style="border-radius: 10px;word-break: keep-all"
+     @selection-change="handleSelectionChange" :row-key="getRowKeys"
+    v-loading="tableloading"
+        element-loading-text="數據更新中，請稍後"
+        border>
+        <el-table-column type="selection" align="center" :reserve-selection="true" fixed></el-table-column>
+        <el-table-column type="index" :index="indexMethod" width="40" align="center" fixed></el-table-column>
+        <el-table-column prop="CollectDate" label="領用日期" align="center" width="95" fixed>
+        </el-table-column>
+        <el-table-column prop="UnifiedNumber" label="統一編號" align="center" width="90" fixed>
+        </el-table-column>
+        <el-table-column prop="Number" label="工號" align="center" width="90" fixed>
+        </el-table-column>
+        <el-table-column prop="Name" label="姓名" align="center" width="80" fixed>
+        </el-table-column>
+        <el-table-column prop="MaterialPN" label="MaterialPN" width="90" align="center">
+        </el-table-column>
+        <el-table-column prop="CPU" label="CPU" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="RAM" label="RAM" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="HDD" label="HDD" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="Wireless" label="Wireless" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="LCD" label="LCD" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="OCR" label="OCR" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Battery" label="Battery" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Adaptor" label="Adaptor" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Region" label="地區" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="OutPlant" label="攜出廠外" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Factory" label="廠區" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="ComputerUse" label="電腦用途" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="Category" label="產品類別" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="MachineStatus" label="工作機狀態" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="IdleState" label="閒置狀態" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="Years" label="年限" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="FormNumber" label="E-Form單號" align="center">
+        </el-table-column>
+        <el-table-column label="操作" fixed="right" width="100" align="center">
+            <template slot-scope="scope">
+                <el-button @click="alertData(scope.row.id,scope.row.UnifiedNumber)" type="text">歷史</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+<br/>
+    <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 50, 100, 200]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="total_computed">
+        </el-pagination>
+    </div>
+    </template>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script  src="/static/js/Element/table.js"></script>
+<script  src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script  src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/image.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script type="text/babel">
+ new Vue({
+     el: '#app',
+     delimiters: ['${', '}'],
+     data: function () {
+         return {
+             selectedUnifiedNumber:"",
+             selectedNumber:"",
+             selectedMachineStatus:"",
+             selectUnifiedNumber:[],
+             selectNumber:[],
+             allMachineStatus:[],
+             sectionIdleState:[],
+             number:"",
+             selectName:[],
+             insert:false,
+             update:false,
+             StateFlag:true,
+             StateFlag1:true,
+             dialogTableVisible:false,
+             multipleSelection: [],
+             tableContent: [],
+             tableData: [],
+             currentPage: 1,//默认显示第一页
+             pageSize:100,//默认每页显示100条
+             totalNum:null,
+             excelFile:null,
+             fileName:"未選擇文件",
+             loading:false,
+             search:'',
+             hisloading:false,
+             elbuttonloading: false,
+             tableloading: false,
+             form: {
+                  CollectDate: '',
+                  UnifiedNumber: '',
+                  Number: '',
+                  Name: '',
+                  MaterialPN: '',
+                  CPU: '',
+                  RAM: '',
+                  HDD: '',
+                  Wireless: '',
+                  LCD: '',
+                  OCR: '',
+                  Battery: '',
+                  Adaptor: '',
+                  Region: '',
+                  Factory: '',
+                  OutPlant: '',
+                  ComputerUse: '',
+                  Category: '',
+                  MachineStatus: '',
+                  IdleState: '',
+                  FormNumber: '',
+
+             },
+            rules: {
+              CollectDate: [
+                { type: 'string', required: true, message: '请選擇領用日期', trigger: 'change' },
+              ],
+              UnifiedNumber: [
+                { required: true, message: '请输入統一編號', trigger: 'blur' },
+              ],
+              Number: [
+                { required: true, message: '请输入工號', trigger: 'change' },
+              ],
+              Name: [
+                { required: true, message: '请输入姓名', trigger: 'blur' },
+              ],
+              MaterialPN: [
+                { required: true, message: '请输入MaterialPN', trigger: 'blur' },
+              ],
+              CPU: [
+                { required: true, message: '请输入CPU', trigger: 'blur' },
+              ],
+              RAM: [
+                { required: true, message: '请输入RAM', trigger: 'blur' },
+              ],
+              HDD: [
+                { required: true, message: '请输入HDD', trigger: 'blur' },
+              ],
+              Wireless: [
+                { required: true, message: '请選擇Wireless', trigger: 'change' },
+              ],
+              LCD: [
+                { required: true, message: '请输入LCD', trigger: 'blur' },
+              ],
+              OCR: [
+                { required: true, message: '请输入OCR', trigger: 'change' },
+              ],
+              Battery: [
+                { required: true, message: '请選擇Battery', trigger: 'change' },
+              ],
+              Adaptor: [
+                { required: true, message: '请選擇Adaptor', trigger: 'change' },
+              ],
+              Region: [
+                { required: true, message: '请输入地區', trigger: 'blur' },
+              ],
+              Factory: [
+                  { required: true, message: '请输入廠區', trigger: 'blur' },
+              ],
+              OutPlant: [
+                { required: true, message: '请選擇', trigger: 'change' },
+              ],
+              ComputerUse: [
+                { required: true, message: '请输入電腦用途', trigger: 'blur' },
+              ],
+              Category: [
+                { required: true, message: '请输入產品類別', trigger: 'blur' },
+              ],
+              MachineStatus: [
+                { required: true, message: '请選擇工作機狀態', trigger: 'change' },
+              ],
+              {#IdleState: [#}
+              {#  { required: true, message: '请選擇閒置狀態', trigger: 'change' },#}
+              {#],#}
+
+            },
+            editid: '',
+             form1: {
+                  id: '',
+                  CollectDate: '',
+                  UnifiedNumber: '',
+                  Number: '',
+                  Name: '',
+                  MaterialPN: '',
+                  CPU: '',
+                  RAM: '',
+                  HDD: '',
+                  Wireless: '',
+                  LCD: '',
+                  OCR: '',
+                  Battery: '',
+                  Adaptor: '',
+                  Region: '',
+                  Factory: '',
+                  OutPlant: '',
+                  ComputerUse: '',
+                  Category: '',
+                  MachineStatus: '',
+                  IdleState: '',
+                  FormNumber: '',
+
+             },
+             formData:[],
+             formData1:[],
+         }
+     },
+     mounted: function (){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+     },
+     methods: {
+        //获取数据
+        getdata: function (e) {
+            this.elbuttonloading = true;
+            this.tableloading = true;
+            let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/ComputerMS/M_edit/", Qs.stringify(data), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.tableData=res.data.tableData;
+                this.allMachineStatus=res.data.allMachineStatus;
+                this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                this.selectNumber=res.data.selectNumber;
+                for(var i=0;i<this.selectNumber.length;i++){
+                    this.selectName.push(this.selectNumber[i].value);
+                }
+                this.sectionIdleState=res.data.sectionIdleState;
+                this.tableContent = res.data.content;
+                this.totalNum=this.tableContent.length;
+                this.elbuttonloading = false;
+            this.tableloading = false;
+         });
+
+        },
+
+          querySearch(queryString, cb) {
+            var UnifiedNumber = this.selectUnifiedNumber;
+            var results = queryString ? UnifiedNumber.filter(this.createFilter(queryString)) : UnifiedNumber;
+            // 调用 callback 返回建议列表的数据
+                {#console.log(this.selectItem,'111');#}
+            cb(results);
+          },
+
+          querySearchNumber(queryString, cb) {
+            var Number = this.selectNumber;
+            var results = queryString ? Number.filter(this.createFilter(queryString)) : Number;
+            // 调用 callback 返回建议列表的数据
+                {#console.log(this.selectItem,'111');#}
+            cb(results);
+            if(this.insert == true){
+                  {#this.form.Name = this.number;#}
+                  if(this.form.Number == ""){
+                      this.form.Name = "";
+                  }else{
+                      this.form.Name = results[0].number;
+                  }
+            }
+            if(this.update == true){
+                  {#this.form1.Name = this.number;#}
+                  if(this.form1.Number == ""){
+                      this.form1.Name = "";
+                  }else{
+                      this.form1.Name = results[0].number;
+                  }
+            }
+
+          },
+
+          createFilter(queryString) {
+            return (restaurant) => {
+              return (
+                  restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+            };
+          },
+
+          handleSelect(item) {
+              {#this.number = item.number;#}
+          },
+
+          handleSelectNumber(item) {
+            console.log(item,item.number);
+              this.number = item.number;
+              if(this.insert == true){
+                  this.form.Name = this.number;
+              }
+              if(this.update == true){
+                  this.form1.Name = this.number;
+              }
+          },
+
+        getRowKeys (row) {
+            return row.id;
+        },
+         //索引
+         indexMethod(index) {
+            return index +1;
+         },
+         //分页
+         handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+            this.pageSize = val;
+         },
+         handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+          this.currentPage = val;
+         },
+          handleRemove(file,fileList) {
+            console.log(file,fileList);
+          },
+          handlePreview(file) {
+            console.log(file);
+          },
+          beforeRemove(file,fileList) {
+            return this.$confirm(`确定移除 ${ file.name }？`);
+          },
+
+            changeIdleState:function(){
+                let MachineStatus = this.$refs.form.model.MachineStatus;
+                if(MachineStatus == "閑置中"){
+                    this.StateFlag = false;
+                }else{
+                    this.form.IdleState = "";
+                    this.StateFlag = true;
+                }
+            },
+
+            changeIdleState1:function(){
+                let MachineStatus = this.$refs.form1.model.MachineStatus;
+                if(MachineStatus == "閑置中"){
+                    this.StateFlag1 = false;
+                }else{
+                    this.form1.IdleState = "";
+                    this.StateFlag1 = true;
+                }
+            },
+
+          //上传搜索项：以此选项搜索符合条件的内容
+             selectMsg :function(){
+            this.elbuttonloading = true;
+            this.tableloading = true;
+               let UnifiedNumber = this.$refs.UnifiedNumber.value;
+               let MachineStatus = this.$refs.MachineStatus.value;
+               let Number = this.$refs.Number.value;
+               let Name = (this.$refs.Number.value == "")?"":this.number;
+               let data ={"isGetData":"SEARCH","UnifiedNumber":UnifiedNumber,"MachineStatus":MachineStatus,"Name":Name,
+                          "Number":Number,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+               axios.post("/ComputerMS/M_edit/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.allMachineStatus=res.data.allMachineStatus;
+                  this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                  this.selectNumber=res.data.selectNumber;
+                  this.tableContent=res.data.content;
+                  this.totalNum=this.tableContent.length;
+                  this.$refs.multipleTable.clearSelection();
+                  this.elbuttonloading = false;
+                this.tableloading = false;
+
+                })
+             },
+
+           handleSelectionChange(val) {
+                this.multipleSelection = val;
+                var len=document.getElementById("SelectNum");
+                len.innerHTML=this.multipleSelection.length;
+           },
+
+          updateFile:function(e){
+                const first="未選擇文件";
+                let newValue= e.target.files;
+                if(newValue){
+                 let file=document.getElementById('upload');
+                 let filename= file.files[0].name;
+                 let fileType=filename.substr(filename.lastIndexOf(".")+1);
+                 if((fileType.toLowerCase() === 'xlsx')||(fileType.toLowerCase() === 'xls')){
+                      //console.log(this.excelFile);
+                     this.fileName=filename;
+                     this.uploadFile=file.files[0];
+                 }else{
+                     alert("上傳類型不為'xlsx'或'xls'");
+                       try{
+                       }catch(e){
+                          console.log(e);
+                       }
+                 }
+             }else{
+                 this.uploadFile=null;
+                 this.fileName=first;
+             }
+          },
+
+         exportExcel: function () {
+             /* 从表生成工作簿对象 */
+             let temp = [];
+             temp.push(Number(this.currentPage));
+             temp.push(Number(this.pageSize));
+             this.currentPage = 1;
+             this.pageSize = this.tableContent.length;
+             setTimeout(() => {
+                 let table = document.querySelector("#out-table").cloneNode(true);
+                 let fix = table.querySelector(".el-table__fixed");
+                 let wb;
+                 if(fix){
+                    wb = XLSX.utils.table_to_book(table.removeChild(fix),{raw: true});
+                    table.appendChild(fix);
+                 }else{
+                    wb = XLSX.utils.table_to_book(table,{raw: true});
+                 }
+                 console.log("wb", wb);
+                 /* 获取二进制字符串作为输出 */
+                 var wbout = XLSX.write(wb, {
+                     bookType: "xlsx",
+                     bookSST: true,
+                     type: "array"
+                 });
+                 console.log("wbout", wbout);
+                 try {
+                     saveAs(
+                         //Blob 对象表示一个不可变、原始数据的类文件对象。
+                         //Blob 表示的不一定是JavaScript原生格式的数据。
+                         //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                         //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                         new Blob([wbout], {type: "application/octet-stream"}),
+                         //设置导出文件名称
+                         "sheetjs.xlsx"
+                     );
+
+                 } catch (e) {
+                     if (typeof console !== "undefined") console.log(e, wbout);
+                 }
+                 this.currentPage = temp[0];
+                 this.pageSize = temp[1];//edwin:要想导出后回到当前页而不是第一页，<el-pagination里面的:page-size="100"，而不能是:page-size="pageSize"
+                 temp = [];
+                 return wbout;
+             }, 100);
+         },
+
+         //批量上傳
+          fileUpload:function(){
+                    const first="未選擇文件";
+                    let UnifiedNumber = this.$refs.UnifiedNumber.value;
+                    let MachineStatus = this.$refs.MachineStatus.value;
+                    let Number = this.$refs.Number.value;
+                    let Name = (this.$refs.Number.value == "")?"":this.number;
+                    if(this.uploadFile){
+                       //1.解析Excel
+                       let outputResult;
+                       let _this= this;
+                       let files = this.uploadFile;
+                       let undefined_to_null=function(value){
+                           if(value == undefined){
+                               value=null;
+                           }
+                           return value;
+                       };
+                       var fileReader = new FileReader ();
+                       const loading = this.$loading({
+                              lock: true,
+                              text: 'Loading',
+                              spinner: 'el-icon-loading',
+                              background: 'rgba(0, 0, 0, 0.7)'
+                       });
+                       fileReader.onload = function (ev) {
+                         try {
+                         var data = ev.target.result,
+                          workbook = XLSX.read(data, {
+                            type: 'binary'
+                         }), //以二进制流方式读取得到整份excel表格对象
+                          persons = []; //存储获取到的数据
+                       } catch (e) {
+                             loading.close();
+                         return;
+                      }
+                      for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        var fromTo = workbook.Sheets[sheet]['!ref'];
+                        var datas = workbook.Sheets[sheet];
+                        //如果有不规范数据可以在这里进行处理datas
+                        persons = persons.concat(XLSX.utils.sheet_to_json(datas));
+                    }
+                }
+                     //数据保存在result
+                      let result=JSON.stringify(persons);
+                       //2.上傳數據
+                        axios.post("/ComputerMS/M_edit/" ,{"UnifiedNumber":UnifiedNumber,"MachineStatus":MachineStatus,"Name":Name,"Number":Number,"ExcelData":result},{
+                        headers:{ 'X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式 ==>'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    }).then((res) => {
+                        _this.tableContent = res.data.content;
+                        _this.totalNum = _this.tableContent.length;
+                        _this.allMachineStatus=res.data.allMachineStatus;
+                        _this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                        _this.selectNumber=res.data.selectNumber;
+                        _this.errMsg=res.data.errMsg;
+                        _this.uploadFile=null;
+                        _this.fileName=first;
+                        loading.close();
+                        //上传成功的操作
+                        if(_this.errMsg){
+                            _this.$alert(_this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            _this.$message({
+                                message: '上傳成功',
+                                type: 'success',
+                            })
+                        }
+                        //接受数据的初始化
+                        try{
+                        }catch(e)
+                        {
+                           console.log("错误异常"+e);
+                        }
+                    }).catch(function (e) {
+                            {#_this.loading=false;#}
+                            loading.close();
+                            _this.uploadFile=null;
+                            var warning =confirm("上傳異常");
+                            console.log("上傳錯誤信息"+e);
+                        });
+               };
+                       try{
+                       fileReader.readAsBinaryString(files);
+                       }
+                       catch(e){
+                             loading.close();
+                             console.log(e);
+                             alert("文件上傳異常") ;
+                             return;
+                        }
+                 }else{
+                   loading.close();
+                  alert("未選擇文件");
+                  return false;
+              }
+                    this.excelFile='';
+          },
+
+         addData() {
+            this.insert = true;
+         },
+
+         updateData() {
+            let datas = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+             {#console.log(datas[0]);#}
+            if(datas.length == 0){
+                 this.$alert('請勾選一條數據', '提示', {
+                    type: 'warning',
+                 })
+            }else if(datas.length == 1){
+                this.update = true;
+                this.editid = datas[0].id;
+                this.form1.CollectDate = datas[0].CollectDate;
+                this.form1.UnifiedNumber = datas[0].UnifiedNumber;
+                this.form1.Number = datas[0].Number;
+                this.form1.Name = datas[0].Name;
+                this.form1.MaterialPN = datas[0].MaterialPN;
+                this.form1.CPU = datas[0].CPU;
+                this.form1.RAM = datas[0].RAM;
+                this.form1.HDD = datas[0].HDD;
+                this.form1.Wireless = datas[0].Wireless;
+                this.form1.LCD = datas[0].LCD;
+                this.form1.OCR = datas[0].OCR;
+                this.form1.Battery = datas[0].Battery;
+                this.form1.Adaptor = datas[0].Adaptor;
+                this.form1.Region = datas[0].Region;
+                this.form1.Factory = datas[0].Factory;
+                this.form1.OutPlant = datas[0].OutPlant;
+                this.form1.ComputerUse = datas[0].ComputerUse;
+                this.form1.Category = datas[0].Category;
+                this.form1.MachineStatus = datas[0].MachineStatus;
+                this.form1.IdleState = datas[0].IdleState;
+                this.form1.FormNumber = datas[0].FormNumber;
+            }else{
+                 this.$alert('只能勾選一條數據', '提示', {
+                    type: 'warning',
+                 });
+            }
+            this.$refs.multipleTable.clearSelection();
+         },
+
+         deleteData(){
+            if(this.multipleSelection.length == 0){
+                 this.$alert('請至少選中一條數據', '提示', {
+                    type: 'warning',
+                 })
+            }else{
+                    var warning=confirm('此操作将永久删除该条数据, 是否继续?');
+                    if(warning) {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                    });
+                     {#console.log(params);#}
+                       let UnifiedNumber = this.$refs.UnifiedNumber.value;
+                       let MachineStatus = this.$refs.MachineStatus.value;
+                       let Number = this.$refs.Number.value;
+                       let Name = (this.$refs.Number.value == "")?"":this.number;
+                       let data ={"isGetData":"MUTICANCEL","params": params,"UnifiedNumber":UnifiedNumber,"MachineStatus":MachineStatus,
+                            "Name":Name,"Number":Number,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+                       axios.post("/ComputerMS/M_edit/",data).then((res) => {
+                             this.tableContent = res.data.content;
+                             this.totalNum=this.tableContent.length;
+                             this.allMachineStatus=res.data.allMachineStatus;
+                             this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                             this.selectNumber=res.data.selectNumber;
+                             self.$message({
+                                 message: '删除成功',
+                                 type: 'success'
+                         });
+                        this.$refs.multipleTable.clearSelection();
+                 })
+             }else{
+                 return false;
+             }
+            }
+      },
+
+         onSubmit(formName) {
+            var res = this.selectName.indexOf(this.$refs.form.model.Number)
+            if(res == -1){
+                  this.$alert("無此人員工號", '提示', {
+                        type: 'warning',
+                  });
+                  this.insert = true;
+            }else {
+                    this.$refs[formName].validate((valid) => {
+                        if (valid) {
+                            let Name = (this.$refs.Number.value == "") ? "" : this.number;
+                            if (this.formData.length == 0) {
+                                this.formData = new FormData();
+                            }
+                            this.formData.append('UnifiedNumberSearch', this.$refs.UnifiedNumber.value);
+                            this.formData.append('MachineStatusSearch', this.$refs.MachineStatus.value);
+                            this.formData.append('NumberSearch', this.$refs.Number.value);
+                            this.formData.append('NameSearch', Name);
+
+                            this.formData.append('CollectDate', this.$refs.form.model.CollectDate);
+                            this.formData.append('UnifiedNumber', this.$refs.form.model.UnifiedNumber);
+                            this.formData.append('Number', this.$refs.form.model.Number);
+                            this.formData.append('Name', this.$refs.form.model.Name);
+                            this.formData.append('MaterialPN', this.$refs.form.model.MaterialPN);
+                            this.formData.append('CPU', this.$refs.form.model.CPU);
+                            this.formData.append('RAM', this.$refs.form.model.RAM);
+                            this.formData.append('HDD', this.$refs.form.model.HDD);
+                            this.formData.append('Wireless', this.$refs.form.model.Wireless);
+                            this.formData.append('LCD', this.$refs.form.model.LCD);
+                            this.formData.append('OCR', this.$refs.form.model.OCR);
+                            this.formData.append('Battery', this.$refs.form.model.Battery);
+                            this.formData.append('Adaptor', this.$refs.form.model.Adaptor);
+                            this.formData.append('Region', this.$refs.form.model.Region);
+                            this.formData.append('Factory', this.$refs.form.model.Factory);
+                            this.formData.append('OutPlant', this.$refs.form.model.OutPlant);
+                            this.formData.append('ComputerUse', this.$refs.form.model.ComputerUse);
+                            this.formData.append('Category', this.$refs.form.model.Category);
+                            this.formData.append('MachineStatus', this.$refs.form.model.MachineStatus);
+                            this.formData.append('IdleState', this.$refs.form.model.IdleState);
+                            this.formData.append('FormNumber', this.$refs.form.model.FormNumber);
+                            this.formData.append("action", 'addSubmit');
+                            console.log(this.formData);
+                            axios.post("/ComputerMS/M_edit/", this.formData, {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data',
+                                    'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                                } //改变头格式，原生默认上传json格式
+                            }).then((res) => {
+                                this.tableContent = res.data.content;
+                                this.totalNum = this.tableContent.length;
+                                this.errMsgNumber = res.data.errMsgNumber;
+                                this.allMachineStatus = res.data.allMachineStatus;
+                                this.selectUnifiedNumber = res.data.selectUnifiedNumber;
+                                this.selectNumber = res.data.selectNumber;
+                                this.formData = new FormData();
+                                if (this.errMsgNumber) {
+                                    this.$alert(this.errMsgNumber, '提示', {
+                                        type: 'warning',
+                                    });
+                                    this.insert = true;
+                                } else {
+                                    try {
+                                        this.$refs.form.resetFields();
+                                        {#this.$refs.upload.clearFiles();#}
+                                    } catch (e) {
+
+                                    }
+                                    this.insert = false;
+                                }
+                            })
+                        } else {
+                            console.log('error submit!!');
+                            return false;
+                        }
+                    });
+             }
+            },
+
+        onSubmit1() {
+            var res = this.selectName.indexOf(this.$refs.form1.model.Number)
+            if(res == -1){
+                  this.$alert("無此人員工號", '提示', {
+                        type: 'warning',
+                  });
+                  this.update = true;
+            }else{
+                let Name = (this.$refs.Number.value == "")?"":this.number;
+                if (this.formData1.length==0){this.formData1 = new FormData();}
+                      this.formData1.append('id', this.editid);
+                      this.formData1.append('UnifiedNumberSearch', this.$refs.UnifiedNumber.value);
+                      this.formData1.append('MachineStatusSearch', this.$refs.MachineStatus.value);
+                      this.formData1.append('NumberSearch', this.$refs.Number.value);
+                      this.formData1.append('NameSearch', Name);
+
+                      this.formData1.append('CollectDate', this.$refs.form1.model.CollectDate);
+                      this.formData1.append('UnifiedNumber', this.$refs.form1.model.UnifiedNumber);
+                      this.formData1.append('Number', this.$refs.form1.model.Number);
+                      this.formData1.append('Name', this.$refs.form1.model.Name);
+                      this.formData1.append('MaterialPN', this.$refs.form1.model.MaterialPN);
+                      this.formData1.append('CPU', this.$refs.form1.model.CPU);
+                      this.formData1.append('RAM', this.$refs.form1.model.RAM);
+                      this.formData1.append('HDD', this.$refs.form1.model.HDD);
+                      this.formData1.append('Wireless', this.$refs.form1.model.Wireless);
+                      this.formData1.append('LCD', this.$refs.form1.model.LCD);
+                      this.formData1.append('OCR', this.$refs.form1.model.OCR);
+                      this.formData1.append('Battery', this.$refs.form1.model.Battery);
+                      this.formData1.append('Adaptor', this.$refs.form1.model.Adaptor);
+                      this.formData1.append('Region', this.$refs.form1.model.Region);
+                      this.formData1.append('Factory', this.$refs.form1.model.Factory);
+                      this.formData1.append('OutPlant', this.$refs.form1.model.OutPlant);
+                      this.formData1.append('ComputerUse', this.$refs.form1.model.ComputerUse);
+                      this.formData1.append('Category', this.$refs.form1.model.Category);
+                      this.formData1.append('MachineStatus', this.$refs.form1.model.MachineStatus);
+                      this.formData1.append('IdleState', this.$refs.form1.model.IdleState);
+                      this.formData1.append('FormNumber', this.$refs.form1.model.FormNumber);
+                      this.formData1.append("action",'updateSubmit');
+                      console.log(this.formData1);
+                      axios.post("/ComputerMS/M_edit/", this.formData1,{
+                                headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                            }).then((res)=>{
+                                this.tableContent = res.data.content;
+                                this.totalNum=this.tableContent.length;
+                                this.allMachineStatus=res.data.allMachineStatus;
+                                this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                                this.selectNumber=res.data.selectNumber;
+                                this.errMsgNumber=res.data.errMsgNumber;
+                                this.formData1 = new FormData();
+                                if(this.errMsgNumber){
+                                      this.$alert(this.errMsgNumber, '提示', {
+                                            type: 'warning',
+                                      });
+                                      this.update = true;
+                                }else{
+
+                                      try {
+                                              this.$refs.form1.resetFields();
+                                      } catch (e) {
+
+                                      }
+                                      this.update = false;
+                                }
+                      })
+            }
+            {#console.log('submit!',this.$refs.form1.model,typeof (this.$refs.form1.model),this.formData1);#}
+
+          },
+
+        alertData:function(id,pid){
+                this.hisloading = true;
+               let UnifiedNumber = this.$refs.UnifiedNumber.value;
+               let MachineStatus = this.$refs.MachineStatus.value;
+               let Name = this.$refs.Number.value;
+               let Number = (this.$refs.Number.value == "")?"":this.number;
+               this.dialogTableVisible=true;
+               let msg = {
+                  "isGetData" : "alertData" , "ID":id,"UnifiedNumber":pid,"UnifiedNumberSearch":UnifiedNumber,
+                   "MachineStatus":MachineStatus,"Name":Name,"Number":Number,
+               };
+               axios.post("/ComputerMS/M_edit/",Qs.stringify(msg,{indices:false}),{
+                        headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                    } ).then((res) => {
+                    this.tableData = res.data.tableData;
+                    this.hisloading = false;
+               })
+        },
+
+         ToBreak (val) {
+            //console.log(val,"val")
+          if(val){
+              //console.log(val.replace('\n', '<br />'),"val")
+              return val.replace('\n', '<br />')
+          }
+        }
+     },
+        computed:{
+                datas(){//必须是el-table里面绑定的数据变量,不能与axios接受的变量名一样
+                    {#console.log(111);#}
+                    const search=this.search;
+                    if(search){
+                        return this.tableContent.filter(data=>{//axios返回时接受数据的变量
+                            return Object.keys(data).some(key=>{
+                                return String(data[key]).toLowerCase().indexOf(search.toLowerCase())>-1
+                            })
+                        })
+                    }
+                    return this.tableContent//axios返回时接受数据的变量
+                },
+                total_computed () {
+                    this.Totalsize = this.datas.length;//edwin:export数据的个数
+                    {#console.log(this.Totalsize);#}
+                  return this.datas.length//必须是el-table里面绑定的数据变量
+                }
+            },
+        watch: {
+                datas() {
+                    this.currentPage = 1;
+                }
+            },
+ })
+</script>
+{% endblock %}

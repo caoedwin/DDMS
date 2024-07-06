@@ -1,0 +1,474 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Adapter_borrow{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+.selectMsg{
+     font-size:18px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+  .customerContent,.changjiaContent,.pnContent,.powerContent{
+     margin-left: 20px;
+}
+.showNum{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+ .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+
+      <div class="selectMsg" >
+           <div class="customerContent">
+                 <label>Customer: </label>
+                 <select  ref="Customer"  @change="changeCustomer" v-model="customer" style="height:40px;width:100px;border-radius:5px;">
+{#                       <option value="All">All</option>#}
+                       <option v-for="(item,key,index) in customerOptions" >${ key }</option>
+                 </select>
+           </div>
+           <div class="changjiaContent">
+                  <label>廠家:</label>
+                  <select  ref="Changjia"  @change="changeChangjia" v-model="changjia" style="height:40px;border-radius:5px;width:100px;">
+                       <option v-for="(item,key,index) in changjiaOptions">${ item.Changjia }</option>
+                  </select>
+           </div>
+           <div class="pnContent">
+                  <label>PN:</label>
+                  <select  ref="PN"  v-model="pn" style="height:40px;border-radius:5px;width:100px;">
+                       <option v-for="(item,key,index) in pnOptions">${ item }</option>
+                  </select>
+           </div>
+           <div class="powerContent">
+                 <label>功率: </label>
+                 <select  ref="Power"   v-model="power" style="height:40px;border-radius:5px;width:100px;">
+                       <option v-for="(item,key,index) in powerOptions">${ item }</option>
+                 </select>
+           </div>
+                 <el-button @click="search" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button>
+      </div>
+    <div class="tableAround" v-cloak >
+        <div class="111" style="margin-bottom:20px;">
+      <span class="showNum">已選 <span id="selectNum">0</span> 條</span> <el-button @click="ensureInfo()" v-cloak size="medium" style="background-color:#9df387d4; border-color:black;color:black;margin-left: 50px">借用</el-button>
+      </div>
+            <el-table height="700" ref="multipleTable" border stripe :data="tableContent.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)" @selection-change="handleSelectionChange" :row-key="getRowKeys" :cell-style="addColor">
+          <el-table-column type="selection" width="50" :reserve-selection="true" :selectable='checkboxT' disabled="true"></el-table-column>
+          <el-table-column type="index" :index="indexMethod"></el-table-column>
+          <el-table-column  prop="Pinming" label="品名"></el-table-column>
+          <el-table-column  prop="Leibie" label="类别"></el-table-column>
+          <el-table-column  prop="Changjia" label="廠家"></el-table-column>
+          <el-table-column  prop="MaterialPN" label="MaterialPN"></el-table-column>
+          <el-table-column  prop="Model" label="Model"></el-table-column>
+          <el-table-column  prop="Description" label="Description"></el-table-column>
+          <el-table-column  prop="Power" label="功率"></el-table-column>
+          <el-table-column  prop="Number" label="編號"></el-table-column>
+          <el-table-column  prop="Location" label="Location"></el-table-column>
+          <el-table-column  prop="Customer" label="客戶別"></el-table-column>
+          <el-table-column  prop="Project_Code" label="Project Code"></el-table-column>
+          <el-table-column  prop="Phase" label="Phase"></el-table-column>
+          <el-table-column  prop="OAPcode" label="掛賬人工號"></el-table-column>
+          <el-table-column  prop="OAP" label="掛賬人"></el-table-column>
+          <el-table-column  prop="Device_Status" label="設備狀態"></el-table-column>
+          <el-table-column  prop="BR_Status" label="借還狀態"></el-table-column>
+          <el-table-column  prop="BR_per" label="借還人員"></el-table-column>
+          <el-table-column  prop="Predict_return" label="預計歸還日期"></el-table-column>
+          <el-table-column  prop="Borrow_date" label="借用日期"></el-table-column>
+          <el-table-column  prop="Return_date" label="歸還日期"></el-table-column>
+          <el-table-column  prop="Exceed_days" label="超期天數" align="center"></el-table-column>
+      </el-table>
+      <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[10, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+        </el-pagination>
+      </div>
+    </div>
+      <el-dialog title="借用機種信息登記" :visible.sync="Info" width="30%" center>
+        <template>
+             <el-form ref="form"  :model="form" :rules="rules" label-width="135px">
+                 <el-form-item label="Project" prop="Project">
+                          <el-input v-model="form.Project"></el-input>
+                 </el-form-item>
+                 <el-form-item label="Phase" prop="Phase">
+                           <el-select v-model="form.Phase" placeholder="请选择">
+                                <el-option v-for="item in Phaseoptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                          </el-select>
+                 </el-form-item>
+                 <el-form-item label="预计歸還時間" prop="Predict_return">
+                         <el-date-picker v-model="form.Predict_return" type="date" value-format="yyyy-MM-dd" placeholder="選擇日期"></el-date-picker>
+                 </el-form-item>
+             </el-form>
+        </template>
+              <span slot="footer" class="dialog-footer">
+                        <el-button type="primary" @click="Borrow(form)">送出</el-button>
+              </span>
+      </el-dialog>
+    <template>
+      <el-backtop ></el-backtop>
+    </template>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+               customer:'',
+               customerOptions:{},
+               changjia:'',
+               changjiaOptions:[],
+               pn:'',
+               pnOptions:[],
+               power:'',
+               powerOptions:[],
+               tableContent:[],
+               currentPage: 1,//默认显示第一页
+               pageSize:100,//默认每页显示100条
+               totalNum: null,
+
+               Info:false,
+               form: {
+                    Project:'',
+                    Phase:'',
+                    Predict_return:'',
+                    },
+               formData:[],
+                //form表單中需要從後台獲取的下拉選項
+                {#Projectoptions:[],#}
+                {#Phaseoptions:[],#}
+                multipleSelection: [],
+                BorrowId:[],
+                rules: {
+                    Project: [
+                         { required: true, message: "请输入Project", trigger:['blur','change'] }
+                      ],
+                    Phase: [
+                         { required: true, message: "请输入Phase", trigger:['blur','change'] }
+                      ],
+                    Predict_return: [
+                         { required: true, message: "不能為空", trigger:['blur','change'] }
+                      ],
+
+                    },
+                Phaseoptions:[{value: 'B(FVT)', label: 'B(FVT)'},
+                                    {value: 'C(SIT)', label: 'C(SIT)'},
+                                    {value: 'INV', label: 'INV'},
+                                    {value: 'NPI', label: 'NPI'}],
+
+
+
+
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/AdapterPowerCode/BorrowedAdapter/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.customerOptions=res.data.selectItem;
+                    this.powerOptions=res.data.powerOptions;
+                    {#this.Projectoptions=res.data.options[0];#}
+                    {#this.Phaseoptions=res.data.options[1];#}
+                    this.tableContent=res.data.content;
+                    this.totalNum=this.tableContent.length;
+                });
+            },
+            changeCustomer:function () {
+                 if(this.$refs.Customer.value ==""){
+                      this.changjiaOptions=[""];
+                      return false;
+                 }
+                 this.changjiaOptions=this.customerOptions[this.$refs.Customer.value];
+                 this.changjia="";
+            },
+            changeChangjia:function(index){
+                if(this.$refs.Changjia.value ==""){
+                      this.pnOptions=[""];
+                      return false;
+                 }
+                for(let index=0;index<this.customerOptions[this.customer].length;index++){
+                     if(this.customerOptions[this.customer][index]["Changjia"]==this.changjia){
+                        this.pnOptions=this.customerOptions[this.customer][index]["PN"];
+                    }
+                }
+            },
+            indexMethod(index) {
+                return index + 1;
+            },
+            //分页
+            handleSizeChange(val) {
+                  console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+                  this.currentPage = val;
+                  console.log(this.tableContent.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize));
+            },
+            //上传搜索项：以此选项搜索符合条件的内容
+            search :function(){
+                let Customer = this.$refs.Customer.value;
+                let Changjia=this.$refs.Changjia.value;
+                let PN = this.$refs.PN.value;
+                let Power = this.$refs.Power.value;
+               let data ={"isGetData":"SEARCH","Customer":Customer,"Changjia":Changjia,"PN":PN,"Power":Power,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/AdapterPowerCode/BorrowedAdapter/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.totalNum=this.tableContent.length;
+                })
+                this.$refs.multipleTable.clearSelection()
+            },
+            handleSelectionChange(rows) {
+                this.multipleSelection = rows;
+                console.log(rows,'111')
+                var len=document.getElementById("selectNum")
+                len.innerHTML=this.multipleSelection.length;
+            },
+            getRowKeys (row) {
+              return row.id;
+            },
+            ensureInfo:function(){
+                if(this.multipleSelection.length==0){
+                alert('未勾选数据！')
+                }else {
+                    this.Info = true;
+                    let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                    let params = [];
+                    this.BorrowId = [];
+                    let self = this;
+                    checkArr.forEach(function (item) {
+                        console.log(item);
+                        params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                    });
+                    console.log(params);
+                    this.BorrowId = params;
+                }
+            },
+            Borrow:function(){
+                 this.$refs.form.validate((valid) => {
+               if (valid) {
+                    this.formData = new FormData();
+                    this.formData.append("isGetData",'BORROW');
+                    this.formData.append('Customer', this.$refs.Customer.value)
+                    this.formData.append('Changjia', this.$refs.Changjia.value)
+                    this.formData.append('PN', this.$refs.PN.value)
+                    this.formData.append('Power', this.$refs.Power.value)
+                   {#console.log(this.BorrowId,typeof(this.BorrowId))#}
+                    this.formData.append('BorrowId',this.BorrowId)
+                    this.formData.append('Project', this.$refs.form.model.Project)
+                    this.formData.append('Phase', this.$refs.form.model.Phase)
+                    this.formData.append('Predict_return', this.$refs.form.model.Predict_return)
+                     axios.post("/AdapterPowerCode/BorrowedAdapter/", this.formData,{
+                       headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                        }).then((res) => {
+                          this.tableContent=res.data.content;
+                          this.totalNum=this.tableContent.length;
+                        })
+                        this.Info=false;
+                        this.$refs.multipleTable.clearSelection()
+                        this.$refs.form.resetFields();
+                   }else {
+                        console.log('error submit!!');
+                        return false;
+                      }
+                      });
+               },
+                addColor({row, column, rowIndex, columnIndex}) {
+                    if (columnIndex === 19 && row.Exceed_days !== '') {
+                            return {
+                                      background: '#f14018'
+                                    }
+                    }
+                },
+               checkboxT(row,index){
+                  if(row.BR_Status =='可借用'&&row.Device_Status=='正常'){
+                    return 1
+                  }else {
+                    return 0
+                  }
+                }
+
+        },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}DriverList_upload{% endblock %}
+{% block css %}
+<style>
+.namediv{
+    width:535px;
+    height: 30px;
+    border-radius: 4px;
+}
+.projectStyle,.imagediv,.driverdiv,.functiondiv,.vendordiv,.versiondiv,.customerdiv,.phasediv,.biosdiv{
+    width:200px;
+    height: 30px;
+    border-radius:4px;
+}
+.fade{
+    opacity: 1;
+}
+#msgContent{
+    overflow: auto;
+}
+    </style>
+{% endblock %}
+{% block content %}
+
+<!-- 彈出信息提示，用來顯示內容上傳成功和失敗 -->
+<div class="modal fade" id="returnMsg" tabindex="-1" role="dialog" aria-labelledby="returnTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="returnTitle">Upload Result</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body" id="msgContent"></div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+            </div>
+          </div>
+        </div>
+        </div>
+
+<div  style="color:white;">文件上传:</div>
+    <br/>
+<div style="background-color: rgba(255,255,255,0.2);height:50px;width:1150px;margin:0 auto;border-radius:10px 10px 10px 10px;" >
+     <div class="upload">
+     <input type="file" name="files"   id="xlsxUpload" accept=".xlsx" style="color:#FFF;position:relative;top:10px;left:30px;"/>
+     <input type="button" name="button1" id="xlsxSubmit" onclick="Upload(this)" style=" background:#428bca;position:relative;left:50px;top:10px;color:#fff;width:80px;text-align:center;height:32px;line-height:32px;font-size:13px;" value="上传"/>
+     </div>
+</div>
+    <hr/>
+    <div  style="color:white;">单条录入:</div><div id="showResult" class="err_msg">上传结果：<span id="showErrResult"></span></div>
+    <br/>
+<form method="post" action="/DriverTool/DriverList_upload/">
+    <div id="form_container" style="background-color: rgba(255,255,255,0.2);margin:0 auto;border-radius:10px 10px 10px 10px;" >
+        <div class="row">
+                <div class="col-md-4" style="color:white;text-align: center"><label for="Customer" style="color: #FFF;width:90px;font-size:large;" >Customer:</label></div>
+                <div class="col-md-4" style="color:white;text-align: center"><label for="Project" style="color: #FFF;width:90px;font-size: large;" >Project:</label></div>
+                <div class="col-md-4" style="color:white;text-align: center"><label for="Phase0"  style="color: #FFF;width:90px;font-size: large;" >Phase:</label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Customer }}</div>
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Project }}</div>
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Phase0 }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="color:white;text-align: center"><label for="Bios"  style="color: #FFF; font-size:large;" >Bios:</label></div>
+                <div class="col-md-4" style="color:white;text-align: center"><label for="Image"  style="color: #FFF; font-size:large;" >Image:</label></div>
+                <div class="col-md-4" style="color:white;text-align: center"><label for="Driver"  style="font-size:large;color: #FFF" >Driver:</label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Bios }}</div>
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Image }}</div>
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Driver }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-8" style="text-align: center"><label for="Name" style="font-size:large;color:#fff;">Driver/Utility/Firmware/Application Name: </label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-8" style="text-align: center">{{ DriverList_M_lists.Name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="font-size:large;color:white;text-align: center"><label for="Function" style="color:#fff">Function: </label></div>
+                <div class="col-md-4" style="font-size:large;color:white;text-align: center"><label for="Vendor" style="color:#fff">Vendor: </label></div>
+                <div class="col-md-4" style="font-size:large;color:white;text-align: center"><label for="Version" style="color:#fff" name="Version">Version: </label></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Function }}</div>
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Vendor }}</div>
+                <div class="col-md-4" style="text-align: center">{{ DriverList_M_lists.Version }}</div>
+            </div>
+            <div class="row">
+            <div class="col-md-4" ></div>
+            <div class="col-md-4" style="text-align: center">
+                <button type="submit" id="upload1" style="background:#428bca;color: #FFF;width:80px;text-align:center;height:32px;line-height:32px;font-size:13px;" value="上传" name="Upload">Upload</button>
+            </div>
+            <div class="col-md-4" ></div>
+            </div>
+    </div>
+</form>
+
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/xlsx/xlsx.js"></script>
+<script src="/static/js/xlsx/xlsx.core.min.js"></script>
+<script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <script>
+var backResult=['Pass','Fail','上传数据成功','上传数据重复'];
+window.onload=function(){
+    var el =document.getElementById("showErrResult");
+
+    var result={{ result  }};
+    console.log(backResult[result]);
+    if(result==0){
+
+        el.innerHTML=backResult[result+2];
+        $("#showErrResult").css({"color":"green"});
+        $("#showResult").css({"display":"block"});
+        //alert(backResult[result+2]);
+        setTimeout(function () {
+            $("#showResult").css({"display":"none"});
+        },3000);
+    }
+    else if(result==1){
+        el.innerHTML=backResult[result+2];
+        $("#showErrResult").css({"color":"red"});
+        $("#showResult").css({"display":"block"});
+        alert(backResult[result+2]);
+    }
+    else {
+
+    }
+
+
+}
+</script>
+{% endblock %}{% endcomment %}

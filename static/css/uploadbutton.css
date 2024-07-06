@@ -1,0 +1,11 @@
+#xlsxSubmit{
+  color:#000;
+  margin-left:10px;
+}
+#xlsxSubmit:active{
+  color:#fff;
+  background-color:rgb(77, 85, 93);
+}
+#xlsxUpload{
+  border:1px solid #fafafa;
+}

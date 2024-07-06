@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>您的如下設備已經超期， 請儘快處理：</p>
+            <a href="http://127.0.0.1:8000/index/" style="font-size: 20px;background-color: yellow;font-weight: bolder;" target="_blank">点击此处，处理设备</a>
+            <p>超期设备详情：</p>
+              <p></p>
+              <table border="1" cellpadding="0" cellspacing="0" width="1800" style="border-collapse: collapse;">
+               <tbody>
+                <tr>
+                 <th style="background-color: #8c9eff">设备编号</th>
+                 <th style="background-color: #8c9eff">廠家</th>
+                 <th style="background-color: #8c9eff">MaterialPN</th>
+                 <th style="background-color: #8c9eff">超期天数（天）</th>
+                </tr>
+                <tr>
+                 <td  style="text-align:center"> {sub_item_PN} </td>
+                 <td  style="text-align:center"> {sub_item_changjia} </td>
+                 <td  style="text-align:center"> {sub_item_MaterialPN} </td>
+                 <td  style="color:red;"> {sub_item_Exceedday} </td>
+                </tr>
+               <tr>
+                 <td  style="text-align:center"> {sub_item_PN} </td>
+                 <td  style="text-align:center"> {sub_item_changjia} </td>
+                 <td  style="text-align:center"> {sub_item_MaterialPN} </td>
+                 <td  style="text-align:center;color:red;"> {sub_item_Exceedday} </td>
+                </tr>
+              </tbody>
+              </table>
+            <p style="color:red;">注：此郵件由系統自動發出，請勿直接回復</p>
+</body>
+</html>

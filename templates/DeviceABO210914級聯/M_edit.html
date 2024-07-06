@@ -1,0 +1,2159 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}材料維護{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+    <style>
+    .fullScreen{
+     position: fixed;
+     top:0;
+     left:0;
+     height:100%;
+     width: 100%;
+     background: rgba(0,0,0,0.7);
+     z-index: 101;
+     overflow:hidden;
+    }
+
+    .el-dialog {
+        width: 700px;
+    }
+
+    {#.el-tooltip {#}
+    {#    max-width: 60%!important;#}
+    {#}#}
+
+    .fullScreen section {
+     position:fixed;
+     top:50%;
+     left:50%;
+     transform:translate(-50%,-50%);
+     text-align: center;
+     font-size: 18px;
+     font-weight: 800;
+     color: #337ab7;
+   }
+    .content{
+    width:25px;
+    height: 70px;
+    position: fixed;
+    right: 10px;
+    top:60px;
+    background-color:#343957;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 24px;
+    writing-mode: vertical-lr;
+    z-index: 99;
+    opacity: 0.9;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: 160px;
+}
+
+.el-table--border th.gutter:last-of-type {
+  display: block!important;
+}
+
+.el-table th.gutter{
+    display: table-cell!important;
+  }
+
+    #container-yansebiaoshi{
+    display:none;
+    position: fixed;
+    right: 35px;
+    top:60px;
+    z-index: 99;
+    border: 2px solid  #deb887;
+}
+     .el-pagination__total,.el-pagination__jump{
+        color:black;
+    }
+    .gutter{
+        display:block!important;
+        width:17px!important;
+    }
+    .cell-green{
+    background: greenyellow;
+}
+    .tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+    .el-table .cell {
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-break: break-all;
+    line-height: 23px;
+    }
+    tbody tr td:last-child {
+    text-align: left;
+    }
+     .inputError{
+    text-align: center;
+    color: crimson;
+    background-color: beige;
+    width: 50%;
+    margin: 10px auto 5px;
+    position: relative;
+}
+    .inputError,#Customer{
+        display:inline-block;
+    }
+    {#.el-tooltip__popper{#}
+    {#max-width: 400px;#}
+    {#white-space: pre-line;#}
+    {#}#}
+    .oneLine {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .el-table .my-cell {
+    vertical-align: top
+  }
+
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+  .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+  .thStyle{
+      text-align: center;
+      height: 40px;
+      width: 240px;
+      font-size: 15px;
+      font-weight: bolder;
+  }
+
+  .thCSS{
+      text-align: center;
+      height: 40px;
+      font-size: 15px;
+      font-weight: bolder;
+  }
+
+
+  .fileUploadContent{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+}
+  .fileUploadContent label{
+    display: inline-block;
+    word-break: keep-all;
+    line-height: 40px;
+}
+  .fileUploadContent input{
+    line-height: 35px;
+    height: 40px;
+    border-radius: 10px;
+    width: 210px;
+    color: antiquewhite;
+}
+
+  .fileUploadContent .showFileName{
+     line-height: 40px;
+     margin-left: 20px;
+     font-size: 18px;
+     color: black;
+   }
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+.el-select {
+    width: 285px;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: 285px;
+}
+
+#sh {
+    font-size:18px;
+    font-family:微软雅黑;
+    border: 2px solid #9f9ca1;
+}
+
+#sh::-webkit-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh::-moz-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh:-ms-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+    </style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+      <el-backtop></el-backtop>
+    </template>
+<div class="row" style="white-space: nowrap;">
+    <div class="col-md-8">
+        <label style="color: black;font-size: 16px;font-weight: bold;" for="IntfCtgry">介面種類</label>
+           <select id="IntfCtgry" ref="IntfCtgry" v-model="selectedIntfCtgry" @change="changeDevCtgry" style="height:30px;width:100px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectIntfCtgry" >${ key }</option>
+           </select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="DevCtgry">設備種類</label>
+           <select id="DevCtgry" ref="DevCtgry"  v-model="selectedDevCtgry" @change="changeDevproperties" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectDevCtgry" >${ item.DevCtgry }</option>
+           </select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="Devproperties">設備屬性</label>
+           <select id="Devproperties" ref="Devproperties" v-model="selectedDevproperties" @change="changeDevVendor" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectDevproperties" >${ item }</option>
+           </select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="DevVendor">設備廠家</label>
+           <select id="DevVendor" ref="DevVendor" v-model="selectedDevVendor" @change="changeDevsize" style="height:30px;width:100px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectOption" >${ key }</option>
+           </select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="Devsize">設備容量</label>
+           <select id="Devsize" ref="Devsize" v-model="selectedDevsize" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectDevsize" >${ item.Devsize }</option>
+           </select>
+
+        <el-button size="medium" style="height:35px;border-color:black;color:white;margin-left: 70px;background-color:#7fa0ff" value="Search" name="Search" @click="selectMsg">Search</el-button>
+        <el-button size="medium" style="border-color:black;" @click="exportExcel" type="info" >Export</el-button>
+        {#        <div  class="selectMsg" style="margin-left: 120px;margin-right:10px;"{% comment %} v-if="permission===1"{% endcomment %}>#}
+            <a style="margin-left: 120px;margin-right:10px;color: #000000" href="/static/src/modelfiles/New%20DMS%20format_20210513upload.xlsx" style="color: orange;font-size: 16px">模板下载<img src="/static/src/back/document_save_2_24px_539656_easyicon.net.png" alt="..."></a>
+{#            </div>#}
+    </div>
+</div>
+<div class="row" style="white-space: nowrap;">
+    <div v-cloak class="fileUploadContent">
+        <div class="inputPackage" v-cloak>
+              <span v-cloak>請選擇文件</span>
+              <input v-cloak type="file" id="upload" ref="file" @change="updateFile(event)" v-model="excelFile">
+        </div>
+        <el-button @click="fileUpload" type="warning" style="height:40px" v-cloak> Excel上傳</el-button>
+        <span class="showFileName" v-cloak >${ fileName }</span>
+    </div>
+</div>
+<el-dialog title="歷史記錄" width="65%" :visible.sync="dialogTableVisible">
+  <el-table  :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#FAFAFA','border-bottom':'1px solid rgb(103, 194, 58)'}"
+            :data="tableData">
+    <el-table-column property="NID" label="設備序號" width="120" align="center"></el-table-column>
+    <el-table-column property="DevID" label="設備編號" width="120" align="center"></el-table-column>
+    <el-table-column property="DevModel" label="設備型號" width="120" align="center"></el-table-column>
+    <el-table-column property="DevName" label="設備名稱" width="140" align="center"></el-table-column>
+    <el-table-column property="uscyc" label="使用次數" width="120" align="center"></el-table-column>
+    <el-table-column property="Btime" label="借用時間" width="140" align="center"></el-table-column>
+    <el-table-column property="Rtime" label="歸還日期" width="140" align="center"></el-table-column>
+    <el-table-column property="Usrname" label="用戶名稱" width="120" align="center"></el-table-column>
+    <el-table-column property="BR_per_code" label="借還人員工號" width="120" align="center"></el-table-column>
+  </el-table>
+</el-dialog>
+
+<el-dialog title="設備詳細信息" width="85%" :visible.sync="dialogDetialVisible" center>
+  <el-table  height="240" border :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#FAFAFA','border-bottom':'1px solid rgb(103, 194, 58)'}"
+            :data="tableDetail">
+    <el-table-column prop="HWVer" label="HW Ver." align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="FWVer" label="FW Ver." align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="DevDescription" label="設備描述" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="PckgIncludes" label="附帶品" align="center" width="120">
+    </el-table-column>
+    <el-table-column prop="expirdate" label="保固期" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="DevPrice" label="價值 RMB(單價)" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="Source" label="設備來源" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="Pchsdate" label="購買時間" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="P/N" label="料號" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="LNV SW Test lab device Audit list: Require state(Must, Optional)" label="LNV/ABO 設備審核清單" align="center" width="120">
+    </el-table-column>
+    <el-table-column prop="Purchase_NO" label="申購單號" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="Declaration_NO" label="報關單號" align="center" width="100">
+       <template scope="scope">
+            <el-tooltip placement="top" effect="light">
+                <div slot="content">
+                  <img :src="getImgUrl2(scope.row.NID)" alt="pic1" width="280" height="240" />
+                </div>
+                <a :href="getImgUrl2(scope.row.NID)" download="報關單號.jpg">${ scope.row.Declaration_NO }</a>
+            </el-tooltip>
+       </template>
+    </el-table-column>
+    <el-table-column prop="AssetNum" label="資產編號" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="UsYear" label="購買年限" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="uscyc" label="使用次數" width="120" align="center">
+    </el-table-column>
+    <el-table-column prop="UsrTimes" label="借還次數" width="120" align="center">
+    </el-table-column>
+    <el-table-column prop="addnewname" label="設備添加人員" align="center" width="120">
+    </el-table-column>
+    <el-table-column prop="addnewdate" label="設備添加日期" align="center" width="120">
+    </el-table-column>
+    <el-table-column prop="DevStatus" label="設備狀態" width="120" align="center">
+    </el-table-column>
+  </el-table>
+</el-dialog>
+
+<el-dialog
+    title="材料新增"
+    width="80%"
+    :visible.sync="insert">
+    <template>
+<el-form ref="form" :model="form" :rules="rules" label-width="120px" size="medium">
+<el-row>
+  <el-col span="10">
+  <el-form-item label="客戶別" prop="Customer">
+        <el-select v-model="form.Customer" placeholder="请选择">
+            <el-option
+                v-for="item in sectionCustomer"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="廠區" prop="Plant">
+        <el-select v-model="form.Plant" placeholder="请选择">
+            <el-option
+                v-for="item in sectionPlant"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+      <el-form-item label="設備序號" prop="NID">
+        <el-input v-model="form.NID"></el-input>
+      </el-form-item>
+  </el-col>
+  <el-col span="10">
+      <el-form-item label="設備用途" prop="DevID">
+        <el-input v-model="form.DevID"></el-input>
+      </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="介面種類" prop="IntfCtgry">
+        <el-select v-model="form.IntfCtgry" placeholder="请选择" @change="changeDevCtgry">
+            <el-option
+                v-for="(item,key,index) in selectIntfCtgry"
+                :key="key"
+                :label="key"
+                :value="key">
+            </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="設備種類" prop="DevCtgry">
+        <el-select v-model="form.DevCtgry" placeholder="请选择" @change="changeDevproperties">
+            <el-option
+                v-for="item in formDevCtgry"
+                :key="item.DevCtgry"
+                :label="item.DevCtgry"
+                :value="item.DevCtgry">
+            </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="設備屬性" prop="Devproperties">
+         <el-select v-model="form.Devproperties" placeholder="請選擇" @change="changeDevVendor">
+            <el-option
+                v-for="item in formselectDevproperties"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="設備廠家" prop="DevVendor">
+         <el-select v-model="form.DevVendor" placeholder="請選擇" @change="changeDevsize">
+            <el-option
+                v-for="(item,key,index) in formselectOption"
+                :key="key"
+                :label="key"
+                :value="key">
+            </el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="設備容量" prop="Devsize">
+         <el-select v-model="form.Devsize" placeholder="請選擇" >
+            <el-option
+                v-for="item in formselectDevsize"
+                :key="item.Devsize"
+                :label="item.Devsize"
+                :value="item.Devsize">
+            </el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="設備型號" prop="DevModel">
+        <el-input v-model="form.DevModel"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="設備名稱" prop="DevName">
+        <el-input type="textarea" v-model="form.DevName" :rows="1"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="HW Ver." prop="HWVer">
+        <el-input v-model="form.HWVer"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="FW Ver." prop="FWVer">
+        <el-input v-model="form.FWVer"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備描述" prop="DevDescription">
+        <el-input type="textarea" v-model="form.DevDescription" :rows="1"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="附帶品" prop="PckgIncludes">
+{#        <el-input type="textarea" v-model="form.PckgIncludes"></el-input>#}
+        <el-input v-model="form.PckgIncludes"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="保固期" prop="expirdate">
+     <el-select v-model="form.expirdate" placeholder="請選擇" >
+        <el-option
+            v-for="item in sectionexpirdate"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="價值 RMB(單價)" prop="DevPrice">
+        <el-input v-model="form.DevPrice"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備來源" prop="Source">
+        <el-input v-model="form.Source"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="購買時間" prop="Pchsdate">
+      <el-date-picker
+         v-model="form.Pchsdate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="料號" prop="PN">
+        <el-input v-model="form.PN"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="報關單號" prop="Declaration_NO">
+        <el-input v-model="form.Declaration_NO"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="資產編號" prop="AssetNum">
+        <el-input v-model="form.AssetNum"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="設備添加人員" prop="addnewname">
+        <el-input v-model="form.addnewname"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備添加日期" prop="addnewdate">
+      <el-date-picker
+         v-model="form.addnewdate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="備註" prop="Comment">
+        <el-input type="textarea" v-model="form.Comment" :rows="1"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="使用次數" prop="uscyc">
+        <el-input v-model="form.uscyc"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="借還次數" prop="UsrTimes">
+        <el-input v-model="form.UsrTimes"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備狀態" prop="DevStatus">
+     <el-select v-model="form.DevStatus" placeholder="請選擇" >
+        <el-option
+            v-for="item in sectionDevStatus"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="借還狀態" prop="BrwStatus">
+     <el-select v-model="form.BrwStatus" placeholder="請選擇" >
+        <el-option
+            v-for="item in sectionBrwStatus"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="用戶名稱" prop="Usrname">
+{#        <el-input v-model="form.Usrname"></el-input>#}
+<el-autocomplete
+         class="inline-input"
+         v-model="form.Usrname"
+         ref="Usrname"
+         :fetch-suggestions="querySearch"
+         placeholder="请输入用戶名稱"
+         @select="handleSelect"
+>
+  <template slot-scope="{ item }">
+   <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+  </template>
+</el-autocomplete>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="預計歸還日期" prop="Plandate">
+      <el-date-picker
+         v-model="form.Plandate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="使用天數" prop="useday">
+        <el-input v-model="form.useday"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="借用時間" prop="Btime">
+      <el-date-picker
+         v-model="form.Btime"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="歸還日期" prop="Rtime">
+      <el-date-picker
+         v-model="form.Rtime"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="LNV/ABO 設備審核清單" prop="LNV_ST">
+{#        <el-input v-model="form.LNV_ST"></el-input>#}
+        <el-select v-model="form.LNV_ST" placeholder="请选择">
+            <el-option
+                v-for="item in sectionLNVST"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="申購單號" prop="Purchase_NO">
+        <el-input v-model="form.Purchase_NO"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<div class="el-form-item__content" style="margin-left: 300px;">
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit('form')">新增</el-button>
+  </el-form-item>
+ </div>
+</el-form>
+</template>
+</el-dialog>
+
+<el-dialog
+    title="材料修改"
+    width="80%"
+    :visible.sync="update">
+    <template>
+<el-form ref="form1" :model="form1" label-width="120px" size="medium">
+<el-row>
+  <el-col span="10">
+  <el-form-item label="客戶別" prop="Customer">
+        <el-select v-model="form1.Customer" placeholder="请选择">
+            <el-option
+                v-for="item in sectionCustomer"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="廠區" prop="Plant">
+        <el-select v-model="form1.Plant" placeholder="请选择">
+            <el-option
+                v-for="item in sectionPlant"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+      <el-form-item label="設備序號" prop="NID">
+        <el-input v-model="form1.NID"></el-input>
+      </el-form-item>
+  </el-col>
+  <el-col span="10">
+      <el-form-item label="設備用途" prop="DevID">
+        <el-input v-model="form1.DevID"></el-input>
+      </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="介面種類" prop="IntfCtgry">
+        <el-select v-model="form1.IntfCtgry" placeholder="请选择" @change="changeDevCtgry">
+            <el-option
+                v-for="(item,key,index) in selectIntfCtgry"
+                :key="key"
+                :label="key"
+                :value="key">
+            </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="設備種類" prop="DevCtgry">
+        <el-select v-model="form1.DevCtgry" placeholder="请选择" @change="changeDevproperties">
+            <el-option
+                v-for="item in form1DevCtgry"
+                :key="item.DevCtgry"
+                :label="item.DevCtgry"
+                :value="item.DevCtgry">
+            </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="設備屬性" prop="Devproperties">
+         <el-select v-model="form1.Devproperties" placeholder="請選擇" @change="changeDevVendor">
+            <el-option
+                v-for="item in form1selectDevproperties"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="設備廠家" prop="DevVendor">
+         <el-select v-model="form1.DevVendor" placeholder="請選擇" @change="changeDevsize">
+            <el-option
+                v-for="(item,key,index) in form1selectOption"
+                :key="key"
+                :label="key"
+                :value="key">
+            </el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="設備容量" prop="Devsize">
+         <el-select v-model="form1.Devsize" placeholder="請選擇" >
+            <el-option
+                v-for="item in form1selectDevsize"
+                :key="item.Devsize"
+                :label="item.Devsize"
+                :value="item.Devsize">
+            </el-option>
+         </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="設備型號" prop="DevModel">
+        <el-input v-model="form1.DevModel"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="設備名稱" prop="DevName">
+        <el-input type="textarea" v-model="form1.DevName" :rows="1"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="HW Ver." prop="HWVer">
+        <el-input v-model="form1.HWVer"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="FW Ver." prop="FWVer">
+        <el-input v-model="form1.FWVer"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備描述" prop="DevDescription">
+        <el-input type="textarea" v-model="form1.DevDescription" :rows="1"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="附帶品" prop="PckgIncludes">
+{#        <el-input type="textarea" v-model="form.PckgIncludes"></el-input>#}
+        <el-input v-model="form1.PckgIncludes"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="保固期" prop="expirdate">
+     <el-select v-model="form1.expirdate" placeholder="請選擇" >
+        <el-option
+            v-for="item in sectionexpirdate"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="價值 RMB(單價)" prop="DevPrice">
+        <el-input v-model="form1.DevPrice"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備來源" prop="Source">
+        <el-input v-model="form1.Source"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="購買時間" prop="Pchsdate">
+      <el-date-picker
+         v-model="form1.Pchsdate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="料號" prop="PN">
+        <el-input v-model="form1.PN"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="報關單號" prop="Declaration_NO">
+        <el-input v-model="form1.Declaration_NO"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="資產編號" prop="AssetNum">
+        <el-input v-model="form1.AssetNum"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="設備添加人員" prop="addnewname">
+        <el-input v-model="form1.addnewname"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備添加日期" prop="addnewdate">
+      <el-date-picker
+         v-model="form1.addnewdate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="備註" prop="Comment">
+        <el-input type="textarea" v-model="form1.Comment" :rows="1"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="使用次數" prop="uscyc">
+        <el-input v-model="form1.uscyc"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="借還次數" prop="UsrTimes">
+        <el-input v-model="form1.UsrTimes"></el-input>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="設備狀態" prop="DevStatus">
+     <el-select v-model="form1.DevStatus" placeholder="請選擇" >
+        <el-option
+            v-for="item in sectionDevStatus"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="借還狀態" prop="BrwStatus">
+     <el-select v-model="form1.BrwStatus" placeholder="請選擇" >
+        <el-option
+            v-for="item in sectionBrwStatus"
+            :key="item"
+            :label="item"
+            :value="item">
+        </el-option>
+     </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="用戶名稱" prop="Usrname">
+{#        <el-input v-model="form1.Usrname"></el-input>#}
+    <el-autocomplete
+             class="inline-input"
+             v-model="form1.Usrname"
+             ref="Usrname"
+             :fetch-suggestions="querySearch"
+             placeholder="请输入用戶名稱"
+             @select="handleSelect"
+    >
+      <template slot-scope="{ item }">
+       <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+      </template>
+    </el-autocomplete>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="預計歸還日期" prop="Plandate">
+      <el-date-picker
+         v-model="form1.Plandate"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="使用天數" prop="useday">
+        <el-input v-model="form1.useday"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="借用時間" prop="Btime">
+      <el-date-picker
+         v-model="form1.Btime"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="歸還日期" prop="Rtime">
+      <el-date-picker
+         v-model="form1.Rtime"
+         type="date"
+         value-format="yyyy-MM-dd"
+         placeholder="选择日期">
+      </el-date-picker>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="10">
+  <el-form-item label="LNV/ABO 設備審核清單" prop="LNV_ST">
+{#        <el-input v-model="form1.LNV_ST"></el-input>#}
+        <el-select v-model="form1.LNV_ST" placeholder="请选择">
+            <el-option
+                v-for="item in sectionLNVST"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+  <el-col span="10">
+  <el-form-item label="申購單號" prop="Purchase_NO">
+        <el-input v-model="form1.Purchase_NO"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<div class="el-form-item__content" style="margin-left: 300px;">
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit1()">保存修改</el-button>
+  </el-form-item>
+ </div>
+</el-form>
+</template>
+</el-dialog>
+    <br />
+    <div class="tableAround" v-cloak >
+    <div class="col-md-5" style="float: left">
+        <span style="font-weight: bold;color: black;font-size: 16px;">已選</span><span id="SelectNum" style="font-weight: bold;color: black;font-size: 16px;margin-left: 14px;">0</span><span class="col-md-4" style="font-weight: bold;color: black;font-size: 16px;">條</span>
+            <el-button size="medium" style="background-color:#69ec57;border-color:black;color:black;margin: 2px;margin-left: 50px;" name="新增" @click="addData()" v-cloak>新增</el-button>
+            <el-button size="medium" style="background-color:#00CCFF;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="修改" @click="updateData()" v-cloak>修改</el-button>
+            <el-button size="medium" style="background-color: #FF6666;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="刪除" @click="deleteData()" v-cloak>刪除</el-button>
+    </div>
+    {% csrf_token %}
+    <template>
+    <el-input type="text" v-model="search"  id="sh" placeholder="請輸入關鍵字搜索..."></el-input>
+    <el-table id="out-table" border stripe ref="multipleTable"  tooltip-effect="dark"  height="700"
+     :data="datas.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+     :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#FAFAFA','border-bottom':'1px solid rgb(103, 194, 58)'}"
+     style="border-radius: 10px;word-break: keep-all"
+     @selection-change="handleSelectionChange" :row-key="getRowKeys" @cell-click="showDetial" :cell-style="addColor">
+        <el-table-column type="selection" align="center" :reserve-selection="true" fixed></el-table-column>
+        <el-table-column type="index" :index="indexMethod" width="60" align="center" fixed></el-table-column>
+        <el-table-column prop="Customer" label="客戶別" align="center" width="100" fixed>
+        </el-table-column>
+        <el-table-column prop="Plant" label="廠區" align="center" width="100" fixed>
+        </el-table-column>
+        <el-table-column prop="NID" label="設備序號" align="center" width="100" fixed>
+           <template scope="scope">
+                <el-tooltip placement="right" effect="light">
+                  <div slot="content">
+                     <table border="1" width="600px" cellspacing="0" align="center">
+                        <tr>
+                            <td style="text-align: center;height: 200px;width: 240px;font-size: 15px;font-weight: bolder">設備圖片</td>
+                            <td style="text-align: center;height: 200px;font-size: 15px;font-weight: bolder" colspan="2">
+                                <img :src="getImgUrl(scope.row.NID)" alt="pic" width="150" height="150" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="thStyle">設備描述</th>
+                            <th class="thCSS" colspan="2">附帶品</th>
+                        </tr>
+                        <tr>
+                            <td style="height: 80px;font-size: 15px;">${ scope.row.DevDescription }</td>
+                            <td style="height: 80px;font-size: 15px;" colspan="2">${ scope.row.PckgIncludes }</td>
+                        </tr>
+                        <tr>
+                            <th class="thStyle">設備來源</th>
+                            <th class="thCSS">HW Ver.</th>
+                            <th class="thCSS">FW Ver.</th>
+                        </tr>
+                        <tr>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.Source }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.HWVer }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.FWVer }</td>
+                        </tr>
+                        <tr>
+                            <th class="thStyle">資產編號</th>
+                            <th class="thCSS">設備價格</th>
+                            <th class="thCSS">購買年限</th>
+                        </tr>
+                        <tr>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.AssetNum }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.DevPrice }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.UsYear }</td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div style="text-align: center">${ scope.row.NID }</div>
+                </el-tooltip>
+           </template>
+        </el-table-column>
+        <el-table-column prop="DevID" label="設備用途" align="center" width="120">
+        </el-table-column>
+        <el-table-column prop="IntfCtgry" label="介面種類" align="center" width="160">
+        </el-table-column>
+        <el-table-column prop="DevCtgry" label="設備種類" width="100" align="center">
+        </el-table-column>
+        <el-table-column prop="Devproperties" label="設備屬性" width="160" align="center">
+        </el-table-column>
+        <el-table-column prop="Devsize" label="設備容量" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="DevVendor" label="設備廠家" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="DevModel" label="設備型號" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="DevName" label="設備名稱" align="center" width="160">
+        </el-table-column>
+        <el-table-column prop="BrwStatus" label="借還狀態" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Usrname" label="用戶名稱" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Plandate" label="預計歸還日期" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="useday" label="使用天數" width="100" align="center">
+        </el-table-column>
+        <el-table-column prop="Btime" label="借用時間" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Rtime" label="歸還日期" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Overday" label="超期天數" align="center">
+        </el-table-column>
+        <el-table-column prop="Comment" label="備註" width="180" align="center">
+        </el-table-column>
+        <el-table-column label="操作" fixed="right" width="100" align="center">
+            <template slot-scope="scope">
+                <el-button @click="alertData(scope.row.id,scope.row.NID)" type="text">歷史</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+<br/>
+    <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 50, 100, 200]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="total_computed">
+        </el-pagination>
+    </div>
+    </template>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script  src="/static/js/Element/table.js"></script>
+<script  src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script  src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/image.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script type="text/babel">
+ new Vue({
+     el: '#app',
+     delimiters: ['${', '}'],
+     data: function () {
+         return {
+             selectedIntfCtgry:null,
+             selectedDevCtgry:null,
+             selectedDevproperties:null,
+             selectedDevVendor :null,
+             selectedDevsize :null,
+             multipleSelectionFlag:false,
+             multiDeleteVisible:false,
+             dialogTableVisible:false,
+             dialogDetialVisible:false,
+             selectUsrname:[],
+             number: [],
+             multipleSelection: [],
+             tableContent: [],
+             tableData: [],
+             tableDetail : [],
+             sectionCustomer: [],
+             sectionPlant: [],
+             sectionexpirdate: [],
+             sectionDevStatus: [],
+             sectionBrwStatus: [],
+             sectionLNVST: [],
+             sectionPhase: [],
+             sectionStatus: [],
+             sectionDeviceStatus: [],
+             insert:false,
+             update:false,
+             currentPage: 1,//默认显示第一页
+             pageSize:100,//默认每页显示100条
+             totalNum:null,
+             selectOption:{},
+             formselectOption:{},
+             form1selectOption:{},
+             selectIntfCtgry:{},
+             selectDevCtgry:{},
+             formDevCtgry:{},
+             form1DevCtgry:{},
+             selectDevproperties:{},
+             formselectDevproperties:{},
+             form1selectDevproperties:{},
+             selectDevsize:{},
+             formselectDevsize:{},
+             form1selectDevsize:{},
+             selectPN:{},
+             excelFile:null,
+             fileName:"未選擇文件",
+             loading:false,
+             search:'',
+             form: {
+                  Customer: '',
+                  Plant: '',
+                  NID: '',
+                  DevID: '',
+                  IntfCtgry: '',
+                  DevCtgry: '',
+                  Devproperties: '',
+                  Devsize: '',
+                  DevVendor: '',
+                  DevModel: '',
+                  DevName: '',
+                  HWVer: '',
+                  FWVer: '',
+                  DevDescription: '',
+                  PckgIncludes: '',
+                  expirdate: '',
+                  DevPrice: '',
+                  Source: '',
+                  Pchsdate: '',
+                  PN: '',
+                  LNV_ST: '',
+                  Purchase_NO: '',
+                  Declaration_NO: '',
+                  AssetNum: '',
+                  addnewname: '',
+                  addnewdate: '',
+                  Comment: '',
+                  uscyc: '',
+                  UsrTimes: '',
+                  DevStatus: '',
+                  BrwStatus: '',
+                  Usrname: '',
+                  Plandate: '',
+                  useday: '',
+                  Btime: '',
+                  Rtime: '',
+
+             },
+
+            rules: {
+              Customer: [
+                { required: true, message: '请输入客戶別', trigger: 'blur' },
+              ],
+              Plant: [
+                { required: true, message: '请输入廠區', trigger: 'blur' },
+              ],
+              NID: [
+                { required: true, message: '请输入設備序號', trigger: 'blur' },
+              ],
+              DevID: [
+                { required: true, message: '请输入設備編號', trigger: 'blur' },
+              ],
+              IntfCtgry: [
+                { required: true, message: '请選擇介面種類', trigger: 'change' },
+              ],
+              DevCtgry: [
+                { required: true, message: '请選擇設備種類', trigger: 'change' },
+              ],
+              Devproperties: [
+                { required: true, message: '请選擇設備屬性', trigger: 'change' },
+              ],
+              DevVendor: [
+                { required: true, message: '请選擇設備廠家', trigger: 'change' },
+              ],
+              DevModel: [
+                { required: true, message: '请输入設備型號', trigger: 'blur' },
+              ],
+              DevName: [
+                { required: true, message: '请输入設備名稱', trigger: 'blur' },
+              ],
+              Devsize: [
+                { required: true, message: '请输入設備容量', trigger: 'change' },
+              ],
+              PckgIncludes: [
+                { required: true, message: '请输入附帶品', trigger: 'blur' },
+              ],
+              expirdate: [
+                { required: true, message: '请選擇保固期', trigger: 'change' },
+              ],
+              Source: [
+                { required: true, message: '请输入設備來源', trigger: 'blur' },
+              ],
+              Pchsdate: [
+                { type: 'string', required: true, message: '请選擇購買時間', trigger: 'change' },
+              ],
+              PN: [
+                { required: true, message: '请输入料號', trigger: 'blur' },
+              ],
+              LNV_ST: [
+                { required: true, message: '请输入設備審核清單', trigger: 'blur' },
+              ],
+              Purchase_NO: [
+                { required: true, message: '请输入申購單號', trigger: 'blur' },
+              ],
+              Declaration_NO: [
+                { required: true, message: '请输入報關單號', trigger: 'blur' },
+              ],
+              addnewname: [
+                { required: true, message: '请输入設備添加人員', trigger: 'blur' },
+              ],
+              addnewdate: [
+                { type: 'string', required: true, message: '请選擇設備添加日期', trigger: 'change' },
+              ],
+              DevStatus: [
+                { required: true, message: '请選擇設備狀態', trigger: 'change' },
+              ],
+              BrwStatus: [
+                { required: true, message: '请選擇借還狀態', trigger: 'change' },
+              ],
+
+
+            },
+            editid: '',
+             form1: {
+                  id: '',
+                  Customer: '',
+                  Plant: '',
+                  NID: '',
+                  DevID: '',
+                  IntfCtgry: '',
+                  DevCtgry: '',
+                  Devproperties: '',
+                  Devsize: '',
+                  DevVendor: '',
+                  DevModel: '',
+                  DevName: '',
+                  HWVer: '',
+                  FWVer: '',
+                  DevDescription: '',
+                  PckgIncludes: '',
+                  expirdate: '',
+                  DevPrice: '',
+                  Source: '',
+                  Pchsdate: '',
+                  PN: '',
+                  LNV_ST: '',
+                  Purchase_NO: '',
+                  Declaration_NO: '',
+                  AssetNum: '',
+                  addnewname: '',
+                  addnewdate: '',
+                  Comment: '',
+                  uscyc: '',
+                  UsrTimes: '',
+                  DevStatus: '',
+                  BrwStatus: '',
+                  Usrname: '',
+                  Plandate: '',
+                  useday: '',
+                  Btime: '',
+                  Rtime: '',
+
+             },
+             formData:[],
+             formData1:[],
+         }
+     },
+     mounted: function (){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+     },
+     methods: {
+        //获取数据
+        getdata: function (e) {
+            let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/DeviceABO/M_edit/", Qs.stringify(data), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.tableData=res.data.tableData;
+                this.selectIntfCtgry=res.data.selectIntfCtgry;
+                this.selectCustomer=res.data.selectCustomer;
+                this.selectItem=res.data.selectItem;
+                this.sectionCustomer=res.data.sectionCustomer;
+                this.sectionPlant=res.data.sectionPlant;
+                this.sectionexpirdate=res.data.sectionexpirdate;
+                this.sectionDevStatus=res.data.sectionDevStatus;
+                this.sectionBrwStatus=res.data.sectionBrwStatus;
+                this.sectionLNVST=res.data.sectionLNVST;
+                this.sectionPhase=res.data.sectionPhase;
+                this.sectionStatus=res.data.sectionStatus;
+                this.sectionDeviceStatus=res.data.sectionDeviceStatus;
+                this.tableContent = res.data.content;
+                this.totalNum=this.tableContent.length;
+         });
+
+        },
+        getRowKeys (row) {
+            return row.id;
+        },
+         //索引
+         indexMethod(index) {
+            return index +1;
+         },
+         //分页
+         handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+            this.pageSize = val;
+         },
+         handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+          this.currentPage = val;
+         },
+          handleRemove(file,fileList) {
+            console.log(file,fileList);
+          },
+          handlePreview(file) {
+            console.log(file);
+          },
+          beforeRemove(file,fileList) {
+            return this.$confirm(`确定移除 ${ file.name }？`);
+          },
+
+          //上传搜索项：以此选项搜索符合条件的内容
+             selectMsg :function(){
+               let intfCtgry = this.$refs.IntfCtgry.value;
+               let devCtgry = this.$refs.DevCtgry.value;
+               let devproperties = this.$refs.Devproperties.value;
+               let devVendor = this.$refs.DevVendor.value;
+               let devsize = this.$refs.Devsize.value;
+               let data ={"isGetData":"SEARCH","IntfCtgry":intfCtgry,"DevCtgry":devCtgry,"Devproperties":devproperties,
+                          "DevVendor":devVendor,"Devsize":devsize,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+               axios.post("/DeviceABO/M_edit/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.totalNum=this.tableContent.length;
+                  this.$refs.multipleTable.clearSelection();
+
+                })
+             },
+
+           handleSelectionChange(val) {
+                this.multipleSelection = val;
+                var len=document.getElementById("SelectNum");
+                len.innerHTML=this.multipleSelection.length;
+           },
+
+         showDetial(row, column, cell, event) {
+            if( column.label == "設備序號") {
+                {#console.log(row);#}
+                this.dialogDetialVisible = true;
+                this.tableDetail[0]  = row;
+
+            }
+         },
+
+            getImgUrl(val){
+               return "/media/DeviceLNV/Device/"+val+".jpg";
+            },
+
+            getImgUrl2(val){
+               return "/media/DeviceLNV/Baoguan/"+val+"_b.jpg";
+            },
+
+            floatdisplay(row, column, cell, event){
+                {#console.log(row,"row");#}
+                {#console.log(column,"column");#}
+            },
+
+              // 阻止upload的自己上传，进行再操作
+            handleChange(file, fileList) {
+              {#this.form.image = URL.createObjectURL(file.raw);#}
+              this.$refs.form.model.image = file.raw;
+            },
+            handleChange1(file, fileList) {
+              {#this.form.image = URL.createObjectURL(file.raw);#}
+              this.$refs.form1.model.image = file.raw;
+            },
+            beforeupload(file) {
+              return true;
+            },
+
+            querySearch(queryString, cb) {
+              var selectUsrname = this.selectItem;
+              var results = queryString ? selectUsrname.filter(this.createFilter(queryString)) : selectUsrname;
+              // 调用 callback 返回建议列表的数据
+                  {#console.log(this.selectItem,'111');#}
+              cb(results);
+            },
+            createFilter(queryString) {
+              return (restaurant) => {
+                return (
+                    restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+              };
+            },
+
+            handleSelect(item) {
+                  this.number = item.number;
+                  {#console.log(item);#}
+            },
+
+            changeDevCtgry:function () {
+               if(this.insert == true){
+                    this.formDevCtgry =this.selectIntfCtgry[this.$refs.form.model.IntfCtgry];
+               }else if(this.update == true){
+                    this.form1DevCtgry =this.selectIntfCtgry[this.$refs.form1.model.IntfCtgry];
+               }else {
+                 if(this.$refs.IntfCtgry.value ==''){
+                      this.selectDevCtgry=[""];
+                      return false;
+                 }
+                 this.selectDevCtgry =this.selectIntfCtgry[this.$refs.IntfCtgry.value];
+                 this.form1DevCtgry =this.selectIntfCtgry[this.$refs.IntfCtgry.value];
+                 this.selectedDevCtgry="";
+               }
+            },
+
+            changeDevproperties:function () {
+               if(this.insert == true){
+                  var intfCtgry = this.$refs.form.model.IntfCtgry;
+                  var devCtgry = this.$refs.form.model.DevCtgry;
+                  for(let i=0;i<this.selectIntfCtgry[intfCtgry].length;i++){
+                       if(this.selectIntfCtgry[intfCtgry][i]["DevCtgry"]==devCtgry){
+                       this.formselectDevproperties=this.selectIntfCtgry[intfCtgry][i]["Devproperties"];
+                      }
+                  }
+               }else if(this.update == true){
+                  var intfCtgry = this.$refs.form1.model.IntfCtgry;
+                  var devCtgry = this.$refs.form1.model.DevCtgry;
+                  for(let i=0;i<this.selectIntfCtgry[intfCtgry].length;i++){
+                       if(this.selectIntfCtgry[intfCtgry][i]["DevCtgry"]==devCtgry){
+                       this.form1selectDevproperties=this.selectIntfCtgry[intfCtgry][i]["Devproperties"];
+                      }
+                  }
+               }else {
+                 if(this.$refs.DevCtgry.value ==''){
+                      this.selectDevproperties=[""];
+                      return false;
+                 }
+                 for(let i=0;i<this.selectIntfCtgry[this.selectedIntfCtgry].length;i++){
+                     if(this.selectIntfCtgry[this.selectedIntfCtgry][i]["DevCtgry"]==this.selectedDevCtgry){
+                        this.selectDevproperties=this.selectIntfCtgry[this.selectedIntfCtgry][i]["Devproperties"];
+                 }
+                }
+                 this.selectedDevproperties="";
+               }
+            },
+
+            changeDevVendor:function () {
+               let intfCtgry = "";
+               let devCtgry = "";
+               let devproperties = "";
+               let data = {};
+               if(this.insert == true){
+                  intfCtgry = this.$refs.form.model.IntfCtgry;
+                  devCtgry = this.$refs.form.model.DevCtgry;
+                  devproperties = this.$refs.form.model.Devproperties;
+                  data = {"isGetData": "InsertJiLian","IntfCtgry":intfCtgry, "DevCtgry":devCtgry,
+                            "Devproperties":devproperties, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/DeviceABO/M_edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.formselectOption = res.data.formselectOption;
+                });
+               }else if(this.update == true){
+                  intfCtgry = this.$refs.form1.model.IntfCtgry;
+                  devCtgry = this.$refs.form1.model.DevCtgry;
+                  devproperties = this.$refs.form1.model.Devproperties;
+                  data = {"isGetData": "UpdateJiLian","IntfCtgry":intfCtgry, "DevCtgry":devCtgry,
+                            "Devproperties":devproperties, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/DeviceABO/M_edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.form1selectOption = res.data.form1selectOption;
+                });
+               }else {
+                  intfCtgry = this.$refs.IntfCtgry.value;
+                  devCtgry = this.$refs.DevCtgry.value;
+                  devproperties = this.$refs.Devproperties.value;
+                  if(devproperties == ""){
+                      this.selectOption=[""];
+                      return false;
+                  }
+                  data = {"isGetData": "SearchJiLian","IntfCtgry":intfCtgry, "DevCtgry":devCtgry,
+                            "Devproperties":devproperties, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/DeviceABO/M_edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.selectOption = res.data.selectOption;
+                });
+               }
+            },
+
+            changeDevsize:function () {
+                if(this.insert == true){
+                    this.formselectDevsize=this.formselectOption[this.$refs.form.model.DevVendor];
+                }else if(this.update == true){
+                    this.form1selectDevsize=this.form1selectOption[this.$refs.form1.model.DevVendor];
+                }else {
+                    let DevVendor = this.$refs.DevVendor.value;
+                     if(DevVendor == ""){
+                          this.selectDevsize=[""];
+                          return false;
+                     }
+                     this.selectDevsize=this.selectOption[this.$refs.DevVendor.value];
+                     this.selectedDevsize="";
+                }
+            },
+
+
+          updateFile:function(e){
+                const first="未選擇文件";
+                let newValue= e.target.files;
+                {#console.log(newValue,"r");#}
+                if(newValue){
+                 let file=document.getElementById('upload');
+                 let filename= file.files[0].name;
+                 let fileType=filename.substr(filename.lastIndexOf(".")+1);
+                 {#console.log(fileType.toLowerCase());#}
+                 if((fileType.toLowerCase() === 'xlsx')||(fileType.toLowerCase() === 'xls')){
+                      //console.log(this.excelFile);
+                     this.fileName=filename;
+                     this.uploadFile=file.files[0];
+                     {#console.log(this.uploadFile,"m");#}
+                 }else{
+                     alert("上傳類型不為'xlsx'或'xls'");
+                       try{
+                       }catch(e){
+                          console.log(e);
+                       }
+                 }
+             }else{
+                 this.uploadFile=null;
+                 this.fileName=first;
+             }
+          },
+
+         exportExcel: function () {
+             /* 从表生成工作簿对象 */
+             {#console.log(document.querySelector("#out-table"));#}
+             let temp = [];
+             temp.push(Number(this.currentPage));
+             temp.push(Number(this.pageSize));
+             {#console.log(temp);#}
+             this.currentPage = 1;
+             this.pageSize = this.tableContent.length;
+             {#console.log(temp, this.defaultPage1, this.pageSize);#}
+             setTimeout(() => {
+                 let table = document.querySelector("#out-table").cloneNode(true);
+                 let fix = table.querySelector(".el-table__fixed");
+                 let wb;
+                 if(fix){
+                    wb = XLSX.utils.table_to_book(table.removeChild(fix),{raw: true});
+                    table.appendChild(fix);
+                 }else{
+                    wb = XLSX.utils.table_to_book(table,{raw: true});
+                 }
+                 console.log("wb", wb);
+                 /* 获取二进制字符串作为输出 */
+                 var wbout = XLSX.write(wb, {
+                     bookType: "xlsx",
+                     bookSST: true,
+                     type: "array"
+                 });
+                 console.log("wbout", wbout);
+                 try {
+                     saveAs(
+                         //Blob 对象表示一个不可变、原始数据的类文件对象。
+                         //Blob 表示的不一定是JavaScript原生格式的数据。
+                         //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                         //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                         new Blob([wbout], {type: "application/octet-stream"}),
+                         //设置导出文件名称
+                         "sheetjs.xlsx"
+                     );
+
+                 } catch (e) {
+                     if (typeof console !== "undefined") console.log(e, wbout);
+                 }
+                 this.currentPage = temp[0];
+                 this.pageSize = temp[1];//edwin:要想导出后回到当前页而不是第一页，<el-pagination里面的:page-size="100"，而不能是:page-size="pageSize"
+                 temp = [];
+                 return wbout;
+             }, 100);
+         },
+
+         //批量上傳
+          fileUpload:function(){
+                    const first="未選擇文件";
+                    let intfCtgry = this.$refs.IntfCtgry.value;
+                    let devCtgry = this.$refs.DevCtgry.value;
+                    let devproperties = this.$refs.Devproperties.value;
+                    let devVendor = this.$refs.DevVendor.value;
+                    let devsize = this.$refs.Devsize.value;
+                    if(this.uploadFile){
+                       //1.解析Excel
+                       let outputResult;
+                       let _this= this;
+                       let files = this.uploadFile;
+                       let undefined_to_null=function(value){
+                           if(value == undefined){
+                               value=null;
+                           }
+                           //console.log(value,value === undefined,value == undefined);
+                           return value;
+                       };
+                       var fileReader = new FileReader ();
+                       const loading = this.$loading({
+                              lock: true,
+                              text: 'Loading',
+                              spinner: 'el-icon-loading',
+                              background: 'rgba(0, 0, 0, 0.7)'
+                       });
+                       fileReader.onload = function (ev) {
+                         try {
+                         {#_this.loading=true;#}
+                         var data = ev.target.result,
+                          workbook = XLSX.read(data, {
+                            type: 'binary'
+                         }), //以二进制流方式读取得到整份excel表格对象
+                          persons = []; //存储获取到的数据
+                       } catch (e) {
+                         {#_this.loading=false;#}
+                             loading.close();
+                         return;
+                      }
+                      for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        var fromTo = workbook.Sheets[sheet]['!ref'];
+                        // console.log(fromTo);
+                        var datas = workbook.Sheets[sheet];
+                        //如果有不规范数据可以在这里进行处理datas
+                        persons = persons.concat(XLSX.utils.sheet_to_json(datas));
+                        //break; //只读了第一张表
+                    }
+                }
+                     //数据保存在result
+                      let result=JSON.stringify(persons);
+                       //将之前张开的树形结构收起
+                          //_this.reset();
+                       //2.上傳數據
+                        axios.post("/DeviceABO/M_edit/" ,{"IntfCtgry":intfCtgry,"DevCtgry":devCtgry,"Devproperties":devproperties,'DevVendor':devVendor,'Devsize':devsize,"ExcelData":result},{
+                        headers:{ 'X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式 ==>'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    }).then((res) => {
+                        //console.log(res.data,"first");//上传成功的操作
+                        _this.tableContent = res.data.content;
+                        _this.totalNum = _this.tableContent.length;
+                        _this.errMsg=res.data.errMsg;
+                        _this.uploadFile=null;
+                        _this.fileName=first;
+                        {#_this.loading=false;#}
+                        loading.close();
+                        //上传成功的操作
+                        if(_this.errMsg){
+                            _this.$alert(_this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            _this.$message({
+                                message: '上傳成功',
+                                type: 'success',
+                            })
+                        }
+                        //接受数据的初始化
+                        try{
+                        }catch(e)
+                        {
+                           console.log("错误异常"+e);
+                        }
+                    }).catch(function (e) {
+                            {#_this.loading=false;#}
+                            loading.close();
+                            _this.uploadFile=null;
+                            var warning =confirm("上傳異常");
+                            console.log("上傳錯誤信息"+e);
+                        });
+               };
+                       try{
+                       //console.log(fileReader.onload());
+                       fileReader.readAsBinaryString(files);
+                       //console.log(fileReader.readAsBinaryString(files));
+                       }
+                       catch(e){
+                             {#this.loading=false;#}
+                             loading.close();
+                             console.log(e);
+                             alert("文件上傳異常") ;
+                             return;
+                        }
+                      //console.log(outputResult);
+                  // }
+                 }else{
+                   loading.close();
+                  alert("未選擇文件");
+                  return false;
+              }
+                    this.excelFile='';
+          },
+
+         addData() {
+            this.insert = true;
+         },
+
+         updateData() {
+            let datas = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+             {#console.log(datas[0]);#}
+            if(datas.length == 0){
+                 this.$alert('請勾選一條數據', '提示', {
+                    type: 'warning',
+                 })
+            }else if(datas.length == 1){
+                this.update = true;
+                this.editid = datas[0].id;
+                this.form1.Customer = datas[0].Customer;
+                this.form1.Plant = datas[0].Plant;
+                this.form1.NID = datas[0].NID;
+                this.form1.DevID = datas[0].DevID;
+                this.form1.IntfCtgry = datas[0].IntfCtgry;
+                this.form1.DevCtgry = datas[0].DevCtgry;
+                this.form1.Devproperties = datas[0].Devproperties;
+                this.form1.Devsize = datas[0].Devsize;
+                this.form1.DevVendor = datas[0].DevVendor;
+                this.form1.DevModel = datas[0].DevModel;
+                this.form1.DevName = datas[0].DevName;
+                this.form1.HWVer = datas[0].HWVer;
+                this.form1.FWVer = datas[0].FWVer;
+                this.form1.DevDescription = datas[0].DevDescription;
+                this.form1.PckgIncludes = datas[0].PckgIncludes;
+                this.form1.expirdate = datas[0].expirdate;
+                this.form1.DevPrice = datas[0].DevPrice;
+                this.form1.Source = datas[0].Source;
+                this.form1.Pchsdate = datas[0].Pchsdate;
+                this.form1.PN = datas[0].PN;
+                this.form1.Declaration_NO = datas[0].Declaration_NO;
+                this.form1.AssetNum = datas[0].AssetNum;
+                this.form1.addnewname = datas[0].addnewname;
+                this.form1.addnewdate = datas[0].addnewdate;
+                this.form1.Comment = datas[0].Comment;
+                this.form1.uscyc = datas[0].uscyc;
+                this.form1.UsrTimes = datas[0].UsrTimes;
+                this.form1.DevStatus = datas[0].DevStatus;
+                this.form1.BrwStatus = datas[0].BrwStatus;
+                this.form1.Usrname = datas[0].Usrname;
+                this.number = datas[0].Usrnumber;
+                console.log(datas[0].Usrnumber,'1111');
+                this.form1.Plandate = datas[0].Plandate;
+                this.form1.useday = datas[0].useday;
+                this.form1.Btime = datas[0].Btime;
+                this.form1.Rtime = datas[0].Rtime;
+                this.form1.LNV_ST = datas[0].LNV_ST;
+                this.form1.Purchase_NO = datas[0].Purchase_NO;
+            }else{
+                 this.$alert('只能勾選一條數據', '提示', {
+                    type: 'warning',
+                 });
+            }
+            this.$refs.multipleTable.clearSelection();
+         },
+
+         deleteData(){
+            if(this.multipleSelection.length == 0){
+                 this.$alert('請至少選中一條數據', '提示', {
+                    type: 'warning',
+                 })
+            }else{
+                    var warning=confirm('此操作将永久删除该条数据, 是否继续?');
+                    if(warning) {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                    });
+                     console.log(params);
+                       let intfCtgry = this.$refs.IntfCtgry.value;
+                       let devCtgry = this.$refs.DevCtgry.value;
+                       let devproperties = this.$refs.Devproperties.value;
+                       let devVendor = this.$refs.DevVendor.value;
+                       let devsize = this.$refs.Devsize.value;
+                       let data ={"isGetData":"MUTICANCEL","params": params,"IntfCtgry":intfCtgry,"DevCtgry":devCtgry,
+                            "DevVendor":devVendor,"Devproperties":devproperties,"Devsize":devsize,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+                       axios.post("/DeviceABO/M_edit/",data).then((res) => {
+                             this.tableContent = res.data.content;
+                             this.totalNum=this.tableContent.length;
+                             self.$message({
+                                 message: '删除成功',
+                                 type: 'success'
+                         });
+                        this.$refs.multipleTable.clearSelection();
+                 })
+             }else{
+                 return false;
+             }
+            }
+      },
+
+         onSubmit(formName) {
+            this.$refs[formName].validate((valid) => {
+              if (valid) {
+                  {#alert('submit!');#}
+                if (this.formData.length==0){this.formData = new FormData();}
+                  this.formData.append('IntfCtgrySearch', this.$refs.IntfCtgry.value);
+                  this.formData.append('DevCtgrySearch', this.$refs.DevCtgry.value);
+                  this.formData.append('DevpropertiesSearch', this.$refs.Devproperties.value);
+                  this.formData.append('DevVendorSearch', this.$refs.DevVendor.value);
+                  this.formData.append('DevsizeSearch', this.$refs.Devsize.value);
+                  this.formData.append('Customer', this.$refs.form.model.Customer);
+                  this.formData.append('Plant', this.$refs.form.model.Plant);
+                  this.formData.append('NID', this.$refs.form.model.NID);
+                  this.formData.append('DevID', this.$refs.form.model.DevID);
+                  this.formData.append('IntfCtgry', this.$refs.form.model.IntfCtgry);
+                  this.formData.append('DevCtgry', this.$refs.form.model.DevCtgry);
+                  this.formData.append('Devproperties', this.$refs.form.model.Devproperties);
+                  this.formData.append('Devsize', this.$refs.form.model.Devsize);
+                  this.formData.append('DevVendor', this.$refs.form.model.DevVendor);
+                  this.formData.append('DevModel', this.$refs.form.model.DevModel);
+                  this.formData.append('DevName', this.$refs.form.model.DevName);
+                  this.formData.append('HWVer', this.$refs.form.model.HWVer);
+                  this.formData.append('FWVer', this.$refs.form.model.FWVer);
+                  this.formData.append('DevDescription', this.$refs.form.model.DevDescription);
+                  this.formData.append('PckgIncludes', this.$refs.form.model.PckgIncludes);
+                  this.formData.append('expirdate', this.$refs.form.model.expirdate);
+                  this.formData.append('DevPrice', this.$refs.form.model.DevPrice);
+                  this.formData.append('Source', this.$refs.form.model.Source);
+                  this.formData.append('Pchsdate', this.$refs.form.model.Pchsdate);
+                  this.formData.append('PN', this.$refs.form.model.PN);
+                  this.formData.append('Declaration_NO', this.$refs.form.model.Declaration_NO);
+                  this.formData.append('AssetNum', this.$refs.form.model.AssetNum);
+                  this.formData.append('addnewname', this.$refs.form.model.addnewname);
+                  this.formData.append('addnewdate', this.$refs.form.model.addnewdate);
+                  this.formData.append('Comment', this.$refs.form.model.Comment);
+                  this.formData.append('uscyc', this.$refs.form.model.uscyc);
+                  this.formData.append('UsrTimes', this.$refs.form.model.UsrTimes);
+                  this.formData.append('DevStatus', this.$refs.form.model.DevStatus);
+                  this.formData.append('BrwStatus', this.$refs.form.model.BrwStatus);
+                  this.formData.append('Usrname', this.$refs.form.model.Usrname);
+                  if(this.$refs.form.model.Usrname==''){
+                      this.number='';
+                  }
+                  this.formData.append('Usrnumber', this.number);
+                  this.formData.append('Plandate', this.$refs.form.model.Plandate);
+                  this.formData.append('useday', this.$refs.form.model.useday);
+                  this.formData.append('Btime', this.$refs.form.model.Btime);
+                  this.formData.append('Rtime', this.$refs.form.model.Rtime);
+                  this.formData.append('LNV_ST', this.$refs.form.model.LNV_ST);
+                  this.formData.append('Purchase_NO', this.$refs.form.model.Purchase_NO);
+                  this.formData.append("action",'submit');
+                  console.log(this.formData);
+                  axios.post("/DeviceABO/M_edit/", this.formData,{
+                              headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                          }).then((res)=>{
+                              this.tableContent = res.data.content;
+                              this.totalNum=this.tableContent.length;
+                              this.errMsgNumber=res.data.errMsgNumber;
+                              this.formData = new FormData();
+                              if(this.errMsgNumber){
+                                  this.$alert(this.errMsgNumber, '提示', {
+                                        type: 'warning',
+                                  });
+                                  this.insert = true;
+                              }else{
+                                  try {
+                                          this.$refs.form.resetFields();
+                                          {#this.$refs.upload.clearFiles();#}
+                                  } catch (e) {
+
+                                  }
+                                  this.insert = false;
+                              }
+                  })
+                } else {
+                  console.log('error submit!!');
+                  return false;
+                }
+              });
+            },
+
+        onSubmit1() {
+            console.log('submit!',this.$refs.form1.model,typeof (this.$refs.form1.model),this.formData1);
+            {#var submitData = new FormData();#}
+            if (this.formData1.length==0){this.formData1 = new FormData();}
+                  this.formData1.append('id', this.editid);
+                  this.formData1.append('IntfCtgrySearch', this.$refs.IntfCtgry.value);
+                  this.formData1.append('DevCtgrySearch', this.$refs.DevCtgry.value);
+                  this.formData1.append('DevpropertiesSearch', this.$refs.Devproperties.value);
+                  this.formData1.append('DevVendorSearch', this.$refs.DevVendor.value);
+                  this.formData1.append('DevsizeSearch', this.$refs.Devsize.value);
+                  this.formData1.append('Customer', this.$refs.form1.model.Customer);
+                  this.formData1.append('Plant', this.$refs.form1.model.Plant);
+                  this.formData1.append('NID', this.$refs.form1.model.NID);
+                  this.formData1.append('DevID', this.$refs.form1.model.DevID);
+                  this.formData1.append('IntfCtgry', this.$refs.form1.model.IntfCtgry);
+                  this.formData1.append('DevCtgry', this.$refs.form1.model.DevCtgry);
+                  this.formData1.append('Devproperties', this.$refs.form1.model.Devproperties);
+                  this.formData1.append('Devsize', this.$refs.form1.model.Devsize);
+                  this.formData1.append('DevVendor', this.$refs.form1.model.DevVendor);
+                  this.formData1.append('DevModel', this.$refs.form1.model.DevModel);
+                  this.formData1.append('DevName', this.$refs.form1.model.DevName);
+                  this.formData1.append('HWVer', this.$refs.form1.model.HWVer);
+                  this.formData1.append('FWVer', this.$refs.form1.model.FWVer);
+                  this.formData1.append('DevDescription', this.$refs.form1.model.DevDescription);
+                  this.formData1.append('PckgIncludes', this.$refs.form1.model.PckgIncludes);
+                  this.formData1.append('expirdate', this.$refs.form1.model.expirdate);
+                  this.formData1.append('DevPrice', this.$refs.form1.model.DevPrice);
+                  this.formData1.append('Source', this.$refs.form1.model.Source);
+                  this.formData1.append('Pchsdate', this.$refs.form1.model.Pchsdate);
+                  this.formData1.append('PN', this.$refs.form1.model.PN);
+                  this.formData1.append('Declaration_NO', this.$refs.form1.model.Declaration_NO);
+                  this.formData1.append('AssetNum', this.$refs.form1.model.AssetNum);
+                  this.formData1.append('addnewname', this.$refs.form1.model.addnewname);
+                  this.formData1.append('addnewdate', this.$refs.form1.model.addnewdate);
+                  this.formData1.append('Comment', this.$refs.form1.model.Comment);
+                  this.formData1.append('uscyc', this.$refs.form1.model.uscyc);
+                  this.formData1.append('UsrTimes', this.$refs.form1.model.UsrTimes);
+                  this.formData1.append('DevStatus', this.$refs.form1.model.DevStatus);
+                  this.formData1.append('BrwStatus', this.$refs.form1.model.BrwStatus);
+                  this.formData1.append('Usrname', this.$refs.form1.model.Usrname);
+                  if(this.$refs.form1.model.Usrname==''){
+                      this.number='';
+                  }
+                  this.formData1.append('Usrnumber', this.number);
+                  this.formData1.append('Plandate', this.$refs.form1.model.Plandate);
+                  this.formData1.append('useday', this.$refs.form1.model.useday);
+                  this.formData1.append('Btime', this.$refs.form1.model.Btime);
+                  this.formData1.append('Rtime', this.$refs.form1.model.Rtime);
+                  this.formData1.append('LNV_ST', this.$refs.form1.model.LNV_ST);
+                  this.formData1.append('Purchase_NO', this.$refs.form1.model.Purchase_NO);
+                  this.formData1.append("action",'submit1');
+                  console.log(this.formData1);
+                  axios.post("/DeviceABO/M_edit/", this.formData1,{
+                            headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                        }).then((res)=>{
+                            this.tableContent = res.data.content;
+                            this.totalNum=this.tableContent.length;
+                            this.update=false;
+                            this.formData1 = new FormData();
+                  })
+          },
+
+        alertData:function(id,pid){
+               this.dialogTableVisible=true;
+               let intfCtgry = this.$refs.IntfCtgry.value;
+               let devCtgry = this.$refs.DevCtgry.value;
+               let devproperties = this.$refs.Devproperties.value;
+               let devVendor = this.$refs.DevVendor.value;
+               let devsize = this.$refs.Devsize.value;
+               let msg = {
+                  "isGetData" : "alertData" , "ID":id,"NID":pid,"IntfCtgry":intfCtgry,"DevCtgry":devCtgry,
+                   "Devproperties":devproperties,"DevVendor":devVendor,"Devsize":devsize
+              };
+               axios.post("/DeviceABO/M_edit/",Qs.stringify(msg,{indices:false}),{
+                        headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                    } ).then((res) => {
+                    this.tableData = res.data.tableData;
+               })
+        },
+
+        addColor({row, column, rowIndex, columnIndex}) {
+                    if (columnIndex === 19 && row.Overday !== '') {
+                                   return {
+                                             color: '#FF0000'
+                                           }
+                           }
+                           if (columnIndex === 13 && (row.BrwStatus =='已借出'||row.BrwStatus =='已續借')) {
+                                   return {
+                                             color: '#f14018'
+                                           }
+                           }
+                           if (columnIndex === 13 && (row.BrwStatus =='歸還確認中'||row.BrwStatus =='預定確認中'||row.BrwStatus =='續借確認中')) {
+                                   return {
+                                             background: '#FFFF00'
+                                           }
+                           }
+                           if (columnIndex === 13 && row.BrwStatus =='固定設備') {
+                                   return {
+                                             background: '#98F898'
+                                           }
+                           }
+                           if (columnIndex === 13 && row.BrwStatus =='可借用') {
+                                   return {
+                                             background: '#32CD32'
+                                           }
+                           }
+                           if (columnIndex === 13 && row.BrwStatus =='長期借用') {
+                                    return {
+                                              background: '#CEFFCE'
+                                            }
+                           }
+        },
+
+         ToBreak (val) {
+            //console.log(val,"val")
+          if(val){
+              //console.log(val.replace('\n', '<br />'),"val")
+              return val.replace('\n', '<br />')
+          }
+        }
+     },
+        computed:{
+                datas(){//必须是el-table里面绑定的数据变量,不能与axios接受的变量名一样
+                    console.log(111);
+                    const search=this.search;
+                    if(search){
+                        return this.tableContent.filter(data=>{//axios返回时接受数据的变量
+                            return Object.keys(data).some(key=>{
+                                return String(data[key]).toLowerCase().indexOf(search.toLowerCase())>-1
+                            })
+                        })
+                    }
+                    return this.tableContent//axios返回时接受数据的变量
+                },
+                total_computed () {
+                    this.Totalsize = this.datas.length;//edwin:export数据的个数
+                    console.log(this.Totalsize);
+                  return this.datas.length//必须是el-table里面绑定的数据变量
+                }
+            },
+        watch: {
+                datas() {
+                    this.currentPage = 1;
+                }
+            },
+ })
+</script>
+{% endblock %}

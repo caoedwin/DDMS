@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}DMS_borrow{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+
+.showColor:hover{
+    color: red;
+}
+
+.selectMsg{
+     font-size:18px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+  .customerContent,.changjiaContent,.pnContent,.powerContent{
+     margin-left: 20px;
+}
+.showNum{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+ .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+#sh {
+    font-size:18px;
+    font-family:微软雅黑;
+    border: 2px solid #9f9ca1;
+}
+
+#sh::-webkit-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh::-moz-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh:-ms-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+     <div class="row" style="white-space: nowrap;">
+         <div class="col-md-6">
+         <label style="color: black;font-size: 16px;font-weight: bold;" for="UnifiedNumber">統一編號</label>
+         <el-autocomplete
+                  clearable
+                  class="inline-input"
+                  v-model="selectedUnifiedNumber"
+                  ref="UnifiedNumber"
+                  :fetch-suggestions="querySearch"
+                  placeholder="请输入統一編號"
+                  @select="handleSelect">
+         </el-autocomplete>
+
+         <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="MachineStatus">工作機狀態</label>
+         <el-select v-model="selectedMachineStatus" ref="MachineStatus" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;" clearable v-cloak>
+           <el-option v-for="(item,key) in allMachineStatus" :label="item" :value="item"></el-option>
+         </el-select>
+         </div>
+         <div class="col-md-2">
+             <el-button :loading="elbuttonloading" @click="search5" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button>
+         </div>
+     </div>
+<br>
+    <div class="tableAround" v-cloak >
+        {% comment %}<div class="111" style="margin-bottom:20px;">
+      <span class="showNum">已選 <span id="selectNum">0</span> 條</span> <el-button @click="ensureInfo()" v-cloak size="medium" style="background-color:#9df387d4; border-color:black;color:black;margin-left: 50px">借用</el-button>
+      </div>{% endcomment %}
+    <el-input type="text" v-model="search"  id="sh" placeholder="請輸入關鍵字搜索..."></el-input>
+    <el-table id="out-table" border  stripe ref="multipleTable"  tooltip-effect="dark"  height="700"
+     :data="datas.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+     :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+     style="border-radius: 10px;word-break: keep-all" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+    v-loading="tableloading"
+        element-loading-text="數據更新中，請稍後"
+        border>
+        <el-table-column type="selection" align="center" :reserve-selection="true" :selectable='checkboxT' fixed></el-table-column>
+        <el-table-column type="index" :index="indexMethod" width="40" align="center" fixed></el-table-column>
+        <el-table-column prop="CollectDate" label="領用日期" align="center" width="95" fixed>
+        </el-table-column>
+        <el-table-column prop="UnifiedNumber" label="統一編號" align="center" width="90" fixed>
+        </el-table-column>
+        <el-table-column prop="Number" label="工號" align="center" width="90" fixed>
+        </el-table-column>
+        <el-table-column prop="Name" label="姓名" align="center" width="80" fixed>
+        </el-table-column>
+        <el-table-column prop="MaterialPN" label="MaterialPN" width="90" align="center">
+        </el-table-column>
+        <el-table-column prop="CPU" label="CPU" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="RAM" label="RAM" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="HDD" label="HDD" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="Wireless" label="Wireless" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="LCD" label="LCD" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="OCR" label="OCR" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Battery" label="Battery" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Adaptor" label="Adaptor" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Region" label="地區" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="OutPlant" label="攜出廠外" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Factory" label="廠區" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="ComputerUse" label="電腦用途" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="Category" label="產品類別" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="MachineStatus" label="工作機狀態" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="IdleState" label="閒置狀態" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="Years" label="年限" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="FormNumber" label="E-Form單號" align="center">
+        </el-table-column>
+      </el-table>
+      <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total_computed">
+        </el-pagination>
+      </div>
+    </div>
+    <template>
+      <el-backtop ></el-backtop>
+    </template>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/Element/message.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                selectedUnifiedNumber:"",
+                selectedMachineStatus:"",
+                allMachineStatus:[],
+                selectUnifiedNumber:[],
+                errMessage:"",
+                search:'',
+                tableContent:[],
+                currentPage: 1,//默认显示第一页
+                pageSize:100,//默认每页显示100条
+                totalNum: null,
+                elbuttonloading: false,
+                tableloading: false,
+                multipleSelection: [],
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/ComputerMS/BorrowedComputer/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.tableContent=res.data.content;
+                    this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                    this.allMachineStatus=res.data.allMachineStatus;
+                    this.totalNum=this.tableContent.length;
+                    this.elbuttonloading = false;
+                    this.tableloading = false;
+                });
+            },
+
+            querySearch(queryString, cb) {
+                var UnifiedNumber = this.selectUnifiedNumber;
+                var results = queryString ? UnifiedNumber.filter(this.createFilter(queryString)) : UnifiedNumber;
+                // 调用 callback 返回建议列表的数据
+                cb(results);
+            },
+
+            createFilter(queryString) {
+                return (restaurant) => {
+                  return (
+                      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+                };
+            },
+
+            handleSelect(item) {
+                {#this.number = item.number;#}
+            },
+
+            search5:function(){
+                    this.elbuttonloading = true;
+                    this.tableloading = true;
+                   let UnifiedNumber = this.$refs.UnifiedNumber.value;
+                   let MachineStatus = this.$refs.MachineStatus.value;
+                   let data = {
+                       "isGetData": "SEARCH",
+                       "UnifiedNumber": UnifiedNumber,
+                       "MachineStatus": MachineStatus,
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/ComputerMS/BorrowedComputer/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.tableContent=res.data.content;
+                       this.totalNum=this.tableContent.length;
+                       this.elbuttonloading = false;
+                        this.tableloading = false;
+                   })
+                   this.$refs.multipleTable.clearSelection()
+            },
+
+            indexMethod(index) {
+                return index + 1;
+            },
+            //分页
+            handleSizeChange(val) {
+                  console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+                  this.currentPage = val;
+                  console.log(this.tableContent.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize));
+            },
+
+            handleSelectionChange(rows) {
+                this.multipleSelection = rows;
+                var len=document.getElementById("selectNum");
+                len.innerHTML=this.multipleSelection.length;
+            },
+
+            getRowKeys (row) {
+              return row.id;
+            },
+
+           checkboxT(row,index){
+              if( row.MachineStatus =='閑置中' ){
+                return 1
+              }else {
+                return 0
+              }
+            },
+
+            ensureInfo:function(){
+                if(this.multipleSelection.length==0){
+                    alert('未勾选数据！');
+                }else if(this.multipleSelection.length==1){
+                   let ID = this.multipleSelection[0].id;
+                   let UnifiedNumber = this.$refs.UnifiedNumber.value;
+                   let MachineStatus = this.$refs.MachineStatus.value;
+                   let data ={"isGetData":"EnsureInfo","ID": ID,"UnifiedNumber":UnifiedNumber,"MachineStatus":MachineStatus,
+                        "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+                   axios.post("/ComputerMS/BorrowedComputer/",Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                         this.errMessage = res.data.errMessage;
+                         if(this.errMessage != ""){
+                              this.$alert(this.errMessage, '提示', {
+                                    type: 'warning',
+                              });
+                              this.$refs.multipleTable.clearSelection();
+                         }else{
+                             this.$message({
+                                     message: '領用成功',
+                                     type: 'success'
+                             });
+                             this.$refs.multipleTable.clearSelection();
+                         }
+                         this.tableContent = res.data.content;
+                         this.totalNum=this.tableContent.length;
+                   })
+                }else {
+                     this.$alert('只能勾選一條數據！', '提示', {
+                        type: 'warning',
+                     })
+                }
+            },
+
+        },
+        computed:{
+                datas(){//必须是el-table里面绑定的数据变量,不能与axios接受的变量名一样
+                    {#console.log(111);#}
+                    const search=this.search;
+                    if(search){
+                        return this.tableContent.filter(data=>{//axios返回时接受数据的变量
+                            return Object.keys(data).some(key=>{
+                                return String(data[key]).toLowerCase().indexOf(search.toLowerCase())>-1
+                            })
+                        })
+                    }
+                    return this.tableContent//axios返回时接受数据的变量
+                },
+                total_computed () {
+                    this.Totalsize = this.datas.length;//edwin:export数据的个数
+                    {#console.log(this.Totalsize);#}
+                  return this.datas.length//必须是el-table里面绑定的数据变量
+                }
+            },
+        watch: {
+                datas() {
+                    this.currentPage = 1;
+                }
+            },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+

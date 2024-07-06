@@ -1,0 +1,745 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}DMS_borrowed{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+.selectMsg{
+     font-size:18px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+ .changjiaContent,.pnContent,.powerContent{
+     margin-left: 20px;
+}
+.showNum{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+ .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+ .el-table {
+     font-size: 20px;
+ }
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+      <el-button @click="exportExcel2" type="info" style="margin-bottom: 15px;margin-right: 20px">Export</el-button>
+      <el-table height="245" ref="multipleTable" id="out-table2" border stripe :data="tableContent"  :cell-style="addColor" :span-method="daLeiSpanMethod1"
+      :header-cell-style="{
+                                       'background-color':'#fafafa',
+                                       'font-weight':'800',
+                                       'border-bottom':'1px solid rgb(103, 194, 58)'
+                                    }">
+          <el-table-column type="index" :index="indexMethod" align="center"></el-table-column>
+          <el-table-column  prop="Leibie" label="类别" align="center"></el-table-column>
+          <el-table-column  prop="Pinming" label="品名" align="center"></el-table-column>
+          <el-table-column  prop="Total" label="Total" align="center"></el-table-column>
+          <el-table-column  prop="TUM" label="TUM" align="center"></el-table-column>
+          <el-table-column  prop="Chazhi" label="差值" align="center"></el-table-column>
+      </el-table>
+
+<hr/>
+    <div class="row" style="margin-bottom: 15px;margin-left: 10px"><h4>掛賬詳細信息:</h4> <el-button  @click="exportExcel1" type="info" style="margin-left: 15px;">Export</el-button></div>
+      <el-table height="700" ref="multipleTable1" id="out-table1" border stripe :data="tableContent1.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)"  :cell-style="addColor" :span-method="daLeiSpanMethod2"
+      :header-cell-style="{
+                                       'background-color':'#fafafa',
+                                       'font-weight':'800',
+                                       'border-bottom':'1px solid rgb(103, 194, 58)'
+                                    }">
+          <el-table-column type="index" :index="indexMethod" align="center"></el-table-column>
+          <el-table-column  prop="Pinming" label="品名" align="center"></el-table-column>
+          <el-table-column  prop="Liaohao" label="料號" align="center"></el-table-column>
+          <el-table-column  prop="Total" label="Total" align="center"></el-table-column>
+          <el-table-column  prop="TUM" label="TUM" align="center"></el-table-column>
+          <el-table-column  prop="Chazhi" label="差值" align="center"></el-table-column>
+      </el-table>
+      <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[10, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total_computed">
+        </el-pagination>
+      </div>
+
+
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+ <script src="/static/js/xlsx/FileSaver.min.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+               tableContent:[],
+               tableContent1:[],
+               currentPage: 1,//默认显示第一页
+               pageSize:100,//默认每页显示100条
+               totalNum: null,
+                search:'',
+                Totalsize:null,
+
+                heBingNum2:[],
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/AdapterPowerCode/Summary/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.tableContent=res.data.content;
+                    this.tableContent1=res.data.tableContent1;
+                    this.totalNum=this.tableContent1.length;
+                    this.heBingNum2=res.data.heBingNum2;
+                });
+            },
+            indexMethod(index) {
+                return index + 1;
+            },
+            //分页
+            handleSizeChange(val) {
+                  console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+                  this.currentPage = val;
+                  console.log(this.tableContent.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize));
+            },
+            addColor({row, column, rowIndex, columnIndex}) {
+                    if (columnIndex === 5 && row.Chazhi!=0 && row.Chazhi!='NA') {
+                            return {
+                                      background: '#f14018',
+                                        color: '#FFF'
+                                    }
+                    }
+                },
+            exportExcel1:function (){
+              let temp=[];
+             temp.push(Number(this.currentPage));
+             temp.push(Number(this.pageSize));
+              this.currentPage = 1; //当前页为第一页
+              this.pageSize = this.Totalsize; //每页大小限制条数：为总条数（将表格数据全部渲染出来在第一页上）
+            this.$nextTick(function () {
+                   /* 从表生成工作簿对象 */
+                 let table = document.querySelector("#out-table1").cloneNode(true);
+                 // 因为element-ui的表格的fixed属性导致多出一个table，会下载重复内容，这里删除掉
+                 //table.removeChild(table.querySelector(".el-table__fixed"))
+                    //let wb = XLSX.utils.table_to_book(table,{raw:true});//mytable为表格的id名
+
+                var wb = XLSX.utils.table_to_book(table,{raw:true});
+                /* 获取二进制字符串作为输出 */
+                var wbout = XLSX.write(wb, {
+                    bookType: "xlsx",
+                    bookSST: true,
+                    type: "array"
+                });
+                try {
+                    saveAs(
+                    //Blob 对象表示一个不可变、原始数据的类文件对象。
+                    //Blob 表示的不一定是JavaScript原生格式的数据。
+                    //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                    //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                    new Blob([wbout], { type: "application/octet-stream" }),
+                    //设置导出文件名称
+                    "sheetjs.xlsx"
+                    );
+                } catch (e) {
+                    if (typeof console !== "undefined") console.log(e, wbout);
+                }
+                this.currentPage=temp[0];
+                this.pageSize=temp[1];//edwin:要想导出后回到当前页而不是第一页，<el-pagination里面的:page-size="100"，而不能是:page-size="pageSize"
+                temp=[];
+                return wbout;
+                });
+            },
+            exportExcel2:function (){
+                      let temp=[];
+                     temp.push(Number(this.currentPage));
+                     temp.push(Number(this.pageSize));
+                      this.currentPage = 1; //当前页为第一页
+                      this.pageSize = this.Totalsize; //每页大小限制条数：为总条数（将表格数据全部渲染出来在第一页上）
+                    this.$nextTick(function () {
+                           /* 从表生成工作簿对象 */
+                         let table = document.querySelector("#out-table2").cloneNode(true);
+                         // 因为element-ui的表格的fixed属性导致多出一个table，会下载重复内容，这里删除掉
+                       //  table.removeChild(table.querySelector(".el-table__fixed"))
+                            //let wb = XLSX.utils.table_to_book(table,{raw:true});//mytable为表格的id名
+
+                        var wb = XLSX.utils.table_to_book(table,{raw:true});
+                        /* 获取二进制字符串作为输出 */
+                        var wbout = XLSX.write(wb, {
+                            bookType: "xlsx",
+                            bookSST: true,
+                            type: "array"
+                        });
+                        try {
+                            saveAs(
+                            //Blob 对象表示一个不可变、原始数据的类文件对象。
+                            //Blob 表示的不一定是JavaScript原生格式的数据。
+                            //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                            //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                            new Blob([wbout], { type: "application/octet-stream" }),
+                            //设置导出文件名称
+                            "sheetjs.xlsx"
+                            );
+                        } catch (e) {
+                            if (typeof console !== "undefined") console.log(e, wbout);
+                        }
+                        this.currentPage=temp[0];
+                        this.pageSize=temp[1];//edwin:要想导出后回到当前页而不是第一页，<el-pagination里面的:page-size="100"，而不能是:page-size="pageSize"
+                        temp=[];
+                        return wbout;
+                        });
+                    },
+             daLeiSpanMethod1({ row, column, rowIndex, columnIndex }) {
+                if (columnIndex === 1) {    //用于设置要合并的列
+                      if (rowIndex===0) {   //用于设置合并开始的行号
+                        return {
+                          rowspan:2,　　　　　//合并的行数
+                          colspan: 1          //合并的列数，设为０则直接不显示
+                        };
+                      }else if (rowIndex===2) {   //用于设置合并开始的行号
+                        return {
+                          rowspan:2,　　　　　//合并的行
+                          colspan: 1          //合并的列数，设为０则直接不显示
+                        };
+                      }else {
+                        return {
+                          rowspan: 0,
+                          colspan: 0
+                        };
+                      }
+                }
+            },
+             daLeiSpanMethod2({ row, column, rowIndex, columnIndex }) {
+                if (columnIndex === 1) {    //用于设置要合并的列
+                      if (rowIndex===0) {   //用于设置合并开始的行号
+                        return {
+                          rowspan:this.heBingNum2[0],　　　　　//合并的行数
+                          colspan: 1          //合并的列数，设为０则直接不显示
+                        };
+                      }else if (rowIndex===this.heBingNum2[0]) {   //用于设置合并开始的行号
+                        return {
+                          rowspan:this.heBingNum2[1],　　　　　//合并的行
+                          colspan: 1          //合并的列数，设为０则直接不显示
+                        };
+                      }else {
+                        return {
+                          rowspan: 0,
+                          colspan: 0
+                        };
+                      }
+                }
+            },
+
+        },
+        computed:{
+                datas_computed(){
+                    console.log(111)
+                    const search=this.search;
+                    if(search){
+                        return this.tableContent1.filter(data=>{
+                            return Object.keys(data).some(key=>{
+                                return String(data[key]).toLowerCase().indexOf(search.toLowerCase())>-1
+                            })
+                        })
+                    }
+                    this.totalNum = this.tableContent1.length;
+                    return this.tableContent1
+                },
+                total_computed () {
+                    this.Totalsize = this.datas_computed.length;//edwin:export数据的个数
+                    console.log(this.Totalsize,this.tableContent1.length);
+                  return this.datas_computed.length
+                }
+            },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}DriverList_edit{% endblock %}
+{% block css %}
+{#<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">#}
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/ElementUI.css">
+{% endblock %}
+{% block content %}
+<div id="app">
+           <div class="row" style="white-space: nowrap;">
+                    <div class="col-md-2">
+                    <label for="Customer" style="color: #fff;">Customer</label>
+           <select id="Customer" ref="Customer"  @change="changeCustomer" v-model="selectedCustomer" style="height:30px;width:80px;border-radius:5px 5px 5px 5px;">
+               <option value=""> </option>
+               <option v-for="(item,key,index) in selectItem" >${ key }</option>
+           </select>
+                    </div>
+                    <div class="col-md-2">
+                        　<label for="Project" style="color: #fff;">Project</label>
+           <select id="Project" ref="Project" @change="changeProject" v-model="selectedProject" style="height:30px;border-radius:5px 5px 5px 5px;width:80px;">
+               <option></option>
+               <option v-for="(item,key,index) in selectProject">${ item.Project }</option>
+           </select>
+                    </div>
+         <div class="col-md-2">
+                        　　<label for="Phase0 " style="color: #fff;">Phase</label>
+             <select id="Phase0" ref="Phase0" @change="changePhase0" v-model="selectedPhase0" style="height:30px;border-radius:5px 5px 5px 5px;width:80px;">
+               <option></option>
+               <option v-for="(item,key,index) in selectPhase0">${ item }</option>
+           </select>
+                    </div>
+         <div class="col-md-2">
+                        　　<label for="Driver" style="color: #fff;">Driver</label>
+             <select id="Driver" ref="Driver" v-model="selectedDriver" style="height:30px;border-radius:5px 5px 5px 5px;width:80px;">
+               <option></option>
+               <option v-for="(item,key,index) in selectDriver">${ item.Driver }</option>
+           </select>
+                    </div>
+         <div class="col-md-2">
+                        　　<label for="Image" style="color: #fff;">Image</label>
+             <select id="Image" ref="Image" v-model="selectedImage" style="height:30px;border-radius:5px 5px 5px 5px;width:80px;">
+               <option></option>
+               <option v-for="(item,key,index) in selectImage">${ item.Image }</option>
+           </select>
+                    </div>
+                    <div class="col-md-1">
+                        <el-button size="small" style="background:#428bca;color:#fff;" value="Search" name="Search" @click="selectMsg">Search</el-button>
+                    </div>
+    </div>
+<template>
+   <el-table stripe border height="700" ref="multipleTable" :data="tableContent" tooltip-effect="dark" style="width: 95% ;heighrt:200;"  @selection-change="handleSelectionChange"
+   :default-sort = "{prop: 'Project', order: 'descending'}">
+    <el-table-column type="selection" width="50"></el-table-column>
+    <el-table-column type="index" :index="indexMethod"></el-table-column>
+       <el-table-column prop="Project" label="Project" width="200" show-overflow-tooltip>
+        <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Project"></el-input>
+            <span v-if="!showEdit[scope.$index]">${ project[scope.$index] }</span>
+        </template>
+    </el-table-column>
+       <el-table-column prop="Phase" label="Phase" width="100" show-overflow-tooltip>
+        <template slot-scope="scope">
+            <el-select class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Phase">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+            </el-select>
+            <span v-if="!showEdit[scope.$index]">${ phase[scope.$index] }</span>
+        </template>
+    </el-table-column>
+   <el-table-column prop="Name" label="Driver/Utility/Firmware/Application Name" width="380" >
+        <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Name"></el-input>
+            <span v-if="!showEdit[scope.$index]">${ name[scope.$index] }</span>
+        </template>
+   </el-table-column>
+    <el-table-column prop="Function0" label="Function" width="100">
+       <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Function0"></el-input>
+            <span v-if="!showEdit[scope.$index]">${ function0[scope.$index] }</span>
+        </template>
+    </el-table-column>
+    <el-table-column prop="Vendor" label="Vendor" width="120">
+        <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Vendor"></el-input>
+            <span v-if="!showEdit[scope.$index]">${ vendor[scope.$index] }</span>
+        </template>
+    </el-table-column>
+    <el-table-column prop="Version" label="Version" width="120" show-overflow-tooltip>
+        <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Version"></el-input>
+            <span v-if="!showEdit[scope.$index]">${ version[scope.$index] }</span>
+        </template>
+    </el-table-column>
+       <el-table-column prop="Bios" label="Bios" width="120">
+        <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Bios"></el-input>
+            <span v-if="!showEdit[scope.$index]" >${ bios[scope.$index] }</span>
+        </template>
+       </el-table-column>
+    <el-table-column prop="Driver" label="Driver" width="120">
+        <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Driver"></el-input>
+            <span v-if="!showEdit[scope.$index]" >${ driver[scope.$index] }</span>
+        </template>
+    </el-table-column>
+    <el-table-column prop="Image" label="Image" width="100" align="center">
+        <template slot-scope="scope">
+            <el-input class="edit-cell" v-if="showEdit[scope.$index]"    v-model="scope.row.Image"></el-input>
+            <span v-if="!showEdit[scope.$index]">${ image[scope.$index] }</span>
+        </template>
+    </el-table-column>
+    <el-table-column label="操作" width="120" align="center" fixed="right">
+         <template slot-scope="scope">
+            <el-button type="text" size="small"     @click.native="saveRow(scope.$index, scope.row)"     v-if="showBtn[scope.$index]">保存</el-button>
+            <el-button type="text" size="small"     @click.native="cancelRow(scope.$index, scope.row)"     v-if="showBtn[scope.$index]">取消</el-button>
+
+            <el-button type="text" size="small"     @click.native="editRow(scope.$index, scope.row)"     v-if="!showBtn[scope.$index]">编辑</el-button>
+            <el-button type="text" size="small"  @click="open(scope.$index,scope.row)" v-if="!showBtn[scope.$index]">删除</el-button>
+        </template>
+    </el-table-column>
+   </el-table>
+    <div style="margin-top: 20px">
+    <el-button type="danger" v-if="multipleSelectionFlag" @click="multiDelete">批量删除</el-button>
+  </div>
+</template>
+
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                options: [{value: 'NPI', label: 'NPI'}, {value: '19H1', label: '19H1'}, {value: '19H2', label: '19H2'},{value: 'Others', label: 'Others'}],
+
+                visible: false,
+                tableContent: [],
+                multipleSelectionFlag:false,
+                multiDeleteVisible:false,
+                multipleSelection: [],
+                selectedCustomer:null,
+                selectedProject:null,
+                selectedPhase0:null,
+                selectPhase0:null,
+                selectedDriver:null,
+                selectDriver:[],
+                selectedImage:null,
+                selectImage:[],
+                selectProject:[],
+                selectItem:{},
+                dr:null,
+                im:null,
+                tableContent_temp:[],
+                Customer:[],
+                Phase:[],
+                driver:[],
+                bios:[],
+                name:[],
+                function0:[],
+                vendor:[],
+                version:[],
+                project:[],
+                phase:[],
+                image:[],
+                showEdit: [], //显示编辑框
+                showBtn: [],
+                showBtnOrdinary: true
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/DriverTool/DriverList_edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.tableContent = res.data.content;
+                    this.selectItem=res.data.select;
+                    for(let i=0;i<this.tableContent.length;i++){
+                        this.Customer[i]=this.tableContent[i].Customer;
+                        this.Phase[i]=this.tableContent[i].Phase;
+                        this.bios[i]=this.tableContent[i].Bios;
+                        this.driver[i]=this.tableContent[i].Driver;
+                        this.name[i]=this.tableContent[i].Name;
+                        this.function0[i]=this.tableContent[i].Function0;
+                        this.vendor[i]=this.tableContent[i].Vendor;
+                        this.version[i]=this.tableContent[i].Version;
+                        this.project[i]=this.tableContent[i].Project;
+                        this.phase[i]=this.tableContent[i].Phase;
+                        this.image[i]=this.tableContent[i].Image;
+                        console.log(this.tableContent[i].Image,'in');
+                    }
+                    console.log(this.image,this.tableContent.length,'out');
+                });
+            },
+            changeCustomer:function () {
+                 if(this.$refs.Customer.value ==""){
+                      this.selectProject=[""];
+                      return false;
+                 }
+                 this.selectProject=this.selectItem[this.$refs.Customer.value];
+                 this.selectedProject="";
+            },
+            changeProject:function(index){
+                if(this.$refs.Project.value ==""){
+                      this.selectPhase0=[""];
+                      return false;
+                 }
+                for(let index=0;index<this.selectItem[this.selectedCustomer].length;index++){
+                     if(this.selectItem[this.selectedCustomer][index]["Project"]==this.selectedProject){
+                        this.selectPhase0=this.selectItem[this.selectedCustomer][index]["Phase0"];
+                    }
+                }
+            },
+            changePhase0:function(index){
+                if(this.$refs.Phase0.value ==""){
+                      this.selectDriver=[""];
+                      this.selectImage=[""];
+                      return false;
+                 }
+                let Customer = this.$refs.Customer.value;
+                let Project = this.$refs.Project.value;
+                let Phase0 = this.$refs.Phase0.value;
+                let data ={"isGetData":"PHASE","Customer":Customer,"Project":Project,"Phase":Phase0,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                axios.post("/DriverTool/DriverList_edit/",Qs.stringify(data), {
+                headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.selectDriver=res.data.selectedDriver;
+                    this.selectImage=res.data.selectedImage;
+                     });
+            },
+            //上传搜索项：以此选项搜索符合条件的内容
+             selectMsg :function(){
+               let Customer = this.$refs.Customer.value;
+               let Project = this.$refs.Project.value;
+               let Phase0 = this.$refs.Phase0.value;
+               let Driver = this.$refs.Driver.value;
+               let Image = this.$refs.Image.value;
+               let data ={"isGetData":"SEARCH","Customer":Customer,"Project":Project,"Phase":Phase0,"Driver":Driver,"Image":Image,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/DriverTool/DriverList_edit/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  console.log(res.data.content,'search');
+                  this.tableContent=res.data.content;
+                  for(let i=0;i<this.tableContent.length;i++){
+                        this.Customer[i]=this.tableContent[i].Customer;
+                        this.Phase[i]=this.tableContent[i].Phase;
+                        this.driver[i]=this.tableContent[i].Driver;
+                        this.bios[i]=this.tableContent[i].Bios;
+                        this.name[i]=this.tableContent[i].Name;
+                        this.function0[i]=this.tableContent[i].Function0;
+                        this.vendor[i]=this.tableContent[i].Vendor;
+                        this.version[i]=this.tableContent[i].Version;
+                        this.project[i]=this.tableContent[i].Project;
+                        this.phase[i]=this.tableContent[i].Phase;
+                        this.image[i]=this.tableContent[i].Image;
+                        console.log(this.tableContent[i].Image,'in');
+                    }
+                  this.selectItem=res.data.select;
+                })
+             },
+            toggleSelection(rows) {
+                if (rows) {
+                    rows.forEach(row => {
+                        this.$refs.multipleTable.toggleRowSelection(row);
+                    });
+                } else {
+                    this.$refs.multipleTable.clearSelection();
+                }
+            },
+            indexMethod(index) {
+                return index + 1;
+            },
+            multiDelete() {
+                var warning=confirm('此操作将永久删除该条数据, 是否继续?')
+         if(warning) {
+             this.multiDeleteVisible = false;
+             let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+             let params = [];
+             let self = this;
+             checkArr.forEach(function (item) {
+                 console.log(item);
+                 params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+             });
+             console.log(params);
+             let Customer = this.$refs.Customer.value;
+               let Project = this.$refs.Project.value;
+               let Phase0 = this.$refs.Phase0.value;
+               let Driver = this.$refs.Driver.value;
+               let Image = this.$refs.Image.value;
+             let data = {
+                 "isGetData": "MUTICANCEL",
+                 "params": params,
+                 Customer,"Project":Project,"Phase":Phase0,"Driver":Driver,"Image":Image,
+                 "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+             };
+             axios.post('/DriverTool/DriverList_edit/', data).then((res) =>{
+
+                     this.tableContent = res.data.content;
+                     console.log(this.tableContent,'mul')
+                      for(let i=0;i<this.tableContent.length;i++) {
+                          this.Customer[i] = this.tableContent[i].Customer;
+                          this.Phase[i] = this.tableContent[i].Phase;
+                          this.driver[i] = this.tableContent[i].Driver;
+                          this.bios[i] = this.tableContent[i].Bios;
+                          this.name[i] = this.tableContent[i].Name;
+                          this.function0[i] = this.tableContent[i].Function0;
+                          this.vendor[i] = this.tableContent[i].Vendor;
+                          this.version[i] = this.tableContent[i].Version;
+                          this.project[i] = this.tableContent[i].Project;
+                          this.phase[i]=this.tableContent[i].Phase;
+                          this.image[i] = this.tableContent[i].Image;
+                      }
+                     self.$message({
+                         message: '删除成功',
+                         type: 'success'
+                     });
+
+                 this.tableContent = res.data.content;
+             })
+         }else{
+             return false;
+         }
+            },
+            //点击编辑
+            editRow(index, row) {
+            this.$set(this.showEdit,index,true);
+            this.$set(this.showBtn,index,true);
+            },
+           //取消编辑
+           cancelRow(index, row) {
+               this.tableContent[index].Driver=this.driver[index];
+               this.tableContent[index].Bios=this.bios[index];
+               this.tableContent[index].Name=this.name[index];
+               this.tableContent[index].Function0=this.function0[index];
+               this.tableContent[index].Vendor=this.vendor[index];
+               this.tableContent[index].Version=this.version[index];
+               this.tableContent[index].Project=this.project[index];
+               this.tableContent[index].Image=this.image[index];
+               this.tableContent[index].Phase=this.phase[index];
+           this.$set(this.showEdit,index,false);
+           this.$set(this.showBtn,index,false) ;
+           },
+
+           //点击保存
+           saveRow(index,rows) {
+               let Customer = this.$refs.Customer.value;
+               let Project = this.$refs.Project.value;
+               let Phase0 = this.$refs.Phase0.value;
+               let Driver = this.$refs.Driver.value;
+               let Image = this.$refs.Image.value;
+               console.log(rows,'rows');
+               let data = {"isGetData": "SAVE", "rows":rows,"Customer":Customer,"Project":Project,"Phase":Phase0,"Driver":Driver,"Image":Image,"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+               axios.post("/DriverTool/DriverList_edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.tableContent = res.data.content;
+                      for(let i=0;i<this.tableContent.length;i++){
+                            this.Customer[i]=this.tableContent[i].Customer;
+                            this.Phase[i]=this.tableContent[i].Phase;
+                            this.driver[i]=this.tableContent[i].Driver;
+                            this.bios[i]=this.tableContent[i].Bios;
+                            this.name[i]=this.tableContent[i].Name;
+                            this.function0[i]=this.tableContent[i].Function0;
+                            this.vendor[i]=this.tableContent[i].Vendor;
+                            this.version[i]=this.tableContent[i].Version;
+                            this.project[i]=this.tableContent[i].Project;
+                            this.phase[i]=this.tableContent[i].Phase;
+                            this.image[i]=this.tableContent[i].Image;
+                            {#console.log(this.tableContent[i].Image);#}
+                    }
+                   console.log("del");
+                });
+               this.$set(this.showEdit,index,false);
+               this.$set(this.showBtn,index,false) ;//关闭页面
+
+           },
+           open(index,rows) {
+        var warning=confirm('此操作将永久删除该条数据, 是否继续?')
+         if(warning){
+              console.log(this.tableContent[index]['id']);
+               let Customer = this.$refs.Customer.value;
+               let Project = this.$refs.Project.value;
+               let Phase0 = this.$refs.Phase0.value;
+               let Driver = this.$refs.Driver.value;
+               let Image = this.$refs.Image.value;
+               let data = {"isGetData": "DELETE", "id":this.tableContent[index]['id'],"Customer":Customer,"Project":Project,"Phase":Phase0,"Driver":Driver,"Image":Image,"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/DriverTool/DriverList_edit/", Qs.stringify(data),{
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    //this.tableContent = res.data.content;
+                    //rows.splice(index, 1);
+                      this.tableContent = res.data.content;
+                      for(let i=0;i<this.tableContent.length;i++) {
+                          this.Customer[i] = this.tableContent[i].Customer;
+                          this.Phase[i] = this.tableContent[i].Phase;
+                          this.driver[i] = this.tableContent[i].Driver;
+                          this.bios[i] = this.tableContent[i].Bios;
+                          this.name[i] = this.tableContent[i].Name;
+                          this.function0[i] = this.tableContent[i].Function0;
+                          this.vendor[i] = this.tableContent[i].Vendor;
+                          this.version[i] = this.tableContent[i].Version;
+                          this.project[i] = this.tableContent[i].Project;
+                          this.phase[i]=this.tableContent[i].Phase;
+                          this.image[i] = this.tableContent[i].Image;
+                      }
+                            {#console.log(this.tableContent[i].Image);#}
+                      console.log("del");
+                });
+                       console.log(index, rows);
+         }
+               else {
+             return false;
+         }
+      },
+           handleSelectionChange(val) {
+                this.multipleSelection = val;
+                this.multipleSelectionFlag = true;
+                if (this.multipleSelection.length == 0) {
+                    // 如不进行判断则勾选完毕后批量删除按钮还是会在
+                    this.multipleSelectionFlag = false;
+                }
+            }
+        }
+    })
+</script>
+{% endblock %}{% endcomment %}
+
+
+
+

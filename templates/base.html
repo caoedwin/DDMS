@@ -1,0 +1,261 @@
+{% load custom_tag %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Data{% endblock %}</title>
+        {{ lesson_form.media }}
+        {% block css1 %}on
+        <link rel="stylesheet" href="/static/download_UPK/element-ui@2.12.0/lib/theme-chalk/index.css">
+        <link href="/static/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
+        <link href="/static/css/lib/chartist/chartist.min.css" rel="stylesheet">
+        <link href="/static/css/lib/font-awesome.min.css" rel="stylesheet">
+        <link href="/static/css/lib/themify-icons.css" rel="stylesheet">
+        <link href="/static/css/lib/owl.carousel.min.css" rel="stylesheet" />
+        <link href="/static/css/lib/owl.theme.default.min.css" rel="stylesheet" />
+        <link href="/static/css/lib/weather-icons.css" rel="stylesheet" />
+        <link href="/static/css/lib/menubar/sidebar.css" rel="stylesheet">
+{#        <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">#}
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="/static/css/lib/helper.css" rel="stylesheet">
+        <link href="/static/css/style.css" rel="stylesheet">
+        <link href="/static/css/uploadbutton.css" rel="stylesheet">
+{#        <link href="/static/css/docs.464d6cc.css" rel="stylesheet">#}
+        {% endblock %}
+        {% comment %}<style>
+        {% rbac_css %}
+        </style>{% endcomment %}
+{#        <script src="{% static 'jquery-3.2.1.js' %}"></script>#}
+        {% comment %}<script>
+            $(function () {
+                {% rbac_js %}
+            })
+        </script>{% endcomment %}
+        {% block css %}{% endblock %}
+
+    </head>
+
+    {# 通过调用自定义标签中的函数，导入rbac中的css和js #}
+
+    {% block style %}{% endblock %}
+    <style type="text/css">
+    body {
+        padding: 0;
+        margin: 0;
+        {#border: 0;#}
+        height: 100%;
+        width:100%;
+        background-image: url({% block img %}{{ Skin }}{% endblock %});
+        {#background-size:cover;#}
+        background-size:200% 200%;
+        {#background-size:auto auto;#}
+        background-repeat: no-repeat;
+        {#background-origin: padding-box;#}
+    }
+    .sidebar .nano {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    {#overflow: hidden;#}
+        overflow: auto;
+}
+
+    .el-table__fixed,
+    .el-table__fixed-right{
+	height:auto !important; {% comment %}// 让固定列的高自适应，且设置!important覆盖ele-ui的默认样式{% endcomment %}
+    bottom:17px; {% comment %}// 固定列默认设置了定位，    position: absolute;top: 0;left: 0;只需要再设置一下bottom的值，让固定列和父元素的底部出现距离即可{% endcomment %}
+}
+    </style>
+    <body class="sidebar-collapse  pace-done {% comment %}sidebar-hide{% endcomment %}"{% comment %}默认导航条隐藏{% endcomment %} {% comment %} oncopy="return false" onselectstart="return false"{% endcomment %}>{% comment %}禁止复制禁止粘贴{% endcomment %}
+
+       {% comment %} <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">{% endcomment %}
+        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+            <div class="nano">
+                <div class="nano-content">
+                    <ul>
+                        <div class="logo"><a href="/index/"><!-- <img src="../static/images/logo.png" alt="" /> --><span style="color: #000000;font-weight:900;font-size: large">DDMS</span><span style="color: #000000;font-size: small">(DQA Device Management System)</span></a></div>
+                        <li class="label" style="font-weight:800">Main</li>
+                            <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> Home <span class="badge badge-primary"></span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                                <ul>
+                                    <li><a href="/index/">Dashboard</a></li>
+                                    {% comment %}<li><a href="/ProjectInfoSearch/">ProjectInfo</a></li>{% endcomment %}
+                                    {% comment %}<li><a href="/FilesDownload/">FilesDownload</a></li>{% endcomment %}
+                                </ul>
+
+                            </li>
+
+                        <li class="label" style="font-weight:800">Features</li>
+                            {% rbac_menu request %}
+
+                        <li class="label" style="font-weight:800">Administrator</li>
+                            <li><a class="sidebar-sub-toggle"><i class="ti-settings"></i>Management<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                                <ul>
+                                    <li><a href="/admin/">admin</a></li>
+                                </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="float-left">
+                            <div class="hamburger sidebar-toggle">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <div class="float-left">
+                            <li class="nav-item" style="padding-top: 12px;color: #0c0c0c"><div ><span id="time"></span></div></li>
+                        </div>
+                        <div class="float-right">
+                             <ul class="navbar-nav carousel" style="margin-bottom: 0px;position: relative;">
+
+                              <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-header" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#0c0c0c">
+{#                                      <i class="ti-user"></i>#}
+                                      Online：{{ request.session.user_name_DMS }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="userDropdown">
+                                      <a class="dropdown-item" href="/Change_Password/">Change Password</a>
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">logout</a>
+                                      {% comment %}<div class="dropdown-divider"></div>
+                                      <a class="dropdown-item" href="/Change_Skin/">Change Skin</a>{% endcomment %}
+                                    </div>
+                              </li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- logout -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="/logout/">logout</a>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                {% block content1 %}
+                <div class="row">
+                    <div class="col-lg-6 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1 >Hello {{ request.session.user_name_DMS }}, Welcome Here</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-5 p-l-0 title-margin-left">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">DMS/{{ weizhi }}</a></li>
+                                    {% comment %}<li class="breadcrumb-item active" style="color: #FFF"></li>{% endcomment %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                {% endblock %}
+{#                <div class="el-backtop" style="right: 100px; bottom: 150px;"><i class="el-icon-caret-top"></i></div>#}
+                <div id="main-content">
+                    {% block content %}{% endblock %}
+
+                    <div class="row" style="text-align: right">
+                        <div class="col-lg-12">
+                            <div class="title-margin-right">
+{#                                <p style="color: #FFF"><a href="#" style="color: #ffab00;font-weight: bolder"><img src="/static/src/back/001.png"></a></p>#}
+                                <p>2021-03-10 © <a style="color: #ff8f00;">DQA3. - Auto Team</a></p>
+{#                                <p style="color: #FFF"><img src="/static/src/back/mail.png"><a target="_blank" title="Contact" style="color: #ff8f00"> Jun_Wang; Edwin_Cao; Katherine_Cao; Lux_Chen; Erin_Sun;</a></p>#}
+{#                                <p style="color: #FFF"><a target="_blank" title="Contact" style="color: #ff8f00"> <img src="/static/src/back/call.png"> 21831</a></p>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+{#        <script src="/static/download_UPK/element-ui@2.12.0/lib/index.js"></script>#}
+        <!-- jquery vendor -->
+        <script src="/static/js/lib/jquery.min.js"></script>
+        {% comment %}<script src="/static/Magnific-Popup-master/libs/jquery/jquery.js"></script>{% endcomment %}
+        <script src="/static/js/lib/jquery.nanoscroller.min.js"></script>
+        <!-- nano scroller -->
+        <script src="/static/js/lib/menubar/sidebar.js"></script>
+        <script src="/static/js/lib/preloader/pace.min.js"></script>
+        <!-- sidebar -->
+
+        <script src="/static/js/lib/bootstrap.min.js"></script>
+        <script src="/static/js/scripts.js"></script>
+        <!-- bootstrap -->
+
+        <script src="/static/js/lib/calendar-2/moment.latest.min.js"></script>
+        <script src="/static/js/lib/calendar-2/pignose.calendar.min.js"></script>
+        <script src="/static/js/lib/calendar-2/pignose.init.js"></script>
+
+
+{#        <script src="/static/js/lib/weather/jquery.simpleWeather.min.js"></script>#}
+{#        <script src="/static/js/lib/weather/weather-init.js"></script>#}
+        <script src="/static/js/lib/circle-progress/circle-progress.min.js"></script>
+        <script src="/static/js/lib/circle-progress/circle-progress-init.js"></script>
+    {#        <script src="/static/js/lib/chartist/chartist.min.js"></script>#}
+        <script src="/static/js/lib/sparklinechart/jquery.sparkline.min.js"></script>
+        <script src="/static/js/lib/sparklinechart/sparkline.init.js"></script>
+        <script src="/static/js/lib/owl-carousel/owl.carousel.min.js"></script>
+        <script src="/static/js/lib/owl-carousel/owl.carousel-init.js"></script>
+        <!-- scripit init-->
+    {#        <script src="/static/js/dashboard2.js"></script>#}
+        <script src="/static/js/date.js"></script>
+        <script src="/static/vendor/datatables/jquery.dataTables.js"></script>
+{#        <script src="/static/js/vue.min.js"></script>#}
+
+        <script src="/static/js/datapicker.js"></script>
+{#        <script src="/static/download_UPK/element-ui@2.12.0/lib/index.js"></script>#}
+{#        <script src="/static/download_UPK/vue@2.6.10/dist/vue.runtime.min.js"></script>#}
+{#        <script src="/static/download_UPK/vue-router@3.1.3/dist/vue-router.min.js"></script>#}
+{#        <script src="/static/js/docs.89ed192.js"></script>#}
+{#        <script src="/static/js/element-ui.89ed192.js"></script>#}
+{#        {% block scripts_inbase %}#}
+            <script src="/static/js/xlsx/xlsx.core.min.js"></script>
+
+{#        {% endblock %}#}
+        {% block scripts %}
+
+        {% endblock %}
+        {% block scripts1 %}
+            <script src="/static/js/xlsx/xlsx.js"></script>
+        {% endblock %}
+    </body>
+
+</html>

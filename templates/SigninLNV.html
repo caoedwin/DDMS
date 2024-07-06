@@ -1,0 +1,196 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charste="utf-8">
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=gb2312" /> -->
+   <!-- 模板头文件 -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="../static/css/sb-admin.css" rel="stylesheet">
+
+  <!-- 模板头文件结束 -->
+
+
+
+
+	<link rel = "stylesheet"  type = "text/css"  href = "../static/css/bootstrap.min.css" />
+	<link rel = "stylesheet"  type = "text/css"  href = "../static/css/test1.css" />
+	<!-- <script type="text/javascript" src="../static/js/vue.js" ></script> -->
+	<title>{{ hello }}</title>
+
+</head>
+
+<body class="bg">
+    <!-- <h1 ><font color="#FFDC35">DQA3機構測試管理系統</font></h1>
+    <hr color="#FFDC35" />  -->
+    <div class="head">
+      <h1 ><font color="#FFDC35">DMS </font></h1>
+      <!-- <hr color="#FFDC35" />  -->
+    </div>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+
+
+    <!-- 原始登录界面 -->
+   <!--  <div id="login"  style="background:#fff">
+     <form class="formstyle">
+          <center>
+          	<b >工號： </b>
+          	 <input type="text" value="Account" name=UNITName class="mytxt" style="height: 30px; margin-bottom: 15PX;color:#aaaaaa;font-size: 20px"  placeholder="Account" border="2px solid #ffdc35 "/></center>
+          	<br />
+          <center><b>密碼： </b><input type="password" value="" name=password class="mytxt" style="height: 30px;color:#aaaaaa;font-size: 20px"   /></center>
+     </form>
+       <div class="errcode" id="err">
+     	<p >
+     		<center>
+     			輸入工號或密碼有誤，請確認後重試
+     		</center>
+     	</p>
+       </div>
+       <div >
+       	   <a href="/main/">
+       	    <form style="margin-top: 15px;color: green"><center><input  type="button" value="登錄" class="ButtonStyle" style="margin-right: 80px">
+       	    	</a>
+
+    	   <input type="button" value="更改密碼" class="ButtonStyle" id="b" ></center>
+    	  </form>
+        </div>
+     </form>
+    </div> -->
+
+    <!-- 原始界面结束 -->
+
+    <body class="bg-dark">
+
+  <div class="container" >
+    <div  class="card card-login mx-auto mt-6" style="background-color:rgba(255,255,255,0.3);">
+      <div class="card-header" style="color:#FFF;">註冊(請填寫真實信息)</div>
+      <div class="card-body" style="background-color: rgba(255,255,255,0.3);">
+        <form class='form-Test' action="/signinLNV/" method="POST">
+          <div class="form-group">
+              <span style="font-weight: bolder;">Account:</span>
+              <input  type="text" id="inputAccount" placeholder="工號" maxlength="8" required="required" autofocus="autofocus" name="inputAccount" style="border-radius: 5px;margin-left: 20px;">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder">Password:</label>
+            <input type="password" id="inputPassword1" placeholder="Password" required="required" name="inputPassword1" style="border-radius: 5px;margin-left: 13px;">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder">CNname:</label>
+            <input type="text" id="inputCNname" placeholder="繁體中文名" required="required" name="inputCNname" style="border-radius: 5px;margin-left: 18px;">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder">ENname:</label>
+            <input type="text" id="inputUsrname" placeholder="Xxx_Xxx" required="required" name="inputUsrname" style="border-radius: 5px;margin-left: 16px;">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder">Site:</label>
+            <select id="inputSeat" name="inputSeat" style="margin-left: 50px">
+                <option value="KS-Plant5" selected>KS-Plant5</option>
+                {% comment %}<option value="CQ">CQ</option>
+                <option value="CD">CD</option>{% endcomment %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder">Email:</label>
+            <input type="email" id="inputEmail" placeholder="Xxx_Xxx@compal.com" required="required" name="inputEmail" style="border-radius: 5px;margin-left: 40px;">
+          </div>
+          <div class="form-group">
+                <label style="font-weight: bolder">Role:</label>
+                <div style="margin-left: 90px;margin-top: -30px;">
+                    {% for line in inputRoles %}
+                        <p><label style="background: white">
+
+                            {% if line.name != 'Device_ABO_Users' %}
+                            <input id="inputRole" name="inputRole" type="checkbox" checked value={{line.name}} />{{line.name}}
+                            {% else %}
+                            <input id="inputRole" name="inputRole" type="checkbox" value={{line.name}} />{{line.name}}
+                            {% endif %}
+
+                        </label></p >
+                    {% endfor %}
+{#                    <p><label><input id="inputRole" name="inputRole" type="checkbox" value="Device_LNV_Users" />Device_LNV_Users </label></p >#}
+{#                    <p><label><input id="inputRole" name="inputRole" type="checkbox" value="Device_ABO_Users" />Device_ABO_Users </label></p >#}
+{#                    <p><label><input id="inputRole" name="inputRole" type="checkbox" value="选项3" />选项3 </label></p >#}
+                </div>
+
+            </div>
+          {% comment %}<div class="form-group">
+            <div><label style="font-weight: bolder">Role:</label></div>
+            <select id="inputRole" name="inputRole"  style="margin-left: 90px;margin-top: -30px;" multiple>
+                {% for line in inputRoles %}
+                    <option name="inputRole" type="checkbox" value={{line.name}} selected>{{line.name}}</option>
+                    <option value="Device_LNV_Users" selected>Device_LNV_Users</option>
+                    <option value="Device_ABO_Users">Device_ABO_Users</option>
+                {% endfor %}
+            </select>
+          </div>{% endcomment %}
+{#          <div class="form-group">#}
+{#            <div class="checkbox">#}
+{#              <label>#}
+{#                <input type="checkbox" value="remember-me">#}
+{#                Remember Password#}
+{#              </label>#}
+{#            </div>#}
+{#          </div>#}
+            <div style="text-align: center;color: red;">{{ message }}</div>
+{#          <a type="submit" class="btn btn-primary btn-block">Login</a>#}
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+    　　  {% csrf_token %}
+        </form>
+        <!-- <div class="text-center">
+          <a class="d-block small mt-3" href="register.html">Register an Account</a>
+          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/static/js/vue-router.min.js"></script>
+   <script src="/static/js/es6/polyfill.min.js"></script>
+    <script src="/static/js/es6/babel.min.js"></script>
+    <script src="/static/js/axios.min.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    <script  src="/static/js/Element/table.js"></script>
+<script  src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script  src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/date-picker.js"></script>
+<script src="/static/js/Element/dialog.js"></script>
+<script src="/static/js/Element/form.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script src="/static/js/Element/tooltip.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/Element/pagination.js"></script>
+
+ </body>
+
+
+</body>
+<style >
+	#login{
+		width:500px;
+		height: 330px;
+		margin:30px auto;
+		border:2px solid #ffdc35;
+		margin-top: 70px;
+
+	}
+</style>
+
+</html>

@@ -1,0 +1,78 @@
+[v-cloak]{
+  display: none;
+}
+.fullScreen{
+ position: fixed;
+ top:0;
+ left:0;
+ height:100%;
+ width: 100%;
+ background: rgba(0,0,0,0.7);
+ z-index: 101;
+ overflow:hidden;
+}
+.editWindow{
+ position:fixed;
+ top:50%;
+ left:50%;
+ transform:translate(-50%,-50%);
+ height:500px;
+ width:700px;
+ background:aliceblue;
+ z-index:102;
+ overflow:auto;
+ border-radius: 10px 10px 0 0;
+}
+.editContent{
+  margin:25px auto;
+  text-align:center;
+}
+.close{
+  width:100%;
+  /*background:rgba(7,17,27,0.3);*/
+  background: linear-gradient(white, gray);
+  opacity: 0.8;
+  border-radius: 10px 10px 0 0;
+  position:absolute;
+  height:25px;
+}
+.close button{
+  position: relative;
+  right: 20px;
+  width: 30px;
+  font-size: 25px;
+}
+.inline_content{
+  display:inline-block;
+}
+.inline_content textarea{
+  resize:none;
+}
+.inline-child{
+  display:inline-block;
+  margin: 10px 15px;
+}
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+  line-height: 32px;
+  vertical-align: middle;
+  /*color: #fff;*/
+}
+.inline-child button{
+  margin-right:10px;
+
+}
+.errorStyle{
+  border:1px solid #BD362F ;
+}
+.con {
+    max-width: 400px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

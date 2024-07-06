@@ -1,0 +1,359 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Index{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+{% endblock %}
+{% block content %}
+<div id="app">
+   <div class="row" style="white-space: nowrap;">
+   <div class="col-md-3">
+         <label style="color: black;font-size: 16px;font-weight: bold;" for="account">工號</label>&nbsp;&nbsp;
+             <el-autocomplete
+                      class="inline-input"
+                      v-model="selectedaccount"
+                      ref="account"
+                      :fetch-suggestions="querySearch1"
+                      placeholder="请输入借用人"
+                      @select="handleSelect1"
+             ></el-autocomplete>
+    </div>
+    <div class="col-md-3">
+         <label style="color: black;font-size: 16px;font-weight: bold;" for="CNname">中文名</label>&nbsp;&nbsp;
+             <el-autocomplete
+                      class="inline-input"
+                      v-model="selectedCNname"
+                      ref="CNname"
+                      :fetch-suggestions="querySearch"
+                      placeholder="请输入借用人"
+                      @select="handleSelect"
+             ></el-autocomplete>
+    </div>
+    <div class="col-md-1">
+         <el-button size="medium" style="background:#428bca;color:#fff;margin-left:20px;" value="Search" name="Search" @click="selectMsg">搜索</el-button>
+    </div>
+    <div class="tableAround" style="margin-left:20px;" v-cloak >
+        {% csrf_token %}
+            <template>
+                <el-table border stripe  height="530" :data="tableContent.slice((currentPage-1)*pageSize,currentPage*pageSize)">
+                        <el-table-column  label="Edit" width="80">
+                              <template slot-scope="scope">
+                                  <el-button style="border:0;color: #D9B300" type="i" class="ti-pencil-alt"  @click="alertID(scope.row)"></el-button>
+                              </template>
+                        </el-table-column>
+                        <el-table-column type="index" :index="indexMethod" width="60" align="center" ></el-table-column>
+                        <el-table-column prop="account" label="工號"  align="center"></el-table-column>
+                        <el-table-column prop="CNname" label="中文名"  align="center"></el-table-column>
+                        <el-table-column prop="username" label="用戶名" width="200" align="center"></el-table-column>
+                        <el-table-column prop="password" label="密碼" width="200" align="center"></el-table-column>
+                        <el-table-column prop="Email" label="E-mail" width="200"  align="center"></el-table-column>
+                        <el-table-column prop="Tel" label="Tel" width="200" align="center"></el-table-column>
+                </el-table>
+                <div class="block">
+                    <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[10, 50, 100, 200]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+                    </el-pagination>
+                </div>
+            </template>
+    </div>
+   <el-dialog :visible.sync="update">
+        <template>
+             <el-form ref="form"  :model="form"  :label-position="labelPosition" label-width="130px">
+                  <el-form-item label="工號">
+                          <el-input  v-model="form.account"></el-input>
+                  </el-form-item>
+                  <el-form-item label="中文名">
+                          <el-input  v-model="form.CNname"></el-input>
+                  </el-form-item>
+                  <el-form-item label="用戶名">
+                          <el-input  v-model="form.username"></el-input>
+                  </el-form-item>
+                 <el-form-item label="密碼">
+                          <el-input  v-model="form.password"></el-input>
+                  </el-form-item>
+                 <el-form-item label="E-mail">
+                          <el-input  v-model="form.Email"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Tel">
+                          <el-input  v-model="form.Tel"></el-input>
+                  </el-form-item>
+                 <el-form-item label="Photo">
+                        <el-upload
+                          action="#"
+                          list-type="picture-card"
+                          :on-success="handleImageSuccess"
+                          :before-upload="beforeImageUpload"
+                          :auto-upload="true"
+                          :file-list="fileListO"
+                        >
+                          <!-- 十字图标 -->
+                          <i slot="default" class="el-icon-plus"></i>
+                          <!-- 文件 -->
+                          <div slot="file" slot-scope="{file}">
+                            <img class="el-upload-list__item-thumbnail" :src="file.url" alt />
+                            <video class="el-upload-list__item-thumbnail" :src="file.url" alt />
+                            <span class="el-upload-list__item-actions">
+                              <span class="el-upload-list__item-preview" @click="handlePictureCardPreview(file)">
+                                <i class="el-icon-zoom-in"></i>
+                              </span>
+                            </span>
+                          </div>
+                        </el-upload>
+                        <el-dialog :visible.sync="dialogVisible">
+                            <img width="100%" :src="dialogImageUrl" alt />
+                        </el-dialog>
+                  </el-form-item>
+                  <el-form-item>
+                        <el-button type="primary" @click="editSubmit">更新</el-button>
+                  </el-form-item>
+             </el-form>
+        </template>
+    </el-dialog>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script  src="/static/js/Element/table.js"></script>
+<script  src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script  src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/image.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script type="text/babel">
+ new Vue({
+     el: '#app',
+     delimiters: ['${', '}'],
+     data: function () {
+         return {
+         selectItem:[],
+         selectItem1:[],
+         selectedCNname:'',
+         selectCNname:[],
+         selectedaccount:'',
+         selectaccount:[],
+         tableContent: [],
+         currentPage: 1,//默认显示第一页
+         pageSize:100,//默认每页显示100条
+         totalNum:null,
+         form: {
+                    account:'',
+                    CNname:'',
+                    username:'',
+                    password:'',
+                    Email:'',
+                    Tel:'',
+         },
+         editID:'',
+         formData:[],
+         dialogImageUrl: '',
+         dialogVisible: false,
+         PhotoList:[],
+         fileListO: [],
+         update:false,
+         labelPosition:'right',
+         }
+     },
+     mounted: function (){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+     },
+     methods: {
+        //获取数据
+        getdata: function (e) {
+            let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+            axios.post("/SysAdmin/UserInfo-edit/", Qs.stringify(data), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.selectItem=res.data.select[0];
+                this.selectItem1=res.data.select[1];
+                this.tableContent = res.data.content;
+                this.totalNum=this.tableContent.length;
+            });
+        },
+        querySearch(queryString, cb) {
+            var selectCNname = this.selectItem;
+            var results = queryString ? selectCNname.filter(this.createFilter(queryString)) : selectCNname;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+        },
+        createFilter(queryString) {
+            return (restaurant) => {
+              return (
+                  restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+              );
+            };
+        },
+        handleSelect(item) {
+                console.log(item);
+        },
+        querySearch1(queryString, cb) {
+            var selectaccount = this.selectItem1;
+            var results = queryString ? selectaccount.filter(this.createFilter1(queryString)) : selectaccount;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+        },
+        createFilter1(queryString) {
+            return (restaurant) => {
+              return (
+                  restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+              );
+            };
+        },
+        handleSelect1(item) {
+                console.log(item);
+        },
+        //上传搜索项：以此选项搜索符合条件的内容
+        selectMsg :function(){
+               let CNname = this.$refs.CNname.value;
+               let account = this.$refs.account.value;
+               let data ={"isGetData":"SEARCH","CNname":CNname,"account":account,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/SysAdmin/UserInfo-edit/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                   this.tableContent=res.data.content;
+                   this.selectItem=res.data.select[0];
+                   this.selectItem1=res.data.select[1];
+                   this.totalNum=this.tableContent.length;
+
+                })
+        },
+        //索引
+         indexMethod(index) {
+            return index +1;
+         },
+         //分页
+         handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+            this.pageSize = val;
+         },
+         handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+          this.currentPage = val;
+         },
+         alertID:function(row){
+                    this.fileListO=[]
+                    this.formData = new FormData();
+                    this.update=true;
+                    this.form.account=row.account;
+                    console.log(row.account)
+                    this.form.CNname=row.CNname;
+                    this.form.username=row.username;
+                    this.form.password=row.password;
+                    this.form.Email=row.Email;
+                    this.form.Tel=row.Tel;
+                    this.editID = row.id;
+
+            },
+         handleRemove(file) {
+              // 删除文件
+                  console.log(file.response.data);
+                  let fileNames = file.response.data.split("/");
+                  fileDelete(fileNames[fileNames.length - 1]).then(res => {
+                    if (res.data.code == "0000") {
+                      this.fileList.splice(file, 1);
+                    }
+               });
+            },
+            handlePictureCardPreview(file) {
+                  // 预览文件
+                  this.dialogImageUrl = file.url;
+                  this.dialogVisible = true;
+            },
+            handleDownload(file) {
+                  console.log("下载成功");
+                  let fileNames = file.response.data.split("/");
+                  let fileName = fileNames[fileNames.length - 1];
+                  fileDownload(fileName).then(res => {
+                    if (res.data.code == "0000") {
+                        this.downloadFile(fileName,res.data.data);
+                    }
+                  });
+            },
+            handleImageSuccess(res, files, fileList) {
+                  // 上传成功
+                  this.formData = new FormData();
+                  this.fileList = fileList;
+                  console.log("上传成功" + fileList.length,files,"tt",fileList);
+                  for(var i=0; i<this.fileList.length; i++){
+                        this.formData.append('fileList', fileList[i].raw)//fileList里面raw才是文件对象，与files一样
+                  }
+                 console.log(this.formData,typeof (this.formData))
+            },
+            beforeImageUpload(file) {
+              // 上传前格式与大小校验
+                console.log(file,file.type)
+              const isJPG = file.type === "image/jpeg"|| file.type == 'image/png'|| file.type == 'video/mp4'|| file.type == 'application/pdf'|| file.type == 'application/x-zip-compressed'|| file.type == ''|| file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+              const isLt2M = file.size / 1024 / 1024 < 5;
+
+              if (!isJPG) {
+                this.$message.error("上传头像图片只能是 JPG/PNG 格式，视频为mp4格式!");
+              }
+              if (!isLt2M) {
+                this.$message.error("上传头像图片大小不能超过 5MB!");
+              }
+              return isJPG && isLt2M;
+                console.log("before" )
+                //也是成功的
+            },
+            // 下载
+            downloadFile(fileName, content) {
+              let aLink = document.createElement("a");
+              let blob = this.base64ToBlob(content); //new Blob([content]);
+
+              let evt = document.createEvent("HTMLEvents");
+              evt.initEvent("click", true, true); // initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为
+              aLink.download = fileName;
+              aLink.href = URL.createObjectURL(blob);
+
+              // aLink.dispatchEvent(evt);
+              aLink.click();
+            },
+            // base64转blob
+            base64ToBlob(code) {
+              let parts = code.split(";base64,");
+              let contentType = parts[0].split(":")[1];
+              let raw = window.atob(parts[1]);
+              let rawLength = raw.length;
+
+              let uInt8Array = new Uint8Array(rawLength);
+
+              for (let i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+              }
+              return new Blob([uInt8Array], { type: contentType });
+            },
+             editSubmit() {
+                if (this.formData.length==0){this.formData = new FormData();}
+                this.formData.append("isGetData",'update');
+                this.formData.append('searchCNname', this.$refs.CNname.value)
+                this.formData.append('searchaccount', this.$refs.account.value)
+                this.formData.append('id', this.editID)
+                this.formData.append('account', this.$refs.form.model.account)
+                this.formData.append('CNname', this.$refs.form.model.CNname)
+                this.formData.append('username', this.$refs.form.model.username)
+                this.formData.append('password', this.$refs.form.model.password)
+                this.formData.append('Email', this.$refs.form.model.Email)
+                this.formData.append('Tel', this.$refs.form.model.Tel)
+                console.log(this.formData)
+                axios.post("/SysAdmin/UserInfo-edit/", this.formData,{
+                            headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                        }).then((res)=>{
+                            this.selectItem=res.data.select[0];
+                            this.selectItem1=res.data.select[1];
+                            this.tableContent = res.data.content;
+                            this.totalNum=this.tableContent.length;
+                            this.update=false;
+                            this.formData = new FormData();
+
+                })
+            },
+     }
+ })
+</script>
+{% endblock %}

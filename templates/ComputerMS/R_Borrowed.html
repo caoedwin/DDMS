@@ -1,0 +1,419 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}我的工作機{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+.showColor:hover{
+    color: red;
+}
+.selectMsg{
+      font-size:18px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: -10px;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+ .changjiaContent,.pnContent,.powerContent{
+     margin-left: 20px;
+}
+.showNum{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+ .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+      <el-backtop ></el-backtop>
+    </template>
+        <div class="selectMsg" >
+                   <div>
+                         <label>統一編號</label>
+                         <el-autocomplete
+                              clearable
+                              class="inline-input"
+                              v-model="selectedUnifiedNumber"
+                              ref="UnifiedNumber"
+                              :fetch-suggestions="querySearch"
+                              placeholder="请输入統一編號"
+                              @select="handleSelect">
+                         </el-autocomplete>
+                   </div>
+{#                   <div style="margin-left:10px">#}
+{#                         <label>工作機狀態</label>#}
+{#                         <el-select v-model="selectedMachineStatus" ref="MachineStatus" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;" clearable v-cloak>#}
+{#                           <el-option v-for="(item,key) in allMachineStatus" :label="item" :value="item"></el-option>#}
+{#                         </el-select>#}
+{#                   </div>#}
+                 <el-button @click="search5" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button>
+      </div>
+    <div class="tableAround" v-cloak >
+          <div style="margin-bottom:10px;">
+               <span class="showNum">已選 <span id="selectNum">0</span> 條</span>
+               <el-button @click="Rt()" v-cloak size="medium" style="background-color:#69ec57; border-color:black;color:black;margin-left: 50px">報廢</el-button>
+               <el-button @click="RenewInfo()" v-cloak size="medium" style="background-color:#f9873a; border-color:black;color:black;margin-left: 50px">轉賬</el-button>
+          </div>
+     <el-table height="700" ref="multipleTable" border stripe :data="tableContent.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)" @selection-change="handleSelectionChange" :row-key="getRowKeys"
+               :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+               style="border-radius: 10px;word-break: keep-all">
+        <el-table-column type="selection" align="center" :reserve-selection="true" fixed></el-table-column>
+        <el-table-column type="index" :index="indexMethod" width="40" align="center" fixed></el-table-column>
+        <el-table-column prop="CollectDate" label="領用日期" align="center" width="95" fixed>
+        </el-table-column>
+        <el-table-column prop="UnifiedNumber" label="統一編號" align="center" width="90" fixed>
+        </el-table-column>
+        <el-table-column prop="Number" label="工號" align="center" width="90" fixed>
+        </el-table-column>
+        <el-table-column prop="Name" label="姓名" align="center" width="80" fixed>
+        </el-table-column>
+        <el-table-column prop="MaterialPN" label="MaterialPN" width="90" align="center">
+        </el-table-column>
+        <el-table-column prop="CPU" label="CPU" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="RAM" label="RAM" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="HDD" label="HDD" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="Wireless" label="Wireless" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="LCD" label="LCD" align="center" width="60">
+        </el-table-column>
+        <el-table-column prop="OCR" label="OCR" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Battery" label="Battery" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Adaptor" label="Adaptor" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Region" label="地區" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="OutPlant" label="攜出廠外" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="Factory" label="廠區" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="ComputerUse" label="電腦用途" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="Category" label="產品類別" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="MachineStatus" label="工作機狀態" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="IdleState" label="閒置狀態" width="80" align="center">
+        </el-table-column>
+        <el-table-column prop="Years" label="年限" width="60" align="center">
+        </el-table-column>
+        <el-table-column prop="FormNumber" label="E-Form單號" align="center">
+        </el-table-column>
+      </el-table>
+        <div class="block">
+            <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+            </el-pagination>
+        </div>
+    </div>
+    <el-dialog title="轉賬機種信息登記" :visible.sync="Info" width="30%" center>
+        <template>
+              <el-form ref="form"  :model="form" :rules="rules" label-width="120px">
+                <el-form-item label="轉給：" prop="Number">
+                  <el-autocomplete
+                          clearable
+                          class="inline-input"
+                          v-model="form.Number"
+                          :fetch-suggestions="querySearchNumber"
+                          placeholder="请输入工號"
+                          @select="handleSelectNumber">
+                       <template slot-scope="{ item }">
+                        <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+                       </template>
+                   </el-autocomplete>
+                </el-form-item>
+                <el-form-item label="E-Form單號：" prop="FormNumber">
+                    <el-input v-model="form.FormNumber"></el-input>
+                </el-form-item>
+              </el-form>
+        </template>
+        <p style="color: red;">請確認E-Form表單簽核完成後再填寫單號！</p>
+          <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="RENEW(form)">送出</el-button>
+          </span>
+      </el-dialog>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                selectedUnifiedNumber:"",
+                selectedMachineStatus:"",
+                allMachineStatus:[],
+                selectUnifiedNumber:[],
+                selectedNumber:[],
+                tableContent:[],
+                currentPage: 1,//默认显示第一页
+                pageSize:100,//默认每页显示100条
+                totalNum: null,
+                Info:false,
+                form: {
+                        Number:'',
+                        FormNumber:'',
+                      },
+                formData:[],
+                multipleSelection: [],
+                rules: {
+                    Number: [
+                         { required: true, message: "请選擇工號", trigger:['blur','change'] }
+                    ],
+                    FormNumber: [
+                         { required: true, message: "请輸入E-Form表單號", trigger: 'blur' }
+                    ],
+
+                },
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/ComputerMS/R_Borrowed/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                    {#this.allMachineStatus=res.data.allMachineStatus;#}
+                    this.selectNumber=res.data.selectNumber;
+                    this.tableContent=res.data.content;
+                    this.totalNum=this.tableContent.length;
+                });
+            },
+
+          querySearch(queryString, cb) {
+            var UnifiedNumber = this.selectUnifiedNumber;
+            var results = queryString ? UnifiedNumber.filter(this.createFilter(queryString)) : UnifiedNumber;
+            // 调用 callback 返回建议列表的数据
+                {#console.log(this.selectItem,'111');#}
+            cb(results);
+          },
+
+          querySearchNumber(queryString, cb) {
+            var Number = this.selectNumber;
+            var results = queryString ? Number.filter(this.createFilter(queryString)) : Number;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+          },
+
+          createFilter(queryString) {
+            return (restaurant) => {
+              return (
+                  restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+            };
+          },
+
+          handleSelect(item) {
+              {#this.number = item.number;#}
+          },
+
+          handleSelectNumber(item) {
+              this.number = item.number;
+          },
+
+            indexMethod(index) {
+                return index + 1;
+            },
+            //分页
+            handleSizeChange(val) {
+                  console.log(`每页 ${val} 条`);
+                  this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+                this.currentPage = val;
+            },
+
+            //上传搜索项：以此选项搜索符合条件的内容
+            search5:function(){
+                   let UnifiedNumber = this.$refs.UnifiedNumber.value;
+                   {#let MachineStatus = this.$refs.MachineStatus.value;#}
+                   let data = {
+                       "isGetData": "SEARCH",
+                       "UnifiedNumber": UnifiedNumber,
+                       {#"MachineStatus": MachineStatus,#}
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/ComputerMS/R_Borrowed/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.tableContent=res.data.content;
+                       this.totalNum=this.tableContent.length;
+                   })
+                   this.$refs.multipleTable.clearSelection()
+            },
+
+            handleSelectionChange(rows) {
+                this.multipleSelection = rows;
+                var len=document.getElementById("selectNum")
+                len.innerHTML=this.multipleSelection.length;
+            },
+
+            getRowKeys (row) {
+              return row.id;
+            },
+
+            Rt:function(){
+                if(this.multipleSelection.length==0){
+                    alert('未勾选数据！')
+                }else if(this.multipleSelection.length==1){
+                   let ID = this.multipleSelection[0].id;
+                   let UnifiedNumber = this.$refs.UnifiedNumber.value;
+                   {#let MachineStatus = this.$refs.MachineStatus.value;#}
+                   let data ={"isGetData":"Scrap","ID": ID,"UnifiedNumber":UnifiedNumber,
+                       {#"MachineStatus":MachineStatus,#}
+                        "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+                   axios.post("/ComputerMS/R_Borrowed/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                         this.errMessage = res.data.errMessage;
+                         if(this.errMessage != ""){
+                              this.$alert(this.errMessage, '提示', {
+                                    type: 'warning',
+                              });
+                         }else{
+                             this.$message({
+                                     message: '報廢成功',
+                                     type: 'success'
+                             });
+                             this.$refs.multipleTable.clearSelection();
+                         }
+                         this.tableContent = res.data.content;
+                         this.totalNum=this.tableContent.length;
+                         this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                         {#this.allMachineStatus=res.data.allMachineStatus;#}
+                   })
+                }else{
+                    this.$alert('每次只能報廢單台機器！', '提示', {
+                         type: 'warning',
+                      })
+                }
+            },
+
+            RenewInfo(){
+                if(this.multipleSelection.length==0){
+                    alert('未勾选数据！')
+                }else if(this.multipleSelection.length==1){
+                   this.Info = true;
+                }else{
+                    this.$alert('每次只能轉賬單台機器！', '提示', {
+                         type: 'warning',
+                      })
+                }
+            },
+
+            RENEW:function(){
+                let flag = 0;
+                for(let i=0;i<this.selectNumber.length;i++){
+                    {#console.log(this.selectNumber[i].value,this.$refs.form.model.Number,this.selectNumber[i]==this.$refs.form.model.Number);#}
+                    if(this.selectNumber[i].value==this.$refs.form.model.Number){
+                        flag = 1;
+                        break;
+                    }
+                }
+                {#console.log(flag,flag == 1);#}
+                if(flag == 1){
+                   this.$refs.form.validate((valid) => {
+                    if (valid) {
+                       let ID = this.multipleSelection[0].id;
+                       let UnifiedNumber = this.$refs.UnifiedNumber.value;
+                       {#let MachineStatus = this.$refs.MachineStatus.value;#}
+                       let Number = this.$refs.form.model.Number;
+                       let FormNumber = this.$refs.form.model.FormNumber;
+                       let Name = this.number;
+                       let data ={"isGetData":"Transfer","ID": ID,"UnifiedNumber":UnifiedNumber,
+                           {#"MachineStatus":MachineStatus,#}
+                                  "Number": Number,"Name": Name,"FormNumber": FormNumber,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+                       axios.post("/ComputerMS/R_Borrowed/", Qs.stringify(data), {
+                           headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                       }).then((res) => {
+                             this.errMessage = res.data.errMessage;
+                             if(this.errMessage != ""){
+                                  this.$alert(this.errMessage, '提示', {
+                                        type: 'warning',
+                                  });
+                                  this.Info=true;
+                             }else{
+                                 this.$message({
+                                         message: '轉賬成功',
+                                         type: 'success'
+                                 });
+                                 this.Info=false;
+                                 this.$refs.multipleTable.clearSelection();
+                                 this.$refs.form.resetFields();
+                             }
+                             this.tableContent = res.data.content;
+                             this.totalNum=this.tableContent.length;
+                             this.selectUnifiedNumber=res.data.selectUnifiedNumber;
+                             {#this.allMachineStatus=res.data.allMachineStatus;#}
+                       })
+                       }else {
+                            console.log('error submit!!');
+                            return false;
+                          }
+                       });
+                   }else{
+                    this.$alert("此账号尚未注册", '提示', {
+                                    type: 'warning',
+                              });
+                              this.Info=true;
+                }
+            },
+
+        },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

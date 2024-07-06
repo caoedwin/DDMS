@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}settings{% endblock %}
+
+
+{% block content %}
+
+
+      {% comment %}<div id="stars"></div>
+      <div id="stars2"></div>{% endcomment %}
+
+
+
+
+        <!-- Breadcrumbs-->
+            <form class='form-Test' action="/Change_Skin/" method="POST">
+
+                <!-- <li class="breadcrumb-item">
+                 <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li> -->
+                 <div class="container" style="background-color:rgba(255,255,255,0)">
+                    <div style="background-color:rgba(255,255,255,0)" class="row">
+                        <div class="col-md-6">
+                            <button type="submit" id="blue" name="blue" style="background-color:rgba(255,255,255,0);padding: 0px;"><img src="/static/src/blue.jpg" height="250" width="400"></button>
+                              {% csrf_token %}
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" id="kiwi" name="kiwi" style="background-color:rgba(255,255,255,0);padding: 0px;"><img src="/static/src/kiwi.jpg" height="250" width="400"></button>
+                              {% csrf_token %}
+                        </div>
+
+{#                          <span class="input-group-addon" style="padding-left: 25px;padding-right: 5px">Project</span><input type="text" class="form-control-sm" name="Project" >#}
+                          {% comment %}<span class="input-group-addon" style="padding-left: 25px;padding-right: 5px;color:#FFF">Skin</span><select style="background-color:rgba(81,145,211,0.7);color:#FFF" class="form-control-sm" name="Skin">
+                                            <option value="Selected Phase">Selected Skin</option>
+
+                                            <option value="blue">blue</option>
+                                            <option value="kiwi">kiwi</option>
+                                            <option value="sunny">sunny</option>
+                                            <option value="yellow">yellow</option>
+                                          </select>{% endcomment %}
+
+                        </div>
+                        <div style="background-color:rgba(255,255,255,0)" class="row">
+                            <div class="col-md-6">
+                                <button type="submit" id="sunny" name="sunny" style="background-color:rgba(255,255,255,0);padding: 0px;"><img src="/static/src/sunny.jpg" height="250" width="400"></button>
+                                  {% csrf_token %}
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" id="yellow" name="yellow" style="background-color:rgba(255,255,255,0);padding: 0px;"><img src="/static/src/yellow.jpg" height="250" width="400"></button>
+                                  {% csrf_token %}
+                            </div>
+                        </div>
+                        <div style="background-color:rgba(255,255,255,0)" class="row">
+                            <div class="col-md-6">
+                                <button type="submit" id="chrome" name="chrome" style="background-color:rgba(255,255,255,0);padding: 0px;"><img src="/static/src/chrome.jpg" height="250" width="400"></button>
+                                  {% csrf_token %}
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" id="ocean" name="ocean" style="background-color:rgba(255,255,255,0);padding: 0px;"><img src="/static/src/ocean.jpg" height="250" width="400"></button>
+                                  {% csrf_token %}
+                            </div>
+                        </div>
+                     </div>
+
+
+
+    </form>
+
+
+
+{% endblock %}
+
+{#<script type="text/javascript"　src="../static/vendor/datatables/exportExel.js"></script>#}

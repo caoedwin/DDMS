@@ -1,0 +1,601 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}歸還申請{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+    <style>
+    .showColor:hover{
+    color: red;
+}
+    .fullScreen{
+     position: fixed;
+     top:0;
+     left:0;
+     height:100%;
+     width: 100%;
+     background: rgba(0,0,0,0.7);
+     z-index: 101;
+     overflow:hidden;
+    }
+
+    .fullScreen section {
+     position:fixed;
+     top:50%;
+     left:50%;
+     transform:translate(-50%,-50%);
+     text-align: center;
+     font-size: 18px;
+     font-weight: 800;
+     color: #337ab7;
+   }
+    .content{
+    width:25px;
+    height: 70px;
+    position: fixed;
+    right: 10px;
+    top:60px;
+    background-color:#343957;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 24px;
+    writing-mode: vertical-lr;
+    z-index: 99;
+    opacity: 0.9;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: 160px;
+}
+
+.el-table th.gutter{
+    display: table-cell!important;
+  }
+
+    {#.el-tooltip {#}
+    {#    max-width: 60%!important;#}
+    {#}#}
+
+    #container-yansebiaoshi{
+    display:none;
+    position: fixed;
+    right: 35px;
+    top:60px;
+    z-index: 99;
+    border: 2px solid  #deb887;
+}
+     .el-pagination__total,.el-pagination__jump{
+        color:black;
+    }
+    .gutter{
+        display:block!important;
+        width:17px!important;
+    }
+    .cell-green{
+    background: greenyellow;
+}
+    .selectItem{
+    font-size: 20px;
+    font-weight: bold;
+    color: aliceblue;
+}
+    .tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+    .el-table .cell {
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-break: break-all;
+    line-height: 23px;
+    }
+    tbody tr td:last-child {
+    text-align: left;
+    }
+     .inputError{
+    text-align: center;
+    color: crimson;
+    background-color: beige;
+    width: 50%;
+    margin: 10px auto 5px;
+    position: relative;
+}
+    .inputError,#Customer{
+        display:inline-block;
+    }
+    {#.el-tooltip__popper{#}
+    {#max-width: 400px;#}
+    {#white-space: pre-line;#}
+    {#}#}
+    .oneLine {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .el-table .my-cell {
+    vertical-align: top
+  }
+
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+  .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+  .thStyle{
+      text-align: center;
+      height: 40px;
+      width: 240px;
+      font-size: 15px;
+      font-weight: bolder;
+  }
+
+  .thCSS{
+      text-align: center;
+      height: 40px;
+      font-size: 15px;
+      font-weight: bolder;
+  }
+
+
+    </style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+      <el-backtop ></el-backtop>
+    </template>
+<div class="row" style="white-space: nowrap;">
+    <div class="col-md-4">
+        <label style="color: black;font-size: 18px;font-weight: bold;" for="Borrower">借用人</label>&nbsp;&nbsp;
+         <el-autocomplete
+                  class="inline-input"
+                  v-model="selectedBorrower"
+                  ref="Borrower"
+                  :fetch-suggestions="querySearch"
+                  placeholder="请输入借用人"
+                  @select="handleSelect"
+         >
+           <template slot-scope="{ item }">
+            <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+           </template>
+         </el-autocomplete>
+
+        <el-button size="medium" style="height:35px;border-color:black;color:white;margin-left: 90px;background-color:#7fa0ff" value="Search" name="Search" @click="selectMsg">Search</el-button>
+    </div>
+</div>
+<el-dialog title="設備詳細信息" width="85%" :visible.sync="dialogDetialVisible">
+  <el-table  height="240" border :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#FAFAFA','border-bottom':'1px solid rgb(103, 194, 58)'}"
+            :data="tableDetail">
+    <el-table-column prop="HWVer" label="HW Ver." align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="FWVer" label="FW Ver." align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="DevDescription" label="設備描述" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="PckgIncludes" label="附帶品" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="expirdate" label="保固期" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="DevPrice" label="價值 RMB(單價)" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="Source" label="設備來源" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="Pchsdate" label="購買時間" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="P/N" label="料號" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="LNV SW Test lab device Audit list: Require state(Must, Optional)" label="LNV/ABO 設備審核清單" align="center" width="120">
+    </el-table-column>
+    <el-table-column prop="Purchase_NO" label="申購單號" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="Declaration_NO" label="報關單號" align="center" width="100">
+       <template scope="scope">
+            <el-tooltip placement="top" effect="light">
+                <div slot="content">
+                  <img :src="getImgUrl2(scope.row.NID)" alt="pic1" width="280" height="240" />
+                </div>
+                <a :href="getImgUrl2(scope.row.NID)" download="報關單號.jpg">${ scope.row.Declaration_NO }</a>
+            </el-tooltip>
+       </template>
+    </el-table-column>
+    <el-table-column prop="AssetNum" label="資產編號" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="UsYear" label="購買年限" align="center" width="100">
+    </el-table-column>
+    <el-table-column prop="uscyc" label="使用次數" width="120" align="center">
+    </el-table-column>
+    <el-table-column prop="UsrTimes" label="借還次數" width="120" align="center">
+    </el-table-column>
+    <el-table-column prop="addnewname" label="設備添加人員" align="center" width="120">
+    </el-table-column>
+    <el-table-column prop="addnewdate" label="設備添加日期" align="center" width="120">
+    </el-table-column>
+    <el-table-column prop="DevStatus" label="設備狀態" width="120" align="center">
+    </el-table-column>
+  </el-table>
+</el-dialog>
+    <br />
+    <div class="tableAround" v-cloak >
+    <div class="col-md-10">
+    <span class="col-md-2" style="font-weight: bold;color: black;font-size: 16px;">已選</span><span id="SelectNum" style="font-weight: bold;color: black;font-size: 16px;">0</span><span class="col-md-4" style="font-weight: bold;color: black;font-size: 16px;">條</span>
+    <el-button size="medium" type="primary" style="color:#fff;margin: 2px;margin-left: 50px;" name="確認入庫" @click="StoragesChange" v-cloak>確認入庫</el-button>
+</div>
+    {% csrf_token %}
+    <template>
+    <el-table id="out-table" border ref="multipleTable"  tooltip-effect="dark"  height="700"
+     :data="tableContent.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+     :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}"
+     style="border-radius: 10px;word-break: keep-all"
+     @selection-change="handleSelectionChange" :row-key="getRowKeys" @cell-click="showDetial" :cell-style="addColor" :row-style="changeRowColor">
+{#     @cell-mouse-enter="floatdisplay">#}
+        <el-table-column type="selection" align="center" :reserve-selection="true" fixed></el-table-column>
+        <el-table-column type="index" :index="indexMethod" width="60" align="center" fixed v-if="show"></el-table-column>
+        <el-table-column prop="Customer" label="客戶別" align="center" width="100" fixed>
+        </el-table-column>
+{#        <el-table-column prop="Plant" label="廠區" align="center" width="100" fixed>#}
+{#        </el-table-column>#}
+        <el-table-column prop="NID" label="設備序號" align="center" width="100" fixed>
+           <template scope="scope">
+                <el-tooltip placement="right" effect="light">
+                  <div slot="content">
+                     <table border="1" width="600px" cellspacing="0" align="center">
+                        <tr>
+                            <td style="text-align: center;height: 200px;width: 240px;font-size: 15px;font-weight: bolder">設備圖片</td>
+                            <td style="text-align: center;height: 200px;font-size: 15px;font-weight: bolder" colspan="2">
+                                <img :src="getImgUrl(scope.row.NID)" alt="pic" width="150" height="150" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="thStyle">設備描述</th>
+                            <th class="thCSS" colspan="2">附帶品</th>
+                        </tr>
+                        <tr>
+                            <td style="height: 80px;font-size: 15px;">${ scope.row.DevDescription }</td>
+                            <td style="height: 80px;font-size: 15px;" colspan="2">${ scope.row.PckgIncludes }</td>
+                        </tr>
+                        <tr>
+                            <th class="thStyle">設備來源</th>
+                            <th class="thCSS">HW Ver.</th>
+                            <th class="thCSS">FW Ver.</th>
+                        </tr>
+                        <tr>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.Source }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.HWVer }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.FWVer }</td>
+                        </tr>
+                        <tr>
+                            <th class="thStyle">資產編號</th>
+                            <th class="thCSS">設備價格</th>
+                            <th class="thCSS">設備年齡</th>
+                        </tr>
+                        <tr>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.AssetNum }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.DevPrice }</td>
+                            <td style="height: 40px;font-size: 15px;">${ scope.row.FWVer }</td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div style="cursor: pointer;" class="showColor">${ scope.row.NID }</div>
+                </el-tooltip>
+           </template>
+        </el-table-column>
+        <el-table-column prop="DevID" label="設備用途" align="center" width="120">
+        </el-table-column>
+        <el-table-column prop="IntfCtgry" label="介面種類" align="center" width="160">
+        </el-table-column>
+        <el-table-column prop="DevCtgry" label="設備種類" width="100" align="center">
+        </el-table-column>
+        <el-table-column prop="Devproperties" label="設備屬性" width="160" align="center">
+        </el-table-column>
+        <el-table-column prop="Devsize" label="設備容量" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="DevVendor" label="設備廠家" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="DevModel" label="設備型號" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="DevName" label="設備名稱" align="center" width="160">
+        </el-table-column>
+        <el-table-column prop="BrwStatus" label="借還狀態" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Usrname" label="用戶名稱" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Plandate" label="預計歸還日期" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="useday" label="使用天數" width="100" align="center">
+        </el-table-column>
+        <el-table-column prop="Btime" label="借用時間" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Rtime" label="歸還日期" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Overday" label="超期天數" align="center">
+        </el-table-column>
+        <el-table-column prop="Comment" label="備註" align="center" width="180">
+        </el-table-column>
+    </el-table>
+    <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[10, 50, 100, 200]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+        </el-pagination>
+    </div>
+    </template>
+    </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script src="/static/js/Element/table.js"></script>
+<script src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/image.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script type="text/babel">
+ new Vue({
+     el: '#app',
+     delimiters: ['${', '}'],
+     data: function () {
+         return {
+             multipleSelectionFlag:false,
+             multiDeleteVisible:false,
+             dialogDetialVisible:false,
+             show:false,
+             multipleSelection: [],
+             tableDetail : [],
+             tableContent: [],
+             currentPage: 1,//默认显示第一页
+             pageSize:100,//默认每页显示100条
+             totalNum:null,
+             selectItem:{},
+             selectIntfCtgry:{},
+             selectDevCtgry:{},
+             selectDevproperties:{},
+             selectDevsize:{},
+             selectOption:{},
+             selectedBorrower:'',
+             selectBorrower:[],
+             selectedIntfCtgry:null,
+             selectedDevCtgry:null,
+             selectedDevproperties:null,
+             selectedDevVendor :null,
+             selectedDevsize :null,
+             selectedBorrower:'',
+             selectBorrower:[],
+
+         }
+     },
+     mounted: function (){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+     },
+     methods: {
+        //获取数据
+        getdata: function (e) {
+            let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+            axios.post("/DeviceABO/M_Return/", Qs.stringify(data), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.selectItem=res.data.select;
+                this.tableContent = res.data.content;
+                this.totalNum=this.tableContent.length;
+         });
+
+        },
+        getRowKeys (row) {
+            return row.id;
+        },
+          handleSelect(item) {
+                console.log(item);
+         },
+         //索引
+         indexMethod(index) {
+            return index +1;
+         },
+         //分页
+         handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+            this.pageSize = val;
+         },
+         handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+          this.currentPage = val;
+         },
+
+         getImgUrl(val){
+            return "/media/DeviceABO/Device/"+val+".jpg";
+         },
+
+         getImgUrl2(val){
+            return "/media/DeviceABO/Baoguan/"+val+"_b.jpg";
+         },
+
+
+            querySearch(queryString, cb) {
+            var selectBorrower = this.selectItem;
+            var results = queryString ? selectBorrower.filter(this.createFilter(queryString)) : selectBorrower;
+            // 调用 callback 返回建议列表的数据
+                {#console.log(this.selectItem,'111');#}
+            cb(results);
+          },
+          createFilter(queryString) {
+            return (restaurant) => {
+              return (
+                  restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+            };
+          },
+
+          handleSelect(item) {
+                this.number = item.number;
+                console.log(item);
+          },
+
+          //上传搜索项：以此选项搜索符合条件的内容
+         selectMsg :function(){
+               let Borrower = this.$refs.Borrower.value;
+               let BorrowerNum = this.number;
+               let data ={"isGetData":"SEARCH","Borrower":Borrower,"BorrowerNum":BorrowerNum, "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+               axios.post("/DeviceABO/M_Return/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.selectItem=res.data.select;
+                  this.totalNum=this.tableContent.length;
+                  this.$refs.multipleTable.clearSelection();
+
+                })
+         },
+
+         showDetial(row, column, cell, event) {
+            if( column.label == "設備序號") {
+                {#console.log(row);#}
+                this.dialogDetialVisible = true;
+                this.tableDetail[0]  = row;
+            }
+         },
+
+           handleSelectionChange(val) {
+                {#console.log(val);#}
+                this.multipleSelection = val;
+                var len=document.getElementById("SelectNum");
+                len.innerHTML=this.multipleSelection.length;
+                {#console.log(this.multipleSelection.length)#}
+           },
+
+           StoragesChange() {
+                if( this.multipleSelection.length == 0){
+                     this.$alert('請至少勾選一條數據', '提示', {
+                        type: 'warning',
+                     })
+                }else {
+                        var warning=confirm('是否確定入庫?');
+                        if(warning) {
+                             let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                             let params = [];
+                             let self = this;
+                             checkArr.forEach(function (item) {
+                                 console.log(item);
+                                 params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                        });
+                         console.log(params);
+                           let Borrower = this.$refs.Borrower.value;
+                           let BorrowerNum = this.number;
+                           let data = {
+                               "isGetData": "ChangeStorages",
+                               "params": params,"Borrower":Borrower,"BorrowerNum":BorrowerNum, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                           };
+                           axios.post('/DeviceABO/M_Return/', data).then((res) =>{
+                                 this.tableContent = res.data.content;
+                                 this.totalNum=this.tableContent.length;
+                                 console.log(this.tableContent,'mul');
+                                 self.$message({
+                                     message: '入庫成功',
+                                     type: 'success'
+                             });
+                                 this.$refs.multipleTable.clearSelection();
+                             })
+                         }else{
+                             return false;
+                         }
+                        }
+        },
+
+        changeRowColor({row, column, rowIndex, columnIndex}) {
+            if( rowIndex % 2 == 0){
+               return {
+                         background: 'white'
+               }
+            }else{
+               return {
+                         background: '#FFF0F5'
+                         {#background: '#FFFAF0'#}
+               }
+            }
+        },
+
+        addColor({row, column, rowIndex, columnIndex}) {
+                    if (columnIndex === 17 && row.Overday !== '') {
+                                   return {
+                                             color: '#FF0000'
+                                           }
+                           }
+                           if (columnIndex === 11 && (row.BrwStatus =='已借出'||row.BrwStatus =='已續借')) {
+                                   return {
+                                             color: '#f14018',
+                                             background: 'white'
+                                           }
+                           }
+                           if (columnIndex === 11 && (row.BrwStatus =='歸還確認中'||row.BrwStatus =='預定確認中'||row.BrwStatus =='續借確認中')) {
+                                   return {
+                                             background: '#FFFF00'
+                                           }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='固定設備') {
+                                   return {
+                                             background: '#98F898'
+                                           }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='可借用') {
+                                   return {
+                                             background: '#32CD32'
+                                           }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='長期借用') {
+                                    return {
+                                              background: '#CEFFCE'
+                                            }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='驗收中') {
+                                    return {
+                                              background: '#FFFF99'
+                                            }
+                           }
+        },
+
+         ToBreak (val) {
+            //console.log(val,"val")
+          if(val){
+              //console.log(val.replace('\n', '<br />'),"val")
+              return val.replace('\n', '<br />')
+          }
+        }
+     }
+ })
+</script>
+{% endblock %}

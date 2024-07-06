@@ -1,0 +1,374 @@
+{% extends 'base.html' %}
+{#{% load custom_tag %}#}
+{% load staticfiles %}
+{% block title %}Index{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/home_zerogrid.css">
+	<link rel="stylesheet" href="/static/css/home_style.css">
+	<link rel="stylesheet" href="/static/css/home_menu.css">
+     <link rel="stylesheet" href="/static/css/ElementUI.css">
+    <style scoped>
+  .el-carousel{
+    overflow-x:hidden;
+    overflow-y: hidden;
+  }
+
+   .image{
+    height: 550px;
+    }
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    {#line-height: 200px;#}
+    margin: 0;
+  }
+
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
+
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
+
+</style>
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+/* body 样式 */
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+/* 标题 */
+.headerLUX {
+    padding: 30px;
+    text-align: center;
+    {#background: #D0D0D0;#}
+    color: #ffffff;
+}
+
+/* 标题字体加大 */
+.headerLUX h1 {
+    font-size: 40px;
+}
+
+/* 导航 */
+.navbarLUX {
+    overflow: hidden;
+    {#background-color: #a1a09e;#}
+}
+
+/* 导航栏样式 */
+.navbarLUX span {
+    float: left;
+    display: block;
+    margin-left:21.5%;
+    color: #333;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+/* 右侧链接*/
+.navbarLUX a.right {
+    float: right;
+}
+
+/* 鼠标移动到链接的颜色 */
+{#.navbarLUX span:hover {#}
+{#    background-color: #ddd;#}
+{#    color: black;#}
+{#}#}
+
+{#/* 列容器 */#}
+{#.row {#}
+{#    display: -ms-flexbox; /* IE10 */#}
+{#    display: flex;#}
+{#    -ms-flex-wrap: wrap; /* IE10 */#}
+{#    flex-wrap: wrap;#}
+{#}#}
+
+/* 创建两个列 */
+/* 边栏 */
+.sideLUX {
+    -ms-flex: 100%; /* IE10 */
+    flex: 100%;
+    background-color: #f1f1f1;
+    padding: 20px;
+{#    float:right;#}
+}
+
+/* 主要的内容区域 */
+.mainLUX {
+    -ms-flex: 100%; /* IE10 */
+    flex: 100%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+/* 底部 */
+.footerLUX {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+@media screen and (max-width: 700px) {
+    .row {
+{#        flex-direction: column;#}
+    }
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+@media screen and (max-width: 400px) {
+    .navbarLUX a {
+        float: none;
+        width: 100%;
+    }
+}
+.pic{
+        display: inline-block;
+        *display: inline;
+        *zoom:1;
+        margin: auto;
+        overflow: hidden;
+   }
+.ms{
+        position: absolute;
+        background: black;
+        opacity: 0.8;
+        width: 26.3%;
+        *width: 15.2%;
+        height: 60px;
+        *margin-left:200px;
+        margin-top: -60px;
+        text-align: center;
+        line-height: 27px;
+        color: white;
+        z-index: 99;
+
+    }
+.atooltip.el-tooltip__popper[x-placement^="top"] .popper__arrow {
+  border-top-color: pink;
+}
+.atooltip.el-tooltip__popper[x-placement^="top"] .popper__arrow:after {
+  border-top-color: pink;
+}
+.atooltip {
+  background: white !important;
+}
+
+</style>
+{% endblock %}
+{% block content1 %}
+{% endblock %}
+{% block content %}
+<div id="app">
+{#    <div class="headerLUX">#}
+        <el-backtop ></el-backtop>
+        <template>
+          <!-- 轮播 -->
+            <el-carousel :interval="4000" arrow="always" height="400px">
+            <el-carousel-item class="image" v-for="item in images" :key="item.id">
+               <img :src="item.url" width="100%" height="100%" style="opacity: 0.7" alt="无图片" v-on:click="changeurl(item.hrefchage,$event)"/>
+                <h3 style="position:absolute; z-index:2; left:10px; top:10px; color: yellow; font-weight: 700; font-size:35px">${ item.name }</h3>
+            </el-carousel-item>
+          </el-carousel>
+
+        </template>
+{#    </div>#}
+
+    <div class="navbarLUX">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+   <div class="row">
+         <div class="col-md-6">
+             <div class="sideLUX">
+                   <div style="font-size: 30px;font-family: Microsoft YaHei;font-weight: 900;">公告栏</div>
+                   <div style="width:100%;border:1px;border-color:black;">
+                       <marquee  scrollamount=2 direction="up" onmouseover="this.stop()" onMouseOut="this.start()" scrolldelay="50">
+                           <ul style="height:205px;font-family: Microsoft YaHei;font-size: 25px;">
+                               <li style="margin-bottom: 15px;" v-for="item in Gcontent">${ item }</li>
+                           </ul>
+                       </marquee>
+                   </div>
+             </div>
+         </div>
+         <div class="col-md-6">
+             <div class="mainLUX">
+                  <div style="width:100%">
+                     <el-table :data="tableData" border height="240px"
+                     :header-cell-style="{color:'#333',fontFamily:'Microsoft YaHei',fontSize:'20px',fontWeight:900}"
+                     :row-style="{color:'#333',fontFamily:'Microsoft YaHei',fontSize:'19px'}">
+                       <el-table-column  prop="systName" label="系統名" align="center">
+                          <template scope="scope">
+                              <a :href="scope.row.wangzhi" target="_blank" style="text-decoration:underline;color:blue;">${ scope.row.systName }</a>
+                          </template>
+                       </el-table-column>
+                       <el-table-column  prop="region" label="所在地區" align="center"></el-table-column>
+                       <el-table-column  prop="adminCN" label="管理員" align="center">
+                           <template scope="scope">
+                                <el-tooltip placement="top" effect="light">
+                                    <div slot="content">
+                                          <table align="center">
+                                              <tr><td colspan="2" style="text-align:center"><img :src="scope.row.pic" alt="Paris" width="150" height="180"></td></tr>
+                                              <tr><td style="text-align:center">姓名</td><td style="text-align:center">${ scope.row.EnglishName }</td></tr>
+                                              <tr><td style="text-align:center">工號</td><td style="text-align:center">${ scope.row.groupNumber }</td></tr>
+                                              <tr><td style="text-align:center">聯繫方式</td><td style="text-align:center">${ scope.row.phoneNumber }</td></tr>
+                                          </table>
+                                    </div>
+                                    <div>${ scope.row.adminCN }</div>
+                                </el-tooltip>
+                           </template>
+                       </el-table-column>
+                     </el-table>
+                  </div>
+             </div>
+         </div>
+   </div>
+
+{#    <div class="footerLUX">#}
+{#      <h2>@2021 Automation team</h2>#}
+{#      <h3>Phone：21850 &nbsp Jun_Wang;Edwin_Cao;Katherine_Cao;Lux_Chen;Erin_Sun;</h3>#}
+{#    </div>#}
+
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="../static/js/lib/calendar-2/moment.latest.min.js"></script>
+<script src="../static/js/lib/calendar-2/semantic.ui.min.js"></script>
+<script src="../static/js/lib/calendar-2/prism.min.js"></script>
+<script src="../static/js/lib/calendar-2/pignose.calendar.min.js"></script>
+<script src="../static/js/lib/calendar-2/pignose.init.js"></script>
+<script src="../static/js/lib/bootstrap.min.js"></script>
+<script src="../static/js/scripts.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/vue-router.min.js"></script>
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script  src="/static/js/Element/table.js"></script>
+<script  src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script  src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/date-picker.js"></script>
+<script src="/static/js/Element/dialog.js"></script>
+<script src="/static/js/Element/form.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script src="/static/js/Element/tooltip.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/Element/pagination.js"></script>
+ <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+            tableData:[],
+            Gcontent:[],
+            admincn:[],
+            pic:[],
+            pic1:null,
+            pic2:null,
+            pic3:null,
+            englishname:[],
+            englishname1:null,
+            englishname2:null,
+            englishname3:null,
+            groupNumber:[],
+            groupNumber1:null,
+            groupNumber2:null,
+            groupNumber3:null,
+            phoneNumber:[],
+            phoneNumber1:null,
+            phoneNumber2:null,
+            phoneNumber3:null,
+             bannerH :450,
+            images: [
+              {id:1, url: "/static/src/qiu1.jpg", hrefchage: "/AdapterPowerCode/BorrowedAdapter/", name: "AdapterPowerCord-LNV"},
+              {id:2, url: "/static/src/lu.jpg", hrefchage: "/DeviceLNV/BorrowedDeviceLNV", name: "Device-LNV"},
+              {id:3, url: "/static/src/jinqiu5.jpg", hrefchage: "/DeviceABO/BorrowedDeviceABO", name: "Device-ABO"},
+            ],
+
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+            window.addEventListener('resize', () => {
+                this.setBannerH()
+              }, false);
+        },
+        methods: {
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                console.log(data)
+                axios.post("/index/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                        this.tableData=res.data.tableData;
+                        //滚动条内容
+                        this.Gcontent=res.data.Gcontent;
+{#                        var gonggaoL=document.getElementById("gonggao")#}
+{#                         gonggaoL.innerHTML=this.Gcontent;#}
+                        //管理员中文名
+{#                         this.admincn=res.data.admincn;#}
+{#                         var admincn11=document.getElementById("admincn1")#}
+{#                         console.log(admincn11)#}
+{#                         admincn11.innerHTML=this.admincn[0];#}
+{#                         var admincn22=document.getElementById("admincn2")#}
+{#                         admincn22.innerHTML=this.admincn[1];#}
+{#                         var admincn33=document.getElementById("admincn3")#}
+{#                         admincn33.innerHTML=this.admincn[2];#}
+
+{#                         this.pic=res.data.pic;#}
+{#                         this.pic1=this.englishname[0];#}
+{#                         this.pic2=this.englishname[1];#}
+{#                         this.pic3=this.englishname[2];#}
+{#                         //管理员英文名#}
+{#                         this.englishname=res.data.englishname;#}
+{#                         this.englishname1=this.englishname[0];#}
+{#                         this.englishname2=this.englishname[1];#}
+{#                         this.englishname3=this.englishname[2];#}
+{#                         //管理员工号#}
+{#                         this.groupNumber=res.data.groupNumber;#}
+{#                         this.groupNumber1=this.groupNumber[0];#}
+{#                         this.groupNumber2=this.groupNumber[1];#}
+{#                         this.groupNumber3=this.groupNumber[2];#}
+{#                         //管理员联系方式#}
+{#                         this.phoneNumber=res.data.phoneNumber;#}
+{#                         this.phoneNumber1=this.phoneNumber[0];#}
+{#                         this.phoneNumber2=this.phoneNumber[1];#}
+{#                         this.phoneNumber3=this.phoneNumber[2];#}
+
+
+
+
+                });
+            },
+            setBannerH: function(){
+
+                  this.bannerH = document.body.clientWidth / 4
+              },
+                changeurl(hrefchage,event){
+
+                  window.location.href=hrefchage;
+                }
+
+
+        }
+    })
+</script>
+{% endblock %}

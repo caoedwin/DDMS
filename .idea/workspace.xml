@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="050417aa-da66-48cc-9932-421bceb54677" name="Default Changelist" comment="">
+    <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/all-2024-07-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2024-07-05.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error-2024-07-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2024-07-05.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info-2024-07-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2024-07-05.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Reliability_Row_data/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reliability_Row_data/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -10,82 +14,116 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/DMS$tasks.coverage" NAME="tasks Coverage Results" MODIFIED="1615337691199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app01" />
+    <SUITE FILE_PATH="coverage/DMS$excelTrans.coverage" NAME="excelTrans Coverage Results" MODIFIED="1700727265124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/PythonProject/DDISExcel" />
+    <SUITE FILE_PATH="coverage/DMS$tests.coverage" NAME="tests Coverage Results" MODIFIED="1695602889732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app01" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="393780224">
+    <session id="336981479">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.0" value="4" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.closed" value="38" />
+          <entry key="project.open.time.0" value="36" />
+          <entry key="project.open.time.1" value="8" />
+          <entry key="project.open.time.2" value="4" />
+          <entry key="project.open.time.3" value="3" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="52" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="2" />
-          <entry key="js" value="9" />
-          <entry key="py" value="19" />
-          <entry key="vue" value="5" />
+          <entry key="html" value="126" />
+          <entry key="js" value="2" />
+          <entry key="py" value="276" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="9" />
-          <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="19" />
+          <entry key="HTML" value="126" />
+          <entry key="JavaScript" value="2" />
+          <entry key="Python" value="276" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="78" />
-          <entry key="vue" value="21" />
+          <entry key="html" value="1250" />
+          <entry key="py" value="5055" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="21" />
-          <entry key="Python" value="78" />
+          <entry key="HTML" value="1250" />
+          <entry key="Python" value="5055" />
         </counts>
       </usages-collector>
     </session>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="DMS" />
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>unicode_literals</find>
-      <find>backend01</find>
-      <find>REST_FRAMEWORK</find>
-      <find>CREDENTIALS</find>
-      <find>inputBook</find>
-      <find>bookSubmit</find>
-      <find>created</find>
-      <find>CreateModelMixin</find>
-      <find>RetrieveModelMixin</find>
-      <find>POST</find>
-      <find>get_serializer</find>
-      <find>request</find>
-      <find>response</find>
-      <find>author</find>
-      <find>postBook</find>
-      <find>page_size</find>
-      <find>books</find>
-      <find>pagination</find>
-      <find>BASE_DIR</find>
-      <find>true</find>
-      <find>Templates/dist</find>
+      <find>PK1000</find>
+      <find>mock_data</find>
+      <find>path</find>
+      <find>enableProgress</find>
+      <find>print</find>
+      <find>doexcel</find>
+      <find>mythread1</find>
+      <find>current_page</find>
+      <find>is_login_DMS</find>
+      <find>is_login</find>
+      <find>user_id</find>
+      <find>user_name</find>
+      <find>CNname</find>
+      <find>edit</find>
+      <find>updateData</find>
+      <find>current_page_DMS</find>
+      <find>session</find>
+      <find>bulk_create</find>
+      <find>images</find>
+      <find>批量</find>
+      <find>閑置</find>
+      <find>IdleState</find>
+      <find>sectionIdleState</find>
+      <find>export</find>
+      <find>out-table</find>
+      <find>el-table__fixed</find>
+      <find>tableContent</find>
+      <find>getImgUrl</find>
+      <find>Non_login_path</find>
+      <find>current_page_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,20 +132,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/backend01/__init__.py" />
-        <option value="$PROJECT_DIR$/pyvue/__init__.py" />
-        <option value="$PROJECT_DIR$/manage.py" />
-        <option value="$PROJECT_DIR$/backend01/urls.py" />
-        <option value="$PROJECT_DIR$/frontend01/src/api/index.js" />
-        <option value="$PROJECT_DIR$/backend01/admin.py" />
-        <option value="$PROJECT_DIR$/frontend01/src/api/api.js" />
-        <option value="$PROJECT_DIR$/backend01/serializer.py" />
-        <option value="C:/Python372/mecheck/Lib/site-packages/rest_framework/viewsets.py" />
-        <option value="$PROJECT_DIR$/backend01/models.py" />
-        <option value="$PROJECT_DIR$/pyvue/settings.py" />
-        <option value="$PROJECT_DIR$/pyvue/urls.py" />
-        <option value="$PROJECT_DIR$/frontend01/src/components/HelloWorld.vue" />
-        <option value="$PROJECT_DIR$/backend01/views.py" />
+        <option value="$PROJECT_DIR$/DeviceCQT88/admin.py" />
+        <option value="$PROJECT_DIR$/DeviceCQT88/apps.py" />
+        <option value="$PROJECT_DIR$/DeviceCQT88/models.py" />
+        <option value="$PROJECT_DIR$/DeviceCQT88/urls.py" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/BorrowedDeviceCQT88.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Borrow.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Category.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Borrowed.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Destine.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Return.html" />
+        <option value="$PROJECT_DIR$/templates/SigninCQT88.html" />
+        <option value="$PROJECT_DIR$/WirelessAP/models.py" />
+        <option value="$PROJECT_DIR$/WirelessAP/urls.py" />
+        <option value="$PROJECT_DIR$/WirelessAP/views.py" />
+        <option value="$PROJECT_DIR$/templates/WirelessAP/Borrow.html" />
+        <option value="$PROJECT_DIR$/WirelessAP/admin.py" />
+        <option value="$PROJECT_DIR$/app01/tests.py" />
+        <option value="$PROJECT_DIR$/app01/tasks_excel.py" />
+        <option value="$PROJECT_DIR$/app01/templatetags/custom_tag.py" />
+        <option value="$PROJECT_DIR$/TUMHistory/admin.py" />
+        <option value="C:/Python372/mecheck/Lib/site-packages/openpyxl/worksheet/_reader.py" />
+        <option value="$PROJECT_DIR$/TUMHistory/urls.py" />
+        <option value="$PROJECT_DIR$/templates/TUMHistory/TUMHistory.html" />
+        <option value="$PROJECT_DIR$/TUMHistory/models.py" />
+        <option value="$PROJECT_DIR$/templates/TUMHistory/MateriaHistory.html" />
+        <option value="$PROJECT_DIR$/TUMHistory/views20211017lingyongchayi.py" />
+        <option value="$PROJECT_DIR$/templates/index20210317图片上悬浮信息.html" />
+        <option value="C:/PythonProject/DDISExcel/excelTrans.py" />
+        <option value="$PROJECT_DIR$/AdapterPowerCode/views.py" />
+        <option value="$PROJECT_DIR$/ChairCabinetMS/views.py" />
+        <option value="$PROJECT_DIR$/DeviceA39/views.py" />
+        <option value="$PROJECT_DIR$/DeviceABO/views.py" />
+        <option value="$PROJECT_DIR$/DeviceCQT88/views.py" />
+        <option value="$PROJECT_DIR$/DeviceLNV/views.py" />
+        <option value="$PROJECT_DIR$/TUMHistory/views.py" />
+        <option value="$PROJECT_DIR$/middleware/UserIP.py" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/middleware/checkper.py" />
+        <option value="$PROJECT_DIR$/DMS/settings.py" />
+        <option value="$PROJECT_DIR$/DMS/urls.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/app01/tasks.py" />
+        <option value="$PROJECT_DIR$/ComputerMS/views.py" />
+        <option value="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_edit.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceABO/M_edit.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA39/M_edit.html" />
+        <option value="$PROJECT_DIR$/app01/views.py" />
       </list>
     </option>
   </component>
@@ -119,14 +194,907 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/frontend01/package.json" />
+      <path value="$PROJECT_DIR$/static/Magnific-Popup-master/package.json" />
+      <path value="$PROJECT_DIR$/static/download_UPK/element-ui@2.12.0/package.json" />
+      <path value="$PROJECT_DIR$/static/download_UPK/vue-router@3.1.3/package.json" />
+      <path value="$PROJECT_DIR$/static/download_UPK/vue@2.6.10/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/code-frame/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/generator/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/helper-function-name/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/helper-get-function-arity/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/helper-split-export-declaration/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/helper-validator-identifier/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/highlight/node_modules/js-tokens/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/highlight/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/parser/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/template/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/traverse/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/traverse/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/traverse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@babel/types/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/@blueoak/list/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/JSONStream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/abbrev/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/acorn-jsx/node_modules/acorn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/acorn-jsx/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/acorn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/adler-32/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/agent-base/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/agentkeepalive/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ajv-keywords/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ajv/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ansi-align/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ansi-escapes/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ansi-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ansi-styles/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ansicolors/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ansistyles/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/append-transform/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/aproba/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/archy/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/are-we-there-yet/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/are-we-there-yet/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/are-we-there-yet/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/arg/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/argparse/node_modules/sprintf-js/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/argparse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-find-index/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-includes/node_modules/es-abstract/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-includes/node_modules/es-to-primitive/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-includes/node_modules/has-symbols/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-includes/node_modules/is-callable/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-includes/node_modules/is-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-includes/node_modules/object-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/array-includes/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/asap/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/asn1/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/assert-plus/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/async-validator/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/asynckit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/aws-sign2/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/aws4/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/axios/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/babel-code-frame/node_modules/ansi-styles/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/babel-code-frame/node_modules/chalk/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/babel-code-frame/node_modules/supports-color/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/babel-code-frame/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/babel-helper-vue-jsx-merge-props/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/babel-runtime/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/balanced-match/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/base64-js/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/bcrypt-pbkdf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/bin-links/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/bind-obj-methods/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/bl/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/bluebird/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/bootstrap-icons/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/boxen/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/brace-expansion/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/browser-process-hrtime/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/buffer-from/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/buffer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/builtin-modules/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/builtins/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/byline/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/byte-size/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cacache/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/caching-transform/node_modules/make-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/caching-transform/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/caching-transform/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/call-bind/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/call-limit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/caller-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/caller/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/callsites/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/camelcase/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/capture-stack-trace/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/caseless/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cfb/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/chalk/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/chardet/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/china-area-data/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/chownr/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ci-info/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cidr-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/circular-json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/clean-yaml-object/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cli-boxes/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cli-columns/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cli-cursor/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cli-table3/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cli-width/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cliui/node_modules/ansi-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cliui/node_modules/strip-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cliui/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/clone/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cmd-shim/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/co/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/code-point-at/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/codepage/node_modules/commander/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/codepage/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coffee-script/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/color-convert/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/color-name/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/color-support/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/colors/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/columnify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/combined-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/commander/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/commondir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/concat-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/concat-stream/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/concat-stream/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/concat-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/config-chain/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/configstore/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/connect/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/connect/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/connect/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/console-control-strings/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/contains-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/convert-source-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/copy-concurrently/node_modules/aproba/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/copy-concurrently/node_modules/iferr/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/copy-concurrently/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/core-js/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/core-util-is/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/correct-license-metadata/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/couchapp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/node_modules/ajv/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/node_modules/fast-deep-equal/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/node_modules/har-validator/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/node_modules/json-schema-traverse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/node_modules/punycode/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/node_modules/request/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/node_modules/tough-cookie/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/coveralls/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cp-file/node_modules/make-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cp-file/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cp-file/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/crc-32/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/create-error-class/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cross-spawn/node_modules/lru-cache/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cross-spawn/node_modules/yallist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cross-spawn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/crypto-random-string/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/cyclist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/dashdash/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/debug-log/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/debug/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/debuglog/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/decamelize/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/decode-uri-component/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/deep-equal/node_modules/object-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/deep-equal/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/deep-extend/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/deep-is/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/deepmerge/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/default-require-extensions/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/defaults/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/define-properties/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/deglob/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/delayed-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/delegates/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/detect-indent/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/detect-newline/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/dezalgo/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/diff/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/docopt/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/doctrine/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/domain-browser/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/dot-prop/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/dotenv/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/duplexer3/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/duplexify/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/duplexify/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/duplexify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ecc-jsbn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/editor/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ee-first/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/element-china-area-data/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/element-ui/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/element-ui/packages/theme-chalk/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/emoji-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/encodeurl/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/encoding/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/end-of-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/env-paths/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/err-code/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/errno/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/error-ex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/es-abstract/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/es-to-primitive/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/es6-error/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/es6-promise/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/es6-promisify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/escape-html/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/escape-string-regexp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-config-standard-jsx/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-config-standard/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-import-resolver-node/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-import-resolver-node/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-import-resolver-node/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-module-utils/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-module-utils/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-module-utils/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-import/memo-parser/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-import/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-import/node_modules/doctrine/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-import/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-import/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-node/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-promise/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-react/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-plugin-standard/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-scope/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint-visitor-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint/node_modules/ansi-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint/node_modules/strip-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/eslint/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/esm/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/espree/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/esprima/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/esquery/node_modules/estraverse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/esquery/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/esrecurse/node_modules/estraverse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/esrecurse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/estraverse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/esutils/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/events-to-array/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/execa/node_modules/get-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/execa/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/exit-on-epipe/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/extend/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/external-editor/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/extsprintf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fast-deep-equal/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fast-json-stable-stringify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fast-levenshtein/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fflate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/figgy-pudding/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/figures/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/file-entry-cache/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/file-saver/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/finalhandler/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/finalhandler/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/finalhandler/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/find-up/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/locate-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/make-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/p-limit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/p-locate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/p-try/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/node_modules/pkg-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-cache-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-npm-prefix/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-root/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/find-up/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/flat-cache/node_modules/rimraf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/flat-cache/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/flush-write-stream/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/flush-write-stream/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/flush-write-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/follow-redirects/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/foreground-child/node_modules/cross-spawn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/foreground-child/node_modules/lru-cache/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/foreground-child/node_modules/yallist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/foreground-child/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/forever-agent/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/form-data/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/frac/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/from2/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/from2/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/from2/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-access/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-constants/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-exists-cached/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-minipass/node_modules/minipass/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-minipass/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-vacuum/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-write-stream-atomic/node_modules/iferr/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-write-stream-atomic/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-write-stream-atomic/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs-write-stream-atomic/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/fs.realpath/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/function-bind/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/function-loop/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/functional-red-black-tree/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/gauge/node_modules/aproba/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/gauge/node_modules/string-width/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/gauge/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/genfun/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/gentle-fs/node_modules/aproba/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/gentle-fs/node_modules/iferr/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/gentle-fs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/get-caller-file/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/get-intrinsic/node_modules/has-symbols/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/get-intrinsic/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/get-stdin/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/get-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/getpass/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/global-dirs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/globals/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/got/node_modules/get-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/got/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/har-schema/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/har-validator/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/has-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/has-flag/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/has-symbols/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/has-unicode/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/has/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/hasha/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/hock/node_modules/deep-equal/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/hock/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/hosted-git-info/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/html-escaper/cjs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/html-escaper/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/html-escaper/test/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-cache-semantics/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy-agent/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect-gzip/node_modules/mime/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect-gzip/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect-jsonp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect-jsonp/support/expresso/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect-restreamer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect/node_modules/mime/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect/node_modules/qs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/connect/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/node_modules/proxy-by-url/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/examples/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/node_modules/colors/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-proxy/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/http-signature/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/https-proxy-agent/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/humanize-ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/iconv-lite/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ieee754/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/iferr/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ignore-walk/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ignore/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/import-lazy/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/imurmurhash/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/infer-owner/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/inflight/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ini/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/init-package-json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/inquirer/node_modules/ansi-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/inquirer/node_modules/strip-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/inquirer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/invert-kv/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ip-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ip/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-arguments/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-arrayish/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-callable/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-ci/node_modules/ci-info/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-ci/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-cidr/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-core-module/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-date-object/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-fullwidth-code-point/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-installed-globally/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-negative-zero/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-npm/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-obj/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-path-inside/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-redirect/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-resolvable/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-retry-allowed/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-string/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-symbol/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/is-typedarray/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/isexe/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/isstream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-coverage/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-hook/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-instrument/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-instrument/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-report/node_modules/make-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-report/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-report/node_modules/supports-color/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-report/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-source-maps/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-source-maps/node_modules/make-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-source-maps/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-source-maps/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-source-maps/node_modules/source-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-lib-source-maps/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/istanbul-reports/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/js-tokens/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/js-yaml/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/jsbn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/jsesc/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/json-parse-better-errors/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/json-parse-errback/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/json-schema-traverse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/json-schema/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/json-stable-stringify-without-jsonify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/json-stringify-safe/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/jsonparse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/jsprim/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/jsx-ast-utils/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/jszip/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/latest-version/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lazy-property/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lcid/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lcov-parse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/levn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libcipm/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpm/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmaccess/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmconfig/node_modules/find-up/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmconfig/node_modules/locate-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmconfig/node_modules/p-limit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmconfig/node_modules/p-locate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmconfig/node_modules/p-try/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmconfig/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmhook/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmorg/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmpublish/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmsearch/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpmteam/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/libnpx/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/licensee/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/licensee/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/load-json-file/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/load-json-file/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/locate-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lock-verify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lockfile/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash-es/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._baseindexof/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._baseuniq/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._bindcallback/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._cacheindexof/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._createcache/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._createset/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._getnative/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash._root/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash.clonedeep/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash.flattendeep/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash.restparam/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash.union/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash.uniq/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash.without/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lodash/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/log-driver/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/loose-envify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lowercase-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/lru-cache/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/make-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/make-error/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/make-fetch-happen/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/map-age-cleaner/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/marked-man/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/marked/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/meant/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mem/node_modules/mimic-fn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mem/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/merge-source-map/node_modules/source-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/merge-source-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mime-db/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mime-types/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mimic-fn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/minipass/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/minizlib/node_modules/minipass/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/minizlib/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mississippi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mkdirp/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mkdirp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/move-concurrently/node_modules/aproba/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/move-concurrently/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/mute-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nano/node_modules/qs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nano/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/natural-compare/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nested-error-stacks/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nice-try/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/node-fetch-npm/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/node-gyp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nopt/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/normalize-package-data/node_modules/resolve/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/normalize-package-data/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/normalize-wheel/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-audit-report/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-bundled/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-cache-filename/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-install-checks/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-license-corrections/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-lifecycle/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-logical-tree/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-normalize-package-bin/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-package-arg/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-packlist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-pick-manifest/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-profile/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-couchapp/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-couchapp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-couchapp/test/fixtures/install/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-couchapp/test/fixtures/package/0.0.2/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-couchapp/test/fixtures/package/0.2.3/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-couchapp/test/fixtures/package/0.2.3alpha/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-couchapp/test/fixtures/package/0.2.4/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-fetch/node_modules/safe-buffer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-fetch/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-registry-mock/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-run-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npm-user-validate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/npmlog/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/null-check/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/number-is-nan/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/ansi-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/camelcase/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/cliui/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/find-up/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/get-caller-file/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/is-fullwidth-code-point/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/locate-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/make-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/p-limit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/p-locate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/p-try/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/require-main-filename/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/string-width/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/strip-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/wrap-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/yargs-parser/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/node_modules/yargs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/nyc/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/oauth-sign/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-inspect/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-is/node_modules/es-abstract/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-is/node_modules/es-to-primitive/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-is/node_modules/has-symbols/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-is/node_modules/is-callable/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-is/node_modules/is-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-is/node_modules/object-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-is/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object.assign/node_modules/has-symbols/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object.assign/node_modules/object-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object.assign/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/object.getownpropertydescriptors/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/on-finished/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/once/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/onetime/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/opener/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/optimist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/optionator/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/os-homedir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/os-locale/node_modules/cross-spawn/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/os-locale/node_modules/execa/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/os-locale/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/os-tmpdir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/osenv/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/own-or-env/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/own-or/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/p-defer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/p-finally/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/p-is-promise/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/p-limit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/p-locate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/p-try/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/package-hash/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/package-json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pacote/node_modules/minipass/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pacote/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pako/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/parallel-transform/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/parallel-transform/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/parallel-transform/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/parse-json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/parseurl/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/path-exists/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/path-is-absolute/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/path-is-inside/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/path-key/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/path-parse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/path-type/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/path-type/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/performance-now/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pkg-conf/node_modules/load-json-file/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pkg-conf/node_modules/parse-json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pkg-conf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pkg-config/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pkg-dir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pkginfo/examples/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pkginfo/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pluralize/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/prelude-ls/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/prepend-http/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/printj/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/process-nextick-args/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/progress/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/promise-inflight/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/promise-retry/node_modules/retry/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/promise-retry/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/promzard/example/npm-init/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/promzard/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/prop-types/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/proto-list/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/protoduck/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/prr/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pseudomap/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/psl/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pump/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pumpify/node_modules/pump/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/pumpify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/punycode/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/qrcode-terminal/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/qs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/query-string/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/querystring/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/qw/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/raw-loader/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/rc/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/rc/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/react-is/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/read-cmd-shim/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/read-installed/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/read-package-json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/read-package-tree/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/read-pkg-up/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/read-pkg/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/read/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/readdir-scoped-modules/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regenerator-runtime/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regexp.prototype.flags/node_modules/es-abstract/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regexp.prototype.flags/node_modules/es-to-primitive/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regexp.prototype.flags/node_modules/has-symbols/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regexp.prototype.flags/node_modules/is-callable/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regexp.prototype.flags/node_modules/is-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regexp.prototype.flags/node_modules/object-keys/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/regexp.prototype.flags/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/registry-auth-token/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/registry-url/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/release-zalgo/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/request/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/require-directory/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/require-inject/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/require-main-filename/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/require-uncached/node_modules/resolve-from/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/require-uncached/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resize-observer-polyfill/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve-from/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/module_dir/zmodules/bbb/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/baz/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/browser_field/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/dot_main/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/dot_slash_main/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/incorrect_main/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/invalid_main/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/multirepo/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/multirepo/packages/package-a/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/multirepo/packages/package-b/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/nested_symlinks/mylib/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/resolve/test/resolver/symlinked/package/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/restore-cursor/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/retry/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/rimraf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/run-async/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/run-parallel/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/run-queue/node_modules/aproba/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/run-queue/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/rx-lite-aggregates/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/rx-lite/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/safe-buffer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/safer-buffer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/script-loader/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/semver-diff/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/set-blocking/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sha/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/shebang-command/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/shebang-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/signal-exit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/simple-concat/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/slice-ansi/node_modules/is-fullwidth-code-point/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/slice-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/slide/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/smart-buffer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/socks-proxy-agent/node_modules/agent-base/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/socks-proxy-agent/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/socks/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sorted-object/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sorted-union-stream/node_modules/from2/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sorted-union-stream/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sorted-union-stream/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sorted-union-stream/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sorted-union-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/source-map-support/node_modules/source-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/source-map-support/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/source-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spawn-wrap/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-compare/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-correct/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-exceptions/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-expression-parse/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-expression-validate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-license-ids/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-osi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-ranges/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/spdx-whitelisted/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/split-on-first/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sprintf-js/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ssf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/sshpk/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ssri/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stack-utils/node_modules/escape-string-regexp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stack-utils/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/standard-engine/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/standard/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/statuses/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stream-each/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stream-iterate/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stream-iterate/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stream-iterate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stream-shift/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/strict-uri-encode/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string-width/node_modules/ansi-regex/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string-width/node_modules/is-fullwidth-code-point/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string-width/node_modules/strip-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string-width/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string.prototype.trimend/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string.prototype.trimstart/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string_decoder/node_modules/safe-buffer/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/stringify-package/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/strip-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/strip-bom/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/strip-eof/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/strip-json-comments/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/supports-color/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/table/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/@iarna/cli/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/balanced-match/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/brace-expansion/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/concat-map/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/fs.realpath/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/inflight/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/mkdirp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/once/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/path-is-absolute/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/rimraf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/signal-exit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/node_modules/wrappy/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tacks/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap-mocha-reporter/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap-mocha-reporter/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap-mocha-reporter/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap-mocha-reporter/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap-mocha-reporter/node_modules/tap-parser/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap-mocha-reporter/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap-parser/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tap/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tar-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tar/node_modules/minipass/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tar/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/term-size/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/find-up/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/load-json-file/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/locate-path/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/p-limit/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/p-locate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/p-try/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/parse-json/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/path-type/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/read-pkg-up/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/read-pkg/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/node_modules/require-main-filename/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/test-exclude/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/text-table/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/throttle-debounce/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/through/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/through2/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/through2/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/through2/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/timed-out/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tiny-relative-date/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tmatch/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tmp/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/to-fast-properties/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tough-cookie/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/trivial-deferred/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ts-node/node_modules/diff/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/ts-node/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tsame/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tunnel-agent/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/tweetnacl/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/type-check/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/typedarray/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/typescript/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/uid-number/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/umask/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/unicode-length/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/uniq/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/unique-filename/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/unique-slug/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/unique-string/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/unpipe/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/unzip-response/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/update-notifier/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/uri-js/node_modules/punycode/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/uri-js/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/url-parse-lax/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/url/node_modules/punycode/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/url/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/util-deprecate/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/util-extend/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/util-promisify/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/utils-merge/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/uuid/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/validate-npm-package-license/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/validate-npm-package-name/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/verror/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/voc/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/vue/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/watch/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wcwidth/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/which-module/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/which/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wide-align/node_modules/string-width/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wide-align/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/widest-line/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wmf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/word-wrap/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/word/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wordwrap/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/worker-farm/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wrap-ansi/node_modules/string-width/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wrap-ansi/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/wrappy/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/write-file-atomic/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/write/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xdg-basedir/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/adler-32/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/codepage/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/colors/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/commander/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/concat-stream/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/crc-32/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/frac/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/node_modules/ssf/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx-style/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xlsx/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/xtend/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/y18n/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/yallist/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/yapool/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/yargs-parser/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/yargs/node_modules/y18n/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/yargs/package.json" />
+      <path value="$PROJECT_DIR$/static/node_modules/yn/package.json" />
+      <path value="$PROJECT_DIR$/static/toastr-master/package.json" />
+      <path value="$PROJECT_DIR$/static/vendor/fontawesome-free/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="y" value="-12" />
-    <option name="width" value="1944" />
-    <option name="height" value="1044" />
+    <option name="x" value="-408" />
+    <option name="y" value="162" />
+    <option name="width" value="1947" />
+    <option name="height" value="1227" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -139,52 +1107,18 @@
         <subPane>
           <expand>
             <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
+              <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DMS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-              <item name="backend01" type="462c0819:PsiDirectoryNode" />
+              <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DMS" type="462c0819:PsiDirectoryNode" />
+              <item name="middleware" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-              <item name="Templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-              <item name="Templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-              <item name="Templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-              <item name="Templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pyvue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyvue" type="462c0819:PsiDirectoryNode" />
-              <item name="Templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DMS" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -193,17 +1127,24 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\djangoproject\DMS\static\css" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\djangoproject\pyvue\Templates" />
+      <recent name="C:\djangoproject\DMS\TUMHistory" />
+      <recent name="C:\djangoproject\DMS\templates\TUMHistory" />
+      <recent name="C:\djangoproject\DMS\app01" />
+      <recent name="C:\djangoproject\DMS\WirelessAP" />
+      <recent name="C:\djangoproject\DMS\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -218,14 +1159,83 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="pyvue" type="Python.DjangoServer" factoryName="Django server">
-      <module name="pyvue" />
+  <component name="RunManager" selected="Django server.DMS">
+    <configuration name="login.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DMS/templates/login.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="excelTrans" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DMS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="pyvue.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="C:/PythonProject/DDISExcel" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:/PythonProject/DDISExcel/excelTrans.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tasks" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app01" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app01/tasks.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app01" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app01/tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DMS" type="Python.DjangoServer" factoryName="Django server">
+      <module name="DMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="DMS.settings" />
       </envs>
       <option name="SDK_HOME" value="C:\Python372\mecheck\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -233,38 +1243,134 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
+      <option name="port" value="8003" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="browserUrl" value="http://127.0.0.1:8003/" />
       <option name="runTestServer" value="false" />
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django server.DMS" />
+      <item itemvalue="JavaScript Debug.login.html" />
+      <item itemvalue="Python.tasks" />
+      <item itemvalue="Python.tests" />
+      <item itemvalue="Python.excelTrans" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.excelTrans" />
+        <item itemvalue="Python.tests" />
+        <item itemvalue="JavaScript Debug.login.html" />
+        <item itemvalue="Python.tasks" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="050417aa-da66-48cc-9932-421bceb54677" name="Default Changelist" comment="" />
-      <created>1598315056340</created>
+      <changelist id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="" />
+      <created>1612493941540</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1598315056340</updated>
-      <workItem from="1598315058930" duration="26730000" />
-      <workItem from="1599024974991" duration="8836000" />
-      <workItem from="1599100303331" duration="30759000" />
-      <workItem from="1600659018147" duration="438000" />
-      <workItem from="1611900636768" duration="27000" />
-      <workItem from="1627548366793" duration="1658000" />
+      <updated>1612493941540</updated>
+      <workItem from="1612493943402" duration="17728000" />
+      <workItem from="1612831186415" duration="16404000" />
+      <workItem from="1613612898162" duration="132449000" />
+      <workItem from="1614840288473" duration="84354000" />
+      <workItem from="1615855269134" duration="61908000" />
+      <workItem from="1616056579640" duration="513000" />
+      <workItem from="1616057147387" duration="2836000" />
+      <workItem from="1616117425667" duration="26567000" />
+      <workItem from="1616993094656" duration="58000" />
+      <workItem from="1617160026662" duration="1461000" />
+      <workItem from="1617237237450" duration="5011000" />
+      <workItem from="1617260307772" duration="127675000" />
+      <workItem from="1619074636618" duration="128856000" />
+      <workItem from="1622009312018" duration="21135000" />
+      <workItem from="1623284955389" duration="158826000" />
+      <workItem from="1625447294918" duration="615000" />
+      <workItem from="1625452759747" duration="699000" />
+      <workItem from="1625453577992" duration="23724000" />
+      <workItem from="1627547132516" duration="73000" />
+      <workItem from="1627960439412" duration="602000" />
+      <workItem from="1628034638094" duration="50530000" />
+      <workItem from="1628232622967" duration="12000" />
+      <workItem from="1628233177420" duration="18000" />
+      <workItem from="1628233537510" duration="9000" />
+      <workItem from="1628233560027" duration="9000" />
+      <workItem from="1628469506736" duration="30604000" />
+      <workItem from="1628642861775" duration="33831000" />
+      <workItem from="1629072650489" duration="66836000" />
+      <workItem from="1629678502551" duration="38473000" />
+      <workItem from="1630368442305" duration="604000" />
+      <workItem from="1630379451174" duration="61639000" />
+      <workItem from="1631066627817" duration="87297000" />
+      <workItem from="1632273149786" duration="30220000" />
+      <workItem from="1633651803014" duration="32857000" />
+      <workItem from="1634180834836" duration="39437000" />
+      <workItem from="1635220650791" duration="40252000" />
+      <workItem from="1636333914409" duration="37778000" />
+      <workItem from="1638412746895" duration="21073000" />
+      <workItem from="1639381194567" duration="2042000" />
+      <workItem from="1640755954319" duration="22419000" />
+      <workItem from="1640848849001" duration="230000" />
+      <workItem from="1640909129879" duration="1171000" />
+      <workItem from="1641537905714" duration="1213000" />
+      <workItem from="1641949059075" duration="1640000" />
+      <workItem from="1641964159167" duration="25313000" />
+      <workItem from="1642478172781" duration="92008000" />
+      <workItem from="1644279837240" duration="86675000" />
+      <workItem from="1646200155802" duration="28390000" />
+      <workItem from="1646376052369" duration="63451000" />
+      <workItem from="1647248129968" duration="7701000" />
+      <workItem from="1647335153296" duration="18000" />
+      <workItem from="1647335655052" duration="1489000" />
+      <workItem from="1647390076283" duration="5590000" />
+      <workItem from="1647476960481" duration="13247000" />
+      <workItem from="1648530669039" duration="658000" />
+      <workItem from="1648620918419" duration="1802000" />
+      <workItem from="1651631368349" duration="1266000" />
+      <workItem from="1652065035387" duration="3621000" />
+      <workItem from="1652163758407" duration="1498000" />
+      <workItem from="1652672479947" duration="1617000" />
+      <workItem from="1652677548098" duration="20668000" />
+      <workItem from="1655081550169" duration="37000" />
+      <workItem from="1655280989975" duration="111000" />
+      <workItem from="1655337170339" duration="1968000" />
+      <workItem from="1655688298788" duration="1464000" />
+      <workItem from="1655696184741" duration="46000" />
+      <workItem from="1655866681692" duration="3764000" />
+      <workItem from="1656892351817" duration="3107000" />
+      <workItem from="1657758266390" duration="5852000" />
+      <workItem from="1658210016386" duration="31331000" />
+      <workItem from="1658449792703" duration="6925000" />
+      <workItem from="1658735830429" duration="370000" />
+      <workItem from="1658736267951" duration="2565000" />
+      <workItem from="1658738951637" duration="89000" />
+      <workItem from="1658798207720" duration="2527000" />
+      <workItem from="1659315584970" duration="3673000" />
+      <workItem from="1659497480867" duration="30051000" />
+      <workItem from="1660607387758" duration="9970000" />
+      <workItem from="1660693561755" duration="4440000" />
+      <workItem from="1660779682233" duration="16546000" />
+      <workItem from="1660865489626" duration="5264000" />
+      <workItem from="1661744197386" duration="488000" />
+      <workItem from="1662340147218" duration="100000" />
+      <workItem from="1662522164503" duration="2893000" />
+      <workItem from="1665558933274" duration="1062000" />
+      <workItem from="1675137874349" duration="28000" />
+      <workItem from="1675751258624" duration="2941000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68448000" />
+    <option name="totallyTimeSpent" value="1904312000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -276,30 +1382,55 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28202045" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="3" weight="0.32956153" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3294271" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.3274559" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" weight="0.32956153" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4959217" visible="true" weight="0.17235902" />
+      <window_info id="Favorites" order="1" sideWeight="0.5040783" side_tool="true" weight="0.22961956" />
+      <window_info id="Structure" order="2" sideWeight="0.50363636" side_tool="true" weight="0.22961956" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.4959239" weight="0.38643533" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.3979849" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.3274559" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32871535" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="SciView" order="9" sideWeight="0.50407606" side_tool="true" weight="0.19791667" />
+      <window_info anchor="bottom" id="Database" order="10" sideWeight="0.50158983" side_tool="true" weight="0.24333926" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" weight="0.41813603" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32493702" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50407606" side_tool="true" weight="0.27734375" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
+      <window_info anchor="right" id="Find" order="4" weight="0.32711965" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4959217" visible="true" weight="0.17329377" />
+      <window_info id="Favorites" order="1" sideWeight="0.5040783" side_tool="true" weight="0.22961956" />
+      <window_info id="Structure" order="2" sideWeight="0.50363636" side_tool="true" weight="0.22961956" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.4959239" visible="true" weight="0.43324938" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.3979849" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.3274559" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32871535" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="SciView" order="9" sideWeight="0.50407606" side_tool="true" weight="0.19791667" />
+      <window_info anchor="bottom" id="Database" order="10" sideWeight="0.50158983" side_tool="true" weight="0.24333926" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" weight="0.41813603" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32493702" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50407606" side_tool="true" weight="0.27734375" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
+      <window_info anchor="right" id="Find" order="4" weight="0.32711965" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -308,223 +1439,331 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pyvue/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/apps/registry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend01/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Templates/dist/static/js/app.e41ebbb41a6d44502f32.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend01/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/config/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/rest_framework/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/rest_framework/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1218">
-          <caret line="367" column="31" lean-forward="true" selection-start-line="367" selection-start-column="31" selection-end-line="367" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/rest_framework/mixins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/rest_framework/viewsets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="110" column="28" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/forms/fields.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="212" selection-start-line="212" selection-end-line="212" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django_filters/filters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="139" selection-start-line="139" selection-end-line="139" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django_filters/filterset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="249" selection-start-line="249" selection-end-line="249" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/Lib/importlib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/db/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/utils/autoreload.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="224" selection-start-line="224" selection-end-line="224" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend01/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="e#576#872#0" />
-            <element signature="e#910#1386#0" />
-            <element signature="e#1418#2035#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/dist/index.html" />
-    <entry file="file://$PROJECT_DIR$/Templates/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend01/serializer.py">
+    <entry file="file://$PROJECT_DIR$/DeviceABO/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <caret line="39" column="5" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/src/components/HelloWorld.vue">
+    <entry file="file://C:/Python372/mecheck/Lib/site-packages/celery/schedules.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+        <state relative-caret-position="184">
+          <caret line="268" selection-start-line="268" selection-end-line="268" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend01/apps.py">
+    <entry file="file://$PROJECT_DIR$/TUMHistory/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/PythonProject/DDISExcel/excelmain.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DMS/celery.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/settings.py" />
+    <entry file="file://$PROJECT_DIR$/AdapterPowerCode/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/db/models/fields/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state relative-caret-position="139">
+          <caret line="134" column="17" selection-start-line="134" selection-start-column="17" selection-end-line="134" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/src/router/index.js">
+    <entry file="file://C:/Python372/mecheck/Lib/site-packages/openpyxl/worksheet/_reader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+        <state relative-caret-position="260">
+          <caret line="268" column="25" lean-forward="true" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/src/api/api.js">
+    <entry file="file://$PROJECT_DIR$/TUMHistory/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="323">
+          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend01/src/api/index.js">
+    <entry file="file://$USER_HOME$/Desktop/PersonalInfo_search.html" />
+    <entry file="file://$USER_HOME$/Desktop/views.py" />
+    <entry file="file://$PROJECT_DIR$/TUMHistory/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app01/tasks_excel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="271" column="85" lean-forward="true" selection-start-line="271" selection-start-column="85" selection-end-line="271" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TUMHistory/TUMHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="42" column="12" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceABO210914級聯/M_Return.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19">
+          <caret line="227" column="25" lean-forward="true" selection-start-line="227" selection-start-column="25" selection-end-line="227" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TUMHistory/MateriaHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="139" column="42" lean-forward="true" selection-start-line="139" selection-start-column="42" selection-end-line="139" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TUMHistory/views20211017lingyongchayi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="36" column="55" lean-forward="true" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python372/mecheck/Lib/site-packages/celery/task/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python372/mecheck/Lib/site-packages/celery/task/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-501" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index20210317图片上悬浮信息.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="225" column="80" selection-start-line="225" selection-start-column="80" selection-end-line="225" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TUMHistory/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="133" column="47" lean-forward="true" selection-start-line="133" selection-start-column="47" selection-end-line="133" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/db/models/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="845" column="8" selection-start-line="845" selection-start-column="8" selection-end-line="845" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python372/mecheck/Lib/site-packages/pandas/core/generic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5486" selection-start-line="5486" selection-end-line="5486" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/PythonProject/DDISExcel/excelTrans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="149" column="30" lean-forward="true" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AdapterPowerCode/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="489" column="71" selection-start-line="489" selection-start-column="64" selection-end-line="489" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ChairCabinetMS/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceA39/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="44" column="26" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceABO/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="45" column="12" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceCQT88/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="5671" column="34" lean-forward="true" selection-start-line="5671" selection-start-column="34" selection-end-line="5671" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAP/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/UserIP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="48" column="39" lean-forward="true" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="153" column="106" selection-start-line="153" selection-start-column="99" selection-end-line="153" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TUMHistory/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DMS/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="12" column="75" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DMS/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyvue/urls.py">
+    <entry file="file://$PROJECT_DIR$/app01/tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+        <state relative-caret-position="615">
+          <caret line="219" column="50" selection-start-line="219" selection-start-column="50" selection-end-line="219" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ComputerMS/M_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="951" column="37" selection-start-line="951" selection-start-column="21" selection-end-line="951" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComputerMS/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="2157" column="8" selection-start-line="2157" selection-start-column="8" selection-end-line="2157" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app01/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22211">
+          <caret line="1169" column="24" selection-start-line="1169" selection-start-column="24" selection-end-line="1174" selection-end-column="29" />
           <folding>
-            <element signature="e#629#661#0" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#a#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend01/urls.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA39/M_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="77">
+          <caret line="1160" column="57" selection-start-line="1160" selection-start-column="57" selection-end-line="1160" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend01/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceABO/M_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="131" column="40" lean-forward="true" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#428#1241#0" />
-            <element signature="e#1336#3045#0" />
-            <element signature="e#3170#3459#0" />
-            <element signature="e#3630#4107#0" />
-          </folding>
+        <state relative-caret-position="301">
+          <caret line="1169" column="29" selection-start-line="1169" selection-start-column="29" selection-end-line="1169" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyvue/settings.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceCQT88/M_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+        <state relative-caret-position="301">
+          <caret line="1590" column="13" selection-start-line="1590" selection-start-column="13" selection-end-line="1593" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app01/templatetags/custom_tag.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="12" column="55" lean-forward="true" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/init_permission.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/checkper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app01/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+          <folding>
+            <element signature="e#1435#3223#0" />
+          </folding>
         </state>
       </provider>
     </entry>

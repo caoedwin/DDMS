@@ -1,0 +1,412 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}perIn_search{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+<style>
+
+/* 解决el-table 表线不齐 */
+body .el-table th.gutter {
+    display: table-cell !important;
+}
+
+body .el-table colgroup.gutter {
+    display: table-cell !important;
+}
+
+label{
+    color:white;
+}
+ .selectMsg{
+     font-size:16px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      color:aliceblue;
+  }
+
+  .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+.demo-fit{
+   display:inline-block;
+   vertical-align: top;
+   width:123px;
+   height:186px;
+   border:1px solid black;
+
+}
+.cardInformation{
+   display:inline-block;!important
+   margin-left:20px;
+}
+.cardInformation label{
+   margin-bottom: -25px;
+}
+.cardInformation tr td{
+   width: 300px;
+}
+tbody tr td:last-child {
+   text-align:left;
+}
+.el-pagination__total,.el-pagination__jump{
+        color:black;
+}
+.el-table .my-cell {
+    vertical-align: top
+  }
+#sh {
+        font-size:18px;
+        font-family:微软雅黑;
+        border: 2px solid #9f9ca1;
+}
+#sh::-webkit-input-placeholder{
+        color:#2f97a8;
+        font-family:微软雅黑;
+}
+#sh::-moz-placeholder{
+        color:#2f97a8;
+        font-family:微软雅黑;
+}
+#sh:-ms-input-placeholder{
+        color:#2f97a8;
+    font-family: 微软雅黑;
+}
+</style>
+
+{% endblock %}
+{% block content %}
+<div id="app">
+      <!--搜索框-->
+    <div class="selectMsg" >
+           <div>
+                 <label for="Customer" style="color: black">Customer</label>
+                 <el-select v-model="selectedCustomer" clearable placeholder="请选择" style="width: 120px;">
+                    <el-option
+                        v-for="item in sectionCustomer"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                    </el-option>
+                 </el-select>
+           </div>
+
+           <div style="margin-left: 10px;">
+                 <label for="Project" style="color: black">Project</label>
+                 <el-select v-model="selectedProject" filterable clearable placeholder="请选择" style="width: 130px;">
+                    <el-option#0b0b0b
+                        v-for="item in sectionProject"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                    </el-option>
+                 </el-select>
+           </div>
+           <div style="margin-left: 10px;">
+                 <label for="Phase" style="color: black">Phase</label>
+                 <el-select v-model="selectedPhase" clearable placeholder="请选择" style="width: 120px;">
+                    <el-option
+                        v-for="item in sectionPhase"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                    </el-option>
+                 </el-select>
+           </div>
+           <div style="margin-left: 10px;">
+                 <label for="PN" style="color: black">PN</label>
+                 <el-select v-model="selectedPN" filterable clearable placeholder="请选择" style="width: 170px;">
+                    <el-option
+                        v-for="item in sectionPN"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                    </el-option>
+                 </el-select>
+           </div>
+           <div style="margin-left: 10px;">
+                 <label for="proposer" style="color: black">掛賬人</label>
+                 <el-autocomplete
+                          clearable
+                          class="inline-input"
+                          v-model="selectedProposer"
+                          ref="Proposer"
+                          :fetch-suggestions="querySearch"
+                          placeholder="请输入工號"
+                          @select="handleSelectProposer">
+                       <template slot-scope="{ item }">
+                        <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+                       </template>
+                 </el-autocomplete>
+           </div>
+           <div style="margin-left: 10px;">
+                 <label for="Status" style="color: black">Status</label>
+                 <el-select v-model="selectedStatus" clearable placeholder="请选择" style="width: 140px;">
+                    <el-option
+                        v-for="item in sectionStatus"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                    </el-option>
+                 </el-select>
+           </div>
+           <el-button :loading="elbuttonloading" @click="find" v-cloak type="primary" style="height:40px;margin-left: 20px">搜索</el-button>
+{#           <el-button @click="exportExcel" type="success" style="height:40px;margin-left: 20px">導出</el-button>#}
+{#           <el-button @click="register" type="info" v-if="canRegister===1" style="height:40px;margin-left: 20px">注冊</el-button>#}
+        <br/>
+
+    </div>
+    <div class="tableAround" v-cloak>
+    <el-input type="text" v-model="search" id="sh" placeholder="請輸入關鍵字搜索..."></el-input><br>
+{#    <span  class="selectItem" v-cloak  v-if="showCustomer&&showDepartment&&showLesson">當前表格信息：${ showYear }/${ showCustomer }/${ showDepartment }/${ showLesson }/${ showGroupEmployees } </span>#}
+    <el-table height="700" border :data="datas.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+              style="min-width: 100%;border-radius: 10px" id="out-table"
+              :header-cell-style="{'background-color':'#fafafa','font-weight':'800','border-bottom':'1px solid rgb(103, 194, 58)'}"
+              v-loading="tableloading"
+              element-loading-text="數據更新中，請稍後"
+              border>
+                <el-table-column type="index" :index="indexMethod" ></el-table-column>
+                <el-table-column  prop="SiteName" label="SiteName" align="center" width="100"></el-table-column>
+                <el-table-column  prop="FunctionName" label="FunctionName" align="center" width="90"></el-table-column>
+                <el-table-column  prop="CustomerCode" label="CustomerCode" align="center" width="90"></el-table-column>
+                <el-table-column  prop="PN" label="PN" align="center"></el-table-column>
+                <el-table-column  prop="CurrentKeeper" label="CurrentKeeper" align="center"></el-table-column>
+                <el-table-column  prop="CurrentKeeper_CN" label="當前掛賬人" align="center"></el-table-column>
+                <el-table-column  prop="ApplyReasonCategory" label="ApplyReasonCategory" align="center" width="120"></el-table-column>
+                <el-table-column  prop="ApplyReason" label="領用原因" align="center" width="120"></el-table-column>
+                <el-table-column  prop="InData" label="入賬日期" align="center" width="110"></el-table-column>
+                <el-table-column  prop="ReturnOffline" label="歸還期限" align="center" width="110"></el-table-column>
+                <el-table-column  prop="ReturnData" label="退庫日期" align="center" width="110"></el-table-column>
+                <el-table-column  prop="Status" label="當前狀態" align="center"></el-table-column>
+                <el-table-column  prop="DeptNo" label="DeptNo" align="center" width="80"></el-table-column>
+                <el-table-column  prop="ItemNo" label="ItemNo" align="center"></el-table-column>
+                <el-table-column  prop="CostCenter" label="CostCenter" align="center" width="100"></el-table-column>
+                <el-table-column  prop="ProjectCode" label="ProjectCode" align="center" width="100"></el-table-column>
+                <el-table-column  prop="Description" label="Description" align="center" width="180"></el-table-column>
+                <el-table-column  prop="QTY" label="QTY" align="center"></el-table-column>
+                <el-table-column  prop="PhaseName" label="PhaseName" align="center" width="80"></el-table-column>
+                <el-table-column  prop="EOPDate" label="EOP日期" align="center" width="120"></el-table-column>
+    </el-table>
+        <div class="block">
+                <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[20, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total_computed">
+                </el-pagination>
+        </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                // 搜索条件
+                selectedNumber:"",
+                canExport:null,//導出權限
+                currentPage: 1,//默认显示第一页
+                pageSize:20,
+                totalNum: null,
+                sectionProject: [],
+                sectionCustomer: [],
+                sectionPhase: [],
+                sectionPN: [],
+                sectionStatus: [],
+                search:'',
+                Totalsize:null,
+                elbuttonloading: false,
+                tableloading: false,
+                dialogloading: false,
+                selectedProject: "",
+                selectedProposer: "",
+                selectedStatus: "",
+                selectedApprover: "",
+                selectedCustomer: "",
+                selectedPhase: "",
+                selectedPN: "",
+                approver: "",
+                proposer: "",
+                project: "",
+                selectProposer: [],
+                selectApprover: [],
+                canRegister: 0,
+                tableContent:[],
+                }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            indexMethod(index) {
+                  return index +1;
+            },
+            //获取数据
+            getdata: function (e) {
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/TUMHistory/SummaryMateria/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.tableContent=res.data.content;
+                    this.totalNum=this.tableContent.length;
+                    this.sectionProject=res.data.sectionProject;
+                    this.selectProposer=res.data.selectProposer;
+                    this.sectionCustomer=res.data.sectionCustomer;
+                    this.sectionPhase=res.data.sectionPhase;
+                    this.sectionPN=res.data.sectionPN;
+                    this.sectionStatus=res.data.sectionStatus;
+                    this.elbuttonloading = false;
+                    this.tableloading = false;
+
+                 });
+            },
+
+            querySearch(queryString, cb) {
+                let Number = this.selectProposer;
+                let results = queryString ? Number.filter(this.createFilter(queryString)) : Number;
+                cb(results);
+
+            },
+
+
+             handleSelectProposer(item) {
+                this.number = item.number;
+            },
+
+
+            createFilter(queryString) {
+                return (restaurant) => {
+                  return (
+                      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+                };
+            },
+
+            register :function(){
+               let data ={"isGetData":"register","csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/TUMHistory/SummaryMateria/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.totalNum=this.tableContent.length;
+                  this.elbuttonloading = false;
+                  this.tableloading = false;
+                  this.sectionProject=res.data.sectionProject;
+                })
+
+             },
+
+            find :function(){
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                let Proposer = this.$refs.Proposer.value;
+                let Project=this.selectedProject;
+                let Customer=this.selectedCustomer;
+                let PN=this.selectedPN;
+                let Phase=this.selectedPhase;
+                let Status=this.selectedStatus;
+                let data ={"isGetData":"SEARCH","Proposer":Proposer,"Project":Project,
+                           "Customer":Customer,"PN":PN,"Phase":Phase,"Status":Status,
+                           "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/TUMHistory/SummaryMateria/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.totalNum=this.tableContent.length;
+                  this.sectionProject=res.data.sectionProject;
+                  this.selectProposer=res.data.selectProposer;
+                  this.sectionCustomer=res.data.sectionCustomer;
+                  this.sectionPhase=res.data.sectionPhase;
+                  this.sectionPN=res.data.sectionPN;
+                  this.sectionStatus=res.data.sectionStatus;
+                  this.elbuttonloading = false;
+                  this.tableloading = false;
+                })
+
+             },
+
+            //導出表格
+            exportExcel:function (){
+           /* 从表生成工作簿对象 */
+                let temp=[];
+                 temp.push(Number(this.currentPage));
+                 temp.push(Number(this.pageSize));
+                 this.currentPage=1;
+                 this.pageSize=this.tableContent.length;
+                 console.log(temp,this.defaultPage1,this.pageSize);
+                 setTimeout(() => { let table = document.querySelector("#out-table").cloneNode(true);
+                 let wb = XLSX.utils.table_to_book(table,{raw:true});
+                 /* 获取二进制字符串作为输出 */
+                 let wbout = XLSX.write(wb, {
+                    bookType: "xlsx",
+                    bookSST: true,
+                    type: "array"
+                 });
+                 try {
+                    saveAs(
+                        //Blob 对象表示一个不可变、原始数据的类文件对象。
+                        //Blob 表示的不一定是JavaScript原生格式的数据。
+                        //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                        //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                        new Blob([wbout], { type: "application/octet-stream" }),
+                        //设置导出文件名称
+                        "sheetjs.xlsx"
+                    );
+
+                 } catch (e) {
+                    if (typeof console !== "undefined") console.log(e, wbout);
+                 }
+                 this.currentPage=temp[0];
+                 this.pageSize=temp[1];//edwin:要想导出后回到当前页而不是第一页，<el-pagination里面的:page-size="100"，而不能是:page-size="pageSize"
+                 temp=[];
+                return wbout;},1000) ;
+            },
+
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+                this.pageSize = val;
+            },
+
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+                  this.currentPage = val;
+                  console.log(this.tableContent.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize));
+            },
+
+        },
+        computed:{
+                datas(){//必须是el-table里面绑定的数据变量,不能与axios接受的变量名一样
+                    //console.log(111)
+                    const search=this.search;
+                    if(search){
+                        return this.tableContent.filter(data=>{//axios返回时接受数据的变量
+                            return Object.keys(data).some(key=>{
+                                return String(data[key]).toLowerCase().indexOf(search.toLowerCase())>-1
+                            })
+                        })
+                    }
+                    return this.tableContent//axios返回时接受数据的变量
+                },
+                total_computed () {
+                    this.Totalsize = this.datas.length;//edwin:export数据的个数
+                  return this.datas.length//必须是el-table里面绑定的数据变量
+                }
+            },
+    })
+    </script>
+{% endblock %}

@@ -1,0 +1,1283 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}借用申請{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+    <style>
+    .fullScreen{
+     position: fixed;
+     top:0;
+     left:0;
+     height:100%;
+     width: 100%;
+     background: rgba(0,0,0,0.7);
+     z-index: 101;
+     overflow:hidden;
+    }
+
+    .el-dialog {
+        width: 700px;
+    }
+
+    .fullScreen section {
+     position:fixed;
+     top:50%;
+     left:50%;
+     transform:translate(-50%,-50%);
+     text-align: center;
+     font-size: 18px;
+     font-weight: 800;
+     color: #337ab7;
+   }
+    .content{
+    width:25px;
+    height: 70px;
+    position: fixed;
+    right: 10px;
+    top:60px;
+    background-color:#343957;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 24px;
+    writing-mode: vertical-lr;
+    z-index: 99;
+    opacity: 0.9;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: 160px;
+}
+
+.el-table th.gutter{
+    display: table-cell!important;
+  }
+
+    #container-yansebiaoshi{
+    display:none;
+    position: fixed;
+    right: 35px;
+    top:60px;
+    z-index: 99;
+    border: 2px solid  #deb887;
+}
+     .el-pagination__total,.el-pagination__jump{
+        color:black;
+    }
+    .gutter{
+        display:block!important;
+        width:17px!important;
+    }
+    .cell-green{
+    background: greenyellow;
+}
+    .selectItem{
+    font-size: 20px;
+    font-weight: bold;
+    color: aliceblue;
+}
+    .tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+    .el-table .cell {
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-break: break-all;
+    line-height: 23px;
+    }
+    tbody tr td:last-child {
+    text-align: left;
+    }
+     .inputError{
+    text-align: center;
+    color: crimson;
+    background-color: beige;
+    width: 50%;
+    margin: 10px auto 5px;
+    position: relative;
+}
+    .inputError,#Customer{
+        display:inline-block;
+    }
+    .el-tooltip__popper{
+    max-width: 400px;
+    white-space: pre-line;
+    }
+    .oneLine {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .el-table .my-cell {
+    vertical-align: top
+  }
+
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+  .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+  .fileUploadContent{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+}
+  .fileUploadContent label{
+    display: inline-block;
+    word-break: keep-all;
+    line-height: 40px;
+}
+  .fileUploadContent input{
+    line-height: 35px;
+    height: 40px;
+    border-radius: 10px;
+    width: 210px;
+    color: antiquewhite;
+}
+
+  .fileUploadContent .showFileName{
+     line-height: 40px;
+     margin-left: 20px;
+     font-size: 18px;
+     color: black;
+   }
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+    </style>
+{% endblock %}
+{% block content %}
+<div id="app">
+<template>
+      <el-backtop ></el-backtop>
+    </template>
+<div class="row" style="white-space: nowrap;">
+    <div class="col-md-8">
+        <label style="color: black;font-size: 16px;font-weight: bold;" for="Customer">Customer</label>
+           <select id="Customer" ref="Customer" v-model="selectedCustomer" @change="changeChangjia" style="height:30px;width:100px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectItem" >${ key }</option>
+           </select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="Changjia">廠家</label>
+           <select id="Changjia" ref="Changjia"  v-model="selectedChangjia" @change="changePN" style="height:30px;width:100px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectChangjia" >${ item.Changjia }</option>
+           </select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="PN">PN</label>
+           <select id="PN" ref="PN"   v-model="selectedPN" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectPN" >${ item }</option>
+           </select>
+
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="Power">功率</label>
+           <select id="Power" ref="Power"   v-model="selectedPower" style="height:30px;width:100px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
+               <option value="All">All</option>
+               <option v-for="(item,key,index) in selectPower" >${ item }</option>
+           </select>
+
+
+        <el-button size="medium" style="height:35px;border-color:black;color:white;margin-left: 100px;background-color:#7fa0ff" value="Search" name="Search" @click="selectMsg">Search</el-button>
+{#        <div  class="selectMsg" style="margin-left: 120px;margin-right:10px;"{% comment %} v-if="permission===1"{% endcomment %}>#}
+            <a style="margin-left: 120px;margin-right:10px;color: #000000" href="/static/src/modelfiles/DQA%20adapterpower%20cord庫存管理.xls" style="color: orange;font-size: 16px">模板下载<img src="/static/src/back/document_save_2_24px_539656_easyicon.net.png" alt="..."></a>
+{#            </div>#}
+    </div>
+
+    <div v-cloak class="fileUploadContent">
+        <div class="inputPackage" v-cloak>
+              <span v-cloak>請選擇文件</span>
+              <input v-cloak type="file" id="upload" ref="file" @change="updateFile(event)" v-model="excelFile">
+        </div>
+        <el-button @click="fileUpload" type="warning" style="height:40px" v-cloak> Excel上傳</el-button>
+        <span class="showFileName" v-cloak >${ fileName }</span>
+    </div>
+</div>
+
+<el-dialog
+    title="材料新增"
+    :visible.sync="insert">
+    <template>
+    <el-form ref="form" :model="form" :rules="rules" label-width="120px" size="medium">
+<el-row>
+  <el-col span="20">
+  <el-form-item label="Customer" prop="Customer">
+        <el-input v-model="form.Customer"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="20">
+      <el-form-item label="Description" prop="Description">
+        <el-input v-model="form.Description"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="MaterialPN" prop="MaterialPN">
+        <el-input v-model="form.MaterialPN"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="功率" prop="Power">
+        <el-input v-model="form.Power"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="品名" prop="Pinming">
+         <el-select v-model="form.Pinming" placeholder="請選擇" >
+              <el-option label="PowerCode" value="PowerCode"></el-option>
+              <el-option label="Adapter" value="Adapter"></el-option>
+         </el-select>
+{#        <el-input v-model="form.Pinming"></el-input>#}
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="類別" prop="Leibie">
+         <el-select v-model="form.Leibie" placeholder="請選擇" >
+              <el-option label="一類" value="一類"></el-option>
+              <el-option label="二類" value="二類"></el-option>
+         </el-select>
+{#        <el-input v-model="form.Leibie"></el-input>#}
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="掛賬人" prop="OAP">
+        <el-input v-model="form.OAP"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="廠家" prop="Changjia">
+        <el-input v-model="form.Changjia"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="編號" prop="Number">
+        <el-input v-model="form.Number"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Location" prop="Location">
+        <el-input v-model="form.Location"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+  <el-col span="20">
+  <el-form-item label="Model" prop="Model">
+        <el-input v-model="form.Model"></el-input>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="20">
+        <el-form-item label="附件" prop="image">
+{#          <span>图片：</span>#}
+          <el-input v-if="false" v-model="form1.image"></el-input>
+          <!--elementui的上传图片的upload组件-->
+          <el-upload
+            ref="upload"
+{#            :show-file-list="false"#}
+            class="upload-demo"
+            action=""
+            :limit="1"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :before-remove="beforeRemove"
+            :multiple="true"
+            :before-upload="beforeupload"
+            :auto-upload="false"
+            :on-change="handleChange"
+            :data="form"
+          >
+            <el-button size="small" type="primary">点击上传</el-button>
+{#            <img v-if="form.image" :src="form.image" alt="" style="width:50%; height:50%;">#}
+          </el-upload>
+        </el-form-item>
+    </el-col>
+</el-row>
+<div class="el-form-item__content" style="margin-left: 200px;">
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit('form')">新增</el-button>
+  </el-form-item>
+ </div>
+</el-form>
+</template>
+</el-dialog>
+
+<el-dialog
+    title="材料修改"
+    :visible.sync="update">
+    <template>
+    <el-form ref="form1" :model="form1" label-width="120px" size="medium">
+<el-row>
+  <el-col span="20">
+  <el-form-item label="Customer" prop="Customer">
+        <el-select v-model="form1.Customer" placeholder="请选择">
+            <el-option
+                v-for="item in sectionCustomer"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+  </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+  <el-col span="20">
+      <el-form-item label="Description" prop="Description">
+        <el-input v-model="form1.Description"></el-input>
+      </el-form-item>
+  </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="MaterialPN" prop="MaterialPN">
+        <el-input v-model="form1.MaterialPN"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="功率" prop="Power">
+        <el-input v-model="form1.Power"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="品名" prop="Pinming">
+         <el-select v-model="form1.Pinming" placeholder="請選擇" >
+              <el-option label="PowerCode" value="PowerCode"></el-option>
+              <el-option label="Adapter" value="Adapter"></el-option>
+         </el-select>
+{#        <el-input v-model="form1.Pinming"></el-input>#}
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="類別" prop="Leibie">
+         <el-select v-model="form1.Leibie" placeholder="請選擇" >
+              <el-option label="一類" value="一類"></el-option>
+              <el-option label="二類" value="二類"></el-option>
+         </el-select>
+{#        <el-input v-model="form1.Leibie"></el-input>#}
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="掛賬人" prop="OAP">
+        <el-input v-model="form1.OAP"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="廠家" prop="Changjia">
+        <el-input v-model="form1.Changjia"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="編號" prop="Number">
+        <el-input v-model="form1.Number" :disabled="true"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Location" prop="Location">
+        <el-input v-model="form1.Location"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="Project_Code" prop="Project_Code">
+        <el-input v-model="form1.Project_Code"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Phase" prop="Phase">
+{#        <el-input v-model="form.Phase"></el-input>#}
+        <el-select v-model="form1.Phase" placeholder="请选择">
+            <el-option
+                v-for="item in sectionPhase"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="借用人" prop="BR_per">
+        <el-input v-model="form1.BR_per"></el-input>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="設備狀態" prop="Device_Status">
+{#        <el-input v-model="form.Status"></el-input>#}
+        <el-select v-model="form1.Device_Status" placeholder="请选择">
+            <el-option
+                v-for="item in sectionDeviceStatus"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="借還狀態" prop="BR_Status">
+{#        <el-input v-model="form.Status"></el-input>#}
+        <el-select v-model="form1.BR_Status" placeholder="请选择">
+            <el-option
+                v-for="item in sectionStatus"
+                :key="item"
+                :label="item"
+                :value="item">
+            </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="Model" prop="Model">
+        <el-input v-model="form1.Model"></el-input>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="10">
+      <el-form-item label="借用日期" prop="Borrow_date">
+        <el-date-picker
+          v-model="form1.Borrow_date"
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择日期">
+        </el-date-picker>
+      </el-form-item>
+    </el-col>
+    <el-col span="10">
+      <el-form-item label="預計歸還日期" prop="Predict_return">
+        <el-date-picker
+          v-model="form1.Predict_return"
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择日期">
+        </el-date-picker>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="20">
+      <el-form-item label="歸還日期" prop="Return_date">
+        <el-date-picker
+          v-model="form1.Return_date"
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择日期">
+        </el-date-picker>
+      </el-form-item>
+    </el-col>
+</el-row>
+<el-row>
+    <el-col span="20">
+        <el-form-item label="附件" prop="image">
+{#          <span>图片：</span>#}
+          <el-input v-if="false" v-model="form1.image"></el-input>
+          <!--elementui的上传图片的upload组件-->
+          <el-upload
+            ref="upload"
+{#            :show-file-list="false"#}
+            class="upload-demo"
+            action=""
+            :limit="1"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :before-remove="beforeRemove"
+            :multiple="true"
+            :before-upload="beforeupload"
+            :auto-upload="false"
+            :on-change="handleChange1"
+            :data="form"
+          >
+            <el-button size="small" type="primary">点击上传</el-button>
+{#            <img v-if="form.image" :src="form.image" alt="" style="width:50%; height:50%;">#}
+          </el-upload>
+        </el-form-item>
+    </el-col>
+</el-row>
+<div class="el-form-item__content" style="margin-left: 200px;">
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit1()">保存修改</el-button>
+  </el-form-item>
+ </div>
+</el-form>
+</template>
+</el-dialog>
+    <br />
+    <div class="tableAround" v-cloak >
+    <div class="col-md-5" style="float: left">
+        <span style="font-weight: bold;color: black;font-size: 16px;">已選</span><span id="SelectNum" style="font-weight: bold;color: black;font-size: 16px;margin-left: 14px;">0</span><span class="col-md-4" style="font-weight: bold;color: black;font-size: 16px;">條</span>
+            <el-button size="medium" style="background-color:#69ec57;border-color:black;color:black;margin: 2px;margin-left: 50px;" name="新增" @click="addData" v-cloak>新增</el-button>
+            <el-button size="medium" style="background-color:#00CCFF;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="修改" @click="updateData()" v-cloak>修改</el-button>
+            <el-button size="medium" style="background-color: #FF6666;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="刪除" @click="deleteData()" v-cloak>刪除</el-button>
+    </div>
+    <div class="col-md-5" style="float: right;margin-top: 7px;">
+        <span style="font-weight: bold;color: black;font-size: 16px;">已借出：${Lent}</span>
+        <span style="font-weight: bold;color: black;font-size: 16px;margin-left: 20px;">可借用：${kejieyong}</span>
+        <span style="font-weight: bold;color: black;font-size: 16px;margin-left: 20px;">借用預定中：${jieyongyuding}</span>
+        <span style="font-weight: bold;color: black;font-size: 16px;margin-left: 20px;">歸還確認中：${guihuanqueren}</span>
+    </div>
+    {% csrf_token %}
+    <template>
+    <el-table border stripe ref="multipleTable"  tooltip-effect="dark"  height="700"
+     :data="tableContent.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+     :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#FAFAFA','border-bottom':'1px solid rgb(103, 194, 58)'}"
+     style="border-radius: 10px;word-break: keep-all"
+     @selection-change="handleSelectionChange" :row-key="getRowKeys" :cell-style="addColor">
+        <el-table-column type="selection" align="center" :reserve-selection="true" fixed></el-table-column>
+        <el-table-column type="index" :index="indexMethod" width="60" align="center" fixed></el-table-column>
+        <el-table-column prop="Pinming" label="品名" align="center" width="100" fixed>
+        </el-table-column>
+        <el-table-column prop="Leibie" label="類別" align="center" width="100" fixed>
+        </el-table-column>
+        <el-table-column prop="Changjia" label="廠家" align="center" width="100" fixed>
+        </el-table-column>
+        <el-table-column prop="MaterialPN" label="MaterialPN" align="center" width="140" fixed>
+        </el-table-column>
+        <el-table-column prop="Model" label="Model" align="center" width="100" fixed>
+        </el-table-column>
+        <el-table-column prop="Description" label="Description" align="center" width="260">
+        </el-table-column>
+        <el-table-column prop="Power" label="功率" width="100" align="center">
+        </el-table-column>
+        <el-table-column prop="Number" label="編號" width="100" align="center">
+        </el-table-column>
+        <el-table-column prop="Location" label="Location" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="Customer" label="客戶別" align="center" width="80">
+        </el-table-column>
+        <el-table-column prop="Project_Code" label="Project Code" align="center" width="80">
+        </el-table-column>
+        <el-table-column prop="Phase" label="Phase" align="center" width="80">
+        </el-table-column>
+        <el-table-column prop="OAP" label="掛賬人" align="center" width="80">
+        </el-table-column>
+        <el-table-column prop="Device_Status" label="設備狀態" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="BR_Status" label="借還狀態" align="center" width="100">
+        </el-table-column>
+        <el-table-column prop="BR_per" label="借還人員" width="100" align="center">
+        </el-table-column>
+        <el-table-column prop="Predict_return" label="預計歸還日期" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Borrow_date" label="借用日期" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Return_date" label="歸還日期" width="120" align="center">
+        </el-table-column>
+        <el-table-column prop="Exceed_days" label="超期天數" width="120" align="center">
+        </el-table-column>
+    </el-table>
+<br/>
+    <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 50, 100, 200]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="totalNum">
+        </el-pagination>
+    </div>
+    </template>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script  src="/static/js/Element/table.js"></script>
+<script  src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script  src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/image.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script type="text/babel">
+ new Vue({
+     el: '#app',
+     delimiters: ['${', '}'],
+     data: function () {
+         return {
+             selectedCustomer: null,
+             selectedChangjia: null,
+             selectedPN: null,
+             selectedPower: null,
+             selectChangjia:[],
+             multipleSelectionFlag:false,
+             multiDeleteVisible:false,
+             multipleSelection: [],
+             tableContent: [],
+             Lent: null,
+             kejieyong: null,
+             jieyongyuding: null,
+             guihuanqueren: null,
+             sectionCustomer: {},
+             sectionPhase: {},
+             sectionStatus: [],
+             sectionDeviceStatus: [],
+             insert:false,
+             update:false,
+             currentPage: 1,//默认显示第一页
+             pageSize:100,//默认每页显示100条
+             totalNum:null,
+             selectItem:{},
+             selectPower:{},
+             selectPN:{},
+             excelFile:null,
+             fileName:"未選擇文件",
+             loading:false,
+             form: {
+                  {#id: '',#}
+                  Customer: '',
+                  Pinming: '',
+                  Leibie: '',
+                  Model: '',
+                  Description: '',
+                  MaterialPN: '',
+                  Power: '',
+                  OAP: '',
+                  Changjia: '',
+                  Number: '',
+                  Location: '',
+                  image: '',
+
+             },
+
+            rules: {
+              Customer: [
+                { required: true, message: '请输入Customer', trigger: 'blur' },
+              ],
+              Pinming: [
+                { required: true, message: '请输入品名', trigger: 'blur' },
+              ],
+              Leibie: [
+                { required: true, message: '请输入類別', trigger: 'blur' },
+              ],
+              Model: [
+                { required: true, message: '请输入Model', trigger: 'blur' },
+              ],
+              Description: [
+                { required: true, message: '请输入Description', trigger: 'blur' },
+              ],
+              MaterialPN: [
+                { required: true, message: '请输入MaterialPN', trigger: 'blur' },
+              ],
+              Power: [
+                { required: true, message: '请输入功率', trigger: 'blur' },
+              ],
+              {#OAP: [#}
+              {#  { required: true, message: '请输入掛賬人', trigger: 'blur' },#}
+              {#],#}
+              Changjia: [
+                { required: true, message: '请输入廠家', trigger: 'blur' },
+              ],
+              Number: [
+                { required: true, message: '请输入編號', trigger: 'blur' },
+              ],
+              Location: [
+                { required: true, message: '请输入Location', trigger: 'blur' },
+              ],
+            },
+            editid: '',
+             form1: {
+                  id: '',
+                  Customer: '',
+                  Description: '',
+                  MaterialPN: '',
+                  Power: '',
+                  Pinming: '',
+                  Leibie: '',
+                  Model: '',
+                  OAP: '',
+                  Changjia: '',
+                  Number: '',
+                  Location: '',
+                  Device_Status: '',
+                  Project_Code: '',
+                  Phase: '',
+                  BR_per: '',
+                  BR_Status: '',
+                  Borrow_date: '',
+                  Predict_return: '',
+                  Return_date: '',
+                  image: '',
+
+             },
+         {% comment %}
+             rules: {
+                  image: [
+                    { required: true, message: '请上传图片', trigger: 'blur' }
+                  ]
+             },
+         {% endcomment %}
+             formData:[],
+             formData1:[],
+         }
+     },
+     mounted: function (){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+     },
+     methods: {
+        //获取数据
+        getdata: function (e) {
+            let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+            axios.post("/AdapterPowerCode/M_edit/", Qs.stringify(data), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.selectItem=res.data.select;
+                this.selectPower=res.data.selectPower;
+                this.selectOption=res.data.selectOption;
+                this.selectCustomer=res.data.selectCustomer;
+                this.sectionCustomer=res.data.sectionCustomer;
+                this.sectionPhase=res.data.sectionPhase;
+                this.sectionStatus=res.data.sectionStatus;
+                this.sectionDeviceStatus=res.data.sectionDeviceStatus;
+                this.Lent=res.data.Lent;
+                this.kejieyong=res.data.kejieyong;
+                this.jieyongyuding=res.data.jieyongyuding;
+                this.guihuanqueren=res.data.guihuanqueren;
+                this.tableContent = res.data.content;
+                this.totalNum=this.tableContent.length;
+         });
+
+        },
+        getRowKeys (row) {
+            return row.id;
+        },
+         //索引
+         indexMethod(index) {
+            return index +1;
+         },
+         //分页
+         handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+            this.pageSize = val;
+         },
+         handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+          this.currentPage = val;
+         },
+          handleRemove(file,fileList) {
+            console.log(file,fileList);
+          },
+          handlePreview(file) {
+            console.log(file);
+          },
+          beforeRemove(file,fileList) {
+            return this.$confirm(`确定移除 ${ file.name }？`);
+          },
+
+          //上传搜索项：以此选项搜索符合条件的内容
+             selectMsg :function(){
+               let Customer = this.$refs.Customer.value;
+               let Changjia = this.$refs.Changjia.value;
+               let PN = this.$refs.PN.value;
+               let Power = this.$refs.Power.value;
+               let data ={"isGetData":"SEARCH","Customer":Customer,"Changjia":Changjia,"PN":PN,"Power":Power,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+               axios.post("/AdapterPowerCode/M_edit/",Qs.stringify(data), {
+               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.selectItem=res.data.select;
+                  this.totalNum=this.tableContent.length;
+                  this.Lent=res.data.Lent;
+                  this.kejieyong=res.data.kejieyong;
+                  this.jieyongyuding=res.data.jieyongyuding;
+                  this.guihuanqueren=res.data.guihuanqueren;
+                  this.$refs.multipleTable.clearSelection();
+
+                })
+             },
+
+           handleSelectionChange(val) {
+                this.multipleSelection = val;
+                var len=document.getElementById("SelectNum");
+                len.innerHTML=this.multipleSelection.length;
+                {#console.log(this.multipleSelection.length)#}
+           },
+              // 阻止upload的自己上传，进行再操作
+            handleChange(file, fileList) {
+              {#this.form.image = URL.createObjectURL(file.raw);#}
+              this.$refs.form.model.image = file.raw;
+            },
+            handleChange1(file, fileList) {
+              {#this.form.image = URL.createObjectURL(file.raw);#}
+              this.$refs.form1.model.image = file.raw;
+            },
+            beforeupload(file) {
+              return true
+            },
+            changeChangjia:function () {
+                 if(this.$refs.Customer.value ==''){
+                      this.selectChangjia=[""];
+                      return false;
+                 }
+                 this.selectChangjia=this.selectItem[this.$refs.Customer.value];
+                 this.selectedChangjia="";
+            },
+
+            changePN:function () {
+                 if(this.$refs.Changjia.value ==''){
+                      this.selectPN=[""];
+                      return false;
+                 }
+                 console.log(this.selectItem[this.selectedCustomer]);
+                for(let i=0;i<this.selectItem[this.selectedCustomer].length;i++){
+                     if(this.selectItem[this.selectedCustomer][i]["Changjia"]==this.selectedChangjia){
+                        this.selectPN=this.selectItem[this.selectedCustomer][i]["PN"];
+                    }
+                }
+            },
+
+          updateFile:function(e){
+                const first="未選擇文件";
+                let newValue= e.target.files;
+                console.log(newValue,"r");
+                if(newValue){
+                 let file=document.getElementById('upload');
+                 let filename= file.files[0].name;
+                 let fileType=filename.substr(filename.lastIndexOf(".")+1);
+                 console.log(fileType.toLowerCase());
+                 if((fileType.toLowerCase() === 'xlsx')||(fileType.toLowerCase() === 'xls')){
+                      //console.log(this.excelFile);
+                     this.fileName=filename;
+                     this.uploadFile=file.files[0];
+                     console.log(this.uploadFile,"m");
+                 }else{
+                     alert("上傳類型不為'xlsx'或'xls'");
+                       try{
+                         }catch(e){
+                             console.log(e);
+                         }
+                 }
+             }else{
+                 this.uploadFile=null;
+                 this.fileName=first;
+             }
+          },
+
+         //批量上傳
+          fileUpload:function(){
+                    const first="未選擇文件";
+                    let Customer = this.$refs.Customer.value;
+                    let Changjia = this.$refs.Changjia.value;
+                    let PN = this.$refs.PN.value;
+                    let Power = this.$refs.Power.value;
+                    if(this.uploadFile){
+                        //if(Customer == ''||Year == ''||Chu === ''||Ministry === ''||Section === ''){
+                           // alert("請選擇要修改的表單");
+                           // return false;
+                        //}else{
+                       //1.解析Excel
+                       let outputResult;
+                       let _this= this;
+                       let files = this.uploadFile;
+                       let undefined_to_null=function(value){
+                           if(value == undefined){
+                               value=null;
+                           }
+                           //console.log(value,value === undefined,value == undefined);
+                           return value;
+                       };
+                       var fileReader = new FileReader ();
+                        const loading = this.$loading({
+                              lock: true,
+                              text: 'Loading',
+                              spinner: 'el-icon-loading',
+                              background: 'rgba(0, 0, 0, 0.7)'
+                            });
+                       fileReader.onload = function (ev) {
+                         try {
+                         {#_this.loading=true;#}
+                         var data = ev.target.result,
+                          workbook = XLSX.read(data, {
+                            type: 'binary'
+                         }), //以二进制流方式读取得到整份excel表格对象
+                          persons = []; // 存储获取到的数据
+                       } catch (e) {
+                         {#_this.loading=false;#}
+                             loading.close();
+                         return;
+                      }
+                      for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        var fromTo = workbook.Sheets[sheet]['!ref'];
+                        // console.log(fromTo);
+                        var datas = workbook.Sheets[sheet];
+                        //如果有不规范数据可以在这里进行处理datas
+                        persons = persons.concat(XLSX.utils.sheet_to_json(datas));
+                        //break; //只读了第一张表
+                    }
+                }
+                     //数据保存在result
+                      let result=JSON.stringify(persons);
+                       //将之前张开的树形结构收起
+                          //_this.reset();
+                       //2.上傳數據
+                        axios.post("/AdapterPowerCode/M_edit/" ,{"Customer":Customer,"Changjia":Changjia,"PN":PN,'Power':Power,"ExcelData":result},{
+                        headers:{ 'X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式 ==>'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    }).then((res) => {
+                        //console.log(res.data,"first");//上传成功的操作
+                        _this.tableContent = res.data.content;
+                        _this.totalNum = _this.tableContent.length;
+                        _this.Lent=res.data.Lent;
+                        _this.kejieyong=res.data.kejieyong;
+                        _this.jieyongyuding=res.data.jieyongyuding;
+                        _this.guihuanqueren=res.data.guihuanqueren;
+                        _this.errMsg=res.data.errMsg;
+                        _this.uploadFile=null;
+                        _this.fileName=first;
+                        {#_this.loading=false;#}
+                        loading.close();
+                        //上传成功的操作
+                        if(_this.errMsg){
+                            _this.$alert(_this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            _this.$message({
+                                message: '上傳成功',
+                                type: 'success',
+                            })
+                        }
+                        //接受数据的初始化
+                        try{
+                        }catch(e)
+                        {
+                           console.log("错误异常"+e);
+                        }
+                    }).catch(function (e) {
+                            {#_this.loading=false;#}
+                            loading.close();
+                            _this.uploadFile=null;
+                            var warning =confirm("上傳異常");
+                            console.log("上傳錯誤信息"+e);
+                        });
+               };
+                       try{
+                       //console.log(fileReader.onload());
+                       fileReader.readAsBinaryString(files);
+                       //console.log(fileReader.readAsBinaryString(files));
+                       }
+                       catch(e){
+                             {#this.loading=false;#}
+                             loading.close();
+                             console.log(e);
+                             alert("文件上傳異常") ;
+                             return;
+                        }
+                      //console.log(outputResult);
+                  // }
+                 }else{
+                   loading.close();
+                  alert("未選擇文件");
+                  return false;
+              }
+          },
+
+         addData() {
+            this.insert = true;
+         },
+
+         updateData() {
+            let datas = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+             {#console.log(datas)#}
+            if(datas.length == 0){
+                 this.$alert('請勾選一條數據', '提示', {
+                    type: 'warning',
+                 })
+            }else if(datas.length == 1){
+               this.update = true;
+                this.editid = datas[0].id;
+                this.form1.Customer = datas[0].Customer;
+                this.form1.Description = datas[0].Description;
+                this.form1.MaterialPN = datas[0].MaterialPN;
+                this.form1.Power = datas[0].Power;
+                this.form1.Pinming = datas[0].Pinming;
+                this.form1.Leibie = datas[0].Leibie;
+                this.form1.Model = datas[0].Model;
+                this.form1.OAP = datas[0].OAP;
+                this.form1.Changjia = datas[0].Changjia;
+                this.form1.Number = datas[0].Number;
+                this.form1.Location = datas[0].Location;
+                this.form1.Device_Status = datas[0].Device_Status;
+                {#console.log(datas[0].Device_Status,'datas[0].Device_Status');#}
+                this.form1.Project_Code = datas[0].Project_Code;
+                this.form1.Phase = datas[0].Phase;
+                this.form1.BR_per = datas[0].BR_per;
+                this.form1.BR_Status = datas[0].BR_Status;
+                {#let dates = datas[0].Borrow_date.split("/");#}
+                {#let Borrow_date = dates[0]+"-"+dates[1]+"-"+dates[2];#}
+                {#this.form1.Borrow_date = new Date(Date.parse(datas[0].Borrow_date));#}
+                this.form1.Borrow_date = datas[0].Borrow_date;
+                {#let datetime = datas[0].Predict_return.split("/");#}
+                {#let Predict_return = datetime[0]+"-"+datetime[1]+"-"+datetime[2];#}
+                this.form1.Predict_return = datas[0].Predict_return;
+                this.form1.Return_date = datas[0].Return_date;
+            }else{
+                 this.$alert('只能勾選一條數據', '提示', {
+                    type: 'warning',
+                 });
+            }
+            this.$refs.multipleTable.clearSelection();
+         },
+
+         deleteData(){
+            if(this.multipleSelection.length == 0){
+                 this.$alert('請至少選中一條數據', '提示', {
+                    type: 'warning',
+                 })
+            }else{
+                    var warning=confirm('此操作将永久删除该条数据, 是否继续?');
+                    if(warning) {
+                         let checkArr = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                         let params = [];
+                         let self = this;
+                         checkArr.forEach(function (item) {
+                             console.log(item);
+                             params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                    });
+                     console.log(params);
+                       let Customer = this.$refs.Customer.value;
+                       let Changjia = this.$refs.Changjia.value;
+                       let PN = this.$refs.PN.value;
+                       let Power = this.$refs.Power.value;
+                       let data ={"isGetData":"MUTICANCEL","params": params,"Customer":Customer,"Changjia":Changjia,"PN":PN,"Power":Power,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                       axios.post("/AdapterPowerCode/M_edit/",data).then((res) => {
+                             this.tableContent = res.data.content;
+                             this.totalNum=this.tableContent.length;
+                             this.Lent=res.data.Lent;
+                             this.kejieyong=res.data.kejieyong;
+                             this.jieyongyuding=res.data.jieyongyuding;
+                             this.guihuanqueren=res.data.guihuanqueren;
+                             self.$message({
+                                 message: '删除成功',
+                                 type: 'success'
+                         });
+                        this.$refs.multipleTable.clearSelection();
+                 })
+             }else{
+                 return false;
+             }
+            }
+      },
+
+         onSubmit(formName) {
+            this.$refs[formName].validate((valid) => {
+              if (valid) {
+                  {#alert('submit!');#}
+                if (this.formData.length==0){this.formData = new FormData();}
+                  this.formData.append('CustomerSearch', this.$refs.Customer.value);
+                  this.formData.append('PNSearch', this.$refs.PN.value);
+                  this.formData.append('ChangjiaSearch', this.$refs.Changjia.value);
+                  this.formData.append('PowerSearch', this.$refs.Power.value);
+                  this.formData.append('Customer', this.$refs.form.model.Customer);
+                  this.formData.append('Description', this.$refs.form.model.Description);
+                  this.formData.append('MaterialPN', this.$refs.form.model.MaterialPN);
+                  this.formData.append('Power', this.$refs.form.model.Power);
+                  this.formData.append('Pinming', this.$refs.form.model.Pinming);
+                  this.formData.append('Leibie', this.$refs.form.model.Leibie);
+                  this.formData.append('OAP', this.$refs.form.model.OAP);
+                  this.formData.append('Changjia', this.$refs.form.model.Changjia);
+                  this.formData.append('Number', this.$refs.form.model.Number);
+                  this.formData.append('Location', this.$refs.form.model.Location);
+                  this.formData.append('Model', this.$refs.form.model.Model);
+                  this.formData.append('Image', this.$refs.form.model.image);
+                  this.formData.append("action",'submit');
+                  console.log(this.formData);
+                  axios.post("/AdapterPowerCode/M_edit/", this.formData,{
+                              headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                          }).then((res)=>{
+                              this.tableContent = res.data.content;
+                              this.totalNum=this.tableContent.length;
+                              this.errMsgNumber=res.data.errMsgNumber;
+                              this.Lent=res.data.Lent;
+                              this.kejieyong=res.data.kejieyong;
+                              this.jieyongyuding=res.data.jieyongyuding;
+                              this.guihuanqueren=res.data.guihuanqueren;
+                              this.formData = new FormData();
+                              if(this.errMsgNumber){
+                                  this.$alert(this.errMsgNumber, '提示', {
+                                        type: 'warning',
+                                  });
+                                  this.insert = true;
+                              }else{
+                                  try {
+                                          this.$refs.form.resetFields();
+                                          this.$refs.upload.clearFiles();
+                                  } catch (e) {
+
+                                  }
+                                  this.insert = false;
+                              }
+                  })
+                } else {
+                  console.log('error submit!!');
+                  return false;
+                }
+              });
+            },
+
+        onSubmit1() {
+            console.log('submit!',this.$refs.form1.model,typeof (this.$refs.form1.model),this.formData1);
+            {#var submitData = new FormData();#}
+            if (this.formData1.length==0){this.formData1 = new FormData();}
+            this.formData1.append('id', this.editid);
+            this.formData1.append('CustomerSearch', this.$refs.Customer.value);
+            this.formData1.append('PNSearch', this.$refs.PN.value);
+            this.formData1.append('ChangjiaSearch', this.$refs.Changjia.value);
+            this.formData1.append('PowerSearch', this.$refs.Power.value);
+            this.formData1.append('Customer', this.$refs.form1.model.Customer);
+            this.formData1.append('Description', this.$refs.form1.model.Description);
+            this.formData1.append('MaterialPN', this.$refs.form1.model.MaterialPN);
+            this.formData1.append('Power', this.$refs.form1.model.Power);
+            this.formData1.append('Pinming', this.$refs.form1.model.Pinming);
+            this.formData1.append('Leibie', this.$refs.form1.model.Leibie);
+            this.formData1.append('Model', this.$refs.form1.model.Model);
+            this.formData1.append('OAP', this.$refs.form1.model.OAP);
+            this.formData1.append('Changjia', this.$refs.form1.model.Changjia);
+            this.formData1.append('Number', this.$refs.form1.model.Number);
+            this.formData1.append('Location', this.$refs.form1.model.Location);
+            this.formData1.append('Device_Status', this.$refs.form1.model.Device_Status);
+            this.formData1.append('ProjectCode', this.$refs.form1.model.Project_Code);
+            this.formData1.append('Phase', this.$refs.form1.model.Phase);
+            this.formData1.append('BR_per', this.$refs.form1.model.BR_per);
+            this.formData1.append('BR_Status', this.$refs.form1.model.BR_Status);
+            let date1 = this.$refs.form1.model.Borrow_date;
+            let date2 = this.$refs.form1.model.Predict_return;
+            let date3 = this.$refs.form1.model.Return_date;
+            console.log(typeof(date1));
+            if(date1 === null | date1 ==="Invalid Date"){
+                let date = "null"+"-"+"null"+"-"+"null";
+                this.formData1.append('Borrow_date', date);
+            }else if(typeof(date1) == "object"){
+                this.formData1.append('Borrow_date', date1.toLocaleDateString());
+            }else {
+                this.formData1.append('Borrow_date', date1);
+            }
+            if(date2 == null | date2 =="Invalid Date"){
+                let date = "null"+"-"+"null"+"-"+"null";
+                this.formData1.append('Predict_return', date);
+            }else if(typeof(date2) == "object"){
+                this.formData1.append('Predict_return', date2.toLocaleDateString());
+            }else {
+                console.log(date2);
+                this.formData1.append('Predict_return', date2);
+            }
+            if(date3 == null | date3 =="Invalid Date"){
+                let date = "null"+"-"+"null"+"-"+"null";
+                this.formData1.append('Return_date', date);
+            }else if(typeof(date3) == "object"){
+                this.formData1.append('Return_date', date3.toLocaleDateString());
+            }else {
+                console.log(date3);
+                this.formData1.append('Return_date', date3);
+            }
+            this.formData1.append('Image', this.$refs.form1.model.image);
+            this.formData1.append("action",'submit1');
+            console.log(this.formData1);
+            axios.post("/AdapterPowerCode/M_edit/", this.formData1,{
+                        headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
+                    }).then((res)=>{
+                        this.tableContent = res.data.content;
+                        this.totalNum=this.tableContent.length;
+                        this.Lent=res.data.Lent;
+                        this.kejieyong=res.data.kejieyong;
+                        this.jieyongyuding=res.data.jieyongyuding;
+                        this.guihuanqueren=res.data.guihuanqueren;
+                        this.update=false;
+                        this.formData1 = new FormData();
+            })
+          },
+           addColor({row, column, rowIndex, columnIndex}) {
+                    if (columnIndex === 18 && row.Exceed_days !== '') {
+                            return {
+                                      background: '#f14018',
+                                        color: '#FFF'
+                                    }
+                    }
+                },
+         ToBreak (val) {
+            //console.log(val,"val")
+          if(val){
+              //console.log(val.replace('\n', '<br />'),"val")
+              return val.replace('\n', '<br />')
+          }
+        }
+     }
+ })
+</script>
+{% endblock %}
