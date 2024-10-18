@@ -207,13 +207,9 @@ def get_menu_html(menu_data):
                         Class = "ti-id-badge"
                     elif item['title'] == 'A_L_Adapter&PowerCord-LNV':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
                         Class = "ti-list"
-                    elif item['title'] == 'D_L_Device-C38-LNV':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
+                    elif item['title'] == 'D_L_Device-C38-LNV' or item['title'] == 'D_3_Device-A39-OBI'  or item['title'] == 'D_Device' or item['title'] == 'D_A31CD_Device-A31CD' or item['title'] == 'D_A31LKE_Device-A31LKE' or item['title'] == 'D_A31TPE_Device-A31TPE' or item['title'] == 'D_A32TPE_Device-A32TPE':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
                         Class = "ti-view-list"
-                    elif item['title'] == 'D_3_Device-A39-OBI':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
-                        Class = "ti-view-list"
-                    elif item['title'] == 'D_A_Device-ABO':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
-                        Class = "ti-view-list-alt"
-                    elif item['title'] == 'D_CT_Device-CQT88':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
+                    elif item['title'] == 'D_A_Device-ABO' or item['title'] == 'D_CT_Device-CQT88' or item['title'] == 'D_A31KS_Device-A31KS' or item['title'] == 'D_A31PCP_Device-A31PCP' or item['title'] == 'D_A32KS_Device-A32KS':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
                         Class = "ti-view-list-alt"
                     elif item['title'] == 'CoL_工作機':# or item['title'] == 'D_L_Device-LNV' or item['title'] == 'D_A_Device-ABO':
                         Class = "bi-display"

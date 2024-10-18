@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DeviceA31CD/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeviceA31KS/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeviceA31LKE/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeviceA31PCP/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeviceA31TPE/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeviceA32KS/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeviceA32TPE/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DMS/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DMS/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app01/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app01/templatetags/custom_tag.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/templatetags/custom_tag.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/all-2024-07-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2024-07-05.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error-2024-07-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2024-07-05.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2024-07-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2024-07-05.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reliability_Row_data/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reliability_Row_data/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/SigninA31.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,39 +52,39 @@
     <session id="336981479">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="38" />
-          <entry key="project.open.time.0" value="36" />
-          <entry key="project.open.time.1" value="8" />
-          <entry key="project.open.time.2" value="4" />
+          <entry key="project.closed" value="46" />
+          <entry key="project.open.time.0" value="43" />
+          <entry key="project.open.time.1" value="9" />
+          <entry key="project.open.time.2" value="7" />
           <entry key="project.open.time.3" value="3" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="52" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.opened" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="126" />
+          <entry key="html" value="222" />
           <entry key="js" value="2" />
-          <entry key="py" value="276" />
+          <entry key="py" value="349" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="126" />
+          <entry key="HTML" value="222" />
           <entry key="JavaScript" value="2" />
-          <entry key="Python" value="276" />
+          <entry key="Python" value="349" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="1250" />
-          <entry key="py" value="5055" />
+          <entry key="html" value="1300" />
+          <entry key="py" value="5304" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1250" />
-          <entry key="Python" value="5055" />
+          <entry key="HTML" value="1300" />
+          <entry key="Python" value="5304" />
         </counts>
       </usages-collector>
     </session>
@@ -81,7 +93,51 @@
     <favorites_list name="DMS" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app01/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="506" column="16" lean-forward="true" selection-start-line="506" selection-start-column="16" selection-end-line="506" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+                <element signature="e#724#769#0" />
+                <element signature="e#1435#3223#0" />
+                <element signature="e#3262#6253#0" />
+                <element signature="e#6296#7993#0" />
+                <element signature="e#8036#9733#0" />
+                <element signature="e#9778#11479#0" />
+                <element signature="e#9776#11473#0" />
+                <element signature="e#13272#14975#0" />
+                <element signature="e#15020#16723#0" />
+                <element signature="e#16773#18479#0" />
+                <element signature="e#18525#20231#0" />
+                <element signature="e#13258#16343#0" />
+                <element signature="e#16383#16901#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DMS/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DMS/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="348" column="15" lean-forward="true" selection-start-line="348" selection-start-column="15" selection-end-line="348" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -94,95 +150,95 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PK1000</find>
-      <find>mock_data</find>
-      <find>path</find>
-      <find>enableProgress</find>
-      <find>print</find>
-      <find>doexcel</find>
-      <find>mythread1</find>
-      <find>current_page</find>
-      <find>is_login_DMS</find>
-      <find>is_login</find>
-      <find>user_id</find>
-      <find>user_name</find>
-      <find>CNname</find>
+      <find>current_page_</find>
+      <find>&lt;el-backtop</find>
+      <find>href</find>
+      <find>role</find>
+      <find>EOL</find>
+      <find>UsYear</find>
       <find>edit</find>
       <find>updateData</find>
-      <find>current_page_DMS</find>
-      <find>session</find>
-      <find>bulk_create</find>
-      <find>images</find>
-      <find>批量</find>
-      <find>閑置</find>
-      <find>IdleState</find>
-      <find>sectionIdleState</find>
-      <find>export</find>
-      <find>out-table</find>
-      <find>el-table__fixed</find>
-      <find>tableContent</find>
-      <find>getImgUrl</find>
-      <find>Non_login_path</find>
-      <find>current_page_</find>
+      <find>multipleSelection</find>
+      <find>uploadxlsxlist</find>
+      <find>LNV</find>
+      <find>DeviceLNV</find>
+      <find>/DeviceA31KS/M_Return/</find>
+      <find>/DeviceA31LKE/M_Category/</find>
+      <find>axios</find>
+      <find>XIOS</find>
+      <find>/DeviceLNV/BorrowedDeviceLNV/</find>
+      <find>/DeviceLNV/R_Borrowed/</find>
+      <find>/DeviceLNV/R_Destine/</find>
+      <find>/DeviceLNV/R_Keep/</find>
+      <find>/DeviceLNV/R_Return/</find>
+      <find>/DeviceLNV/M_Borrow/</find>
+      <find>/DeviceLNV/M_Category/</find>
+      <find>/DeviceLNV/M_edit/</find>
+      <find>/DeviceLNV/M_Keep/</find>
+      <find>AXIOS</find>
+      <find>/DeviceLNV/M_Return/</find>
+      <find>A31</find>
+      <find>signinA31</find>
+      <find>inputRoles</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DeviceCQT88/admin.py" />
-        <option value="$PROJECT_DIR$/DeviceCQT88/apps.py" />
-        <option value="$PROJECT_DIR$/DeviceCQT88/models.py" />
-        <option value="$PROJECT_DIR$/DeviceCQT88/urls.py" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/BorrowedDeviceCQT88.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Borrow.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Category.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Keep.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_Return.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Borrowed.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Destine.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Keep.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/R_Return.html" />
-        <option value="$PROJECT_DIR$/templates/SigninCQT88.html" />
-        <option value="$PROJECT_DIR$/WirelessAP/models.py" />
-        <option value="$PROJECT_DIR$/WirelessAP/urls.py" />
-        <option value="$PROJECT_DIR$/WirelessAP/views.py" />
-        <option value="$PROJECT_DIR$/templates/WirelessAP/Borrow.html" />
-        <option value="$PROJECT_DIR$/WirelessAP/admin.py" />
-        <option value="$PROJECT_DIR$/app01/tests.py" />
-        <option value="$PROJECT_DIR$/app01/tasks_excel.py" />
-        <option value="$PROJECT_DIR$/app01/templatetags/custom_tag.py" />
-        <option value="$PROJECT_DIR$/TUMHistory/admin.py" />
-        <option value="C:/Python372/mecheck/Lib/site-packages/openpyxl/worksheet/_reader.py" />
-        <option value="$PROJECT_DIR$/TUMHistory/urls.py" />
-        <option value="$PROJECT_DIR$/templates/TUMHistory/TUMHistory.html" />
-        <option value="$PROJECT_DIR$/TUMHistory/models.py" />
-        <option value="$PROJECT_DIR$/templates/TUMHistory/MateriaHistory.html" />
-        <option value="$PROJECT_DIR$/TUMHistory/views20211017lingyongchayi.py" />
-        <option value="$PROJECT_DIR$/templates/index20210317图片上悬浮信息.html" />
-        <option value="C:/PythonProject/DDISExcel/excelTrans.py" />
-        <option value="$PROJECT_DIR$/AdapterPowerCode/views.py" />
-        <option value="$PROJECT_DIR$/ChairCabinetMS/views.py" />
-        <option value="$PROJECT_DIR$/DeviceA39/views.py" />
-        <option value="$PROJECT_DIR$/DeviceABO/views.py" />
-        <option value="$PROJECT_DIR$/DeviceCQT88/views.py" />
-        <option value="$PROJECT_DIR$/DeviceLNV/views.py" />
-        <option value="$PROJECT_DIR$/TUMHistory/views.py" />
-        <option value="$PROJECT_DIR$/middleware/UserIP.py" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/middleware/checkper.py" />
-        <option value="$PROJECT_DIR$/DMS/settings.py" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31LKE/M_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/BorrowedDeviceA31PCP.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/R_Borrowed.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/R_Destine.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/R_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/R_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/M_Borrow.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/M_Category.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/M_edit.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/M_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31PCP/M_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/BorrowedDeviceA31TPE.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/R_Borrowed.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/R_Destine.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/R_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/R_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/M_Borrow.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/M_Category.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/M_edit.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/M_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA31TPE/M_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/BorrowedDeviceA32KS.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/R_Borrowed.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/R_Destine.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/R_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/R_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/M_Borrow.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/M_Category.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/M_edit.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/M_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32KS/M_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/BorrowedDeviceA32TPE.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/R_Borrowed.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/R_Destine.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/R_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/R_Return.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_Borrow.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_Category.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_edit.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_Keep.html" />
+        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_Return.html" />
         <option value="$PROJECT_DIR$/DMS/urls.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/app01/tasks.py" />
-        <option value="$PROJECT_DIR$/ComputerMS/views.py" />
-        <option value="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceCQT88/M_edit.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceABO/M_edit.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceA39/M_edit.html" />
+        <option value="$PROJECT_DIR$/DMS/settings.py" />
+        <option value="$PROJECT_DIR$/templates/SigninA32KS.html" />
         <option value="$PROJECT_DIR$/app01/views.py" />
+        <option value="$PROJECT_DIR$/templates/SigninA32TPE.html" />
+        <option value="$PROJECT_DIR$/templates/SigninA31CD.html" />
+        <option value="$PROJECT_DIR$/templates/SigninA31LKE.html" />
+        <option value="$PROJECT_DIR$/templates/SigninA31PCP.html" />
+        <option value="$PROJECT_DIR$/templates/SigninA31TPE.html" />
+        <option value="$PROJECT_DIR$/templates/SigninA31KS.html" />
       </list>
     </option>
   </component>
@@ -1091,10 +1147,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-408" />
-    <option name="y" value="162" />
-    <option name="width" value="1947" />
-    <option name="height" value="1227" />
+    <option name="x" value="948" />
+    <option name="width" value="981" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -1109,11 +1164,6 @@
             <path>
               <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="DMS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DMS" type="462c0819:PsiDirectoryNode" />
-              <item name="middleware" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
@@ -1136,15 +1186,15 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\djangoproject\DMS\DeviceA32TPE" />
+      <recent name="C:\djangoproject\DMS\DeviceA32KS" />
+      <recent name="C:\djangoproject\DMS\DeviceA31TPE" />
+      <recent name="C:\djangoproject\DMS\DeviceA31PCP" />
+      <recent name="C:\djangoproject\DMS\DeviceA31LKE" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\djangoproject\DMS\static\css" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\djangoproject\DMS\TUMHistory" />
-      <recent name="C:\djangoproject\DMS\templates\TUMHistory" />
-      <recent name="C:\djangoproject\DMS\app01" />
-      <recent name="C:\djangoproject\DMS\WirelessAP" />
-      <recent name="C:\djangoproject\DMS\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1383,23 +1433,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4959217" visible="true" weight="0.17235902" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4959217" visible="true" weight="0.299444" />
       <window_info id="Favorites" order="1" sideWeight="0.5040783" side_tool="true" weight="0.22961956" />
       <window_info id="Structure" order="2" sideWeight="0.50363636" side_tool="true" weight="0.22961956" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.4959239" weight="0.38643533" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.3979849" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.4959239" visible="true" weight="0.39905363" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="5" weight="0.3274559" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.32649842" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32871535" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3280757" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="SciView" order="9" sideWeight="0.50407606" side_tool="true" weight="0.19791667" />
       <window_info anchor="bottom" id="Database" order="10" sideWeight="0.50158983" side_tool="true" weight="0.24333926" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" weight="0.41813603" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32493702" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" weight="0.34700316" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32492113" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50407606" side_tool="true" weight="0.27734375" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1408,12 +1459,12 @@
       <window_info anchor="right" id="Find" order="4" weight="0.32711965" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4959217" visible="true" weight="0.17329377" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4959217" visible="true" weight="0.1437649" />
       <window_info id="Favorites" order="1" sideWeight="0.5040783" side_tool="true" weight="0.22961956" />
       <window_info id="Structure" order="2" sideWeight="0.50363636" side_tool="true" weight="0.22961956" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.4959239" visible="true" weight="0.43324938" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.3979849" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.4959239" weight="0.38643533" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="5" weight="0.3274559" />
@@ -1422,7 +1473,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="SciView" order="9" sideWeight="0.50407606" side_tool="true" weight="0.19791667" />
       <window_info anchor="bottom" id="Database" order="10" sideWeight="0.50158983" side_tool="true" weight="0.24333926" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" weight="0.41813603" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" visible="true" weight="0.41798106" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32493702" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50407606" side_tool="true" weight="0.27734375" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1439,331 +1490,539 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DeviceABO/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/R_Borrowed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
+        <state relative-caret-position="301">
+          <caret line="312" column="53" selection-start-line="312" selection-start-column="53" selection-end-line="312" selection-end-column="53" />
+          <caret line="385" column="57" selection-start-line="385" selection-start-column="57" selection-end-line="385" selection-end-column="57" />
+          <caret line="398" column="57" selection-start-line="398" selection-start-column="57" selection-end-line="398" selection-end-column="57" />
+          <caret line="439" column="56" selection-start-line="439" selection-start-column="56" selection-end-line="439" selection-end-column="56" />
+          <caret line="511" column="55" selection-start-line="511" selection-start-column="55" selection-end-line="511" selection-end-column="55" />
+          <caret line="564" column="58" selection-start-line="564" selection-start-column="58" selection-end-line="564" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/celery/schedules.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/R_Destine.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="268" selection-start-line="268" selection-end-line="268" />
+        <state relative-caret-position="301">
+          <caret line="221" column="52" selection-start-line="221" selection-start-column="52" selection-end-line="221" selection-end-column="52" />
+          <caret line="294" column="56" selection-start-line="294" selection-start-column="56" selection-end-line="294" selection-end-column="56" />
+          <caret line="307" column="56" selection-start-line="307" selection-start-column="56" selection-end-line="307" selection-end-column="56" />
+          <caret line="348" column="55" selection-start-line="348" selection-start-column="55" selection-end-line="348" selection-end-column="55" />
+          <caret line="413" column="60" selection-start-line="413" selection-start-column="60" selection-end-line="413" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TUMHistory/tests.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://C:/PythonProject/DDISExcel/excelmain.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DMS/celery.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/settings.py" />
-    <entry file="file://$PROJECT_DIR$/AdapterPowerCode/models.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/db/models/fields/__init__.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/R_Keep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="134" column="17" selection-start-line="134" selection-start-column="17" selection-end-line="134" selection-end-column="17" />
+        <state relative-caret-position="301">
+          <caret line="221" column="49" selection-start-line="221" selection-start-column="49" selection-end-line="221" selection-end-column="49" />
+          <caret line="293" column="53" selection-start-line="293" selection-start-column="53" selection-end-line="293" selection-end-column="53" />
+          <caret line="306" column="53" selection-start-line="306" selection-start-column="53" selection-end-line="306" selection-end-column="53" />
+          <caret line="347" column="52" selection-start-line="347" selection-start-column="52" selection-end-line="347" selection-end-column="52" />
+          <caret line="412" column="57" selection-start-line="412" selection-start-column="57" selection-end-line="412" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/openpyxl/worksheet/_reader.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/R_Return.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="268" column="25" lean-forward="true" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
+        <state relative-caret-position="187">
+          <caret line="218" column="51" selection-start-line="218" selection-start-column="51" selection-end-line="218" selection-end-column="51" />
+          <caret line="291" column="55" selection-start-line="291" selection-start-column="55" selection-end-line="291" selection-end-column="55" />
+          <caret line="304" column="55" selection-start-line="304" selection-start-column="55" selection-end-line="304" selection-end-column="55" />
+          <caret line="344" column="54" selection-start-line="344" selection-start-column="54" selection-end-line="344" selection-end-column="54" />
+          <caret line="409" column="59" selection-start-line="409" selection-start-column="59" selection-end-line="409" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TUMHistory/admin.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/M_Borrow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+        <state relative-caret-position="301">
+          <caret line="486" column="47" selection-start-line="486" selection-start-column="47" selection-end-line="486" selection-end-column="47" />
+          <caret line="550" column="50" selection-start-line="550" selection-start-column="50" selection-end-line="550" selection-end-column="50" />
+          <caret line="639" column="62" selection-start-line="639" selection-start-column="62" selection-end-line="639" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/PersonalInfo_search.html" />
-    <entry file="file://$USER_HOME$/Desktop/views.py" />
-    <entry file="file://$PROJECT_DIR$/TUMHistory/urls.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/M_Category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="24" />
+        <state relative-caret-position="206">
+          <caret line="2148" column="50" lean-forward="true" selection-start-line="2148" selection-start-column="50" selection-end-line="2148" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app01/tasks_excel.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/M_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="271" column="85" lean-forward="true" selection-start-line="271" selection-start-column="85" selection-end-line="271" selection-end-column="85" />
+        <state relative-caret-position="282">
+          <caret line="1488" column="49" selection-start-line="1488" selection-start-column="49" selection-end-line="1488" selection-end-column="49" />
+          <caret line="1558" column="48" selection-start-line="1558" selection-start-column="48" selection-end-line="1558" selection-end-column="48" />
+          <caret line="1697" column="49" selection-start-line="1697" selection-start-column="49" selection-end-line="1697" selection-end-column="49" />
+          <caret line="1708" column="49" selection-start-line="1708" selection-start-column="49" selection-end-line="1708" selection-end-column="49" />
+          <caret line="1724" column="51" selection-start-line="1724" selection-start-column="51" selection-end-line="1724" selection-end-column="51" />
+          <caret line="1882" column="57" selection-start-line="1882" selection-start-column="57" selection-end-line="1882" selection-end-column="57" />
+          <caret line="2025" column="56" selection-start-line="2025" selection-start-column="56" selection-end-line="2025" selection-end-column="56" />
+          <caret line="2094" column="51" selection-start-line="2094" selection-start-column="51" selection-end-line="2094" selection-end-column="51" />
+          <caret line="2177" column="51" selection-start-line="2177" selection-start-column="51" selection-end-line="2177" selection-end-column="51" />
+          <caret line="2201" column="48" selection-start-line="2201" selection-start-column="48" selection-end-line="2201" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/TUMHistory/TUMHistory.html">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/M_Keep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="42" column="12" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+        <state relative-caret-position="301">
+          <caret line="411" column="45" selection-start-line="411" selection-start-column="45" selection-end-line="411" selection-end-column="45" />
+          <caret line="474" column="48" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
+          <caret line="523" column="60" selection-start-line="523" selection-start-column="60" selection-end-line="523" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/DeviceABO210914級聯/M_Return.html">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31PCP/M_Return.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="227" column="25" lean-forward="true" selection-start-line="227" selection-start-column="25" selection-end-line="227" selection-end-column="25" />
+        <state relative-caret-position="263">
+          <caret line="520" column="39" lean-forward="true" selection-start-line="520" selection-start-column="39" selection-end-line="520" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/TUMHistory/MateriaHistory.html">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/BorrowedDeviceA31TPE.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+        <state relative-caret-position="301">
+          <caret line="409" column="63" selection-start-line="409" selection-start-column="63" selection-end-line="409" selection-end-column="63" />
+          <caret line="481" column="67" selection-start-line="481" selection-start-column="67" selection-end-line="481" selection-end-column="67" />
+          <caret line="494" column="67" selection-start-line="494" selection-start-column="67" selection-end-line="494" selection-end-column="67" />
+          <caret line="539" column="66" selection-start-line="539" selection-start-column="66" selection-end-line="539" selection-end-column="66" />
+          <caret line="692" column="68" selection-start-line="692" selection-start-column="68" selection-end-line="692" selection-end-column="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
+    <entry file="file://$PROJECT_DIR$/DeviceA31TPE/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="139" column="42" lean-forward="true" selection-start-line="139" selection-start-column="42" selection-end-line="139" selection-end-column="42" />
+        <state relative-caret-position="64">
+          <caret line="542" column="24" selection-start-line="542" selection-start-column="24" selection-end-line="542" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TUMHistory/views20211017lingyongchayi.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/R_Borrowed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="36" column="55" lean-forward="true" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+        <state relative-caret-position="301">
+          <caret line="312" column="63" selection-start-line="312" selection-start-column="63" selection-end-line="312" selection-end-column="63" />
+          <caret line="385" column="67" selection-start-line="385" selection-start-column="67" selection-end-line="385" selection-end-column="67" />
+          <caret line="398" column="67" selection-start-line="398" selection-start-column="67" selection-end-line="398" selection-end-column="67" />
+          <caret line="439" column="66" selection-start-line="439" selection-start-column="66" selection-end-line="439" selection-end-column="66" />
+          <caret line="511" column="65" selection-start-line="511" selection-start-column="65" selection-end-line="511" selection-end-column="65" />
+          <caret line="564" column="68" selection-start-line="564" selection-start-column="68" selection-end-line="564" selection-end-column="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/celery/task/base.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/R_Destine.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="301">
+          <caret line="221" column="52" selection-start-line="221" selection-start-column="52" selection-end-line="221" selection-end-column="52" />
+          <caret line="294" column="56" selection-start-line="294" selection-start-column="56" selection-end-line="294" selection-end-column="56" />
+          <caret line="307" column="56" selection-start-line="307" selection-start-column="56" selection-end-line="307" selection-end-column="56" />
+          <caret line="348" column="55" selection-start-line="348" selection-start-column="55" selection-end-line="348" selection-end-column="55" />
+          <caret line="413" column="60" selection-start-line="413" selection-start-column="60" selection-end-line="413" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/celery/task/__init__.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/R_Keep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-501" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index20210317图片上悬浮信息.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="225" column="80" selection-start-line="225" selection-start-column="80" selection-end-line="225" selection-end-column="80" />
+        <state relative-caret-position="301">
+          <caret line="221" column="49" selection-start-line="221" selection-start-column="49" selection-end-line="221" selection-end-column="49" />
+          <caret line="293" column="53" selection-start-line="293" selection-start-column="53" selection-end-line="293" selection-end-column="53" />
+          <caret line="306" column="53" selection-start-line="306" selection-start-column="53" selection-end-line="306" selection-end-column="53" />
+          <caret line="347" column="52" selection-start-line="347" selection-start-column="52" selection-end-line="347" selection-end-column="52" />
+          <caret line="412" column="57" selection-start-line="412" selection-start-column="57" selection-end-line="412" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TUMHistory/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/R_Return.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="133" column="47" lean-forward="true" selection-start-line="133" selection-start-column="47" selection-end-line="133" selection-end-column="47" />
+        <state relative-caret-position="301">
+          <caret line="218" column="51" selection-start-line="218" selection-start-column="51" selection-end-line="218" selection-end-column="51" />
+          <caret line="291" column="55" selection-start-line="291" selection-start-column="55" selection-end-line="291" selection-end-column="55" />
+          <caret line="304" column="55" selection-start-line="304" selection-start-column="55" selection-end-line="304" selection-end-column="55" />
+          <caret line="344" column="54" selection-start-line="344" selection-start-column="54" selection-end-line="344" selection-end-column="54" />
+          <caret line="409" column="59" selection-start-line="409" selection-start-column="59" selection-end-line="409" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/django/db/models/query.py">
+    <entry file="file://$PROJECT_DIR$/DeviceA32TPE/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="845" column="8" selection-start-line="845" selection-start-column="8" selection-end-line="845" selection-end-column="8" />
+        <state relative-caret-position="64">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python372/mecheck/Lib/site-packages/pandas/core/generic.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/M_Borrow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5486" selection-start-line="5486" selection-end-line="5486" />
+        <state relative-caret-position="301">
+          <caret line="486" column="47" selection-start-line="486" selection-start-column="47" selection-end-line="486" selection-end-column="47" />
+          <caret line="550" column="50" selection-start-line="550" selection-start-column="50" selection-end-line="550" selection-end-column="50" />
+          <caret line="639" column="62" selection-start-line="639" selection-start-column="62" selection-end-line="639" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/PythonProject/DDISExcel/excelTrans.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/M_Category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="149" column="30" lean-forward="true" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
+        <state relative-caret-position="301">
+          <caret line="752" column="53" selection-start-line="752" selection-start-column="53" selection-end-line="752" selection-end-column="53" />
+          <caret line="779" column="52" selection-start-line="779" selection-start-column="52" selection-end-line="779" selection-end-column="52" />
+          <caret line="806" column="56" selection-start-line="806" selection-start-column="56" selection-end-line="806" selection-end-column="56" />
+          <caret line="849" column="56" selection-start-line="849" selection-start-column="56" selection-end-line="849" selection-end-column="56" />
+          <caret line="898" column="57" selection-start-line="898" selection-start-column="57" selection-end-line="898" selection-end-column="57" />
+          <caret line="922" column="56" selection-start-line="922" selection-start-column="56" selection-end-line="922" selection-end-column="56" />
+          <caret line="982" column="57" selection-start-line="982" selection-start-column="57" selection-end-line="982" selection-end-column="57" />
+          <caret line="1015" column="56" selection-start-line="1015" selection-start-column="56" selection-end-line="1015" selection-end-column="56" />
+          <caret line="1149" column="61" selection-start-line="1149" selection-start-column="61" selection-end-line="1149" selection-end-column="61" />
+          <caret line="1241" column="62" selection-start-line="1241" selection-start-column="62" selection-end-line="1241" selection-end-column="62" />
+          <caret line="1296" column="57" selection-start-line="1296" selection-start-column="57" selection-end-line="1296" selection-end-column="57" />
+          <caret line="1366" column="57" selection-start-line="1366" selection-start-column="57" selection-end-line="1366" selection-end-column="57" />
+          <caret line="1436" column="62" selection-start-line="1436" selection-start-column="62" selection-end-line="1436" selection-end-column="62" />
+          <caret line="1494" column="57" selection-start-line="1494" selection-start-column="57" selection-end-line="1494" selection-end-column="57" />
+          <caret line="1566" column="57" selection-start-line="1566" selection-start-column="57" selection-end-line="1566" selection-end-column="57" />
+          <caret line="1633" column="62" selection-start-line="1633" selection-start-column="62" selection-end-line="1633" selection-end-column="62" />
+          <caret line="1690" column="57" selection-start-line="1690" selection-start-column="57" selection-end-line="1690" selection-end-column="57" />
+          <caret line="1761" column="57" selection-start-line="1761" selection-start-column="57" selection-end-line="1761" selection-end-column="57" />
+          <caret line="1829" column="62" selection-start-line="1829" selection-start-column="62" selection-end-line="1829" selection-end-column="62" />
+          <caret line="1886" column="57" selection-start-line="1886" selection-start-column="57" selection-end-line="1886" selection-end-column="57" />
+          <caret line="1958" column="57" selection-start-line="1958" selection-start-column="57" selection-end-line="1958" selection-end-column="57" />
+          <caret line="2025" column="62" selection-start-line="2025" selection-start-column="62" selection-end-line="2025" selection-end-column="62" />
+          <caret line="2080" column="57" selection-start-line="2080" selection-start-column="57" selection-end-line="2080" selection-end-column="57" />
+          <caret line="2153" column="57" selection-start-line="2153" selection-start-column="57" selection-end-line="2153" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AdapterPowerCode/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/M_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="489" column="71" selection-start-line="489" selection-start-column="64" selection-end-line="489" selection-end-column="71" />
+        <state relative-caret-position="301">
+          <caret line="1488" column="49" selection-start-line="1488" selection-start-column="49" selection-end-line="1488" selection-end-column="49" />
+          <caret line="1558" column="48" selection-start-line="1558" selection-start-column="48" selection-end-line="1558" selection-end-column="48" />
+          <caret line="1697" column="49" selection-start-line="1697" selection-start-column="49" selection-end-line="1697" selection-end-column="49" />
+          <caret line="1708" column="49" selection-start-line="1708" selection-start-column="49" selection-end-line="1708" selection-end-column="49" />
+          <caret line="1724" column="51" selection-start-line="1724" selection-start-column="51" selection-end-line="1724" selection-end-column="51" />
+          <caret line="1882" column="57" selection-start-line="1882" selection-start-column="57" selection-end-line="1882" selection-end-column="57" />
+          <caret line="2025" column="56" selection-start-line="2025" selection-start-column="56" selection-end-line="2025" selection-end-column="56" />
+          <caret line="2094" column="51" selection-start-line="2094" selection-start-column="51" selection-end-line="2094" selection-end-column="51" />
+          <caret line="2177" column="51" selection-start-line="2177" selection-start-column="51" selection-end-line="2177" selection-end-column="51" />
+          <caret line="2201" column="48" selection-start-line="2201" selection-start-column="48" selection-end-line="2201" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ChairCabinetMS/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/M_Keep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="26" />
+        <state relative-caret-position="301">
+          <caret line="411" column="45" selection-start-line="411" selection-start-column="45" selection-end-line="411" selection-end-column="45" />
+          <caret line="474" column="48" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
+          <caret line="523" column="60" selection-start-line="523" selection-start-column="60" selection-end-line="523" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceA39/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA31TPE/M_Return.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="44" column="26" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="26" />
+        <state relative-caret-position="301">
+          <caret line="411" column="47" selection-start-line="411" selection-start-column="47" selection-end-line="411" selection-end-column="47" />
+          <caret line="473" column="50" selection-start-line="473" selection-start-column="50" selection-end-line="473" selection-end-column="50" />
+          <caret line="522" column="62" selection-start-line="522" selection-start-column="62" selection-end-line="522" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceABO/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/BorrowedDeviceA32KS.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="45" column="12" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+        <state relative-caret-position="301">
+          <caret line="409" column="61" selection-start-line="409" selection-start-column="61" selection-end-line="409" selection-end-column="61" />
+          <caret line="481" column="65" selection-start-line="481" selection-start-column="65" selection-end-line="481" selection-end-column="65" />
+          <caret line="494" column="65" selection-start-line="494" selection-start-column="65" selection-end-line="494" selection-end-column="65" />
+          <caret line="539" column="64" selection-start-line="539" selection-start-column="64" selection-end-line="539" selection-end-column="64" />
+          <caret line="692" column="66" selection-start-line="692" selection-start-column="66" selection-end-line="692" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceCQT88/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/R_Borrowed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="47" column="26" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="26" />
+        <state relative-caret-position="301">
+          <caret line="312" column="52" selection-start-line="312" selection-start-column="52" selection-end-line="312" selection-end-column="52" />
+          <caret line="385" column="56" selection-start-line="385" selection-start-column="56" selection-end-line="385" selection-end-column="56" />
+          <caret line="398" column="56" selection-start-line="398" selection-start-column="56" selection-end-line="398" selection-end-column="56" />
+          <caret line="439" column="55" selection-start-line="439" selection-start-column="55" selection-end-line="439" selection-end-column="55" />
+          <caret line="511" column="54" selection-start-line="511" selection-start-column="54" selection-end-line="511" selection-end-column="54" />
+          <caret line="564" column="57" selection-start-line="564" selection-start-column="57" selection-end-line="564" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/R_Destine.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="5671" column="34" lean-forward="true" selection-start-line="5671" selection-start-column="34" selection-end-line="5671" selection-end-column="34" />
+        <state relative-caret-position="301">
+          <caret line="221" column="51" selection-start-line="221" selection-start-column="51" selection-end-line="221" selection-end-column="51" />
+          <caret line="294" column="55" selection-start-line="294" selection-start-column="55" selection-end-line="294" selection-end-column="55" />
+          <caret line="307" column="55" selection-start-line="307" selection-start-column="55" selection-end-line="307" selection-end-column="55" />
+          <caret line="348" column="54" selection-start-line="348" selection-start-column="54" selection-end-line="348" selection-end-column="54" />
+          <caret line="413" column="59" selection-start-line="413" selection-start-column="59" selection-end-line="413" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAP/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/R_Keep.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="301">
+          <caret line="221" column="48" selection-start-line="221" selection-start-column="48" selection-end-line="221" selection-end-column="48" />
+          <caret line="293" column="52" selection-start-line="293" selection-start-column="52" selection-end-line="293" selection-end-column="52" />
+          <caret line="306" column="52" selection-start-line="306" selection-start-column="52" selection-end-line="306" selection-end-column="52" />
+          <caret line="347" column="51" selection-start-line="347" selection-start-column="51" selection-end-line="347" selection-end-column="51" />
+          <caret line="412" column="56" selection-start-line="412" selection-start-column="56" selection-end-line="412" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/middleware/UserIP.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/R_Return.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="48" column="39" lean-forward="true" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+        <state relative-caret-position="301">
+          <caret line="218" column="50" selection-start-line="218" selection-start-column="50" selection-end-line="218" selection-end-column="50" />
+          <caret line="291" column="54" selection-start-line="291" selection-start-column="54" selection-end-line="291" selection-end-column="54" />
+          <caret line="304" column="54" selection-start-line="304" selection-start-column="54" selection-end-line="304" selection-end-column="54" />
+          <caret line="344" column="53" selection-start-line="344" selection-start-column="53" selection-end-line="344" selection-end-column="53" />
+          <caret line="409" column="58" selection-start-line="409" selection-start-column="58" selection-end-line="409" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/M_Borrow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="153" column="106" selection-start-line="153" selection-start-column="99" selection-end-line="153" selection-end-column="106" />
+        <state relative-caret-position="301">
+          <caret line="486" column="46" selection-start-line="486" selection-start-column="46" selection-end-line="486" selection-end-column="46" />
+          <caret line="550" column="49" selection-start-line="550" selection-start-column="49" selection-end-line="550" selection-end-column="49" />
+          <caret line="639" column="61" selection-start-line="639" selection-start-column="61" selection-end-line="639" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TUMHistory/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/M_Category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        <state relative-caret-position="102">
+          <caret line="752" column="52" selection-start-line="752" selection-start-column="52" selection-end-line="752" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/M_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="2195" column="28" selection-start-line="2195" selection-start-column="28" selection-end-line="2195" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/M_Keep.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="411" column="44" selection-start-line="411" selection-start-column="44" selection-end-line="411" selection-end-column="44" />
+          <caret line="474" column="47" selection-start-line="474" selection-start-column="47" selection-end-line="474" selection-end-column="47" />
+          <caret line="523" column="59" selection-start-line="523" selection-start-column="59" selection-end-line="523" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32KS/M_Return.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="411" column="46" selection-start-line="411" selection-start-column="46" selection-end-line="411" selection-end-column="46" />
+          <caret line="473" column="49" selection-start-line="473" selection-start-column="49" selection-end-line="473" selection-end-column="49" />
+          <caret line="522" column="61" selection-start-line="522" selection-start-column="61" selection-end-line="522" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/BorrowedDeviceA32TPE.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="409" column="63" selection-start-line="409" selection-start-column="63" selection-end-line="409" selection-end-column="63" />
+          <caret line="481" column="67" selection-start-line="481" selection-start-column="67" selection-end-line="481" selection-end-column="67" />
+          <caret line="494" column="67" selection-start-line="494" selection-start-column="67" selection-end-line="494" selection-end-column="67" />
+          <caret line="539" column="66" selection-start-line="539" selection-start-column="66" selection-end-line="539" selection-end-column="66" />
+          <caret line="692" column="68" selection-start-line="692" selection-start-column="68" selection-end-line="692" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/R_Borrowed.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="312" column="53" selection-start-line="312" selection-start-column="53" selection-end-line="312" selection-end-column="53" />
+          <caret line="385" column="57" selection-start-line="385" selection-start-column="57" selection-end-line="385" selection-end-column="57" />
+          <caret line="398" column="57" selection-start-line="398" selection-start-column="57" selection-end-line="398" selection-end-column="57" />
+          <caret line="439" column="56" selection-start-line="439" selection-start-column="56" selection-end-line="439" selection-end-column="56" />
+          <caret line="511" column="55" selection-start-line="511" selection-start-column="55" selection-end-line="511" selection-end-column="55" />
+          <caret line="564" column="58" selection-start-line="564" selection-start-column="58" selection-end-line="564" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/R_Destine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="406" column="49" lean-forward="true" selection-start-line="406" selection-start-column="49" selection-end-line="406" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/R_Keep.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="221" column="49" selection-start-line="221" selection-start-column="49" selection-end-line="221" selection-end-column="49" />
+          <caret line="293" column="53" selection-start-line="293" selection-start-column="53" selection-end-line="293" selection-end-column="53" />
+          <caret line="306" column="53" selection-start-line="306" selection-start-column="53" selection-end-line="306" selection-end-column="53" />
+          <caret line="347" column="52" selection-start-line="347" selection-start-column="52" selection-end-line="347" selection-end-column="52" />
+          <caret line="412" column="57" selection-start-line="412" selection-start-column="57" selection-end-line="412" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/R_Return.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="218" column="51" selection-start-line="218" selection-start-column="51" selection-end-line="218" selection-end-column="51" />
+          <caret line="291" column="55" selection-start-line="291" selection-start-column="55" selection-end-line="291" selection-end-column="55" />
+          <caret line="304" column="55" selection-start-line="304" selection-start-column="55" selection-end-line="304" selection-end-column="55" />
+          <caret line="344" column="54" selection-start-line="344" selection-start-column="54" selection-end-line="344" selection-end-column="54" />
+          <caret line="409" column="59" selection-start-line="409" selection-start-column="59" selection-end-line="409" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/M_Borrow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="486" column="47" selection-start-line="486" selection-start-column="47" selection-end-line="486" selection-end-column="47" />
+          <caret line="550" column="50" selection-start-line="550" selection-start-column="50" selection-end-line="550" selection-end-column="50" />
+          <caret line="639" column="62" selection-start-line="639" selection-start-column="62" selection-end-line="639" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/M_Category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="752" column="53" selection-start-line="752" selection-start-column="53" selection-end-line="752" selection-end-column="53" />
+          <caret line="779" column="52" selection-start-line="779" selection-start-column="52" selection-end-line="779" selection-end-column="52" />
+          <caret line="806" column="56" selection-start-line="806" selection-start-column="56" selection-end-line="806" selection-end-column="56" />
+          <caret line="849" column="56" selection-start-line="849" selection-start-column="56" selection-end-line="849" selection-end-column="56" />
+          <caret line="898" column="57" selection-start-line="898" selection-start-column="57" selection-end-line="898" selection-end-column="57" />
+          <caret line="922" column="56" selection-start-line="922" selection-start-column="56" selection-end-line="922" selection-end-column="56" />
+          <caret line="982" column="57" selection-start-line="982" selection-start-column="57" selection-end-line="982" selection-end-column="57" />
+          <caret line="1015" column="56" selection-start-line="1015" selection-start-column="56" selection-end-line="1015" selection-end-column="56" />
+          <caret line="1149" column="61" selection-start-line="1149" selection-start-column="61" selection-end-line="1149" selection-end-column="61" />
+          <caret line="1241" column="62" selection-start-line="1241" selection-start-column="62" selection-end-line="1241" selection-end-column="62" />
+          <caret line="1296" column="57" selection-start-line="1296" selection-start-column="57" selection-end-line="1296" selection-end-column="57" />
+          <caret line="1366" column="57" selection-start-line="1366" selection-start-column="57" selection-end-line="1366" selection-end-column="57" />
+          <caret line="1436" column="62" selection-start-line="1436" selection-start-column="62" selection-end-line="1436" selection-end-column="62" />
+          <caret line="1494" column="57" selection-start-line="1494" selection-start-column="57" selection-end-line="1494" selection-end-column="57" />
+          <caret line="1566" column="57" selection-start-line="1566" selection-start-column="57" selection-end-line="1566" selection-end-column="57" />
+          <caret line="1633" column="62" selection-start-line="1633" selection-start-column="62" selection-end-line="1633" selection-end-column="62" />
+          <caret line="1690" column="57" selection-start-line="1690" selection-start-column="57" selection-end-line="1690" selection-end-column="57" />
+          <caret line="1761" column="57" selection-start-line="1761" selection-start-column="57" selection-end-line="1761" selection-end-column="57" />
+          <caret line="1829" column="62" selection-start-line="1829" selection-start-column="62" selection-end-line="1829" selection-end-column="62" />
+          <caret line="1886" column="57" selection-start-line="1886" selection-start-column="57" selection-end-line="1886" selection-end-column="57" />
+          <caret line="1958" column="57" selection-start-line="1958" selection-start-column="57" selection-end-line="1958" selection-end-column="57" />
+          <caret line="2025" column="62" selection-start-line="2025" selection-start-column="62" selection-end-line="2025" selection-end-column="62" />
+          <caret line="2080" column="57" selection-start-line="2080" selection-start-column="57" selection-end-line="2080" selection-end-column="57" />
+          <caret line="2153" column="57" selection-start-line="2153" selection-start-column="57" selection-end-line="2153" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/M_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="2200" column="16" lean-forward="true" selection-start-line="2200" selection-start-column="16" selection-end-line="2200" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/M_Keep.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="411" column="45" selection-start-line="411" selection-start-column="45" selection-end-line="411" selection-end-column="45" />
+          <caret line="474" column="48" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
+          <caret line="523" column="60" selection-start-line="523" selection-start-column="60" selection-end-line="523" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceA32TPE/M_Return.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="512" column="40" selection-start-line="512" selection-start-column="40" selection-end-line="512" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DMS/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="12" column="75" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
+        <state relative-caret-position="217">
+          <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DMS/settings.py">
+    <entry file="file://$PROJECT_DIR$/templates/SigninA32TPE.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app01/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="219" column="50" selection-start-line="219" selection-start-column="50" selection-end-line="219" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ComputerMS/M_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="951" column="37" selection-start-line="951" selection-start-column="21" selection-end-line="951" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ComputerMS/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="2157" column="8" selection-start-line="2157" selection-start-column="8" selection-end-line="2157" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app01/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22211">
-          <caret line="1169" column="24" selection-start-line="1169" selection-start-column="24" selection-end-line="1174" selection-end-column="29" />
+        <state relative-caret-position="159">
+          <caret line="97" column="54" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#1;n#a#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/DeviceA39/M_edit.html">
+    <entry file="file://$PROJECT_DIR$/templates/SigninA31CD.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="1160" column="57" selection-start-line="1160" selection-start-column="57" selection-end-line="1160" selection-end-column="57" />
+        <state relative-caret-position="190">
+          <caret line="100" column="34" lean-forward="true" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/DeviceABO/M_edit.html">
+    <entry file="file://$PROJECT_DIR$/templates/SigninA32KS.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="1169" column="29" selection-start-line="1169" selection-start-column="29" selection-end-line="1169" selection-end-column="29" />
+        <state relative-caret-position="43">
+          <caret line="89" column="16" lean-forward="true" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/DeviceCQT88/M_edit.html">
+    <entry file="file://$PROJECT_DIR$/templates/SigninA31LKE.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="1590" column="13" selection-start-line="1590" selection-start-column="13" selection-end-line="1593" selection-end-column="18" />
+        <state relative-caret-position="190">
+          <caret line="79" column="64" lean-forward="true" selection-start-line="79" selection-start-column="64" selection-end-line="79" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app01/templatetags/custom_tag.py">
+    <entry file="file://$PROJECT_DIR$/templates/SigninA31PCP.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="12" column="55" lean-forward="true" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        <state relative-caret-position="171">
+          <caret line="93" column="16" lean-forward="true" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/init_permission.py">
+    <entry file="file://$PROJECT_DIR$/templates/SigninA31TPE.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/middleware/checkper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
+        <state relative-caret-position="38">
+          <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app01/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+        <state relative-caret-position="81">
+          <caret line="506" column="16" lean-forward="true" selection-start-line="506" selection-start-column="16" selection-end-line="506" selection-end-column="16" />
           <folding>
+            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#724#769#0" />
             <element signature="e#1435#3223#0" />
+            <element signature="e#3262#6253#0" />
+            <element signature="e#6296#7993#0" />
+            <element signature="e#8036#9733#0" />
+            <element signature="e#9778#11479#0" />
+            <element signature="e#9776#11473#0" />
+            <element signature="e#13272#14975#0" />
+            <element signature="e#15020#16723#0" />
+            <element signature="e#16773#18479#0" />
+            <element signature="e#18525#20231#0" />
+            <element signature="e#13258#16343#0" />
+            <element signature="e#16383#16901#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/SigninA31KS.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="88" column="58" selection-start-line="88" selection-start-column="58" selection-end-line="88" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DMS/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="348" column="15" lean-forward="true" selection-start-line="348" selection-start-column="15" selection-end-line="348" selection-end-column="15" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,13 @@
+[2024-07-19 14:57:05,065] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2024-07-19 14:57:05,073] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-07-19 14:57:05,336] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-07-19 14:57:05,352] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-07-19 14:57:06,815] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-07-19 14:57:06,840] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-07-19 14:57:06,886] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-07-19 14:57:06,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 32599
+[2024-07-19 14:57:08,033] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-07-19 14:57:08 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /index/ POST
+[2024-07-19 14:57:08,068] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1638
+[2024-07-19 14:57:08,228] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2024-07-19 14:57:08,229] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2024-07-19 14:57:08,304] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 23522
