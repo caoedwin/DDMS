@@ -2,73 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/all-2024-10-18.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2024-10-18.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/error-2024-10-18.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2024-10-18.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info-2024-10-18.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2024-10-18.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/BorrowedDeviceA31CD.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/BorrowedDeviceA31CD.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/M_Borrow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/M_Borrow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/M_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/M_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/M_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/M_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/M_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/R_Borrowed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/R_Borrowed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/R_Destine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/R_Destine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/R_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/R_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31CD/R_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31CD/R_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/BorrowedDeviceA31KS.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/BorrowedDeviceA31KS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/M_Borrow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/M_Borrow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/M_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/M_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/M_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/M_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/M_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/R_Borrowed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/R_Borrowed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/R_Destine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/R_Destine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/R_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/R_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31KS/R_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31KS/R_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/BorrowedDeviceA31LKE.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/BorrowedDeviceA31LKE.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/M_Borrow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/M_Borrow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/M_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/M_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/M_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/M_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/M_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Borrowed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Borrowed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Destine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Destine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31LKE/R_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/BorrowedDeviceA31PCP.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/BorrowedDeviceA31PCP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/M_Borrow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/M_Borrow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/M_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/M_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/M_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/M_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/M_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Borrowed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Borrowed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Destine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Destine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31PCP/R_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/BorrowedDeviceA31TPE.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/BorrowedDeviceA31TPE.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/M_Borrow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/M_Borrow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/M_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/M_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/M_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/M_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/M_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Borrowed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Borrowed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Destine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Destine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA31TPE/R_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/BorrowedDeviceA32KS.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/BorrowedDeviceA32KS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/M_Borrow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/M_Borrow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/M_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/M_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/M_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/M_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/M_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/R_Borrowed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/R_Borrowed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/R_Destine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/R_Destine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/R_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/R_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32KS/R_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32KS/R_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/BorrowedDeviceA32TPE.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/BorrowedDeviceA32TPE.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/M_Borrow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/M_Borrow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/M_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/M_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/M_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/M_Return.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/M_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Borrowed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Borrowed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Destine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Destine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Keep.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Keep.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Return.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceA32TPE/R_Return.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
