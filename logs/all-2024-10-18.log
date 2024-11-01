@@ -4086,3 +4086,51 @@ django.template.exceptions.TemplateDoesNotExist: DeviceA31TPE/BorrowedDeviceA31T
 [2024-10-21 11:09:09,577] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-10-21 11:09:09 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /DeviceA31KS/BorrowedDeviceA31KS/ POST
 [2024-10-21 11:09:09,604] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceA31KS/BorrowedDeviceA31KS/ HTTP/1.1" 200 186
 [2024-10-21 11:09:09,643] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35140
+[2024-10-23 09:31:11,324] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA31KS/BorrowedDeviceA31KS/ HTTP/1.1" 302 0
+[2024-10-23 09:31:11,419] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-10-23 09:31:11,797] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-10-23 09:31:11,809] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-10-23 09:31:13,028] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-10-23 09:31:13,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-10-23 09:31:13,095] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-10-23 09:31:13,276] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA31KS/BorrowedDeviceA31KS/ HTTP/1.1" 200 75112
+[2024-10-23 09:31:14,180] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-10-23 09:31:14 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /DeviceA31KS/BorrowedDeviceA31KS/ POST
+[2024-10-23 09:31:14,198] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceA31KS/BorrowedDeviceA31KS/ HTTP/1.1" 200 186
+[2024-10-23 09:31:14,271] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35140
+[2024-10-23 13:18:28,847] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /signinA31CD/ HTTP/1.1" 200 6888
+[2024-10-23 13:18:29,294] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-10-23 13:18:29,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-10-23 13:40:10,043] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2024-10-23 13:40:10,054] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-10-23 13:40:10,173] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-10-23 13:40:10,182] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-10-23 13:40:11,638] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-10-23 13:40:11,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-10-23 13:40:11,740] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-10-23 13:40:11,777] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /signinA31CD/ HTTP/1.1" 200 6888
+[2024-10-23 13:40:12,126] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35140
+[2024-10-23 13:40:19,940] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 35140
+[2024-10-23 13:40:20,316] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35140
+[2024-10-23 13:40:24,793] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44217
+[2024-10-23 13:40:25,250] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-10-23 13:40:25 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /index/ POST
+[2024-10-23 13:40:25,266] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35140
+[2024-10-23 13:40:25,277] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2024-10-23 13:40:25,360] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2024-10-23 13:40:25,360] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2024-10-23 13:41:07,078] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA31KS/BorrowedDeviceA31KS/ HTTP/1.1" 200 75112
+[2024-10-23 13:41:07,502] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-10-23 13:41:07 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /DeviceA31KS/BorrowedDeviceA31KS/ POST
+[2024-10-23 13:41:07,519] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceA31KS/BorrowedDeviceA31KS/ HTTP/1.1" 200 186
+[2024-10-23 13:41:07,579] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35140
+[2024-10-28 15:34:32,965] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2024-10-28 15:34:32,974] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-10-28 15:34:33,191] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-10-28 15:34:33,199] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-10-28 15:34:34,753] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-10-28 15:34:34,807] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-10-28 15:34:34,849] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-10-28 15:34:34,983] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44217
+[2024-10-28 15:34:35,680] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35140
+[2024-10-28 15:34:35,709] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-10-28 15:34:35 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /index/ POST
+[2024-10-28 15:34:35,752] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2024-10-28 15:34:35,844] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2024-10-28 15:34:35,845] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803

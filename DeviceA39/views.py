@@ -5718,7 +5718,7 @@ def M_edit(request):
         # "Acer": [{"Devsize": "16G, 32G"}],
     }
     sectionCustomer = [
-        "C38", "A39", "ABO"
+        "C38", "A39", "ABO", "T88_CQ", "A31_KS", "A31_CD", "A31_LKE", "A31_PCP", "A31_TPE", "A32_KS", "A32_TPE"
     ]
 
     sectionPlant = [
