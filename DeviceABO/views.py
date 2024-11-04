@@ -7077,7 +7077,7 @@ def M_edit(request):
                         if 'Pchsdate' in modeldata.keys():
                             # modeldata['Pchsdate'] = modeldata['Pchsdate'].replace('/', '-')
                             # print(len(modeldata['Pchsdate'].split('-')))
-                            if len(modeldata['Pchsdate']) >= 8 and len(modeldata['Pchsdate']) <= 10:
+                            if type(modeldata['Pchsdate']) != 'int' and len(modeldata['Pchsdate']) >= 8 and len(modeldata['Pchsdate']) <= 10:
                                 # modeldata['Pchsdate'].replace('/', '-')
                                 # print(modeldata['Pchsdate'].replace('/', '-'))
                                 modeldata['Pchsdate'] = modeldata['Pchsdate'].replace('/', '-')
@@ -7098,7 +7098,7 @@ def M_edit(request):
                             # modeldata['Pchsdate'] = modeldata['Pchsdate'].replace('/', '-')
                             # print(len(modeldata['Pchsdate'].split('-')))
                             # print(len(modeldata['addnewdate']))
-                            if len(modeldata['addnewdate']) >= 8 and len(modeldata['addnewdate']) <= 10:
+                            if type(modeldata['Pchsdate']) != 'int' and len(modeldata['addnewdate']) >= 8 and len(modeldata['addnewdate']) <= 10:
                                 modeldata['addnewdate'] = modeldata['addnewdate'].replace('/', '-')
                                 modeldata['addnewdate'] = modeldata['addnewdate'].replace('.', '-')
                                 startupload = 1
@@ -7116,7 +7116,7 @@ def M_edit(request):
                             # modeldata['Pchsdate'] = modeldata['Pchsdate'].replace('/', '-')
                             # print(len(modeldata['Pchsdate'].split('-')))
                             # print(len(modeldata['EOL']))
-                            if len(modeldata['EOL']) >= 8 and len(modeldata['EOL']) <= 10:
+                            if type(modeldata['Pchsdate']) != 'int' and len(modeldata['EOL']) >= 8 and len(modeldata['EOL']) <= 10:
                                 modeldata['EOL'] = modeldata['EOL'].replace('/', '-')
                                 modeldata['EOL'] = modeldata['EOL'].replace('.', '-')
                                 startupload = 1
@@ -7131,7 +7131,7 @@ def M_edit(request):
                         else:
                             modeldata['EOL'] = None  # 日期爲空
                         if 'Plandate' in modeldata.keys():
-                            if len(modeldata['Plandate']) >= 8 and len(modeldata['Plandate']) <= 10:
+                            if type(modeldata['Pchsdate']) != 'int' and len(modeldata['Plandate']) >= 8 and len(modeldata['Plandate']) <= 10:
                                 modeldata['Plandate'] = modeldata['Plandate'].replace('/', '-')
                                 modeldata['Plandate'] = modeldata['Plandate'].replace('.', '-')
                                 startupload = 1
@@ -7146,7 +7146,7 @@ def M_edit(request):
                         else:
                             modeldata['Plandate'] = None  # 日期爲空
                         if 'Btime' in modeldata.keys():
-                            if len(modeldata['Btime']) >= 8 and len(modeldata['Btime']) <= 10:
+                            if type(modeldata['Pchsdate']) != 'int' and len(modeldata['Btime']) >= 8 and len(modeldata['Btime']) <= 10:
                                 modeldata['Btime'] = modeldata['Btime'].replace('/', '-')
                                 modeldata['Btime'] = modeldata['Btime'].replace('.', '-')
                                 startupload = 1
@@ -7161,7 +7161,7 @@ def M_edit(request):
                         else:
                             modeldata['Btime'] = None  # 日期爲空
                         if 'Rtime' in modeldata.keys():
-                            if len(modeldata['Rtime']) >= 8 and len(modeldata['Rtime']) <= 10:
+                            if type(modeldata['Pchsdate']) != 'int' and len(modeldata['Rtime']) >= 8 and len(modeldata['Rtime']) <= 10:
                                 modeldata['Rtime'] = modeldata['Rtime'].replace('/', '-')
                                 modeldata['Rtime'] = modeldata['Rtime'].replace('.', '-')
                                 startupload = 1
