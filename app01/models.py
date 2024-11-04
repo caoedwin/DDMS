@@ -34,6 +34,9 @@ class UserInfo(models.Model):
         ('KS-Plant2', 'KS-Plant2'),
         ('CQ', 'CQ'),
         ('CD', 'CD'),
+        ('TPE', 'TPE'),
+        ('PCP', 'PCP'),
+        ('LKE', 'LKE'),
     )
     DEPARTMENT_CHOICES = {
         (1, '测试部门'),
