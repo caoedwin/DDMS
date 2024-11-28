@@ -1,0 +1,47 @@
+[2024-11-28 10:01:04,402] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:01:12,108] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:01:15,244] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:02:43,312] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:02:45,285] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:03:14,647] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:03:29,914] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:03:51,861] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:05:16,060] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:05:30,318] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:05:39,863] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:05:56,899] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:08:46,607] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:09:58,158] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:14:24,747] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 2 column 1 (char 1)
+[2024-11-28 10:16:37,795] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DevicesSummary/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python372\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\app01\views.py", line 624, in DevicesSummary
+    mock_datalist = Base_category.object.all()
+AttributeError: 'NoneType' object has no attribute 'object'
+[2024-11-28 10:16:37,805] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:16:37,807] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /DevicesSummary/ HTTP/1.1" 500 82479
+[2024-11-28 10:19:16,731] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DevicesSummary/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python372\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\app01\views.py", line 624, in DevicesSummary
+    mock_datalist = Base_category.object.all()
+AttributeError: 'str' object has no attribute 'object'
+[2024-11-28 10:19:16,736] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 10:19:16,738] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /DevicesSummary/ HTTP/1.1" 500 82479
+[2024-11-28 10:42:59,291] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /media/DeviceLNV/Device/3177.jpg HTTP/1.1" 500 59
+[2024-11-28 10:42:59,295] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /media/DeviceLNV/Device/3179.jpg HTTP/1.1" 500 59

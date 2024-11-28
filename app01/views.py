@@ -539,6 +539,176 @@ def signinA32TPE(request):
             return render(request, 'login.html', locals())
     return render(request, 'SigninA32TPE.html', locals())
 
+from DeviceLNV.models import DeviceLNV
+from DeviceA39.models import DeviceA39
+from DeviceCQT88.models import DeviceCQT88
+from DeviceABO.models import DeviceABO
+from DeviceA31KS.models import DeviceA31KS
+from DeviceA31CD.models import DeviceA31CD
+from DeviceA31TPE.models import DeviceA31TPE
+from DeviceA31PCP.models import DeviceA31PCP
+from DeviceA31LKE.models import DeviceA31LKE
+from DeviceA31CD.models import DeviceA31CD
+from DeviceA32KS.models import DeviceA32KS
+from DeviceA32TPE.models import DeviceA32TPE
+@csrf_exempt
+def DevicesSummary(request):
+    if not request.session.get('is_login_DMS', None):
+        # print(request.session.get('is_login', None))
+        return redirect('/login/')
+    weizhi = "DeviceSummary"
+    mock_data = [
+        # {"id": "1", "Customer": "C38", "Plant": "KS",
+        #  "NID": "1513", "DevID": "UKB0022B", "IntfCtgry": "USB_A",
+        #  "DevCtgry": "keyboard", "Devproperties": "USB1.0", "Devsize": "--",
+        #  "DevVendor": "Lenovo", "DevModel": "SK-8815(L)", "DevName": "Lenovo Enhanced Performance USB Keyboard",
+        #  "HWVer": "--", "FWVer": "--", "DevDescription": "N/A", "PckgIncludes": "1. 說明書清單",
+        #  "expirdate": "一年", "DevPrice": "", "Source": "Lenovo贈送", "Pchsdate": "2018-07-25", "PN": "73P2620",
+        #  "LNV_ST": "",
+        #  "Purchase_NO": "", "Declaration_NO": "11", "AssetNum": "", "UsYear": "2.7", "addnewname": "代月景",
+        #  "addnewdate": "2018-08-01",
+        #  "Comment": "", "uscyc": "100", "UsrTimes": "12", "DevStatus": "Good", "BrwStatus": "可借用", "Usrname": "單桂萍",
+        #  "Plandate": "2020-01-26", "useday": "1", "Btime": "2020-01-25", "Rtime": "2020-01-26", "Overday": ""},
+    ]
+
+    selectOptions = [
+        [{
+            "label": "DeviceLNV",
+            "value": "DeviceLNV",
+        }, {
+            "label": "DeviceA39",
+            "value": "DeviceA39",
+        }, {
+            "label": "DeviceCQT88",
+            "value": "DeviceCQT88",
+        }, {
+            "label": "DeviceABO",
+            "value": "DeviceABO",
+        }, {
+            "label": "DeviceA31KS",
+            "value": "DeviceA31KS",
+        }, {
+            "label": "DeviceA31CD",
+            "value": "DeviceA31CD",
+        }, {
+            "label": "DeviceA31TPE",
+            "value": "DeviceA31TPE",
+        }, {
+            "label": "DeviceA31PCP",
+            "value": "DeviceA31PCP",
+        }, {
+            "label": "DeviceA31LKE",
+            "value": "DeviceA31LKE",
+        }, {
+            "label": "DeviceA31CD",
+            "value": "DeviceA31CD",
+        }, {
+            "label": "DeviceA32KS",
+            "value": "DeviceA32KS",
+        }, {
+            "label": "DeviceA32TPE",
+            "value": "DeviceA32TPE",
+        },
+        ]
+    ]
+    database_list = {"DeviceLNV": DeviceLNV.objects.all(), "DeviceA39": DeviceA39.objects.all(), "DeviceCQT88": DeviceCQT88.objects.all(),
+                     "DeviceABO": DeviceABO.objects.all(), "DeviceA31KS": DeviceA31KS.objects.all(), "DeviceA31CD": DeviceA31CD.objects.all(),
+                     "DeviceA31TPE": DeviceA31TPE.objects.all(), "DeviceA31PCP": DeviceA31PCP.objects.all(), "DeviceA31LKE": DeviceA31LKE.objects.all(),
+                     "DeviceA32KS": DeviceA32KS.objects.all(), "DeviceA32TPE": DeviceA32TPE.objects.all(), }
+    # print(request.method)
+    if request.method == "POST":
+        if 'SEARCH5' in str(request.body):
+            Base_category = request.POST.get('Base_category')
+
+
+            # mock_data
+
+            dataQuerySet = database_list[Base_category]
+            # print(mock_datalist)
+            for i in dataQuerySet:
+                # Photolist = []
+                # for h in i.Photo.all():
+                #     Photolist.append(
+                #         {'name': '', 'url': '/media/' + h.pic.name})  # fileListO需要的是对象列表而不是字符串列表
+                if i.Plandate and i.Btime and not i.Rtime:
+                    if datetime.datetime.now().date() > i.Plandate:
+                        Exceed_days = round(
+                            float(
+                                str((datetime.datetime.now().date() - i.Plandate)).split(' ')[
+                                    0]),
+                            0)
+                    else:
+                        Exceed_days = ''
+                    if datetime.datetime.now().date() > i.Btime:
+                        usedays = round(
+                            float(
+                                str((datetime.datetime.now().date() - i.Btime)).split(' ')[
+                                    0]),
+                            0)
+                    else:
+                        usedays = ''
+                else:
+                    usedays = ''
+                    Exceed_days = ''
+                Useyears = ''
+                if i.Pchsdate:
+                    if datetime.datetime.now().date() > i.Pchsdate:
+                        Useyears = round(
+                            float(
+                                str((datetime.datetime.now().date() - i.Pchsdate)).split(' ')[
+                                    0]) / 365,
+                            1)
+                addnewdate_str = ''
+                if i.addnewdate:
+                    addnewdate_str = str(i.addnewdate)
+                else:
+                    addnewdate_str = ''
+                Pchsdate_str = ''
+                if i.Pchsdate:
+                    Pchsdate_str = str(i.Pchsdate)
+                else:
+                    Pchsdate_str = ''
+                Plandate_str = ''
+                if i.Plandate:
+                    Plandate_str = str(i.Plandate)
+                else:
+                    Plandate_str = ''
+                Btime_str = ''
+                if i.Btime:
+                    Btime_str = str(i.Btime)
+                else:
+                    Btime_str = ''
+                Rtime_str = ''
+                if i.Rtime:
+                    Rtime_str = str(i.Rtime)
+                else:
+                    Rtime_str = ''
+                mock_data.append(
+                    {"id": i.id, "Customer": i.Customer, "Plant": i.Plant,
+                     "NID": i.NID, "DevID": i.DevID, "IntfCtgry": i.IntfCtgry,
+                     "DevCtgry": i.DevCtgry, "Devproperties": i.Devproperties, "DevVendor": i.DevVendor,
+                     "Devsize": i.Devsize, "DevModel": i.DevModel,
+                     "DevName": i.DevName,
+                     "HWVer": i.HWVer, "FWVer": i.FWVer, "DevDescription": i.DevDescription,
+                     "PckgIncludes": i.PckgIncludes,
+                     "expirdate": i.expirdate, "DevPrice": i.DevPrice, "Source": i.Source,
+                     "Pchsdate": Pchsdate_str,
+                     "PN": i.PN,
+                     "LNV_ST": i.LSTA, "Purchase_NO": i.ApplicationNo, "Declaration_NO": i.DeclarationNo,
+                     "AssetNum": i.AssetNum, "UsYear": Useyears,
+                     "addnewname": i.addnewname, "addnewdate": addnewdate_str,
+                     "Comment": i.Comment, "uscyc": i.uscyc, "UsrTimes": i.UsrTimes,
+                     "DevStatus": i.DevStatus, "BrwStatus": i.BrwStatus,
+                     "Usrname": i.Usrname, 'Usrnumber': i.BR_per_code,
+                     "Plandate": Plandate_str, "useday": usedays, "Btime": Btime_str, "Rtime": Rtime_str,
+                     "Overday": Exceed_days},
+                )
+        data = {
+            "content": mock_data,
+            "selectOptions": selectOptions
+        }
+        return HttpResponse(json.dumps(data), content_type="application/json")
+    return render(request, 'DeviceSummary.html', locals())
 
 @csrf_exempt
 def index(request):

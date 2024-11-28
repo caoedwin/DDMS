@@ -41,6 +41,7 @@ urlpatterns = [
     path(r'signinA31TPE/', views.signinA31TPE),
     path(r'signinA32KS/', views.signinA32KS),
     path(r'signinA32TPE/', views.signinA32TPE),
+    path(r'DevicesSummary/', views.DevicesSummary),
     path(r'', views.login),
     path(r'logout/', views.logout),
     path(r'Change_Password/', views.Change_Password),
