@@ -1003,8 +1003,9 @@ def Summary(request):
     ]
 
     if request.method == "POST":
-        # tasks.GetTumdata()
+
         if request.POST.get('isGetData') == "first":
+            # tasks.GetTumdata()
             pass
         if request.POST.get('isGetData') == "SEARCH":
             BorrowerNum = request.POST.get('BorrowerNum')

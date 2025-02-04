@@ -7466,3 +7466,154 @@
 [2024-11-28 10:55:30,517] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/3228.jpg HTTP/1.1" 404 1803
 [2024-11-28 10:55:30,526] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/3229.jpg
 [2024-11-28 10:55:30,526] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/3229.jpg HTTP/1.1" 404 1803
+[2024-11-28 11:14:24,447] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2024-11-28 11:14:24,758] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2024-11-28 11:14:25,044] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-11-28 11:15:10,060] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-11-28 11:15:10,074] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2024-11-28 11:15:13,196] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 52849
+[2024-11-28 11:15:13,486] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-11-28 11:15:45,542] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-11-28 11:15:46,078] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 64304
+[2024-11-28 11:15:46,191] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2024-11-28 11:15:51,467] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/67/change/ HTTP/1.1" 200 23485
+[2024-11-28 11:15:51,533] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2024-11-28 11:16:05,421] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-11-28 11:16:08,391] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 155509
+[2024-11-28 11:16:08,475] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2024-11-28 11:16:13,087] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/148/change/ HTTP/1.1" 200 24043
+[2024-11-28 11:16:13,141] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2024-11-28 11:16:33,257] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-11-28 11:16:36,352] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 76580
+[2024-11-28 11:16:36,471] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2024-12-02 08:53:11,143] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2024-12-02 08:53:11,217] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2024-12-02 08:53:11,409] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-02 08:53:11,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-02 08:53:12,943] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-12-02 08:53:12,964] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2024-12-02 08:53:13,145] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 52849
+[2024-12-02 08:53:13,389] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-02 08:53:13,443] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-09 14:45:02,030] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2024-12-09 14:45:02,053] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-09 14:45:02,297] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-09 14:45:02,304] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-09 14:45:08,127] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-12-09 14:45:08,180] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-12-09 14:45:08,231] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-12-09 14:45:08,436] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44521
+[2024-12-09 14:45:09,062] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-09 14:45:09,099] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-09 14:45:09 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /index/ POST
+[2024-12-09 14:45:09,110] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2024-12-09 14:45:09,186] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2024-12-09 14:45:09,187] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2024-12-09 15:01:37,397] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 56630
+[2024-12-09 15:01:37,447] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/back/document_save_2_24px_539656_easyicon.net.png HTTP/1.1" 304 0
+[2024-12-09 15:01:37,960] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-09 15:01:39,695] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-09 15:01:39 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /AdapterPowerCode/BorrowedAdapter/ POST
+[2024-12-09 15:01:39,708] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 627806
+[2024-12-09 15:06:37,703] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2024-12-09 15:06:37,703] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2024-12-09 15:06:37,703] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2024-12-09 15:06:37,728] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2024-12-09 15:06:39,710] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 56630
+[2024-12-09 15:06:39,825] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2024-12-09 15:06:39,841] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2024-12-09 15:06:40,024] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2024-12-09 15:06:40,027] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2024-12-09 15:06:40,288] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-09 15:06:41,697] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-09 15:06:41 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /AdapterPowerCode/BorrowedAdapter/ POST
+[2024-12-09 15:06:41,720] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 627806
+[2024-12-10 13:22:28,857] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 302 0
+[2024-12-10 13:22:28,895] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-10 13:22:29,031] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-10 13:22:29,037] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-10 13:47:56,627] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 302 0
+[2024-12-10 13:47:56,639] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-10 13:47:56,788] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2024-12-10 13:47:56,827] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js.map HTTP/1.1" 304 0
+[2024-12-10 13:47:56,846] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-10 13:47:56,853] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-10 13:47:58,737] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-12-10 13:47:58,765] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-12-10 13:47:58,795] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-12-10 13:47:58,905] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 56630
+[2024-12-10 13:47:59,050] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2024-12-10 13:47:59,104] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2024-12-10 13:47:59,297] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2024-12-10 13:47:59,302] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2024-12-10 13:47:59,550] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-10 13:48:01,325] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-10 13:48:01 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /AdapterPowerCode/BorrowedAdapter/ POST
+[2024-12-10 13:48:01,340] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 627806
+[2024-12-10 14:27:09,518] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-12-10 14:27:09,534] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-12-10 14:27:09,633] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 56630
+[2024-12-10 14:27:10,212] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-10 14:27:11,910] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-10 14:27:11 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /AdapterPowerCode/BorrowedAdapter/ POST
+[2024-12-10 14:27:11,931] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 627806
+[2024-12-10 15:04:04,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2024-12-10 15:04:04,219] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-10 15:04:04,346] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-10 15:04:04,351] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-10 15:04:06,237] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-12-10 15:04:06,292] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-12-10 15:04:06,331] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-12-10 15:04:06,595] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44521
+[2024-12-10 15:04:07,098] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-10 15:04:07,124] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-10 15:04:07 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /index/ POST
+[2024-12-10 15:04:07,134] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2024-12-10 15:04:07,191] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2024-12-10 15:04:07,192] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2024-12-10 15:14:43,517] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44521
+[2024-12-10 15:14:43,833] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 09:46:36,003] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 302 0
+[2024-12-11 09:46:36,075] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-11 09:46:36,390] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-11 09:46:36,403] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-11 09:46:37,830] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-12-11 09:46:37,888] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-12-11 09:46:37,948] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-12-11 09:46:38,184] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44521
+[2024-12-11 09:46:38,731] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 09:46:38,751] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-11 09:46:38 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /index/ POST
+[2024-12-11 09:46:38,762] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2024-12-11 09:46:38,818] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2024-12-11 09:46:38,820] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2024-12-11 12:08:56,200] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44521
+[2024-12-11 12:08:56,956] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 12:08:56,988] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-11 12:08:56 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /index/ POST
+[2024-12-11 12:08:57,001] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2024-12-11 12:08:57,063] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2024-12-11 12:08:57,065] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2024-12-11 13:22:46,586] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 56630
+[2024-12-11 13:22:47,298] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 13:22:48,123] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-11 13:22:48 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /AdapterPowerCode/BorrowedAdapter/ POST
+[2024-12-11 13:22:48,135] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 627806
+[2024-12-11 13:22:51,389] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-11 13:22:51,397] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-11 13:22:54,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/BorrowedDeviceLNV HTTP/1.1" 301 0
+[2024-12-11 13:22:54,977] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/BorrowedDeviceLNV/ HTTP/1.1" 302 0
+[2024-12-11 13:22:54,982] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-11 13:22:55,028] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2024-12-11 13:22:55,034] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2024-12-11 13:22:57,244] [UserIP.py:89] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2024-12-11 13:22:57,260] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2024-12-11 13:22:57,295] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2024-12-11 13:22:57,382] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 56630
+[2024-12-11 13:22:57,619] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 13:22:58,505] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-11 13:22:58 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /AdapterPowerCode/BorrowedAdapter/ POST
+[2024-12-11 13:22:58,517] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 627806
+[2024-12-11 13:23:00,929] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 13:23:01,470] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 13:23:02,800] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceABO/BorrowedDeviceABO HTTP/1.1" 301 0
+[2024-12-11 13:23:03,174] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceABO/BorrowedDeviceABO/ HTTP/1.1" 200 70394
+[2024-12-11 13:23:03,459] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-11 13:23:03 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /DeviceABO/BorrowedDeviceABO/ POST
+[2024-12-11 13:23:03,462] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 13:23:03,469] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceABO/BorrowedDeviceABO/ HTTP/1.1" 200 186
+[2024-12-11 13:23:05,467] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 13:23:08,927] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 56630
+[2024-12-11 13:23:09,128] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2024-12-11 13:23:09,927] [UserIP.py:87] [UserIP:process_response] [INFO]- 2024-12-11 13:23:09 C1010S3>Cao.Edwin None>EDWIN>bxbei 127.0.0.1 127.0.0.1 /AdapterPowerCode/BorrowedAdapter/ POST
+[2024-12-11 13:23:09,939] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /AdapterPowerCode/BorrowedAdapter/ HTTP/1.1" 200 627806
+[2024-12-11 13:23:10,560] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
