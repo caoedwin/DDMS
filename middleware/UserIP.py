@@ -83,7 +83,8 @@ class LogMiddle(MiddlewareMixin):
                 # print('3----请求视图后被调用')
                 # log_init().info(f'{server_name} {ip} {proxy_ip} {request_url} {}')
                 # message = '%s %s %s>%s %s>%s %s %s %s %s %s' % (dateime, server_name, Account, username, CLIENTNAME, COMPUTERNAME, USERNAME, ip, proxy_ip, request_url, method, content)
-                message = '%s %s>%s %s>%s>%s %s %s %s %s' % (dateime, Account, username, CLIENTNAME, COMPUTERNAME, USERNAME, ip, proxy_ip, request_url, method)
+                message = '%s: %s/%s/%s> %s/%s/%s > %s/%s > %s' % (
+                dateime, Account, request.user, username, CLIENTNAME, COMPUTERNAME, USERNAME, ip, proxy_ip, request)
                 logger.info(message)
         except Exception as e:
             logger.critical('系统错误%s' % str(e))
