@@ -1,0 +1,505 @@
+[2025-03-28 10:56:53,966] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-03-28 10:56:53,981] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 10:56:54,315] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 10:56:54,320] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 10:56:56,132] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 10:56:56,175] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-03-28 10:56:56,202] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-03-28 10:56:56,303] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44521
+[2025-03-28 10:56:56,354] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/download_UPK/element-ui@2.12.0/lib/theme-chalk/index.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,356] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/calendar2/pignose.calendar.min.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,373] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/chartist/chartist.min.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,374] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/weather-icons.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,374] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/font-awesome.min.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,374] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/themify-icons.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,374] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/owl.carousel.min.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,375] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/owl.theme.default.min.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,386] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/menubar/sidebar.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,387] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/node_modules/bootstrap-icons/font/bootstrap-icons.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,387] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/helper.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/style.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,389] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/home_zerogrid.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,389] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/uploadbutton.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,395] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/home_menu.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,395] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/home_style.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,396] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/jquery.nanoscroller.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,397] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/ElementUI.css HTTP/1.1" 304 0
+[2025-03-28 10:56:56,397] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/menubar/sidebar.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,397] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,403] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/preloader/pace.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,405] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/bootstrap.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,407] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/scripts.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,408] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/moment.latest.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,408] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/pignose.calendar.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,409] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/pignose.init.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,416] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/circle-progress/circle-progress.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,416] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/circle-progress/circle-progress-init.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,418] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/sparklinechart/jquery.sparkline.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,419] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/sparklinechart/sparkline.init.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/owl-carousel/owl.carousel-init.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/owl-carousel/owl.carousel.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,431] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/date.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,432] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/datatables/jquery.dataTables.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,432] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/datapicker.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,433] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/semantic.ui.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,433] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/xlsx.core.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,435] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/prism.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,444] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/es6/polyfill.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,444] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/qs.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,444] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/es6/babel.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,444] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/vue-router.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,445] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/vue.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,445] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/axios.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,454] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/FileSaver.min.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,454] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/table.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,456] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/input.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,456] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/icon.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,457] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/table-column.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,457] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/main.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,466] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/date-picker.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,468] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/form.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,468] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/tooltip.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,469] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/message.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,469] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/dialog.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,470] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/index.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,476] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/pagination.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,476] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/xlsx.js HTTP/1.1" 304 0
+[2025-03-28 10:56:56,558] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2?30af91bf14e37666a085fb8a161ff36d HTTP/1.1" 304 0
+[2025-03-28 10:56:56,560] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/admin/assets/fonts/themify.woff?-fvbane HTTP/1.1" 304 0
+[2025-03-28 10:56:56,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/admin/assets/fonts/themify.ttf?-fvbane HTTP/1.1" 304 0
+[2025-03-28 10:56:56,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/fonts/themify.woff?-fvbane HTTP/1.1" 304 0
+[2025-03-28 10:56:57,289] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/qiu1.jpg HTTP/1.1" 304 0
+[2025-03-28 10:56:57,290] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/lu.jpg HTTP/1.1" 304 0
+[2025-03-28 10:56:57,290] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/jinqiu5.jpg HTTP/1.1" 304 0
+[2025-03-28 10:56:57,301] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/fonts/element-icons.ttf HTTP/1.1" 304 0
+[2025-03-28 10:56:57,345] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-03-28 10:56:57: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-03-28 10:56:57,354] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2025-03-28 10:56:57,482] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2025-03-28 10:56:57,483] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:56:57,499] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 10:58:43,922] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DevicesSummary/ HTTP/1.1" 200 62336
+[2025-03-28 10:58:43,958] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/index.css HTTP/1.1" 304 0
+[2025-03-28 10:58:43,958] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/image.js HTTP/1.1" 304 0
+[2025-03-28 10:58:44,314] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/fonts/element-icons.woff HTTP/1.1" 304 0
+[2025-03-28 10:58:44,338] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-03-28 10:58:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DevicesSummary/'>
+[2025-03-28 10:58:44,363] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DevicesSummary/ HTTP/1.1" 200 632
+[2025-03-28 10:58:44,374] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 10:58:53,024] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-03-28 10:58:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DevicesSummary/'>
+[2025-03-28 10:58:53,050] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DevicesSummary/ HTTP/1.1" 200 2337455
+[2025-03-28 10:58:53,351] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/233.jpg
+[2025-03-28 10:58:53,352] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/233.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,355] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/DeviceLNV/Device/1513.jpg HTTP/1.1" 200 215360
+[2025-03-28 10:58:53,357] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2260.jpg
+[2025-03-28 10:58:53,359] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2260.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,394] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/DeviceLNV/Device/2156.jpg HTTP/1.1" 200 201323
+[2025-03-28 10:58:53,394] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/257.jpg
+[2025-03-28 10:58:53,395] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/257.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,402] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/258.jpg
+[2025-03-28 10:58:53,411] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2214.jpg
+[2025-03-28 10:58:53,411] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/258.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,414] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2214.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,417] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/244.jpg
+[2025-03-28 10:58:53,423] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/244.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,428] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/202.jpg
+[2025-03-28 10:58:53,437] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/202.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,438] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2218.jpg
+[2025-03-28 10:58:53,454] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1462.jpg
+[2025-03-28 10:58:53,454] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2218.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,470] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1462.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,482] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/253.jpg
+[2025-03-28 10:58:53,492] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/253.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,503] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1459.jpg
+[2025-03-28 10:58:53,507] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1459.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,516] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/262.jpg
+[2025-03-28 10:58:53,519] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/261.jpg
+[2025-03-28 10:58:53,528] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/262.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,531] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/261.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,540] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/268.jpg
+[2025-03-28 10:58:53,551] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/268.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,555] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/269.jpg
+[2025-03-28 10:58:53,559] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/266.jpg
+[2025-03-28 10:58:53,563] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/269.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,568] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/266.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,594] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/267.jpg
+[2025-03-28 10:58:53,602] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1292.jpg
+[2025-03-28 10:58:53,603] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/267.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,607] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1292.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,616] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2098.jpg
+[2025-03-28 10:58:53,635] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2048.jpg
+[2025-03-28 10:58:53,641] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2098.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,642] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/209.jpg
+[2025-03-28 10:58:53,648] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2048.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,649] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2216.jpg
+[2025-03-28 10:58:53,659] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/209.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,660] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2216.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,684] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/264.jpg
+[2025-03-28 10:58:53,688] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/264.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,694] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/247.jpg
+[2025-03-28 10:58:53,705] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/247.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,727] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/265.jpg
+[2025-03-28 10:58:53,732] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/265.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,733] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2217.jpg
+[2025-03-28 10:58:53,738] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/214.jpg
+[2025-03-28 10:58:53,740] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2217.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,750] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/214.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,757] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/228.jpg
+[2025-03-28 10:58:53,767] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2049.jpg
+[2025-03-28 10:58:53,778] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/228.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,778] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2050.jpg
+[2025-03-28 10:58:53,779] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2049.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,787] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2050.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,799] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1298.jpg
+[2025-03-28 10:58:53,814] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1298.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,816] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1299.jpg
+[2025-03-28 10:58:53,820] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1299.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,821] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1300.jpg
+[2025-03-28 10:58:53,833] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1300.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,849] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/259.jpg
+[2025-03-28 10:58:53,859] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/259.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,860] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1301.jpg
+[2025-03-28 10:58:53,869] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/227.jpg
+[2025-03-28 10:58:53,872] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1301.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,879] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/227.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,884] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/260.jpg
+[2025-03-28 10:58:53,893] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1383.jpg
+[2025-03-28 10:58:53,894] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/260.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,896] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1383.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,909] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1294.jpg
+[2025-03-28 10:58:53,916] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1294.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,924] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1295.jpg
+[2025-03-28 10:58:53,929] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1295.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,929] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1296.jpg
+[2025-03-28 10:58:53,936] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1297.jpg
+[2025-03-28 10:58:53,937] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1296.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,939] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/223.jpg
+[2025-03-28 10:58:53,939] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1297.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,947] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1302.jpg
+[2025-03-28 10:58:53,949] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/223.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:53,955] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1934.jpg
+[2025-03-28 10:58:53,955] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1302.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,966] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1934.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:53,974] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2220.jpg
+[2025-03-28 10:58:53,981] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2220.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,012] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1460.jpg
+[2025-03-28 10:58:54,015] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/246.jpg
+[2025-03-28 10:58:54,016] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1460.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,020] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/242.jpg
+[2025-03-28 10:58:54,020] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/246.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,024] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/242.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,029] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/248.jpg
+[2025-03-28 10:58:54,030] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/248.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,035] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/251.jpg
+[2025-03-28 10:58:54,040] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/252.jpg
+[2025-03-28 10:58:54,047] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/251.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,048] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/252.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,077] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/250.jpg
+[2025-03-28 10:58:54,083] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/243.jpg
+[2025-03-28 10:58:54,085] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/250.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,087] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/243.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,103] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/254.jpg
+[2025-03-28 10:58:54,108] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1065.jpg
+[2025-03-28 10:58:54,113] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/334.jpg
+[2025-03-28 10:58:54,114] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/254.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,114] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1065.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,115] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/334.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,117] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/316.jpg
+[2025-03-28 10:58:54,128] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/316.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,144] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1046.jpg
+[2025-03-28 10:58:54,152] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1046.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,157] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/331.jpg
+[2025-03-28 10:58:54,166] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/331.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,172] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/344.jpg
+[2025-03-28 10:58:54,181] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/317.jpg
+[2025-03-28 10:58:54,182] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/344.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,186] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/317.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,195] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1492.jpg
+[2025-03-28 10:58:54,201] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/319.jpg
+[2025-03-28 10:58:54,212] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1492.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,212] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/322.jpg
+[2025-03-28 10:58:54,216] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/319.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,222] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/322.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,254] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1066.jpg
+[2025-03-28 10:58:54,257] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1066.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,268] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/345.jpg
+[2025-03-28 10:58:54,277] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/341.jpg
+[2025-03-28 10:58:54,277] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/345.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,285] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/337.jpg
+[2025-03-28 10:58:54,286] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/341.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,290] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1178.jpg
+[2025-03-28 10:58:54,290] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/337.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,296] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1178.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,306] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/332.jpg
+[2025-03-28 10:58:54,311] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/332.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,322] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/326.jpg
+[2025-03-28 10:58:54,326] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/326.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,350] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/324.jpg
+[2025-03-28 10:58:54,354] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1179.jpg
+[2025-03-28 10:58:54,355] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/324.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,358] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1179.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,359] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/327.jpg
+[2025-03-28 10:58:54,371] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/327.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,371] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/321.jpg
+[2025-03-28 10:58:54,377] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/283.jpg
+[2025-03-28 10:58:54,384] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/321.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,390] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/283.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,397] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/292.jpg
+[2025-03-28 10:58:54,405] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/292.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,526] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/294.jpg
+[2025-03-28 10:58:54,537] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/294.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,540] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/286.jpg
+[2025-03-28 10:58:54,554] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1550.jpg
+[2025-03-28 10:58:54,557] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/286.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,563] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1550.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,566] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/375.jpg
+[2025-03-28 10:58:54,568] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/375.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,579] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1551.jpg
+[2025-03-28 10:58:54,591] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1551.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,600] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1553.jpg
+[2025-03-28 10:58:54,613] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1553.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,617] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/374.jpg
+[2025-03-28 10:58:54,633] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/374.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,634] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/281.jpg
+[2025-03-28 10:58:54,653] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/281.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,654] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/289.jpg
+[2025-03-28 10:58:54,661] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/289.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,683] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/373.jpg
+[2025-03-28 10:58:54,687] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1044.jpg
+[2025-03-28 10:58:54,692] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/373.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,698] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1044.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,702] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1512.jpg
+[2025-03-28 10:58:54,713] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1512.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,722] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2047.jpg
+[2025-03-28 10:58:54,730] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2047.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,732] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1461.jpg
+[2025-03-28 10:58:54,739] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/338.jpg
+[2025-03-28 10:58:54,743] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1461.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,744] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/338.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,754] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/340.jpg
+[2025-03-28 10:58:54,756] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/339.jpg
+[2025-03-28 10:58:54,757] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/340.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,763] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1552.jpg
+[2025-03-28 10:58:54,764] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/339.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,765] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1552.jpg HTTP/1.1" 404 1803
+[2025-03-28 10:58:54,769] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/282.jpg
+[2025-03-28 10:58:54,771] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/282.jpg HTTP/1.1" 404 1800
+[2025-03-28 10:58:54,776] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/304.jpg
+[2025-03-28 10:58:54,777] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/304.jpg HTTP/1.1" 404 1800
+[2025-03-28 11:02:24,545] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 35444
+[2025-03-28 11:02:24,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/blue.jpg HTTP/1.1" 304 0
+[2025-03-28 11:02:24,962] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 11:03:06,070] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 35444
+[2025-03-28 11:03:06,537] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 11:04:14,169] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-03-28 11:04:14,175] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 11:04:14,292] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 11:04:14,430] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 11:04:15,378] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 11:04:15,402] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-03-28 11:04:15,434] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-03-28 11:04:15,483] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DevicesSummary/ HTTP/1.1" 200 62336
+[2025-03-28 11:04:15,791] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-03-28 11:04:15: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DevicesSummary/'>
+[2025-03-28 11:04:15,805] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DevicesSummary/ HTTP/1.1" 200 632
+[2025-03-28 11:04:15,845] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:17:01,405] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2025-03-28 13:17:01,506] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2025-03-28 13:17:01,539] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/css/login.css?_=2.1 HTTP/1.1" 304 0
+[2025-03-28 13:17:01,540] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/fontawesome-free-5.8.1-web/css/all.min.css HTTP/1.1" 304 0
+[2025-03-28 13:17:01,541] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/img/logo.png HTTP/1.1" 304 0
+[2025-03-28 13:17:01,542] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/js/vue.min.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:01,542] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/img/bg.svg HTTP/1.1" 304 0
+[2025-03-28 13:17:01,542] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/js/login.js?_=3.3 HTTP/1.1" 304 0
+[2025-03-28 13:17:01,544] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/particles/particles.js HTTP/1.1" 304 0
+[2025-03-28 13:17:01,547] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/particles/app.js HTTP/1.1" 304 0
+[2025-03-28 13:17:01,603] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/fontawesome-free-5.8.1-web/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 0
+[2025-03-28 13:17:01,631] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:17:01,649] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:17:04,207] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:17:04,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4269
+[2025-03-28 13:17:04,292] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:17:04,298] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:17:07,979] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:17:07,988] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-03-28 13:17:09,035] [log.py:228] [log:log_response] [WARNING]- Forbidden (CSRF token missing or incorrect.): /admin/login/
+[2025-03-28 13:17:09,036] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 2 column 1 (char 1)
+[2025-03-28 13:17:09,068] [basehttp.py:154] [basehttp:log_message] [WARNING]- "POST /admin/login/?next=/admin/ HTTP/1.1" 403 2508
+[2025-03-28 13:17:09,127] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:17:09,235] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53211
+[2025-03-28 13:17:09,245] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/ HTTP/1.1" 500 59
+[2025-03-28 13:17:09,247] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:17:13,225] [log.py:228] [log:log_response] [WARNING]- Forbidden (CSRF token missing or incorrect.): /admin/login/
+[2025-03-28 13:17:13,226] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 2 column 1 (char 1)
+[2025-03-28 13:17:13,237] [basehttp.py:154] [basehttp:log_message] [WARNING]- "POST /admin/login/?next=/admin/ HTTP/1.1" 403 2508
+[2025-03-28 13:17:13,296] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:17:13,330] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:17:37,879] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-03-28 13:17:37,937] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53211
+[2025-03-28 13:17:38,071] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/fontawesome-free-5.8.1-web/webfonts/fa-brands-400.woff2 HTTP/1.1" 304 0
+[2025-03-28 13:17:38,073] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/fontawesome-free-5.8.1-web/webfonts/fa-regular-400.woff2 HTTP/1.1" 304 0
+[2025-03-28 13:17:38,263] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:17:38,300] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:17:40,130] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53211
+[2025-03-28 13:17:40,157] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/css/index.css?_=3.2 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/waves/waves.min.css?_=2.1 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/automatic/dicts.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/automatic/segment.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,165] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/locale/zh-hans.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,165] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/locale/en-us.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,165] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/js/cookie.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,172] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/waves/waves.min.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,172] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/theme/theme.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,173] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/js/index.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,173] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/js/menu.js?_=2022.4.9 HTTP/1.1" 304 0
+[2025-03-28 13:17:40,277] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:17:40,300] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:17:51,399] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:17:51,429] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:17:51,517] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 37147
+[2025-03-28 13:17:51,530] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/css/base.css?_=2.7 HTTP/1.1" 304 0
+[2025-03-28 13:17:51,530] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/locale/en-us.js?_=2.1.2 HTTP/1.1" 304 0
+[2025-03-28 13:17:51,530] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/js/language.js?_=2.1.2 HTTP/1.1" 304 0
+[2025-03-28 13:17:51,538] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/base.css?_=2.7 HTTP/1.1" 304 0
+[2025-03-28 13:17:51,539] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/theme/simpleui.css HTTP/1.1" 304 0
+[2025-03-28 13:17:51,546] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/locale/zh-hans.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,550] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/changelists.css?_=20180905 HTTP/1.1" 304 0
+[2025-03-28 13:17:51,552] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/responsive.css?_=20180905 HTTP/1.1" 304 0
+[2025-03-28 13:17:51,554] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,556] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+[2025-03-28 13:17:51,559] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/js/cookie.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,566] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,569] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,571] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,571] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,584] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,586] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,587] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/automatic/dicts.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,587] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,588] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/simpleui-x/automatic/segment.js HTTP/1.1" 304 0
+[2025-03-28 13:17:51,596] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:17:51,644] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+[2025-03-28 13:17:51,655] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+[2025-03-28 13:17:51,664] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+[2025-03-28 13:17:51,664] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+[2025-03-28 13:17:53,191] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/add/ HTTP/1.1" 200 26041
+[2025-03-28 13:17:53,209] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+[2025-03-28 13:17:53,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+[2025-03-28 13:17:53,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+[2025-03-28 13:17:53,217] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+[2025-03-28 13:17:53,242] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:17:58,918] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 37147
+[2025-03-28 13:17:58,971] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:18:05,583] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:18:05,617] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:18:06,064] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 64304
+[2025-03-28 13:18:06,120] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:18:41,647] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-03-28 13:18:41,653] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:18:41,942] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:18:41,964] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:18:44,424] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:18:44,438] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-03-28 13:18:44,459] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-03-28 13:18:44,523] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DevicesSummary/ HTTP/1.1" 200 62336
+[2025-03-28 13:18:45,328] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-03-28 13:18:45: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DevicesSummary/'>
+[2025-03-28 13:18:45,354] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DevicesSummary/ HTTP/1.1" 200 632
+[2025-03-28 13:18:45,373] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:19:08,544] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 302 0
+[2025-03-28 13:19:08,577] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:19:08,595] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/app01/role/ HTTP/1.1" 200 4048
+[2025-03-28 13:19:08,644] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2025-03-28 13:19:08,683] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2025-03-28 13:19:08,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:19:13,931] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:19:13,942] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-03-28 13:19:14,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53211
+[2025-03-28 13:19:14,314] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:19:23,915] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:19:24,380] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 64304
+[2025-03-28 13:19:24,414] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:20:30,572] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/67/change/ HTTP/1.1" 200 23485
+[2025-03-28 13:20:30,588] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[2025-03-28 13:20:30,588] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[2025-03-28 13:20:30,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+[2025-03-28 13:20:30,606] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:20:38,694] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 64304
+[2025-03-28 13:20:42,548] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/add/ HTTP/1.1" 200 22850
+[2025-03-28 13:20:42,605] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:20:56,595] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 64304
+[2025-03-28 13:20:56,642] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:20:58,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/67/change/ HTTP/1.1" 200 23485
+[2025-03-28 13:20:58,756] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:21:06,924] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 64304
+[2025-03-28 13:21:08,518] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/add/ HTTP/1.1" 200 22850
+[2025-03-28 13:21:08,585] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:22:02,844] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:22:02,854] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/menu/add/ HTTP/1.1" 302 0
+[2025-03-28 13:22:03,142] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 65004
+[2025-03-28 13:22:03,194] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:22:05,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:22:05,559] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 155509
+[2025-03-28 13:22:05,590] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:22:14,727] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/148/change/ HTTP/1.1" 200 24110
+[2025-03-28 13:22:14,795] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:22:29,201] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:22:35,078] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:23:43,753] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:23:43,766] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/permission/148/change/ HTTP/1.1" 302 0
+[2025-03-28 13:23:44,780] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 155746
+[2025-03-28 13:23:44,843] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:23:50,315] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35444
+[2025-03-28 13:23:52,075] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 76597
+[2025-03-28 13:23:52,125] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:23:58,236] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/add/ HTTP/1.1" 200 32231
+[2025-03-28 13:23:58,270] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 304 0
+[2025-03-28 13:23:58,270] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/SelectBox.js HTTP/1.1" 304 0
+[2025-03-28 13:23:58,290] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:23:58,367] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+[2025-03-28 13:23:58,367] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/selector-icons.svg HTTP/1.1" 304 0
+[2025-03-28 13:23:58,368] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 658
+[2025-03-28 13:23:58,368] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 658
+[2025-03-28 13:24:02,582] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 76597
+[2025-03-28 13:24:14,201] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/add/ HTTP/1.1" 200 32231
+[2025-03-28 13:24:14,244] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:24:48,742] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:24:48,753] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/role/add/ HTTP/1.1" 302 0
+[2025-03-28 13:24:50,607] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 77461
+[2025-03-28 13:24:50,657] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:25:19,890] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/2/change/ HTTP/1.1" 200 32905
+[2025-03-28 13:25:19,965] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:25:28,918] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:25:28,928] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/role/2/change/ HTTP/1.1" 302 0
+[2025-03-28 13:25:30,903] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 77492
+[2025-03-28 13:25:30,960] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:25:39,392] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/1/change/ HTTP/1.1" 200 34164
+[2025-03-28 13:25:39,433] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:26:07,995] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 77362
+[2025-03-28 13:26:35,501] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2025-03-28 13:26:35,508] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:26:35,575] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-28 13:26:35,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-28 13:26:44,081] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:26:44,093] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-03-28 13:26:44,115] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-03-28 13:26:44,161] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DevicesSummary/ HTTP/1.1" 200 35442
+[2025-03-28 13:26:44,323] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35442
+[2025-03-28 13:28:53,677] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35442
+[2025-03-28 13:29:02,500] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 302 0
+[2025-03-28 13:29:02,529] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35442
+[2025-03-28 13:29:02,544] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 4082
+[2025-03-28 13:29:02,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2025-03-28 13:29:02,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2025-03-28 13:29:02,787] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35442
+[2025-03-28 13:29:06,722] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-03-28 13:29:06,731] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-03-28 13:29:06,843] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53164
+[2025-03-28 13:29:07,212] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35442
+[2025-03-28 13:29:10,093] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35442
+[2025-03-28 13:29:10,313] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 64857
+[2025-03-28 13:29:10,370] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-03-28 13:30:08,749] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DevicesSummary/ HTTP/1.1" 200 35458
+[2025-03-28 13:30:08,944] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-03-28 13:30:20,697] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 127684
+[2025-03-28 13:30:20,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/back/document_save_2_24px_539656_easyicon.net.png HTTP/1.1" 304 0
+[2025-03-28 13:30:21,093] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-03-28 13:30:22,288] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-03-28 13:30:22: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_edit/'>
+[2025-03-28 13:30:22,312] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_edit/ HTTP/1.1" 200 21852

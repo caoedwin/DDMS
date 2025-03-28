@@ -168,6 +168,7 @@ INSTALLED_APPS = [
     'DeviceA31TPE',
     'DeviceA32KS',
     'DeviceA32TPE',
+    'TestDeviceLNV',
 
 ]
 

@@ -1,0 +1,12 @@
+[2025-03-05 07:51:00,797] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-03-05 07:51:00,803] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-03-05 07:51:00,825] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+[2025-03-05 07:51:00,825] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/sb-admin.css HTTP/1.1" 304 0
+[2025-03-05 07:51:00,830] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/bootstrap.min.css HTTP/1.1" 304 0
+[2025-03-05 07:51:00,831] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/test1.css HTTP/1.1" 304 0
+[2025-03-05 07:51:00,832] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery/jquery.min.js HTTP/1.1" 304 0
+[2025-03-05 07:51:00,832] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 304 0
+[2025-03-05 07:51:00,833] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+[2025-03-05 07:51:00,853] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/yellow.jpg HTTP/1.1" 304 0
+[2025-03-05 07:51:01,029] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-03-05 07:51:01,038] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823

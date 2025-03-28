@@ -68,6 +68,7 @@ urlpatterns = [
     path('DeviceA31TPE/', include('DeviceA31TPE.urls', namespace='DeviceA31TPE')),
     path('DeviceA32KS/', include('DeviceA32KS.urls', namespace='DeviceA32KS')),
     path('DeviceA32TPE/', include('DeviceA32TPE.urls', namespace='DeviceA32TPE')),
+    path('TestDeviceLNV/', include('TestDeviceLNV.urls', namespace='TestDeviceLNV')),
 ]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
