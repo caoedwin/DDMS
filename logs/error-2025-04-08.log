@@ -1,0 +1,284 @@
+[2025-04-08 09:48:43,641] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 141, in TestDeviceListLNV
+    mock_datalist = DeviceLNV.objects.all()
+NameError: name 'DeviceLNV' is not defined
+[2025-04-08 09:48:43,653] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 09:48:43,655] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 89490
+[2025-04-08 09:48:55,151] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 141, in TestDeviceListLNV
+    mock_datalist = DeviceLNV.objects.all()
+NameError: name 'DeviceLNV' is not defined
+[2025-04-08 09:48:55,155] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 09:48:55,159] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 89466
+[2025-04-08 13:45:24,328] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 13:52:54,457] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 13:59:14,051] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 103, in TestDeviceListLNV
+    print(onlineuser,UserInfo.objects.get(account=onlineuser))
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 399, in get
+    self.model._meta.object_name
+app01.models.UserInfo.DoesNotExist: UserInfo matching query does not exist.
+[2025-04-08 13:59:14,072] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 96877
+[2025-04-08 14:39:58,591] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 457, in TestDeviceListLNV
+    create_list.append(TestDeviceLNV(**i))
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\base.py", line 485, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % kwarg)
+TypeError: 'Customer' is an invalid keyword argument for this function
+[2025-04-08 14:39:58,606] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:39:58,609] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 125471
+[2025-04-08 14:42:15,763] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 308, in TestDeviceListLNV
+    create_list.append(TestDeviceLNV(**i))
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\base.py", line 485, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % kwarg)
+TypeError: 'Customer' is an invalid keyword argument for this function
+[2025-04-08 14:42:15,776] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:42:15,779] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 125471
+[2025-04-08 14:44:25,871] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 221, in TestDeviceListLNV
+    searchCategory = json.loads(responseData['searchCategory'])
+  File "C:\Python372\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Python372\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Python372\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:44:25,885] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:44:25,905] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 118340
+[2025-04-08 14:45:48,475] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 236, in TestDeviceListLNV
+    for key, value in i.items():
+AttributeError: 'str' object has no attribute 'items'
+[2025-04-08 14:45:48,486] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:45:48,488] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 104576
+[2025-04-08 14:47:39,512] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 310, in TestDeviceListLNV
+    create_list.append(TestDeviceLNV(**i))
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\base.py", line 485, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % kwarg)
+TypeError: 'Customer' is an invalid keyword argument for this function
+[2025-04-08 14:47:39,520] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:47:39,521] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 125812
+[2025-04-08 14:50:09,254] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 311, in TestDeviceListLNV
+    create_list.append(TestDeviceLNV(**i))
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\base.py", line 485, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % kwarg)
+TypeError: 'Customer' is an invalid keyword argument for this function
+[2025-04-08 14:50:09,269] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:50:09,271] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 125811
+[2025-04-08 14:53:12,718] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 312, in TestDeviceListLNV
+    TestDeviceLNV.objects.bulk_create(create_list)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 465, in bulk_create
+    ids = self._batched_insert(objs_without_pk, fields, batch_size)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 1155, in _batched_insert
+    self._insert(item, fields=fields, using=self.db)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\compiler.py", line 1288, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in as_sql
+    for obj in self.query.objs
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\compiler.py", line 1241, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\compiler.py", line 1240, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\compiler.py", line 1182, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\fields\__init__.py", line 790, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\fields\__init__.py", line 785, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\fields\__init__.py", line 1737, in get_prep_value
+    return float(value)
+ValueError: could not convert string to float: 
+[2025-04-08 14:53:12,743] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 14:53:12,745] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 209761
+[2025-04-08 15:31:27,730] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 283, in TestDeviceListLNV
+    value = getattr(i.field_name, field_name)
+AttributeError: 'TestDeviceLNV' object has no attribute 'field_name'
+[2025-04-08 15:31:27,746] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 15:31:27,749] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 96891
+[2025-04-08 15:32:37,102] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 284, in TestDeviceListLNV
+    value = getattr(i.field_name, field_name)
+AttributeError: 'TestDeviceLNV' object has no attribute 'field_name'
+[2025-04-08 15:32:37,106] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 15:32:37,108] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 96880
+[2025-04-08 15:33:23,371] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 286, in TestDeviceListLNV
+    if i.field_name:
+AttributeError: 'TestDeviceLNV' object has no attribute 'field_name'
+[2025-04-08 15:33:23,380] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 15:33:23,382] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 96990
+[2025-04-08 15:34:16,046] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 329, in TestDeviceListLNV
+    mock_dic[keyDev] = i.field_name
+AttributeError: 'TestDeviceLNV' object has no attribute 'field_name'
+[2025-04-08 15:34:16,051] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 15:34:16,053] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 98231
+[2025-04-08 15:36:02,820] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 333, in TestDeviceListLNV
+    mock_dic[keyStatus] = Status_dict[keyStatus]
+KeyError: 'Status3'
+[2025-04-08 15:36:02,833] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 15:36:02,837] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 98161
+[2025-04-08 15:38:47,468] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 335, in TestDeviceListLNV
+    mock_dic[keyStatus] = Status_dict[keyStatus]
+KeyError: 'Status3'
+[2025-04-08 15:38:47,482] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-08 15:38:47,486] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 98084
+[2025-04-09 10:25:15,866] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)

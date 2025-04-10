@@ -1316,3 +1316,20 @@
 [2025-03-28 13:37:02,528] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Zaihuo/304.jpg HTTP/1.1" 404 1800
 [2025-03-28 13:37:02,540] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/304.jpg
 [2025-03-28 13:37:02,541] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/304.jpg HTTP/1.1" 404 1800
+[2025-04-01 11:45:51,024] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 302 0
+[2025-04-01 11:45:51,069] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-01 11:45:51,716] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-01 11:45:51,742] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js.map HTTP/1.1" 304 0
+[2025-04-01 11:45:51,830] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-04-01 11:45:51,854] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-01 11:45:56,294] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-01 11:45:56,324] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-04-01 11:45:56,354] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-04-01 11:45:57,882] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 200 127801
+[2025-04-01 11:45:58,142] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-01 11:45:58,243] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-01 11:45:58,504] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-01 11:45:58,561] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-01 11:45:59,237] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-01 11:46:00,730] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-01 11:46:00: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_edit/'>
+[2025-04-01 11:46:00,741] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_edit/ HTTP/1.1" 200 21852

@@ -11,6 +11,7 @@ class TestDeviceLNV(models.Model):
     ODM_status = models.CharField(max_length=64, null=True, blank=True, verbose_name='ODM status')
     Purchase_Plan = models.CharField(max_length=128, null=True, blank=True, verbose_name='Purchase Plan')
     Device_Price = models.FloatField(max_length=64, null=True, blank=True, verbose_name='Device Price')
+    Act_Status = models.CharField(max_length=64, null=True, blank=True, verbose_name='Act_Status')
     Device1 = models.CharField(max_length=64, null=True, blank=True, verbose_name='Device #1')
     Device2 = models.CharField(max_length=64, null=True, blank=True, verbose_name='Device #2')
     Device3 = models.CharField(max_length=64, null=True, blank=True, verbose_name='Device #3')
