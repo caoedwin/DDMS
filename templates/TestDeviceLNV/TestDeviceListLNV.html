@@ -150,6 +150,17 @@ label{
   word-break: break-word; /* 防止长单词被截断 */
 }
 
+/* 通过 CSS 精准控制删除线 */
+.el-table .strikethrough-row td {
+  text-decoration: line-through !important;
+  color: #999 !important;
+}
+{% comment %}高级技巧：仅特定列显示删除线{% endcomment %}
+/* 只对姓名和年龄列生效 */
+{% comment %}.el-table .strikethrough-row td:nth-child(1),
+.el-table .strikethrough-row td:nth-child(3) {
+  text-decoration: line-through !important;
+}{% endcomment %}
 
 </style>
 {% endblock %}
@@ -175,7 +186,7 @@ label{
            <div style="margin-left: 100px;">
                  <el-button :loading="elbuttonloading" @click="find" v-cloak type="primary" style="height:40px">搜索</el-button>
 {#                 <el-button  @click="AddInfo" type="success" >Edit</el-button>#}
-                 <el-button @click="exportExcel"  type="info" v-cloak style="height:40px">導出</el-button>
+                 <el-button @click="exportToExcelWithStrikethrough"  type="info" v-cloak style="height:40px">導出</el-button>
 {#                     <el-button  type="danger" v-if="uploadpermission===1" v-cloak @click="addData" style="margin-left: 20px;">Upload</el-button>#}
 {#                 <el-button @click="deleteData()" type="danger" v-if="permission===1" v-cloak style="margin-left: 20px;width: 80px;">刪除</el-button>#}
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -469,7 +480,7 @@ label{
     <el-input type="text" v-model="search" id="sh" placeholder="請輸入關鍵字搜索..."></el-input><br>
 {#    <span  class="selectItem" v-cloak  v-if="showCustomer&&showDepartment&&showLesson">當前表格信息：${ showYear }/${ showCustomer }/${ showDepartment }/${ showLesson }/${ showGroupEmployees } </span>#}
     <el-table id="out-table"  ref="tableRef"{% comment %} height="700"{% endcomment %} border stripe :data="datas.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)"
-        style="min-width: 100%;border-radius: 10px"  @selection-change="handleSelectionChange" :row-key="getRowKeys" :span-method="objectSpanMethod"
+        style="min-width: 100%;border-radius: 10px"  @selection-change="handleSelectionChange" :row-key="getRowKeys" :span-method="objectSpanMethod" :row-class-name="rowClassName"
         :header-cell-style="{'background-color':'#fafafa','font-weight':'800','border-bottom':'1px solid rgb(103, 194, 58)'}"
         v-loading="tableloading"
         element-loading-text="數據更新中，請稍後"
@@ -546,7 +557,9 @@ label{
 <script src="/static/js/Element/icon.js"></script>
 <script src="/static/js/Element/image.js"></script>
 <script src="/static/js/Element/message.js"></script>
-<script type="text/babel">
+<script src="/static/js/VUE/exceljs/dist/exceljs.min.js"></script>
+<script src="/static/js/VUE/exceljs/dist/exceljs.js"></script>
+<script type="module">
     new Vue({
         el: '#app',
         delimiters: ['${', '}'],
@@ -672,6 +685,7 @@ label{
                          { required: true, message: "不能為空", trigger:['blur','blur'] }
                       ],
                     },
+                //不同的表格需要变动
                 dataColumns: [
                     { prop: 'Category', label: 'Category' },
                     { prop: 'Class', label: 'Class' },
@@ -1079,6 +1093,175 @@ label{
                  return wbout;
              }, 100);
          },
+
+            // 导出
+            //不同的表格需要变动的部分需要根据实际情况调整
+            exportToExcelWithStrikethrough:async function() {
+              // 创建 Workbook 和 Worksheet
+              const workbook = new ExcelJS.Workbook();
+              const worksheet = workbook.addWorksheet('third-party');
+
+              // 模拟数据（需包含样式标记）
+              const data = this.datas;
+
+              // 需要合并的列配置
+                const mergeColumns = this.dataColumns;
+
+                //当Act_Status == Removed时需要加删除列的列号
+                const ShanChuXian_Col = [4,5,6];
+
+
+              // 定义样式
+              // 定义表头样式
+                const headerStyle = {
+                  font: {
+                    name: 'Arial',
+                    family: 4,
+                    size: 12,
+                    //bold: true // 可选加粗
+                  },
+                  border: {
+                    top: { style: 'thin' },
+                    left: { style: 'thin' },
+                    bottom: { style: 'thin' },
+                    right: { style: 'thin' }
+                  },
+                    //填充
+                  fill: {
+                  type: 'pattern',
+                  pattern: 'solid',
+                  fgColor: { argb: 'CECEFF' } // 背景色
+                }
+                };
+
+              const setCellStyle = (cell, isStrike = false) => {
+              // 设置对齐方式
+              cell.alignment = {
+                wrapText: true, // 启用自动换行
+                vertical: 'middle',
+                horizontal: 'left'
+              };
+
+              // 设置边框
+              cell.border = {
+                top: { style: 'thin' },
+                left: { style: 'thin' },
+                bottom: { style: 'thin' },
+                right: { style: 'thin' }
+              };
+              // 设置单元格格式为文本（可选，因为ExcelJS默认会将字符串作为文本处理）
+
+              // 设置删除线
+              if (isStrike) {
+                  cell.font = {
+                      name: 'Calibri', family: 1, size: 11,
+                      strike: true,
+                      color: { argb: 'FFFF0000' }, // 红色文字
+                      bold: true,
+                  };
+                  cell.fill = {
+                      type: 'pattern',
+                      pattern: 'solid',
+                      fgColor: { argb: 'A9A9A9' } //背景
+                    }
+              }else{
+                  cell.font = { name: 'Calibri', family: 1, size: 11, bold: false }; // 可选，设置字体样式
+              }
+            };
+
+              //不同的表格需要变动
+              // 添加表头
+              const headers = [
+                      'No.',
+                     'Category', 'Class', 'Type', 'Covered range for case', 'Require State', 'Comments', 'Remark', 'ODM status', 'Purchase Plan', 'Device Price',
+                     'Act_Status',
+                      'Device #1', 'Status', '購買年限',  'Device #2', 'Status', '購買年限',
+                      'Device #3', 'Status', '購買年限',  'Device #4', 'Status', '購買年限',
+                      'Device #5', 'Status', '購買年限',  'Device #6', 'Status', '購買年限',
+                      'Device #7', 'Status', '購買年限',  'Device #8', 'Status', '購買年限',
+                      'Device #9', 'Status', '購買年限',  'Device #10', 'Status', '購買年限',
+              ];
+              const headerRow = worksheet.addRow(headers);
+              // 应用样式到每个表头单元格
+                headerRow.eachCell((cell) => {
+                  cell.style = headerStyle;
+                });
+
+
+              // 添加数据行
+              data.forEach((row, rowIndex) => {
+                  // 添加数据
+                  //console.log(row);
+                {% comment %}const dataRow = worksheet.addRow(row);{% endcomment %}
+                const rowNumber = rowIndex + 1; // 生成序号（从1开始）
+                const newRowData = [rowNumber]; // 插入序号到数据行首
+                  this.dataColumns.forEach((col)=>{
+                      newRowData.push(row[col.prop])
+                  });
+                const dataRow = worksheet.addRow(newRowData);
+
+                dataRow.eachCell((cell, colNumber) => {
+                    //console.log(colNumber, cell,'cell')
+                    setCellStyle(cell, row.Act_Status === 'Removed' && ShanChuXian_Col.includes(colNumber)); // 传递删除线标识
+                });
+
+              });
+
+              // 合并单元格逻辑（处理原数据列索引到Excel列索引的转换）
+              mergeColumns.forEach((col, colIndex) => {
+                  if (col.prop && this.Hebing_dataColumns.includes(col.prop)) {//特定列合并
+                      const excelColIndex = colIndex + 2; // 原数据列索引转Excel列索引（如原列0→Excel列2）
+                      let startDataIndex = 0;
+                      let previousValue = data[startDataIndex][col.prop];
+
+                      for (let i = 1; i < data.length; i++) {
+                          const currentValue = data[i][col.prop];
+                          if (currentValue !== previousValue) {
+                              if (startDataIndex < i - 1) {
+                                  // 计算合并的Excel行范围
+                                  const startRow = startDataIndex + 2; // 数据行从第2行开始
+                                  const endRow = i - 1 + 2; // i-1对应原数据的最后一行索引
+                                  worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
+                              }
+                              startDataIndex = i;
+                              previousValue = currentValue;
+                          }
+                      }
+
+                      // 处理最后一个连续区间
+                      if (startDataIndex < data.length - 1) {
+                          const startRow = startDataIndex + 2;
+                          const endRow = data.length - 1 + 2;
+                          worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
+                      }
+                  }
+              });
+
+              //不同的表格需要变动
+              worksheet.columns = [{ width: 5 }, { width: 20 }, { width: 20 }, { width: 35 }, { width: 40 }, { width: 10 }, { width: 40 }];//后面的列宽默认
+              // 设置数据验证（下拉列表）到 "性别" 列（第三列，索引为6）
+                const genderOptions = ['Optional', 'Must'];
+                worksheet.getColumn('F').eachCell({ includeEmpty: true }, (cell) => {
+                  // eslint-disable-next-line no-param-reassign
+                  cell.dataValidation = {
+                      type: 'list', // 类型为下拉列表
+                    allowBlank: false, // 是否允许空值（true/false）
+                    formulae: [`"${genderOptions.join(',')}"`], // 选项列表（注意逗号分隔和双引号）
+                    promptTitle: '选择', // 输入提示标题（可选）
+                    prompt: '请从下拉列表中选择', // 输入提示内容（可选）
+                    errorTitle: '输入错误', // 错误提示标题（可选）
+                    error: '只能选择预设的选项！', // 错误提示内容（可选）
+                    showErrorMessage: true // 是否显示错误提示（默认true）
+                  };
+                });
+
+              // 生成文件
+              const buffer = await workbook.xlsx.writeBuffer();
+              saveAs(
+                new Blob([buffer], { type: 'application/octet-stream' }),
+                'SW Test lab device Audit list.xlsx'
+                );
+            },
 
              AddInfo(){
                     this.add=true;
@@ -1565,7 +1748,11 @@ label{
               }
             },
 
-            // 动态列场景：
+             rowClassName({ row }) {
+                  return row.Act_Status === 'Removed' ? 'strikethrough-row' : '';
+                },
+
+            {% comment %}// 动态列场景：
             // 动态添加列时更新合并配置
             addColumn() {
               this.dataColumns.push({
@@ -1573,7 +1760,7 @@ label{
                 label: '新增列'
               })
               this.updateMergeConfig()
-            }
+            },{% endcomment %}
 
 
         },
