@@ -1,0 +1,762 @@
+[2025-04-11 16:18:49,644] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 35458
+[2025-04-11 16:18:50,376] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-11 16:21:39,939] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 110129
+[2025-04-11 16:21:40,143] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js HTTP/1.1" 304 0
+[2025-04-11 16:21:40,144] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js HTTP/1.1" 304 0
+[2025-04-11 16:21:40,211] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-11 16:21:40,339] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-11 16:21:40,642] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-11 16:21:40,708] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-11 16:21:40,799] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js.map HTTP/1.1" 304 0
+[2025-04-11 16:21:41,341] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js.map HTTP/1.1" 304 0
+[2025-04-11 16:21:41,392] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-11 16:21:42,330] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-11 16:21:42: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-11 16:21:42,360] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-11 16:27:29,508] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 110133
+[2025-04-11 16:27:29,783] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-11 16:27:29,897] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-11 16:27:30,249] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-11 16:27:30,345] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-11 16:27:31,119] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-11 16:27:31,907] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-11 16:27:31: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-11 16:27:31,931] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 09:44:19,977] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 302 0
+[2025-04-14 09:44:20,015] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-14 09:44:20,581] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 09:44:20,649] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-04-14 09:44:20,658] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-14 09:44:22,372] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-14 09:44:22,405] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-04-14 09:44:22,463] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-04-14 09:44:22,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111416
+[2025-04-14 09:44:22,847] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js HTTP/1.1" 304 0
+[2025-04-14 09:44:22,847] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js HTTP/1.1" 304 0
+[2025-04-14 09:44:22,934] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 09:44:23,026] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 09:44:23,272] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 09:44:23,333] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 09:44:23,520] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js.map HTTP/1.1" 304 0
+[2025-04-14 09:44:23,662] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js.map HTTP/1.1" 304 0
+[2025-04-14 09:44:23,830] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 09:48:21,698] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111419
+[2025-04-14 09:48:21,891] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 09:48:21,977] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 09:48:22,273] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 09:48:22,286] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 09:48:22,938] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 09:48:23,467] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 09:48:23: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 09:48:23,492] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 09:58:03,942] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111386
+[2025-04-14 09:58:04,142] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 09:58:04,173] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 09:58:04,333] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 09:58:04,389] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 09:58:04,938] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 09:58:05,687] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 09:58:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 09:58:05,711] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 10:25:17,539] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112158
+[2025-04-14 10:25:17,995] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 10:25:18,087] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 10:25:18,392] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 10:25:18,495] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 10:25:19,179] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 10:25:20,092] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 10:25:20: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 10:25:20,117] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 10:30:49,064] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112044
+[2025-04-14 10:30:49,207] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 10:30:49,217] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 10:30:49,344] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 10:30:49,427] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 10:30:49,800] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 10:30:50,160] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 10:30:50: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 10:30:50,174] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 10:31:57,069] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112030
+[2025-04-14 10:31:57,351] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 10:31:57,489] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 10:31:57,720] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 10:31:57,760] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 10:31:58,239] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 10:31:58,896] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 10:31:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 10:31:58,912] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 10:49:12,396] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111174
+[2025-04-14 10:49:12,813] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 10:49:12,933] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 10:49:13,156] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 10:49:13,208] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 10:49:13,840] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 10:49:14,576] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 10:49:14: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 10:49:14,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 10:59:44,236] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111103
+[2025-04-14 10:59:44,483] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 10:59:44,618] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 10:59:44,919] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 10:59:45,055] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 10:59:45,522] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 10:59:45,974] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 10:59:45: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 10:59:45,995] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:02:20,667] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111139
+[2025-04-14 11:02:20,910] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:02:21,020] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:02:21,303] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:02:21,451] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:02:21,889] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:02:22,369] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:02:22: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:02:22,389] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:20:36,937] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111987
+[2025-04-14 11:20:37,228] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:20:37,338] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:20:37,640] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:20:37,791] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:20:38,271] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:20:38,889] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:20:38: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:20:38,905] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:27:33,966] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112047
+[2025-04-14 11:27:34,182] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:27:34,212] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:27:34,394] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:27:34,512] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:27:35,011] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:27:35,870] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:27:35: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:27:35,898] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:41:20,762] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111892
+[2025-04-14 11:41:21,052] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:41:21,243] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:41:21,691] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:41:21,831] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:41:22,820] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:41:23,158] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:41:23: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:41:23,178] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:46:55,506] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112102
+[2025-04-14 11:46:55,819] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:46:56,014] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:46:56,535] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:46:56,664] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:46:57,714] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:46:58,245] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:46:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:46:58,264] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:47:02,012] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:47:02: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:47:02,031] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:48:03,544] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112117
+[2025-04-14 11:48:03,827] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:48:04,023] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:48:04,534] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:48:04,672] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:48:05,667] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:48:06,265] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:48:06: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:48:06,284] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:51:23,431] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112115
+[2025-04-14 11:51:23,704] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:51:23,885] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:51:24,126] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:51:24,182] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:51:24,643] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:51:25,907] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:51:25: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:51:25,947] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:52:44,840] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112165
+[2025-04-14 11:52:45,150] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:52:45,295] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:52:45,562] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:52:45,614] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:52:46,154] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:52:46,736] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:52:46: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:52:46,758] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:53:26,895] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112164
+[2025-04-14 11:53:27,108] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:53:27,155] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:53:27,397] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:53:27,408] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:53:27,776] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:53:28,498] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:53:28: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:53:28,536] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:57:35,425] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112167
+[2025-04-14 11:57:35,659] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:57:35,796] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:57:35,952] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:57:35,953] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:57:36,272] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:57:37,249] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:57:37: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:57:37,273] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:59:17,009] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112156
+[2025-04-14 11:59:17,234] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 11:59:17,338] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 11:59:17,502] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 11:59:17,527] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 11:59:17,882] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 11:59:18,534] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 11:59:18: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 11:59:18,554] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 11:59:25,008] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/modelfiles/DDMS_TestDeviceList.zip HTTP/1.1" 200 74517120
+[2025-04-14 13:39:21,482] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112098
+[2025-04-14 13:39:22,696] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 13:39:23,039] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 13:39:23,549] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 13:39:23,669] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 13:39:24,464] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 13:39:25,586] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 13:39:25: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 13:39:25,619] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 13:41:49,591] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112166
+[2025-04-14 13:41:49,924] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 13:41:50,092] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 13:41:50,423] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 13:41:50,528] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 13:41:51,208] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 13:41:52,070] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 13:41:52: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 13:41:52,095] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 13:53:55,275] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112166
+[2025-04-14 13:53:55,686] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 13:53:55,916] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 13:53:56,436] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 13:53:56,594] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 13:53:57,614] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 13:53:58,586] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 13:53:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 13:53:58,612] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 13:53:59,305] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 13:59:54,206] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112170
+[2025-04-14 13:59:54,386] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 13:59:54,429] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 13:59:54,637] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 13:59:54,701] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 13:59:54,969] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 13:59:55,935] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 13:59:55: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 13:59:55,945] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 14:09:23,723] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112275
+[2025-04-14 14:09:23,940] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 14:09:24,045] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 14:09:24,334] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 14:09:24,497] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 14:09:24,978] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 14:09:25,808] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 14:09:25: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 14:09:25,837] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 14:10:19,760] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112279
+[2025-04-14 14:10:20,142] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 14:10:20,380] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 14:10:21,108] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 14:10:21,260] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 14:10:22,412] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 14:10:23,399] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 14:10:23: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 14:10:23,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 14:50:10,988] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112275
+[2025-04-14 14:50:11,664] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 14:50:11,924] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 14:50:12,319] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 14:50:12,459] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 14:50:13,391] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 14:50:14,148] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 14:50:14: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 14:50:14,167] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 14:52:51,265] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112307
+[2025-04-14 14:52:51,484] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 14:52:51,629] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 14:52:51,934] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 14:52:52,014] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 14:52:52,613] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 14:52:53,904] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 14:52:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 14:52:53,923] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 14:57:55,196] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112279
+[2025-04-14 14:57:55,418] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 14:57:55,514] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 14:57:55,867] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 14:57:55,987] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 14:57:56,671] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 14:57:57,431] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 14:57:57: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 14:57:57,458] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 14:58:54,903] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112275
+[2025-04-14 14:58:55,208] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 14:58:55,390] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 14:58:55,935] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 14:58:56,105] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 14:58:57,069] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 14:58:58,133] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 14:58:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 14:58:58,152] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 15:18:52,395] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112293
+[2025-04-14 15:18:52,636] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 15:18:52,694] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 15:18:52,903] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 15:18:53,027] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 15:18:53,471] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 15:18:54,010] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 15:18:54: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 15:18:54,032] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 15:25:16,888] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112293
+[2025-04-14 15:25:17,087] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 15:25:17,140] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 15:25:17,360] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 15:25:17,435] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 15:25:17,875] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 15:25:18,334] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 15:25:18: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 15:25:18,354] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 15:26:51,328] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112293
+[2025-04-14 15:26:51,578] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 15:26:51,647] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 15:26:51,893] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 15:26:51,975] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 15:26:52,622] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 15:26:53,441] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 15:26:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 15:26:53,456] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 15:26:55,756] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 15:26:55: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 15:26:55,775] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 15:34:42,832] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111801
+[2025-04-14 15:34:42,992] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 15:34:43,020] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 15:34:43,206] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 15:34:43,306] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 15:34:43,672] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 15:34:44,514] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 15:34:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 15:34:44,532] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 15:37:09,837] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 111809
+[2025-04-14 15:37:10,039] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 15:37:10,164] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 15:37:10,493] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 15:37:10,624] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 15:37:11,270] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 15:37:12,238] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 15:37:12: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 15:37:12,255] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 16:00:54,783] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112275
+[2025-04-14 16:00:55,264] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:00:55,567] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:00:56,054] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:00:56,201] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:00:57,352] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:00:58,134] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 16:00:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 16:00:58,159] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 16:02:56,301] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112275
+[2025-04-14 16:02:56,602] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:02:56,782] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:02:57,271] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:02:57,416] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:02:58,214] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:02:59,006] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 16:02:59: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 16:02:59,027] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 16:03:34,734] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112275
+[2025-04-14 16:03:34,917] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:03:35,087] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:03:35,219] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:03:35,249] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:03:35,589] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:03:36,290] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 16:03:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 16:03:36,313] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 16:03:57,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112275
+[2025-04-14 16:03:57,728] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:03:57,766] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:03:57,834] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:03:57,855] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:03:58,059] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:03:59,348] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 16:03:59: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 16:03:59,367] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 16:34:36,838] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112358
+[2025-04-14 16:34:36,977] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js HTTP/1.1" 304 0
+[2025-04-14 16:34:36,977] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js HTTP/1.1" 304 0
+[2025-04-14 16:34:37,025] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:34:37,084] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:34:37,263] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:34:37,380] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js.map HTTP/1.1" 304 0
+[2025-04-14 16:34:37,381] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:34:37,487] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js.map HTTP/1.1" 304 0
+[2025-04-14 16:34:37,803] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:34:38,655] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 16:34:38: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 16:34:38,680] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 16:46:23,880] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113226
+[2025-04-14 16:46:24,128] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:46:24,222] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:46:24,554] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:46:24,663] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:46:25,176] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:47:20,029] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113154
+[2025-04-14 16:47:20,276] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:47:20,424] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:47:20,914] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:47:21,038] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:47:21,518] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:49:31,730] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112957
+[2025-04-14 16:49:31,933] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:49:32,003] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:49:32,122] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:49:32,153] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:49:32,430] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:49:32,999] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 16:49:32: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 16:49:33,015] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 16:54:05,257] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113262
+[2025-04-14 16:54:05,518] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 16:54:05,625] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 16:54:05,915] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 16:54:05,980] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 16:54:06,556] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 16:54:07,509] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 16:54:07: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 16:54:07,524] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 17:02:15,156] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113199
+[2025-04-14 17:02:15,457] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 17:02:15,553] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 17:02:15,842] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 17:02:15,930] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 17:02:16,387] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 17:02:16,858] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 17:02:16: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 17:02:16,887] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 17:03:13,076] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113358
+[2025-04-14 17:03:13,293] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 17:03:13,371] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 17:03:13,620] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 17:03:13,691] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 17:03:14,285] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 17:03:15,069] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 17:03:15: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 17:03:15,141] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-14 17:04:11,175] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112957
+[2025-04-14 17:04:11,369] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-14 17:04:11,464] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-14 17:04:11,591] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-14 17:04:11,622] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-14 17:04:11,944] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-14 17:04:12,593] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-14 17:04:12: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-14 17:04:12,610] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:12:04,192] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 302 0
+[2025-04-15 10:12:04,212] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-15 10:12:04,539] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:12:04,603] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-04-15 10:12:04,611] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-15 10:12:08,306] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-15 10:12:08,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-04-15 10:12:08,446] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-04-15 10:12:09,023] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113048
+[2025-04-15 10:12:09,120] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js HTTP/1.1" 304 0
+[2025-04-15 10:12:09,120] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js HTTP/1.1" 304 0
+[2025-04-15 10:12:09,174] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:12:09,240] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:12:09,408] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:12:09,507] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js.map HTTP/1.1" 304 0
+[2025-04-15 10:12:09,513] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:12:09,618] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js.map HTTP/1.1" 304 0
+[2025-04-15 10:12:10,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:12:11,357] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:12:11: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:12:11,372] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:18:08,433] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112940
+[2025-04-15 10:18:08,797] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:18:09,155] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:18:09,659] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:18:09,793] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:18:10,383] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:18:11,167] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:18:11: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:18:11,187] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:23:15,960] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112845
+[2025-04-15 10:23:16,159] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:23:16,234] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:23:16,498] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:23:16,584] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:23:17,140] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:23:17,688] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:23:17: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:23:17,706] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:23:54,223] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112845
+[2025-04-15 10:23:54,698] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:23:54,738] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:23:54,826] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:23:54,850] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:23:55,143] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:23:55,549] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:23:55: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:23:55,563] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:24:03,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112845
+[2025-04-15 10:24:03,729] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:24:03,734] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:24:03,863] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:24:03,882] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:24:04,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:24:04,879] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:24:04: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:24:04,904] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:34:27,114] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112909
+[2025-04-15 10:34:27,285] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:34:27,346] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:34:27,570] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:34:27,642] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:34:28,081] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:34:29,037] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:34:29: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:34:29,055] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:34:47,532] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112912
+[2025-04-15 10:34:47,845] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:34:47,911] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:34:48,260] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:34:48,365] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:34:48,984] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:34:49,605] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:34:49: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:34:49,626] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:37:26,965] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112940
+[2025-04-15 10:37:27,170] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:37:27,223] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:37:27,397] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:37:27,406] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:37:27,711] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:37:28,694] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:37:28: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:37:28,715] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 10:51:16,770] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112989
+[2025-04-15 10:51:17,092] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 10:51:17,328] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 10:51:17,814] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 10:51:17,930] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 10:51:18,801] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 10:51:20,120] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 10:51:20: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 10:51:20,142] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 11:10:37,957] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112933
+[2025-04-15 11:10:38,324] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 11:10:38,455] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 11:10:38,768] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 11:10:38,847] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 11:10:39,423] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 11:10:39,956] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 11:10:39: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 11:10:40,005] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 11:12:09,281] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113116
+[2025-04-15 11:12:09,566] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 11:12:09,626] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 11:12:09,965] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 11:12:10,060] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 11:12:10,681] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 11:12:11,326] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 11:12:11: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 11:12:11,349] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 11:14:14,216] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112905
+[2025-04-15 11:14:14,389] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 11:14:14,396] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 11:14:14,493] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 11:14:14,516] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 11:14:14,742] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 11:14:15,381] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 11:14:15: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 11:14:15,395] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 11:16:29,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 112905
+[2025-04-15 11:16:29,927] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 11:16:30,042] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 11:16:30,207] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 11:16:30,252] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 11:16:30,660] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 11:16:32,046] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 11:16:32: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 11:16:32,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 11:20:08,438] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113232
+[2025-04-15 11:20:08,726] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 11:20:08,883] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 11:20:09,107] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 11:20:09,153] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 11:20:09,864] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 11:20:10,763] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 11:20:10: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 11:20:10,785] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 11:47:42,240] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113290
+[2025-04-15 11:47:42,948] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 11:47:43,257] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 11:47:43,914] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 11:47:43,974] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 11:47:44,634] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 11:47:45,520] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 11:47:45: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 11:47:45,549] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 11:53:09,574] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113340
+[2025-04-15 11:53:09,833] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 11:53:10,054] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 11:53:10,557] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 11:53:10,715] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 11:53:11,535] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 11:53:11,847] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 11:53:11: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 11:53:11,863] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 12:01:28,077] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113520
+[2025-04-15 12:01:28,289] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 12:01:28,402] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 12:01:28,630] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 12:01:28,745] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 12:01:29,186] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 12:01:29,696] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 12:01:29: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 12:01:29,715] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 12:07:00,297] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113757
+[2025-04-15 12:07:00,529] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 12:07:00,630] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 12:07:00,918] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 12:07:01,068] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 12:07:01,590] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 12:07:02,579] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 12:07:02: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 12:07:02,605] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 12:08:45,329] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113756
+[2025-04-15 12:08:45,517] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 12:08:45,577] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 12:08:45,779] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 12:08:45,924] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 12:08:46,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 12:08:47,126] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 12:08:47: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 12:08:47,150] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 13:24:58,309] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113986
+[2025-04-15 13:24:58,777] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 13:24:59,107] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 13:24:59,658] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 13:24:59,839] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 13:25:00,949] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 13:25:01,522] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 13:25:01: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 13:25:01,538] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 13:27:22,945] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113981
+[2025-04-15 13:27:23,249] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 13:27:23,520] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 13:27:24,155] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 13:27:24,364] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 13:27:25,488] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 13:27:26,189] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 13:27:26: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 13:27:26,205] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 13:34:40,582] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113987
+[2025-04-15 13:34:40,926] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 13:34:41,042] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 13:34:41,486] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 13:34:41,595] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 13:34:42,536] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 13:34:43,241] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 13:34:43: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 13:34:43,296] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 13:40:14,162] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114180
+[2025-04-15 13:40:14,384] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 13:40:14,452] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 13:40:14,670] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 13:40:14,742] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 13:40:15,172] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 13:40:15,953] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 13:40:15: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 13:40:15,977] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 13:41:37,956] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114180
+[2025-04-15 13:41:38,273] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 13:41:38,408] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 13:41:38,582] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 13:41:38,589] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 13:41:38,881] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 13:41:40,193] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 13:41:40: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 13:41:40,217] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 13:54:05,946] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114225
+[2025-04-15 13:54:06,377] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 13:54:06,414] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 13:54:06,776] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 13:54:06,917] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 13:54:07,624] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 13:54:08,281] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 13:54:08: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 13:54:08,314] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 13:56:48,155] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114236
+[2025-04-15 13:56:48,464] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 13:56:48,892] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 13:56:49,251] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 13:56:49,410] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 13:56:50,205] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 13:56:50,817] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 13:56:50: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 13:56:50,840] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:03:52,322] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114479
+[2025-04-15 14:03:52,622] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:03:52,795] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:03:53,162] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:03:53,255] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:03:54,001] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:03:54,553] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:03:54: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:03:54,572] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:05:27,216] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114477
+[2025-04-15 14:05:27,406] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:05:27,486] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:05:27,727] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:05:27,813] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:05:28,510] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:05:29,678] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:05:29: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:05:29,699] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:16:54,994] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114610
+[2025-04-15 14:16:56,645] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:16:57,212] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:16:57: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:16:57,247] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:16:57,834] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:16:57,920] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:16:57,930] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:16:57,931] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:17:22,594] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114610
+[2025-04-15 14:17:22,854] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:17:23,025] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:17:23,230] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:17:23,275] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:17:23,784] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:17:24,418] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:17:24: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:17:24,435] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:18:53,280] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114623
+[2025-04-15 14:18:53,501] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:18:53,536] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:18:53,645] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:18:53,679] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:18:54,115] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:18:54,571] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:18:54: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:18:54,590] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:19:26,926] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114568
+[2025-04-15 14:19:27,327] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:19:27,522] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:19:27,734] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:19:27,779] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:19:28,230] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:19:29,316] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:19:29: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:19:29,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:20:00,393] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114477
+[2025-04-15 14:20:00,607] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:20:00,680] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:20:00,804] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:20:00,826] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:20:01,235] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:20:01,967] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:20:01: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:20:01,986] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:21:13,202] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114605
+[2025-04-15 14:21:13,992] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:21:14,011] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:21:14,028] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:21:14,039] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:21:14,647] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:21:15,097] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:21:15: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:21:15,119] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:29:00,136] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 114728
+[2025-04-15 14:29:00,339] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:29:00,436] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:29:00,681] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:29:00,828] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:29:01,299] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:29:02,170] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:29:02: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:29:02,188] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 14:30:22,013] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 113819
+[2025-04-15 14:30:22,223] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 14:30:22,340] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 14:30:22,587] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 14:30:22,676] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 14:30:23,217] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 14:30:24,033] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 14:30:24: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 14:30:24,049] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 15:04:59,946] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115275
+[2025-04-15 15:05:00,652] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 15:05:00,953] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 15:05:01,602] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 15:05:01,666] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 15:05:02,123] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 15:05:02,888] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 15:05:02: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 15:05:02,915] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 15:06:57,108] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115274
+[2025-04-15 15:06:57,235] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 15:06:57,325] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 15:06:57,530] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 15:06:57,680] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 15:06:58,147] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 15:06:58,682] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 15:06:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 15:06:58,698] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 15:07:16,437] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115266
+[2025-04-15 15:07:16,734] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 15:07:16,866] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 15:07:17,041] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 15:07:17,078] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 15:07:17,494] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 15:07:18,075] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 15:07:18: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 15:07:18,100] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 15:27:53,546] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115424
+[2025-04-15 15:27:53,905] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 15:27:53,971] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 15:27:54,221] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 15:27:54,354] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 15:27:54,849] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 15:27:55,402] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 15:27:55: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 15:27:55,423] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 15:46:47,450] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115199
+[2025-04-15 15:46:47,971] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 15:46:48,291] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 15:46:48,758] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 15:46:48,858] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 15:46:49,583] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 15:46:50,398] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 15:46:50: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 15:46:50,419] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 16:02:45,393] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115113
+[2025-04-15 16:02:45,904] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 16:02:46,162] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 16:02:46,629] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 16:02:46,733] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 16:02:47,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 16:02:47,837] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 16:02:47: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 16:02:47,857] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
+[2025-04-15 16:03:50,518] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115113
+[2025-04-15 16:03:50,768] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-15 16:03:51,045] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-15 16:03:51,401] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-15 16:03:51,521] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-15 16:03:52,311] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-15 16:03:53,089] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-15 16:03:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-15 16:03:53,111] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 979929
