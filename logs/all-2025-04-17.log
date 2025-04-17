@@ -1,0 +1,33 @@
+[2025-04-17 09:42:42,028] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53164
+[2025-04-17 09:42:47,975] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 1643787
+[2025-04-17 09:42:48,039] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-04-17 09:42:49,227] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-17 09:42:52,204] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-17 09:42:52,220] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 97141
+[2025-04-17 09:42:52,350] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/cancel.js HTTP/1.1" 200 423
+[2025-04-17 09:42:58,125] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-17 09:42:58,134] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 302 0
+[2025-04-17 09:43:00,625] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-17 09:43:00,650] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 302 0
+[2025-04-17 09:43:00,922] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 869513
+[2025-04-17 09:43:00,936] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 500 59
+[2025-04-17 09:43:03,435] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 869513
+[2025-04-17 09:43:03,481] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-04-17 09:43:07,366] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-17 09:43:07,377] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 54053
+[2025-04-17 09:43:11,253] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-17 09:43:11,266] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 302 0
+[2025-04-17 09:43:11,394] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/TestDeviceLNV/testdevicelnv/ HTTP/1.1" 200 37231
+[2025-04-17 09:43:11,474] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-04-17 09:43:49,399] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 115208
+[2025-04-17 09:43:49,680] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-04-17 09:43:49,783] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-04-17 09:43:50,024] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-04-17 09:43:50,099] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-04-17 09:43:50,759] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-17 09:43:51,309] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-17 09:43:51: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-17 09:43:51,334] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 213360
+[2025-04-17 09:44:12,857] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-17 09:44:12: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-17 09:44:12,873] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 213360
+[2025-04-17 09:44:15,201] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-04-17 09:44:15: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-04-17 09:44:15,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 930780

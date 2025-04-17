@@ -1,0 +1,1800 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}TestDeviceListLNV{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+<style>
+.el-table th .gutter{
+    display: table-cell!important;
+}
+
+label{
+    color:black;
+}
+
+ .selectMsg{
+     font-size:16px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:aliceblue;
+  }
+
+  .customerContent,.departmentContent,.lessonContent,.groupemployeesContent{
+     margin-left: 20px;
+  }
+
+.inputError{
+    text-align: center;
+    color: crimson;
+    background-color: beige;
+    width: 50%;
+    margin-left: 80px;
+    margin-top: 20px;
+    position: relative;
+}
+
+    /*.el-table .cell {
+      white-space: pre-line;
+      text-align: left;
+    }
+
+     */
+
+  .inputError:before{
+    display:block;
+    content:'';
+    border-width:8px 8px 8px 8px;
+    border-style:solid;
+    border-color:transparent transparent beige transparent;
+
+    /* 定位 */
+    position:absolute;
+    left:50%;
+    top:-16px;
+}
+  .fileUploadContent{
+    display: inline-flex;
+    display: -webkit-inline-flex;
+}
+  .fileUploadContent label{
+    display: inline-block;
+    word-break: keep-all;
+    line-height: 30px;
+}
+.el-checkbox__label{
+    font-size: 18px;
+}
+ .fileUploadContent{
+    padding-left: 15px;
+    margin-bottom: 10px;
+  }
+  .inputPackage{
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  .inputPackage span{
+    position: absolute;
+    line-height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: aliceblue;
+  }
+  .fileUploadContent .showFileName{
+     line-height: 40px;
+     margin-left: 20px;
+     font-size: 18px;
+     color: black;
+   }
+  .inputPackage input{
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+ .selectItem{
+    font-size: 20px;
+    font-weight: bold;
+    color: aliceblue;
+}
+  .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+.el-pagination__total,.el-pagination__jump{
+        color:white;
+    }
+.gutter{
+    display:block!important;
+    width:17px!important;
+}
+
+[v-cloak]{
+    display: none;
+}
+
+#sh {
+    font-size:18px;
+    font-family:微软雅黑;
+    border: 2px solid #9f9ca1;
+}
+
+#sh::-webkit-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh::-moz-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh:-ms-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+.el-table .cell {
+  white-space: pre-wrap; /* 允许内容换行 */
+  word-break: break-word; /* 防止长单词被截断 */
+}
+
+/* 通过 CSS 精准控制删除线 */
+.el-table .strikethrough-row td {
+  text-decoration: line-through !important;
+  color: #999 !important;
+}
+{% comment %}高级技巧：仅特定列显示删除线{% endcomment %}
+/* 只对姓名和年龄列生效 */
+{% comment %}.el-table .strikethrough-row td:nth-child(1),
+.el-table .strikethrough-row td:nth-child(3) {
+  text-decoration: line-through !important;
+}{% endcomment %}
+
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+      <!--搜索框-->
+    <div class="selectMsg" >
+
+           <div class="customerContent">
+                 <label for="customer" style="color: black">Category</label>
+                 <select  ref="Category"  v-model="category1" style="height:40px;width:150px;border-radius:5px 5px 5px 5px;">
+                    <option v-for="(item,key,index) in categoryOptions" >${ item }</option>
+                 </select>
+           </div>
+
+           <div class="customerContent">
+                 <label for="customer" style="color: black">Class</label>
+                 <select  ref="Class"  v-model="class1" style="height:40px;width:150px;border-radius:5px 5px 5px 5px;">
+                    <option v-for="(item,key,index) in classOptions" >${ item }</option>
+                 </select>
+           </div>
+
+           <div style="margin-left: 100px;">
+                 <el-button :loading="elbuttonloading" @click="find" v-cloak type="primary" style="height:40px">搜索</el-button>
+{#                 <el-button  @click="AddInfo" type="success" >Edit</el-button>#}
+                 <el-button @click="exportToExcelWithStrikethrough"  type="info" v-cloak style="height:40px">導出</el-button>
+{#                     <el-button  type="danger" v-if="uploadpermission===1" v-cloak @click="addData" style="margin-left: 20px;">Upload</el-button>#}
+{#                 <el-button @click="deleteData()" type="danger" v-if="permission===1" v-cloak style="margin-left: 20px;width: 80px;">刪除</el-button>#}
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <a href="/static/src/modelfiles/DDMS_TestDeviceList.zip" style="color: orange;font-size: 16px">模板下载<img src="/static/src/back/document_save_2_24px_539656_easyicon.net.png" alt="..."></a>
+           </div>
+
+    </div>
+
+    <div v-cloak class="fileUploadContent" v-if="permission===1">
+         <div class="inputPackage" v-cloak>
+             <span v-cloak>請選擇文件</span>
+             <input v-cloak type="file" id="upload" ref="file" @change="updateFile(event)" v-model="excelFile">
+         </div>
+         <el-button @click="fileUpload" type="warning" style="height:40px" v-cloak> Excel上傳</el-button>
+         <span class="showFileName" v-cloak >${ fileName }</span>
+    </div>
+
+     <el-dialog :visible.sync="add" :close-on-click-modal="false">
+        <template>
+            <el-form ref="form"  :model="form" label-width="100px">
+                  <el-form-item label="Year" prop="Year">
+                      <el-date-picker type="year" placeholder="选择年" v-model="form.Year" value-format="yyyy" style="width: 100%;">
+                      </el-date-picker>
+                  </el-form-item>
+                  <el-form-item label="Jan" prop="Jan">
+                      <el-input  v-model="form.Jan" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Feb" prop="Feb">
+                      <el-input  v-model="form.Feb" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Mar" prop="Mar">
+                      <el-input  v-model="form.Mar" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Apr" prop="Apr">
+                      <el-input  v-model="form.Apr" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="May" prop="May">
+                      <el-input  v-model="form.May" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Jun" prop="Jun">
+                      <el-input  v-model="form.Jun" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="July" prop="July">
+                      <el-input  v-model="form.July" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Aug" prop="Aug">
+                      <el-input  v-model="form.Aug" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Sep" prop="Sep">
+                      <el-input  v-model="form.Sep" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Oct" prop="Oct">
+                      <el-input  v-model="form.Oct" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Nov" prop="Nov">
+                      <el-input  v-model="form.Nov" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Dec" prop="Dec">
+                      <el-input  v-model="form.Dec" ></el-input>
+                  </el-form-item>
+                <div class="el-form-item__content" style="margin-left: 220px;">
+                  <el-form-item>
+                        <el-button type="primary" :loading="elbuttonloading1" @click="addData('form')">確定</el-button>
+                  </el-form-item>
+                </div>
+             </el-form>
+        </template>
+    </el-dialog>
+
+     <el-dialog :visible.sync="update" :close-on-click-modal="false">
+        <template>
+            <el-form ref="form1"  :model="form1" :rules="rules"  label-width="120px">
+                  <el-form-item label="Category" prop="Category">
+                      <el-select v-model="form1.Category" placeholder="请选择">
+                            <el-option
+                                v-for="item in categoryOptions"
+                                :key="item"
+                                :label="item"
+                                :value="item">
+                            </el-option>
+                      </el-select>
+                  </el-form-item>
+                  <el-form-item label="Class" prop="Class">
+                      <el-select v-model="form1.Class" placeholder="请选择">
+                            <el-option
+                                v-for="item in classOptions"
+                                :key="item"
+                                :label="item"
+                                :value="item">
+                            </el-option>
+                      </el-select>
+                  </el-form-item>
+                  <el-form-item label="Type" prop="Type">
+                      <el-input  v-model="form1.Type" type="textarea"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Covered range for case" prop="Covered_range_for_case">
+                      <el-input  v-model="form1.Covered_range_for_case" type="textarea"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Require State" prop="Require_State">
+                      <el-select v-model="form1.Require_State" placeholder="请选择">
+                            <el-option value="Must">Must</el-option>
+                            <el-option value="Optional">Optional</el-option>
+                      </el-select>
+                  </el-form-item>
+                  <el-form-item label="Comments" prop="Comments">
+                      <el-input  v-model="form1.Comments" type="textarea"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Remark" prop="Remark">
+                      <el-input  v-model="form1.Remark" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="ODM status" prop="ODM_status">
+                      <el-input  v-model="form1.ODM_status" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Purchase Plan" prop="Purchase_Plan">
+                      <el-input  v-model="form1.Purchase_Plan" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device Price" prop="Device_Price">
+                      <el-input  v-model="form1.Device_Price" ></el-input>
+                  </el-form-item>
+                  <el-form-item label="Act_Status" prop="Act_Status">
+                      <el-select v-model="form1.Act_Status" placeholder="请选择">
+                            <el-option value="Active">Must</el-option>
+                            <el-option value="Optional">Removed</el-option>
+                      </el-select>
+                  </el-form-item>
+                  <el-form-item label="Device #1" prop="Device1">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device1"
+                              :fetch-suggestions="querySearchDevice1"
+                              placeholder="请输入"
+                              @select="handleSelectDevice1">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status1">
+                      <el-input  v-model="form1.Status1" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period1">
+                      <el-input  v-model="form1.Purchase_period1" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #2" prop="Device2">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device2"
+                              :fetch-suggestions="querySearchDevice2"
+                              placeholder="请输入"
+                              @select="handleSelectDevice2">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status2">
+                      <el-input  v-model="form1.Status2" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period2">
+                      <el-input  v-model="form1.Purchase_period2" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #3" prop="Device3">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device3"
+                              :fetch-suggestions="querySearchDevice3"
+                              placeholder="请输入"
+                              @select="handleSelectDevice3">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status3">
+                      <el-input  v-model="form1.Status3" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period3">
+                      <el-input  v-model="form1.Purchase_period3" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #4" prop="Device4">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device4"
+                              :fetch-suggestions="querySearchDevice4"
+                              placeholder="请输入"
+                              @select="handleSelectDevice4">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status4">
+                      <el-input  v-model="form1.Status4" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period4">
+                      <el-input  v-model="form1.Purchase_period4" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #5" prop="Device5">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device5"
+                              :fetch-suggestions="querySearchDevice5"
+                              placeholder="请输入"
+                              @select="handleSelectDevice5">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status5">
+                      <el-input  v-model="form1.Status5" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period5">
+                      <el-input  v-model="form1.Purchase_period5" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #6" prop="Device6">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device6"
+                              :fetch-suggestions="querySearchDevice6"
+                              placeholder="请输入"
+                              @select="handleSelectDevice6">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status6">
+                      <el-input  v-model="form1.Status6" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period6">
+                      <el-input  v-model="form1.Purchase_period6" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #7" prop="Device7">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device7"
+                              :fetch-suggestions="querySearchDevice7"
+                              placeholder="请输入"
+                              @select="handleSelectDevice7">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status7">
+                      <el-input  v-model="form1.Status7" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period7">
+                      <el-input  v-model="form1.Purchase_period7" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #8" prop="Device8">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device8"
+                              :fetch-suggestions="querySearchDevice8"
+                              placeholder="请输入"
+                              @select="handleSelectDevice8">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status8">
+                      <el-input  v-model="form1.Status8" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period8">
+                      <el-input  v-model="form1.Purchase_period8" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #9" prop="Device9">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device9"
+                              :fetch-suggestions="querySearchDevice9"
+                              placeholder="请输入"
+                              @select="handleSelectDevice9">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status9">
+                      <el-input  v-model="form1.Status9" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period9">
+                      <el-input  v-model="form1.Purchase_period9" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="Device #10" prop="Device10">
+                       <el-autocomplete
+                              class="inline-input"
+                              v-model="form1.Device10"
+                              :fetch-suggestions="querySearchDevice10"
+                              placeholder="请输入"
+                              @select="handleSelectDevice10">
+                       </el-autocomplete>
+                  </el-form-item>
+                  <el-form-item label="Status" prop="Status10">
+                      <el-input  v-model="form1.Status10" :disabled="true"></el-input>
+                  </el-form-item>
+                  <el-form-item label="購買年限" prop="Purchase_period10">
+                      <el-input  v-model="form1.Purchase_period10" :disabled="true"></el-input>
+                  </el-form-item>
+
+{#                <div class="el-form-item__content" style="margin-left: 220px;">#}
+{#                  <el-form-item>#}
+{#                        <el-button type="primary" @click="updateData('form')">確定</el-button>#}
+{#                  </el-form-item>#}
+{#                </div>#}
+                  <div style="display: flex;justify-content: center;">
+                        <el-button type="primary" :loading="elbuttonloading1" @click="updateData()" >確定</el-button>
+                  </div>
+             </el-form>
+        </template>
+    </el-dialog>
+
+  <div class="tableAround">
+
+    <el-input type="text" v-model="search" id="sh" placeholder="請輸入關鍵字搜索..."></el-input><br>
+{#    <span  class="selectItem" v-cloak  v-if="showCustomer&&showDepartment&&showLesson">當前表格信息：${ showYear }/${ showCustomer }/${ showDepartment }/${ showLesson }/${ showGroupEmployees } </span>#}
+    <el-table id="out-table"  ref="tableRef"{% comment %} height="700"{% endcomment %} border stripe :data="datas.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)"
+        style="min-width: 100%;border-radius: 10px"  @selection-change="handleSelectionChange" :row-key="getRowKeys" :span-method="objectSpanMethod" :row-class-name="rowClassName"
+        :header-cell-style="{'background-color':'#fafafa','font-weight':'800','border-bottom':'1px solid rgb(103, 194, 58)'}"
+        v-loading="tableloading"
+        element-loading-text="數據更新中，請稍後"
+        border>
+{#              <el-table-column type="selection" width="50" align="center" fixed></el-table-column>#}
+              <el-table-column  label="Edit" align="center" v-if="permission===1">
+                  <template slot-scope="scope">
+                      <el-button style="border:0;color: #D9B300" type="i" class="ti-pencil-alt"  @click="alertID(scope.row.id,scope.row)"></el-button>
+                  </template>
+              </el-table-column>
+              <el-table-column type="index" :index="indexMethod" align="center"></el-table-column>
+              <el-table-column  prop="Category" label="Category" width="90" align="center"></el-table-column>
+              <el-table-column  prop="Class" label="Class" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Type" label="Type" width="160" align="left"></el-table-column>
+              <el-table-column  prop="Covered_range_for_case" label="Covered range for case" width="180" align="left"></el-table-column>
+              <el-table-column  prop="Require_State" label="Require State" width="80" align="center"></el-table-column>
+              <el-table-column  prop="Comments" label="Comments" width="140" align="left"></el-table-column>
+              <el-table-column  prop="Remark" label="Remark" width="100" align="center"></el-table-column>
+              <el-table-column  prop="ODM_status" label="ODM status" width="110" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_Plan" label="Purchase Plan" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Device_Price" label="Device Price" width="80" align="center"></el-table-column>
+              <el-table-column  prop="Act_Status" label="Act_Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device1" label="Device #1" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status1" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period1" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device2" label="Device #2" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status2" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period2" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device3" label="Device #3" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status3" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period3" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device4" label="Device #4" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status4" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period4" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device5" label="Device #5" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status5" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period5" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device6" label="Device #6" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status6" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period6" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device7" label="Device #7" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status7" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period7" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device8" label="Device #8" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status8" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period8" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device9" label="Device #9" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status9" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period9" label="購買年限" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device10" label="Device #10" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Status10" label="Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_period10" label="購買年限" align="center"></el-table-column>
+
+    </el-table>
+      <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[20, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total_computed">
+        </el-pagination>
+      </div>
+  </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+<script src="/static/js/Element/table.js"></script>
+<script src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/image.js"></script>
+<script src="/static/js/Element/message.js"></script>
+<script src="/static/js/VUE/exceljs/dist/exceljs.min.js"></script>
+<script src="/static/js/VUE/exceljs/dist/exceljs.js"></script>
+<script type="module">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                excelFile:null,
+                uploadFile:null,
+                fileName:"未選擇文件",
+                search:'',
+                loading:false,
+                selectDevice:[],
+                SectionProjectcode:[],
+                yearOptions:[],
+                categoryOptions:[],
+                classOptions:[],
+                ProjectCodeOption:[],
+                ProjectcodeCompal:"",
+                datatype:'',
+                year:'',
+                category1:'',
+                class1:'',
+                editpermission: 0,
+                permission: 0,
+                customerOptions:{},
+                customerError:false,
+                department:'',
+                departmentOptions:[],
+                departmentError:false,
+                tableContent:[],
+                update:false,
+                add:false,
+                ID:"",
+                labelPosition:'right',
+                tableloading: false,
+                elbuttonloading: false,
+                elbuttonloading1: false,
+                form: {
+                    Year: '',
+                    Jan: '',
+                    Feb: '',
+                    Mar: '',
+                    Apr: '',
+                    May: '',
+                    Jun: '',
+                    July: '',
+                    Aug: '',
+                    Sep: '',
+                    Oct: '',
+                    Nov: '',
+                    Dec: '',
+
+                },
+
+                form1: {
+                    Category: '',
+                    Class: '',
+                    Type: '',
+                    Covered_range_for_case: '',
+                    Require_State: '',
+                    Comments: '',
+                    Remark: '',
+                    ODM_status: '',
+                    Purchase_Plan: '',
+                    Device_Price: '',
+                    Act_Status: '',
+                    Device1: '',
+                    Status1: '',
+                    Purchase_period1: '',
+                    Device2: '',
+                    Status2: '',
+                    Purchase_period2: '',
+                    Device3: '',
+                    Status3: '',
+                    Purchase_period3: '',
+                    Device4: '',
+                    Status4: '',
+                    Purchase_period4: '',
+                    Device5: '',
+                    Status5: '',
+                    Purchase_period5: '',
+                    Device6: '',
+                    Status6: '',
+                    Purchase_period6: '',
+                    Device7: '',
+                    Status7: '',
+                    Purchase_period7: '',
+                    Device8: '',
+                    Status8: '',
+                    Purchase_period8: '',
+                    Device9: '',
+                    Status9: '',
+                    Purchase_period9: '',
+                    Device10: '',
+                    Status10: '',
+                    Purchase_period10: '',
+
+                },
+                formData:[],
+                editID: '',
+                multiDeleteVisible:false,
+                multipleSelection: [],
+                //表格信息顯示
+                showCustomer:'',
+                showDepartment:'',
+                //新增信息
+                appendss:false,
+                //分页
+                currentPage: 1,//默认显示第一页
+                pageSize:100,//默认每页显示100条
+                totalNum: null,
+                errMsg:null,
+                 rules: {
+                      Year: [
+                         { required: true, message: "不能為空", trigger:['blur','change'] }
+                      ],
+                      DataType: [
+                         { required: true, message: "不能為空", trigger:['blur','change'] }
+                      ],
+                      CG: [
+                         { required: true, message: "不能為空", trigger:['blur','blur'] }
+                      ],
+                      Customer: [
+                         { required: true, message: "不能為空", trigger:['blur','blur'] }
+                      ],
+                    },
+                //不同的表格需要变动
+                dataColumns: [
+                    { prop: 'Category', label: 'Category' },
+                    { prop: 'Class', label: 'Class' },
+                    { prop: 'Type', label: 'Type' },
+                    { prop: 'Covered_range_for_case', label: 'Covered range for case' },
+                    { prop: 'Require_State', label: 'Require State' },
+                    { prop: 'Comments', label: 'Comments' },
+                    { prop: 'Remark', label: 'Remark' },
+                    { prop: 'ODM_status', label: 'ODM status' },
+                    { prop: 'Purchase_Plan', label: 'Purchase Plan' },
+                    { prop: 'Device_Price', label: 'Device Price' },
+                    { prop: 'Act_Status', label: 'Act_Status' },
+                    { prop: 'Device1', label: 'Device #1' },
+                    { prop: 'Status1', label: 'Status' },
+                    { prop: 'Purchase_period1', label: '購買年限' },
+                    { prop: 'Device2', label: 'Device #2' },
+                    { prop: 'Status2', label: 'Status' },
+                    { prop: 'Purchase_period2', label: '購買年限' },
+                    { prop: 'Device3', label: 'Device #3' },
+                    { prop: 'Status3', label: 'Status' },
+                    { prop: 'Purchase_period3', label: '購買年限' },
+                    { prop: 'Device4', label: 'Device #4' },
+                    { prop: 'Status4', label: 'Status' },
+                    { prop: 'Purchase_period4', label: '購買年限' },
+                    { prop: 'Device5', label: 'Device #5' },
+                    { prop: 'Status5', label: 'Status' },
+                    { prop: 'Purchase_period5', label: '購買年限' },
+                    { prop: 'Device6', label: 'Device #6' },
+                    { prop: 'Status6', label: 'Status' },
+                    { prop: 'Purchase_period6', label: '購買年限' },
+                    { prop: 'Device7', label: 'Device #7' },
+                    { prop: 'Status7', label: 'Status' },
+                    { prop: 'Purchase_period7', label: '購買年限' },
+                    { prop: 'Device8', label: 'Device #8' },
+                    { prop: 'Status8', label: 'Status' },
+                    { prop: 'Purchase_period8', label: '購買年限' },
+                    { prop: 'Device9', label: 'Device #9' },
+                    { prop: 'Status9', label: 'Status' },
+                    { prop: 'Purchase_period9', label: '購買年限' },
+                    { prop: 'Device10', label: 'Device #10' },
+                    { prop: 'Status10', label: 'Status' },
+                    { prop: 'Purchase_period10', label: '購買年限' },
+                  ],
+                {% comment %}// 扩展场景处理
+                // 多级表头场景：
+                // 在数据列配置中添加 children
+                dataColumns: [
+                  {
+                    label: '基本信息',
+                    children: [
+                      { prop: 'name', label: '姓名' },
+                      { prop: 'age', label: '年龄' }
+                    ]
+                  },
+                  { prop: 'grade', label: '年级' }
+                ],{% endcomment %}
+                //要合并的列
+                Hebing_dataColumns: ['Category', 'Class', 'Covered_range_for_case', 'Comments',],
+
+                  // 合并配置存储
+                    mergeConfig: new Map() /* new Map() 类似于 对象，属于键值对集合，但是此 键值 与 对象的键值 有所不同，此键值可以包含：string / number / Object / Array 或 undefined 等等 */
+
+
+            }
+        },
+
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/TestDeviceLNV/TestDeviceListLNV/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.yearOptions = res.data.yearOptions;
+                    this.categoryOptions = res.data.categoryOptions;
+                    this.classOptions = res.data.classOptions;
+                    this.selectDevice = res.data.DeviceOptions;
+                    this.permission = res.data.permission;
+                    this.tableContent=res.data.content;
+                    this.totalNum = this.tableContent.length;
+                    this.elbuttonloading = false;
+                    this.tableloading = false;
+                    this.$nextTick(() => {
+                       this.$refs.tableRef.doLayout()
+                    })
+                 });
+            },
+
+          createStateFilter(queryString) {
+            return (state) => {
+              return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+            };
+          },
+
+          querySearchDevice1(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update === true){
+                if(this.form1.Device1 == ""){
+                    this.form1.Status1 = ""
+                    this.form1.Purchase_period1 = ""
+                }
+            }
+            if(this.form1.Device1 === results[0].value){
+                    this.form1.Status1 = results[0].Status;
+                    this.form1.Purchase_period1 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice1(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status1 = this.Status;
+                  this.form1.Purchase_period1 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice2(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device2 == ""){
+                    this.form1.Status2 = ""
+                    this.form1.Purchase_period2 = ""
+                }
+            }
+            if(this.form1.Device2 === results[0].value){
+                    this.form1.Status2 = results[0].Status;
+                    this.form1.Purchase_period2 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice2(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status2 = this.Status;
+                  this.form1.Purchase_period2 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice3(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device3 == ""){
+                    this.form1.Status3 = ""
+                    this.form1.Purchase_period3 = ""
+                }
+            }
+            if(this.form1.Device3 === results[0].value){
+                    this.form1.Status3 = results[0].Status;
+                    this.form1.Purchase_period3 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice3(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status3 = this.Status;
+                  this.form1.Purchase_period3 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice4(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device4 == ""){
+                    this.form1.Status4 = ""
+                    this.form1.Purchase_period4 = ""
+                }
+            }
+            if(this.form1.Device4 === results[0].value){
+                    this.form1.Status4 = results[0].Status;
+                    this.form1.Purchase_period4 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice4(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status4 = this.Status;
+                  this.form1.Purchase_period4 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice5(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device5 == ""){
+                    this.form1.Status5 = ""
+                    this.form1.Purchase_period5 = ""
+                }
+            }
+            if(this.form1.Device5 === results[0].value){
+                    this.form1.Status5 = results[0].Status;
+                    this.form1.Purchase_period5 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice5(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status5 = this.Status;
+                  this.form1.Purchase_period5 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice6(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device6 == ""){
+                    this.form1.Status6 = ""
+                    this.form1.Purchase_period6 = ""
+                }
+            }
+            if(this.form1.Device6 === results[0].value){
+                    this.form1.Status6 = results[0].Status;
+                    this.form1.Purchase_period6 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice6(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status6 = this.Status;
+                  this.form1.Purchase_period6 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice7(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device7 == ""){
+                    this.form1.Status7 = ""
+                    this.form1.Purchase_period7 = ""
+                }
+            }
+            if(this.form1.Device7 === results[0].value){
+                    this.form1.Status7 = results[0].Status;
+                    this.form1.Purchase_period7 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice7(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status7 = this.Status;
+                  this.form1.Purchase_period7 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice8(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device8 == ""){
+                    this.form1.Status8 = ""
+                    this.form1.Purchase_period8 = ""
+                }
+            }
+            if(this.form1.Device8 === results[0].value){
+                    this.form1.Status8 = results[0].Status;
+                    this.form1.Purchase_period8 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice8(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status8 = this.Status;
+                  this.form1.Purchase_period8 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice9(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device9 == ""){
+                    this.form1.Status9 = ""
+                    this.form1.Purchase_period9 = ""
+                }
+            }
+            if(this.form1.Device9 === results[0].value){
+                    this.form1.Status9 = results[0].Status;
+                    this.form1.Purchase_period9 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice9(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status9 = this.Status;
+                  this.form1.Purchase_period9 = this.Purchase_period;
+              }
+          },
+
+          querySearchDevice10(queryString, cb) {
+            var selectDevice = this.selectDevice;
+            var results = queryString ? selectDevice.filter(this.createStateFilter(queryString)) : selectDevice;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+            if(this.update == true){
+                if(this.form1.Device10 == ""){
+                    this.form1.Status10 = ""
+                    this.form1.Purchase_period10 = ""
+                }
+            }
+            if(this.form1.Device10 === results[0].value){
+                    this.form1.Status10 = results[0].Status;
+                    this.form1.Purchase_period10 = results[0].Purchase_period;
+            }
+          },
+
+          handleSelectDevice10(item) {
+              this.Status = item.Status;
+              this.Purchase_period = item.Purchase_period;
+              if(this.update == true){
+                  this.form1.Status10 = this.Status;
+                  this.form1.Purchase_period10 = this.Purchase_period;
+              }
+          },
+
+            exportExcel: function () {
+             /* 从表生成工作簿对象 */
+             {#console.log(document.querySelector("#out-table"));#}
+             let temp = [];
+             temp.push(Number(this.currentPage));
+             temp.push(Number(this.pageSize));
+             {#console.log(temp);#}
+             this.currentPage = 1;
+             this.pageSize = this.tableContent.length;
+             {#console.log(temp, this.defaultPage1, this.pageSize);#}
+             setTimeout(() => {
+                 let table = document.querySelector("#out-table").cloneNode(true);
+                 let fix = table.querySelector(".el-table__fixed");
+                 let wb;
+                 if(fix){
+                    wb = XLSX.utils.table_to_book(table.removeChild(fix),{raw: true});
+                    table.appendChild(fix);
+                 }else{
+                    wb = XLSX.utils.table_to_book(table,{raw: true});
+                 }
+                 console.log("wb", wb);
+                 /* 获取二进制字符串作为输出 */
+                 var wbout = XLSX.write(wb, {
+                     bookType: "xlsx",
+                     bookSST: true,
+                     type: "array"
+                 });
+                 console.log("wbout", wbout);
+                 try {
+                     saveAs(
+                         //Blob 对象表示一个不可变、原始数据的类文件对象。
+                         //Blob 表示的不一定是JavaScript原生格式的数据。
+                         //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                         //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                         new Blob([wbout], {type: "application/octet-stream"}),
+                         //设置导出文件名称
+                         "sheetjs.xlsx"
+                     );
+
+                 } catch (e) {
+                     if (typeof console !== "undefined") console.log(e, wbout);
+                 }
+                 this.currentPage = temp[0];
+                 this.pageSize = temp[1];//edwin:要想导出后回到当前页而不是第一页，<el-pagination里面的:page-size="100"，而不能是:page-size="pageSize"
+                 temp = [];
+                 return wbout;
+             }, 100);
+         },
+
+            // 导出
+            //不同的表格需要变动的部分需要根据实际情况调整
+            exportToExcelWithStrikethrough:async function() {
+              // 创建 Workbook 和 Worksheet
+              const workbook = new ExcelJS.Workbook();
+              const worksheet = workbook.addWorksheet('third-party');
+
+              // 模拟数据（需包含样式标记）
+              const data = this.datas;
+
+              // 需要合并的列配置
+                const mergeColumns = this.dataColumns;
+
+                //当Act_Status == Removed时需要加删除列的列号
+                const ShanChuXian_Col = [4,5,6];
+
+
+              // 定义样式
+              // 定义表头样式
+                const headerStyle = {
+                  font: {
+                    name: 'Arial',
+                    family: 4,
+                    size: 12,
+                    //bold: true // 可选加粗
+                  },
+                  border: {
+                    top: { style: 'thin' },
+                    left: { style: 'thin' },
+                    bottom: { style: 'thin' },
+                    right: { style: 'thin' }
+                  },
+                    //填充
+                  fill: {
+                  type: 'pattern',
+                  pattern: 'solid',
+                  fgColor: { argb: 'CECEFF' } // 背景色
+                }
+                };
+
+              const setCellStyle = (cell, isStrike = false) => {
+              // 设置对齐方式
+              cell.alignment = {
+                wrapText: true, // 启用自动换行
+                vertical: 'middle',
+                horizontal: 'left'
+              };
+
+              // 设置边框
+              cell.border = {
+                top: { style: 'thin' },
+                left: { style: 'thin' },
+                bottom: { style: 'thin' },
+                right: { style: 'thin' }
+              };
+              // 设置单元格格式为文本（可选，因为ExcelJS默认会将字符串作为文本处理）
+
+              // 设置删除线
+              if (isStrike) {
+                  cell.font = {
+                      name: 'Calibri', family: 1, size: 11,
+                      strike: true,
+                      color: { argb: 'FFFF0000' }, // 红色文字
+                      bold: true,
+                  };
+                  cell.fill = {
+                      type: 'pattern',
+                      pattern: 'solid',
+                      fgColor: { argb: 'A9A9A9' } //背景
+                    }
+              }else{
+                  cell.font = { name: 'Calibri', family: 1, size: 11, bold: false }; // 可选，设置字体样式
+              }
+            };
+
+              //不同的表格需要变动
+              // 添加表头
+              const headers = [
+                      'No.',
+                     'Category', 'Class', 'Type', 'Covered range for case', 'Require State', 'Comments', 'Remark', 'ODM status', 'Purchase Plan', 'Device Price',
+                     'Act_Status',
+                      'Device #1', 'Status', '購買年限',  'Device #2', 'Status', '購買年限',
+                      'Device #3', 'Status', '購買年限',  'Device #4', 'Status', '購買年限',
+                      'Device #5', 'Status', '購買年限',  'Device #6', 'Status', '購買年限',
+                      'Device #7', 'Status', '購買年限',  'Device #8', 'Status', '購買年限',
+                      'Device #9', 'Status', '購買年限',  'Device #10', 'Status', '購買年限',
+              ];
+              const headerRow = worksheet.addRow(headers);
+              // 应用样式到每个表头单元格
+                headerRow.eachCell((cell) => {
+                  cell.style = headerStyle;
+                });
+
+
+              // 添加数据行
+              data.forEach((row, rowIndex) => {
+                  // 添加数据
+                  //console.log(row);
+                {% comment %}const dataRow = worksheet.addRow(row);{% endcomment %}
+                const rowNumber = rowIndex + 1; // 生成序号（从1开始）
+                const newRowData = [rowNumber]; // 插入序号到数据行首
+                  this.dataColumns.forEach((col)=>{
+                      newRowData.push(row[col.prop])
+                  });
+                const dataRow = worksheet.addRow(newRowData);
+
+                dataRow.eachCell((cell, colNumber) => {
+                    //console.log(colNumber, cell,'cell')
+                    setCellStyle(cell, row.Act_Status === 'Removed' && ShanChuXian_Col.includes(colNumber)); // 传递删除线标识
+                });
+
+              });
+
+              // 合并单元格逻辑（处理原数据列索引到Excel列索引的转换）
+              mergeColumns.forEach((col, colIndex) => {
+                  if (col.prop && this.Hebing_dataColumns.includes(col.prop)) {//特定列合并
+                      const excelColIndex = colIndex + 2; // 原数据列索引转Excel列索引（如原列0→Excel列2）
+                      let startDataIndex = 0;
+                      let previousValue = data[startDataIndex][col.prop];
+
+                      for (let i = 1; i < data.length; i++) {
+                          const currentValue = data[i][col.prop];
+                          if (currentValue !== previousValue) {
+                              if (startDataIndex < i - 1) {
+                                  // 计算合并的Excel行范围
+                                  const startRow = startDataIndex + 2; // 数据行从第2行开始
+                                  const endRow = i - 1 + 2; // i-1对应原数据的最后一行索引
+                                  worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
+                              }
+                              startDataIndex = i;
+                              previousValue = currentValue;
+                          }
+                      }
+
+                      // 处理最后一个连续区间
+                      if (startDataIndex < data.length - 1) {
+                          const startRow = startDataIndex + 2;
+                          const endRow = data.length - 1 + 2;
+                          worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
+                      }
+                  }
+              });
+
+              //不同的表格需要变动
+              worksheet.columns = [{ width: 5 }, { width: 20 }, { width: 20 }, { width: 35 }, { width: 40 }, { width: 10 }, { width: 40 }];//后面的列宽默认
+              // 设置数据验证（下拉列表）到 "性别" 列（第三列，索引为6）
+                const genderOptions = ['Optional', 'Must'];
+                worksheet.getColumn('F').eachCell({ includeEmpty: true }, (cell) => {
+                  // eslint-disable-next-line no-param-reassign
+                  cell.dataValidation = {
+                      type: 'list', // 类型为下拉列表
+                    allowBlank: false, // 是否允许空值（true/false）
+                    formulae: [`"${genderOptions.join(',')}"`], // 选项列表（注意逗号分隔和双引号）
+                    promptTitle: '选择', // 输入提示标题（可选）
+                    prompt: '请从下拉列表中选择', // 输入提示内容（可选）
+                    errorTitle: '输入错误', // 错误提示标题（可选）
+                    error: '只能选择预设的选项！', // 错误提示内容（可选）
+                    showErrorMessage: true // 是否显示错误提示（默认true）
+                  };
+                });
+
+              // 生成文件
+              const buffer = await workbook.xlsx.writeBuffer();
+              saveAs(
+                new Blob([buffer], { type: 'application/octet-stream' }),
+                'SW Test lab device Audit list.xlsx'
+                );
+            },
+
+             AddInfo(){
+                    this.add=true;
+             },
+
+            //上传搜索项：以此选项搜索符合条件的内容Device Price
+            find:function(){
+
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                let Category = this.$refs.Category.value;
+                let Class = this.$refs.Class.value;
+                let data ={"isGetData":"SEARCH","Category":Category,"Class":Class,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()}
+                axios.post("/TestDeviceLNV/TestDeviceListLNV/",Qs.stringify(data), {
+                headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                  this.tableContent=res.data.content;
+                  this.totalNum=this.tableContent.length;
+                  this.permission=res.data.permission;
+                  this.elbuttonloading = false;
+                  this.tableloading = false;
+                  this.yearOptions = res.data.yearOptions;
+                  this.categoryOptions = res.data.categoryOptions;
+                  this.classOptions = res.data.classOptions;
+                  this.$nextTick(() => {
+                       this.$refs.tableRef.doLayout()
+                  })
+                })
+
+             },
+
+            indexMethod(index) {
+                  return index +1;
+            },
+
+            handleSelectionChange(rows) {
+                this.multipleSelection = rows;
+            },
+
+            getRowKeys (row) {
+              return row.id
+            },
+
+
+            updateFile:function(e){
+                const first="未選擇文件";
+                let newValue= e.target.files;
+                if(newValue){
+                 let file=document.getElementById('upload');
+                 let filename= file.files[0].name;
+                 let fileType=filename.substr(filename.lastIndexOf(".")+1);
+                 console.log(fileType.toLowerCase());
+                 if((fileType.toLowerCase() === 'xlsx')||(fileType.toLowerCase() === 'xls')){
+                      //console.log(this.excelFile);
+                     this.fileName=filename;
+                     this.uploadFile=file.files[0];
+                 }else{
+                     alert("上傳類型不為'xlsx'或'xls'");
+                       try{
+                         }catch(e){
+                             console.log(e);
+                         }
+                 }
+             }else{
+                 this.uploadFile=null;
+                 this.fileName=first;
+             }
+      },
+            fileUpload:function(){
+              const first="未選擇文件";
+              if(this.uploadFile){
+                  //1.解析Excel
+                   let outputResult;
+                   let _this= this;
+                   let files = this.uploadFile;
+                   let undefined_to_null=function(value){
+                       if(value === undefined){
+                           value=null;
+                       }
+                       //console.log(value,value === undefined,value == undefined);
+                       return value;
+                   }
+                   var fileReader = new FileReader ();
+                   const loading = this.$loading({
+                              lock: true,
+                              text: 'Loading',
+                              spinner: 'el-icon-loading',
+                              background: 'rgba(0,0,0,0.7)'
+                   });
+                   fileReader.onload = function (ev) {
+                     try {
+                    // _this.loading=true;
+                     var data = ev.target.result,
+                      workbook = XLSX.read(data, {
+                        type: 'binary'
+                     }), // 以二进制流方式读取得到整份excel表格对象
+                      persons = []; // 存储获取到的数据
+                   } catch (e) {
+                     //_this.loading=false;
+                         loading.close();
+                     return;
+                  }
+                  for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        var fromTo = workbook.Sheets[sheet]['!ref'];
+                        // console.log(fromTo);
+                        var datas = workbook.Sheets[sheet];
+                        // 如果有不规范数据可以在这里进行处理datas
+                        persons = persons.concat(XLSX.utils.sheet_to_json(datas));
+                        //break; // 只读了第一张表
+                    }
+            }
+                 // 数据保存在result
+                  let result=JSON.stringify(persons);
+                   //将之前张开的树形结构收起
+                      //_this.reset();
+                   //2.上傳數據
+                  let Category = _this.$refs.Category.value;
+                  let Class = _this.$refs.Class.value;
+                  axios.post("/TestDeviceLNV/TestDeviceListLNV/" ,{"isGetData":"upload","searchCategory":Category,"searchClass":Class,"ExcelData":result},{
+                  headers:{ 'X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式 ==>'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                }).then((res) => {
+                    //console.log(res.data,"first");//上传成功的操作
+                        _this.tableContent=res.data.content;
+                        _this.totalNum=_this.tableContent.length;
+                        _this.$nextTick(() => {
+                           _this.$refs.tableRef.doLayout()
+                        })
+                        _this.errMsg=res.data.errMsg;
+                        _this.permission=res.data.permission;
+                        _this.yearOptions = res.data.yearOptions;
+                        _this.categoryOptions = res.data.categoryOptions;
+                        _this.classOptions = res.data.classOptions;
+                        _this.datatypeOption = res.data.datatypeOption;
+                        _this.uploadFile=null;
+                        _this.fileName=first;
+                   //_this.loading=false;
+                        loading.close();
+                    //上传成功的操作
+                        if(_this.errMsg){
+                            _this.$alert(_this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            _this.$message({
+                                message: '上傳成功',
+                                type: 'success',
+                            })
+                        }
+                    //接受数据的初始化
+                    try{
+                    }catch(e)
+                    {
+                       console.log("错误异常"+e);
+                    }
+                }).catch(function (e) {
+                        //_this.loading=false;
+                        loading.close();
+                        _this.uploadFile=null;
+                        var warning =confirm("上傳異常");
+                        console.log("上傳錯誤信息"+e);
+                    });
+           };
+                   try{
+                   //console.log(fileReader.onload());
+                   fileReader.readAsBinaryString(files);
+                   //console.log(fileReader.readAsBinaryString(files));
+                   }
+                   catch(e){
+                         //this.loading=false;
+                       loading.close();
+                         console.log(e);
+                         alert("文件上傳異常");
+                         return;
+                    }
+                  //console.log(outputResult);
+
+             }else{
+              //this.loading=false;
+                  loading.close();
+              alert("未選擇文件");
+              return false;
+          }
+              this.excelFile='';
+      },
+
+
+            addData(){
+                    if (this.formData.length === 0) {
+                        this.formData = new FormData();
+                    }
+                    this.formData.append('searchYear', this.$refs.Year.value)
+                    this.formData.append('Year', this.$refs.form.model.Year)
+                    this.formData.append('Jan', this.$refs.form.model.Jan)
+                    this.formData.append('Feb', this.$refs.form.model.Feb)
+                    this.formData.append('Mar', this.$refs.form.model.Mar)
+                    this.formData.append('Apr', this.$refs.form.model.Apr)
+                    this.formData.append('May', this.$refs.form.model.May)
+                    this.formData.append('Jun', this.$refs.form.model.Jun)
+                    this.formData.append('July', this.$refs.form.model.July)
+                    this.formData.append('Aug', this.$refs.form.model.Aug)
+                    this.formData.append('Sep', this.$refs.form.model.Sep)
+                    this.formData.append('Oct', this.$refs.form.model.Oct)
+                    this.formData.append('Nov', this.$refs.form.model.Nov)
+                    this.formData.append('Dec', this.$refs.form.model.Dec)
+                    this.formData.append("action", 'addData');
+                    axios.post("/TestDeviceLNV/TestDeviceListLNV/", this.formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        this.tableContent = res.data.content;
+                        this.totalNum = this.tableContent.length;
+                        this.$nextTick(() => {
+                           this.$refs.tableRef.doLayout()
+                        })
+                        this.errMsg=res.data.errMsg;
+                        this.formData = new FormData();
+                        if(this.errMsg){
+                          this.$alert(this.errMsg, '提示', {
+                                type: 'warning',
+                          });
+                          this.add = true;
+                        }else{
+                          try {
+                                  this.$refs.form.resetFields();
+                          } catch (e) {
+
+                          }
+                          this.add = false;
+                          this.$nextTick(() => {
+                                this.$refs.tableRef.doLayout()
+                          })
+                        }
+
+                    })
+            },
+
+
+            updateData() {
+                    this.elbuttonloading1 = true;
+                    if (this.formData.length === 0) {
+                        this.formData = new FormData();
+                    }
+                    this.formData.append('searchCategory', this.$refs.Category.value)
+                    this.formData.append('searchClass', this.$refs.Class.value)
+                    this.formData.append('ID', this.editID)
+                    this.formData.append('Category', this.$refs.form1.model.Category)
+                    this.formData.append('Class', this.$refs.form1.model.Class)
+                    this.formData.append('Type', this.$refs.form1.model.Type)
+                    this.formData.append('Covered_range_for_case', this.$refs.form1.model.Covered_range_for_case)
+                    this.formData.append('Require_State', this.$refs.form1.model.Require_State)
+                    this.formData.append('Comments', this.$refs.form1.model.Comments)
+                    this.formData.append('Remark', this.$refs.form1.model.Remark)
+                    this.formData.append('ODM_status', this.$refs.form1.model.ODM_status)
+                    this.formData.append('Purchase_Plan', this.$refs.form1.model.Purchase_Plan)
+                    this.formData.append('Device_Price', this.$refs.form1.model.Device_Price)
+                    this.formData.append('Act_Status', this.$refs.form1.model.Act_Status)
+                    this.formData.append('Device1', this.$refs.form1.model.Device1)
+                    this.formData.append('Status1', this.$refs.form1.model.Status1)
+                    this.formData.append('Purchase_period1', this.$refs.form1.model.Purchase_period1)
+                    this.formData.append('Device2', this.$refs.form1.model.Device2)
+                    this.formData.append('Status2', this.$refs.form1.model.Status2)
+                    this.formData.append('Purchase_period2', this.$refs.form1.model.Purchase_period2)
+                    this.formData.append('Device3', this.$refs.form1.model.Device3)
+                    this.formData.append('Status3', this.$refs.form1.model.Status3)
+                    this.formData.append('Purchase_period3', this.$refs.form1.model.Purchase_period3)
+                    this.formData.append('Device4', this.$refs.form1.model.Device4)
+                    this.formData.append('Status4', this.$refs.form1.model.Status4)
+                    this.formData.append('Purchase_period4', this.$refs.form1.model.Purchase_period4)
+                    this.formData.append('Device5', this.$refs.form1.model.Device5)
+                    this.formData.append('Status5', this.$refs.form1.model.Status5)
+                    this.formData.append('Purchase_period5', this.$refs.form1.model.Purchase_period5)
+                    this.formData.append('Device6', this.$refs.form1.model.Device6)
+                    this.formData.append('Status6', this.$refs.form1.model.Status6)
+                    this.formData.append('Purchase_period6', this.$refs.form1.model.Purchase_period6)
+                    this.formData.append('Device7', this.$refs.form1.model.Device7)
+                    this.formData.append('Status7', this.$refs.form1.model.Status7)
+                    this.formData.append('Purchase_period7', this.$refs.form1.model.Purchase_period7)
+                    this.formData.append('Device8', this.$refs.form1.model.Device8)
+                    this.formData.append('Status8', this.$refs.form1.model.Status8)
+                    this.formData.append('Purchase_period8', this.$refs.form1.model.Purchase_period8)
+                    this.formData.append('Device9', this.$refs.form1.model.Device9)
+                    this.formData.append('Status9', this.$refs.form1.model.Status9)
+                    this.formData.append('Purchase_period9', this.$refs.form1.model.Purchase_period9)
+                    this.formData.append('Device10', this.$refs.form1.model.Device10)
+                    this.formData.append('Status10', this.$refs.form1.model.Status10)
+                    this.formData.append('Purchase_period10', this.$refs.form1.model.Purchase_period10)
+                    this.formData.append("action", 'update');
+                    axios.post("/TestDeviceLNV/TestDeviceListLNV/", this.formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()
+                        } //改变头格式，原生默认上传json格式
+                    }).then((res) => {
+                        this.tableContent = res.data.content;
+                        this.totalNum = this.tableContent.length;
+                        this.$nextTick(() => {
+                           this.$refs.tableRef.doLayout()
+                        })
+                        this.errMsg=res.data.errMsg;
+                        this.formData = new FormData();
+                        if(this.errMsg){
+                          this.$alert(this.errMsg, '提示', {
+                                type: 'warning',
+                          });
+                          this.update = true;
+                          this.elbuttonloading1 = false;
+                        }else{
+                          try {
+                                  this.$refs.form1.resetFields();
+                          } catch (e) {
+
+                          }
+                          this.update = false;
+                          this.elbuttonloading1 = false;
+                          this.$nextTick(() => {
+                                this.$refs.tableRef.doLayout()
+                          })
+                        }
+
+                    })
+            },
+
+            alertID:function(id,row){
+                 this.update=true;
+                 this.form1.Category=row.Category;
+                 this.form1.Class=row.Class;
+                 this.form1.Type=row.Type;
+                 this.form1.Covered_range_for_case=row.Covered_range_for_case;
+                 this.form1.Require_State=row.Require_State;
+                 this.form1.Comments=row.Comments;
+                 this.form1.Remark=row.Remark;
+                 this.form1.ODM_status=row.ODM_status;
+                 this.form1.Purchase_Plan=row.Purchase_Plan;
+                 this.form1.Device_Price=row.Device_Price;
+                 this.form1.Act_Status=row.Act_Status;
+                 this.form1.Device1=row.Device1;
+                 this.form1.Status1=row.Status1;
+                 this.form1.Purchase_period1=row.Purchase_period1;
+                 this.form1.Device2=row.Device2;
+                 this.form1.Status2=row.Status2;
+                 this.form1.Purchase_period2=row.Purchase_period2;
+                 this.form1.Device3=row.Device3;
+                 this.form1.Status3=row.Status3;
+                 this.form1.Purchase_period3=row.Purchase_period3;
+                 this.form1.Device4=row.Device4;
+                 this.form1.Status4=row.Status4;
+                 this.form1.Purchase_period4=row.Purchase_period4;
+                 this.form1.Device5=row.Device5;
+                 this.form1.Status5=row.Status5;
+                 this.form1.Purchase_period5=row.Purchase_period5;
+                 this.form1.Device6=row.Device6;
+                 this.form1.Status6=row.Status6;
+                 this.form1.Purchase_period6=row.Purchase_period6;
+                 this.form1.Device7=row.Device7;
+                 this.form1.Status7=row.Status7;
+                 this.form1.Purchase_period7=row.Purchase_period7;
+                 this.form1.Device8=row.Device8;
+                 this.form1.Status8=row.Status8;
+                 this.form1.Purchase_period8=row.Purchase_period8;
+                 this.form1.Device9=row.Device9;
+                 this.form1.Status9=row.Status9;
+                 this.form1.Purchase_period9=row.Purchase_period9;
+                 this.form1.Device10=row.Device10;
+                 this.form1.Status10=row.Status10;
+                 this.form1.Purchase_period10=row.Purchase_period10;
+                 this.editID = id;
+
+            },
+    {% comment %}
+            alertID:function(id,row){
+                if(this.permission === 1){
+                     this.update=true;
+                     this.form1.Year=row.Year;
+                     this.form1.Jan=row.Jan;
+                     this.form1.Feb=row.Feb;
+                     this.form1.Mar=row.Mar;
+                     this.form1.Apr=row.Apr;
+                     this.form1.May=row.May;
+                     this.form1.Jun=row.Jun;
+                     this.form1.July=row.July;
+                     this.form1.Aug=row.Aug;
+                     this.form1.Sep=row.Sep;
+                     this.form1.Oct=row.Oct;
+                     this.form1.Nov=row.Nov;
+                     this.form1.Dec=row.Dec;
+                     this.editID = id;
+                    }else{
+                           this.update=false;
+                           this.$message({
+                              showClose: true,
+                              message: '無編輯權限！',
+                              type: 'warning'
+                            });
+                   }
+            },
+
+
+        {% endcomment %}
+            //分页
+            handleSizeChange(val) {
+                  //console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                //console.log(`当前页: ${val}`);
+                  this.currentPage = val;
+                  //console.log(this.tableContent.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize));
+            },
+
+            // 更新合并配置
+            updateMergeConfig() {
+              const config = new Map()/* new Map() 类似于 对象，属于键值对集合，但是此 键值 与 对象的键值 有所不同，此键值可以包含：string / number / Object / Array 或 undefined 等等 */
+
+              this.dataColumns.forEach(col => {
+                if (!col.prop) return
+
+                const spanMap = this.calculateSpans(col.prop)
+                config.set(col.prop, spanMap)//.set添加键值对，new Set() 一般都是用来数组去重，add()为 set 添加数据，返回 set 集合
+              })
+
+              this.mergeConfig = config
+              //console.log(this.mergeConfig, 'this.mergeConfig')
+            },
+
+            // 计算合并规则
+            calculateSpans(prop) {
+                {% comment %}// 自定义合并规则：
+                // 在 calculateSpans 方法中增加自定义判断条
+                            // ...
+              if (this.isSpecialColumn(prop)) {
+                // 特殊合并逻辑
+              } else {
+                // 默认合并逻辑
+              }
+              // ...{% endcomment %}
+              const spanMap = new Array(this.datas.length).fill(1)//创建一个数组并填充对应的数
+                {% comment %}const data = new Array(5).fill().map((v, i) => {
+                        return { name: "XXX" + i, price: i, category: Math.random() > 0.5 ? '蔬菜' : '水果' }
+                    })
+                console.log(data)
+                // (5) [{…}, {…}, {…}, {…}, {…}]
+                //0: {name: "XXX0", price: 0, category: "蔬菜"}
+                //1: {name: "XXX1", price: 1, category: "蔬菜"}
+                //2: {name: "XXX2", price: 2, category: "蔬菜"}
+                //3: {name: "XXX3", price: 3, category: "水果"}
+                //4: {name: "XXX4", price: 4, category: "水果"}
+                //length: 5
+                //__proto__: Array(0){% endcomment %}
+              let mergeCount = 0
+
+              for (let i = 1; i < this.datas.length; i++) {
+                const current = this.datas[i][prop]
+                const prev = this.datas[i-1][prop]
+
+                if (current === prev) {
+                  spanMap[mergeCount] += 1
+                  spanMap[i] = 0
+                } else {
+                  mergeCount = i
+                }
+              }
+
+              return spanMap
+            },
+
+            // 合并单元格方法
+            objectSpanMethod({ row, column, rowIndex, columnIndex }) {
+              // 处理自定义列（无prop）和不需要合并的列
+              //  console.log(column.property, column,  'column.property')
+              if (!column.property || !this.Hebing_dataColumns.includes(column.property)) {
+                return { rowspan: 1, colspan: 1 }//1,1表示没有合并，占一行一列
+              }
+
+              const spanMap = this.mergeConfig.get(column.property)
+              if (!spanMap) return { rowspan: 1, colspan: 1 }
+
+              // 如果当前行是第一个，rowspan是2，colspan是1，这样它就会占据两行。而第二行的同一列则返回rowspan 0，colspan 0，这样单元格就不会渲染，合并到上一个单元格
+              return {
+                rowspan: spanMap[rowIndex],
+                colspan: spanMap[rowIndex] > 0 ? 1 : 0//当spanMap[rowIndex] > 0 取值1，说明就不考虑列之间的合并
+              }
+            },
+
+             rowClassName({ row }) {
+                  return row.Act_Status === 'Removed' ? 'strikethrough-row' : '';
+                },
+
+            {% comment %}// 动态列场景：
+            // 动态添加列时更新合并配置
+            addColumn() {
+              this.dataColumns.push({
+                prop: 'newProp',
+                label: '新增列'
+              })
+              this.updateMergeConfig()
+            },{% endcomment %}
+
+
+        },
+        computed:{
+                datas(){//必须是el-table里面绑定的数据变量,不能与axios接受的变量名一样
+                    //console.log(111)
+                    const search=this.search;
+                    if(search){
+                        return this.tableContent.filter(data=>{//axios返回时接受数据的变量
+                            return Object.keys(data).some(key=>{
+                                return String(data[key]).toLowerCase().indexOf(search.toLowerCase())>-1
+                            })
+                        })
+                    }
+                    return this.tableContent//axios返回时接受数据的变量
+                },
+                total_computed () {
+                    this.Totalsize = this.datas.length;//edwin:export数据的个数
+                    console.log(this.Totalsize);
+                    return this.datas.length//必须是el-table里面绑定的数据变量
+                }
+            },
+        watch: {
+            datas: {
+              handler: 'updateMergeConfig',
+              deep: true,
+              immediate: true
+            }
+          },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+

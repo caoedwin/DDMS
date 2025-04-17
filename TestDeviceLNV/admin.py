@@ -19,7 +19,7 @@ class TestDeviceLNVAdmin(admin.ModelAdmin):
                         'Purchase_Plan', 'Device_Price', 'Device1', 'Device2', 'Device3', 'Device4', 'Device5', 'Device6',
                         'Device7', 'Device8', 'Device9', 'Device10')
     # 列表里显示想要显示的字段
-    list_per_page = 200
+    list_per_page = 500
     # 满50条数据就自动分页
     ordering = ('-Category',)
     #后台数据列表排序方式

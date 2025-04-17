@@ -1207,8 +1207,8 @@ label{
 
               });
 
-              // 合并单元格逻辑（处理原数据列索引到Excel列索引的转换）
-              mergeColumns.forEach((col, colIndex) => {
+              // 合并单元格逻辑（处理原数据列索引到Excel列索引的转换） 常规，值相同合并
+              {% comment %}mergeColumns.forEach((col, colIndex) => {
                   if (col.prop && this.Hebing_dataColumns.includes(col.prop)) {//特定列合并
                       const excelColIndex = colIndex + 2; // 原数据列索引转Excel列索引（如原列0→Excel列2）
                       let startDataIndex = 0;
@@ -1216,26 +1216,45 @@ label{
 
                       for (let i = 1; i < data.length; i++) {
                           const currentValue = data[i][col.prop];
-                          if (currentValue !== previousValue) {
-                              if (startDataIndex < i - 1) {
-                                  // 计算合并的Excel行范围
-                                  const startRow = startDataIndex + 2; // 数据行从第2行开始
-                                  const endRow = i - 1 + 2; // i-1对应原数据的最后一行索引
-                                  worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
+                          if (currentValue !== previousValue) {//常规，值相同合并
+                              if (currentValue !== previousValue) {
+                                  if (startDataIndex < i - 1) {
+                                      // 计算合并的Excel行范围
+                                      const startRow = startDataIndex + 2; // 数据行从第2行开始
+                                      const endRow = i - 1 + 2; // i-1对应原数据的最后一行索引
+                                      console.log(startRow, excelColIndex, endRow, excelColIndex);
+                                      worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
+                                  }
+                                  startDataIndex = i;
+                                  previousValue = currentValue;
                               }
-                              startDataIndex = i;
-                              previousValue = currentValue;
+                          }
+
+                          // 处理最后一个连续区间
+                          if (startDataIndex < data.length - 1) {
+                              const startRow = startDataIndex + 2;
+                              const endRow = data.length - 1 + 2;
+                              worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
                           }
                       }
-
-                      // 处理最后一个连续区间
-                      if (startDataIndex < data.length - 1) {
-                          const startRow = startDataIndex + 2;
-                          const endRow = data.length - 1 + 2;
-                          worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
-                      }
                   }
-              });
+              });{% endcomment %}
+                let excelColIndex = 2;// worksheet的第一列是后加的Num，不在this.datas和data里面，而this.mergeConfig是通过this.datas统计出来的
+                this.mergeConfig.forEach((value, key) => {
+                    //console.log(key, value);
+                    if (this.Hebing_dataColumns.includes(key)){
+                        for (let i = 0; i < value.length; i++) {
+                            if (value[i] !== 0){
+                                const startRow = i + 2; // 数据行从第2行开始,worksheet的第一行是headers，不在this.datas和data里面，而this.mergeConfig是通过this.datas统计出来的
+                                const endRow = startRow + value[i] - 1; // i-1对应原数据的最后一行索引
+                                //console.log(startRow, excelColIndex, endRow, excelColIndex);
+                                worksheet.mergeCells(startRow, excelColIndex, endRow, excelColIndex);
+                            }
+
+                        }
+                    }
+                    excelColIndex++;
+                });
 
               //不同的表格需要变动
               worksheet.columns = [{ width: 5 }, { width: 20 }, { width: 20 }, { width: 35 }, { width: 40 }, { width: 10 }, { width: 40 }];//后面的列宽默认
@@ -1681,7 +1700,7 @@ label{
               this.dataColumns.forEach(col => {
                 if (!col.prop) return
 
-                const spanMap = this.calculateSpans(col.prop)
+                const spanMap = this.calculateSpansFlag(col.prop)
                 config.set(col.prop, spanMap)//.set添加键值对，new Set() 一般都是用来数组去重，add()为 set 添加数据，返回 set 集合
               })
 
@@ -1689,7 +1708,7 @@ label{
               //console.log(this.mergeConfig, 'this.mergeConfig')
             },
 
-            // 计算合并规则
+            // 计算合并规则 常规，值相同合并
             calculateSpans(prop) {
                 {% comment %}// 自定义合并规则：
                 // 在 calculateSpans 方法中增加自定义判断条
@@ -1727,6 +1746,47 @@ label{
                 }
               }
 
+              return spanMap
+            },
+
+            // 计算合并规则 指定标记的合并
+            calculateSpansFlag(prop) {
+                {% comment %}// 自定义合并规则：
+                // 在 calculateSpans 方法中增加自定义判断条
+                            // ...
+              if (this.isSpecialColumn(prop)) {
+                // 特殊合并逻辑
+              } else {
+                // 默认合并逻辑
+              }
+              // ...{% endcomment %}
+              const spanMap = new Array(this.datas.length).fill(1)//创建一个数组并填充对应的数
+                {% comment %}const data = new Array(5).fill().map((v, i) => {
+                        return { name: "XXX" + i, price: i, category: Math.random() > 0.5 ? '蔬菜' : '水果' }
+                    })
+                console.log(data)
+                // (5) [{…}, {…}, {…}, {…}, {…}]
+                //0: {name: "XXX0", price: 0, category: "蔬菜"}
+                //1: {name: "XXX1", price: 1, category: "蔬菜"}
+                //2: {name: "XXX2", price: 2, category: "蔬菜"}
+                //3: {name: "XXX3", price: 3, category: "水果"}
+                //4: {name: "XXX4", price: 4, category: "水果"}
+                //length: 5
+                //__proto__: Array(0){% endcomment %}
+              let mergeCount = 0
+
+              for (let i = 1; i < this.datas.length; i++) {
+                const current = this.datas[i][prop]
+                const prev = this.datas[i-1][prop]
+
+                if (current === '合并标识') {
+                  spanMap[mergeCount] += 1
+                  spanMap[i] = 0
+                } else {
+                  mergeCount = i
+                }
+              }
+              //console.log(spanMap)
               return spanMap
             },
 
