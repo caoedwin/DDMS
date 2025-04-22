@@ -1,0 +1,16 @@
+[2025-04-21 09:11:51,427] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-21 09:15:52,550] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/TestDeviceListLNV/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 227, in TestDeviceListLNV
+    searchCategory = responseData['searchCategory']
+KeyError: 'searchCategory'
+[2025-04-21 09:15:52,558] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-04-21 09:15:52,560] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 105888

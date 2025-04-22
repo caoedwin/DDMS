@@ -195,14 +195,37 @@ def TestDeviceListLNV(request):
                 # print('1')
                 pass
             else:
+                if 'MUTIDELETE' in str(request.body):
+                    responseData = json.loads(request.body)
+                    # CustomerSearch = responseData['Customer']
+                    # ProjectSearch = responseData['Projectcode']
+                    #
+                    # Check_dic_Project = {'Customer': CustomerSearch, 'Project': ProjectSearch, }
+                    # Projectinfo = TestDeviceLNV.objects.filter(**Check_dic_Project).first()
+                    # print(Projectinfo)
+                    # current_user = request.session.get('user_name')
+                    # if Projectinfo:
+                    #     for k in Projectinfo.Owner.all():
+                    #         # print(k.username,current_user)
+                    #         # print(type(k.username),type(current_user))
+                    #         if k.username == current_user:
+                    #             canEdit = 1
+                    #             break
+                    #
+                    # del_dic_IssueBreakdown = {'Customer': CustomerSearch, 'Project': ProjectSearch}
+                    # print(dic_Project)
+
+                    if TestDeviceLNV.objects.all():
+                        # print(1)
+                        TestDeviceLNV.objects.all().delete()
                 # print('2')
                 if 'ExcelData' in str(request.body):
                     responseData = json.loads(request.body)
                     # print(responseData)
                     # print(responseData['historyYear'],type(responseData['historyYear']))
                     xlsxlist = json.loads(responseData['ExcelData'])
-                    searchCategory = responseData['searchCategory']
-                    searchClass = responseData['searchClass']
+                    # searchCategory = responseData['searchCategory']
+                    # searchClass = responseData['searchClass']
                     # Adapterlist = [
                     #     {
                     #         'Number': '編號', }
@@ -303,10 +326,10 @@ def TestDeviceListLNV(request):
 
                     # mock_data
                     check_dic = {}
-                    if searchCategory:
-                        check_dic['Category'] = searchCategory
-                    if searchClass:
-                        check_dic['Class'] = searchClass
+                    # if searchCategory:
+                    #     check_dic['Category'] = searchCategory
+                    # if searchClass:
+                    #     check_dic['Class'] = searchClass
                     if check_dic:
                         TestDeviceLNV_obj = TestDeviceLNV.objects.filter(**check_dic)
 
