@@ -183,7 +183,7 @@ label{
                     <option v-for="(item,key,index) in classOptions" >${ item }</option>
                  </select>
            </div>{% endcomment %}
-        {% comment %}<template>
+        <template>
           <el-upload
             action="#"
             :auto-upload="false"
@@ -192,7 +192,7 @@ label{
           >
             <el-button type="primary">上传Excel文件</el-button>
           </el-upload>
-        </template>{% endcomment %}
+        </template>
         <div v-cloak class="fileUploadContent" v-if="permission===1">
          <div class="inputPackage" v-cloak>
              <span v-cloak>請選擇文件</span>
@@ -1615,8 +1615,9 @@ label{
               return comment || '';
             },
             async sendToDjango(data) {
+                let datas = {'Excelfile': data, 'PostKey': 'ExcelsendToDjango',}
               try {
-                await axios.post('http://localhost:8000/api/excel-upload/', data);
+                await axios.post('/TestDeviceLNV/TestDeviceListLNV/', datas);
                 this.$message.success('上传成功');
               } catch (error) {
                 this.$message.error('上传失败');

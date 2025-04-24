@@ -1,0 +1,14 @@
+[2025-04-24 14:02:55,252] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 35458
+[2025-04-24 14:02:55,287] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 35458
+[2025-04-24 14:02:55,631] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-24 14:02:55,673] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-24 14:03:24,063] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 35458
+[2025-04-24 14:03:24,363] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35458
+[2025-04-24 14:20:02,728] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-04-24 14:20:02,736] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-24 14:20:02,882] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-04-24 14:20:02,892] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-24 14:20:48,373] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-04-24 14:20:48,383] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-04-24 14:20:48,490] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-04-24 14:20:48,494] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823

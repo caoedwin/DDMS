@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/DMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DMS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/all-2025-04-21.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2025-04-21.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/error-2025-04-21.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2025-04-21.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info-2025-04-21.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2025-04-21.log" afterDir="false" />
@@ -40,8 +44,8 @@
     <session id="336981479">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="55" />
-          <entry key="project.open.time.0" value="51" />
+          <entry key="project.closed" value="56" />
+          <entry key="project.open.time.0" value="52" />
           <entry key="project.open.time.1" value="9" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="7" />
@@ -49,33 +53,33 @@
           <entry key="project.open.time.5" value="3" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="78" />
+          <entry key="project.opened" value="79" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="304" />
           <entry key="js" value="8" />
-          <entry key="py" value="440" />
+          <entry key="py" value="441" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="304" />
           <entry key="JavaScript" value="8" />
-          <entry key="Python" value="440" />
+          <entry key="Python" value="441" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="4062" />
-          <entry key="py" value="7595" />
+          <entry key="html" value="4122" />
+          <entry key="py" value="7631" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="4062" />
-          <entry key="Python" value="7595" />
+          <entry key="HTML" value="4122" />
+          <entry key="Python" value="7631" />
         </counts>
       </usages-collector>
     </session>
@@ -85,68 +89,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="185" column="21" selection-start-line="185" selection-start-column="8" selection-end-line="194" selection-end-column="35" />
+            <state relative-caret-position="30780">
+              <caret line="1620" column="46" selection-start-line="1620" selection-start-column="46" selection-end-line="1620" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TestDeviceLNV/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
               <folding>
-                <element signature="n#style#0;n#el-button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#el-dialog#0;n#div#0;n#!!top" />
-                <element signature="n#el-dialog#1;n#div#0;n#!!top" />
-                <element signature="n#el-table#0;n#div#1;n#div#0;n#!!top" />
-                <element signature="e#35830#36931#0#HTML" />
-                <element signature="e#36975#37126#0#HTML" />
-                <element signature="e#37356#38668#0#HTML" />
-                <element signature="e#37175#37835#0#HTML" />
-                <element signature="e#37874#38164#0#HTML" />
-                <element signature="e#38213#38872#0#HTML" />
-                <element signature="e#38911#39201#0#HTML" />
-                <element signature="e#39250#39909#0#HTML" />
-                <element signature="e#39948#40238#0#HTML" />
-                <element signature="e#40287#40946#0#HTML" />
-                <element signature="e#40985#41275#0#HTML" />
-                <element signature="e#41324#41983#0#HTML" />
-                <element signature="e#42022#42312#0#HTML" />
-                <element signature="e#42361#43020#0#HTML" />
-                <element signature="e#43059#43349#0#HTML" />
-                <element signature="e#43398#44057#0#HTML" />
-                <element signature="e#44096#44386#0#HTML" />
-                <element signature="e#44435#45094#0#HTML" />
-                <element signature="e#45133#45423#0#HTML" />
-                <element signature="e#45472#46131#0#HTML" />
-                <element signature="e#46170#46460#0#HTML" />
-                <element signature="e#46510#47175#0#HTML" />
-                <element signature="e#47215#47507#0#HTML" />
-                <element signature="e#47547#49615#0#HTML" />
-                <element signature="e#49733#57883#0#HTML" />
-                <element signature="e#57908#57959#0#HTML" />
-                <element signature="e#58035#59190#0#HTML" />
-                <element signature="e#59224#59274#0#HTML" />
-                <element signature="e#59317#59379#0#HTML" />
-                <element signature="e#59411#59454#0#HTML" />
-                <element signature="e#59492#60441#0#HTML" />
-                <element signature="e#60476#65629#0#HTML" />
-                <element signature="e#68267#69239#0#DjangoTemplate" />
-                <element signature="e#67923#68019#0#HTML" />
-                <element signature="e#68042#68669#0#HTML" />
-                <element signature="e#68716#70082#0#HTML" />
-                <element signature="e#70126#70314#0#HTML" />
-                <element signature="e#70345#70547#0#HTML" />
-                <element signature="e#65654#68300#0#HTML" />
-                <element signature="e#68329#74012#0#HTML" />
-                <element signature="e#74051#76400#0#HTML" />
-                <element signature="e#76406#77520#0#DjangoTemplate" />
-                <element signature="e#77572#77676#0#HTML" />
-                <element signature="e#77715#77943#0#HTML" />
-                <element signature="e#78000#78542#0#HTML" />
-                <element signature="e#78609#80124#0#HTML" />
-                <element signature="e#80194#81747#0#HTML" />
-                <element signature="e#81842#83014#0#HTML" />
-                <element signature="e#83052#83153#0#HTML" />
-                <element signature="e#85479#85894#0#HTML" />
-                <element signature="e#83168#83431#0#DjangoTemplate" />
+                <element signature="e#69#2335#0" />
+                <element signature="e#2338#2368#0" />
               </folding>
             </state>
           </provider>
@@ -155,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://C:/PythonProject/DDMS_TestDeviceList/TestDeviceList.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
+            <state relative-caret-position="1482">
               <caret line="85" column="68" selection-start-line="85" selection-start-column="68" selection-end-line="85" selection-end-column="68" />
               <folding>
                 <element signature="e#23#42#0" expanded="true" />
@@ -167,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DMS/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+            <state relative-caret-position="342">
+              <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -186,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>marked</find>
       <find>mergeConfig</find>
       <find>updateMergeConfig</find>
       <find>dataColumns</find>
@@ -197,12 +155,10 @@
       <find>handleCurrentChange</find>
       <find>calculateSpansFlag</find>
       <find>calculateSpans</find>
-      <find>datas</find>
       <find>1000</find>
       <find>currentPage</find>
       <find>deleteData</find>
       <find>searchCategory</find>
-      <find>value</find>
       <find>rowClassName</find>
       <find>固定</find>
       <find>checkboxT</find>
@@ -216,6 +172,9 @@
       <find>await</find>
       <find>fileUpload</find>
       <find>handleFileChange</find>
+      <find>/TestDeviceLNV/TestDeviceListLNV/</find>
+      <find>datas</find>
+      <find>value</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -270,11 +229,11 @@
         <option value="$USER_HOME$/Downloads/DDMS_TestDeviceList/DDMS_TestDeviceList/TestDeviceList.py" />
         <option value="$PROJECT_DIR$/TestDeviceLNV/admin.py" />
         <option value="$PROJECT_DIR$/TestDeviceLNV/views.py" />
-        <option value="$PROJECT_DIR$/TestDeviceLNV/models.py" />
         <option value="$PROJECT_DIR$/DeviceLNV/views.py" />
         <option value="$PROJECT_DIR$/templates/DeviceLNV/BorrowedDeviceLNV.html" />
         <option value="C:/PythonProject/DDMS_TestDeviceList/TestDeviceList.py" />
         <option value="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" />
+        <option value="$PROJECT_DIR$/TestDeviceLNV/models.py" />
       </list>
     </option>
   </component>
@@ -299,7 +258,7 @@
       <path value="$PROJECT_DIR$/static/vendor/fontawesome-free/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
     <option name="y" value="-12" />
     <option name="width" value="1944" />
@@ -315,7 +274,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reliability_Row_data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -345,7 +304,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TestDeviceList">
+  <component name="RunManager" selected="Django server.DMS">
     <configuration name="login.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DMS/templates/login.html">
       <method v="2" />
     </configuration>
@@ -445,9 +404,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="DMS.settings" />
       </envs>
-      <option name="SDK_HOME" value="C:\Python3129\mecheck\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
@@ -592,11 +551,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="768" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.4921997" visible="true" weight="0.33228347" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.4921997" visible="true" weight="0.33280757" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -607,7 +565,7 @@
       <window_info anchor="bottom" id="SciView" order="9" sideWeight="0.5059571" side_tool="true" weight="0.6687697" />
       <window_info anchor="bottom" content_ui="combo" id="Project" order="10" sideWeight="0.5058548" side_tool="true" weight="0.6687697" />
       <window_info anchor="bottom" id="Database" order="11" sideWeight="0.50158983" side_tool="true" weight="0.24333926" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49959514" weight="0.34700316" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49959514" weight="0.3464567" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32492113" />
       <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50780034" side_tool="true" weight="0.20629922" />
       <window_info anchor="bottom" id="Favorites" order="15" sideWeight="0.5040783" weight="0.22870663" />
@@ -807,10 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="494" column="62" lean-forward="true" selection-start-line="494" selection-start-column="62" selection-end-line="494" selection-end-column="62" />
-          <folding>
-            <element signature="e#34503#36886#0" />
-            <element signature="e#37699#50080#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,13 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="1202" column="26" selection-start-line="1202" selection-start-column="26" selection-end-line="1202" selection-end-column="26" />
-          <folding>
-            <element signature="n#el-dialog#0;n#div#0;n#!!top" />
-            <element signature="n#el-dialog#1;n#div#0;n#!!top" />
-            <element signature="n#el-dialog#2;n#div#0;n#!!top" />
-            <element signature="n#el-dialog#3;n#div#0;n#!!top" />
-            <element signature="n#table#0;n#div#0;n#el-tooltip#0;n#template#0;n#el-table-column#3;n#el-table#0;n#template#0;n#div#2;n#div#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -870,18 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="127" column="44" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="44" />
-          <folding>
-            <element signature="e#1435#3223#0" />
-            <element signature="e#24289#31303#0" />
-            <element signature="e#27135#31061#0" />
-            <element signature="e#31342#34427#0" />
-            <element signature="e#34467#34985#0" />
-            <element signature="e#35034#36312#0" />
-            <element signature="e#36358#42554#0" />
-            <element signature="e#42599#44135#0" />
-            <element signature="e#44176#62200#0" />
-            <element signature="e#62245#67951#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -889,31 +824,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="27" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Reliability_Row_data/static/node_modules/node_modules/exceljs/excel.js" />
     <entry file="file://$PROJECT_DIR$/../Reliability_Row_data/static/node_modules/node_modules/exceljs/dist/exceljs.js" />
     <entry file="file://$PROJECT_DIR$/static/js/Element/message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/VUE/exceljs/dist/exceljs.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/VUE/exceljs/dist/exceljs.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -967,20 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DMS/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestDeviceLNV/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/BorrowedDeviceLNV.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -992,27 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="646" lean-forward="true" selection-start-line="646" selection-end-line="646" />
-          <folding>
-            <element signature="e#2034#28566#0" />
-            <element signature="e#6712#13548#0" />
-            <element signature="e#6712#6814#0" />
-            <element signature="e#13604#14469#0" />
-            <element signature="e#14525#20956#0" />
-            <element signature="e#28568#28582#0" />
-            <element signature="e#29132#30068#0" />
-            <element signature="e#30093#30886#0" />
-            <element signature="e#30911#30984#0" />
-            <element signature="e#31005#31039#0" />
-            <element signature="e#33882#33899#0" />
-            <element signature="e#64310#91586#0" />
-            <element signature="e#91626#119755#0" />
-            <element signature="e#119798#147954#0" />
-            <element signature="e#147996#166427#0" />
-            <element signature="e#166469#186596#0" />
-            <element signature="e#186636#206565#0" />
-            <element signature="e#206609#325215#0" />
-            <element signature="e#325255#417227#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1020,22 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="315" column="37" lean-forward="true" selection-start-line="315" selection-start-column="37" selection-end-line="315" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#6365#6726#0" />
-            <element signature="e#6798#9892#0" />
-            <element signature="e#10155#11347#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/PythonProject/DDMS_TestDeviceList/TestDeviceList.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="85" column="68" selection-start-line="85" selection-start-column="68" selection-end-line="85" selection-end-column="68" />
-          <folding>
-            <element signature="e#23#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1043,77 +912,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="249" column="40" selection-start-line="249" selection-start-column="36" selection-end-line="249" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="185" column="21" selection-start-line="185" selection-start-column="8" selection-end-line="194" selection-end-column="35" />
+        <state relative-caret-position="30780">
+          <caret line="1620" column="46" selection-start-line="1620" selection-start-column="46" selection-end-line="1620" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/PythonProject/DDMS_TestDeviceList/TestDeviceList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1482">
+          <caret line="85" column="68" selection-start-line="85" selection-start-column="68" selection-end-line="85" selection-end-column="68" />
           <folding>
-            <element signature="n#style#0;n#el-button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#el-dialog#0;n#div#0;n#!!top" />
-            <element signature="n#el-dialog#1;n#div#0;n#!!top" />
-            <element signature="n#el-table#0;n#div#1;n#div#0;n#!!top" />
-            <element signature="e#35830#36931#0#HTML" />
-            <element signature="e#36975#37126#0#HTML" />
-            <element signature="e#37356#38668#0#HTML" />
-            <element signature="e#37175#37835#0#HTML" />
-            <element signature="e#37874#38164#0#HTML" />
-            <element signature="e#38213#38872#0#HTML" />
-            <element signature="e#38911#39201#0#HTML" />
-            <element signature="e#39250#39909#0#HTML" />
-            <element signature="e#39948#40238#0#HTML" />
-            <element signature="e#40287#40946#0#HTML" />
-            <element signature="e#40985#41275#0#HTML" />
-            <element signature="e#41324#41983#0#HTML" />
-            <element signature="e#42022#42312#0#HTML" />
-            <element signature="e#42361#43020#0#HTML" />
-            <element signature="e#43059#43349#0#HTML" />
-            <element signature="e#43398#44057#0#HTML" />
-            <element signature="e#44096#44386#0#HTML" />
-            <element signature="e#44435#45094#0#HTML" />
-            <element signature="e#45133#45423#0#HTML" />
-            <element signature="e#45472#46131#0#HTML" />
-            <element signature="e#46170#46460#0#HTML" />
-            <element signature="e#46510#47175#0#HTML" />
-            <element signature="e#47215#47507#0#HTML" />
-            <element signature="e#47547#49615#0#HTML" />
-            <element signature="e#49733#57883#0#HTML" />
-            <element signature="e#57908#57959#0#HTML" />
-            <element signature="e#58035#59190#0#HTML" />
-            <element signature="e#59224#59274#0#HTML" />
-            <element signature="e#59317#59379#0#HTML" />
-            <element signature="e#59411#59454#0#HTML" />
-            <element signature="e#59492#60441#0#HTML" />
-            <element signature="e#60476#65629#0#HTML" />
-            <element signature="e#68267#69239#0#DjangoTemplate" />
-            <element signature="e#67923#68019#0#HTML" />
-            <element signature="e#68042#68669#0#HTML" />
-            <element signature="e#68716#70082#0#HTML" />
-            <element signature="e#70126#70314#0#HTML" />
-            <element signature="e#70345#70547#0#HTML" />
-            <element signature="e#65654#68300#0#HTML" />
-            <element signature="e#68329#74012#0#HTML" />
-            <element signature="e#74051#76400#0#HTML" />
-            <element signature="e#76406#77520#0#DjangoTemplate" />
-            <element signature="e#77572#77676#0#HTML" />
-            <element signature="e#77715#77943#0#HTML" />
-            <element signature="e#78000#78542#0#HTML" />
-            <element signature="e#78609#80124#0#HTML" />
-            <element signature="e#80194#81747#0#HTML" />
-            <element signature="e#81842#83014#0#HTML" />
-            <element signature="e#83052#83153#0#HTML" />
-            <element signature="e#85479#85894#0#HTML" />
-            <element signature="e#83168#83431#0#DjangoTemplate" />
+            <element signature="e#23#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DMS/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestDeviceLNV/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#69#2335#0" />
+            <element signature="e#2338#2368#0" />
           </folding>
         </state>
       </provider>
