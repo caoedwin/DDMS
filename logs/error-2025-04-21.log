@@ -14,3 +14,4 @@ Traceback (most recent call last):
 KeyError: 'searchCategory'
 [2025-04-21 09:15:52,558] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
 [2025-04-21 09:15:52,560] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 500 105888
+[2025-04-22 09:39:33,997] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)

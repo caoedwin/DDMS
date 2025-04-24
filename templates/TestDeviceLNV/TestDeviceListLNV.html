@@ -183,6 +183,16 @@ label{
                     <option v-for="(item,key,index) in classOptions" >${ item }</option>
                  </select>
            </div>{% endcomment %}
+        {% comment %}<template>
+          <el-upload
+            action="#"
+            :auto-upload="false"
+            :on-change="handleFileChange"
+            accept=".xlsx, .xls"
+          >
+            <el-button type="primary">上传Excel文件</el-button>
+          </el-upload>
+        </template>{% endcomment %}
         <div v-cloak class="fileUploadContent" v-if="permission===1">
          <div class="inputPackage" v-cloak>
              <span v-cloak>請選擇文件</span>
@@ -1512,6 +1522,107 @@ label{
               this.excelFile='';
       },
 
+            // 读取excel文件时读取样式，by excel的cell， 而不是键值对
+            //后端对应的model，by cell存储
+            {% comment %}class ExcelCell(models.Model):
+                row = models.IntegerField()
+                col = models.IntegerField()
+                value = models.TextField()
+                formula = models.TextField(null=True, blank=True)  # 存储公式
+                comment = models.TextField(null=True, blank=True)  # 存储批注
+                strike = models.BooleanField(default=False)
+                bold = models.BooleanField(default=False)
+                italic = models.BooleanField(default=False)
+                fontSize = models.CharField(max_length=10, default='12pt')
+                fontName = models.CharField(max_length=50, default='Calibri')
+                color = models.CharField(max_length=7, default='#000000')
+                fill = models.CharField(max_length=7, default='#FFFFFF')
+
+                class Meta:
+                    indexes = [
+                        models.Index(fields=['row', 'col']),
+                    ]{% endcomment %}
+            async handleFileChange(file) {
+              const data = await this.parseExcel(file.raw);
+              await this.sendToDjango(data);
+            },
+            parseExcel(file) {
+              return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  const ab = e.target.result;
+                  const wb = XLSX.read(ab, {
+                    type: 'array',
+                    cellStyles: true,    // 解析样式
+                    cellHTML: true,       // 解析批注（部分支持）
+                    sheetStubs: true      // 保留公式占位符
+                  });
+                  const ws = wb.Sheets[wb.SheetNames[0]];
+
+                  // 提取所有单元格的完整信息
+                  const formattedData = this.extractFullCellInfo(ws, wb);
+                  resolve(formattedData);
+                };
+                reader.readAsArrayBuffer(file);
+              });
+            },
+            extractFullCellInfo(worksheet, workbook) {
+              const range = XLSX.utils.decode_range(worksheet['!ref']);
+              const formattedData = [];
+              for (let row = range.s.r; row <= range.e.r; row++) {
+                const rowData = [];
+                for (let col = range.s.c; col <= range.e.c; col++) {
+                  const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                  const cell = worksheet[cellAddress];
+
+                  // 提取基础内容
+                  const value = cell?.w || cell?.v || '';
+
+                  // 提取公式（如果存在）
+                  const formula = cell?.f ? cell.f : null;
+
+                  // 提取批注（需要特殊处理）
+                  const comment = this.extractComment(cellAddress, workbook);
+
+                  // 提取样式
+                  const style = cell?.s || {};
+                  const font = style.font || {};
+                  const fill = style.fill || {};
+
+                  rowData.push({
+                    value,
+                    formula,  // 公式原始文本
+                    comment,  // 批注内容
+                    style: {
+                      strike: font.strike || false,
+                      bold: font.bold || false,
+                      italic: font.italic || false,
+                      fontSize: font.sz || '12pt',
+                      fontName: font.name || 'Calibri',
+                      color: font.color?.rgb || '#000000',
+                      fill: fill.fgColor?.rgb || '#FFFFFF'
+                    }
+                  });
+                }
+                formattedData.push(rowData);
+              }
+              return formattedData;
+            },
+            extractComment(cellAddress, workbook) {
+              // 批注存储在 workbook 的 `Comments` 或 `xl/comments.xml` 中
+              // 此处简化处理：直接从单元格对象的 `c` 属性获取
+              const comment = workbook.Comments?.[cellAddress]?.t;
+              return comment || '';
+            },
+            async sendToDjango(data) {
+              try {
+                await axios.post('http://localhost:8000/api/excel-upload/', data);
+                this.$message.success('上传成功');
+              } catch (error) {
+                this.$message.error('上传失败');
+              }
+            },
+            // 读取excel文件时读取样式，by excel的cell， 而不是键值对
 
             addData(){
                     if (this.formData.length === 0) {
