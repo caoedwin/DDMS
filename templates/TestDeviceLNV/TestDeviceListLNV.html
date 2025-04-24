@@ -187,7 +187,8 @@ label{
           <el-upload
             action="#"
             :auto-upload="false"
-            :on-change="handleFileChange"
+            {% comment %}:on-change="handleFileChange"{% endcomment %}
+            :on-change="handleFileChange_Json"
             accept=".xlsx, .xls"
           >
             <el-button type="primary">上传Excel文件</el-button>
@@ -1624,6 +1625,145 @@ label{
               }
             },
             // 读取excel文件时读取样式，by excel的cell， 而不是键值对
+
+            // 读取excel文件时读取样式，（动态解析表头）
+            //后端对应的model，
+            {% comment %}from django.db import models
+            from django.contrib.postgres.fields import JSONField  # 若使用PostgreSQL
+
+            class ExcelUpload(models.Model):
+                headers = JSONField()  # 存储表头 ["姓名", "年龄", ...]
+                uploaded_at = models.DateTimeField(auto_now_add=True)
+
+            class ExcelData(models.Model):
+                upload = models.ForeignKey(ExcelUpload, on_delete=models.CASCADE)
+                row_index = models.IntegerField()  # 数据行号（从0开始）
+                row_data = JSONField()  # 存储结构：{"姓名": {"value": "张三", "style": {...}}, ...}{% endcomment %}
+            {% comment %}
+            2.2 序列化器（serializers.py）
+            python
+            from rest_framework import serializers
+            from .models import ExcelUpload, ExcelData
+
+            class ExcelUploadSerializer(serializers.ModelSerializer):
+                class Meta:
+                    model = ExcelUpload
+                    fields = ['id', 'headers', 'uploaded_at']
+
+            class ExcelDataSerializer(serializers.ModelSerializer):
+                class Meta:
+                    model = ExcelData
+                    fields = ['upload', 'row_index', 'row_data']
+            2.3 视图逻辑（views.py）
+            python
+            from rest_framework.views import APIView
+            from rest_framework.response import Response
+            from rest_framework import status
+            from .models import ExcelUpload, ExcelData
+            from .serializers import ExcelUploadSerializer
+
+            class ExcelUploadView(APIView):
+                def post(self, request):
+                    headers = request.data.get('headers', [])
+                    data = request.data.get('data', [])
+
+                    try:
+                        # 创建上传记录
+                        upload = ExcelUpload.objects.create(headers=headers)
+
+                        # 批量保存数据
+                        excel_data = [
+                            ExcelData(
+                                upload=upload,
+                                row_index=idx,
+                                row_data=row
+                            ) for idx, row in enumerate(data)
+                        ]
+                        ExcelData.objects.bulk_create(excel_data)
+
+                        return Response(
+                            ExcelUploadSerializer(upload).data,
+                            status=status.HTTP_201_CREATED
+                        )
+                    except Exception as e:
+                        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            3. 数据查询示例
+            3.1 查询某次上传的所有数据
+            python
+            upload = ExcelUpload.objects.get(id=1)
+            data = ExcelData.objects.filter(upload=upload).order_by('row_index')
+
+            for row in data:
+                print(f"Row {row.row_index}:")
+                for col_name, cell_data in row.row_data.items():
+                    print(f"  {col_name}: {cell_data['value']}")
+                    print(f"    Style: {cell_data['style']}")
+            3.2 根据列名筛选数据
+            python
+            # 查找所有 "年龄" 大于 30 的行
+            target_data = []
+            for data_row in ExcelData.objects.filter(upload__id=1):
+                age_cell = data_row.row_data.get('年龄', {})
+                if age_cell.get('value', 0) > 30:
+                    target_data.append(data_row.row_data){% endcomment %}
+            async handleFileChange_Json(file) {
+              const { headers, data } = await this.parseExcel_Json(file.raw);
+              await this.sendToDjango_Json({ headers, data });
+            },
+            parseExcel_Json(file) {
+              return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  const ab = e.target.result;
+                  const wb = XLSX.read(ab, { type: 'array', cellStyles: true });
+                  const ws = wb.Sheets[wb.SheetNames[0]];
+                  const rawData = XLSX.utils.sheet_to_json(ws, { header: 1, raw: false });
+
+                  // 找到第一个非空行作为表头
+                  const headerRowIndex = rawData.findIndex(row => row.some(cell => cell !== ''));
+                  const headers = rawData[headerRowIndex].map(cell => cell.trim() || `column_${Date.now()}`);
+
+                  // 提取数据行（跳过表头行）
+                  const dataRows = rawData.slice(headerRowIndex + 1);
+
+                  // 转换为键值对结构（含样式）
+                  const formattedData = this.formatDataWithStyles_Json(ws, headers, headerRowIndex, dataRows);
+                  resolve({ headers, data: formattedData });
+                };
+                reader.readAsArrayBuffer(file);
+              });
+            },
+            formatDataWithStyles_Json(worksheet, headers, headerRowIndex, dataRows) {
+                //这个表达式是一个箭头函数，它会遍历 dataRows 数组中的每个元素 row,rowIndex，然后返回 rowData 的值。最终的结果是一个有对象组成的新数组。
+              return dataRows.map((row, rowIndex) => {
+                const rowData = {};
+                row.forEach((cellValue, colIndex) => {
+                  const cellAddress = XLSX.utils.encode_cell({ r: headerRowIndex + rowIndex + 1, c: colIndex });
+                  const cell = worksheet[cellAddress];
+                  const style = cell?.s || {};
+
+                  rowData[headers[colIndex]] = {
+                    value: cellValue,
+                    style: {
+                      strike: style.font?.strike || false,
+                      color: style.font?.color?.rgb || '#000000',
+                      fill: style.fill?.fgColor?.rgb || '#FFFFFF'
+                    }
+                  };
+                });
+                return rowData;
+              });
+            },
+            async sendToDjango_Json(payload) {
+                let datas = {'Excelfile': payload, 'PostKey': 'ExcelsendToDjango',}
+              try {
+                await axios.post('/TestDeviceLNV/TestDeviceListLNV/', datas);
+                this.$message.success('数据上传成功');
+              } catch (error) {
+                this.$message.error('上传失败');
+              }
+            },
+            // 读取excel文件时读取样式，（动态解析表头）
 
             addData(){
                     if (this.formData.length === 0) {
