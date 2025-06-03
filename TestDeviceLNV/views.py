@@ -22,6 +22,7 @@ headermodel_TestDevice = {
     'Covered range for case': 'Covered_range_for_case',
     'Require State': 'Require_State', 'Comments': 'Comments', 'Remark': 'Remark', 'ODM status': 'ODM_status',
     'Purchase Plan': 'Purchase_Plan', 'Device Price': 'Device_Price', 'Act_Status': 'Act_Status',
+    'Device Know Issue': 'Device_Know_Issue',
     'Device #1': 'Device1',
     'Device #2': 'Device2',
     'Device #3': 'Device3',
@@ -158,6 +159,7 @@ def TestDeviceListLNV(request):
                     "Purchase_Plan": request.POST.get('Purchase_Plan') if request.POST.get('Purchase_Plan') else '',
                     "Device_Price": request.POST.get('Device_Price') if request.POST.get('Device_Price') and request.POST.get('Device_Price') != 'null' else None, #从有值变成空值的更新,整型，浮点型，日期都是None
                     "Act_Status": request.POST.get('Act_Status') if request.POST.get('Act_Status') else '',
+                    "Device_Know_Issue": request.POST.get('Device_Know_Issue') if request.POST.get('Device_Know_Issue') else '',
                     "Device1": request.POST.get('Device1') if request.POST.get('Device1') else '',
                     "Device2": request.POST.get('Device2') if request.POST.get('Device2') else '',
                     "Device3": request.POST.get('Device3') if request.POST.get('Device3') else '',
@@ -363,6 +365,7 @@ def TestDeviceListLNV(request):
                         "Comments": i.Comments, "Remark": i.Remark, "ODM_status": i.ODM_status,
                         "Purchase_Plan": i.Purchase_Plan, "Device_Price": i.Device_Price,
                         "Act_Status": i.Act_Status,
+                        "Device_Know_Issue": i.Device_Know_Issue,
                         # "Device1": i.Device1, "Status1": Status_dict['Status1'],
                         # "Purchase_period1": Useyears_dict['Useyears1'],
                         # "Device2": i.Device2, "Status2": Status_dict['Status2'],

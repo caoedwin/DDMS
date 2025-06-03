@@ -7,7 +7,7 @@ class TestDeviceLNVAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields' : ('Category', 'Class', 'Type', 'Covered_range_for_case', 'Require_State', 'Comments', 'Remark', 'ODM_status',
-                        'Purchase_Plan', 'Device_Price', 'Device1', 'Device2', 'Device3', 'Device4', 'Device5', 'Device6',
+                        'Purchase_Plan', 'Device_Price', 'Device_Know_Issue', 'Device1', 'Device2', 'Device3', 'Device4', 'Device5', 'Device6',
                         'Device7', 'Device8', 'Device9', 'Device10', )
         }),
         # ('Advanced options',{
@@ -16,7 +16,7 @@ class TestDeviceLNVAdmin(admin.ModelAdmin):
         # }),
     )
     list_display = ('Category', 'Class', 'Type', 'Covered_range_for_case', 'Require_State', 'Comments', 'Remark', 'ODM_status',
-                        'Purchase_Plan', 'Device_Price', 'Device1', 'Device2', 'Device3', 'Device4', 'Device5', 'Device6',
+                        'Purchase_Plan', 'Device_Price', 'Device_Know_Issue', 'Device1', 'Device2', 'Device3', 'Device4', 'Device5', 'Device6',
                         'Device7', 'Device8', 'Device9', 'Device10')
     # 列表里显示想要显示的字段
     list_per_page = 500

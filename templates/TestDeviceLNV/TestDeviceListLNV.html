@@ -183,17 +183,17 @@ label{
                     <option v-for="(item,key,index) in classOptions" >${ item }</option>
                  </select>
            </div>{% endcomment %}
-        <template>
+        {% comment %}<template>
           <el-upload
             action="#"
             :auto-upload="false"
-            {% comment %}:on-change="handleFileChange"{% endcomment %}
+            :on-change="handleFileChange"
             :on-change="handleFileChange_Json"
             accept=".xlsx, .xls"
           >
             <el-button type="primary">上传Excel文件</el-button>
           </el-upload>
-        </template>
+        </template>{% endcomment %}
         <div v-cloak class="fileUploadContent" v-if="permission===1">
          <div class="inputPackage" v-cloak>
              <span v-cloak>請選擇文件</span>
@@ -327,6 +327,9 @@ label{
                             <el-option value="Active">Must</el-option>
                             <el-option value="Optional">Removed</el-option>
                       </el-select>
+                  </el-form-item>
+                  <el-form-item label="Device Know Issue" prop="Device_Know_Issue">
+                      <el-input  v-model="form1.Device_Know_Issue" ></el-input>
                   </el-form-item>
                   <el-form-item label="Device #1" prop="Device1">
                        <el-autocomplete
@@ -520,6 +523,7 @@ label{
               <el-table-column  prop="Purchase_Plan" label="Purchase Plan" width="120" align="center"></el-table-column>
               <el-table-column  prop="Device_Price" label="Device Price" width="80" align="center"></el-table-column>
               <el-table-column  prop="Act_Status" label="Act_Status" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device_Know_Issue" label="Device Know Issue" width="100" align="center"></el-table-column>
               <el-table-column  prop="Device1" label="Device #1" width="120" align="center"></el-table-column>
               <el-table-column  prop="Status1" label="Status" width="100" align="center"></el-table-column>
               <el-table-column  prop="Purchase_period1" label="購買年限" width="100" align="center"></el-table-column>
@@ -642,6 +646,7 @@ label{
                     Purchase_Plan: '',
                     Device_Price: '',
                     Act_Status: '',
+                    Device_Know_Issue: '',
                     Device1: '',
                     Status1: '',
                     Purchase_period1: '',
@@ -715,6 +720,7 @@ label{
                     { prop: 'Purchase_Plan', label: 'Purchase Plan' },
                     { prop: 'Device_Price', label: 'Device Price' },
                     { prop: 'Act_Status', label: 'Act_Status' },
+                    { prop: 'Device_Know_Issue', label: 'Device_Know_Issue' },
                     { prop: 'Device1', label: 'Device #1' },
                     { prop: 'Status1', label: 'Status' },
                     { prop: 'Purchase_period1', label: '購買年限' },
@@ -1230,7 +1236,7 @@ label{
               const headers = [
                       'No.',
                      'Category', 'Class', 'Type', 'Covered range for case', 'Require State', 'Comments', 'Remark', 'ODM status', 'Purchase Plan', 'Device Price',
-                     'Act_Status',
+                     'Act_Status', 'Device_Know_Issue',
                       'Device #1', 'Status', '購買年限',  'Device #2', 'Status', '購買年限',
                       'Device #3', 'Status', '購買年限',  'Device #4', 'Status', '購買年限',
                       'Device #5', 'Status', '購買年限',  'Device #6', 'Status', '購買年限',
@@ -1989,6 +1995,7 @@ label{
                     this.formData.append('Purchase_Plan', this.$refs.form1.model.Purchase_Plan)
                     this.formData.append('Device_Price', this.$refs.form1.model.Device_Price)
                     this.formData.append('Act_Status', this.$refs.form1.model.Act_Status)
+                    this.formData.append('Device_Know_Issue', this.$refs.form1.model.Device_Know_Issue)
                     this.formData.append('Device1', this.$refs.form1.model.Device1)
                     this.formData.append('Status1', this.$refs.form1.model.Status1)
                     this.formData.append('Purchase_period1', this.$refs.form1.model.Purchase_period1)
@@ -2068,6 +2075,7 @@ label{
                  this.form1.Purchase_Plan=row.Purchase_Plan;
                  this.form1.Device_Price=row.Device_Price;
                  this.form1.Act_Status=row.Act_Status;
+                 this.form1.Device_Know_Issue=row.Device_Know_Issue;
                  this.form1.Device1=row.Device1;
                  this.form1.Status1=row.Status1;
                  this.form1.Purchase_period1=row.Purchase_period1;
