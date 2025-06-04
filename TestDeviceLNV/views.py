@@ -44,6 +44,51 @@ def TestDeviceListLNV(request):
         # print(request.session.get('is_login', None))
         return redirect('/login/')
     weizhi = "TestDeviceLNV/TestDeviceListLNV"
+
+    # 1. 始终为动态列设置唯一的: key属性
+    # #
+    # # 2. 固定列（fixed）可在配置中添加fixed: 'left' / 'right'属性
+    # #
+    # # 3. 排序功能可通过添加sortable属性实现
+    # #
+    # # 4. 表头分组需嵌套使用el - table - column（ElementUI不支持单层动态分组）
+    # # < el - table - column
+    # #     v-for ="col in tableColumns"
+    # #     :key = "col.prop"
+    # #     :prop = "col.prop"
+    # #     :label = "col.label"
+    # #     :width = "col.width"
+    # #     :align = "col.align"
+    # #
+    # # >
+    # #     //自定义内容，如果只要默认的，直接去点下面的template这一段
+    # #     <template #default="scope">
+    # #         <!-- 自定义内容 -->
+    # #         <span v-if="col.type === 'text'">{{ scope.row[col.field] }}</span>
+    # #         <el-tag v-else-if="col.type === 'tag'">{{ scope.row[col.field] }}</el-tag>
+    # #       </template>
+    # # < / el - table - column >
+    # fields = TestDeviceLNV._meta.get_fields()
+    #
+    # # 提取字段名和 verbose_name（过滤关系字段）
+    # tableColumns = [
+    #               {'id': 1, 'prop': 'status', 'lable': '状态', 'type': 'tag', 'width': '120', 'align': 'center'},
+    #               {'id': 2, 'prop': 'createTime', 'lable': '创建时间', 'type': 'text', 'width': '180', 'align': 'center'}
+    #             ]
+    # for field in fields:
+    #     # 跳过自动生成的反向关系字段
+    #     if field.auto_created:
+    #         continue
+    #
+    #     tableColumns.append({
+    #         'prop': field.name,  # 字段名（如 'title'）
+    #         'lable': field.verbose_name,  # 友好名称（如 "书名"）
+    #         'type': 'tag',
+    #         'width': '120'
+    #         'align': 'center'
+    #     })
+    # print(tableColumns)
+
     categoryOptions = [
         # "Sensor", "USB Function", "Thonderbolt"
     ]
@@ -402,6 +447,7 @@ def TestDeviceListLNV(request):
                 mock_dic[keyStatus] = Status_dict[keyStatus]
                 mock_dic[keyperiod] = Useyears_dict[keyUse]
             mock_data.append(mock_dic)
+
 
         data = {
             "errMsg": errMsg,
