@@ -35,6 +35,71 @@ headermodel_TestDevice = {
     'Device #10': 'Device10',
 }
 
+from django.db import models
+
+
+def map_field_type(field):
+    """映射 Django 字段类型到前端显示类型"""
+    if isinstance(field, models.BooleanField):
+        return 'switch'
+    elif isinstance(field, (models.DateField, models.DateTimeField)):
+        return 'date'
+    elif isinstance(field, models.ForeignKey):
+        return 'relation'
+    elif isinstance(field, models.TextField):
+        return 'long-text'
+    elif isinstance(field, models.FileField):
+        return 'file'
+    elif isinstance(field, models.CharField):
+        return 'text'
+    else:
+        return 'text'  # 默认类型
+
+
+def calculate_field_width(field):
+    """计算字段建议宽度"""
+    # 基于 max_length 的宽度计算
+    if hasattr(field, 'max_length') and field.max_length:
+        # 每字符约 8px，最小宽度 100px，最大 300px
+        return min(max(field.max_length * 8, 100), 300)
+
+    # 基于字段类型的默认宽度
+    field_type = map_field_type(field)
+    type_widths = {
+        'switch': 100,
+        'date': 150,
+        'datetime': 180,
+        'relation': 200,
+        'file': 220,
+        'long-text': 300,
+        'text': 180
+    }
+    return type_widths.get(field_type, 180)  # 默认 180px
+
+
+def get_table_columns(model):
+    columns = []
+    for field in model._meta.fields:
+        # 跳过不需要的字段（如 ID）
+        if field.name == 'id' or field.name.endswith('_ptr'):
+            continue
+
+        # 基本字段配置
+        field_config = {
+            'field': field.name,
+            'title': field.verbose_name,  # 使用 verbose_name 作为标题
+            'type': map_field_type(field),
+            'width': calculate_field_width(field),
+            'align': "center",
+        }
+
+        # 添加字段特定属性
+        if hasattr(field, 'choices') and field.choices:
+            field_config['choices'] = dict(field.choices)
+
+        columns.append(field_config)
+    return columns
+
 
 
 
@@ -45,7 +110,7 @@ def TestDeviceListLNV(request):
         return redirect('/login/')
     weizhi = "TestDeviceLNV/TestDeviceListLNV"
 
-    # 1. 始终为动态列设置唯一的: key属性
+    # # 1. 始终为动态列设置唯一的: key属性
     # #
     # # 2. 固定列（fixed）可在配置中添加fixed: 'left' / 'right'属性
     # #
@@ -62,32 +127,61 @@ def TestDeviceListLNV(request):
     # #
     # # >
     # #     //自定义内容，如果只要默认的，直接去点下面的template这一段
-    # #     <template #default="scope">
-    # #         <!-- 自定义内容 -->
-    # #         <span v-if="col.type === 'text'">{{ scope.row[col.field] }}</span>
-    # #         <el-tag v-else-if="col.type === 'tag'">{{ scope.row[col.field] }}</el-tag>
-    # #       </template>
+    #         < !-- 根据字段类型使用不同的渲染方式 -->
+    #         < template  # default="scope">
+    #         < !-- 布尔值显示开关 -->
+    #         < el - switch
+    #         v - if = "col.type === 'switch'"
+    #         v - model = "scope.row[col.prop]"
+    #         disabled
+    #
+    #         / >
+    #
+    #         < !-- 日期格式化 -->
+    #         < span
+    #         v - else - if = "col.type === 'date'" >
+    #         ${formatDate(scope.row[col.prop])}
+    #         < / span >
+    #
+    #         < !-- 外键关系显示关联对象名称 -->
+    #         < span
+    #         v - else - if = "col.type === 'relation'" >
+    #         ${scope.row[col.prop + '_name']} <!-- 假设返回了关联对象名称 -->
+    #         < / span >
+    #
+    #         < !-- 长文本使用
+    #         tooltip
+    #         显示 -->
+    #         < el - tooltip
+    #         v - else - if = "col.type === 'long-text'"
+    #         :content = "scope.row[col.prop]"
+    #         placement = "top"
+    #         >
+    #         < span
+    #
+    #
+    #         class ="text-truncate" >
+    #
+    #
+    #         ${truncateText(scope.row[col.prop], 30)}
+    #         < / span >
+    #         < / el - tooltip >
+    #
+    #         < !-- 默认文本显示 -->
+    #         < span
+    #         v - else >
+    #         ${scope.row[col.prop]}
+    #         < / span >
+    #         < / template >
     # # < / el - table - column >
-    # fields = TestDeviceLNV._meta.get_fields()
-    #
-    # # 提取字段名和 verbose_name（过滤关系字段）
-    # tableColumns = [
-    #               {'id': 1, 'prop': 'status', 'lable': '状态', 'type': 'tag', 'width': '120', 'align': 'center'},
-    #               {'id': 2, 'prop': 'createTime', 'lable': '创建时间', 'type': 'text', 'width': '180', 'align': 'center'}
-    #             ]
-    # for field in fields:
-    #     # 跳过自动生成的反向关系字段
-    #     if field.auto_created:
-    #         continue
-    #
-    #     tableColumns.append({
-    #         'prop': field.name,  # 字段名（如 'title'）
-    #         'lable': field.verbose_name,  # 友好名称（如 "书名"）
-    #         'type': 'tag',
-    #         'width': '120'
-    #         'align': 'center'
-    #     })
-    # print(tableColumns)
+
+    # 提取字段名和 verbose_name（过滤关系字段）
+    tableColumns = [
+        # {'id': 1, 'prop': 'status', 'lable': '状态', 'type': 'tag', 'width': '120', 'align': 'center'},
+        #             {'id': 2, 'prop': 'createTime', 'lable': '创建时间', 'type': 'text', 'width': '180', 'align': 'center'}
+    ]
+    tableColumns = get_table_columns(TestDeviceLNV)
+    print(tableColumns)
 
     categoryOptions = [
         # "Sensor", "USB Function", "Thonderbolt"
