@@ -104,10 +104,11 @@ def just_open(filename):
 
 @task
 def GetTumdata():
+    DATE_NOW = str(datetime.datetime.now().date())
+    path = settings.BASE_DIR
+    file_flag = path + '/logs/' + 'TUMInputflag-%s.txt' % (
+                DATE_NOW.split("-")[0] + DATE_NOW.split("-")[1] + DATE_NOW.split("-")[2])
     try:
-        DATE_NOW = str(datetime.datetime.now().date())
-        path = settings.BASE_DIR
-        file_flag = path + '/logs/' + 'TUMInputflag-%s.txt' % (DATE_NOW.split("-")[0] + DATE_NOW.split("-")[1] + DATE_NOW.split("-")[2])
         print(file_flag)
         with open(file_flag, 'w') as f:  # 设置文件对象
             print('start:', datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), file=f)
@@ -164,14 +165,15 @@ def GetTumdata():
 
 
         with open(file_flag, 'a') as f:  # 设置文件对象
-            print('finish:', datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), file=f)
-            print(msg, file=f)
+            print('finish:', datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + msg, file=f)
+            # print(msg, file=f)
     except Exception as e:
         # path = settings.BASE_DIR
         # file_flag = path + '/' + 'TUMInputflag.txt'
+        print(str(e))
         with open(file_flag, 'a') as f:  # 设置文件对象
-            print('err:', datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), file=f)
-            print(str(e), file=f)
+            print('err:', datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + str(e), file=f)
+
 
 
 @task
