@@ -1,0 +1,25 @@
+[2025-06-27 08:16:05,534] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-06-27 08:16:05,543] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-06-27 08:16:05,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-06-27 08:16:05,805] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-06-27 08:16:09,493] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-06-27 08:16:09,511] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-06-27 08:16:09,538] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-06-27 08:16:09,691] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 44830
+[2025-06-27 08:16:10,655] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-06-27 08:16:10,694] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-06-27 08:16:10: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-06-27 08:16:10,720] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2025-06-27 08:16:10,793] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2025-06-27 08:16:10,794] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2025-06-27 08:16:41,556] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 126330
+[2025-06-27 08:16:41,615] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js HTTP/1.1" 304 0
+[2025-06-27 08:16:41,616] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js HTTP/1.1" 304 0
+[2025-06-27 08:16:41,882] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-06-27 08:16:42,455] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-06-27 08:16:42: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-06-27 08:16:42,471] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 952220
+[2025-06-27 08:17:25,161] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-06-27 08:17:25: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-06-27 08:17:25,197] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 952220
+[2025-06-27 08:17:59,524] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-06-27 08:17:59: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-06-27 08:17:59,547] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 952250
+[2025-06-27 08:18:32,781] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-06-27 08:18:32: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2025-06-27 08:18:32,811] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 952271

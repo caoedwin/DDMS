@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +38,8 @@
     <session id="336981479">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="64" />
-          <entry key="project.open.time.0" value="57" />
+          <entry key="project.closed" value="66" />
+          <entry key="project.open.time.0" value="59" />
           <entry key="project.open.time.1" value="9" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="8" />
@@ -49,34 +49,34 @@
           <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="88" />
+          <entry key="project.opened" value="90" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="dir" value="1" />
-          <entry key="html" value="314" />
+          <entry key="html" value="315" />
           <entry key="js" value="8" />
-          <entry key="py" value="473" />
+          <entry key="py" value="475" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="314" />
+          <entry key="HTML" value="315" />
           <entry key="JavaScript" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="473" />
+          <entry key="Python" value="475" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="4292" />
+          <entry key="html" value="4318" />
           <entry key="py" value="7775" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="4292" />
+          <entry key="HTML" value="4318" />
           <entry key="Python" value="7775" />
         </counts>
       </usages-collector>
@@ -86,7 +86,29 @@
     <favorites_list name="DMS" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="231" column="61" selection-start-line="231" selection-start-column="61" selection-end-line="231" selection-end-column="61" />
+              <folding>
+                <element signature="e#10398#10624#0#HTML" />
+                <element signature="e#10643#11014#0#HTML" />
+                <element signature="e#11033#11217#0#HTML" />
+                <element signature="e#11236#11382#0#HTML" />
+                <element signature="e#11401#11559#0#HTML" />
+                <element signature="e#11578#11745#0#HTML" />
+                <element signature="e#11764#11928#0#HTML" />
+                <element signature="e#11947#12293#0#HTML" />
+                <element signature="e#12312#12491#0#HTML" />
+                <element signature="n#el-table#0;n#div#1;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -99,8 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>handleFileChange_Json</find>
-      <find>handleFileChange</find>
       <find>sendToDjango_Json</find>
       <find>Summ</find>
       <find>工作機</find>
@@ -129,6 +149,8 @@
       <find>updateMergeConfig</find>
       <find>calculateSpans</find>
       <find>Act_Status</find>
+      <find>EmailMultiAlternatives</find>
+      <find>labelPosition</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,10 +206,10 @@
         <option value="$PROJECT_DIR$/app01/templatetags/custom_tag.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/TestDeviceLNV/models.py" />
-        <option value="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" />
         <option value="$PROJECT_DIR$/TestDeviceLNV/admin.py" />
         <option value="$PROJECT_DIR$/TestDeviceLNV/views.py" />
         <option value="$PROJECT_DIR$/app01/tasks.py" />
+        <option value="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" />
       </list>
     </option>
   </component>
@@ -213,9 +235,10 @@
       <path value="$PROJECT_DIR$/static/vendor/fontawesome-free/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
-    <option name="width" value="912" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="813" />
     <option name="height" value="573" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -224,8 +247,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DMS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DMS" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -508,11 +546,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="767" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" side_tool="true" weight="0.1564734" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" side_tool="true" visible="true" weight="0.1564734" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49258393" weight="1.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49258393" visible="true" weight="0.22555205" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -565,13 +603,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DeviceA31PCP/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="7115" column="72" selection-start-line="7115" selection-start-column="72" selection-end-line="7115" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DeviceA31TPE/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
@@ -858,13 +889,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="509" column="47" lean-forward="true" selection-start-line="509" selection-start-column="47" selection-end-line="509" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestDeviceLNV/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -879,10 +903,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python3129/mecheck/Lib/site-packages/django/db/models/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app01/tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+        <state relative-caret-position="382">
+          <caret line="604" selection-start-line="604" selection-end-line="604" />
+          <folding>
+            <element signature="e#7584#7804#0" />
+            <element signature="e#7837#8056#0" />
+            <element signature="e#8095#9698#0" />
+            <element signature="e#9743#11362#0" />
+            <element signature="e#11397#13570#0" />
+            <element signature="e#13611#15657#0" />
+            <element signature="e#15733#16057#0" />
+            <element signature="e#20792#20838#0" />
+            <element signature="e#20994#25075#0" />
+            <element signature="e#25114#25130#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="231" column="61" selection-start-line="231" selection-start-column="61" selection-end-line="231" selection-end-column="61" />
+          <folding>
+            <element signature="e#10398#10624#0#HTML" />
+            <element signature="e#10643#11014#0#HTML" />
+            <element signature="e#11033#11217#0#HTML" />
+            <element signature="e#11236#11382#0#HTML" />
+            <element signature="e#11401#11559#0#HTML" />
+            <element signature="e#11578#11745#0#HTML" />
+            <element signature="e#11764#11928#0#HTML" />
+            <element signature="e#11947#12293#0#HTML" />
+            <element signature="e#12312#12491#0#HTML" />
+            <element signature="n#el-table#0;n#div#1;n#div#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

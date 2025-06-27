@@ -162,7 +162,11 @@ label{
 .el-table .strikethrough-row td:nth-child(3) {
   text-decoration: line-through !important;
 }{% endcomment %}
-
+/*表格内容换行显示*/
+  .el-table  .cell{
+     {#text-align: left;#}
+      white-space: pre-line;
+ }
 </style>
 {% endblock %}
 {% block content %}
@@ -220,61 +224,16 @@ label{
 
 
 
-     <el-dialog :visible.sync="add" :close-on-click-modal="false">
-        <template>
-            <el-form ref="form"  :model="form" label-width="100px">
-                  <el-form-item label="Year" prop="Year">
-                      <el-date-picker type="year" placeholder="选择年" v-model="form.Year" value-format="yyyy" style="width: 100%;">
-                      </el-date-picker>
-                  </el-form-item>
-                  <el-form-item label="Jan" prop="Jan">
-                      <el-input  v-model="form.Jan" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Feb" prop="Feb">
-                      <el-input  v-model="form.Feb" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Mar" prop="Mar">
-                      <el-input  v-model="form.Mar" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Apr" prop="Apr">
-                      <el-input  v-model="form.Apr" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="May" prop="May">
-                      <el-input  v-model="form.May" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Jun" prop="Jun">
-                      <el-input  v-model="form.Jun" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="July" prop="July">
-                      <el-input  v-model="form.July" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Aug" prop="Aug">
-                      <el-input  v-model="form.Aug" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Sep" prop="Sep">
-                      <el-input  v-model="form.Sep" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Oct" prop="Oct">
-                      <el-input  v-model="form.Oct" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Nov" prop="Nov">
-                      <el-input  v-model="form.Nov" ></el-input>
-                  </el-form-item>
-                  <el-form-item label="Dec" prop="Dec">
-                      <el-input  v-model="form.Dec" ></el-input>
-                  </el-form-item>
-                <div class="el-form-item__content" style="margin-left: 220px;">
-                  <el-form-item>
-                        <el-button type="primary" :loading="elbuttonloading1" @click="addData('form')">確定</el-button>
-                  </el-form-item>
-                </div>
-             </el-form>
-        </template>
-    </el-dialog>
 
-     <el-dialog :visible.sync="update" :close-on-click-modal="false">
+
+     <el-dialog :visible.sync="update" :close-on-click-modal="false" width="80%">
+         <el-radio-group v-model="labelPosition" size="small">
+          <el-radio-button label="left">左对齐</el-radio-button>
+          <el-radio-button label="right">右对齐</el-radio-button>
+          <el-radio-button label="top">顶部对齐</el-radio-button>
+        </el-radio-group>
         <template>
-            <el-form ref="form1"  :model="form1" :rules="rules"  label-width="120px">
+            <el-form :label-position="labelPosition" ref="form1"  :model="form1" :rules="rules"  label-width="140px" size="medium">
                   <el-form-item label="Category" prop="Category">
                       <el-select v-model="form1.Category" placeholder="请选择" :disabled="true">
                             <el-option
@@ -329,7 +288,7 @@ label{
                       </el-select>
                   </el-form-item>
                   <el-form-item label="Device Know Issue" prop="Device_Know_Issue">
-                      <el-input  v-model="form1.Device_Know_Issue" ></el-input>
+                      <el-input  v-model="form1.Device_Know_Issue" type="textarea"></el-input>
                   </el-form-item>
                   <el-form-item label="Device #1" prop="Device1">
                        <el-autocomplete
@@ -517,13 +476,13 @@ label{
               <el-table-column  prop="Type" label="Type" width="160" align="left"></el-table-column>
               <el-table-column  prop="Covered_range_for_case" label="Covered range for case" width="180" align="left"></el-table-column>
               <el-table-column  prop="Require_State" label="Require State" width="80" align="center"></el-table-column>
-              <el-table-column  prop="Comments" label="Comments" width="140" align="left"></el-table-column>
+              <el-table-column  prop="Comments" label="Comments" width="180" align="left"></el-table-column>
               <el-table-column  prop="Remark" label="Remark" width="100" align="center"></el-table-column>
               <el-table-column  prop="ODM_status" label="ODM status" width="110" align="center"></el-table-column>
               <el-table-column  prop="Purchase_Plan" label="Purchase Plan" width="120" align="center"></el-table-column>
               <el-table-column  prop="Device_Price" label="Device Price" width="80" align="center"></el-table-column>
               <el-table-column  prop="Act_Status" label="Act_Status" width="100" align="center"></el-table-column>
-              <el-table-column  prop="Device_Know_Issue" label="Device Know Issue" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device_Know_Issue" label="Device Know Issue" width="250" align="left"></el-table-column>
               <el-table-column  prop="Device1" label="Device #1" width="120" align="center"></el-table-column>
               <el-table-column  prop="Status1" label="Status" width="100" align="center"></el-table-column>
               <el-table-column  prop="Purchase_period1" label="購買年限" width="100" align="center"></el-table-column>
