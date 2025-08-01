@@ -37,6 +37,8 @@ import pprint
 def ImportPersonalInfo(Customer='', SAPNum='', GroupNum='', Status='', DepartmentCode=''):
     url = r'http://127.0.0.1:8002/PersonalInfo/api_Per/login/'
     url2 = r'http://127.0.0.1:8002/PersonalInfo/Perapi/?'
+    # url = r'http://192.168.1.9:8002/PersonalInfo/api_Per/login/'
+    # url2 = r'http://192.168.1.9:8002/PersonalInfo/Perapi/?'
     requests.adapters.DEFAULT_RETRIES = 1
     # s = requests.session()
     # s.keep_alive = False  # 关闭多余连接
@@ -864,6 +866,7 @@ def UserInfoedit(request):
     if request.method == "POST":
         if request.POST.get("isGetData") == "first":
             Pers_list = ImportPersonalInfo()
+            # print(Pers_list)
             if Pers_list:
                 pass
             for i in UserInfo.objects.all():

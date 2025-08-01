@@ -1,0 +1,934 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}智能柜管理系统{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<style>
+    /* 新增柜体管理样式 */
+    .cabinets-bar {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .cabinet-tab {
+        padding: 8px 15px;
+        background: #ecf5ff;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .cabinet-tab.active {
+        background: #409EFF;
+        color: white;
+    }
+    .cabinet-tab.active .delete-cabinet-btn {
+        color: white;
+        border-color: rgba(255,255,255,0.6);
+    }
+    .delete-cabinet-btn {
+        margin-left: 10px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 1px solid #dcdfe6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        line-height: 1;
+        transition: all 0.3s;
+    }
+    .delete-cabinet-btn:hover {
+        background: #ff4d4f;
+        color: white;
+        border-color: #ff4d4f;
+        transform: rotate(90deg);
+    }
+    .cabinet-section {
+        margin-bottom: 30px;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+    .cabinet-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    /* el-table网格布局样式 */
+    .grid-table-container {
+        margin-bottom: 30px;
+        overflow: auto;
+    }
+    .grid-table {
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+    .grid-table .el-table__body .el-table__cell {
+        padding: 0;
+        height: 80px;
+    }
+    .grid-cell {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition: all 0.3s;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: center;
+        vertical-align: middle;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #dcdfe6;
+    }
+    .grid-cell:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+    .cell-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 5px;
+    }
+    .position-id {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 3px;
+    }
+    .status-text {
+        font-size: 12px;
+        margin-top: 3px;
+    }
+    .status-free {
+        background-color: #f0f2f5;
+    }
+    .status-free:hover {
+        background-color: #e4e7ed;
+    }
+    .status-in-use {
+        background-color: #d1f0db;
+    }
+    .status-reserved {
+        background-color: #fdf6ec;
+    }
+    .status-reserved:hover {
+        background-color: #fbe7d0;
+    }
+
+    /* 原有样式保持不变 */
+    .cabinet-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .cabinet-main-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: linear-gradient(90deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+    .cabinet-main-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+    .cabinet-main-header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    .control-panel {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+    }
+    .control-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    .user-type {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: #f0f7ff;
+        padding: 10px 20px;
+        border-radius: 30px;
+    }
+    .role-btn {
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+    }
+    .role-btn.active {
+        background: #409EFF;
+        color: white;
+    }
+    .dimension-control {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .dimension-input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .dimension-input label {
+        font-weight: 500;
+        color: #555;
+    }
+    .grid-container {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+        min-height: 500px;
+        overflow: auto;
+    }
+    .legend {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+    }
+    .legend-free {
+        background-color: #f0f2f5;
+        border: 1px solid #dcdfe6;
+    }
+    .legend-in-use {
+        background-color: #d1f0db;
+    }
+    .legend-reserved {
+        background-color: #fdf6ec;
+    }
+    .statistics {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .stat-card {
+        text-align: center;
+        padding: 15px 25px;
+    }
+    .stat-value {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+    .stat-label {
+        font-size: 1rem;
+        color: #666;
+    }
+    .cabinet-footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #666;
+        font-size: 0.9rem;
+    }
+    .dialog-form .el-form-item {
+        margin-bottom: 22px;
+    }
+    @media (max-width: 768px) {
+        .control-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .dimension-control {
+            width: 100%;
+            justify-content: space-between;
+        }
+        .grid-table .el-table__body .el-table__cell {
+            height: 60px;
+        }
+    }
+
+    /* 原有样式保持不变 */
+    .showColor:hover{
+        color: red;
+    }
+    .el-table--border th.gutter:last-of-type {
+      display: block!important;
+    }
+    .el-table th.gutter{
+        display: table-cell!important;
+      }
+    .selectMsg{
+         font-size:17px;
+          padding: 15px;
+          display: flex;
+          flex-wrap: wrap;
+      }
+    .selectMsg label{
+          font-weight: 800;
+          margin-right: 10px;
+          color:black;
+      }
+    .customerContent,.changjiaContent,.pnContent,.powerContent{
+         margin-left: 20px;
+    }
+    .showNum{
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+    }
+     .tableAround{
+        padding: 20px;
+        -moz-box-shadow: 0px 0px 10px #333333;
+        -webkit-box-shadow: 0px 0px 10px #333333;
+        box-shadow: 0px 0px 10px #333333;
+        border-radius: 10px;
+        background-color: rgba(255,255,255,0.1);
+    }
+    #sh {
+        font-size:18px;
+        font-family:微软雅黑;
+        border: 2px solid #9f9ca1;
+    }
+    #sh::-webkit-input-placeholder{
+            color:#2f97a8;
+        font-family:微软雅黑;
+    }
+    #sh::-moz-placeholder{
+            color:#2f97a8;
+        font-family:微软雅黑;
+    }
+    #sh:-ms-input-placeholder{
+            color:#2f97a8;
+        font-family:微软雅黑;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+    <!-- 智能柜管理系统 -->
+    <div id="cabinet-app">
+        <div class="cabinet-container">
+            <div class="cabinet-main-header">
+                <h1>智能柜管理系统</h1>
+                <p>动态生成柜格布局，实时监控柜格状态</p>
+            </div>
+
+            <!-- 柜体管理栏 -->
+            <div class="cabinets-bar">
+                <el-button type="primary" icon="el-icon-plus" @click="openAddCabinetDialog">添加柜体</el-button>
+
+                <div class="cabinets-tabs">
+                    <div v-for="(cabinet, index) in cabinets"
+                         :key="cabinet.id"
+                         class="cabinet-tab"
+                         :class="{active: currentCabinetId === cabinet.id}"
+                         @click="setActiveCabinet(cabinet.id)">
+                        柜体 ${ index + 1 }
+                        <span class="delete-cabinet-btn" @click.stop="removeCabinet(cabinet.id)"
+                              title="删除柜体">×</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <div class="control-row">
+                    <el-radio-group v-model="isAdmin" size="medium">
+                        <el-radio-button :label="true" style="padding: 8px 20px; border-radius: 20px;">管理员</el-radio-button>
+                        <el-radio-button :label="false" style="padding: 8px 20px; border-radius: 20px;">普通用户</el-radio-button>
+                    </el-radio-group>
+
+                    {% comment %}<div class="dimension-control">
+                        <div class="dimension-input">
+                            <label>行数：</label>
+                            <el-input-number v-model="currentCabinet.rows" :min="1" :max="20" size="medium"></el-input-number>
+                        </div>
+                        <div class="dimension-input">
+                            <label>列数：</label>
+                            <el-input-number v-model="currentCabinet.cols" :min="1" :max="20" size="medium"></el-input-number>
+                        </div>
+                        <el-button type="primary" size="medium" @click="generateGridForCabinet(currentCabinetId)">生成柜格布局</el-button>{% endcomment %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- 柜体循环展示区 -->
+            <div v-for="cabinet in cabinets" :key="cabinet.id" class="cabinet-section">
+                <div class="cabinet-header">
+                    <h2>柜体 ${ cabinet.name }</h2>
+                    <el-button
+                        type="text"
+                        icon="el-icon-delete"
+                        @click="removeCabinet(cabinet.id)"
+                        style="color: #f56c6c;">删除此柜体</el-button>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-table-container" v-if="cabinet.gridData && cabinet.gridData.length">
+                        <el-table
+                            :data="transformGridData(cabinet.gridData)"
+                            class="grid-table"
+                            :show-header="false"
+                            border
+                            :row-style="{height: '80px'}"
+                            :cell-style="{padding: '0', textAlign: 'center', verticalAlign: 'middle'}">
+                            <el-table-column
+                                v-for="(col, colIndex) in cabinet.cols"
+                                :key="colIndex"
+                                :label="''"
+                                width="82">
+                                <template slot-scope="scope">
+                                    <div
+                                        class="grid-cell"
+                                        :class="scope.row.cells[colIndex].statusClass"
+                                        @click="handleCellClick(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)"
+                                        @mouseover="hoverCell = scope.row.cells[colIndex]"
+                                        @mouseleave="hoverCell = null">
+                                        <div class="cell-content">
+                                            <div class="position-id">${ scope.row.cells[colIndex].position }</div>
+                                            <div class="status-text">${ scope.row.cells[colIndex].statusText }</div>
+                                            <div v-if="scope.row.cells[colIndex].user" class="user-info">${ scope.row.cells[colIndex].user }</div>
+
+                                            <!-- 取消预约按钮（只对预约用户显示） -->
+                                            <div
+                                                v-if="!isAdmin && scope.row.cells[colIndex].status === 2 && scope.row.cells[colIndex].user === currentUser.name"
+                                                class="cancel-reserve-btn"
+                                                @click.stop="confirmCancelReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                取消预约
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                    </div>
+
+                    <el-empty v-else description="请添加柜体配置" :image-size="200"></el-empty>
+
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color legend-free"></div>
+                            <span>空闲</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-in-use"></div>
+                            <span>使用中</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-reserved"></div>
+                            <span>预定中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="statistics">
+                    <div class="stat-card">
+                        <div class="stat-value">${ getTotalCells(cabinet) }</div>
+                        <div class="stat-label">总柜格数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${ getFreeCells(cabinet) }</div>
+                        <div class="stat-label">空闲柜格</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${ getInUseCells(cabinet) }</div>
+                        <div class="stat-label">使用中柜格</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${ getReservedCells(cabinet) }</div>
+                        <div class="stat-label">预定中柜格</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cabinet-footer">
+                <p>智能柜管理系统 © 2023 | 基于 Vue.js 和 Element UI 构建</p>
+            </div>
+        </div>
+
+        <!-- 添加柜体配置对话框 -->
+        <el-dialog title="添加新柜体" :visible.sync="dialogAddVisible" width="500px">
+            <el-form :model="newCabinetForm" label-width="100px">
+                <el-form-item label="柜体名称">
+                    <el-input v-model="newCabinetForm.name" placeholder="请输入柜体名称"></el-input>
+                </el-form-item>
+                <el-form-item label="行数">
+                    <el-input-number v-model="newCabinetForm.rows" :min="1" :max="20"></el-input-number>
+                </el-form-item>
+                <el-form-item label="列数">
+                    <el-input-number v-model="newCabinetForm.cols" :min="1" :max="20"></el-input-number>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogAddVisible = false">取 消</el-button>
+                <el-button type="primary" @click="addCabinet">确 定</el-button>
+            </span>
+        </el-dialog>
+
+        <!-- 单元格信息弹窗（管理员） -->
+        <el-dialog :title="dialogTitle" :visible.sync="dialogAdminVisible" width="500px">
+            <div v-if="currentCell">
+                <el-form :model="currentCell" label-width="100px" class="dialog-form">
+                    <el-form-item label="位置编号">
+                        <el-input v-model="currentCell.position" disabled></el-input>
+                    </el-form-item>
+                    <el-form-item label="当前状态">
+                        <el-select v-model="currentCell.status">
+                            <el-option label="空闲" :value="0"></el-option>
+                            <el-option label="使用中" :value="1"></el-option>
+                            <el-option label="预定中" :value="2"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="使用者">
+                        <el-input v-model="currentCell.user"></el-input>
+                    </el-form-item>
+                    <el-form-item label="联系电话">
+                        <el-input v-model="currentCell.phone"></el-input>
+                    </el-form-item>
+                    <el-form-item label="备注信息">
+                        <el-input type="textarea" v-model="currentCell.notes"></el-input>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogAdminVisible = false">取 消</el-button>
+                <el-button type="primary" @click="saveCellInfo">确 定</el-button>
+            </span>
+        </el-dialog>
+
+        <!-- 普通用户借用对话框 -->
+        <el-dialog title="柜格借用" :visible.sync="dialogUserBorrowVisible" width="500px">
+            <div v-if="currentCell">
+                <el-form :model="borrowForm" label-width="100px">
+                    <el-form-item label="位置编号">
+                        <el-input v-model="currentCell.position" disabled></el-input>
+                    </el-form-item>
+                    <el-form-item label="借用人">
+                        <el-input v-model="borrowForm.user"></el-input>
+                    </el-form-item>
+                    <el-form-item label="联系电话">
+                        <el-input v-model="borrowForm.phone"></el-input>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogUserBorrowVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handleBorrow">借 用</el-button>
+            </span>
+        </el-dialog>
+
+        <!-- 悬浮信息提示 -->
+        <el-tooltip :content="hoverInfo" placement="top" effect="light" :disabled="!hoverCell" :manual="true" v-model="tooltipVisible">
+        </el-tooltip>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+{#<script src="/static/js/Qs.js"></script>#}
+<script src="/static/js/Element/index.js"></script>
+
+<script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+                // 智能柜管理系统数据
+                cabinets: [],       // 存储所有柜体
+                currentCabinetId: null, // 当前操作的柜体ID
+                isAdmin: true,
+                currentUser: { name: '普通用户', phone: '13800138000' },
+
+                // 对话框相关
+                dialogAdminVisible: false, // 管理员单元格信息对话框
+                dialogUserBorrowVisible: false, // 用户借用对话框
+                dialogAddVisible: false, // 添加柜体对话框
+
+                currentCell: null,
+                currentCabinetIdInDialog: null, // 存储当前单元格所在的柜体ID
+                currentRowIndex: null,
+                currentColIndex: null,
+
+                // 借用表单
+                borrowForm: {
+                    user: '',
+                    phone: ''
+                },
+
+                // 添加柜体表单
+                newCabinetForm: {
+                    name: '新柜体',
+                    rows: 5,
+                    cols: 6
+                },
+
+                hoverCell: null,
+                tooltipVisible: false,
+                statusMap: [
+                    { text: '空闲', class: 'status-free' },
+                    { text: '使用中', class: 'status-in-use' },
+                    { text: '预定中', class: 'status-reserved' }
+                ],
+                nextCabinetId: 1    // 下一个柜体的ID
+            }
+        },
+        computed: {
+            // 当前选中的柜体对象
+            currentCabinet() {
+                return this.cabinets.find(cab => cab.id === this.currentCabinetId) || {};
+            },
+
+            // 对话框标题
+            dialogTitle() {
+                if (!this.currentCell) return '柜格信息';
+                return `柜格信息 - ${this.currentCell.position}`;
+            },
+
+            // 悬浮提示信息
+            hoverInfo() {
+                if (!this.hoverCell) return '';
+                let info = `位置: ${this.hoverCell.position}\n状态: ${this.hoverCell.statusText}`;
+
+                if (this.hoverCell.user) {
+                    info += `\n使用者: ${this.hoverCell.user}`;
+                }
+                if (this.hoverCell.phone) {
+                    info += `\n电话: ${this.hoverCell.phone}`;
+                }
+                if (this.hoverCell.notes) {
+                    info += `\n备注: ${this.hoverCell.notes}`;
+                }
+
+                return info;
+            }
+        },
+        mounted() {
+            // 初始化一些模拟数据
+            this.borrowForm.user = this.currentUser.name;
+            this.borrowForm.phone = this.currentUser.phone;
+        },
+        methods: {
+            // 打开添加柜体对话框
+            openAddCabinetDialog() {
+                this.dialogAddVisible = true;
+                // 重置表单
+                this.newCabinetForm = {
+                    name: `柜体${this.nextCabinetId}`,
+                    rows: 5,
+                    cols: 6
+                };
+            },
+
+            // 添加新柜体
+            addCabinet() {
+                const newCabinetId = this.nextCabinetId++;
+                const newCabinet = {
+                    id: newCabinetId,
+                    name: this.newCabinetForm.name,
+                    rows: this.newCabinetForm.rows,
+                    cols: this.newCabinetForm.cols,
+                    gridData: []
+                };
+
+                // 生成初始网格数据
+                this.generateGrid(newCabinet);
+                this.cabinets.push(newCabinet);
+                this.currentCabinetId = newCabinetId;
+
+                // 关闭对话框
+                this.dialogAddVisible = false;
+                this.$message.success(`柜体${newCabinetId}添加成功`);
+            },
+
+            // 确认删除柜体
+            confirmRemoveCabinet(cabinetId, cabinetName) {
+                if (!this.isAdmin) {
+                    this.$message.warning('只有管理员可以删除柜体');
+                    return;
+                }
+
+                this.$confirm(`确定要删除柜体 "${cabinetName}" 吗? 此操作不可恢复。`, '删除确认', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.removeCabinet(cabinetId);
+                }).catch(() => {});
+            },
+
+            // 删除柜体
+            removeCabinet(cabinetId) {
+                if (this.cabinets.length <= 1) {
+                    this.$message.error('不能删除最后一个柜体');
+                    return;
+                }
+
+                const index = this.cabinets.findIndex(cab => cab.id === cabinetId);
+                if (index !== -1) {
+                    const cabinetName = this.cabinets[index].name;
+                    this.cabinets.splice(index, 1);
+
+                    // 如果删除的是当前柜体，设置第一个柜体为当前柜体
+                    if (cabinetId === this.currentCabinetId) {
+                        // 修复这里：避免使用可选链操作符
+                        if (this.cabinets.length > 0) {
+                            this.currentCabinetId = this.cabinets[0].id;
+                        } else {
+                            this.currentCabinetId = null;
+                        }
+                    }
+                    this.$message.success(`柜体 "${cabinetName}" 已删除`);
+                }
+            },
+
+            // 确认取消预约
+            confirmCancelReserve(cabinetId, cell, rowIndex, colIndex) {
+                this.$confirm(`确定要取消柜格 ${cell.position} 的预约吗?`, '取消预约', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.cancelReserve(cabinetId, rowIndex, colIndex);
+                }).catch(() => {});
+            },
+
+            // 取消预约
+            cancelReserve(cabinetId, rowIndex, colIndex) {
+                const cabinetIndex = this.cabinets.findIndex(cab => cab.id === cabinetId);
+                if (cabinetIndex === -1) return;
+
+                const cabinet = this.cabinets[cabinetIndex];
+                const cell = cabinet.gridData[rowIndex][colIndex];
+
+                if (cell.status === 2) {
+                    // 清空用户信息和备注
+                    this.updateCellStatus(
+                        cabinetId,
+                        rowIndex,
+                        colIndex,
+                        0,
+                        '',
+                        '',
+                        '预约已取消'
+                    );
+                    this.$message.success(`柜格 ${cell.position} 的预约已取消`);
+                } else {
+                    this.$message.warning(`柜格 ${cell.position} 的预约状态已变更`);
+                }
+            },
+
+            // 设置当前激活的柜体
+            setActiveCabinet(cabinetId) {
+                this.currentCabinetId = cabinetId;
+            },
+
+            // 生成网格
+            generateGrid(cabinet) {
+                cabinet.gridData = [];
+                for (let i = 0; i < cabinet.rows; i++) {
+                    const row = [];
+                    const rowChar = String.fromCharCode(65 + i); // A, B, C...
+
+                    for (let j = 0; j < cabinet.cols; j++) {
+                        // 生成空闲状态的格子
+                        const status = 0;
+                        const statusObj = this.statusMap[status];
+
+                        const cell = {
+                            position: `${rowChar}${j + 1}`,
+                            status: status,
+                            statusText: statusObj.text,
+                            statusClass: statusObj.class,
+                            user: '',
+                            phone: '',
+                            notes: ''
+                        };
+
+                        row.push(cell);
+                    }
+                    cabinet.gridData.push(row);
+                }
+            },
+
+            // 转换网格数据格式用于el-table
+            transformGridData(gridData) {
+                return gridData.map((row, rowIndex) => {
+                    return {
+                        id: `row-${rowIndex}`,
+                        cells: [...row]
+                    };
+                });
+            },
+
+            // 处理单元格点击
+            handleCellClick(cabinetId, cell, rowIndex, colIndex) {
+                this.currentCabinetIdInDialog = cabinetId;
+                this.currentCell = {...cell};
+                this.currentRowIndex = rowIndex;
+                this.currentColIndex = colIndex;
+
+                if (this.isAdmin) {
+                    // 管理员直接打开编辑对话框
+                    this.dialogAdminVisible = true;
+                } else {
+                    // 普通用户处理
+                    if (cell.status === 0) {
+                        // 空闲状态 - 打开借用对话框
+                        this.dialogUserBorrowVisible = true;
+                    } else if (cell.status === 2 && cell.user === this.currentUser.name) {
+                        // 预约中且是当前用户预约 - 直接取消预约（确认对话框在按钮点击事件中）
+                        // 这里不做处理，取消按钮单独处理
+                    } else {
+                        // 其他状态不可操作
+                        this.$message.info(`柜格 ${cell.position} 当前不可操作`);
+                    }
+                }
+            },
+
+            // 处理借用操作
+            handleBorrow() {
+                if (!this.dialogUserBorrowVisible || !this.currentCell) return;
+
+                if (!this.borrowForm.user.trim()) {
+                    this.$message.warning('请输入借用人姓名');
+                    return;
+                }
+
+                if (!this.borrowForm.phone.trim()) {
+                    this.$message.warning('请输入联系电话');
+                    return;
+                }
+
+                this.updateCellStatus(
+                    this.currentCabinetIdInDialog,
+                    this.currentRowIndex,
+                    this.currentColIndex,
+                    2,
+                    this.borrowForm.user,
+                    this.borrowForm.phone,
+                    '用户预约'
+                );
+
+                this.dialogUserBorrowVisible = false;
+                this.$message.success(`柜格 ${this.currentCell.position} 已预约成功`);
+            },
+
+            // 更新单元格状态
+            updateCellStatus(cabinetId, rowIndex, colIndex, status, user = '', phone = '', notes = '') {
+                const cabinetIndex = this.cabinets.findIndex(cab => cab.id === cabinetId);
+                if (cabinetIndex === -1) return;
+
+                const cabinet = this.cabinets[cabinetIndex];
+                const cell = cabinet.gridData[rowIndex][colIndex];
+                const statusObj = this.statusMap[status];
+
+                // 更新单元格信息
+                const updatedCell = {
+                    ...cell,
+                    status: status,
+                    statusText: statusObj.text,
+                    statusClass: statusObj.class,
+                    user: user,
+                    phone: phone,
+                    notes: notes || cell.notes
+                };
+
+                // 使用 Vue.set 确保响应式更新
+                this.$set(cabinet.gridData[rowIndex], colIndex, updatedCell);
+            },
+
+            // 保存单元格信息（管理员）
+            saveCellInfo() {
+                if (!this.currentCabinetIdInDialog ||
+                    this.currentRowIndex === null ||
+                    this.currentColIndex === null) {
+                    this.dialogAdminVisible = false;
+                    return;
+                }
+
+                const statusObj = this.statusMap[this.currentCell.status];
+
+                this.updateCellStatus(
+                    this.currentCabinetIdInDialog,
+                    this.currentRowIndex,
+                    this.currentColIndex,
+                    this.currentCell.status,
+                    this.currentCell.user,
+                    this.currentCell.phone,
+                    this.currentCell.notes
+                );
+
+                this.dialogAdminVisible = false;
+                this.$message.success('柜格信息已更新');
+            },
+
+            // 统计方法
+            getTotalCells(cabinet) {
+                return cabinet.rows * cabinet.cols;
+            },
+            getFreeCells(cabinet) {
+                return this.countCellsByStatus(cabinet, 0);
+            },
+            getInUseCells(cabinet) {
+                return this.countCellsByStatus(cabinet, 1);
+            },
+            getReservedCells(cabinet) {
+                return this.countCellsByStatus(cabinet, 2);
+            },
+            countCellsByStatus(cabinet, status) {
+                if (!cabinet.gridData || !cabinet.gridData.length) return 0;
+
+                let count = 0;
+                cabinet.gridData.forEach(row => {
+                    row.forEach(cell => {
+                        if (cell.status === status) count++;
+                    });
+                });
+                return count;
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,229 @@
+[2025-07-31 10:28:12,637] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-07-31 10:28:12,639] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-07-31 10:28:12,641] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-07-31 10:28:12,656] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-07-31 10:28:12,666] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-07-31 10:38:35,673] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 52035
+[2025-07-31 10:38:35,754] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-07-31 10:38:35,787] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-07-31 10:38:35,804] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-07-31 10:38:35,947] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-07-31 10:38:35,959] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-07-31 10:38:36,110] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-07-31 10:38:37,678] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-07-31 10:38:37: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/SysAdmin/UserInfo-edit/'>
+[2025-07-31 10:38:37,688] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 70734
+[2025-07-31 10:39:59,929] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 52035
+[2025-07-31 10:40:00,002] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-07-31 10:40:00,064] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-07-31 10:40:00,108] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-07-31 10:40:00,218] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-07-31 10:40:00,221] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2025-07-31 10:40:00,384] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-07-31 10:40:01,549] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-07-31 10:40:01: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/SysAdmin/UserInfo-edit/'>
+[2025-07-31 10:40:01,577] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 70734
+[2025-08-01 10:00:36,300] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-08-01 10:00:36,316] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-01 10:00:36,595] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-08-01 10:00:36,599] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-01 10:00:36,631] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-01 10:00:36,637] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-01 10:00:36,677] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-01 10:00:36,691] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-01 10:00:37,527] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-08-01 10:00:37,533] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-01 10:00:37,607] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-01 10:00:37,613] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-01 10:00:38,560] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-01 10:00:38,608] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-08-01 10:00:38,672] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-08-01 10:00:38,749] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 52035
+[2025-08-01 10:00:39,204] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:00:39,806] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-01 10:00:39: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/SysAdmin/UserInfo-edit/'>
+[2025-08-01 10:00:39,816] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 70734
+[2025-08-01 10:00:44,018] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 52035
+[2025-08-01 10:00:44,188] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:00:45,580] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-01 10:00:45: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/SysAdmin/UserInfo-edit/'>
+[2025-08-01 10:00:45,591] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 70734
+[2025-08-01 10:01:07,109] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 70703
+[2025-08-01 10:01:07,307] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-01 10:01:07: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceA39/BorrowedDeviceA39/'>
+[2025-08-01 10:01:07,327] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 186
+[2025-08-01 10:01:07,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:02:43,781] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DeviceA39/BorrowedDeviceA39/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\DeviceA39\views.py", line 538, in BorrowedDeviceA39
+    return render(request, 'DeviceA39/BorrowedDeviceA39.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(cell.status)' from 'getStatusText(cell.status)'
+[2025-08-01 10:02:43,788] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 500 158750
+[2025-08-01 10:02:43,874] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:14:34,072] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 58603
+[2025-08-01 10:14:34,124] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Qs.js HTTP/1.1" 200 26204
+[2025-08-01 10:14:36,302] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:34:50,343] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 45611
+[2025-08-01 10:34:50,510] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:34:57,098] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 45611
+[2025-08-01 10:34:57,222] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:34:58,268] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 45611
+[2025-08-01 10:34:58,345] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:34:58,990] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 45611
+[2025-08-01 10:34:59,062] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:35:32,771] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:35:32,845] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:35:32,857] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:35:34,386] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 58603
+[2025-08-01 10:35:34,445] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:35:34,457] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:35:35,021] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:35:35,155] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 10:35:35,280] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:35:50,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 45611
+[2025-08-01 10:35:50,635] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:35:50,658] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:35:50,668] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:35:50,778] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:39:37,984] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 58603
+[2025-08-01 10:39:38,038] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:39:38,069] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:39:38,854] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:39:38,988] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 10:39:39,119] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:41:47,307] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 45611
+[2025-08-01 10:41:47,363] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:41:47,405] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:41:47,429] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:41:47,535] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:46:46,130] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DeviceA39/BorrowedDeviceA39/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\DeviceA39\views.py", line 538, in BorrowedDeviceA39
+    return render(request, 'DeviceA39/BorrowedDeviceA39.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ' + 1' from 'index + 1'
+[2025-08-01 10:46:46,134] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 500 159560
+[2025-08-01 10:46:46,197] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:46:46,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:53:08,056] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 54571
+[2025-08-01 10:53:08,105] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:53:08,195] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:53:08,273] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/download_UPK/element-ui@2.12.0/lib/theme-chalk/fonts/element-icons.woff HTTP/1.1" 200 28200
+[2025-08-01 10:53:08,281] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:53:08,361] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 10:53:08,447] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:55:46,354] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 54571
+[2025-08-01 10:55:46,394] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:55:46,413] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:55:46,427] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:55:46,502] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 10:55:46,580] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:55:58,809] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 45611
+[2025-08-01 10:55:58,859] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:55:58,880] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:55:58,888] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:55:58,948] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 10:56:11,951] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 58603
+[2025-08-01 10:56:12,000] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 10:56:12,017] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 10:56:13,533] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 10:56:13,597] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 10:56:13,706] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 11:02:14,611] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 58603
+[2025-08-01 11:02:14,692] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 11:02:14,694] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 11:02:15,160] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 11:02:15,240] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 11:02:15,360] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 11:05:02,198] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 58603
+[2025-08-01 11:05:02,256] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 11:05:02,269] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 11:05:02,663] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 11:05:02,791] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 11:05:02,903] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 11:12:06,264] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 61908
+[2025-08-01 11:12:06,334] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 11:12:06,353] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 11:12:06,890] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 11:12:07,033] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 11:12:07,127] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 11:16:05,153] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 60790
+[2025-08-01 11:16:05,212] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 11:16:05,229] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 11:16:05,833] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 11:16:06,002] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 11:16:06,151] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 11:18:34,021] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 61452
+[2025-08-01 11:18:34,077] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 11:18:34,092] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 11:18:35,138] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 11:18:35,281] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 11:18:35,414] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753
+[2025-08-01 11:23:29,525] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceA39/BorrowedDeviceA39/ HTTP/1.1" 200 65501
+[2025-08-01 11:23:29,575] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 35753
+[2025-08-01 11:23:29,606] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-01 11:23:30,410] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-01 11:23:30,487] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-01 11:23:30,613] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 35753

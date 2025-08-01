@@ -169,6 +169,7 @@ INSTALLED_APPS = [
     'DeviceA32KS',
     'DeviceA32TPE',
     'TestDeviceLNV',
+    'CabinetManage',
 
 ]
 

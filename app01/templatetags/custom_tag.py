@@ -229,6 +229,8 @@ def get_menu_html(menu_data):
                         Class = "ti-panel"
                     elif item['title'] == 'W_L_WirelessAP':
                         Class = "ti-layout-media-overlay-alt"
+                    elif item['title'] == 'CabM_智能櫃體':
+                        Class = "ti-files"
                     # else:
                     #     Class = "ti-arrow-circle-right"
 
