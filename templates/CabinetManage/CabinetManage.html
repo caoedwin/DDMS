@@ -5,340 +5,461 @@
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 <style>
-    /* 新增柜体管理样式 */
-    .cabinets-bar {
-        margin-bottom: 20px;
-        padding: 15px;
-        background: #fff;
+    /* 全局重置 - 确保所有元素遵循相同盒模型 */
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 系统主体布局 */
+    .cabinet-container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f7fa;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    .cabinet-main-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
         border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+        box-shadow: 0 4px 15px rgba(66, 133, 244, 0.25);
+        color: white;
+    }
+
+    .cabinet-main-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .cabinet-main-header p {
+        font-size: 1.1rem;
+        opacity: 0.92;
+    }
+
+    /* 柜体管理导航 */
+    .cabinets-bar {
         display: flex;
         align-items: center;
         gap: 15px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
         flex-wrap: wrap;
     }
+
+    .cabinets-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
     .cabinet-tab {
-        padding: 8px 15px;
+        padding: 8px 20px;
         background: #ecf5ff;
-        border-radius: 20px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid #dcdfe6;
     }
+
     .cabinet-tab.active {
-        background: #409EFF;
+        background: #1a73e8;
         color: white;
+        border-color: transparent;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
     }
-    .cabinet-tab.active .delete-cabinet-btn {
-        color: white;
-        border-color: rgba(255,255,255,0.6);
-    }
+
     .delete-cabinet-btn {
         margin-left: 10px;
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         border: 1px solid #dcdfe6;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 16px;
-        line-height: 1;
+        font-size: 14px;
         transition: all 0.3s;
     }
-    .delete-cabinet-btn:hover {
-        background: #ff4d4f;
+
+    .cabinet-tab.active .delete-cabinet-btn {
         color: white;
-        border-color: #ff4d4f;
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .delete-cabinet-btn:hover {
+        background: #f56c6c;
+        color: white;
+        border-color: #f56c6c;
         transform: rotate(90deg);
     }
-    .cabinet-section {
-        margin-bottom: 30px;
-        padding: 15px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    }
-    .cabinet-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
 
-    /* el-table网格布局样式 */
-    .grid-table-container {
-        margin-bottom: 30px;
-        overflow: auto;
-    }
-    .grid-table {
-        margin: 0 auto;
-        border-collapse: collapse;
-    }
-    .grid-table .el-table__body .el-table__cell {
-        padding: 0;
-        height: 80px;
-    }
-    .grid-cell {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transition: all 0.3s;
-        cursor: pointer;
-        font-weight: 500;
-        text-align: center;
-        vertical-align: middle;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #dcdfe6;
-    }
-    .grid-cell:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-    }
-    .cell-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        padding: 5px;
-    }
-    .position-id {
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 3px;
-    }
-    .status-text {
-        font-size: 12px;
-        margin-top: 3px;
-    }
-    .status-free {
-        background-color: #f0f2f5;
-    }
-    .status-free:hover {
-        background-color: #e4e7ed;
-    }
-    .status-in-use {
-        background-color: #d1f0db;
-    }
-    .status-reserved {
-        background-color: #fdf6ec;
-    }
-    .status-reserved:hover {
-        background-color: #fbe7d0;
-    }
-
-    /* 原有样式保持不变 */
-    .cabinet-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    .cabinet-main-header {
-        text-align: center;
-        margin-bottom: 30px;
-        padding: 20px;
-        background: linear-gradient(90deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        color: white;
-    }
-    .cabinet-main-header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        letter-spacing: 1px;
-    }
-    .cabinet-main-header p {
-        font-size: 1.1rem;
-        opacity: 0.9;
-    }
+    /* 控制面板 */
     .control-panel {
         background: white;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         margin-bottom: 30px;
     }
+
     .control-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         flex-wrap: wrap;
     }
-    .user-type {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        background: #f0f7ff;
-        padding: 10px 20px;
-        border-radius: 30px;
-    }
+
     .role-btn {
         padding: 8px 20px;
         border-radius: 20px;
         cursor: pointer;
         transition: all 0.3s;
         font-weight: 500;
+        border: 1px solid #dcdfe6;
+        background: #f5f7fa;
     }
+
     .role-btn.active {
-        background: #409EFF;
+        background: #1a73e8;
+        color: white;
+        border-color: transparent;
+    }
+
+    /* 柜体主视图 - 核心样式 */
+    .cabinet-section {
+        position: relative;
+        margin-bottom: 35px;
+        padding: 25px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cabinet-section:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .cabinet-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .cabinet-header h2 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #1a73e8;
+        letter-spacing: 0.5px;
+    }
+
+    .delete-btn {
+        padding: 7px 15px;
+        background: #fef0f0;
+        color: #f56c6c;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+    }
+
+    .delete-btn:hover {
+        background: #f56c6c;
         color: white;
     }
-    .dimension-control {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-    .dimension-input {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .dimension-input label {
-        font-weight: 500;
-        color: #555;
-    }
+
+    /* 网格视图 - 关键样式 */
     .grid-container {
         background: white;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
         margin-bottom: 30px;
-        min-height: 500px;
-        overflow: auto;
+        padding: 20px;
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
+        background-color: #f9fafc;
     }
+
+    .grid-table-container {
+        width: 100%;
+        overflow: auto;
+        margin-bottom: 20px;
+    }
+
+    .grid-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .grid-table td {
+        position: relative;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        padding: 0;
+    }
+
+    .grid-cell {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        transition: all 0.25s ease;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .grid-cell:hover {
+        transform: scale(1.03);
+        z-index: 10;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    /* 状态背景色 - 关键修复 */
+    .status-free {
+        background-color: #f5f7fa;
+        border: 1px solid #e0e6ed !important;
+    }
+
+    .status-in-use {
+        background-color: #e1f3e1;
+        background: linear-gradient(145deg, #d8f3d9, #e1f3e1);
+        border: none !important;
+    }
+
+    .status-reserved {
+        background-color: #fef3e2;
+        background: linear-gradient(145deg, #feebcb, #fef3e2);
+        border: none !important;
+    }
+
+    .position-id {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 4px;
+        letter-spacing: 0.5px;
+    }
+
+    .status-text {
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+    }
+
+    .user-info {
+        font-size: 12px;
+        color: #5a5e66;
+        background: rgba(255, 255, 255, 0.4);
+        padding: 2px 6px;
+        border-radius: 3px;
+        margin-top: 5px;
+    }
+
+    .cancel-reserve-btn {
+        margin-top: 10px;
+        padding: 5px 12px;
+        font-size: 13px;
+        border-radius: 4px;
+        background: #f56c6c;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.3s;
+        font-weight: 500;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        border: none;
+    }
+
+    .cancel-reserve-btn:hover {
+        background: #ff7875;
+        transform: scale(1.08);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 图例说明 */
     .legend {
         display: flex;
         justify-content: center;
         gap: 30px;
         margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px dashed #eaeaea;
         flex-wrap: wrap;
     }
+
     .legend-item {
         display: flex;
         align-items: center;
         gap: 8px;
+        font-weight: 500;
     }
+
     .legend-color {
         width: 20px;
         height: 20px;
         border-radius: 4px;
     }
+
     .legend-free {
-        background-color: #f0f2f5;
-        border: 1px solid #dcdfe6;
+        background-color: #f5f7fa;
+        border: 1px solid #e0e6ed;
     }
+
     .legend-in-use {
-        background-color: #d1f0db;
+        background: linear-gradient(145deg, #d8f3d9, #e1f3e1);
     }
+
     .legend-reserved {
-        background-color: #fdf6ec;
+        background: linear-gradient(145deg, #feebcb, #fef3e2);
     }
+
+    /* 统计区域 */
     .statistics {
         background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        background: linear-gradient(135deg, #f5f7fa 0%, #f9fafc 100%);
+        border: 1px solid #e0e6ed;
     }
+
     .stat-card {
         text-align: center;
         padding: 15px 25px;
+        min-width: 150px;
     }
+
     .stat-value {
         font-size: 2.2rem;
         font-weight: bold;
         margin: 10px 0;
+        color: #1a73e8;
+        font-family: 'Arial', sans-serif;
     }
+
     .stat-label {
         font-size: 1rem;
-        color: #666;
+        color: #5a5e66;
+        font-weight: 500;
     }
+
+    /* 页脚 */
     .cabinet-footer {
         text-align: center;
-        margin-top: 30px;
-        color: #666;
+        margin-top: 40px;
+        padding-top: 20px;
+        color: #8c98ae;
         font-size: 0.9rem;
+        border-top: 1px solid #eaeaea;
     }
-    .dialog-form .el-form-item {
-        margin-bottom: 22px;
-    }
+
+    /* 响应式设计 */
     @media (max-width: 768px) {
-        .control-row {
-            flex-direction: column;
-            align-items: flex-start;
+        .cabinet-section {
+            padding: 15px;
+        }
+
+        .grid-table td {
+            height: 85px;
+        }
+
+        .position-id {
+            font-size: 16px;
+        }
+
+        .status-text {
+            font-size: 12px;
+        }
+
+        .legend {
             gap: 15px;
         }
-        .dimension-control {
-            width: 100%;
-            justify-content: space-between;
+
+        .stat-card {
+            padding: 10px;
+            min-width: 130px;
         }
-        .grid-table .el-table__body .el-table__cell {
-            height: 60px;
+
+        .stat-value {
+            font-size: 1.8rem;
         }
     }
 
-    /* 原有样式保持不变 */
-    .showColor:hover{
-        color: red;
+    @media (max-width: 480px) {
+        .position-id {
+            font-size: 14px;
+        }
+
+        .cancel-reserve-btn {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        .stat-card {
+            padding: 8px;
+            min-width: 100px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+        }
     }
-    .el-table--border th.gutter:last-of-type {
-      display: block!important;
+
+    /* 添加柜体按钮样式 */
+    .el-button--primary {
+        background: #1a73e8;
+        border-color: #1a73e8;
+        transition: all 0.3s;
+        font-weight: 500;
     }
-    .el-table th.gutter{
-        display: table-cell!important;
-      }
-    .selectMsg{
-         font-size:17px;
-          padding: 15px;
-          display: flex;
-          flex-wrap: wrap;
-      }
-    .selectMsg label{
-          font-weight: 800;
-          margin-right: 10px;
-          color:black;
-      }
-    .customerContent,.changjiaContent,.pnContent,.powerContent{
-         margin-left: 20px;
+
+    .el-button--primary:hover {
+        background: #1669d6;
+        border-color: #1669d6;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
     }
-    .showNum{
-        font-size: 20px;
-        font-weight: bold;
-        color: black;
-    }
-     .tableAround{
-        padding: 20px;
-        -moz-box-shadow: 0px 0px 10px #333333;
-        -webkit-box-shadow: 0px 0px 10px #333333;
-        box-shadow: 0px 0px 10px #333333;
-        border-radius: 10px;
-        background-color: rgba(255,255,255,0.1);
-    }
-    #sh {
-        font-size:18px;
-        font-family:微软雅黑;
-        border: 2px solid #9f9ca1;
-    }
-    #sh::-webkit-input-placeholder{
-            color:#2f97a8;
-        font-family:微软雅黑;
-    }
-    #sh::-moz-placeholder{
-            color:#2f97a8;
-        font-family:微软雅黑;
-    }
-    #sh:-ms-input-placeholder{
-            color:#2f97a8;
-        font-family:微软雅黑;
+
+    .el-button--primary:active {
+        transform: translateY(0);
+        box-shadow: none;
     }
 </style>
 {% endblock %}
@@ -408,13 +529,13 @@
                             class="grid-table"
                             :show-header="false"
                             border
-                            :row-style="{height: '80px'}"
+                            :row-style="{height: '120px'}"
                             :cell-style="{padding: '0', textAlign: 'center', verticalAlign: 'middle'}">
                             <el-table-column
                                 v-for="(col, colIndex) in cabinet.cols"
                                 :key="colIndex"
                                 :label="''"
-                                width="82">
+                                >
                                 <template slot-scope="scope">
                                     <div
                                         class="grid-cell"

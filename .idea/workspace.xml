@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DMS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DMS/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/templatetags/custom_tag.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/templatetags/custom_tag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/all-2025-06-27.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2025-06-27.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2025-06-27.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2025-06-27.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,13 +71,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="4366" />
+          <entry key="html" value="4395" />
           <entry key="py" value="8087" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="4366" />
+          <entry key="HTML" value="4395" />
           <entry key="Python" value="8087" />
         </counts>
       </usages-collector>
@@ -94,11 +88,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CabinetManage/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="15">
+              <caret line="38" column="39" lean-forward="true" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -127,20 +121,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="581" column="42" selection-start-line="581" selection-start-column="38" selection-end-line="581" selection-end-column="42" />
+            <state relative-caret-position="112">
+              <caret line="463" column="8" selection-start-line="463" selection-start-column="8" selection-end-line="463" selection-end-column="8" />
               <folding>
+                <element signature="e#251#8137#0#HTML" />
                 <element signature="e#9383#9430#0#HTML" expanded="true" />
                 <element signature="e#9509#9556#0#HTML" expanded="true" />
                 <element signature="e#10525#10864#0#HTML" />
                 <element signature="e#10800#10823#0#HTML" expanded="true" />
-                <element signature="e#10882#13689#0#HTML" />
-                <element signature="e#10931#12897#0#HTML" />
+                <element signature="e#13017#13666#0#HTML" />
                 <element signature="e#13707#14606#0#HTML" />
+                <element signature="e#15442#16382#0#HTML" />
                 <element signature="e#16430#18004#0#HTML" />
+                <element signature="e#18049#19018#0#HTML" />
                 <element signature="e#22194#22448#0#HTML" />
                 <element signature="e#22497#23169#0#HTML" />
                 <element signature="e#23251#23732#0#HTML" />
@@ -186,18 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>transaction</find>
-      <find>ID</find>
-      <find>Content-Type</find>
-      <find>headermodel_TestDevice</find>
-      <find>Device1</find>
-      <find>購買年限</find>
-      <find>dataColumns</find>
-      <find>objectSpanMethod</find>
-      <find>updateMergeConfig</find>
-      <find>calculateSpans</find>
-      <find>Act_Status</find>
-      <find>labelPosition</find>
       <find>Pers_list</find>
       <find>ImportPersonalInfo</find>
       <find>EmailMultiAlternatives</find>
@@ -216,6 +200,18 @@
       <find>普通用户</find>
       <find>NID</find>
       <find>STATUS_CHOICES</find>
+      <find>sser</find>
+      <find>取消预约</find>
+      <find>cabinet-container</find>
+      <find>el-table</find>
+      <find>grid-cell</find>
+      <find>.cancel-reserve-btn</find>
+      <find>.grid-cell</find>
+      <find>.cell-conten</find>
+      <find>cell-content</find>
+      <find>status-in-use</find>
+      <find>status-reserved</find>
+      <find>status-free</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -272,9 +268,9 @@
         <option value="$PROJECT_DIR$/app01/templatetags/custom_tag.py" />
         <option value="$PROJECT_DIR$/CabinetManage/serializers.py" />
         <option value="$PROJECT_DIR$/CabinetManage/views.py" />
-        <option value="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" />
         <option value="$PROJECT_DIR$/CabinetManage/models.py" />
         <option value="$PROJECT_DIR$/CabinetManage/admin.py" />
+        <option value="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" />
       </list>
     </option>
   </component>
@@ -623,6 +619,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" visible="true" weight="0.25814137" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1041,19 +1038,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CabinetManage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="94" column="78" selection-start-line="94" selection-start-column="78" selection-end-line="94" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CabinetManage/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="38" column="39" lean-forward="true" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="581" column="42" selection-start-line="581" selection-start-column="38" selection-end-line="581" selection-end-column="42" />
+        <state relative-caret-position="112">
+          <caret line="463" column="8" selection-start-line="463" selection-start-column="8" selection-end-line="463" selection-end-column="8" />
           <folding>
+            <element signature="e#251#8137#0#HTML" />
             <element signature="e#9383#9430#0#HTML" expanded="true" />
             <element signature="e#9509#9556#0#HTML" expanded="true" />
             <element signature="e#10525#10864#0#HTML" />
             <element signature="e#10800#10823#0#HTML" expanded="true" />
-            <element signature="e#10882#13689#0#HTML" />
-            <element signature="e#10931#12897#0#HTML" />
+            <element signature="e#13017#13666#0#HTML" />
             <element signature="e#13707#14606#0#HTML" />
+            <element signature="e#15442#16382#0#HTML" />
             <element signature="e#16430#18004#0#HTML" />
+            <element signature="e#18049#19018#0#HTML" />
             <element signature="e#22194#22448#0#HTML" />
             <element signature="e#22497#23169#0#HTML" />
             <element signature="e#23251#23732#0#HTML" />
@@ -1069,26 +1088,6 @@
             <element signature="e#30250#31069#0#HTML" />
             <element signature="e#31127#31194#0#HTML" />
             <element signature="e#31582#31933#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CabinetManage/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="94" column="78" selection-start-line="94" selection-start-column="78" selection-end-line="94" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CabinetManage/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
