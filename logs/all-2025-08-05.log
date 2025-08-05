@@ -713,3 +713,19 @@ Traceback (most recent call last):
 KeyError: '"cabinets"'
 [2025-08-05 15:26:11,725] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
 [2025-08-05 15:26:11,725] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 112715
+[2025-08-05 15:26:32,041] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 106705
+[2025-08-05 15:26:32,091] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-05 15:26:32,135] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-05 15:26:32,148] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-05 15:26:32,211] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-05 15:26:32,325] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-05 15:26:32,396] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-05 15:26:32: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-05 15:26:32,415] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 9520
+[2025-08-05 15:33:27,886] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 106897
+[2025-08-05 15:33:27,944] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-05 15:33:27,964] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-05 15:33:29,015] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-05 15:33:29,229] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-05 15:33:29,521] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-05 15:33:29,579] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-05 15:33:29: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-05 15:33:29,588] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 9520
