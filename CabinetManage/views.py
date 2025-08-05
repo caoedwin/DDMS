@@ -683,6 +683,7 @@ def CabinetManage_edit(request):
             "CustomerOptions": CustomerOptions,
             "errMsg": errMsg,
         }
+        print(data["cabinets"])
         return HttpResponse(json.dumps(data), content_type="application/json")
     return render(request, 'CabinetManage/CabinetManage.html', locals())
 

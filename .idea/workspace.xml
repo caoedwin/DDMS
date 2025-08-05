@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CabinetManage/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/CabinetManage/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CabinetManage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CabinetManage/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CabinetManage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CabinetManage/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/all-2025-08-01.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2025-08-01.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error-2025-08-01.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2025-08-01.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2025-08-01.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2025-08-01.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/all-2025-08-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2025-08-05.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error-2025-08-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2025-08-05.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info-2025-08-05.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2025-08-05.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,14 +78,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="5038" />
-          <entry key="py" value="9504" />
+          <entry key="html" value="5057" />
+          <entry key="py" value="9515" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="5038" />
-          <entry key="Python" value="9504" />
+          <entry key="HTML" value="5057" />
+          <entry key="Python" value="9515" />
         </counts>
       </usages-collector>
     </session>
@@ -133,8 +131,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="691" column="48" selection-start-line="691" selection-start-column="48" selection-end-line="693" selection-end-column="46" />
+            <state relative-caret-position="31">
+              <caret line="1484" column="29" selection-start-line="1484" selection-start-column="16" selection-end-line="1489" selection-end-column="35" />
               <folding>
                 <element signature="e#251#13533#0#HTML" />
                 <element signature="e#13684#13810#0#HTML" />
@@ -159,7 +157,7 @@
                 <element signature="e#41352#41671#0#HTML" />
                 <element signature="e#41727#42568#0#HTML" />
                 <element signature="e#42636#42702#0#HTML" />
-                <element signature="e#43938#44169#0#HTML" />
+                <element signature="e#45491#46137#0#HTML" />
                 <element signature="e#44260#45600#0#HTML" />
                 <element signature="e#45652#46998#0#HTML" />
                 <element signature="e#47056#48731#0#HTML" />
@@ -181,8 +179,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CabinetManage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="665" column="35" selection-start-line="665" selection-start-column="25" selection-end-line="665" selection-end-column="35" />
+            <state relative-caret-position="217">
+              <caret line="685" column="29" lean-forward="true" selection-start-line="685" selection-start-column="29" selection-end-line="685" selection-end-column="29" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <element signature="e#2235#2324#0" />
@@ -214,7 +212,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>saveCabinetToBackend</find>
       <find>handleCellClick</find>
       <find>saveCellToBackend</find>
       <find>takeoutDate</find>
@@ -244,6 +241,7 @@
       <find>confirmReturnCell</find>
       <find>returnCell</find>
       <find>cabinets_datas</find>
+      <find>transformGridData</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -660,7 +658,7 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" weight="0.2573471" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49166006" visible="true" weight="0.2807571" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49166006" visible="true" weight="0.4037855" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -1077,8 +1075,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CabinetManage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="665" column="35" selection-start-line="665" selection-start-column="25" selection-end-line="665" selection-end-column="35" />
+        <state relative-caret-position="217">
+          <caret line="685" column="29" lean-forward="true" selection-start-line="685" selection-start-column="29" selection-end-line="685" selection-end-column="29" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
             <element signature="e#2235#2324#0" />
@@ -1098,8 +1096,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="691" column="48" selection-start-line="691" selection-start-column="48" selection-end-line="693" selection-end-column="46" />
+        <state relative-caret-position="31">
+          <caret line="1484" column="29" selection-start-line="1484" selection-start-column="16" selection-end-line="1489" selection-end-column="35" />
           <folding>
             <element signature="e#251#13533#0#HTML" />
             <element signature="e#13684#13810#0#HTML" />
@@ -1124,7 +1122,7 @@
             <element signature="e#41352#41671#0#HTML" />
             <element signature="e#41727#42568#0#HTML" />
             <element signature="e#42636#42702#0#HTML" />
-            <element signature="e#43938#44169#0#HTML" />
+            <element signature="e#45491#46137#0#HTML" />
             <element signature="e#44260#45600#0#HTML" />
             <element signature="e#45652#46998#0#HTML" />
             <element signature="e#47056#48731#0#HTML" />

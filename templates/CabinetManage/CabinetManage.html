@@ -1482,12 +1482,22 @@
 
             // 转换网格数据格式用于el-table
             transformGridData(gridData) {
-                return gridData.map((row, rowIndex) => {
+                {% comment %}return gridData.map((row, rowIndex) => {
                     return {
                         id: `row-${rowIndex}`,
                         cells: [...row]
                     };
-                });
+                });{% endcomment %}
+
+                const transformedData = gridData.map((row, rowIndex) => ({
+                        id: `row-${rowIndex}`,
+                        cells: [...row]
+                    }));
+
+                    // 在这里打印转换后的数据（开发调试用）
+                    console.log('转换后的表格数据:', transformedData);
+
+                    return transformedData;
             },
 
             // 处理单元格点击
