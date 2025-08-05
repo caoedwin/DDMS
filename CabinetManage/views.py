@@ -13,484 +13,675 @@ from django.core.mail import send_mail, send_mass_mail
 from django.core.mail import EmailMultiAlternatives
 from app01 import tasks
 from app01.models import UserInfo
-headermodel_Device = {
-    '客戶別': 'Customer', '廠區': 'Plant', '設備序號': 'NID',
-    # '設備編號': 'DevID',
-    '設備用途': 'DevID',
-    '介面種類': 'IntfCtgry', '設備種類': 'DevCtgry', '設備屬性': 'Devproperties', '設備廠家': 'DevVendor',
-    '設備容量': 'Devsize', '設備型號': 'DevModel', '設備名稱': 'DevName',
-    '借還狀態': 'BrwStatus', '用戶名稱': 'Usrname', '預計歸還日期': 'Plandate',
-    # '使用天數': 'useday',
-    '借用時間': 'Btime', '歸還日期': 'Rtime', '備註': 'Comment', #"超期天數": "Overday"实时计算出来的
-
-    'HW Ver.': 'HWVer', 'FW Ver.': 'FWVer',
-    '設備描述': 'DevDescription', '附帶品': 'PckgIncludes', '保固期': 'expirdate', '價值 RMB(單價)': 'DevPrice',
-    '設備來源': 'Source', '購買時間': 'Pchsdate', '料號': 'PN', 'LNV/ABO 設備審核清单': 'LSTA',
-    '申購單號': 'ApplicationNo', '報關單號': 'DeclarationNo', '資產編號': 'AssetNum', #"購買年限": "UsYear"实时计算出来的
-    '使用次數': 'uscyc', '借還次數': 'UsrTimes', '設備添加人員': 'addnewname',
-    '設備添加日期': 'addnewdate', '設備狀態': 'DevStatus',
-    'EOL日期': 'EOL',
-
-    '借還人員工號': 'BR_per_code',
-    '機種': 'ProjectCode', 'Phase': 'Phase',
-    '上一次借用人員': 'LastUsrname', '上一次借用人員工号': 'Last_BR_per_code', '上一次預計歸還日期': 'Last_Predict_return',
-    '上一次借用日期': 'Last_Borrow_date', '上一次歸還日期': 'Last_Return_date',
-}
+from .models import Cabinet, CabinetGrid, GridRecord
 
 @csrf_exempt
 def CabinetManage_edit(request):
     if not request.session.get('is_login_DMS', None):
         # print(request.session.get('is_login', None))
         return redirect('/login/')
-    weizhi = "DeviceA39/BorrowedDevice"
-    mock_data = [
-        # {"id": "1", "Customer": "C38", "Plant": "KS",
-        #  "NID": "1513", "DevID": "UKB0022B", "IntfCtgry": "USB_A",
-        #  "DevCtgry": "keyboard", "Devproperties": "USB1.0", "Devsize": "--",
-        #  "DevVendor": "Lenovo", "DevModel": "SK-8815(L)", "DevName": "Lenovo Enhanced Performance USB Keyboard",
-        #  "HWVer": "--", "FWVer": "--", "DevDescription": "N/A", "PckgIncludes": "1. 說明書清單",
-        #  "expirdate": "一年", "DevPrice": "", "Source": "Lenovo贈送", "Pchsdate": "2018-07-25", "PN": "73P2620",
-        #  "LNV_ST": "",
-        #  "Purchase_NO": "", "Declaration_NO": "11", "AssetNum": "", "UsYear": "2.7", "addnewname": "代月景",
-        #  "addnewdate": "2018-08-01",
-        #  "Comment": "", "uscyc": "100", "UsrTimes": "12", "DevStatus": "Good", "BrwStatus": "可借用", "Usrname": "單桂萍",
-        #  "Plandate": "2020-01-26", "useday": "1", "Btime": "2020-01-25", "Rtime": "2020-01-26", "Overday": ""},
+    weizhi = "智能柜体/管理"
+    CustomerOptions = []
+    for i in CabinetGrid._meta.get_field('Customer').choices:
+        CustomerOptions.append(i[0])
+    isAdmin = False
+    roles = []
+    onlineuser = request.session.get('account_DMS')
+    currentUser = {"name": onlineuser, "phone": ''}
+    # print(onlineuser)
+    if UserInfo.objects.filter(account=onlineuser).first():
+        for i in UserInfo.objects.filter(account=onlineuser).first().role.all():
+            roles.append(i.name)
+    # print(roles)
+    errMsg = ''
+    cabinets_datas = [
+        # {"id": 1, "name": "柜体1", "rows": 5, "cols": 6, "gridData": [
+        #                                                                 [{"position": "A1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "", "notes": ""},
+        #                                                                  {"position": "A2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "", "notes": ""},
+        #                                                                  {"position": "A3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "", "notes": ""},
+        #                                                                  {"position": "A4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "", "notes": ""},
+        #                                                                  {"position": "A5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "", "notes": ""},
+        #                                                                  {"position": "A6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "", "notes": ""}],
+        #                                                                 [{"position": "B1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "B2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "B3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "B4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "B5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "B6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""}],
+        #                                                                 [{"position": "C1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "C2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "C3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "C4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "C5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "C6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""}],
+        #                                                                 [{"position": "D1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "D2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "D3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "D4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "D5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "D6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""}],
+        #                                                                 [{"position": "E1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "E2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "E3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "E4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "E5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""},
+        #                                                                  {"position": "E6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #                                                                   "notes": ""}],
+        #                                                                 ]
+        #  },
+        # {"id": 2, "name": "柜体2", "rows": 5, "cols": 6, "gridData": [
+        #     [{"position": "A1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "A2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "A3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "A4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "A5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "A6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""}],
+        #     [{"position": "B1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "B2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "B3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "B4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "B5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "B6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""}],
+        #     [{"position": "C1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "C2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "C3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "C4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "C5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "C6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""}],
+        #     [{"position": "D1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "D2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "D3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "D4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "D5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "D6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""}],
+        #     [{"position": "E1", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "E2", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "E3", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "E4", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "E5", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""},
+        #      {"position": "E6", "user": "", "status": "0", "statusText": "空闲", "borrowDate": "", "reserveDate": "",
+        #       "notes": ""}],
+        # ]
+        #  },
     ]
-    IntfCtgryOptions5 = {
-        # "USB_A": [{"DevCtgry": "keyboard", "Devproperties": ["www", "qwee", "ewrfe"]},
-        #           {"DevCtgry": "Heaphone", "Devproperties": ["2www", "qwee", "ewrfe"]},
-        #           {"DevCtgry": "Heaphone", "Devproperties": ["3www", "qwee", "ewrfe"]}],
-        # "USB_C&BT": [{"DevCtgry": "Heaphone", "Devproperties": ["ewdfeew", "edeqwe"]}],
-        # "USB_Ac": [{"DevCtgry": "Heaphone", "Devproperties": ["2ewdf"]},
-        #            {"DevCtgry": "keyboard", "Devproperties": ["www", "qwee", "ewrfe"]},
-        #            {"DevCtgry": "Heaphone", "Devproperties": ["www", "qwee", "ewrfe"]}],
-        # "USB_Accc": [{"DevCtgry": "Heaphone", "Devproperties": ["23ewfd"]},
-        #              {"DevCtgry": "keyboard", "Devproperties": ["www", "qwee", "ewrfe"]}]
-    }
-    DevVendorOptions5 = {
-        # "werfg": ["aa", "bb", "cc"], "werf": ["dd", "ee", "ff"]
-    }
-
-    allIntfCtgry = [
-        # "USB_A", "USB_B"
-    ]
-    allDevCtgry = [
-        # "USB_A", "USB_B"
-    ]
-    allDevproperties = [
-        # "USB_A", "USB_B"
-    ]
-    allDevVendor = [
-        # "USB_A", "USB_B"
-    ]
-    allDevsize = [
-        # "USB_A", "USB_B"
-    ]
-    allDevStatus = [
-        # "可借用", "已借出"
-    ]
+    for i in roles:
+        if i == 'Sys_Admin' or i == 'CabinetManageAdmin':
+            isAdmin = True
 
     # print(request.method)
     if request.method == "POST":
         if 'first' in str(request.body):
-            # message1 = ('邮件标题1', '邮件标题1测试内容', '416434871@qq.com', ['brotherxd@126.com', 'edwin_cao@compal.com'])
-            # message2 = ('邮件标题2', '邮件标题2测试内容', '416434871@qq.com', ['brotherxd@126.com'])
-            # messages = (message1, message2)
-            # sendmass_email(messages)
-            # mock_data
-            # res = tasks.ProjectSync.delay()
-            # 任务逻辑
-            # ProjectSyncview()
-            checkAdaPow = {}
-            # mock_data
-            if checkAdaPow:
-                # print(checkAdaPow)
-                # mock_datalist = DeviceA39.objects.filter(**checkAdaPow)
-                if "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys() and "Devproperties" in checkAdaPow.keys() and "DevVendor" in checkAdaPow.keys() and "Devsize" in checkAdaPow.keys():
-                    mock_datalist = DeviceA39.objects.filter(
-                        Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry'])
-                        & Q(Devproperties__icontains=checkAdaPow['Devproperties']) & Q(
-                            DevVendor=checkAdaPow['DevVendor'])
-                        & Q(Devsize=checkAdaPow['Devsize'])).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-                elif "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys() and "Devproperties" in checkAdaPow.keys() and "DevVendor" in checkAdaPow.keys():
-                    mock_datalist = DeviceA39.objects.filter(
-                        Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry'])
-                        & Q(Devproperties__icontains=checkAdaPow['Devproperties']) & Q(
-                            DevVendor=checkAdaPow['DevVendor'])).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-                elif "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys() and "Devproperties" in checkAdaPow.keys():
-                    mock_datalist = DeviceA39.objects.filter(
-                        Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry'])
-                        & Q(Devproperties__icontains=checkAdaPow['Devproperties'])).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-                elif "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys():
-                    mock_datalist = DeviceA39.objects.filter(
-                        Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry'])).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-                elif "IntfCtgry" in checkAdaPow.keys():
-                    mock_datalist = DeviceA39.objects.filter(
-                        Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry'])).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-                else:
-                    mock_datalist = DeviceA39.objects.filter(**checkAdaPow).filter(DevStatus__in=["Good", "Fixed", 'Long'])
+            pass
+        if 'DeleteCabinet' in str(request.body):
+            cabinet_id = request.POST.get('cabinetId')
+            cabinet = Cabinet.objects.get(id=cabinet_id)
+            # 检查是否存在非空闲状态的柜格
+            non_free_grids = CabinetGrid.objects.filter(
+                cabinet=cabinet
+            ).exclude(status=0)  # 排除空闲状态(status=0)
+
+            if non_free_grids.exists():
+                occupied_positions = list(non_free_grids.values_list('position', flat=True))
+                errMsg = "柜体中存在非空闲柜格，无法删除"
             else:
-                mock_datalist = DeviceA39.objects.all().filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            # print(mock_datalist)
-            for i in mock_datalist:
-                # Photolist = []
-                # for h in i.Photo.all():
-                #     Photolist.append(
-                #         {'name': '', 'url': '/media/' + h.pic.name})  # fileListO需要的是对象列表而不是字符串列表
-                if i.Plandate and i.Btime and not i.Rtime:
-                    if datetime.datetime.now().date() > i.Plandate:
-                        Exceed_days = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Plandate)).split(' ')[
-                                    0]),
-                            0)
-                    else:
-                        Exceed_days = ''
-                    if datetime.datetime.now().date() > i.Btime:
-                        usedays = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Btime)).split(' ')[
-                                    0]),
-                            0)
-                    else:
-                        usedays = ''
-                else:
-                    usedays = ''
-                    Exceed_days = ''
-                Useyears = ''
-                if i.Pchsdate:
-                    if datetime.datetime.now().date() > i.Pchsdate:
-                        Useyears = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Pchsdate)).split(' ')[
-                                    0])/365,
-                            1)
-                addnewdate_str = ''
-                if i.addnewdate:
-                    addnewdate_str = str(i.addnewdate)
-                else:
-                    addnewdate_str = ''
-                Pchsdate_str = ''
-                if i.Pchsdate:
-                    Pchsdate_str = str(i.Pchsdate)
-                else:
-                    Pchsdate_str = ''
-                Plandate_str = ''
-                if i.Plandate:
-                    Plandate_str = str(i.Plandate)
-                else:
-                    Plandate_str = ''
-                Btime_str = ''
-                if i.Btime:
-                    Btime_str = str(i.Btime)
-                else:
-                    Btime_str = ''
-                Rtime_str = ''
-                if i.Rtime:
-                    Rtime_str = str(i.Rtime)
-                else:
-                    Rtime_str = ''
-
-                mock_data.append(
-                    {"id": i.id, "Customer": i.Customer, "Plant": i.Plant,
-                     "NID": i.NID, "DevID": i.DevID, "IntfCtgry": i.IntfCtgry,
-                     "DevCtgry": i.DevCtgry, "Devproperties": i.Devproperties, "DevVendor": i.DevVendor,
-                     "Devsize": i.Devsize, "DevModel": i.DevModel,
-                     "DevName": i.DevName,
-                     "HWVer": i.HWVer, "FWVer": i.FWVer, "DevDescription": i.DevDescription,
-                     "PckgIncludes": i.PckgIncludes,
-                     "expirdate": i.expirdate, "DevPrice": i.DevPrice, "Source": i.Source,
-                     "Pchsdate": Pchsdate_str,
-                     "PN": i.PN,
-                     "LNV_ST": i.LSTA, "Purchase_NO": i.ApplicationNo, "Declaration_NO": i.DeclarationNo,
-                     "AssetNum": i.AssetNum, "UsYear": Useyears,
-                     "addnewname": i.addnewname, "addnewdate": addnewdate_str,
-                     "Comment": i.Comment, "uscyc": i.uscyc, "UsrTimes": i.UsrTimes,
-                     "DevStatus": i.DevStatus, "BrwStatus": i.BrwStatus,
-                     "Usrname": i.Usrname, 'Usrnumber': i.BR_per_code,
-                     "Plandate": Plandate_str, "useday": usedays, "Btime": Btime_str, "Rtime": Rtime_str,
-                     "Overday": Exceed_days},
-                )
-        if 'change5' in str(request.body):
-            IntfCtgry = request.POST.get('IntfCtgry')
-            DevCtgry = request.POST.get('DevCtgry')
-            Devproperties = request.POST.get('Devproperties')
-            IntfCtgry_P = DeviceIntfCtgryList.objects.filter(IntfCtgry=IntfCtgry).first()
-            DevCtgry_P = DeviceDevCtgryList.objects.filter(DevCtgry=DevCtgry, IntfCtgry_P=IntfCtgry_P).first()
-            Devproperties_P = DeviceDevpropertiesList.objects.filter(Devproperties=Devproperties, DevCtgry_P=DevCtgry_P).first()
-            for i in DeviceDevVendorList.objects.filter(Devproperties_P=Devproperties_P):
-                DeviceDevsizeListvalue = []
-                for j in DeviceDevsizeList.objects.filter(DevVendor_P=i):
-                    DeviceDevsizeListvalue.append(j.Devsize)
-                DevVendorOptions5[i.DevVendor] = DeviceDevsizeListvalue
-            # print(DevVendorOptions5)
-        if 'SEARCH5' in str(request.body):
-            checkAdaPow = {}
-            IntfCtgry = request.POST.get('IntfCtgry')
-            # if IntfCtgry and IntfCtgry != "All":
-            #     checkAdaPow['IntfCtgry'] = IntfCtgry
-            DevCtgry = request.POST.get('DevCtgry')
-            if DevCtgry and DevCtgry != "All":
-                checkAdaPow['DevCtgry'] = DevCtgry
-            Devproperties = request.POST.get('Devproperties')
-            # if Devproperties and Devproperties != "All":
-            #     checkAdaPow['Devproperties'] = Devproperties
-            DevVendor = request.POST.get('DevVendor')
-            if DevVendor and DevVendor != "All":
-                checkAdaPow['DevVendor'] = DevVendor
-            Devsize = request.POST.get('Devsize')
-            if Devsize and Devsize != "All":
-                checkAdaPow['Devsize'] = Devsize
-            DevStatus = request.POST.get('DevStatus')
-            if DevStatus and DevStatus != "All":
-                checkAdaPow['BrwStatus'] = DevStatus
+                # 直接删除柜体即可（级联删除会自动处理关联的柜格和记录）
+                # 设置了 on_delete=models.CASCADE。这意味着当删除一个 CabinetGrid 实例时，所有关联的 GridRecord 记录也会被自动删除。因此，在删除 CabinetGrid 时，不需要显式地先删除 GridRecord。
+                cabinet.delete()
 
 
-            # mock_data
-            if IntfCtgry and IntfCtgry != "All" and Devproperties and Devproperties != "All":
-                mock_datalist = DeviceA39.objects.filter(
-                    Q(IntfCtgry__icontains=IntfCtgry) & Q(Devproperties__icontains=Devproperties)).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            elif IntfCtgry and IntfCtgry != "All" and (not Devproperties or Devproperties == "All"):
-                mock_datalist = DeviceA39.objects.filter(
-                    Q(IntfCtgry__icontains=IntfCtgry)).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            elif (not IntfCtgry or IntfCtgry == "All") and (Devproperties and Devproperties != "All"):
-                mock_datalist = DeviceA39.objects.filter(
-                    Q(Devproperties__icontains=Devproperties)).filter(DevStatus__in=["Good", "Fixed", 'Long'])
+        else:
+            try:
+                request.body
+
+            except:
+                pass
             else:
-                mock_datalist = DeviceA39.objects.all().filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            if checkAdaPow:
-                # print(checkAdaPow)
-                # mock_datalist = DeviceA39.objects.filter(**checkAdaPow)
-                mock_datalist = mock_datalist.filter(**checkAdaPow)
-            # print(mock_datalist)
-            for i in mock_datalist:
-                # Photolist = []
-                # for h in i.Photo.all():
-                #     Photolist.append(
-                #         {'name': '', 'url': '/media/' + h.pic.name})  # fileListO需要的是对象列表而不是字符串列表
-                if i.Plandate and i.Btime and not i.Rtime:
-                    if datetime.datetime.now().date() > i.Plandate:
-                        Exceed_days = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Plandate)).split(' ')[
-                                    0]),
-                            0)
-                    else:
-                        Exceed_days = ''
-                    if datetime.datetime.now().date() > i.Btime:
-                        usedays = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Btime)).split(' ')[
-                                    0]),
-                            0)
-                    else:
-                        usedays = ''
-                else:
-                    usedays = ''
-                    Exceed_days = ''
-                Useyears = ''
-                if i.Pchsdate:
-                    if datetime.datetime.now().date() > i.Pchsdate:
-                        Useyears = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Pchsdate)).split(' ')[
-                                    0]) / 365,
-                            1)
-                addnewdate_str = ''
-                if i.addnewdate:
-                    addnewdate_str = str(i.addnewdate)
-                else:
-                    addnewdate_str = ''
-                Pchsdate_str = ''
-                if i.Pchsdate:
-                    Pchsdate_str = str(i.Pchsdate)
-                else:
-                    Pchsdate_str = ''
-                Plandate_str = ''
-                if i.Plandate:
-                    Plandate_str = str(i.Plandate)
-                else:
-                    Plandate_str = ''
-                Btime_str = ''
-                if i.Btime:
-                    Btime_str = str(i.Btime)
-                else:
-                    Btime_str = ''
-                Rtime_str = ''
-                if i.Rtime:
-                    Rtime_str = str(i.Rtime)
-                else:
-                    Rtime_str = ''
+                if 'addCabinet' in str(request.body):
+                    responseData = json.loads(request.body)
+                    CabinetsInfo = responseData["newCabinet"]
+                    Cabinet_create_dic = {
+                        "name": CabinetsInfo["name"],
+                        "location": CabinetsInfo["location"],
+                        "description": CabinetsInfo["description"],
+                        "rows": CabinetsInfo["rows"],
+                        "cols": CabinetsInfo["cols"],
+                    }
+                    try:
+                        with transaction.atomic():
+                            Cabinet_obj = Cabinet.objects.create(**Cabinet_create_dic)
+                            CabinetGrids_list = []
+                            for row in CabinetsInfo["gridData"]:
+                                for col in row:
+                                    data = {
+                                        "cabinet_id": Cabinet_obj.id,
+                                        "row": col['rowIndex'],
+                                        "col": col['colIndex'],
+                                        "position": col['position'],
+                                        "status": col['status'],
+                                        "Customer": col['Customer'],
+                                        "ProCode": col['ProCode'],
+                                        "CampalCode": col['CampalCode'],
+                                        "Brow_at": col['borrowDate'] if col['borrowDate'] and col['borrowDate'] != 'null' else None,
+                                        "BrowReson": col['BrowReson'],
+                                        "Take_at": col['takeoutDate'] if col['takeoutDate'] and col['takeoutDate'] != 'null' else None,
+                                        "TakeReson": col['TakeReson'],
+                                        "Back_at": col['reserveDate'] if col['reserveDate'] and col['reserveDate'] != 'null' else None,
+                                        "user": col['user'],
+                                        "phone": col['phone'],
+                                        "notes": col['notes'],
+                                        "creator": onlineuser,
+                                    }
+                                    CabinetGrids_list.append(CabinetGrid(**data))
+                            # print(CabinetGrids_list)
+                            CabinetGrid.objects.bulk_create(CabinetGrids_list)
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+                #管理员编辑单元格
+                if 'isSaveCell' in str(request.body):
+                    responseData = json.loads(request.body)
+                    ID = responseData['Gridid']
+                    # print(id)
+                    updateCabinetGrid_dic = {
+                                    #柜体信息，除了position（其实就是格子名称），创建后就不允许改动
+                                    # "cabinet_id": responseData['cabinetId'],#创建后就不允许改动
+                                    # "row": responseData['rowIndex'],
+                                    # "col": responseData['colIndex'],
+                                    "position": responseData['position'],
+                                    #借用信息
+                                    "status": responseData['status'],
+                                    "Customer": responseData['Customer'],
+                                    "ProCode": responseData['ProCode'],
+                                    "CampalCode": responseData['CampalCode'],
+                                    "Brow_at": responseData['borrowDate'] if responseData['borrowDate'] and responseData['borrowDate'] != 'null' else None,
+                                    "BrowReson": responseData['BrowReson'],
+                                    "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData['takeoutDate'] != 'null' else None,
+                                    "TakeReson": responseData['TakeReson'],
+                                    "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData['reserveDate'] != 'null' else None,
+                                    "user": responseData['user'],
+                                    "phone": responseData['phone'],
+                                    "notes": responseData['notes'],
+                                    # "creator": onlineuser,#只有创建时需要填写，后面就不让改动
+                                }
+                    try:
+                        with transaction.atomic():
+                            CabinetGrid.objects.filter(id=ID).update(**updateCabinetGrid_dic)
+                            #历史记录
+                            createGridRecord_dic = {
+                                "grid_id": ID,
+                                "action": 'update',
+                                "old_status": responseData['old_status'],
+                                "new_status": responseData['status'],
 
-                mock_data.append(
-                    {"id": i.id, "Customer": i.Customer, "Plant": i.Plant,
-                     "NID": i.NID, "DevID": i.DevID, "IntfCtgry": i.IntfCtgry,
-                     "DevCtgry": i.DevCtgry, "Devproperties": i.Devproperties, "DevVendor": i.DevVendor,
-                     "Devsize": i.Devsize, "DevModel": i.DevModel,
-                     "DevName": i.DevName,
-                     "HWVer": i.HWVer, "FWVer": i.FWVer, "DevDescription": i.DevDescription,
-                     "PckgIncludes": i.PckgIncludes,
-                     "expirdate": i.expirdate, "DevPrice": i.DevPrice, "Source": i.Source,
-                     "Pchsdate": Pchsdate_str,
-                     "PN": i.PN,
-                     "LNV_ST": i.LSTA, "Purchase_NO": i.ApplicationNo, "Declaration_NO": i.DeclarationNo,
-                     "AssetNum": i.AssetNum, "UsYear": Useyears,
-                     "addnewname": i.addnewname, "addnewdate": addnewdate_str,
-                     "Comment": i.Comment, "uscyc": i.uscyc, "UsrTimes": i.UsrTimes,
-                     "DevStatus": i.DevStatus, "BrwStatus": i.BrwStatus,
-                     "Usrname": i.Usrname, 'Usrnumber': i.BR_per_code,
-                     "Plandate": Plandate_str, "useday": usedays, "Btime": Btime_str, "Rtime": Rtime_str,
-                     "Overday": Exceed_days},
-                )
-        if 'BORROW' in str(request.body):
-            # print(1)
-            checkAdaPow = {}
-            IntfCtgry = request.POST.get('IntfCtgry')
-            # if IntfCtgry and IntfCtgry != "All":
-            #     checkAdaPow['IntfCtgry'] = IntfCtgry
-            DevCtgry = request.POST.get('DevCtgry')
-            if DevCtgry and DevCtgry != "All":
-                checkAdaPow['DevCtgry'] = DevCtgry
-            Devproperties = request.POST.get('Devproperties')
-            # if Devproperties and Devproperties != "All":
-            #     checkAdaPow['Devproperties'] = Devproperties
-            DevVendor = request.POST.get('DevVendor')
-            if DevVendor and DevVendor != "All":
-                checkAdaPow['DevVendor'] = DevVendor
-            Devsize = request.POST.get('Devsize')
-            if Devsize and Devsize != "All":
-                checkAdaPow['Devsize'] = Devsize
-            DevStatus = request.POST.get('DevStatus')
-            if DevStatus and DevStatus != "All":
-                checkAdaPow['BrwStatus'] = DevStatus
+                                "Customer": responseData['Customer'],
+                                "ProCode": responseData['ProCode'],
+                                "CampalCode": responseData['CampalCode'],
+                                "Brow_at": responseData['borrowDate'] if responseData['borrowDate'] and responseData[
+                                    'borrowDate'] != 'null' else None,
+                                "BrowReson": responseData['BrowReson'],
+                                "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData[
+                                    'takeoutDate'] != 'null' else None,
+                                "TakeReson": responseData['TakeReson'],
+                                "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData[
+                                    'reserveDate'] != 'null' else None,
+                                "user": responseData['user'],
+                                "phone": responseData['phone'],
+                                "notes": responseData['notes'],
+                            }
+                            # print(createGridRecord_dic)
+                            GridRecordresult = GridRecord.objects.create(**createGridRecord_dic)
+                            # print(GridRecordresult, 'GridRecordresult')
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+                #用户点击预约
+                if 'UserBorrow' in str(request.body):
+                    responseData = json.loads(request.body)
+                    ID = responseData['Gridid']
+                    # print(id)
+                    updateCabinetGrid_dic = {
+                                    #柜体信息，除了position（其实就是格子名称），创建后就不允许改动
+                                    # "cabinet_id": responseData['cabinetId'],#创建后就不允许改动
+                                    # "row": responseData['rowIndex'],
+                                    # "col": responseData['colIndex'],
+                                    "position": responseData['position'],
+                                    #借用信息
+                                    "status": responseData['status'],
+                                    "Customer": responseData['Customer'],
+                                    "ProCode": responseData['ProCode'],
+                                    "CampalCode": responseData['CampalCode'],
+                                    "Brow_at": responseData['borrowDate'] if responseData['borrowDate'] and responseData['borrowDate'] != 'null' else None,
+                                    "BrowReson": responseData['BrowReson'],
+                                    "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData['takeoutDate'] != 'null' else None,
+                                    "TakeReson": responseData['TakeReson'],
+                                    "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData['reserveDate'] != 'null' else None,
+                                    "user": onlineuser,
+                                    "phone": responseData['phone'],
+                                    "notes": responseData['notes'],
+                                    # "creator": onlineuser,#只有创建时需要填写，后面就不让改动
+                                }
+                    try:
+                        with transaction.atomic():
+                            CabinetGrid.objects.filter(id=ID).update(**updateCabinetGrid_dic)
+                            # #历史记录
+                            # createGridRecord_dic = {
+                            #     "grid_id": ID,
+                            #     "action": 'update',
+                            #     "old_status": responseData['old_status'],
+                            #     "new_status": responseData['status'],
+                            #
+                            #     "Customer": responseData['Customer'],
+                            #     "ProCode": responseData['ProCode'],
+                            #     "CampalCode": responseData['CampalCode'],
+                            #     "Brow_at": responseData['borrowDate'] if responseData['borrowDate'] and responseData[
+                            #         'borrowDate'] != 'null' else None,
+                            #     "BrowReson": responseData['BrowReson'],
+                            #     "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData[
+                            #         'takeoutDate'] != 'null' else None,
+                            #     "TakeReson": responseData['TakeReson'],
+                            #     "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData[
+                            #         'reserveDate'] != 'null' else None,
+                            #     "user": responseData['user'],
+                            #     "phone": responseData['phone'],
+                            #     "notes": responseData['notes'],
+                            # }
+                            # # print(createGridRecord_dic)
+                            # GridRecordresult = GridRecord.objects.create(**createGridRecord_dic)
+                            # # print(GridRecordresult, 'GridRecordresult')
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+                # 用户点击预约
+                if 'cancelReserve' in str(request.body):
+                    responseData = json.loads(request.body)
+                    ID = responseData['Gridid']
+                    # print(id)
+                    updateCabinetGrid_dic = {
+                        # 柜体信息，除了position（其实就是格子名称），创建后就不允许改动
+                        # "cabinet_id": responseData['cabinetId'],#创建后就不允许改动
+                        # "row": responseData['rowIndex'],
+                        # "col": responseData['colIndex'],
+                        # "position": responseData['position'],
+                        # 借用信息
+                        "status": responseData['status'],
+                        "Customer": '',
+                        "ProCode": '',
+                        "CampalCode": '',
+                        "Brow_at": None,
+                        "BrowReson": '',
+                        # "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData[
+                        #     'takeoutDate'] != 'null' else None,
+                        # "TakeReson": responseData['TakeReson'],
+                        # "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData[
+                        #     'reserveDate'] != 'null' else None,
+                        "user": '',
+                        "phone": '',
+                        # "notes": responseData['notes'],
+                        # "creator": onlineuser,#只有创建时需要填写，后面就不让改动
+                    }
+                    try:
+                        with transaction.atomic():
+                            CabinetGrid.objects.filter(id=ID).update(**updateCabinetGrid_dic)
+                            # #历史记录
+                            # createGridRecord_dic = {
+                            #     "grid_id": ID,
+                            #     "action": 'update',
+                            #     "old_status": responseData['old_status'],
+                            #     "new_status": responseData['status'],
+                            #
+                            #     "Customer": responseData['Customer'],
+                            #     "ProCode": responseData['ProCode'],
+                            #     "CampalCode": responseData['CampalCode'],
+                            #     "Brow_at": responseData['borrowDate'] if responseData['borrowDate'] and responseData[
+                            #         'borrowDate'] != 'null' else None,
+                            #     "BrowReson": responseData['BrowReson'],
+                            #     "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData[
+                            #         'takeoutDate'] != 'null' else None,
+                            #     "TakeReson": responseData['TakeReson'],
+                            #     "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData[
+                            #         'reserveDate'] != 'null' else None,
+                            #     "user": responseData['user'],
+                            #     "phone": responseData['phone'],
+                            #     "notes": responseData['notes'],
+                            # }
+                            # # print(createGridRecord_dic)
+                            # GridRecordresult = GridRecord.objects.create(**createGridRecord_dic)
+                            # # print(GridRecordresult, 'GridRecordresult')
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+                # 管理员确认借出
+                if 'confirmBorrow' in str(request.body):
+                    responseData = json.loads(request.body)
+                    ID = responseData['Gridid']
+                    # print(id)
+                    updateCabinetGrid_dic = {
+                        # 柜体信息，除了position（其实就是格子名称），创建后就不允许改动
+                        # "cabinet_id": responseData['cabinetId'],#创建后就不允许改动
+                        # "row": responseData['rowIndex'],
+                        # "col": responseData['colIndex'],
+                        # "position": responseData['position'],
+                        # 借用信息
+                        "status": responseData['status'],
+                        # "Customer": responseData['Customer'],
+                        # "ProCode": responseData['ProCode'],
+                        # "CampalCode": responseData['CampalCode'],
+                        "Brow_at": datetime.datetime.now().strftime(
+                                                              "%Y-%m-%d %H:%M:%S"),
+                        # "BrowReson": responseData['BrowReson'],
+                        # "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData[
+                        #     'takeoutDate'] != 'null' else None,
+                        # "TakeReson": responseData['TakeReson'],
+                        # "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData[
+                        #     'reserveDate'] != 'null' else None,
+                        # "user": responseData['user'],
+                        # "phone": responseData['phone'],
+                        # "notes": responseData['notes'],
+                        # "creator": onlineuser,#只有创建时需要填写，后面就不让改动
+                    }
+                    try:
+                        with transaction.atomic():
+                            CabinetGrid.objects.filter(id=ID).update(**updateCabinetGrid_dic)
+                            # 历史记录
+                            createGridRecord_dic = {
+                                "grid_id": ID,
+                                "action": 'update',
+                                "old_status": responseData['old_status'],
+                                "new_status": responseData['status'],
 
-            BorrowedID = request.POST.get('BorrowId')
-            # print(BorrowedID, type(BorrowedID))
-            # print(json.loads(BorrowedID))
-            # print(BorrowedID.split(','))
-            updatedic = {'ProjectCode': request.POST.get('Project'), 'Phase': request.POST.get('Phase'),
-                         'BrwStatus': '預定確認中', 'Usrname': request.session.get('CNname_DMS'), 'BR_per_code': request.session.get('account_DMS'),
-                         'Plandate': request.POST.get('Predict_return'), 'Btime': None, 'Rtime': None, }
-            # print(updatedic)
-            for i in BorrowedID.split(','):
-                # print(i)
-                try:
-                    with transaction.atomic():
-                        # print(updatedic)
-                        DeviceA39.objects.filter(id=i).update(**updatedic)
-                        alert = 0
-                except:
-                    # print('2')
-                    alert = '此数据%s正被其他使用者编辑中...' % i
+                                "Customer": responseData['Customer'],
+                                "ProCode": responseData['ProCode'],
+                                "CampalCode": responseData['CampalCode'],
+                                "Brow_at": datetime.datetime.now().strftime(
+                                                              "%Y-%m-%d %H:%M:%S"),
+                                "BrowReson": responseData['BrowReson'],
+                                "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and
+                                                                          responseData[
+                                                                              'takeoutDate'] != 'null' else None,
+                                "TakeReson": responseData['TakeReson'],
+                                "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and
+                                                                          responseData[
+                                                                              'reserveDate'] != 'null' else None,
+                                "user": responseData['user'],
+                                "phone": responseData['phone'],
+                                "notes": responseData['notes'],
+                            }
+                            # print(createGridRecord_dic)
+                            GridRecordresult = GridRecord.objects.create(**createGridRecord_dic)
+                            # print(GridRecordresult, 'GridRecordresult')
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+                # 用户取出保留
+                if 'confirmTakeOut' in str(request.body):
+                    responseData = json.loads(request.body)
+                    ID = responseData['Gridid']
+                    # print(id)
+                    updateCabinetGrid_dic = {
+                        # 柜体信息，除了position（其实就是格子名称），创建后就不允许改动
+                        # "cabinet_id": responseData['cabinetId'],#创建后就不允许改动
+                        # "row": responseData['rowIndex'],
+                        # "col": responseData['colIndex'],
+                        # "position": responseData['position'],
+                        # 借用信息
+                        "status": responseData['status'],
+                        # "Customer": responseData['Customer'],
+                        # "ProCode": responseData['ProCode'],
+                        # "CampalCode": responseData['CampalCode'],
+                        # "Brow_at": datetime.datetime.now().strftime(
+                        #     "%Y-%m-%d %H:%M:%S"),
+                        # "BrowReson": responseData['BrowReson'],
+                        "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData[
+                            'takeoutDate'] != 'null' else None,#这个地方时前端获取当前日期
+                        "TakeReson": responseData['TakeReson'],
+                        "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and responseData[
+                            'reserveDate'] != 'null' else None,
+                        # "user": responseData['user'],
+                        # "phone": responseData['phone'],
+                        # "notes": responseData['notes'],
+                        # "creator": onlineuser,#只有创建时需要填写，后面就不让改动
+                    }
+                    try:
+                        with transaction.atomic():
+                            CabinetGrid.objects.filter(id=ID).update(**updateCabinetGrid_dic)
+                            # 历史记录
+                            createGridRecord_dic = {
+                                "grid_id": ID,
+                                "action": 'update',
+                                "old_status": responseData['old_status'],
+                                "new_status": responseData['status'],
 
-            # mock_data
-            if IntfCtgry and IntfCtgry != "All" and Devproperties and Devproperties != "All":
-                mock_datalist = DeviceA39.objects.filter(
-                    Q(IntfCtgry__icontains=IntfCtgry) & Q(Devproperties__icontains=Devproperties)).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            elif IntfCtgry and IntfCtgry != "All" and (not Devproperties or Devproperties == "All"):
-                mock_datalist = DeviceA39.objects.filter(
-                    Q(IntfCtgry__icontains=IntfCtgry)).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            elif (not IntfCtgry or IntfCtgry == "All") and (Devproperties and Devproperties != "All"):
-                mock_datalist = DeviceA39.objects.filter(
-                    Q(Devproperties__icontains=Devproperties)).filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            else:
-                mock_datalist = DeviceA39.objects.all().filter(DevStatus__in=["Good", "Fixed", 'Long'])
-            if checkAdaPow:
-                # print(checkAdaPow)
-                # mock_datalist = DeviceA39.objects.filter(**checkAdaPow)
-                mock_datalist = mock_datalist.filter(**checkAdaPow)
-            # print(mock_datalist)
-            for i in mock_datalist:
-                # Photolist = []
-                # for h in i.Photo.all():
-                #     Photolist.append(
-                #         {'name': '', 'url': '/media/' + h.pic.name})  # fileListO需要的是对象列表而不是字符串列表
-                if i.Plandate and i.Btime and not i.Rtime:
-                    if datetime.datetime.now().date() > i.Plandate:
-                        Exceed_days = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Plandate)).split(' ')[
-                                    0]),
-                            0)
-                    else:
-                        Exceed_days = ''
-                    if datetime.datetime.now().date() > i.Btime:
-                        usedays = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Btime)).split(' ')[
-                                    0]),
-                            0)
-                    else:
-                        usedays = ''
-                else:
-                    usedays = ''
-                    Exceed_days = ''
-                Useyears = ''
-                if i.Pchsdate:
-                    if datetime.datetime.now().date() > i.Pchsdate:
-                        Useyears = round(
-                            float(
-                                str((datetime.datetime.now().date() - i.Pchsdate)).split(' ')[
-                                    0]) / 365,
-                            1)
-                addnewdate_str = ''
-                if i.addnewdate:
-                    addnewdate_str = str(i.addnewdate)
-                else:
-                    addnewdate_str = ''
-                Pchsdate_str = ''
-                if i.Pchsdate:
-                    Pchsdate_str = str(i.Pchsdate)
-                else:
-                    Pchsdate_str = ''
-                Plandate_str = ''
-                if i.Plandate:
-                    Plandate_str = str(i.Plandate)
-                else:
-                    Plandate_str = ''
-                Btime_str = ''
-                if i.Btime:
-                    Btime_str = str(i.Btime)
-                else:
-                    Btime_str = ''
-                Rtime_str = ''
-                if i.Rtime:
-                    Rtime_str = str(i.Rtime)
-                else:
-                    Rtime_str = ''
+                                "Customer": responseData['Customer'],
+                                "ProCode": responseData['ProCode'],
+                                "CampalCode": responseData['CampalCode'],
+                                "Brow_at": datetime.datetime.now().strftime(
+                                    "%Y-%m-%d %H:%M:%S"),
+                                "BrowReson": responseData['BrowReson'],
+                                "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and
+                                                                          responseData[
+                                                                              'takeoutDate'] != 'null' else None,
+                                "TakeReson": responseData['TakeReson'],
+                                "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and
+                                                                          responseData[
+                                                                              'reserveDate'] != 'null' else None,
+                                "user": responseData['user'],
+                                "phone": responseData['phone'],
+                                "notes": responseData['notes'],
+                            }
+                            # print(createGridRecord_dic)
+                            GridRecordresult = GridRecord.objects.create(**createGridRecord_dic)
+                            # print(GridRecordresult, 'GridRecordresult')
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+                # 用户取消保留，机器放回
+                if 'cancelTakenReserve' in str(request.body):
+                    responseData = json.loads(request.body)
+                    ID = responseData['Gridid']
+                    # print(id)
+                    updateCabinetGrid_dic = {
+                        # 柜体信息，除了position（其实就是格子名称），创建后就不允许改动
+                        # "cabinet_id": responseData['cabinetId'],#创建后就不允许改动
+                        # "row": responseData['rowIndex'],
+                        # "col": responseData['colIndex'],
+                        # "position": responseData['position'],
+                        # 借用信息
+                        "status": responseData['status'],
+                        # "Customer": responseData['Customer'],
+                        # "ProCode": responseData['ProCode'],
+                        # "CampalCode": responseData['CampalCode'],
+                        # "Brow_at": datetime.datetime.now().strftime(
+                        #     "%Y-%m-%d %H:%M:%S"),
+                        # "BrowReson": responseData['BrowReson'],
+                        # "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and responseData[
+                        #     'takeoutDate'] != 'null' else None,  # 这个地方时前端获取当前日期
+                        # "TakeReson": responseData['TakeReson'],
+                        "Back_at": None,
+                        # "user": responseData['user'],
+                        # "phone": responseData['phone'],
+                        # "notes": responseData['notes'],
+                        # "creator": onlineuser,#只有创建时需要填写，后面就不让改动
+                    }
+                    try:
+                        with transaction.atomic():
+                            CabinetGrid.objects.filter(id=ID).update(**updateCabinetGrid_dic)
+                            # 历史记录
+                            createGridRecord_dic = {
+                                "grid_id": ID,
+                                "action": 'update',
+                                "old_status": responseData['old_status'],
+                                "new_status": responseData['status'],
 
-                mock_data.append(
-                    {"id": i.id, "Customer": i.Customer, "Plant": i.Plant,
-                     "NID": i.NID, "DevID": i.DevID, "IntfCtgry": i.IntfCtgry,
-                     "DevCtgry": i.DevCtgry, "Devproperties": i.Devproperties, "DevVendor": i.DevVendor,
-                     "Devsize": i.Devsize, "DevModel": i.DevModel,
-                     "DevName": i.DevName,
-                     "HWVer": i.HWVer, "FWVer": i.FWVer, "DevDescription": i.DevDescription,
-                     "PckgIncludes": i.PckgIncludes,
-                     "expirdate": i.expirdate, "DevPrice": i.DevPrice, "Source": i.Source,
-                     "Pchsdate": Pchsdate_str,
-                     "PN": i.PN,
-                     "LNV_ST": i.LSTA, "Purchase_NO": i.ApplicationNo, "Declaration_NO": i.DeclarationNo,
-                     "AssetNum": i.AssetNum, "UsYear": Useyears,
-                     "addnewname": i.addnewname, "addnewdate": addnewdate_str,
-                     "Comment": i.Comment, "uscyc": i.uscyc, "UsrTimes": i.UsrTimes,
-                     "DevStatus": i.DevStatus, "BrwStatus": i.BrwStatus,
-                     "Usrname": i.Usrname, 'Usrnumber': i.BR_per_code,
-                     "Plandate": Plandate_str, "useday": usedays, "Btime": Btime_str, "Rtime": Rtime_str,
-                     "Overday": Exceed_days},
-                )
+                                "Customer": responseData['Customer'],
+                                "ProCode": responseData['ProCode'],
+                                "CampalCode": responseData['CampalCode'],
+                                "Brow_at": datetime.datetime.now().strftime(
+                                    "%Y-%m-%d %H:%M:%S"),
+                                "BrowReson": responseData['BrowReson'],
+                                "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and
+                                                                          responseData[
+                                                                              'takeoutDate'] != 'null' else None,
+                                "TakeReson": responseData['TakeReson'],
+                                "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and
+                                                                          responseData[
+                                                                              'reserveDate'] != 'null' else None,
+                                "user": responseData['user'],
+                                "phone": responseData['phone'],
+                                "notes": responseData['notes'],
+                            }
+                            # print(createGridRecord_dic)
+                            GridRecordresult = GridRecord.objects.create(**createGridRecord_dic)
+                            # print(GridRecordresult, 'GridRecordresult')
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+                # 用户归还存储格
+                if 'returnCell' in str(request.body):
+                    responseData = json.loads(request.body)
+                    ID = responseData['Gridid']
+                    # print(id)
+                    updateCabinetGrid_dic = {
+                        # 柜体信息，除了position（其实就是格子名称），创建后就不允许改动
+                        # "cabinet_id": responseData['cabinetId'],#创建后就不允许改动
+                        # "row": responseData['rowIndex'],
+                        # "col": responseData['colIndex'],
+                        # "position": responseData['position'],
+                        # 借用信息
+                        "status": responseData['status'],
+                        "Customer": '',
+                        "ProCode": '',
+                        "CampalCode": '',
+                        "Brow_at": None,
+                        "BrowReson": '',
+                        "Take_at": None,  # 这个地方时前端获取当前日期
+                        "TakeReson": '',
+                        "Back_at": None,
+                        "user": '',
+                        "phone": '',
+                        "notes": '',
+                        # "creator": onlineuser,#只有创建时需要填写，后面就不让改动
+                    }
+                    try:
+                        with transaction.atomic():
+                            CabinetGrid.objects.filter(id=ID).update(**updateCabinetGrid_dic)
+                            # 历史记录
+                            createGridRecord_dic = {
+                                "grid_id": ID,
+                                "action": 'update',
+                                "old_status": responseData['old_status'],
+                                "new_status": responseData['status'],
+
+                                "Customer": responseData['Customer'],
+                                "ProCode": responseData['ProCode'],
+                                "CampalCode": responseData['CampalCode'],
+                                "Brow_at": datetime.datetime.now().strftime(
+                                    "%Y-%m-%d %H:%M:%S"),
+                                "BrowReson": responseData['BrowReson'],
+                                "Take_at": responseData['takeoutDate'] if responseData['takeoutDate'] and
+                                                                          responseData[
+                                                                              'takeoutDate'] != 'null' else None,
+                                "TakeReson": responseData['TakeReson'],
+                                "Back_at": responseData['reserveDate'] if responseData['reserveDate'] and
+                                                                          responseData[
+                                                                              'reserveDate'] != 'null' else None,
+                                "user": responseData['user'],
+                                "phone": responseData['phone'],
+                                "notes": responseData['notes'],
+                            }
+                            # print(createGridRecord_dic)
+                            GridRecordresult = GridRecord.objects.create(**createGridRecord_dic)
+                            # print(GridRecordresult, 'GridRecordresult')
+                    except Exception as e:
+                        print(str(e))
+                        errMsg = str(e)
+
+
+        #mock_data
+        for i in Cabinet.objects.all():
+            cabinets_dic = {
+                "id": i.id, "name": i.name, "rows": i.rows, "cols": i.cols,
+            }
+            gridData_list = []
+            for j in CabinetGrid.objects.filter(cabinet=i).values('row').distinct().order_by():#多字段干扰​：使用 .values('row') 时，如果查询包含其他字段（如通过 order_by 或模型默认排序），distinct() 可能无效。数据库会对所有字段组合去重，而不仅是 row。
+                # print(j['row'])
+                rowdata = []
+                for k in CabinetGrid.objects.filter(cabinet=i, row=j['row']).values('col'):
+                    celldata = CabinetGrid.objects.filter(cabinet=i, row=j['row'], col=k['col']).first()
+                    coldic = {
+                        'id': celldata.id,
+                        "cabinet": i.id, "rowIndex": celldata.row, "colIndex": celldata.col,
+                        "status": celldata.status,
+                        "statusText": celldata.get_status_display(),
+                        "position": celldata.position, "user": celldata.user, "phone": celldata.phone,
+                        "Customer": celldata.Customer, "ProCode": celldata.ProCode,  "CampalCode": celldata.CampalCode,
+                        "borrowDate": str(celldata.Brow_at) if celldata.Brow_at else '', "BrowReson": celldata.BrowReson,
+                        "takeoutDate": str(celldata.Take_at) if celldata.Take_at else '', "TakeReson": celldata.TakeReson,
+                         "reserveDate": str(celldata.Back_at) if celldata.Back_at else '',
+                               "notes": celldata.notes
+                    }
+                    rowdata.append(coldic)
+                gridData_list.append(rowdata)
+            cabinets_dic["gridData"] = gridData_list
+            cabinets_datas.append(cabinets_dic)
+
         data = {
-            "IntfCtgryOptions5": IntfCtgryOptions5,
-            "DevVendorOptions5": DevVendorOptions5,
-            "content": mock_data,
-
-            "allIntfCtgry": allIntfCtgry,
-            "allDevCtgry": allDevCtgry,
-            "allDevproperties": allDevproperties,
-            "allDevVendor": allDevVendor,
-            "allDevsize": allDevsize,
-            "allDevStatus": allDevStatus,
-            # "options": options
+            "cabinets": cabinets_datas,
+            "isAdmin": isAdmin,
+            "currentUser": currentUser,
+            "CustomerOptions": CustomerOptions,
+            "errMsg": errMsg,
         }
         return HttpResponse(json.dumps(data), content_type="application/json")
     return render(request, 'CabinetManage/CabinetManage.html', locals())

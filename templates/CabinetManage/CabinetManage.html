@@ -260,9 +260,18 @@
         border: none !important;
     }
 
+    /* 修改保留状态为黄色 */
     .status-reserved {
-        background-color: #fef3e2;
-        background: linear-gradient(145deg, #feebcb, #fef3e2);
+        background-color: #fff8e1;
+        background: linear-gradient(145deg, #ffecb3, #fff8e1);
+        border: none !important;
+    }
+
+
+    /* 新增：取出保留状态 */
+    .status-taken-reserved {
+        background-color: #ffecd5;
+        background: linear-gradient(145deg, #ffe2c0, #ffecd5);
         border: none !important;
     }
 
@@ -278,6 +287,12 @@
         font-size: 14px;
         color: #666;
         font-weight: 500;
+    }
+
+    /* 超期日期样式 */
+    .overdue-date {
+        color: #ff4d4f !important;
+        font-weight: 600;
     }
 
     .user-info {
@@ -306,6 +321,72 @@
 
     .cancel-reserve-btn:hover {
         background: #ff7875;
+        transform: scale(1.08);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 取出按钮样式 */
+    .take-out-btn {
+        margin-top: 10px;
+        padding: 5px 12px;
+        font-size: 13px;
+        border-radius: 4px;
+        background: #ff9d00;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.3s;
+        font-weight: 500;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        border: none;
+    }
+
+    .take-out-btn:hover {
+        background: #ffa940;
+        transform: scale(1.08);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 取消保留按钮样式 */
+    .cancel-taken-btn {
+        margin-top: 10px;
+        padding: 5px 12px;
+        font-size: 13px;
+        border-radius: 4px;
+        background: #ff9d00;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.3s;
+        font-weight: 500;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        border: none;
+    }
+
+    .cancel-taken-btn:hover {
+        background: #ffa940;
+        transform: scale(1.08);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 归还按钮样式 */
+    .return-btn {
+        margin-top: 10px;
+        padding: 5px 12px;
+        font-size: 13px;
+        border-radius: 4px;
+        background: #1a73e8;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.3s;
+        font-weight: 500;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        border: none;
+    }
+
+    .return-btn:hover {
+        background: #1669d6;
         transform: scale(1.08);
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
@@ -344,7 +425,12 @@
     }
 
     .legend-reserved {
-        background: linear-gradient(145deg, #feebcb, #fef3e2);
+        background: linear-gradient(145deg, #ffecb3, #fff8e1);
+    }
+
+    /* 新增：取出保留状态图例 */
+    .legend-taken-reserved {
+        background: linear-gradient(145deg, #ffe2c0, #ffecd5);
     }
 
     /* 统计区域 */
@@ -378,6 +464,11 @@
         font-size: 1rem;
         color: #5a5e66;
         font-weight: 500;
+    }
+
+    /* 超期状态背景 */
+    .status-overdue {
+        background: linear-gradient(145deg, #ffd7d7, #ffbfbf) !important;
     }
 
     /* 页脚 */
@@ -421,6 +512,27 @@
             font-size: 1.8rem;
         }
     }
+    /* 添加确认借出按钮样式 */
+    .confirm-borrow-btn {
+        margin-top: 10px;
+        padding: 5px 12px;
+        font-size: 13px;
+        border-radius: 4px;
+        background: #4caf50;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.3s;
+        font-weight: 500;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        border: none;
+    }
+
+    .confirm-borrow-btn:hover {
+        background: #66bb6a;
+        transform: scale(1.08);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
 
     @media (max-width: 480px) {
         .position-id {
@@ -428,6 +540,16 @@
         }
 
         .cancel-reserve-btn {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        .take-out-btn {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        .return-btn {
             padding: 4px 8px;
             font-size: 12px;
         }
@@ -461,6 +583,22 @@
         transform: translateY(0);
         box-shadow: none;
     }
+
+    /* 悬浮提示样式 */
+    .cell-tooltip {
+        max-width: 300px;
+        padding: 10px;
+        background: white;
+        border-radius: 4px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        line-height: 1.5;
+        white-space: pre-line; /* 确保换行显示 */
+    }
+
+    .tooltip-overdue {
+        color: #ff4d4f;
+        font-weight: bold;
+    }
 </style>
 {% endblock %}
 {% block content %}
@@ -475,7 +613,7 @@
 
             <!-- 柜体管理栏 -->
             <div class="cabinets-bar">
-                <el-button type="primary" icon="el-icon-plus" @click="openAddCabinetDialog">添加柜体</el-button>
+                <el-button :loading="elbuttonloading" v-if="isAdmin" type="primary" icon="el-icon-plus" @click="openAddCabinetDialog">添加柜体</el-button>
 
                 <div class="cabinets-tabs">
                     <div v-for="(cabinet, index) in cabinets"
@@ -483,14 +621,16 @@
                          class="cabinet-tab"
                          :class="{active: currentCabinetId === cabinet.id}"
                          @click="setActiveCabinet(cabinet.id)">
-                        柜体 ${ index + 1 }
-                        <span class="delete-cabinet-btn" @click.stop="removeCabinet(cabinet.id)"
+                        ${ cabinet.name }
+                        <!-- 柜体标签上的删除按钮 -->
+                        <span v-if="isAdmin" class="delete-cabinet-btn"
+                              @click.stop="confirmRemoveCabinet(cabinet.id, cabinet.name)"
                               title="删除柜体">×</span>
                     </div>
                 </div>
             </div>
 
-            <div class="control-panel">
+            <div class="control-panel" v-if="isAdmin_origin">
                 <div class="control-row">
                     <el-radio-group v-model="isAdmin" size="medium">
                         <el-radio-button :label="true" style="padding: 8px 20px; border-radius: 20px;">管理员</el-radio-button>
@@ -506,8 +646,8 @@
                             <label>列数：</label>
                             <el-input-number v-model="currentCabinet.cols" :min="1" :max="20" size="medium"></el-input-number>
                         </div>
-                        <el-button type="primary" size="medium" @click="generateGridForCabinet(currentCabinetId)">生成柜格布局</el-button>{% endcomment %}
-                    </div>
+                        <el-button type="primary" size="medium" @click="generateGridForCabinet(currentCabinetId)">生成柜格布局</el-button>
+                    </div>{% endcomment %}
                 </div>
             </div>
 
@@ -515,10 +655,12 @@
             <div v-for="cabinet in cabinets" :key="cabinet.id" class="cabinet-section">
                 <div class="cabinet-header">
                     <h2>柜体 ${ cabinet.name }</h2>
+                    <!-- 柜体详情中的删除按钮 -->
                     <el-button
+                        v-if="isAdmin"
                         type="text"
                         icon="el-icon-delete"
-                        @click="removeCabinet(cabinet.id)"
+                        @click="confirmRemoveCabinet(cabinet.id, cabinet.name)"
                         style="color: #f56c6c;">删除此柜体</el-button>
                 </div>
 
@@ -526,6 +668,7 @@
                     <div class="grid-table-container" v-if="cabinet.gridData && cabinet.gridData.length">
                         <el-table
                             :data="transformGridData(cabinet.gridData)"
+                            v-loading="tableloading"
                             class="grid-table"
                             :show-header="false"
                             border
@@ -537,26 +680,82 @@
                                 :label="''"
                                 >
                                 <template slot-scope="scope">
-                                    <div
-                                        class="grid-cell"
-                                        :class="scope.row.cells[colIndex].statusClass"
-                                        @click="handleCellClick(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)"
-                                        @mouseover="hoverCell = scope.row.cells[colIndex]"
-                                        @mouseleave="hoverCell = null">
-                                        <div class="cell-content">
-                                            <div class="position-id">${ scope.row.cells[colIndex].position }</div>
-                                            <div class="status-text">${ scope.row.cells[colIndex].statusText }</div>
-                                            <div v-if="scope.row.cells[colIndex].user" class="user-info">${ scope.row.cells[colIndex].user }</div>
+                                    <el-tooltip
+                                            :content="getTooltipContent(scope.row.cells[colIndex])"
+                                            effect="light"
+                                            placement="top"
+                                            popper-class="cell-tooltip"
+                                            :disabled="!hoverCell">
+                                        <div
+                                            class="grid-cell"
+                                            :class="[
+                                                getStatusClass(scope.row.cells[colIndex].status),
+                                                {'status-overdue': isOverdue(scope.row.cells[colIndex])}
+                                            ]"
+                                            @mouseover="hoverCell = scope.row.cells[colIndex]"
+                                            @mouseleave="hoverCell = null"
+                                            @click="handleCellClick(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
 
-                                            <!-- 取消预约按钮（只对预约用户显示） -->
-                                            <div
-                                                v-if="!isAdmin && scope.row.cells[colIndex].status === 2 && scope.row.cells[colIndex].user === currentUser.name"
-                                                class="cancel-reserve-btn"
-                                                @click.stop="confirmCancelReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
-                                                取消预约
+                                            <div class="cell-content">
+                                                <div class="position-id">${ scope.row.cells[colIndex].position }</div>
+                                                <div class="status-text" :class="{'overdue-date': isReserveOverdue(scope.row.cells[colIndex])}">
+                                                    ${ scope.row.cells[colIndex].statusText }
+                                                </div>
+                                                <div v-if="scope.row.cells[colIndex].user" class="user-info">${ scope.row.cells[colIndex].user }</div>
+
+                                                <!-- 日期信息 -->
+                                                <div v-if="scope.row.cells[colIndex].borrowDate" class="date-info" :class="{'overdue-date': isOverdue(scope.row.cells[colIndex])}">
+                                                    借用: ${ formatDate(scope.row.cells[colIndex].borrowDate) }
+                                                </div>
+                                                <div v-if="scope.row.cells[colIndex].reserveDate" class="date-info" :class="{'overdue-date': isReserveOverdue(scope.row.cells[colIndex])}">
+                                                    保留: ${ formatDate(scope.row.cells[colIndex].reserveDate) }
+                                                </div>
+                                                <div v-if="scope.row.cells[colIndex].takeoutDate" class="date-info">
+                                                    取出: ${ formatDate(scope.row.cells[colIndex].takeoutDate) }
+                                                </div>
+
+                                                <!-- 取消预约按钮（只对预约用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 2 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="cancel-reserve-btn"
+                                                    @click.stop="confirmCancelReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    取消预约
+                                                </div>
+
+                                                <!-- 取出按钮（只对借用用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 1 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="take-out-btn"
+                                                    @click.stop="takeOutCell(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    取出保留
+                                                </div>
+
+                                                <!-- 归还按钮（只对借用用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 1 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="return-btn"
+                                                    @click.stop="confirmReturnCell(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    归还
+                                                </div>
+
+                                                <!-- 取消保留按钮（只对取出保留用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 3 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="cancel-taken-btn"
+                                                    @click.stop="cancelTakenReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    取消保留
+                                                </div>
+                                                <!-- 管理员确认借出按钮（只对预定中状态显示） -->
+                                                <div
+                                                    v-if="isAdmin && scope.row.cells[colIndex].status === 2"
+                                                    class="confirm-borrow-btn"
+                                                    @click.stop="confirmBorrow(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    确认借出
+                                                </div>
                                             </div>
+
                                         </div>
-                                    </div>
+                                    </el-tooltip>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -576,6 +775,14 @@
                         <div class="legend-item">
                             <div class="legend-color legend-reserved"></div>
                             <span>预定中</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-taken-reserved"></div>
+                            <span>取出保留</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color status-overdue"></div>
+                            <span>超期</span>
                         </div>
                     </div>
                 </div>
@@ -597,6 +804,10 @@
                         <div class="stat-value">${ getReservedCells(cabinet) }</div>
                         <div class="stat-label">预定中柜格</div>
                     </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${ getTakenCells(cabinet) }</div>
+                        <div class="stat-label">取出保留</div>
+                    </div>
                 </div>
             </div>
 
@@ -610,6 +821,12 @@
             <el-form :model="newCabinetForm" label-width="100px">
                 <el-form-item label="柜体名称">
                     <el-input v-model="newCabinetForm.name" placeholder="请输入柜体名称"></el-input>
+                </el-form-item>
+                <el-form-item label="柜体位置">
+                    <el-input v-model="newCabinetForm.location" placeholder="请输入柜体位置"></el-input>
+                </el-form-item>
+                <el-form-item label="描述">
+                    <el-input v-model="newCabinetForm.description" placeholder="请输入柜体描述"></el-input>
                 </el-form-item>
                 <el-form-item label="行数">
                     <el-input-number v-model="newCabinetForm.rows" :min="1" :max="20"></el-input-number>
@@ -629,13 +846,14 @@
             <div v-if="currentCell">
                 <el-form :model="currentCell" label-width="100px" class="dialog-form">
                     <el-form-item label="位置编号">
-                        <el-input v-model="currentCell.position" disabled></el-input>
+                        <el-input v-model="currentCell.position"></el-input>
                     </el-form-item>
                     <el-form-item label="当前状态">
                         <el-select v-model="currentCell.status">
                             <el-option label="空闲" :value="0"></el-option>
                             <el-option label="使用中" :value="1"></el-option>
                             <el-option label="预定中" :value="2"></el-option>
+                            <el-option label="取出保留" :value="3"></el-option>
                         </el-select>
                     </el-form-item>
                     <el-form-item label="使用者">
@@ -643,6 +861,55 @@
                     </el-form-item>
                     <el-form-item label="联系电话">
                         <el-input v-model="currentCell.phone"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Customer" prop="Customer" style="width: 100%;">
+                          <el-select v-model="currentCell.Customer" placeholder="请选择">
+                                <el-option
+                                    v-for="item in CustomerOptions"
+                                    :key="item"
+                                    :label="item"
+                                    :value="item">
+                                </el-option>
+                          </el-select>
+                        </el-form-item>
+                    <el-form-item label="ProCode">
+                        <el-input v-model="currentCell.ProCode"></el-input>
+                    </el-form-item>
+                    <el-form-item label="CampalCode">
+                        <el-input v-model="currentCell.CampalCode"></el-input>
+                    </el-form-item>
+                    <el-form-item label="留样日期(放回)">
+                        <el-date-picker
+                            v-model="currentCell.borrowDate"
+                            type="date"
+                            format="yyyy-MM-dd"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="留样原因">
+                        <el-input type="textarea" v-model="currentCell.BrowReson"></el-input>
+                    </el-form-item>
+                    <el-form-item label="取出日期">
+                        <el-date-picker
+                            v-model="currentCell.takeoutDate"
+                            type="date"
+                            format="yyyy-MM-dd"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="取出保留原因">
+                        <el-input type="textarea" v-model="currentCell.TakeReson"></el-input>
+                    </el-form-item>
+                    <el-form-item label="保留日期">
+                        <el-date-picker
+                            v-model="currentCell.reserveDate"
+                            type="date"
+                            format="yyyy-MM-dd"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择日期">
+                        </el-date-picker>
                     </el-form-item>
                     <el-form-item label="备注信息">
                         <el-input type="textarea" v-model="currentCell.notes"></el-input>
@@ -662,11 +929,27 @@
                     <el-form-item label="位置编号">
                         <el-input v-model="currentCell.position" disabled></el-input>
                     </el-form-item>
-                    <el-form-item label="借用人">
-                        <el-input v-model="borrowForm.user"></el-input>
-                    </el-form-item>
                     <el-form-item label="联系电话">
                         <el-input v-model="borrowForm.phone"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Customer" prop="Customer" style="width: 100%;">
+                          <el-select v-model="borrowForm.Customer" placeholder="请选择">
+                                <el-option
+                                    v-for="item in CustomerOptions"
+                                    :key="item"
+                                    :label="item"
+                                    :value="item">
+                                </el-option>
+                          </el-select>
+                        </el-form-item>
+                    <el-form-item label="ProCode">
+                        <el-input v-model="borrowForm.ProCode"></el-input>
+                    </el-form-item>
+                    <el-form-item label="CampalCode">
+                        <el-input v-model="borrowForm.CampalCode"></el-input>
+                    </el-form-item>
+                    <el-form-item label="留样原因">
+                        <el-input type="textarea" v-model="borrowForm.BrowReson"></el-input>
                     </el-form-item>
                 </el-form>
             </div>
@@ -676,9 +959,31 @@
             </span>
         </el-dialog>
 
-        <!-- 悬浮信息提示 -->
-        <el-tooltip :content="hoverInfo" placement="top" effect="light" :disabled="!hoverCell" :manual="true" v-model="tooltipVisible">
-        </el-tooltip>
+        <!-- 取出保留确认对话框 -->
+        <el-dialog title="取出保留" :visible.sync="dialogTakeOutVisible" width="400px">
+            <div v-if="currentCell">
+                <p>确定要将柜格 <strong>${ currentCell.position }</strong> 设置为取出保留状态吗？</p>
+                <el-form :model="takeoutForm" label-width="100px">
+                    <el-form-item label="取出保留原因">
+                        <el-input type="textarea" v-model="takeoutForm.TakeReson"></el-input>
+                    </el-form-item>
+                    <el-form-item label="保留日期（放回）">
+                        <el-date-picker
+                            v-model="takeoutForm.reserveDate"
+                            type="date"
+                            format="yyyy-MM-dd"
+                            value-format="yyyy-MM-dd"
+                            :picker-options="reserveDateOptions"
+                            placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogTakeOutVisible = false">取 消</el-button>
+                <el-button type="primary" @click="confirmTakeOut">确 定</el-button>
+            </span>
+        </el-dialog>
     </div>
 </div>
 {% endblock %}
@@ -687,7 +992,7 @@
 <script src="/static/js/es6/babel.min.js"></script>
 <script src="/static/js/axios.min.js"></script>
 <script src="/static/js/vue.min.js"></script>
-{#<script src="/static/js/Qs.js"></script>#}
+<script src="/static/js/qs.js"></script>
 <script src="/static/js/Element/index.js"></script>
 
 <script type="text/babel">
@@ -699,28 +1004,47 @@
                 // 智能柜管理系统数据
                 cabinets: [],       // 存储所有柜体
                 currentCabinetId: null, // 当前操作的柜体ID
+                isAdmin_origin: true,
                 isAdmin: true,
-                currentUser: { name: '普通用户', phone: '13800138000' },
+                currentUser: { {% comment %}name: '普通用户', phone: '13800138000'{% endcomment %} },
+                CustomerOptions: [],
+                tableloading: false,
+                elbuttonloading: false,
+                errMsg: '',
 
                 // 对话框相关
                 dialogAdminVisible: false, // 管理员单元格信息对话框
                 dialogUserBorrowVisible: false, // 用户借用对话框
                 dialogAddVisible: false, // 添加柜体对话框
+                dialogTakeOutVisible: false, // 取出保留对话框
 
                 currentCell: null,
                 currentCabinetIdInDialog: null, // 存储当前单元格所在的柜体ID
                 currentRowIndex: null,
                 currentColIndex: null,
+                originalCellStatus: null, // 用于保存原始状态
 
                 // 借用表单
                 borrowForm: {
-                    user: '',
-                    phone: ''
+                    phone: '',
+                    Customer: '',
+                    ProCode: '',
+                    CampalCode: '',
+                    Brow_at: null,
+                    BrowReson: '',
+                },
+
+                // 取出保留表单
+                takeoutForm: {
+                    TakeReson: '',
+                    reserveDate: '',
                 },
 
                 // 添加柜体表单
                 newCabinetForm: {
                     name: '新柜体',
+                    location: ``,
+                    description: ``,
                     rows: 5,
                     cols: 6
                 },
@@ -730,9 +1054,20 @@
                 statusMap: [
                     { text: '空闲', class: 'status-free' },
                     { text: '使用中', class: 'status-in-use' },
-                    { text: '预定中', class: 'status-reserved' }
+                    { text: '预定中', class: 'status-reserved' },
+                    { text: '取出保留', class: 'status-taken-reserved' } // 新增状态
                 ],
-                nextCabinetId: 1    // 下一个柜体的ID
+                nextCabinetId: 1,    // 下一个柜体的ID
+
+                // 保留日期选择限制
+                reserveDateOptions: {
+                    disabledDate(time) {
+                        // 限制保留日期最多2年内
+                        const maxDate = new Date();
+                        maxDate.setFullYear(maxDate.getFullYear() + 2);
+                        return time.getTime() > maxDate.getTime();
+                    }
+                }
             }
         },
         computed: {
@@ -746,37 +1081,55 @@
                 if (!this.currentCell) return '柜格信息';
                 return `柜格信息 - ${this.currentCell.position}`;
             },
-
-            // 悬浮提示信息
-            hoverInfo() {
-                if (!this.hoverCell) return '';
-                let info = `位置: ${this.hoverCell.position}\n状态: ${this.hoverCell.statusText}`;
-
-                if (this.hoverCell.user) {
-                    info += `\n使用者: ${this.hoverCell.user}`;
-                }
-                if (this.hoverCell.phone) {
-                    info += `\n电话: ${this.hoverCell.phone}`;
-                }
-                if (this.hoverCell.notes) {
-                    info += `\n备注: ${this.hoverCell.notes}`;
-                }
-
-                return info;
-            }
         },
         mounted() {
             // 初始化一些模拟数据
+            this.getdata("first");
             this.borrowForm.user = this.currentUser.name;
             this.borrowForm.phone = this.currentUser.phone;
         },
         methods: {
+            getdata: function (e) {
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/CabinetManage/CabinetManage_edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.cabinets = res.data.cabinets;
+                    this.isAdmin = res.data.isAdmin;
+                    this.isAdmin_origin = res.data.isAdmin;
+                    this.currentUser = res.data.currentUser;
+                    this.CustomerOptions = res.data.CustomerOptions;
+                    this.errMsg = res.data.errMsg;
+                    this.elbuttonloading = false;
+                    this.tableloading = false;
+                    if(this.errMsg){
+                            this.$alert(this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            this.$message({
+                                message: '获取成功',
+                                type: 'success',
+                            })
+                        }
+
+                 });
+            },
             // 打开添加柜体对话框
             openAddCabinetDialog() {
+                if (!this.isAdmin) {
+                    this.$message.warning('只有管理员可以添加柜体');
+                    return;
+                }
+
                 this.dialogAddVisible = true;
                 // 重置表单
                 this.newCabinetForm = {
                     name: `柜体${this.nextCabinetId}`,
+                    location: ``,
+                    description: ``,
                     rows: 5,
                     cols: 6
                 };
@@ -788,22 +1141,59 @@
                 const newCabinet = {
                     id: newCabinetId,
                     name: this.newCabinetForm.name,
+                    location: this.newCabinetForm.location,
+                    description: this.newCabinetForm.description,
                     rows: this.newCabinetForm.rows,
                     cols: this.newCabinetForm.cols,
                     gridData: []
                 };
+                //console.log(newCabinet,'newCabinet');
 
                 // 生成初始网格数据
                 this.generateGrid(newCabinet);
-                this.cabinets.push(newCabinet);
-                this.currentCabinetId = newCabinetId;
 
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                // 保存整个柜体数据到后端
+                this.saveCabinetToBackend(newCabinet);
+                this.elbuttonloading = false;
+                this.tableloading = false;
+
+                {#this.cabinets.push(newCabinet);//直接由后端返回最新的所有柜体的信息#}
+                //console.log(this.cabinets,'this.cabinets');
+                this.currentCabinetId = newCabinetId;
                 // 关闭对话框
                 this.dialogAddVisible = false;
                 this.$message.success(`柜体${newCabinetId}添加成功`);
             },
 
-            // 确认删除柜体
+            // 保存整个柜体到后端（新增方法）
+            saveCabinetToBackend(cabinet) {
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                // 保存整个柜体数据到后端
+                let data = {"isGetData": "addCabinet", "newCabinet": cabinet, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/CabinetManage/CabinetManage_edit/", data).then((res) => {
+                    this.cabinets = res.data.cabinets;
+                    this.isAdmin = res.data.isAdmin;
+                    this.errMsg = res.data.errMsg;
+                    this.elbuttonloading = false;
+                    this.tableloading = false;
+                    if(this.errMsg){
+                            this.$alert(this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            this.$message({
+                                message: '上傳成功',
+                                type: 'success',
+                            })
+                        }
+                 });
+
+            },
+
+            // 确认删除柜体（带权限检查）
             confirmRemoveCabinet(cabinetId, cabinetName) {
                 if (!this.isAdmin) {
                     this.$message.warning('只有管理员可以删除柜体');
@@ -819,21 +1209,51 @@
                 }).catch(() => {});
             },
 
-            // 删除柜体
+            // 删除柜体（仅管理员可操作）
             removeCabinet(cabinetId) {
+                if (!this.isAdmin) {
+                    this.$message.warning('只有管理员可以删除柜体');
+                    return;
+                }
+
                 if (this.cabinets.length <= 1) {
                     this.$message.error('不能删除最后一个柜体');
                     return;
                 }
 
-                const index = this.cabinets.findIndex(cab => cab.id === cabinetId);
+                this.elbuttonloading = true;
+                this.tableloading = true;
+                let data = {"DeleteCabinet": true, "cabinetId": cabinetId, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/CabinetManage/CabinetManage_edit/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.cabinets = res.data.cabinets;
+                    this.isAdmin = res.data.isAdmin;
+                    this.isAdmin_origin = res.data.isAdmin;
+                    this.currentUser = res.data.currentUser;
+                    this.errMsg = res.data.errMsg;
+                    this.elbuttonloading = false;
+                    this.tableloading = false;
+                    if(this.errMsg){
+                            this.$alert(this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            this.$message({
+                                message: '删除成功',
+                                type: 'success',
+                            })
+                        }
+
+                 });
+
+                {% comment %}const index = this.cabinets.findIndex(cab => cab.id === cabinetId);
                 if (index !== -1) {
                     const cabinetName = this.cabinets[index].name;
                     this.cabinets.splice(index, 1);
 
                     // 如果删除的是当前柜体，设置第一个柜体为当前柜体
                     if (cabinetId === this.currentCabinetId) {
-                        // 修复这里：避免使用可选链操作符
                         if (this.cabinets.length > 0) {
                             this.currentCabinetId = this.cabinets[0].id;
                         } else {
@@ -841,7 +1261,7 @@
                         }
                     }
                     this.$message.success(`柜体 "${cabinetName}" 已删除`);
-                }
+                }{% endcomment %}
             },
 
             // 确认取消预约
@@ -862,6 +1282,7 @@
 
                 const cabinet = this.cabinets[cabinetIndex];
                 const cell = cabinet.gridData[rowIndex][colIndex];
+                //console.log(cell.status)
 
                 if (cell.status === 2) {
                     // 清空用户信息和备注
@@ -869,10 +1290,23 @@
                         cabinetId,
                         rowIndex,
                         colIndex,
-                        0,
-                        '',
-                        '',
-                        '预约已取消'
+                        cell.position,
+                        cell.status,
+                        //this.currentCell.status,
+                        0, // 回到空闲状态
+                        //this.currentCell.user,
+                        '',//直接后端抓取用户
+                        cell.phone,
+                        cell.Customer,
+                        cell.ProCode,
+                        cell.CampalCode,
+                        cell.notes,
+                        cell.borrowDate,
+                        cell.BrowReson,
+                        cell.reserveDate,
+                        cell.takeoutDate,
+                        cell.TakeReson,
+                        "cancelReserve",
                     );
                     this.$message.success(`柜格 ${cell.position} 的预约已取消`);
                 } else {
@@ -880,12 +1314,136 @@
                 }
             },
 
+            // 取消保留状态
+            cancelTakenReserve(cabinetId, cell, rowIndex, colIndex) {
+                this.$confirm(`确定要取消柜格 ${cell.position} 的保留状态吗?`, '取消保留', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.updateCellStatus(
+                        cabinetId,
+                        rowIndex,
+                        colIndex,
+
+                        cell.position,
+                        //this.originalCellStatus,
+                        cell.status,
+                        1, // 回到使用中状态
+                        //this.currentCell.user,
+                        '',//直接后端抓取用户
+                        cell.phone,
+                        cell.Customer,
+                        cell.ProCode,
+                        cell.CampalCode,
+                        cell.notes,
+                        cell.borrowDate,
+                        cell.BrowReson,
+                        cell.reserveDate,
+                        cell.takeoutDate,
+                        cell.TakeReson,
+                        "cancelTakenReserve",
+                    );
+                    this.$message.success(`柜格 ${cell.position} 的保留状态已取消`);
+                }).catch(() => {});
+            },
+
+            // 确认归还柜格
+            confirmReturnCell(cabinetId, cell, rowIndex, colIndex) {
+                this.$confirm(`确定要归还柜格 ${cell.position} 吗?`, '归还确认', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.returnCell(
+                        cabinetId,
+                        cell,
+                        rowIndex,
+                        colIndex
+                    );
+                }).catch(() => {});
+            },
+
+            // 归还柜格
+            returnCell(cabinetId, cell, rowIndex, colIndex) {
+                this.updateCellStatus(
+                    cabinetId,
+                    rowIndex,
+                    colIndex,
+                    cell.position,
+                    cell.status,
+                    //this.currentCell.status,
+                    0, // 回到空闲状态
+                    //this.currentCell.user,
+                    '',//直接后端抓取用户
+                    cell.phone,
+                    cell.Customer,
+                    cell.ProCode,
+                    cell.CampalCode,
+                    cell.notes,
+                    cell.borrowDate,
+                    cell.BrowReson,
+                    cell.reserveDate,
+                    cell.takeoutDate,
+                    cell.TakeReson,
+                    "returnCell",
+                );
+                this.$message.success(`柜格 ${this.currentCell.position} 已成功归还`);
+            },
+
+            // 取出保留操作
+            takeOutCell(cabinetId, cell, rowIndex, colIndex) {
+                this.currentCabinetIdInDialog = cabinetId;
+                this.currentCell = {...cell};
+                this.currentRowIndex = rowIndex;
+                this.currentColIndex = colIndex;
+                this.dialogTakeOutVisible = true;
+                this.takeoutForm.reserveDate = '';
+            },
+
+            // 确认取出保留操作
+            confirmTakeOut() {
+                if (!this.takeoutForm.reserveDate) {
+                    this.$message.warning('请选择保留日期');
+                    return;
+                }
+
+                this.updateCellStatus(
+
+                    this.currentCabinetIdInDialog,
+                    this.currentRowIndex,
+                    this.currentColIndex,
+                    this.currentCell.position,
+                    this.currentCell.status,
+                    //this.currentCell.status,
+                    3,
+                    this.currentCell.user,
+                    this.currentCell.phone,
+                    this.currentCell.Customer,
+                    this.currentCell.ProCode,
+                    this.currentCell.CampalCode,
+                    this.currentCell.notes,
+                    this.currentCell.borrowDate,
+                    this.currentCell.BrowReson,
+                    //this.currentCell.reserveDate,
+                    this.takeoutForm.reserveDate,
+                    //this.currentCell.takeoutDate,
+                    new Date().toISOString().split('T')[0], // 取出日期设为今天
+                    //this.currentCell.TakeReson,
+                    this.takeoutForm.TakeReson,
+                    'confirmTakeOut',
+                );
+
+                this.dialogTakeOutVisible = false;
+                this.$message.success(`柜格 ${this.currentCell.position} 已设为取出保留状态`);
+            },
+
             // 设置当前激活的柜体
             setActiveCabinet(cabinetId) {
                 this.currentCabinetId = cabinetId;
             },
 
-            // 生成网格
+            // 生成网格时添加行列信息
             generateGrid(cabinet) {
                 cabinet.gridData = [];
                 for (let i = 0; i < cabinet.rows; i++) {
@@ -896,17 +1454,26 @@
                         // 生成空闲状态的格子
                         const status = 0;
                         const statusObj = this.statusMap[status];
-
                         const cell = {
+                            // 新增行列索引
+                            rowIndex: i,
+                            colIndex: j,
                             position: `${rowChar}${j + 1}`,
                             status: status,
                             statusText: statusObj.text,
                             statusClass: statusObj.class,
                             user: '',
+                            Customer: '',
+                            ProCode: '',
+                            CampalCode: '',
                             phone: '',
-                            notes: ''
+                            notes: '',
+                            borrowDate: null,
+                            BrowReson: '',
+                            reserveDate: null,
+                            takeoutDate: null,
+                            TakeReson: '',
                         };
-
                         row.push(cell);
                     }
                     cabinet.gridData.push(row);
@@ -926,9 +1493,14 @@
             // 处理单元格点击
             handleCellClick(cabinetId, cell, rowIndex, colIndex) {
                 this.currentCabinetIdInDialog = cabinetId;
-                this.currentCell = {...cell};
+                this.currentCell = {
+                    ...cell,
+                    rowIndex: rowIndex,
+                    colIndex: colIndex
+                };
                 this.currentRowIndex = rowIndex;
                 this.currentColIndex = colIndex;
+                this.originalCellStatus = cell.status; // 保存原始状态
 
                 if (this.isAdmin) {
                     // 管理员直接打开编辑对话框
@@ -937,10 +1509,17 @@
                     // 普通用户处理
                     if (cell.status === 0) {
                         // 空闲状态 - 打开借用对话框
+                        this.borrowForm = {
+                            user: this.currentUser.name,
+                            phone: this.currentUser.phone
+                        };
                         this.dialogUserBorrowVisible = true;
                     } else if (cell.status === 2 && cell.user === this.currentUser.name) {
-                        // 预约中且是当前用户预约 - 直接取消预约（确认对话框在按钮点击事件中）
+                        // 预定中状态且是当前用户预约 - 显示取消预约按钮
                         // 这里不做处理，取消按钮单独处理
+                    } else if (cell.status === 1 && cell.user === this.currentUser.name) {
+                        // 使用中状态 - 显示取出保留按钮
+                        // 这里不做处理，取出按钮单独处理
                     } else {
                         // 其他状态不可操作
                         this.$message.info(`柜格 ${cell.position} 当前不可操作`);
@@ -952,52 +1531,57 @@
             handleBorrow() {
                 if (!this.dialogUserBorrowVisible || !this.currentCell) return;
 
-                if (!this.borrowForm.user.trim()) {
+                {% comment %}if (!this.borrowForm.user.trim()) {
                     this.$message.warning('请输入借用人姓名');
                     return;
-                }
+                }{% endcomment %}
 
                 if (!this.borrowForm.phone.trim()) {
                     this.$message.warning('请输入联系电话');
                     return;
                 }
 
+                // 确保使用正确的索引
+                const cabinetId = this.currentCabinetIdInDialog;
+                const rowIndex = this.currentRowIndex;
+                const colIndex = this.currentColIndex;
+
+                if (!cabinetId || rowIndex === null || colIndex === null) {
+                    this.$message.error('操作失败：无法确定柜格位置');
+                    return;
+                }
+
                 this.updateCellStatus(
-                    this.currentCabinetIdInDialog,
-                    this.currentRowIndex,
-                    this.currentColIndex,
+                    cabinetId,
+                    rowIndex,
+                    colIndex,
+                    this.currentCell.position,
+                    this.originalCellStatus,
+                    //this.currentCell.status,
                     2,
-                    this.borrowForm.user,
+                    //this.currentCell.user,
+                    '',//直接后端抓取用户
+                    //this.currentCell.phone,
                     this.borrowForm.phone,
-                    '用户预约'
+                    //this.currentCell.Customer,
+                    this.borrowForm.Customer,
+                    //this.currentCell.ProCode,
+                    this.borrowForm.ProCode,
+                    //this.currentCell.CampalCode,
+                    this.borrowForm.CampalCode,
+                    this.currentCell.notes,
+                    //this.currentCell.borrowDate,
+                    this.borrowForm.borrowDate,
+                    //this.currentCell.BrowReson,
+                    this.borrowForm.BrowReson,
+                    this.currentCell.reserveDate,
+                    this.currentCell.takeoutDate,
+                    this.currentCell.TakeReson,
+                    "UserBorrow",
                 );
 
                 this.dialogUserBorrowVisible = false;
-                this.$message.success(`柜格 ${this.currentCell.position} 已预约成功`);
-            },
-
-            // 更新单元格状态
-            updateCellStatus(cabinetId, rowIndex, colIndex, status, user = '', phone = '', notes = '') {
-                const cabinetIndex = this.cabinets.findIndex(cab => cab.id === cabinetId);
-                if (cabinetIndex === -1) return;
-
-                const cabinet = this.cabinets[cabinetIndex];
-                const cell = cabinet.gridData[rowIndex][colIndex];
-                const statusObj = this.statusMap[status];
-
-                // 更新单元格信息
-                const updatedCell = {
-                    ...cell,
-                    status: status,
-                    statusText: statusObj.text,
-                    statusClass: statusObj.class,
-                    user: user,
-                    phone: phone,
-                    notes: notes || cell.notes
-                };
-
-                // 使用 Vue.set 确保响应式更新
-                this.$set(cabinet.gridData[rowIndex], colIndex, updatedCell);
+                this.$message.success(`柜格 ${this.currentCell.position} 已预约成功，等待管理员确认`);
             },
 
             // 保存单元格信息（管理员）
@@ -1009,20 +1593,241 @@
                     return;
                 }
 
+                // 如果状态从预定中(2)变为使用中(1)，设置借用日期
+                if (this.originalCellStatus === 2 && this.currentCell.status === 1) {
+                    this.currentCell.borrowDate = new Date().toISOString().split('T')[0];
+                }
+
+                // 如果状态从使用中(1)变为空闲(0)，清除所有信息
+                if (this.originalCellStatus === 1 && this.currentCell.status === 0) {
+                    this.currentCell.user = '';
+                    this.currentCell.phone = '';
+                    this.currentCell.Customer = '';
+                    this.currentCell.ProCode = '';
+                    this.currentCell.CampalCode = '';
+                    this.currentCell.notes = '';
+                    this.currentCell.borrowDate = null;
+                    this.currentCell.BrowReson = '';
+                    this.currentCell.takeoutDate = null;
+                    this.currentCell.TakeReson = '';
+                    this.currentCell.reserveDate = null;
+                }
+
                 const statusObj = this.statusMap[this.currentCell.status];
 
                 this.updateCellStatus(
                     this.currentCabinetIdInDialog,
                     this.currentRowIndex,
                     this.currentColIndex,
+                    this.currentCell.position,
+                    this.originalCellStatus,
                     this.currentCell.status,
                     this.currentCell.user,
                     this.currentCell.phone,
-                    this.currentCell.notes
+                    this.currentCell.Customer,
+                    this.currentCell.ProCode,
+                    this.currentCell.CampalCode,
+                    this.currentCell.notes,
+                    this.currentCell.borrowDate,
+                    this.currentCell.BrowReson,
+                    this.currentCell.reserveDate,
+                    this.currentCell.takeoutDate,
+                    this.currentCell.TakeReson,
+                    'isSaveCell',
                 );
+
 
                 this.dialogAdminVisible = false;
                 this.$message.success('柜格信息已更新');
+            },
+
+            // 确认借出操作（管理员）
+            confirmBorrow(cabinetId, cell, rowIndex, colIndex) {
+                this.$confirm(`确定要确认柜格 ${cell.position} 的借用吗?`, '确认借出', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.updateCellStatus(
+                        cabinetId,
+                        rowIndex,
+                        colIndex,
+                        cell.position,
+                        cell.status,
+                        //this.currentCell.status,
+                        1, // 回到空闲状态
+                        //this.currentCell.user,
+                        '',//直接后端抓取用户
+                        cell.phone,
+                        cell.Customer,
+                        cell.ProCode,
+                        cell.CampalCode,
+                        cell.notes,
+                        cell.borrowDate,
+                        cell.BrowReson,
+                        cell.reserveDate,
+                        cell.takeoutDate,
+                        cell.TakeReson,
+                        "confirmBorrow",
+                    );
+                    this.$message.success(`柜格 ${cell.position} 已确认借出`);
+                }).catch(() => {});
+            },
+
+            // 更新单元格状态时加入行列信息
+            updateCellStatus(cabinetId, rowIndex, colIndex, position, old_status, newStatus, user, phone, Customer, ProCode, CampalCode, notes, borrowDate, BrowReson, reserveDate, takeoutDate, TakeReson, action) {
+                // 找到对应柜体
+                console.log(action);
+                const cabinetIndex = this.cabinets.findIndex(cab => cab.id === cabinetId);
+                if (cabinetIndex === -1) return;
+
+                const cabinet = this.cabinets[cabinetIndex];
+
+                // 更新单元格数据
+                const cell = cabinet.gridData[rowIndex][colIndex];
+                cell.position = position;
+                cell.old_status = old_status;
+                cell.status = newStatus;
+                cell.user = user || '';
+                cell.phone = phone || '';
+                cell.Customer = Customer || '';
+                cell.ProCode = ProCode || '';
+                cell.CampalCode = CampalCode || '';
+                cell.notes = notes || '';
+                cell.borrowDate = borrowDate || null;
+                cell.BrowReson = BrowReson || '';
+                cell.reserveDate = reserveDate || null;
+                cell.takeoutDate = takeoutDate || null;
+                cell.TakeReson = TakeReson || '';
+                cell.action = action || '';
+
+                // 更新状态文本和类
+                const statusObj = this.statusMap[newStatus];
+                cell.statusText = statusObj.text;
+                cell.statusClass = statusObj.class;
+
+                // 保存数据到后端（包括行列索引）
+                this.saveCellToBackend(cabinetId, cell);
+            },
+
+            // 保存单元格数据到后端（新增方法）
+            saveCellToBackend(cabinetId, cell) {
+                //console.log(cell,'cell');
+                const data = {
+                    "action": cell.action,
+                    "cabinetId": cabinetId,
+                    // 传递单元格的行列索引
+                    "Gridid": cell.id,
+                    "rowIndex": cell.rowIndex,
+                    "colIndex": cell.colIndex,
+                    // 传递单元格数据
+                    "position": cell.position,
+                    "old_status": cell.old_status,
+                    "status": cell.status,
+                    "user": cell.user,
+                    "phone": cell.phone,
+                    "Customer": cell.Customer,
+                    "ProCode": cell.ProCode,
+                    "CampalCode": cell.CampalCode,
+                    "notes": cell.notes,
+                    "borrowDate": cell.borrowDate,
+                    "BrowReson": cell.BrowReson,
+                    "takeoutDate": cell.takeoutDate,
+                    "TakeReson": cell.TakeReson,
+                    "reserveDate": cell.reserveDate,
+                    "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                };
+                //console.log(data,'data');
+                this.elbuttonloading = true;
+                this.tableloading = true;
+
+                axios.post("/CabinetManage/CabinetManage_edit/", data)
+                    .then((res) => {
+                        this.cabinets = res.data.cabinets;
+                        this.isAdmin = res.data.isAdmin;
+                        this.currentUser = res.data.currentUser;
+                        this.errMsg = res.data.errMsg;
+                        this.elbuttonloading = false;
+                        this.tableloading = false;
+                        if(this.errMsg){
+                            this.$alert(this.errMsg, '提示', {
+                                  type: 'warning',
+                                })
+                        }else {
+                            this.$message({
+                                message: '获取成功',
+                                type: 'success',
+                            })
+                        }
+                    })
+                    .catch((error) => {
+                        this.$message.error('保存失败');
+                        console.error('Error saving cell data:', error);
+                    });
+            },
+
+
+            // 检查是否超期（借用超过2年）
+            isOverdue(cell) {
+                if (!cell.borrowDate) return false;
+
+                const borrowDate = new Date(cell.borrowDate);
+                const now = new Date();
+                const twoYearsAgo = new Date();
+                twoYearsAgo.setFullYear(now.getFullYear() - 2);
+
+                return borrowDate < twoYearsAgo;
+            },
+
+            // 检查保留日期是否超期
+            isReserveOverdue(cell) {
+                if (!cell.reserveDate) return false;
+
+                const reserveDate = new Date(cell.reserveDate);
+                const now = new Date();
+                return reserveDate < now;
+            },
+
+            // 格式化日期显示
+            formatDate(dateString) {
+                if (!dateString) return '';
+                const date = new Date(dateString);
+                return date.toLocaleDateString();
+            },
+
+            // 获取悬浮提示内容（纯文本）
+            getTooltipContent(cell) {
+                let content = `柜格 ${cell.position} 信息\n`;
+                content += `状态: ${cell.statusText}\n`;
+
+                if (cell.user) content += `借用人: ${cell.user}\n`;
+                if (cell.phone) content += `电话: ${cell.phone}\n`;
+
+                // 日期信息
+                if (cell.borrowDate) {
+                    const overdue = this.isOverdue(cell);
+                    content += `借用日期: ${this.formatDate(cell.borrowDate)}`;
+                    if (overdue) content += ` (超期)`;
+                    content += `\n`;
+                }
+
+                if (cell.reserveDate) {
+                    const overdue = this.isReserveOverdue(cell);
+                    content += `保留日期: ${this.formatDate(cell.reserveDate)}`;
+                    if (overdue) content += ` (超期)`;
+                    content += `\n`;
+                }
+
+                if (cell.takeoutDate) {
+                    content += `取出日期: ${this.formatDate(cell.takeoutDate)}\n`;
+                }
+
+                // 超期提示
+                if (this.isOverdue(cell)) {
+                    content += `警告: 已超期超过2年!\n`;
+                }
+
+                return content;
             },
 
             // 统计方法
@@ -1038,6 +1843,9 @@
             getReservedCells(cabinet) {
                 return this.countCellsByStatus(cabinet, 2);
             },
+            getTakenCells(cabinet) {
+                return this.countCellsByStatus(cabinet, 3);
+            },
             countCellsByStatus(cabinet, status) {
                 if (!cabinet.gridData || !cabinet.gridData.length) return 0;
 
@@ -1048,7 +1856,17 @@
                     });
                 });
                 return count;
-            }
+            },
+            // 根据状态值返回对应的 CSS 类
+            getStatusClass(status) {
+                switch (status) {
+                    case 0: return 'status-free';        // 空闲
+                    case 1: return 'status-in-use';      // 使用中
+                    case 2: return 'status-reserved';    // 预定中
+                    case 3: return 'status-taken-reserved'; // 取出保留
+                    default: return 'status-free';       // 默认空闲状态
+                }
+            },
         }
     });
 </script>

@@ -1,0 +1,947 @@
+[2025-08-04 09:28:27,190] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 36060
+[2025-08-04 09:28:27,514] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:31:39,223] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 36060
+[2025-08-04 09:31:39,518] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:31:44,145] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92375
+[2025-08-04 09:31:44,204] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:31:44,240] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:31:50,870] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:31:50,994] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:31:51,138] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:31:55,424] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92375
+[2025-08-04 09:31:55,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:31:55,589] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:31:55,597] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:31:55,744] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:31:55,841] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:34:55,570] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 91842
+[2025-08-04 09:34:55,624] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:34:55,644] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:35:07,738] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:35:07,796] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:35:07,890] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:53:28,547] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92666
+[2025-08-04 09:53:28,610] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:53:28,651] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:53:40,283] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:53:40,598] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:53:41,197] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:53:44,895] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:53:44,899] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:53:44,902] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:53:44,980] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:56:04,584] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92706
+[2025-08-04 09:56:04,662] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:56:04,688] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:56:05,208] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:56:05,331] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:56:05,426] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 09:56:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 09:56:05,445] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 18
+[2025-08-04 09:56:05,454] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:57:10,156] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92706
+[2025-08-04 09:57:10,204] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:57:10,238] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:57:10,694] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:57:10,819] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:57:10,915] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 09:57:10: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 09:57:10,937] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 18
+[2025-08-04 09:57:10,949] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:57:34,291] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2025-08-04 09:57:34,301] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-04 09:57:34,333] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2025-08-04 09:57:34,341] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-04 09:57:34,417] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:57:34,443] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-04 09:57:34,449] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-04 09:57:36,353] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 09:57:36,368] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-08-04 09:57:36,403] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-08-04 09:57:36,464] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92706
+[2025-08-04 09:57:36,541] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:57:36,555] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:57:36,560] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:57:36,603] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:57:36,689] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 09:57:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 09:57:36,697] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 18
+[2025-08-04 09:57:36,721] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:58:33,630] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92706
+[2025-08-04 09:58:33,676] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:58:33,697] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:58:34,067] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:58:34,111] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:58:34,187] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 09:58:34: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 09:58:34,197] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 18
+[2025-08-04 09:58:34,217] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:58:51,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92706
+[2025-08-04 09:58:51,628] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 09:58:51,634] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 09:58:51,648] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 09:58:51,700] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 09:58:51,796] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 09:58:51,809] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 09:58:51: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 09:58:51,814] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17
+[2025-08-04 10:03:11,619] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92888
+[2025-08-04 10:03:11,682] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 10:03:11,717] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 10:03:18,241] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 10:03:18,380] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 10:03:18,484] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 10:03:18: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 10:03:18,499] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17
+[2025-08-04 10:03:18,521] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 10:26:30,810] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92890
+[2025-08-04 10:26:30,866] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 10:26:30,906] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 10:26:38,213] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 10:26:38,378] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 10:26:38,504] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 10:26:38: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 10:26:38,520] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17
+[2025-08-04 10:26:38,530] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 10:55:24,582] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92945
+[2025-08-04 10:55:24,647] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 10:55:24,672] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 10:55:36,192] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 10:55:36,321] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 10:55:36,452] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 10:55:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 10:55:36,470] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 7815
+[2025-08-04 10:55:36,486] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 11:00:15,342] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 92945
+[2025-08-04 11:00:15,396] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 11:00:15,408] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 11:00:25,641] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 11:00:25,752] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 11:00:25,885] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:00:25: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:00:25,888] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 11:00:25,894] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:07:03,283] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 93595
+[2025-08-04 11:07:03,350] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 11:07:03,354] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 11:07:04,653] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 11:07:04,792] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 11:07:04,942] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 11:07:04,945] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:07:04: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:07:04,952] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:07:09,668] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:07:09: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:07:09,680] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:07:41,004] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 93593
+[2025-08-04 11:07:41,060] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 11:07:41,133] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 11:07:41,151] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 11:07:41,328] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 11:07:41,484] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:07:41: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:07:41,504] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:07:41,509] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 11:07:46,403] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:07:46: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:07:46,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:10:43,881] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 93593
+[2025-08-04 11:10:43,936] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 11:10:43,952] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 11:10:44,605] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 11:10:44,661] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 11:10:44,758] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:10:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:10:44,772] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:10:44,779] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 11:10:49,446] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:10:49: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:10:49,454] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:11:04,231] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 93593
+[2025-08-04 11:11:04,280] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 11:11:04,323] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 11:11:04,335] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 11:11:04,394] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 11:11:04,498] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:11:04: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:11:04,520] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:11:04,527] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 11:11:06,835] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:11:06: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:11:06,860] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:20:04,815] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 93461
+[2025-08-04 11:20:04,875] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 11:20:04,896] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 11:20:05,596] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 11:20:05,735] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 11:20:05,833] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:20:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:20:05,849] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 11:20:05,864] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 11:20:08,593] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 11:20:08: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 11:20:08,601] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 12:05:52,396] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 94118
+[2025-08-04 12:05:52,452] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 12:05:52,488] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 12:06:04,486] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 12:06:04,613] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 12:06:04,719] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 12:06:04: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 12:06:04,734] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 12:06:04,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 12:06:12,636] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 12:06:12: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 12:06:12,648] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 33
+[2025-08-04 12:54:44,487] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 12:54:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 12:54:44,501] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 87
+[2025-08-04 13:25:18,213] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 95977
+[2025-08-04 13:25:18,275] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:25:18,314] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:25:29,927] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:25:30,055] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:25:30,211] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:25:30: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:25:30,224] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:25:30,295] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:29:50,435] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 95974
+[2025-08-04 13:29:50,482] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:29:50,509] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:29:51,021] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:29:51,143] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:29:51,271] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:29:51: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:29:51,284] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:29:51,290] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:33:07,662] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 95922
+[2025-08-04 13:33:07,734] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:33:07,746] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:33:08,328] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:33:08,378] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:33:08,452] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:33:08: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:33:08,463] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:33:08,478] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:33:34,159] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 95919
+[2025-08-04 13:33:34,206] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:33:34,250] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:33:34,260] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:33:34,328] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:33:34,453] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:33:34: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:33:34,463] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:33:34,471] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:33:53,820] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:33:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:33:53,831] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 87
+[2025-08-04 13:34:33,573] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 95919
+[2025-08-04 13:34:33,628] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:34:33,659] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:34:34,250] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:34:34,295] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:34:34,396] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:34:34: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:34:34,398] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:34:34,403] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:34:50,600] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:34:50: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:34:50,608] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 87
+[2025-08-04 13:38:53,525] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96336
+[2025-08-04 13:38:53,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:38:53,598] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:39:05,425] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:39:05,478] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:39:05,565] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:39:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:39:05,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:39:05,583] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:42:40,911] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96499
+[2025-08-04 13:42:40,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:42:40,990] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:42:41,479] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:42:41,525] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:42:41,625] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:42:41: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:42:41,627] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:42:41,642] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:42:53,227] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:42:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:42:53,237] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 87
+[2025-08-04 13:51:20,925] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 13:51:20,975] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:51:21,006] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:51:21,660] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:51:21,789] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:51:21,893] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:51:21: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:51:21,904] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:51:21,911] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:51:33,587] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:51:33: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:51:33,612] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 87
+[2025-08-04 13:54:03,045] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 13:54:03,116] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:54:03,119] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:54:03,699] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:54:03,849] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:54:03,937] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:54:03: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:54:03,950] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:54:03,965] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:54:22,043] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:54:22: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:54:22,053] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 87
+[2025-08-04 13:55:52,480] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 13:55:52,556] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 13:55:52,556] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 13:55:53,530] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 13:55:53,577] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 13:55:53,652] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 13:55:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 13:55:53,666] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 13:55:53,673] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 13:56:05,547] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 207, in CabinetManage_edit
+    Cabinet_obj = Cabinet.objects.create(**Cabinet_create_dic)
+AttributeError: 'dict' object has no attribute 'objects'
+[2025-08-04 13:56:05,552] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 13:56:05,553] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 94494
+[2025-08-04 14:03:03,262] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 14:03:03,326] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:03:03,335] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 14:03:14,992] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 14:03:15,120] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 14:03:15,235] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 14:03:15: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 14:03:15,250] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 14:03:15,259] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:03:37,888] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 209, in CabinetManage_edit
+    for row in Cabinet["gridData"]:
+TypeError: 'ModelBase' object is not subscriptable
+[2025-08-04 14:03:37,894] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 14:03:37,896] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 94767
+[2025-08-04 14:04:20,411] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 14:04:20,874] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 14:04:20: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 14:04:20,885] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 14:04:20,940] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:04:21,607] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 14:04:21: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 14:04:21,620] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 14:04:21,655] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:05:20,229] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2025-08-04 14:05:20,294] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2025-08-04 14:05:20,390] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:05:20,491] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:05:23,808] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 14:05:23,819] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-08-04 14:05:24,368] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53887
+[2025-08-04 14:05:24,458] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:05:24,582] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:05:31,626] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:05:31,668] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 32157
+[2025-08-04 14:05:31,725] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:05:47,695] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'Brow_at' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 233, in CabinetManage_edit
+    CabinetGrid.objects.bulk_create(CabinetGrids_list)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 465, in bulk_create
+    ids = self._batched_insert(objs_without_pk, fields, batch_size)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 1155, in _batched_insert
+    self._insert(item, fields=fields, using=self.db)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\compiler.py", line 1289, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python3129\mecheck\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'Brow_at' cannot be null")
+[2025-08-04 14:05:47,735] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 14:05:47,737] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 379374
+[2025-08-04 14:06:32,825] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53887
+[2025-08-04 14:06:32,872] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:06:33,017] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 32157
+[2025-08-04 14:06:33,060] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:06:33,178] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:13:16,485] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 14:13:16,547] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:13:16,569] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 14:13:17,175] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 14:13:17,312] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 14:13:17,421] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 14:13:17: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 14:13:17,437] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 14:13:17,444] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:13:34,509] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 14:13:34: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 14:13:34,521] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 14:13:43,676] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53887
+[2025-08-04 14:13:43,737] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:13:43,936] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 33262
+[2025-08-04 14:13:43,970] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:13:44,104] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:13:49,081] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /admin/CabinetManage/cabinet/3/change/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 703, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 551, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 256, in __new__
+    apply_limit_choices_to=False,
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 149, in fields_for_model
+    f.name, model.__name__)
+django.core.exceptions.FieldError: 'created_at' cannot be specified for Cabinet model form as it is a non-editable field
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1640, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1525, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1554, in _changeform_view
+    ModelForm = self.get_form(request, obj, change=not add)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 707, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: 'created_at' cannot be specified for Cabinet model form as it is a non-editable field. Check fields/fieldsets/exclude attributes of class CabinetAdmin.
+[2025-08-04 14:13:49,093] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/CabinetManage/cabinet/3/change/ HTTP/1.1" 500 151525
+[2025-08-04 14:16:32,519] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 33262
+[2025-08-04 14:16:33,958] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/3/change/ HTTP/1.1" 200 19633
+[2025-08-04 14:16:33,996] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:16:35,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 33262
+[2025-08-04 14:16:40,784] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/3/change/ HTTP/1.1" 200 19633
+[2025-08-04 14:16:40,830] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:16:57,978] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:16:59,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 77420
+[2025-08-04 14:17:00,037] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:17:02,163] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:17:02,412] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 108107
+[2025-08-04 14:17:02,443] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:18:09,543] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /admin/CabinetManage/cabinetgrid/30/change/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 703, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 551, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 256, in __new__
+    apply_limit_choices_to=False,
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 149, in fields_for_model
+    f.name, model.__name__)
+django.core.exceptions.FieldError: 'created_at' cannot be specified for CabinetGrid model form as it is a non-editable field
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1640, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1525, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1554, in _changeform_view
+    ModelForm = self.get_form(request, obj, change=not add)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 707, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: 'created_at' cannot be specified for CabinetGrid model form as it is a non-editable field. Check fields/fieldsets/exclude attributes of class CabinetGridAdmin.
+[2025-08-04 14:18:09,545] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/CabinetManage/cabinetgrid/30/change/ HTTP/1.1" 500 155059
+[2025-08-04 14:18:34,032] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 108107
+[2025-08-04 14:18:35,447] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /admin/CabinetManage/cabinetgrid/30/change/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 703, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 551, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 256, in __new__
+    apply_limit_choices_to=False,
+  File "C:\Python3129\mecheck\lib\site-packages\django\forms\models.py", line 149, in fields_for_model
+    f.name, model.__name__)
+django.core.exceptions.FieldError: 'created_at' cannot be specified for CabinetGrid model form as it is a non-editable field
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1640, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1525, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 1554, in _changeform_view
+    ModelForm = self.get_form(request, obj, change=not add)
+  File "C:\Python3129\mecheck\lib\site-packages\django\contrib\admin\options.py", line 707, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: 'created_at' cannot be specified for CabinetGrid model form as it is a non-editable field. Check fields/fieldsets/exclude attributes of class CabinetGridAdmin.
+[2025-08-04 14:18:35,450] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/CabinetManage/cabinetgrid/30/change/ HTTP/1.1" 500 155059
+[2025-08-04 14:19:22,957] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 108107
+[2025-08-04 14:19:24,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/30/change/ HTTP/1.1" 200 27034
+[2025-08-04 14:19:24,933] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/calendar.js HTTP/1.1" 200 7985
+[2025-08-04 14:19:24,934] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20707
+[2025-08-04 14:19:24,947] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:19:25,022] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 686
+[2025-08-04 14:19:25,022] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1095
+[2025-08-04 14:19:30,413] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/add/?_to_field=id&_popup=1 HTTP/1.1" 200 18390
+[2025-08-04 14:19:30,456] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 14:19:30,547] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:19:51,864] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 108107
+[2025-08-04 14:51:33,748] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 14:51:33,813] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:51:33,836] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 14:51:45,640] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 14:51:45,776] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 14:51:45,929] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:51:46,463] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 242, in CabinetManage_edit
+    for j in CabinetGrid.objects.filter(Cabinet=i).values('row'):
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 844, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\query.py", line 862, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\query.py", line 1164, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\query.py", line 1028, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Python3129\mecheck\lib\site-packages\django\db\models\sql\query.py", line 1389, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'Cabinet' into field. Choices are: Back_at, BrowReson, Brow_at, CampalCode, Customer, ProCode, TakeReson, Take_at, cabinet, cabinet_id, col, created_at, creator, id, notes, phone, position, records, row, status, updated_at, user
+[2025-08-04 14:51:46,471] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 14:51:46,474] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 125558
+[2025-08-04 14:52:55,308] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 14:52:55,363] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:52:55,385] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 14:52:55,768] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 14:52:55,884] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 14:52:56,056] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:52:56,172] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 247, in CabinetManage_edit
+    'id': celldata.id,
+AttributeError: 'QuerySet' object has no attribute 'id'
+[2025-08-04 14:52:56,174] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 14:52:56,175] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 84428
+[2025-08-04 14:53:47,788] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 14:53:47,842] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:53:47,875] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 14:53:47,886] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 14:53:47,938] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 14:53:48,032] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:53:48,149] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 245, in CabinetManage_edit
+    celldata = CabinetGrid.objects.filter(cabinet=i, row=j['row'], col=k['col']).fir
+AttributeError: 'QuerySet' object has no attribute 'fir'
+[2025-08-04 14:53:48,151] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 14:53:48,152] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 84180
+[2025-08-04 14:54:19,424] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 14:54:19,495] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 14:54:19,522] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 14:54:20,031] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 14:54:20,078] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 14:54:20,207] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 14:54:20,415] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 14:54:20: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 14:54:20,424] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 46563
+[2025-08-04 15:04:45,532] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:04:45,605] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:04:45,628] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:04:57,176] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:04:57,247] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:04:57,359] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:04:57,589] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:04:57: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:04:57,599] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 46563
+[2025-08-04 15:05:35,771] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:05:35,832] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:05:35,868] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:05:35,880] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:05:35,925] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:05:36,032] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:05:36,143] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 243, in CabinetManage_edit
+    print(i['row'])
+TypeError: 'Cabinet' object is not subscriptable
+[2025-08-04 15:05:36,145] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 15:05:36,145] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 83555
+[2025-08-04 15:05:58,035] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:05:58,104] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:05:58,131] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:05:58,444] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:05:58,488] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:05:58,645] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:05:58,902] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:05:58: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:05:58,910] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 46563
+[2025-08-04 15:06:54,748] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 36060
+[2025-08-04 15:06:54,996] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:06:58,962] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:06:59,023] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:06:59,047] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:06:59,378] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:06:59,430] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:06:59,533] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:06:59,799] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:06:59: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:06:59,809] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 46563
+[2025-08-04 15:10:17,134] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:10:17,196] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:10:17,210] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:10:17,693] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:10:17,814] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:10:17,948] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:10:18,009] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:10:18: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:10:18,020] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 7858
+[2025-08-04 15:18:14,298] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 15:18:14,310] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 10943
+[2025-08-04 15:18:16,196] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 15:18:16,202] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 302 0
+[2025-08-04 15:18:16,260] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 34783
+[2025-08-04 15:18:16,292] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 15:18:17,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:18:17,923] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 33262
+[2025-08-04 15:18:17,945] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 15:18:20,744] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 15:18:20,752] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/CabinetManage/cabinet/ HTTP/1.1" 200 6450
+[2025-08-04 15:18:21,813] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:18:21,820] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/gridrecord/ HTTP/1.1" 200 33797
+[2025-08-04 15:18:21,849] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 15:18:25,570] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:18:26,814] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 15:18:26,822] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/CabinetManage/cabinet/ HTTP/1.1" 302 0
+[2025-08-04 15:18:26,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 32238
+[2025-08-04 15:18:26,940] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 15:19:11,801] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:19:18,637] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:19:18: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:19:18,652] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 47
+[2025-08-04 15:19:18,657] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:19:36,784] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:19:36: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:19:36,800] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 7807
+[2025-08-04 15:19:50,455] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:19:50,579] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:19:50,579] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:19:50,607] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:20:01,543] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:20:01: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:20:01,555] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 15569
+[2025-08-04 15:22:26,210] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53589
+[2025-08-04 15:22:26,295] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:22:26,536] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinet/ HTTP/1.1" 200 34585
+[2025-08-04 15:22:26,579] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 15:22:26,704] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:22:28,312] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:22:28,740] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 183010
+[2025-08-04 15:22:28,792] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 15:22:31,524] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/60/change/ HTTP/1.1" 200 27046
+[2025-08-04 15:22:31,571] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-04 15:22:37,821] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/CabinetManage/cabinetgrid/ HTTP/1.1" 200 183010
+[2025-08-04 15:26:56,392] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:26:57,350] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:26:57,390] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:26:57: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:26:57,402] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 16589
+[2025-08-04 15:27:09,622] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:27:09,814] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:27:09,814] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:27:09,858] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:27:13,338] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:27:13,400] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:27:13,437] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:27:13,448] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:27:13,578] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:27:13,709] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:27:13,923] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:27:13: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:27:13,936] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 16589
+[2025-08-04 15:29:11,429] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96713
+[2025-08-04 15:29:11,487] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:29:11,502] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:29:12,105] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:29:12,239] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:29:12,391] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:29:12,467] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:29:12: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:29:12,475] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:31:34,387] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:31:34: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:31:34,401] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:31:34: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:31:34,405] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:31:34,411] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:33:46,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96747
+[2025-08-04 15:33:46,251] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:33:46,264] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:33:47,725] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:33:47,894] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:33:48,132] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:33:48,226] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:33:48: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:33:48,253] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:34:03,816] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:34:03: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:34:03,823] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:34:03: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:34:03,831] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:34:03,838] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:34:25,139] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:34:25: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:34:25,152] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:34:25: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:34:25,154] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:34:25,162] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:48:11,980] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96751
+[2025-08-04 15:48:12,072] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 15:48:12,093] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 15:48:19,818] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 15:48:19,939] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 15:48:20,075] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 15:48:20,294] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:48:20: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:48:20,327] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:48:35,552] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:48:35: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:48:35,554] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 15:48:35: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 15:48:35,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 15:48:35,586] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:01:22,885] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96606
+[2025-08-04 16:01:22,944] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:01:22,974] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:01:29,475] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:01:29,603] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:01:29,747] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:01:30,004] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:01:29: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:01:30,021] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:01:37,090] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:01:37: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:01:37,121] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:02:51,024] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96604
+[2025-08-04 16:02:51,081] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:02:51,106] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:02:51,688] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:02:51,826] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:02:51,959] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:02:52,027] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:02:52: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:02:52,035] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:02:59,244] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:02:59: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:02:59,275] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:04:22,528] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96654
+[2025-08-04 16:04:22,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:04:22,677] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:04:24,473] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:04:24,520] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:04:24,662] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:04:24,753] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:04:24: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:04:24,762] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:04:34,397] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:04:34: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:04:34,412] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:10:41,327] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96772
+[2025-08-04 16:10:41,383] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:10:41,420] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:10:41,906] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:10:41,968] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:10:42,107] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:10:42,196] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:10:42: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:10:42,205] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:10:48,322] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:10:48: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:10:48,342] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17369
+[2025-08-04 16:18:46,737] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96772
+[2025-08-04 16:18:46,780] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:18:46,826] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:18:47,781] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:18:47,890] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:18:48,029] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:18:48,096] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:18:48: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:18:48,105] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:18:55,678] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:18:55: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:18:55,693] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:54:32,663] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96772
+[2025-08-04 16:54:32,742] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:54:32,770] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:54:32,794] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:54:32,932] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:54:33,074] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:54:33,145] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:54:33: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:54:33,154] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:54:39,413] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:54:39: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:54:39,427] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:55:04,022] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:55:04: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:55:04,032] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:55:15,495] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96772
+[2025-08-04 16:55:15,549] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:55:15,569] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:55:15,628] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:55:15,788] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:55:15,999] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:55:16,114] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:55:16: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:55:16,126] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:55:22,336] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:55:22: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:55:22,346] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:56:21,789] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96780
+[2025-08-04 16:56:21,840] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:56:21,873] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:56:21,888] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:56:21,958] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:56:22,085] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:56:22,244] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:56:22: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:56:22,256] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:57:00,899] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96776
+[2025-08-04 16:57:00,959] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 16:57:00,971] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 16:57:13,037] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 16:57:13,085] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 16:57:13,232] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 16:57:13,393] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:57:13: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:57:13,405] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 16:57:19,308] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 16:57:19: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 16:57:19,320] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 17:01:34,246] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96815
+[2025-08-04 17:01:34,314] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-04 17:01:34,317] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-04 17:01:39,735] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-04 17:01:39,816] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-04 17:01:39,957] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-04 17:01:40,027] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-04 17:01:40: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-04 17:01:40,034] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969
+[2025-08-04 17:01:51,073] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /CabinetManage/CabinetManage_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\CabinetManage\views.py", line 245, in CabinetManage_edit
+    "Customer": responseData['Customer'],
+KeyError: 'Customer'
+[2025-08-04 17:01:51,081] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-04 17:01:51,084] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 500 83826
+[2025-08-05 07:53:42,156] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 302 0
+[2025-08-05 07:53:42,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-05 07:53:42,225] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2025-08-05 07:53:42,232] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-05 07:53:42,261] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-05 07:53:42,314] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-05 07:53:42,321] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-05 07:53:53,653] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-05 07:53:53,669] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-08-05 07:53:53,701] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-08-05 07:53:53,746] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 96815
+[2025-08-05 07:53:53,852] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 36060
+[2025-08-05 07:53:53,863] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2025-08-05 07:54:00,252] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2025-08-05 07:54:00,386] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2025-08-05 07:54:00,546] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-05 07:54:00,729] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-05 07:54:00: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2025-08-05 07:54:00,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 17969

@@ -6,7 +6,7 @@ from .models import Cabinet, CabinetGrid, GridRecord
 class CabinetAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields' : ('name', 'location', 'description', 'rows', 'cols', 'created_at', 'updated_at')
+            'fields' : ('name', 'location', 'description', 'rows', 'cols')
         }),
         # ('Advanced options',{
         #     'classes': ('collapse',),
@@ -33,7 +33,7 @@ class CabinetGridAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('cabinet', 'row', 'col', 'position', 'status', 'Customer', 'ProCode', 'CampalCode', 'Brow_at',
-                        'BrowReson', 'Take_at', 'TakeReson', 'Back_at', 'user', 'phone', 'notes', 'creator', 'created_at', 'updated_at',)
+                        'BrowReson', 'Take_at', 'TakeReson', 'Back_at', 'user', 'phone', 'notes', 'creator',)
         }),
         # ('Advanced options',{
         #     'classes': ('collapse',),
@@ -64,7 +64,7 @@ class GridRecordAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('grid','action','old_status','new_status','Customer','ProCode','CampalCode','Brow_at',
-                       'BrowReson','Take_at','TakeReson','Back_at','user', 'phone', 'notes', 'created_at', )
+                       'BrowReson','Take_at','TakeReson','Back_at','user', 'phone', 'notes',)
         }),
         # ('Advanced options',{
         #     'classes': ('collapse',),
