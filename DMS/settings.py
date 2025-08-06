@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os,sys
-import time
+import time, datetime
+from datetime import timedelta
 
 # 管理员邮箱
 ADMINS = (
@@ -283,10 +284,30 @@ DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         # 'rest_framework.permissions.IsAuthenticated',#如果未指定，则此设置默认为允许无限制访问'rest_framework.permissions.AllowAny',
+#     )
+# }
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        # 'rest_framework.permissions.IsAuthenticated',#如果未指定，则此设置默认为允许无限制访问'rest_framework.permissions.AllowAny',
-    )
+    # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 10,
+    # 用户登陆认证方式
+    # SessionAuthentication, BasicAuthentication，为了兼容drf自带的页面认证方式
+    # 若使用drf默认登录认证，不能使用自定义表的用户信息，只可以用默认User表用户登录，通过python manage.py createsuperuser创建
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.SessionAuthentication',
+    #     'rest_framework.authentication.BasicAuthentication',
+    # )
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+
+}
+# jwt
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(minutes=20),
+    # 'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 
 
@@ -349,6 +370,10 @@ PERMISSION_MENU_KEY = 'k2'
 # 配置url权限白名单
 SAFE_URL = [
     r'/login/',
+    '/api-auth/.*',
+    '/api/token/.*',
+    '/DeviceLNV/api/.*',
+    '/DeviceLNV/DeviceLNV_api/',
     r'/signinLNV/',
     r'/signinABO/',
     r'/signinCQT88/',

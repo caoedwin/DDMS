@@ -13,6 +13,7 @@ from DMS import settings
 from django.core.mail import send_mail, send_mass_mail
 from django.core.mail import EmailMultiAlternatives
 from app01 import tasks
+import requests
 from app01.models import UserInfo
 from .models import DeviceLNV, DeviceLNVHis, PICS, DeviceIntfCtgryList, DeviceDevCtgryList, DeviceDevpropertiesList, DeviceDevVendorList, DeviceDevsizeList
 
@@ -39,6 +40,60 @@ headermodel_Device = {
     '上一次借用人員': 'LastUsrname', '上一次借用人員工号': 'Last_BR_per_code', '上一次預計歸還日期': 'Last_Predict_return',
     '上一次借用日期': 'Last_Borrow_date', '上一次歸還日期': 'Last_Return_date',
 }
+
+def ImportPersonalInfo(Customer='', SAPNum='', GroupNum='', Status='', DepartmentCode=''):
+    url = r'http://127.0.0.1:8002/PersonalInfo/api_Per/login/'
+    url2 = r'http://127.0.0.1:8002/PersonalInfo/Perapi/?'
+    # url = r'http://192.168.1.9:8002/PersonalInfo/api_Per/login/'
+    # url2 = r'http://192.168.1.9:8002/PersonalInfo/Perapi/?'
+    requests.adapters.DEFAULT_RETRIES = 1
+    # s = requests.session()
+    # s.keep_alive = False  # 关闭多余连接
+    # getTestSpec=requests.get(url)
+    # headers = {'Connection': 'close'}
+    try:
+        headers = \
+            {
+                "Content-Type": "application/json;charset=UTF-8"
+            }
+        body = \
+            {
+                "username": "API_CQM", "password": "Qs!3m6Tc7"
+            }
+        r = requests.post(url, headers=headers, data=json.dumps(body))
+    except:
+        # time.sleep(0.1)
+        print("Can't connect to DDIS Sercer or get token failed")
+        return 0
+    # print(json.loads(r.text)["token"])
+    if json.loads(r.text)["token"]:
+        Auth_token = "Bearer " + json.loads(r.text)["token"]
+        try:
+            # GroupNum = "C1010S3"
+            headers = \
+                {
+                    "Authorization": Auth_token
+                }
+            content = \
+                {
+                    "Customer": Customer,
+                    "SAPNum": SAPNum,
+                    "GroupNum": GroupNum,
+                    "Status": Status,
+                    "DepartmentCode": DepartmentCode,
+                }
+            getTestSpec = requests.get(url2, headers=headers, params=content)
+        except:
+            # time.sleep(0.1)
+            print("Got nothing, try request agian")
+            return 0
+        # print(getTestSpec.json())
+        # pprint.pprint(getTestSpec.json())
+        # print(type(getTestSpec.json()), len(getTestSpec.json()))
+    # print(type(getTestSpec.json()), getTestSpec.json())
+    #     for i in getTestSpec.json():
+    #         print(i)
+        return getTestSpec.json()
 
 @csrf_exempt
 def BorrowedDeviceLNV(request):
@@ -5818,6 +5873,8 @@ def M_edit(request):
         for i in DeviceLNV.objects.values("DevStatus").distinct().order_by("DevStatus"):
             allDevStatus.append(i["DevStatus"])
 
+    Pers_list = ImportPersonalInfo()
+
     if DeviceIntfCtgryList.objects.all():
         for i in DeviceIntfCtgryList.objects.all():
             # IntfCtgryOptions.append(i.IntfCtgry)
@@ -7300,6 +7357,12 @@ def M_edit(request):
                     # print(mock_data)
 
 
+        # print('Pers_list',Pers_list)
+        # print('mock_data',mock_data)
+        group_dept_map = {p['GroupNum']: p['DepartmentCode'] for p in Pers_list if p.get('GroupNum')}
+
+        for device in mock_data:
+            device['Department'] = group_dept_map.get(device.get('Usrnumber', ''), '')
         data = {
             "content": mock_data,
             "tableData": tableData,
@@ -7332,3 +7395,59 @@ def M_edit(request):
     return render(request, 'DeviceLNV/M_edit.html', locals())
 
 
+from rest_framework.renderers import JSONRenderer
+from .serializers import *
+from rest_framework.views import APIView
+from rest_framework.response import Response
+import uuid
+
+# 游客只读，登录用户只读，只有登录用户属于 管理员 分组，才可以增删改
+# from .permissions import CustomIsAuthenticated
+# from .authentication import MyOwnTokenAuthentication
+from rest_framework_simplejwt.views import TokenViewBase
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from .permissions import MyPermission
+from .authentication import MyJWTAuthentication
+class UserViewSet(ModelViewSet):#这是一个虚拟 API
+    queryset = UserInfo.objects.all().order_by('id')
+    serializer_class = DeviceLNVerilizer
+    permission_classes = MyPermission
+    authentication_classes = [MyJWTAuthentication, SessionAuthentication, BasicAuthentication]
+
+class DeviceLNVView(APIView):
+    authentication_classes = [MyJWTAuthentication, SessionAuthentication, BasicAuthentication]
+    # authentication_classes = [MyAuth]	# 局部认证(全局在setting里面设置),不写默认用全局（全局需要用DRF写用户的注册登陆接口，可以另外创建一个用于DRF的用户module）
+    permission_classes = [MyPermission]  # 局部配置(全局在setting里面设置),不写默认用全局（全局需要用DRF写用户的注册登陆接口，可以另外创建一个用于DRF的用户module）
+
+    # 所有用户都可以访问
+    # def get(self, request, *args, **kwargs):
+    #     return APIResponse(0, '自定义读 OK')
+    #
+    # # 必须是 自定义“管理员”分组 下的用户
+    # def post(self, request, *args, **kwargs):
+    #     return APIResponse(0, '自定义写
+    #         # print(request.GET) OK')
+    def get(self, request):
+        # cqm = CQM.objects.all()
+        # print(2 ,request.auth)
+
+        DeviceLNV_obj = []
+        checklist = {}
+        if request.GET.get("Customer"):
+            checklist['Customer'] = request.GET.get("Customer")
+        if request.GET.get("NID"):
+            checklist['NID'] = request.GET.get("NID")
+        if request.GET.get("BR_per_code"):
+            checklist['BR_per_code'] = request.GET.get("BR_per_code")
+        if request.GET.get("BrwStatus"):
+            checklist['BrwStatus'] = request.GET.get("BrwStatus")
+        if request.GET.get("DevStatus"):
+            checklist['DevStatus'] = request.GET.get("DevStatus")
+        if checklist:
+            DeviceLNV_obj = DeviceLNV.objects.filter(**checklist)
+        ser = DeviceLNVerilizer(instance=DeviceLNV_obj, many=True)
+        jsondata = JSONRenderer().render(ser.data)
+        return HttpResponse(jsondata, content_type='application/json', status=200)
+        # return Response('测试认证组件')
