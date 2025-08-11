@@ -7447,6 +7447,8 @@ class DeviceLNVView(APIView):
             checklist['DevStatus'] = request.GET.get("DevStatus")
         if checklist:
             DeviceLNV_obj = DeviceLNV.objects.filter(**checklist)
+        else:
+            DeviceLNV_obj = DeviceLNV.objects.all()
         ser = DeviceLNVerilizer(instance=DeviceLNV_obj, many=True)
         jsondata = JSONRenderer().render(ser.data)
         return HttpResponse(jsondata, content_type='application/json', status=200)
