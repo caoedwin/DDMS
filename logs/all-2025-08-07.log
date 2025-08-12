@@ -1,0 +1,82 @@
+[2025-08-07 11:05:27,510] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2025-08-07 11:05:27,520] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-07 11:05:27,928] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-07 11:05:27,935] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-07 11:05:30,975] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-07 11:05:31,008] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-08-07 11:05:31,028] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-08-07 11:05:32,248] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 200 128522
+[2025-08-07 11:05:32,934] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-07 11:05:35,302] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 11:05:35: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_edit/'>
+[2025-08-07 11:05:35,314] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_edit/ HTTP/1.1" 200 21852
+[2025-08-07 11:06:05,662] [log.py:228] [log:log_response] [WARNING]- Method Not Allowed: /DeviceLNV/api/login/
+[2025-08-07 11:06:05,663] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /DeviceLNV/api/login/ HTTP/1.1" 405 12491
+[2025-08-07 11:06:06,034] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-07 11:09:39,780] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 11:09:39: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 11:09:39,786] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 11:09:42,835] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=&DevStatus= HTTP/1.1" 200 2635137
+[2025-08-07 11:10:45,413] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 11:10:45: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 11:10:45,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 11:10:48,504] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=&DevStatus= HTTP/1.1" 200 2635137
+[2025-08-07 11:11:11,267] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 11:11:11: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 11:11:11,273] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 11:11:14,366] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=&DevStatus= HTTP/1.1" 200 2635137
+[2025-08-07 11:14:19,754] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 11:14:19: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 11:14:19,768] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 11:14:20,697] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 11:14:34,540] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 11:14:34: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 11:14:34,545] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 11:14:35,458] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 11:14:52,949] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 11:14:52: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 11:14:52,954] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 11:14:55,932] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=&DevStatus= HTTP/1.1" 200 2635137
+[2025-08-07 13:57:12,032] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 13:57:12: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 13:57:12,063] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 13:57:13,093] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 13:59:01,080] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 13:59:01: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 13:59:01,090] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 13:59:02,070] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 14:03:47,822] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 14:03:47: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 14:03:47,830] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 14:03:48,831] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 14:05:27,663] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 14:05:27: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 14:05:27,670] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 14:05:29,081] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 14:08:35,255] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 14:08:35: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 14:08:35,261] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 14:08:36,229] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 14:10:38,570] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 14:10:38: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 14:10:38,576] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 14:10:39,545] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-07 14:26:44,756] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-07 14:26:44: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-07 14:26:44,764] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-07 14:26:45,762] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-08 09:47:34,381] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 302 0
+[2025-08-08 09:47:34,439] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-08 09:47:36,071] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-08 09:47:36,079] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-11 09:53:48,366] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-11 09:53:48,635] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-11 09:53:48,642] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-11 09:53:57,199] [log.py:228] [log:log_response] [WARNING]- Method Not Allowed: /DeviceLNV/api/login/
+[2025-08-11 09:53:57,199] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /DeviceLNV/api/login/ HTTP/1.1" 405 12491
+[2025-08-11 09:53:57,503] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2025-08-11 09:53:57,518] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2025-08-11 10:08:38,116] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-11 10:08:38: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-11 10:08:38,128] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-11 10:08:39,967] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-11 10:15:08,508] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-11 10:15:08: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-11 10:15:08,518] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-11 10:15:10,407] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-11 10:16:52,635] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-11 10:16:52: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-11 10:16:52,643] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-11 10:16:54,730] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-11 10:24:41,271] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-11 10:24:41: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-11 10:24:41,281] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-11 10:24:43,050] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-11 14:58:50,023] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-11 14:58:50: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-11 14:58:50,051] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-11 14:58:51,920] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
+[2025-08-11 14:59:25,635] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-11 14:59:25: API_DMS/AnonymousUser/API_DMS> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/api/login/'>
+[2025-08-11 14:59:25,644] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/api/login/ HTTP/1.1" 200 501
+[2025-08-11 14:59:28,130] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/DeviceLNV_api/?Customer=&NID=&BR_per_code=&BrwStatus=%E5%B7%B2%E5%80%9F%E5%87%BA&DevStatus= HTTP/1.1" 200 834941
