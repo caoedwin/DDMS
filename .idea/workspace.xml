@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/logs/all-2025-08-07.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2025-08-07.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error-2025-08-07.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2025-08-07.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2025-08-07.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2025-08-07.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test api.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +57,7 @@
           <entry key="dir" value="1" />
           <entry key="html" value="322" />
           <entry key="js" value="8" />
-          <entry key="py" value="551" />
+          <entry key="py" value="553" />
           <entry key="pyi" value="1" />
           <entry key="rnc" value="1" />
         </counts>
@@ -69,7 +67,7 @@
           <entry key="HTML" value="322" />
           <entry key="JavaScript" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="551" />
+          <entry key="Python" value="553" />
           <entry key="PythonStub" value="1" />
           <entry key="RNG Compact" value="1" />
         </counts>
@@ -96,8 +94,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestDeviceLNV/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="55" column="29" lean-forward="true" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+            <state relative-caret-position="418">
+              <caret line="558" lean-forward="true" selection-start-line="558" selection-end-line="558" />
               <folding>
                 <element signature="e#660#1340#0" />
                 <element signature="e#1404#1916#0" />
@@ -165,8 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_edit.html" />
-        <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_Keep.html" />
         <option value="$PROJECT_DIR$/templates/DeviceA32TPE/M_Return.html" />
         <option value="$PROJECT_DIR$/templates/DeviceA32TPE/R_Borrowed.html" />
         <option value="$PROJECT_DIR$/templates/DeviceA32TPE/R_Destine.html" />
@@ -216,6 +212,8 @@
         <option value="$PROJECT_DIR$/DeviceLNV/views.py" />
         <option value="$PROJECT_DIR$/test_smtp.py" />
         <option value="C:/PythonProject/test/test api.py" />
+        <option value="$PROJECT_DIR$/SMTPMail.py" />
+        <option value="C:/PythonProject/SMTPMail.py" />
       </list>
     </option>
   </component>
@@ -241,7 +239,7 @@
       <path value="$PROJECT_DIR$/static/vendor/fontawesome-free/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="550" />
     <option name="y" value="-18" />
     <option name="width" value="813" />
@@ -552,7 +550,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="767" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.50741607" visible="true" weight="0.2573471" />
@@ -610,18 +608,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/DDMS_TestDeviceList (2)/DDMS_TestDeviceList/TestDeviceList.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-624" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestDeviceLNV/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestDeviceLNV/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -1082,10 +1068,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SMTPMail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="215" lean-forward="true" selection-start-line="215" selection-end-line="215" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#403#2053#0" />
+            <element signature="e#2146#3584#0" />
+            <element signature="e#3629#3938#0" />
+            <element signature="e#3989#6142#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/PythonProject/SMTPMail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="210" column="58" lean-forward="true" selection-start-line="210" selection-start-column="58" selection-end-line="210" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TestDeviceLNV/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="55" column="29" lean-forward="true" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+        <state relative-caret-position="418">
+          <caret line="558" lean-forward="true" selection-start-line="558" selection-end-line="558" />
           <folding>
             <element signature="e#660#1340#0" />
             <element signature="e#1404#1916#0" />

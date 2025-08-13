@@ -116,18 +116,36 @@ def create_excel_in_memory(data_list):
 async def test_smtp(devicelist, email_list):
     msg = MIMEMultipart()
 
-    user_name = 'LenovoATS_Compal@Compal.com;'
+    user_name = 'DDMS@Compal.com;'
     msg['From'] = user_name
     msg['To'] = ",".join(email_list)  # 用逗号连接列表元素
-    # msg['Cc'] = 'wenys1@lenovo.com'
-    msg['Subject'] = 'DDMS设备过期提醒'
+    msg['Cc'] = 'DQA_LNV_Managers@Compal.com'
+    msg['Subject'] = '【APDQA設備超期提醒】'
     # 添加邮件正文
     body = MIMEText("""
         <html>
             <body>
-                <h2>设备报告数据</h2>
-                <p>附件是完整的设备报告数据，请查收。</p>
-                <p>此邮件包含 {} 条设备记录。</p>
+                
+                <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                    <p>Dear all,</p>
+                    <p style="color: #d9534f; font-weight: bold;">
+                        你有設備超期！！！請立即預約歸還！！！
+                    </p>
+                    <h2>设备报告数据</h2>
+                    <p>附件是完整的设备报告数据，请查收。</p>
+                    <p>此邮件包含 {} 条设备记录。</p>
+                    
+                    <p style="margin-top: 30px;">
+                        <a href="http://10.129.83.21:8004/DeviceLNV/R_Borrowed/" 
+                        style="background-color: #337ab7; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">
+                        立即预约归还
+                        </a>
+                    </p>
+                    <div style="margin-top: 40px; font-size: 0.9em; color: #d9534f;">
+                        <p>此邮件由系统自动发送，请勿回复</p>
+                        <p>APDQA 设备管理系统</p>
+                    </div>
+                </div>
             </body>
         </html>
         """.format(len(devicelist)), "html", "utf-8")
@@ -154,40 +172,54 @@ async def test_smtp(devicelist, email_list):
         traceback.print_exc()
         return False
 
-Devicelist = ImportDeviceInfo(BrwStatus='已借出')
-Num = 7 #超过多少天提醒
-today = date.today()
-devicelist = [dict(item, OverDay=(today - date.fromisoformat(item["Plandate"])).days)
-          for item in Devicelist
-          if (today - date.fromisoformat(item["Plandate"])).days >= Num]
-# print(result)
-Pers_list = ImportPersonalInfo(Customer='')
-group_info_map = {
-    p['GroupNum']: (p['DepartmentCode'], p['EngName'])
-    for p in Pers_list if p.get('GroupNum')
-}
+if __name__ == "__main__":
+    try:
+        Devicelist = ImportDeviceInfo(BrwStatus='已借出')
+        Num = 7 #超过多少天提醒
+        today = date.today()
+        devicelist = [dict(item, OverDay=(today - date.fromisoformat(item["Plandate"])).days)
+                  for item in Devicelist
+                  if (today - date.fromisoformat(item["Plandate"])).days >= Num]
+        # print(result)
+        Pers_list = ImportPersonalInfo(Customer='')
+        group_info_map = {
+            p['GroupNum']: (p['DepartmentCode'], p['EngName'])
+            for p in Pers_list if p.get('GroupNum')
+        }
 
 
-for device in devicelist:
-    device['Department'] = group_info_map.get(device.get('Usrname', ''), '')
-    group_key = device.get('Usrname', '')
+        for device in devicelist:
+            device['Department'] = group_info_map.get(device.get('Usrname', ''), '')
+            group_key = device.get('Usrname', '')
 
-    # 获取部门代码和英文名
-    dept_code, eng_name = group_info_map.get(group_key, ('', ''))
+            # 获取部门代码和英文名
+            dept_code, eng_name = group_info_map.get(group_key, ('', ''))
 
-    # 添加部门字段
-    device['Department'] = dept_code if dept_code else '人员信息系统里面没有此人部门代码信息'
+            # 添加部门字段
+            device['Department'] = dept_code if dept_code else '人员信息系统里面没有此人部门代码信息'
 
-    # 添加邮箱字段（如果英文名存在）
-    if eng_name:
-        # 清理英文名中的特殊字符和空格
-        clean_name = ''.join(e for e in eng_name if e.isalnum() or e in ['.', '_'])
-        device['MailAddress'] = f"{clean_name}@compal.com"
-    else:
-        device['MailAddress'] = '人员信息系统里面没有此人英文名信息'
-# print(devicelist)
-# unique_mail_addresses = list({item['MailAddress'] for item in devicelist})
-unique_mail_addresses = ['Edwin_Cao@compal.com', 'Jun_Wang@compal.com']
-# print(unique_mail_addresses)
+            # 添加邮箱字段（如果英文名存在）
+            if eng_name:
+                # 清理英文名中的特殊字符和空格
+                clean_name = ''.join(e for e in eng_name if e.isalnum() or e in ['.', '_'])
+                device['MailAddress'] = f"{clean_name}@compal.com"
+            else:
+                device['MailAddress'] = '人员信息系统里面没有此人英文名信息'
+        # print(devicelist)
+        unique_mail_addresses = list({item['MailAddress'] for item in devicelist})
+        # unique_mail_addresses = ['Edwin_Cao@compal.com']
+        asyncio.run(test_smtp(devicelist, unique_mail_addresses))
+        # print(unique_mail_addresses)
+    except BaseException as e:
+        error_msg = traceback.format_exc()
+        print(f"Critical error: {str(e)}")
 
-asyncio.run(test_smtp(devicelist, unique_mail_addresses))
+        # 确保日志文件正确关闭
+        log_path = r'C:\Send_Emailbug.txt'
+        try:
+            with open(log_path, 'a+') as f:
+                f.write(f"\n\n{'-'*50}\n{error_msg}\n")
+            print(f"Error logged to {os.path.abspath(log_path)}")
+        except Exception as log_error:
+            print(f"Failed to write log: {str(log_error)}")
+
