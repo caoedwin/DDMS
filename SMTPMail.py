@@ -207,6 +207,8 @@ if __name__ == "__main__":
                 device['MailAddress'] = '人员信息系统里面没有此人英文名信息'
         # print(devicelist)
         unique_mail_addresses = list({item['MailAddress'] for item in devicelist})
+        if unique_mail_addresses:
+            unique_mail_addresses.append('DQA_LNV_Managers@Compal.com')
         # unique_mail_addresses = ['Edwin_Cao@compal.com']
         asyncio.run(test_smtp(devicelist, unique_mail_addresses))
         # print(unique_mail_addresses)
