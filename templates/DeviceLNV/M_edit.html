@@ -664,7 +664,7 @@
   <el-col span="10">
   <el-form-item label="用戶名稱" prop="Usrname">
 {#        <el-input v-model="form.Usrname"></el-input>#}
-<el-autocomplete
+{% comment %}<el-autocomplete
          class="inline-input"
          v-model="form.Usrname"
          ref="Usrname"
@@ -675,7 +675,19 @@
   <template slot-scope="{ item }">
    <div class="name">${ item.value }&nbsp;(${ item.number })</div>
   </template>
-</el-autocomplete>
+</el-autocomplete>{% endcomment %}
+      <el-autocomplete
+                  class="inline-input"
+                  v-model="form.Usrname"
+                  ref="Usrname"
+                  :fetch-suggestions="querySearch"
+                  placeholder="请输入借用人"
+                  @select="handleSelect"
+         >
+           <template slot-scope="{ item }">
+            <div class="name">${ item.value }&nbsp;(${ item.number })</div>
+           </template>
+         </el-autocomplete>
   </el-form-item>
   </el-col>
 </el-row>
@@ -1621,6 +1633,7 @@ ax<script type="text/babel">
             },
 
             querySearch(queryString, cb) {
+            console.log(queryString,cb)
               var selectUsrname = this.selectItem;
               var results = queryString ? selectUsrname.filter(this.createFilter(queryString)) : selectUsrname;
               // 调用 callback 返回建议列表的数据

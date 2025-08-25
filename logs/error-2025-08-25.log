@@ -1,0 +1,60 @@
+[2025-08-25 08:38:21,337] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-25 08:43:40,969] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-25 08:44:19,577] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /WirelessAP/Borrowed/ HTTP/1.1" 500 59
+[2025-08-25 08:45:48,966] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-25 09:20:42,445] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DeviceLNV/M_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\DeviceLNV\views.py", line 5746, in M_edit
+    for i in UserInfo.objects.all.values('username', 'account').distinct().order_by('account'):
+AttributeError: 'function' object has no attribute 'values'
+[2025-08-25 09:20:42,453] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 500 82633
+[2025-08-25 09:21:23,091] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DeviceLNV/M_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\DeviceLNV\views.py", line 5746, in M_edit
+    for i in UserInfo.objects.all.values('username', 'account').distinct().order_by('account'):
+AttributeError: 'function' object has no attribute 'values'
+[2025-08-25 09:21:23,094] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 500 82633
+[2025-08-25 09:24:19,267] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DeviceLNV/M_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\DeviceLNV\views.py", line 5746, in M_edit
+    for i in UserInfo.objects.all.values('username', 'account').distinct().order_by('account'):
+AttributeError: 'function' object has no attribute 'values'
+[2025-08-25 09:24:19,268] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 500 82633
+[2025-08-25 09:27:27,533] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /DeviceLNV/M_edit/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\DeviceLNV\views.py", line 5746, in M_edit
+    for i in UserInfo.objects.all.values('username', 'account').distinct().order_by('account'):
+AttributeError: 'function' object has no attribute 'values'
+[2025-08-25 09:27:27,536] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 500 82633
