@@ -1055,7 +1055,8 @@
          v-model="form1.Plandate"
          type="date"
          value-format="yyyy-MM-dd"
-         placeholder="选择日期">
+         placeholder="选择日期"
+      :picker-options="pickerOptions">
       </el-date-picker>
   </el-form-item>
   </el-col>
@@ -1329,6 +1330,10 @@ ax<script type="text/babel">
              search:'',
              elbuttonloading: false,
              tableloading: false,
+             pickerOptions: {
+                    // disabledDate是一个函数,参数是当前选中的日期值,这个函数需要返回一个Boolean值,
+                    disabledDate: this.disabledDate
+                },
              form: {
                   Customer: '',
                   Plant: '',
@@ -1631,6 +1636,44 @@ ax<script type="text/babel">
             beforeupload(file) {
               return true;
             },
+
+         disabledDate(time) {
+                    console.log('Edit mode - Checking date:', time);
+                    console.log('Edit mode - DevStatus:', this.form1.DevStatus);
+
+                    // 禁用今天之前的日期
+                    if (time.getTime() < Date.now() - 8.64e7) {
+                        console.log('Edit mode - Date is before today, disabled');
+                        return true;
+                    }
+
+                    // 如果设备状态是 'Long'
+                    if (this.form1.DevStatus === 'Long') {
+                        let date3 = Date.now() + 29 * 24 * 3600 * 1000;
+                        if (time.getTime() > date3) {
+                            console.log('Edit mode - Long status, date after 29 days, disabled');
+                            return true;
+                        }
+                    } else {
+                        // 对于非 'Long' 状态的设备，限制在半年内
+                        let halfYearLater = Date.now() + 182 * 24 * 3600 * 1000;
+
+                        // 如果选择的日期超过半年后，禁用
+                        if (time.getTime() > halfYearLater) {
+                            console.log('Edit mode - Non-long status, date after half year, disabled');
+                            return true;
+                        }
+
+                        // 禁用周末（周六和周日）
+                        if (time.getDay() === 0 || time.getDay() === 6) {
+                            console.log('Edit mode - Weekend, disabled');
+                            return true;
+                        }
+                    }
+
+                    console.log('Edit mode - Date enabled');
+                    return false;
+                },
 
             querySearch(queryString, cb) {
             console.log(queryString,cb)
