@@ -156,7 +156,8 @@ def sync_send_email(devicelist, email_list):
             valid_recipients = ['Edwin_Cao@compal.com']
             print("警告：没有有效的收件人，使用默认地址")
 
-        msg['To'] = ", ".join(valid_recipients)
+        # msg['To'] = ", ".join(valid_recipients)
+        msg['To'] = 'DQA_LNV_ALL@compal.com'
         msg['Cc'] = 'DQA_LNV_Managers@compal.com'
         # msg['Cc'] = 'Edwin_Cao@compal.com'
         msg['Subject'] = '【APDQA設備超期提醒】'

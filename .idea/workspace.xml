@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" afterDir="false" />
-    </list>
+    <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +74,7 @@
           <entry key="dir" value="1" />
           <entry key="html" value="330" />
           <entry key="js" value="8" />
-          <entry key="py" value="574" />
+          <entry key="py" value="577" />
           <entry key="pyi" value="1" />
           <entry key="rnc" value="1" />
         </counts>
@@ -86,7 +84,7 @@
           <entry key="HTML" value="330" />
           <entry key="JavaScript" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="574" />
+          <entry key="Python" value="577" />
           <entry key="PythonStub" value="1" />
           <entry key="RNG Compact" value="1" />
         </counts>
@@ -110,77 +108,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="5744" column="5" lean-forward="true" selection-start-line="5744" selection-start-column="5" selection-end-line="5744" selection-end-column="5" />
-              <folding>
-                <element signature="e#2096#4013#0" />
-                <element signature="e#3033#4013#0" />
-                <element signature="e#30970#66298#0" />
-                <element signature="e#66340#93616#0" />
-                <element signature="e#93656#121785#0" />
-                <element signature="e#121828#149984#0" />
-                <element signature="e#150026#168457#0" />
-                <element signature="e#168499#188626#0" />
-                <element signature="e#188666#208595#0" />
-                <element signature="e#208639#327245#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SMTPMail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="303" column="52" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
+            <state relative-caret-position="290">
+              <caret line="302" column="8" selection-start-line="302" selection-start-column="8" selection-end-line="303" selection-end-column="119" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
                 <element signature="e#4030#4484#0" />
                 <element signature="e#4536#8713#0" />
                 <element signature="e#8745#9311#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="1676" lean-forward="true" selection-start-line="1676" selection-end-line="1676" />
-              <folding>
-                <element signature="n#el-table#0;n#template#0;n#div#2;n#div#0;n#!!top" />
-                <element signature="e#51324#53115#0#HTML" />
-                <element signature="e#53867#55161#0#HTML" />
-                <element signature="e#55202#55385#0#HTML" />
-                <element signature="e#55434#55635#0#HTML" />
-                <element signature="e#55664#55740#0#HTML" />
-                <element signature="e#55770#55849#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/BorrowedDeviceLNV.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="296" column="159" lean-forward="true" selection-start-line="296" selection-start-column="128" selection-end-line="296" selection-end-column="159" />
-              <folding>
-                <element signature="e#34888#36253#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -225,8 +163,8 @@
       <find>ensureInfo</find>
       <find>Predict_return</find>
       <find>querySearch</find>
-      <find>pickerOptions</find>
       <find>disabledDate</find>
+      <find>pickerOptions</find>
       <find>multipleSelection</find>
     </findStrings>
   </component>
@@ -697,13 +635,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python372/Lib/datetime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="1508" column="6" selection-start-line="1508" selection-start-column="6" selection-end-line="1508" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/datetime.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -981,45 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="5744" column="5" lean-forward="true" selection-start-line="5744" selection-start-column="5" selection-end-line="5744" selection-end-column="5" />
-          <folding>
-            <element signature="e#2096#4013#0" />
-            <element signature="e#3033#4013#0" />
-            <element signature="e#30970#66298#0" />
-            <element signature="e#66340#93616#0" />
-            <element signature="e#93656#121785#0" />
-            <element signature="e#121828#149984#0" />
-            <element signature="e#150026#168457#0" />
-            <element signature="e#168499#188626#0" />
-            <element signature="e#188666#208595#0" />
-            <element signature="e#208639#327245#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SMTPMail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="303" column="52" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#4030#4484#0" />
-            <element signature="e#4536#8713#0" />
-            <element signature="e#8745#9311#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/R_Borrowed.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1027,6 +919,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="521" column="23" selection-start-line="521" selection-start-column="12" selection-end-line="521" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1052,6 +951,47 @@
             <element signature="e#55434#55635#0#HTML" />
             <element signature="e#55664#55740#0#HTML" />
             <element signature="e#55770#55849#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="5744" column="5" lean-forward="true" selection-start-line="5744" selection-start-column="5" selection-end-line="5744" selection-end-column="5" />
+          <folding>
+            <element signature="e#2096#4013#0" />
+            <element signature="e#3033#4013#0" />
+            <element signature="e#30970#66298#0" />
+            <element signature="e#66340#93616#0" />
+            <element signature="e#93656#121785#0" />
+            <element signature="e#121828#149984#0" />
+            <element signature="e#150026#168457#0" />
+            <element signature="e#168499#188626#0" />
+            <element signature="e#188666#208595#0" />
+            <element signature="e#208639#327245#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMTPMailyibu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMTPMail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="302" column="8" selection-start-line="302" selection-start-column="8" selection-end-line="303" selection-end-column="119" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#4030#4484#0" />
+            <element signature="e#4536#8713#0" />
+            <element signature="e#8745#9311#0" />
           </folding>
         </state>
       </provider>
