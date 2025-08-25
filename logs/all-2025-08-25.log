@@ -1227,3 +1227,22 @@ AttributeError: 'function' object has no attribute 'values'
 [2025-08-25 09:28:38,422] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/304.jpg HTTP/1.1" 404 1800
 [2025-08-25 09:28:38,427] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Zaihuo/304.jpg
 [2025-08-25 09:28:38,429] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Zaihuo/304.jpg HTTP/1.1" 404 1800
+[2025-08-25 09:30:44,914] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-25 09:30:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_edit/'>
+[2025-08-25 09:30:44,925] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_edit/ HTTP/1.1" 200 2489931
+[2025-08-25 09:31:06,124] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-25 09:31:06: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_edit/'>
+[2025-08-25 09:31:06,137] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_edit/ HTTP/1.1" 200 2489937
+[2025-08-25 09:31:19,179] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/DeviceLNV/Baoguan/2156_b.jpg HTTP/1.1" 200 201323
+[2025-08-25 09:31:44,930] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2025-08-25 09:31:44,966] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2025-08-25 09:31:45,080] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-25 09:31:47,142] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-25 09:31:47,151] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-08-25 09:31:47,358] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 53591
+[2025-08-25 09:31:47,555] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-25 09:32:10,038] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-25 09:32:10,754] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/DeviceLNV/devicelnv/ HTTP/1.1" 200 1500855
+[2025-08-25 09:32:10,798] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-25 09:32:24,018] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/DeviceLNV/devicelnv/?NID=2156 HTTP/1.1" 200 605738
+[2025-08-25 09:32:24,121] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2025-08-25 09:32:26,866] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/DeviceLNV/devicelnv/3659/change/?_changelist_filters=NID%3D2156 HTTP/1.1" 200 42322
+[2025-08-25 09:32:26,904] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684

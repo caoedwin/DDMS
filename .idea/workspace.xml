@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeviceLNV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeviceLNV/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SMTPMail.py" beforeDir="false" afterPath="$PROJECT_DIR$/SMTPMail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/all-2025-08-25.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2025-08-25.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error-2025-08-25.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2025-08-25.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info-2025-08-25.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2025-08-25.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +60,7 @@
           <entry key="dir" value="1" />
           <entry key="html" value="327" />
           <entry key="js" value="8" />
-          <entry key="py" value="572" />
+          <entry key="py" value="574" />
           <entry key="pyi" value="1" />
           <entry key="rnc" value="1" />
         </counts>
@@ -69,7 +70,7 @@
           <entry key="HTML" value="327" />
           <entry key="JavaScript" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="572" />
+          <entry key="Python" value="574" />
           <entry key="PythonStub" value="1" />
           <entry key="RNG Compact" value="1" />
         </counts>
@@ -77,13 +78,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="5105" />
-          <entry key="py" value="10100" />
+          <entry key="py" value="10110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="5105" />
-          <entry key="Python" value="10100" />
+          <entry key="Python" value="10110" />
         </counts>
       </usages-collector>
     </session>
@@ -93,11 +94,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="5755" column="5" lean-forward="true" selection-start-line="5755" selection-start-column="5" selection-end-line="5755" selection-end-column="5" />
+            <state relative-caret-position="-7">
+              <caret line="5744" column="5" lean-forward="true" selection-start-line="5744" selection-start-column="5" selection-end-line="5744" selection-end-column="5" />
               <folding>
                 <element signature="e#2096#4013#0" />
                 <element signature="e#3033#4013#0" />
@@ -114,11 +115,26 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SMTPMail.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="303" column="52" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#4030#4484#0" />
+                <element signature="e#4536#8713#0" />
+                <element signature="e#8745#9311#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="681" selection-start-line="681" selection-end-line="682" />
+            <state relative-caret-position="60">
+              <caret line="677" column="34" selection-start-line="677" selection-start-column="34" selection-end-line="677" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -138,10 +154,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app01/models.py">
+        <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="46" column="11" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="11" />
+            <state relative-caret-position="19">
+              <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -244,10 +260,10 @@
         <option value="$PROJECT_DIR$/test_smtp.py" />
         <option value="C:/PythonProject/test/test api.py" />
         <option value="C:/PythonProject/SMTPMail.py" />
-        <option value="$PROJECT_DIR$/SMTPMail.py" />
         <option value="$PROJECT_DIR$/app01/models.py" />
         <option value="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" />
         <option value="$PROJECT_DIR$/DeviceLNV/views.py" />
+        <option value="$PROJECT_DIR$/SMTPMail.py" />
       </list>
     </option>
   </component>
@@ -291,11 +307,6 @@
             <path>
               <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="DMS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app01" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DMS" type="b2602c69:ProjectViewProjectNode" />
@@ -608,9 +619,9 @@
     <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" weight="0.20492454" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" visible="true" weight="0.20492454" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49166006" visible="true" weight="0.32176656" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49086577" visible="true" weight="0.32176656" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -622,7 +633,7 @@
       <window_info anchor="bottom" id="Database" order="10" sideWeight="0.50158983" side_tool="true" weight="0.24333926" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" weight="0.32492113" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32492113" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50833994" side_tool="true" weight="0.42902207" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50913423" side_tool="true" weight="0.32176656" />
       <window_info anchor="bottom" id="Favorites" order="14" sideWeight="0.5040783" weight="0.22870663" />
       <window_info anchor="bottom" id="Structure" order="15" show_stripe_button="false" sideWeight="0.5066354" side_tool="true" weight="0.32018927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -883,13 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-304">
-          <caret line="83" column="31" lean-forward="true" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_smtp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -954,13 +958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SMTPMail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="121" column="24" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python3129/mecheck/Lib/site-packages/django/shortcuts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -970,8 +967,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app01/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="46" column="11" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="11" />
+        <state relative-caret-position="19">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="5744" column="5" lean-forward="true" selection-start-line="5744" selection-start-column="5" selection-end-line="5744" selection-end-column="5" />
+          <folding>
+            <element signature="e#2096#4013#0" />
+            <element signature="e#3033#4013#0" />
+            <element signature="e#30970#66298#0" />
+            <element signature="e#66340#93616#0" />
+            <element signature="e#93656#121785#0" />
+            <element signature="e#121828#149984#0" />
+            <element signature="e#150026#168457#0" />
+            <element signature="e#168499#188626#0" />
+            <element signature="e#188666#208595#0" />
+            <element signature="e#208639#327245#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="57" column="27" lean-forward="true" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -989,26 +1012,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="681" selection-start-line="681" selection-end-line="682" />
+        <state relative-caret-position="60">
+          <caret line="677" column="34" selection-start-line="677" selection-start-column="34" selection-end-line="677" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
+    <entry file="file://$PROJECT_DIR$/SMTPMail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="5755" column="5" lean-forward="true" selection-start-line="5755" selection-start-column="5" selection-end-line="5755" selection-end-column="5" />
+        <state relative-caret-position="186">
+          <caret line="303" column="52" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
           <folding>
-            <element signature="e#2096#4013#0" />
-            <element signature="e#3033#4013#0" />
-            <element signature="e#30970#66298#0" />
-            <element signature="e#66340#93616#0" />
-            <element signature="e#93656#121785#0" />
-            <element signature="e#121828#149984#0" />
-            <element signature="e#150026#168457#0" />
-            <element signature="e#168499#188626#0" />
-            <element signature="e#188666#208595#0" />
-            <element signature="e#208639#327245#0" />
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#4030#4484#0" />
+            <element signature="e#4536#8713#0" />
+            <element signature="e#8745#9311#0" />
           </folding>
         </state>
       </provider>
