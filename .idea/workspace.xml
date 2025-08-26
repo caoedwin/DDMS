@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="" />
+    <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeviceLNV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeviceLNV/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/all-2025-08-25.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2025-08-25.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error-2025-08-25.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2025-08-25.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info-2025-08-25.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2025-08-25.log" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,41 +39,22 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_Borrow.html">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="184">
-                    <caret line="521" column="23" selection-start-line="521" selection-start-column="12" selection-end-line="521" selection-end-column="23" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="336981479">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="81" />
-          <entry key="project.open.time.0" value="72" />
+          <entry key="project.closed" value="83" />
+          <entry key="project.open.time.0" value="73" />
           <entry key="project.open.time.1" value="10" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="10" />
           <entry key="project.open.time.3" value="4" />
-          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.5" value="4" />
           <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="107" />
+          <entry key="project.opened" value="109" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -74,7 +62,7 @@
           <entry key="dir" value="1" />
           <entry key="html" value="330" />
           <entry key="js" value="8" />
-          <entry key="py" value="577" />
+          <entry key="py" value="579" />
           <entry key="pyi" value="1" />
           <entry key="rnc" value="1" />
         </counts>
@@ -84,7 +72,7 @@
           <entry key="HTML" value="330" />
           <entry key="JavaScript" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="577" />
+          <entry key="Python" value="579" />
           <entry key="PythonStub" value="1" />
           <entry key="RNG Compact" value="1" />
         </counts>
@@ -92,13 +80,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="5133" />
-          <entry key="py" value="10110" />
+          <entry key="py" value="10129" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="5133" />
-          <entry key="Python" value="10110" />
+          <entry key="Python" value="10129" />
         </counts>
       </usages-collector>
     </session>
@@ -107,17 +95,36 @@
     <favorites_list name="DMS" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SMTPMail.py">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app01/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="302" column="8" selection-start-line="302" selection-start-column="8" selection-end-line="303" selection-end-column="119" />
+            <state relative-caret-position="-91">
+              <caret line="143" column="34" lean-forward="true" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="456" column="105" selection-start-line="456" selection-start-column="105" selection-end-line="456" selection-end-column="105" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <element signature="e#4030#4484#0" />
-                <element signature="e#4536#8713#0" />
-                <element signature="e#8745#9311#0" />
+                <element signature="e#2096#4013#0" />
+                <element signature="e#3033#4013#0" />
+                <element signature="e#4122#4203#0" />
+                <element signature="e#8742#15578#0" />
+                <element signature="e#15634#16499#0" />
+                <element signature="e#23041#29991#0" />
+                <element signature="e#30970#66298#0" />
+                <element signature="e#66340#93616#0" />
+                <element signature="e#93656#121785#0" />
+                <element signature="e#121828#149984#0" />
+                <element signature="e#150026#168457#0" />
+                <element signature="e#168499#188626#0" />
+                <element signature="e#188666#208595#0" />
+                <element signature="e#208639#327245#0" />
               </folding>
             </state>
           </provider>
@@ -136,7 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>DeviceLNVerilizer</find>
       <find>MyTokenObtainPairView</find>
       <find>Pers_list</find>
       <find>data</find>
@@ -166,6 +172,7 @@
       <find>disabledDate</find>
       <find>pickerOptions</find>
       <find>multipleSelection</find>
+      <find>OvertimeDevcheck</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,7 +219,6 @@
         <option value="$PROJECT_DIR$/CabinetManage/models.py" />
         <option value="$PROJECT_DIR$/CabinetManage/views.py" />
         <option value="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" />
-        <option value="$PROJECT_DIR$/app01/views.py" />
         <option value="$PROJECT_DIR$/DeviceLNV/authentication.py" />
         <option value="$PROJECT_DIR$/DeviceLNV/serializers.py" />
         <option value="$PROJECT_DIR$/DeviceLNV/urls.py" />
@@ -222,9 +228,10 @@
         <option value="C:/PythonProject/test/test api.py" />
         <option value="C:/PythonProject/SMTPMail.py" />
         <option value="$PROJECT_DIR$/app01/models.py" />
-        <option value="$PROJECT_DIR$/DeviceLNV/views.py" />
         <option value="$PROJECT_DIR$/SMTPMail.py" />
         <option value="$PROJECT_DIR$/templates/DeviceLNV/M_edit.html" />
+        <option value="$PROJECT_DIR$/app01/views.py" />
+        <option value="$PROJECT_DIR$/DeviceLNV/views.py" />
       </list>
     </option>
   </component>
@@ -300,7 +307,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reliability_Row_data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -580,9 +587,9 @@
     <frame x="-7" y="-7" width="1295" height="767" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" visible="true" weight="0.20492454" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.50741607" visible="true" weight="0.20492454" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49086577" visible="true" weight="0.32176656" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49086577" visible="true" weight="0.4242902" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -604,9 +611,9 @@
       <window_info anchor="right" id="Find" order="4" weight="0.33144704" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.50741607" visible="true" weight="0.20492454" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50741607" visible="true" weight="0.20492454" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49166006" visible="true" weight="0.22870663" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49086577" visible="true" weight="0.32176656" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39747635" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -618,7 +625,7 @@
       <window_info anchor="bottom" id="Database" order="10" sideWeight="0.50158983" side_tool="true" weight="0.24333926" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" weight="0.32492113" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32492113" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50833994" side_tool="true" weight="0.42902207" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50913423" side_tool="true" weight="0.32176656" />
       <window_info anchor="bottom" id="Favorites" order="14" sideWeight="0.5040783" weight="0.22870663" />
       <window_info anchor="bottom" id="Structure" order="15" show_stripe_button="false" sideWeight="0.5066354" side_tool="true" weight="0.32018927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -794,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app01/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="119" column="42" lean-forward="true" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DeviceLNV/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -915,13 +915,6 @@
     <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/R_Borrowed.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_Borrow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="521" column="23" selection-start-line="521" selection-start-column="12" selection-end-line="521" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DeviceLNV/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -933,9 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="296" column="159" lean-forward="true" selection-start-line="296" selection-start-column="128" selection-end-line="296" selection-end-column="159" />
-          <folding>
-            <element signature="e#34888#36253#0#HTML" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -943,25 +933,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="1676" lean-forward="true" selection-start-line="1676" selection-end-line="1676" />
-          <folding>
-            <element signature="n#el-table#0;n#template#0;n#div#2;n#div#0;n#!!top" />
-            <element signature="e#51324#53115#0#HTML" />
-            <element signature="e#53867#55161#0#HTML" />
-            <element signature="e#55202#55385#0#HTML" />
-            <element signature="e#55434#55635#0#HTML" />
-            <element signature="e#55664#55740#0#HTML" />
-            <element signature="e#55770#55849#0#HTML" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMTPMailyibu.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMTPMail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="302" column="16" lean-forward="true" selection-start-line="302" selection-start-column="16" selection-end-line="302" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/DeviceLNV/M_Borrow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="521" column="23" selection-start-line="521" selection-start-column="12" selection-end-line="521" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app01/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91">
+          <caret line="143" column="34" lean-forward="true" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DeviceLNV/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="5744" column="5" lean-forward="true" selection-start-line="5744" selection-start-column="5" selection-end-line="5744" selection-end-column="5" />
+        <state relative-caret-position="113">
+          <caret line="456" column="105" selection-start-line="456" selection-start-column="105" selection-end-line="456" selection-end-column="105" />
           <folding>
             <element signature="e#2096#4013#0" />
             <element signature="e#3033#4013#0" />
+            <element signature="e#4122#4203#0" />
+            <element signature="e#8742#15578#0" />
+            <element signature="e#15634#16499#0" />
+            <element signature="e#23041#29991#0" />
             <element signature="e#30970#66298#0" />
             <element signature="e#66340#93616#0" />
             <element signature="e#93656#121785#0" />
@@ -970,28 +979,6 @@
             <element signature="e#168499#188626#0" />
             <element signature="e#188666#208595#0" />
             <element signature="e#208639#327245#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SMTPMailyibu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SMTPMail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="302" column="8" selection-start-line="302" selection-start-column="8" selection-end-line="303" selection-end-column="119" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#4030#4484#0" />
-            <element signature="e#4536#8713#0" />
-            <element signature="e#8745#9311#0" />
           </folding>
         </state>
       </provider>

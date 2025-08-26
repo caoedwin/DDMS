@@ -1,0 +1,21 @@
+[2025-08-26 15:03:21,940] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-08-26 15:03:21,954] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2025-08-26 15:03:21,993] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2025-08-26 15:03:22,068] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 45137
+[2025-08-26 15:03:22,377] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-26 15:03:22,380] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-26 15:03:22: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-08-26 15:03:22,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2025-08-26 15:03:22,436] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2025-08-26 15:03:22,436] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2025-08-26 15:03:24,988] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 45137
+[2025-08-26 15:03:25,155] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-26 15:03:25,193] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-26 15:03:25: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-08-26 15:03:25,208] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2025-08-26 15:03:25,242] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2025-08-26 15:03:25,243] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2025-08-26 15:03:27,003] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 45137
+[2025-08-26 15:03:27,137] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 36060
+[2025-08-26 15:03:27,175] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-08-26 15:03:27: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-08-26 15:03:27,187] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2025-08-26 15:03:27,251] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2025-08-26 15:03:27,252] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803

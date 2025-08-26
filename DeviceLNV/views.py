@@ -442,11 +442,20 @@ def BorrowedDeviceLNV(request):
                      "Plandate": Plandate_str, "useday": usedays, "Btime": Btime_str, "Rtime": Rtime_str,
                      "Overday": Exceed_days},
                 )
+                current_date = datetime.datetime.now().date()
                 if OvertimeDevcheck:
                     if OvertimeDevcheck == "是":
-                        mock_data = [ i for i in mock_data if i["Overday"]]
+                        mock_data = [
+                                        item for item in mock_data
+                                        if item["Plandate"] and  # 确保 Plandate 非空
+                                        datetime.datetime.strptime(item["Plandate"], "%Y-%m-%d").date() < current_date
+                                    ]
                     elif OvertimeDevcheck == "否":
-                        mock_data = [i for i in mock_data if not i["Overday"]]
+                        mock_data = [
+                                        item for item in mock_data
+                                        if item["Plandate"] and  # 确保 Plandate 非空
+                                        datetime.datetime.strptime(item["Plandate"], "%Y-%m-%d").date() > current_date
+                                    ]
         if 'BORROW' in str(request.body):
             # print(1)
             checkAdaPow = {}

@@ -140,7 +140,7 @@ def login(request):
                 # print(settings.MEDIA_ROOT,settings.MEDIA_URL)
                 # return HttpResponseRedirect(request.session['login_from'])
                 Non_login_path = request.session.get('Non_login_path')
-                print(Non_login_path, 'Non_login_path')
+                # print(Non_login_path, 'Non_login_path')
                 if Non_login_path:
                     # 记住来源的url，如果没有则设置为首页('/')
                     return redirect(Non_login_path)
