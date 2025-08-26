@@ -443,18 +443,24 @@ def BorrowedDeviceLNV(request):
                      "Overday": Exceed_days},
                 )
                 current_date = datetime.datetime.now().date()
+                # 定义需要匹配的 BrwStatus 值
+                target_statuses = ["固定設備", "已借出"]
                 if OvertimeDevcheck:
                     if OvertimeDevcheck == "是":
                         mock_data = [
-                                        item for item in mock_data
-                                        if item["Plandate"] and  # 确保 Plandate 非空
-                                        datetime.datetime.strptime(item["Plandate"], "%Y-%m-%d").date() < current_date
-                                    ]
+                            item for item in mock_data
+                            if item["Plandate"] and  # 确保 Plandate 非空
+                            datetime.datetime.strptime(item["Plandate"], "%Y-%m-%d").date() < current_date and
+                            item["BrwStatus"] in target_statuses
+                        ]
                     elif OvertimeDevcheck == "否":
                         mock_data = [
                                         item for item in mock_data
-                                        if item["Plandate"] and  # 确保 Plandate 非空
-                                        datetime.datetime.strptime(item["Plandate"], "%Y-%m-%d").date() > current_date
+                                        if not (
+                                            item["Plandate"] and  # Plandate 非空
+                                            datetime.datetime.strptime(item["Plandate"], "%Y-%m-%d").date() < current_date and  # Plandate 过期
+                                            item["BrwStatus"] in target_statuses  # BrwStatus 在排除列表中
+                                        )
                                     ]
         if 'BORROW' in str(request.body):
             # print(1)
