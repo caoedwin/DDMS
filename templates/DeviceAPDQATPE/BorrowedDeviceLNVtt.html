@@ -1,0 +1,703 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}DMS_borrow{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+<style>
+
+.showColor:hover{
+    color: red;
+}
+
+.el-table--border th.gutter:last-of-type {
+  display: block!important;
+}
+
+.el-table th.gutter{
+    display: table-cell!important;
+  }
+
+.selectMsg{
+     font-size:17px;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .selectMsg label{
+      font-weight: 800;
+      margin-right: 10px;
+      color:black;
+  }
+  .customerContent,.changjiaContent,.pnContent,.powerContent{
+     margin-left: 20px;
+}
+.showNum{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+ .tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+#sh {
+    font-size:18px;
+    font-family:微软雅黑;
+    border: 2px solid #9f9ca1;
+}
+
+#sh::-webkit-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh::-moz-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+#sh:-ms-input-placeholder{
+        color:#2f97a8;
+    font-family:微软雅黑;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+     <div class="selectMsg" >
+                   <div class="IntfCtgryContent">
+                         <label>介面種類</label>
+                         <select  ref="IntfCtgry5"  v-model="IntfCtgry5" style="height:40px;width:100px;border-radius:5px;margin-left: -10px;">
+                             <option value="All">All</option>
+                             <option v-for="(item,key,index) in allIntfCtgry" >${ item }</option>
+                         </select>
+                   </div>
+                   <div class="DevCtgryContent" style="margin-left:10px">
+                          <label>設備種類</label>
+                          <select  ref="DevCtgry5" v-model="DevCtgry5" style="height:40px;border-radius:5px;width:100px;margin-left: -10px;">
+                              <option value="All">All</option>
+                              <option v-for="(item,key,index) in allDevCtgry">${ item }</option>
+                          </select>
+                   </div>
+                   <div class="DevpropertiesContent" style="margin-left:10px">
+                          <label>設備屬性</label>
+                          <select  ref="Devproperties5" v-model="Devproperties5" style="height:40px;border-radius:5px;width:100px;margin-left: -10px;">
+                              <option value="All">All</option>
+                              <option v-for="(item,key,index) in allDevproperties">${ item }</option>
+                          </select>
+                   </div>
+                   <div class="DevVendorContent" style="margin-left:10px">
+                         <label>設備廠家</label>
+                         <select  ref="DevVendor5" v-model="DevVendor5" style="height:40px;border-radius:5px;width:100px;margin-left: -10px;">
+                             <option value="All">All</option>
+                             <option v-for="(item,key,index) in allDevVendor">${ item }</option>
+                         </select>
+                   </div>
+                   <div class="DevsizeContent" style="margin-left:10px">
+                         <label>設備容量</label>
+                         <select  ref="Devsize5" v-model="Devsize5" style="height:40px;border-radius:5px;width:100px;margin-left: -10px;">
+                             <option value="All">All</option>
+                             <option v-for="(item,key,index) in allDevsize">${ item }</option>
+                         </select>
+                   </div>
+
+                   <div class="DevsizeContent" style="margin-left:10px">
+                         <label>借還狀態</label>
+                         <select  ref="DevStatus" v-model="DevStatus" style="height:40px;border-radius:5px;width:100px;margin-left: -10px;">
+                             <option value="All">All</option>
+                             <option v-for="(item,key,index) in allDevStatus">${ item }</option>
+                         </select>
+                   </div>
+                   <el-button @click="search5" v-cloak  style="height:40px;border-color:black;color:black;margin-left: 20px;background-color:#7fa0ff">搜索</el-button><span v-if="showTips5" v-cloak class="tips">前四项不能为空</span>
+     </div>
+
+    <div class="tableAround" v-cloak >
+        <div class="111" style="margin-bottom:20px;">
+      <span class="showNum">已選 <span id="selectNum">0</span> 條</span> <el-button @click="ensureInfo()" v-cloak size="medium" style="background-color:#9df387d4; border-color:black;color:black;margin-left: 50px">借用</el-button>
+      </div>
+<el-input type="text" v-model="search"  id="sh" placeholder="請輸入關鍵字搜索..."></el-input>
+            <el-table height="700" ref="multipleTable" border :data="datas.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)" @selection-change="handleSelectionChange" :row-key="getRowKeys" :cell-style="addColor" :row-style="changeRowColor"
+            :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}" style="border-radius: 10px;word-break: keep-all">
+          <el-table-column type="selection" width="50" :reserve-selection="true" :selectable='checkboxT' disabled="true"></el-table-column>
+          <el-table-column type="index" :index="indexMethod" fixed v-if="show" align="center"></el-table-column>
+          <el-table-column  prop="Customer" label="客戶別" width="100" fixed align="center"></el-table-column>
+{#          <el-table-column  prop="Plant" label="廠區"></el-table-column>#}
+          <el-table-column  prop="NID" label="設備序號" width="100" fixed align="center">
+              <template scope="scope">
+                              <el-popover placement="right" trigger="hover">
+                                          <table align="center" style="BORDER-RIGHT: #ff6600 1px dashed; BORDER-TOP: #ff6600 1px dashed; BORDER-LEFT: #ff6600 1px dashed; BORDER-BOTTOM: #ff6600 1px dashed; BORDER-COLLAPSE: collapse" borderColor=#000000 height=250 cellPadding=1 width=400  border=1>
+                                              <tr rowspan="3"><td style="text-align:center">設備圖片</td><td colspan="2" style="text-align:center;height:180px"><img :src="getNID(scope.row.NID)" width="280px" height="180px"></td></tr>
+                                              <tr><td style="text-align:center">設備描述</td><td colspan="2" style="text-align:center">設備附帶物件</td></tr>
+                                              <tr><td style="text-align:center">${ scope.row.DevDescription }</td><td colspan="2" style="text-align:center">${ scope.row.PckgIncludes }</td></tr>
+                                              <tr><td style="text-align:center">設備來源</td><td style="text-align:center">設備HW版本</td><td style="text-align:center">設備FW版本</td></tr>
+                                              <tr><td style="text-align:center">${ scope.row.Source }</td><td style="text-align:center">${ scope.row.HWVer }</td><td style="text-align:center">${ scope.row.FWVer }</td></tr>
+                                              <tr><td style="text-align:center">資產編號</td><td style="text-align:center">設備價格</td><td style="text-align:center">設備年齡</td></tr>
+                                              <tr><td style="text-align:center">${ scope.row.AssetNum }</td><td style="text-align:center">${ scope.row.DevPrice }</td><td style="text-align:center">${ scope.row.UsYear }</td></tr>
+                                          </table>
+                                    <div style="cursor: pointer;" class="showColor" slot="reference" @click="getMore11(scope.row)">${ scope.row.NID }</div>
+                                </el-popover>
+                           </template>
+          </el-table-column>
+          <el-table-column  prop="DevID" label="設備用途" width="120" align="center"></el-table-column>
+          <el-table-column  prop="IntfCtgry" label="介面種類" width="160" align="center"></el-table-column>
+          <el-table-column  prop="DevCtgry" label="設備種類" width="100" align="center"></el-table-column>
+          <el-table-column  prop="Devproperties" label="設備屬性" width="160" align="center"></el-table-column>
+          <el-table-column  prop="Devsize" label="設備容量" width="100" align="center"></el-table-column>
+          <el-table-column  prop="DevVendor" label="設備廠家" width="100" align="center"></el-table-column>
+          <el-table-column  prop="DevModel" label="設備型號" width="100" align="center"></el-table-column>
+          <el-table-column  prop="DevName" label="設備名稱" width="160" align="center"></el-table-column>
+          <el-table-column  prop="BrwStatus" label="借還狀態" align="center" width="120"></el-table-column>
+          <el-table-column  prop="Usrname" label="用戶名稱" align="center" width="120"></el-table-column>
+          <el-table-column  prop="Plandate" label="預計歸還日期" align="center" width="120"></el-table-column>
+          <el-table-column  prop="useday" label="使用天數" align="center" width="100"></el-table-column>
+          <el-table-column  prop="Btime" label="借用時間" align="center" width="120"></el-table-column>
+          <el-table-column  prop="Rtime" label="歸還日期" align="center" width="120"></el-table-column>
+          <el-table-column  prop="Overday" label="超期天數" align="center"></el-table-column>
+          <el-table-column  prop="Comment" label="備註" align="center" width="180"></el-table-column>
+      </el-table>
+      <div class="block">
+        <el-pagination  @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[10, 50, 100, 200]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total_computed">
+        </el-pagination>
+      </div>
+    </div>
+    <el-dialog title="詳細信息" :visible.sync="getMore" width="70%"  center>
+        <el-table :data="moreDetails" height="450px" border stripe :cell-style="addColor1">
+              <el-table-column  prop="HWVer" label="HW Ver."></el-table-column>#}
+              <el-table-column  prop="FWVer" label="FW Ver."></el-table-column>
+              <el-table-column  prop="DevDescription" label="設備描述"></el-table-column>
+              <el-table-column  prop="PckgIncludes" label="附帶品"></el-table-column>
+              <el-table-column  prop="expirdate" label="保固期"></el-table-column>
+              <el-table-column  prop="DevPrice" label="價值RMB(單價)"></el-table-column>
+              <el-table-column  prop="Source" label="設備來源"></el-table-column>
+              <el-table-column  prop="Pchsdate" label="購買時間"></el-table-column>
+              <el-table-column  prop="PN" label="料號" align="center"></el-table-column>
+              <el-table-column  prop="LNV_ST" label="LNV/ABO設備審核清單" align="center"></el-table-column>
+              <el-table-column  prop="Purchase_NO" label="申購單號" align="center"></el-table-column>
+              <el-table-column  prop="Declaration_NO" label="報關單號" align="center">
+                     <template scope="scope">
+                              <el-popover placement="top" trigger="hover">
+                                  <div><a :href="getDeclaration_NO(scope.row.NID)" download><img :src="getDeclaration_NO(scope.row.NID)" width="280px" height="180px"></a></div>
+                                    <div slot="reference">${ scope.row.Declaration_NO }</div>
+                                </el-popover>
+                           </template>
+              </el-table-column>
+              <el-table-column  prop="AssetNum" label="資產編號" align="center"></el-table-column>
+              <el-table-column  prop="UsYear" label="購買年限" align="center"></el-table-column>
+              <el-table-column  prop="uscyc" label="使用次數" align="center"></el-table-column>
+              <el-table-column  prop="UsrTimes" label="借還次數" align="center"></el-table-column>
+              <el-table-column  prop="addnewname" label="設備添加人員" align="center"></el-table-column>
+              <el-table-column  prop="addnewdate" label="設備添加日期" align="center"></el-table-column>
+              <el-table-column  prop="DevStatus" label="設備狀態" align="center"></el-table-column>
+        </el-table>
+    </el-dialog>
+
+      <el-dialog title="借用機種信息登記" :visible.sync="Info" width="30%" :before-close="handleClose" center>
+        <template>
+             <el-form ref="form"  :model="form" :rules="rules" label-width="135px">
+                 <el-form-item label="Project" prop="Project">
+                          <el-input v-model="form.Project"></el-input>
+                 </el-form-item>
+                 <el-form-item label="Phase" prop="Phase">
+                           <el-select v-model="form.Phase" placeholder="请选择">
+                                <el-option v-for="item in Phaseoptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                          </el-select>
+                 </el-form-item>
+                 <el-form-item label="预计歸還時間" prop="Predict_return">
+                         <el-date-picker v-model="form.Predict_return" type="date" value-format="yyyy-MM-dd" placeholder="選擇日期" :picker-options="pickerOptions"></el-date-picker>
+                 </el-form-item>
+             </el-form>
+        </template>
+              <span slot="footer" class="dialog-footer">
+                        <el-button type="primary" @click="Borrow(form)">送出</el-button>
+              </span>
+      </el-dialog>
+    <template>
+      <el-backtop ></el-backtop>
+    </template>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+
+    <script type="text/babel">
+    new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: function () {
+            return {
+               IntfCtgry5:'',
+                IntfCtgryOptions5:{},
+                DevCtgry5:'',
+                DevCtgryOptions5:[],
+                Devproperties5:'',
+                DevpropertiesOptions5:[],
+                DevVendor5:'',
+                DevVendorOptions5:{},
+                Devsize5:'',
+                DevStatus:'',
+                DevsizeOptions5:[],
+                allIntfCtgry:[],
+                allDevCtgry:[],
+                allDevproperties:[],
+                allDevVendor:[],
+                allDevsize:[],
+                allDevStatus:[],
+                showTips5:false,
+                search:'',
+               tableContent:[],
+                moreDetails:[],
+               currentPage: 1,//默认显示第一页
+               pageSize:100,//默认每页显示100条
+               totalNum: null,
+               getMore:false,
+               Info:false,
+               show:false,
+               form: {
+                    Project:'',
+                    Phase:'',
+                    Predict_return:'',
+                    },
+               formData:[],
+                //form表單中需要從後台獲取的下拉選項
+                {#Projectoptions:[],#}
+                {#Phaseoptions:[],#}
+                multipleSelection: [],
+                BorrowId:[],
+                rules: {
+                    Project: [
+                         { required: true, message: '请输入Project', trigger: 'blur' },
+                         { max: 5, message: 'Project長度不能超過5位', trigger: 'blur' }
+                      ],
+                    Phase: [
+                         { required: true, message: "请输入Phase", trigger:['blur','change'] }
+                      ],
+                    Predict_return: [
+                         { required: true, message: "不能為空", trigger:['blur','change'] }
+                      ],
+
+                    },
+
+                pickerOptions: {
+                    // disabledDate是一个函数,参数是当前选中的日期值,这个函数需要返回一个Boolean值,
+                    disabledDate: this.disabledDate
+                },
+                Phaseoptions:[{value: 'B(FVT)', label: 'B(FVT)'},
+                                    {value: 'C(SIT)', label: 'C(SIT)'},
+                                    {value: 'INV', label: 'INV'},
+                                    {value: 'NPI', label: 'NPI'}],
+
+
+
+
+            }
+        },
+        mounted(){        // 页面渲染后触发该区域内容 即页面初始化
+            this.getdata("first");
+        },
+        methods: {
+            //获取数据
+            getdata: function (e) {
+                let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
+                axios.post("/DeviceLNV/BorrowedDeviceLNV/", Qs.stringify(data), {
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                }).then((res) => {
+                    this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
+                    this.allIntfCtgry=res.data.allIntfCtgry;
+                    this.allDevCtgry=res.data.allDevCtgry;
+                    this.allDevproperties=res.data.allDevproperties;
+                    this.allDevVendor=res.data.allDevVendor;
+                    this.allDevsize=res.data.allDevsize;
+                    this.allDevStatus=res.data.allDevStatus;
+                    this.tableContent=res.data.content;
+                    this.moreDetails=this.tableContent;
+                    this.totalNum=this.tableContent.length;
+                });
+            },
+
+              handleClose(done) {
+                this.$confirm('确认关闭？')
+                  .then(_ => {
+                    {#this.$refs.multipleTable.clearSelection();#}
+                    this.$refs.form.resetFields();
+                    done();
+                  })
+                  .catch(_ => {});
+              },
+
+            //Tab5 搜索
+            changeIntfCtgry5:function () {
+                 if(this.$refs.IntfCtgry5.value ==""&&this.$refs.form5.model.IntfCtgry==''){
+                      this.DevCtgryOptions5=[""];
+                      return false;
+                 }else if(this.$refs.IntfCtgry5.value !=="") {
+                     this.DevCtgryOptions5 = this.IntfCtgryOptions5[this.$refs.IntfCtgry5.value];
+                     this.DevCtgry5 = "";
+                 }else if(this.$refs.form5.model.IntfCtgry!==''){
+                     this.DevCtgryOptions5 = this.IntfCtgryOptions5[this.$refs.form5.model.IntfCtgry];
+                     this.DevCtgry5 = "";
+                 }
+            },
+            changeDevCtgry5:function(index){
+                if(this.$refs.DevCtgry5.value ==""&&this.$refs.form5.model.DevCtgry==''){
+                      this.DevpropertiesOptions5=[""];
+                      return false;
+                 }else if(this.$refs.DevCtgry5.value !=="") {
+                    for (let index = 0; index < this.IntfCtgryOptions5[this.IntfCtgry5].length; index++) {
+                        if (this.IntfCtgryOptions5[this.IntfCtgry5][index]["DevCtgry"] == this.DevCtgry5) {
+                            this.DevpropertiesOptions5 = this.IntfCtgryOptions5[this.IntfCtgry5][index]["Devproperties"];
+                        }
+                    }
+                }else if(this.$refs.form5.model.DevCtgry !==''){
+                    console.log(this.$refs.form5.model.DevCtgry,'www')
+                     for (let index = 0; index < this.IntfCtgryOptions5[this.$refs.form5.model.IntfCtgry].length; index++) {
+                        if (this.IntfCtgryOptions5[this.$refs.form5.model.IntfCtgry][index]["DevCtgry"] == this.$refs.form5.model.DevCtgry) {
+                            this.DevpropertiesOptions5 = this.IntfCtgryOptions5[this.$refs.form5.model.IntfCtgry][index]["Devproperties"];
+                        }
+                    }
+                }
+            },
+            changeDevproperties5:function(){
+                if(this.$refs.Devproperties5.value ==""&&this.$refs.form5.model.Devproperties==''){
+                      this.DevVendorOptions5=[""];
+                      return false;
+                 }else if(this.$refs.Devproperties5.value !=="") {
+                    let data = {
+                        "isGetData": "change5",
+                        "IntfCtgry": this.$refs.IntfCtgry5.value,
+                        "DevCtgry": this.$refs.DevCtgry5.value,
+                        "Devproperties": this.$refs.Devproperties5.value,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/BorrowedDeviceLNV/", Qs.stringify(data), {
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                    }).then((res) => {
+                        this.DevVendorOptions5 = res.data.DevVendorOptions5;
+                    })
+                }else if(this.$refs.form5.model.Devproperties!==''){
+                    let data = {
+                        "isGetData": "change5",
+                        "IntfCtgry": this.$refs.form5.model.IntfCtgry,
+                        "DevCtgry": this.$refs.form5.model.DevCtgry,
+                        "Devproperties": this.$refs.form5.model.Devproperties,
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    }
+                    axios.post("/DeviceLNV/BorrowedDeviceLNV/", Qs.stringify(data), {
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                    }).then((res) => {
+                        this.DevVendorOptions5 = res.data.DevVendorOptions5;
+                    })
+                }
+
+
+            },
+            changeDevVendor5:function (){
+                if(this.$refs.DevVendor5.value ==""&&this.$refs.form5.model.DevVendor==''){
+                      this.DevsizeOptions5=[""];
+                      return false;
+                 }else if(this.$refs.DevVendor5.value !=="") {
+                     this.DevsizeOptions5 = this.DevVendorOptions5[this.$refs.DevVendor5.value];
+                     this.Devsize5 = "";
+                 }else if(this.$refs.form5.model.DevVendor!==''){
+                     this.DevsizeOptions5 = this.DevVendorOptions5[this.$refs.form5.model.DevVendor];
+                     this.Devsize5 = "";
+                 }
+            },
+            search5:function(){
+              {% comment %} if(this.$refs.IntfCtgry5.value ==""||this.$refs.DevCtgry5.value ==""||this.$refs.Devproperties5.value==''||this.$refs.DevVendor5.value==''){
+                   this.showTips5=true;
+               }else {{% endcomment %}
+                   let IntfCtgry = this.$refs.IntfCtgry5.value;
+                   let DevCtgry = this.$refs.DevCtgry5.value;
+                   let Devproperties = this.$refs.Devproperties5.value;
+                   let DevVendor = this.$refs.DevVendor5.value;
+                   let Devsize = this.$refs.Devsize5.value;
+                   let DevStatus = this.$refs.DevStatus.value;
+                   let data = {
+                       "isGetData": "SEARCH5",
+                       "IntfCtgry": IntfCtgry,
+                       "DevCtgry": DevCtgry,
+                       "Devproperties":Devproperties,
+                       "DevVendor":DevVendor,
+                       "Devsize":Devsize,
+                       "DevStatus":DevStatus,
+                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                   }
+                   axios.post("/DeviceLNV/BorrowedDeviceLNV/", Qs.stringify(data), {
+                       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                   }).then((res) => {
+                       this.tableContent=res.data.content;
+                       this.moreDetails=this.tableContent;
+                       this.totalNum=this.tableContent.length;
+                   })
+                   this.showTips5=false;
+                   this.$refs.multipleTable.clearSelection()
+             {% comment %}  }{% endcomment %}
+            },
+            getNID(pic){
+                return "/media/DeviceLNV/Device/"+pic+'.jpg';
+            },
+            getDeclaration_NO:function(pic){
+                return "/media/DeviceLNV/Baoguan/"+pic+'_b.jpg'
+                {#console.log("/media/DeviceLNV/Baoguan/"+pic+'_b.jpg')#}
+            },
+            getMore11(row) {
+                {#console.log(row,typeof (row),typeof (this.moreDetails))#}
+                this.getMore=true;
+                this.moreDetails = [];
+                this.moreDetails[0]  = row;
+                {% comment %}this.moreDetails  = [
+                    {
+                        "HWVer": row.HWVer, "FWVer": row.FWVer, "DevDescription": row.DevDescription, "PckgIncludes": row.PckgIncludes,
+                        "expirdate": row.expirdate, "DevPrice": row.DevPrice, "Source": row.Source, "Pchsdate": row.Pchsdate,
+                        "PN": row.PN, "LNV_ST": row.LNV_ST, "Purchase_NO": row.Purchase_NO, "Declaration_NO": row.Declaration_NO,
+                        "AssetNum": row.AssetNum, "UsYear": row.UsYear, "uscyc": row.uscyc,"UsrTimes": row.UsrTimes,
+                        "addnewname": row.addnewname,"addnewdate": row.addnewdate,"Comment": row.Comment,"DevPrice": row.DevPrice,"NID": row.NID,
+                    }
+                ];{% endcomment %}
+                console.log(this.moreDetails)
+            },
+            indexMethod(index) {
+                return index + 1;
+            },
+            //分页
+            handleSizeChange(val) {
+                  console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+                  this.currentPage = val;
+                  console.log(this.tableContent.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize));
+            },
+            handleSelectionChange(rows) {
+                this.multipleSelection = rows;
+                var len=document.getElementById("selectNum");
+                len.innerHTML=this.multipleSelection.length;
+            },
+            getRowKeys (row) {
+              return row.id;
+            },
+
+
+            disabledDate(time) {
+                if( time.getTime() < Date.now()- 8.64e7 ){
+                    return true
+                }
+                if(this.multipleSelection == 0){
+                    return true
+                }else{
+                    if(this.multipleSelection[0].DevStatus == 'Long'){
+                        let date3 = Date.now() + 29 * 24 * 3600 * 1000;
+                        if( time.getTime() > date3){
+                                return true
+                        }
+                    }else {
+                        let dateNow = new Date();
+                        let date2 = Date.now() + 8 * 24 * 3600 * 1000;
+                        let date3 = Date.now() + 10 * 24 * 3600 * 1000;
+                        {#let date4 = Date.now() + 9 * 24 * 3600 * 1000;#}
+                        if(time.getDay() ===0 || time.getDay() ===6){
+                            return true
+                        }
+                        if( dateNow.getDay() ===5 || dateNow.getDay() ===6 ){
+                            if( time.getTime() > date3){
+                                return true
+                            }
+                        }else {
+                            if( time.getTime() > date2){
+                                return true
+                            }
+                        }
+                    }
+                }
+
+            },
+
+            ensureInfo:function(){
+                {#console.log(this.multipleSelection[0].DevStatus);#}
+                if(this.multipleSelection.length==0){
+                    alert('未勾选数据！');
+                }else {
+                    let array = this.multipleSelection;
+                    let aa = array.every(function (item) {
+                        {#console.log(item.BrwStatus == array[0].BrwStatus, '1233');#}
+                       return item.DevStatus == array[0].DevStatus;
+                    });
+                    if( aa == true ){
+                        this.Info = true;
+                        let params = [];
+                        this.BorrowId = [];
+                        array.forEach(function (item) {
+                            params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                        });
+                        this.BorrowId = params;
+                    }else{
+                        alert('包含短期設備和長期借用設備，不能同時勾選！');
+                    }
+
+                    {% comment %}
+                    this.Info = true;
+                    let params = [];
+                    this.BorrowId = [];
+                    checkArr.forEach(function (item) {
+                        params.push(item.id);       // 添加所有需要删除数据的id到一个数组，post提交过去
+                    });
+                    console.log(params);
+                    this.BorrowId = params;
+                    {% endcomment %}
+                }
+            },
+            Borrow:function(){
+                 this.$refs.form.validate((valid) => {
+               if (valid) {
+                    this.formData = new FormData();
+                    this.formData.append("isGetData",'BORROW');
+                    this.formData.append('IntfCtgry', this.$refs.IntfCtgry5.value);
+                    this.formData.append('DevCtgry', this.$refs.DevCtgry5.value);
+                    this.formData.append('Devproperties', this.$refs.Devproperties5.value);
+                    this.formData.append('DevVendor', this.$refs.DevVendor5.value);
+                    this.formData.append('Devsize', this.$refs.Devsize5.value);
+                    this.formData.append('DevStatus', this.$refs.DevStatus.value);
+                    this.formData.append('BorrowId',this.BorrowId);
+                    this.formData.append('Project', this.$refs.form.model.Project);
+                    this.formData.append('Phase', this.$refs.form.model.Phase);
+                    this.formData.append('Predict_return', this.$refs.form.model.Predict_return);
+                     axios.post("/DeviceLNV/BorrowedDeviceLNV/", this.formData,{
+                       headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+                        }).then((res) => {
+                          this.tableContent=res.data.content;
+                          this.moreDetails=this.tableContent;
+                          this.totalNum=this.tableContent.length;
+                        })
+                        this.Info=false;
+                        this.$refs.multipleTable.clearSelection();
+                        this.$refs.form.resetFields();
+                   }else {
+                        console.log('error submit!!');
+                        return false;
+                      }
+                      });
+               },
+
+        changeRowColor({row, column, rowIndex, columnIndex}) {
+            if( row.DevStatus == "Long" ){
+               return {
+                         background: '#E6E6FA'
+               }
+            }
+            if( rowIndex % 2 == 0){
+               return {
+                         background: 'white'
+               }
+            }else{
+               return {
+                         background: '#FFF0F5'
+                         {#background: '#FFFAF0'#}
+               }
+            }
+        },
+                addColor({row, column, rowIndex, columnIndex}) {
+                    if (columnIndex === 17 && row.Overday !== '') {
+                                   return {
+                                             color: '#FF0000'
+                                           }
+                           }
+                           if (columnIndex === 11 && (row.BrwStatus =='已借出'||row.BrwStatus =='已續借')) {
+                                   return {
+                                             color: '#f14018',
+                                             background: 'white'
+                                           }
+                           }
+                           if (columnIndex === 11 && (row.BrwStatus =='歸還確認中'||row.BrwStatus =='預定確認中'||row.BrwStatus =='續借確認中')) {
+                                   return {
+                                             background: '#FFFF00'
+                                           }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='固定設備') {
+                                   return {
+                                             background: '#98F898'
+                                           }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='可借用') {
+                                   return {
+                                             background: '#32CD32'
+                                           }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='長期借用') {
+                                    return {
+                                              background: '#CEFFCE'
+                                            }
+                           }
+                           if (columnIndex === 11 && row.BrwStatus =='驗收中') {
+                                    return {
+                                              background: '#FFFF99'
+                                            }
+                           }
+                },
+                addColor1({row, column, rowIndex, columnIndex}) {
+                        if (columnIndex === 18 && (row.DevStatus =='Good'||row.DevStatus =='Fixed')) {
+                                return {
+                                          background: '#2bf306'
+                                        }
+                        }
+                        if (columnIndex === 18 && (row.DevStatus =='Damaged'||row.DevStatus =='Lost')) {
+                                return {
+                                          background: 'grey'
+                                        }
+                        }
+                },
+
+               checkboxT(row,index){
+                  if( row.BrwStatus =='可借用' && ( row.DevStatus =='Long' || row.DevStatus=='Good' ) ){
+                    return 1
+                  }else {
+                    return 0
+                  }
+                }
+
+        },
+        computed:{
+                datas(){//必须是el-table里面绑定的数据变量,不能与axios接受的变量名一样
+                    {#console.log(111);#}
+                    const search=this.search;
+                    if(search){
+                        return this.tableContent.filter(data=>{//axios返回时接受数据的变量
+                            return Object.keys(data).some(key=>{
+                                return String(data[key]).toLowerCase().indexOf(search.toLowerCase())>-1
+                            })
+                        })
+                    }
+                    return this.tableContent//axios返回时接受数据的变量
+                },
+                total_computed () {
+                    this.Totalsize = this.datas.length;//edwin:export数据的个数
+                    console.log(this.Totalsize);
+                  return this.datas.length//必须是el-table里面绑定的数据变量
+                }
+            },
+        watch: {
+                datas() {
+                    //console.log("watch")
+                    this.currentPage = 1;
+                }
+            },
+    })
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+

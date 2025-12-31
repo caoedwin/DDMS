@@ -1,0 +1,32 @@
+[2025-12-29 15:47:15,144] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:47:16,331] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 15:47:16: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-12-29 15:47:25,946] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:49:00,269] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:49:33,520] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:50:13,758] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:50:43,388] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:52:16,249] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:53:17,906] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:53:58,371] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:54:57,476] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:56:24,080] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:57:12,718] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:58:08,655] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 15:59:20,257] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 16:00:23,529] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 16:01:55,112] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 16:04:59,336] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 16:05:36,141] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 16:05:52,125] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 16:13:09,608] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2025-12-29 16:13:10,167] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:13:10: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-12-29 16:15:23,728] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:15:23: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2025-12-29 16:17:53,432] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:17:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/BorrowedDeviceAPDQATPE/'>
+[2025-12-29 16:18:00,901] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:18:00: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/R_Return/'>
+[2025-12-29 16:18:03,981] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:18:03: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/R_Keep/'>
+[2025-12-29 16:18:06,432] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:18:06: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/R_Destine/'>
+[2025-12-29 16:18:08,921] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:18:08: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/R_Borrowed/'>
+[2025-12-29 16:18:12,244] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:18:12: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/M_Return/'>
+[2025-12-29 16:18:20,482] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:18:20: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/M_Keep/'>
+[2025-12-29 16:18:28,639] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:18:28: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/M_edit/'>
+[2025-12-29 16:19:43,902] [UserIP.py:88] [UserIP:process_response] [INFO]- 2025-12-29 16:19:43: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceAPDQATPE/M_edit/'>

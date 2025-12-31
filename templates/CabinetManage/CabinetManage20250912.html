@@ -4,1043 +4,615 @@
 {% block css %}
     <link rel="stylesheet" href="/static/css/index.css">
 {#    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">#}
-<style scoped>
-/* 全局重置 - 确保所有元素遵循相同盒模型 */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<style>
+    /* 全局重置 - 确保所有元素遵循相同盒模型 */
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 系统主体布局 */
+    .cabinet-container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f7fa;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    .cabinet-main-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(66, 133, 244, 0.25);
+        color: white;
+    }
+
+    .cabinet-main-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .cabinet-main-header p {
+        font-size: 1.1rem;
+        opacity: 0.92;
+    }
+
+    /* 柜体管理导航 */
+    .cabinets-bar {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        flex-wrap: wrap;
+    }
+
+    .cabinets-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .cabinet-tab {
+        padding: 8px 20px;
+        background: #ecf5ff;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid #dcdfe6;
+    }
+
+    .cabinet-tab.active {
+        background: #1a73e8;
+        color: white;
+        border-color: transparent;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
+    }
+
+    .delete-cabinet-btn {
+        margin-left: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #dcdfe6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    .cabinet-tab.active .delete-cabinet-btn {
+        color: white;
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .delete-cabinet-btn:hover {
+        background: #f56c6c;
+        color: white;
+        border-color: #f56c6c;
+        transform: rotate(90deg);
+    }
+
+    /* 控制面板 */
+    .control-panel {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+    }
+
+    .control-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .role-btn {
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+        border: 1px solid #dcdfe6;
+        background: #f5f7fa;
+    }
+
+    .role-btn.active {
+        background: #1a73e8;
+        color: white;
+        border-color: transparent;
+    }
+
+    /* 柜体主视图 - 核心样式 */
+    .cabinet-section {
+        position: relative;
+        margin-bottom: 35px;
+        padding: 25px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cabinet-section:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .cabinet-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .cabinet-header h2 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #1a73e8;
+        letter-spacing: 0.5px;
+    }
+
+    .delete-btn {
+        padding: 7px 15px;
+        background: #fef0f0;
+        color: #f56c6c;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+    }
+
+    .delete-btn:hover {
+        background: #f56c6c;
+        color: white;
+    }
+
+    /* 网格视图 - 关键样式 */
+    .grid-container {
+        background: white;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        padding: 20px;
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
+        background-color: #f9fafc;
+    }
+
+    .grid-table-container {
+        width: 100%;
+        overflow: auto;
+        margin-bottom: 20px;
+    }
+
+    .grid-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .grid-table td {
+        position: relative;
+        height: 140px; /* 增加高度以容纳更多内容 */
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        padding: 0;
+    }
 
-/* 系统主体布局 */
-.cabinet-container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f7fa;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-}
-
-.cabinet-main-header {
-  text-align: center;
-  margin-bottom: 30px;
-  padding: 20px;
-  background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(66, 133, 244, 0.25);
-  color: white;
-}
-
-.cabinet-main-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-  font-weight: 500;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.cabinet-main-header p {
-  font-size: 1.1rem;
-  opacity: 0.92;
-}
-
-/* 柜体管理导航 */
-.cabinets-bar {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  padding: 15px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-  flex-wrap: wrap;
-}
-
-.cabinets-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.cabinet-tab {
-  padding: 8px 20px;
-  background: #ecf5ff;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-  border: 1px solid #dcdfe6;
-}
-
-.cabinet-tab.active {
-  background: #1a73e8;
-  color: white;
-  border-color: transparent;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
-}
-
-.delete-cabinet-btn {
-  margin-left: 10px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid #dcdfe6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  transition: all 0.3s;
-}
-
-.cabinet-tab.active .delete-cabinet-btn {
-  color: white;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.delete-cabinet-btn:hover {
-  background: #f56c6c;
-  color: white;
-  border-color: #f56c6c;
-  transform: rotate(90deg);
-}
-
-/* 控制面板 */
-.control-panel {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
-}
-
-.control-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
-}
-
-.role-btn {
-  padding: 8px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-weight: 500;
-  border: 1px solid #dcdfe6;
-  background: #f5f7fa;
-}
-
-.role-btn.active {
-  background: #1a73e8;
-  color: white;
-  border-color: transparent;
-}
-
-/* 柜体主视图 - 核心样式 */
-.cabinet-section {
-  position: relative;
-  margin-bottom: 35px;
-  padding: 25px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cabinet-section:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.cabinet-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eaeaea;
-}
-
-.cabinet-header h2 {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #1a73e8;
-  letter-spacing: 0.5px;
-}
-
-.delete-btn {
-  padding: 7px 15px;
-  background: #fef0f0;
-  color: #f56c6c;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s;
-}
-
-.delete-btn:hover {
-  background: #f56c6c;
-  color: white;
-}
-
-/* 网格视图 - 关键样式 */
-.grid-container {
-  background: white;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  padding: 20px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
-  background-color: #f9fafc;
-}
-
-.grid-table-container {
-  width: 100%;
-  overflow: auto;
-  margin-bottom: 20px;
-}
-
-.grid-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.grid-table td {
-  position: relative;
-  height: 100px;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid transparent;
-  padding: 0;
-}
-
-.grid-cell {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  transition: all 0.25s ease;
-  border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.grid-cell:hover {
-  transform: scale(1.03);
-  z-index: 10;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-}
-
-/* 状态背景色 - 关键修复 */
-.status-free {
-  background-color: #f5f7fa;
-  border: 1px solid #e0e6ed !important;
-}
-
-.status-in-use {
-  background-color: #e1f3e1;
-  background: linear-gradient(145deg, #d8f3d9, #e1f3e1);
-  border: none !important;
-}
-
-/* 修改保留状态为黄色 */
-.status-reserved {
-  background-color: #fff8e1;
-  background: linear-gradient(145deg, #ffecb3, #fff8e1);
-  border: none !important;
-}
-
-/* 新增：取出保留状态 */
-.status-taken-reserved {
-  background-color: #ffecd5;
-  background: linear-gradient(145deg, #ffe2c0, #ffecd5);
-  border: none !important;
-}
-
-.position-id {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 4px;
-  letter-spacing: 0.5px;
-}
-
-.status-text {
-  font-size: 14px;
-  color: #666;
-  font-weight: 500;
-}
-
-/* 超期日期样式 */
-.overdue-date {
-  color: #ff4d4f !important;
-  font-weight: 600;
-}
-
-.user-info {
-  font-size: 12px;
-  color: #5a5e66;
-  background: rgba(255, 255, 255, 0.4);
-  padding: 2px 6px;
-  border-radius: 3px;
-  margin-top: 5px;
-}
-
-.cancel-reserve-btn {
-  margin-top: 10px;
-  padding: 5px 12px;
-  font-size: 13px;
-  border-radius: 4px;
-  background: #f56c6c;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.3s;
-  font-weight: 500;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border: none;
-}
-
-.cancel-reserve-btn:hover {
-  background: #ff7875;
-  transform: scale(1.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* 取出按钮样式 */
-.take-out-btn {
-  margin-top: 10px;
-  padding: 5px 12px;
-  font-size: 13px;
-  border-radius: 4px;
-  background: #ff9d00;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.3s;
-  font-weight: 500;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border: none;
-}
-
-.take-out-btn:hover {
-  background: #ffa940;
-  transform: scale(1.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* 取消保留按钮样式 */
-.cancel-taken-btn {
-  margin-top: 10px;
-  padding: 5px 12px;
-  font-size: 13px;
-  border-radius: 4px;
-  background: #ff9d00;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.3s;
-  font-weight: 500;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border: none;
-}
-
-.cancel-taken-btn:hover {
-  background: #ffa940;
-  transform: scale(1.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* 归还按钮样式 */
-.return-btn {
-  margin-top: 10px;
-  padding: 5px 12px;
-  font-size: 13px;
-  border-radius: 4px;
-  background: #1a73e8;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.3s;
-  font-weight: 500;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border: none;
-}
-
-.return-btn:hover {
-  background: #1669d6;
-  transform: scale(1.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* 图例说明 */
-.legend {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 25px;
-  padding-top: 15px;
-  border-top: 1px dashed #eaeaea;
-  flex-wrap: wrap;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-}
-
-.legend-color {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-}
-
-.legend-free {
-  background-color: #f5f7fa;
-  border: 1px solid #e0e6ed;
-}
-
-.legend-in-use {
-  background: linear-gradient(145deg, #d8f3d9, #e1f3e1);
-}
-
-.legend-reserved {
-  background: linear-gradient(145deg, #ffecb3, #fff8e1);
-}
-
-/* 新增：取出保留状态图例 */
-.legend-taken-reserved {
-  background: linear-gradient(145deg, #ffe2c0, #ffecd5);
-}
-
-/* 统计区域 */
-.statistics {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background: linear-gradient(135deg, #f5f7fa 0%, #f9fafc 100%);
-  border: 1px solid #e0e6ed;
-}
-
-.stat-card {
-  text-align: center;
-  padding: 15px 25px;
-  min-width: 150px;
-}
-
-.stat-value {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #1a73e8;
-  font-family: 'Arial', sans-serif;
-}
-
-.stat-label {
-  font-size: 1rem;
-  color: #5a5e66;
-  font-weight: 500;
-}
-
-/* 超期状态背景 */
-.status-overdue {
-  background: linear-gradient(145deg, #ffd7d7, #ffbfbf) !important;
-}
-
-/* 页脚 */
-.cabinet-footer {
-  text-align: center;
-  margin-top: 40px;
-  padding-top: 20px;
-  color: #8c98ae;
-  font-size: 0.9rem;
-  border-top: 1px solid #eaeaea;
-}
-
-/* 添加确认借出按钮样式 */
-.confirm-borrow-btn {
-  margin-top: 10px;
-  padding: 5px 12px;
-  font-size: 13px;
-  border-radius: 4px;
-  background: #4caf50;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.3s;
-  font-weight: 500;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border: none;
-}
-
-.confirm-borrow-btn:hover {
-  background: #66bb6a;
-  transform: scale(1.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* 添加柜体按钮样式 */
-.el-button--primary {
-  background: #1a73e8;
-  border-color: #1a73e8;
-  transition: all 0.3s;
-  font-weight: 500;
-}
-
-.el-button--primary:hover {
-  background: #1669d6;
-  border-color: #1669d6;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
-}
-
-.el-button--primary:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-
-/* 悬浮提示样式 */
-.cell-tooltip {
-  max-width: 300px;
-  padding: 10px;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  line-height: 1.5;
-  white-space: pre-line; /* 确保换行显示 */
-}
-
-.tooltip-overdue {
-  color: #ff4d4f;
-  font-weight: bold;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .cabinet-section {
-    padding: 15px;
-  }
-
-  .grid-table td {
-    height: 85px;
-  }
-
-  .position-id {
-    font-size: 16px;
-  }
-
-  .status-text {
-    font-size: 12px;
-  }
-
-  .legend {
-    gap: 15px;
-  }
-
-  .stat-card {
-    padding: 10px;
-    min-width: 130px;
-  }
-
-  .stat-value {
-    font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .position-id {
-    font-size: 14px;
-  }
-
-  .cancel-reserve-btn {
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-
-  .take-out-btn {
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-
-  .return-btn {
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-
-  .stat-card {
-    padding: 8px;
-    min-width: 100px;
-  }
-
-  .stat-value {
-    font-size: 1.6rem;
-  }
-}
-
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
-            color: #333;
-            line-height: 1.35;
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 12px;
-        }
-
-        h1 {
-            font-size: 1.7rem;
-            margin-bottom: 6px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .subtitle {
-            color: #5a6a7f;
-            font-size: 0.9rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .device-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-            padding: 14px;
-            margin-bottom: 16px;
-            transition: transform 0.2s ease;
-        }
-
-        .device-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .device-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #3498db;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 70%;
-        }
-
-        .device-id {
-            background: #f1f5f9;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            color: #5a6a7f;
-            white-space: nowrap;
-        }
-
-        .info-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .status-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 7px;
-            padding: 6px 0;
-            flex-wrap: wrap;
-        }
-
-        .date-row {
-            display: flex;
-            gap: 10px;
-            padding: 6px 0;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-        }
-
-        .status-text {
-            font-weight: 600;
-            font-size: 0.82rem;
-            padding: 3px 8px;
-            border-radius: 3px;
-            background: #eaf6ff;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        .status-text i {
-            margin-right: 4px;
-            font-size: 0.75rem;
-        }
-
-        .overdue-date {
-            color: #e74c3c !important;
-            background: #fdeded !important;
-        }
-
-        .user-info {
-            padding: 3px 8px;
-            border-radius: 3px;
-            background: #e8f4ea;
-            color: #27ae60;
-            font-size: 0.82rem;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        .user-info i {
-            margin-right: 4px;
-            font-size: 0.75rem;
-        }
-
-        .date-info {
-            padding: 3px 8px;
-            border-radius: 3px;
-            background: rgba(52, 152, 219, 0.08);
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            min-width: 140px;
-        }
-
-        .date-info i {
-            margin-right: 5px;
-            font-size: 0.7rem;
-            color: #5a6a7f;
-        }
-
-        .date-label {
-            font-weight: 500;
-            color: #5a6a7f;
-            margin-right: 3px;
-            font-size: 0.8rem;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 25px 0;
-        }
-
-        .btn {
-            padding: 7px 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: #3498db;
-            color: white;
-            box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2);
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        .btn i {
-            margin-right: 5px;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 6px rgba(52, 152, 219, 0.25);
-        }
-
-        .btn-today {
-            background: #2ecc71;
-            box-shadow: 0 2px 4px rgba(46, 204, 113, 0.2);
-        }
-
-        .btn-full-width {
-            width: 100%;
-            justify-content: center;
-            padding: 8px;
-        }
-
-        .explanation {
-            background: white;
-            padding: 16px;
-            border-radius: 6px;
-            margin-top: 25px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-        }
-
-        .explanation h2 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .explanation h2 i {
-            margin-right: 8px;
-        }
-
-        .code-block {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 12px;
-            border-radius: 5px;
-            margin: 12px 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.82rem;
-            overflow-x: auto;
-        }
-
-        @media (max-width: 600px) {
-            .date-info {
-                min-width: calc(50% - 15px);
-                font-size: 0.78rem;
-            }
-
-            .status-text, .user-info {
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .date-info {
-                min-width: 100%;
-            }
-
-            .status-row, .date-row {
-                flex-direction: column;
-                gap: 6px;
-            }
-
-            .device-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-
-            .device-name, .device-id {
-                max-width: 100%;
-            }
-        }
-
-        .date-value {
-            white-space: nowrap;
-        }
-
-        .action-button {
-            margin-top: 5px;
-            padding: 4px 8px;
-            font-size: 0.75rem;
-            background: #e67e22;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-note {
-            text-align: center;
-            font-size: 0.78rem;
-            color: #7f8c8d;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-    /* 保持原有样式不变 */
     .grid-cell {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      transition: all 0.25s ease;
-      border-radius: 4px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      padding: 8px;
-      overflow: hidden;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        box-sizing: border-box;
+        transition: all 0.25s ease;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        padding: 5px;
+        overflow: hidden;
     }
 
-    /* 新增/修改的样式 */
-    .cell-content-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      position: relative;
+    .grid-cell:hover {
+        transform: scale(1.03);
+        z-index: 10;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
     }
 
-    .position-id {
-      font-size: 16px;
-      font-weight: 600;
-      color: #333;
-      text-align: center;
-      margin-bottom: 6px;
-    }
-
-    .status-user-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-      margin-bottom: 6px;
-    }
-
-    .status-text {
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 3px;
-      background: rgba(0, 0, 0, 0.05);
-      white-space: nowrap;
-    }
-
-    .user-info {
-      font-size: 11px;
-      color: #5a5e66;
-      background: rgba(255, 255, 255, 0.4);
-      padding: 2px 6px;
-      border-radius: 3px;
-      white-space: nowrap;
-    }
-
-    .date-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      justify-content: center;
-    }
-
-    .date-info {
-      font-size: 10px;
-      padding: 2px 4px;
-      border-radius: 2px;
-      background: rgba(0, 0, 0, 0.05);
-      white-space: nowrap;
-    }
-
-    .cell-actions {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      display: flex;
-      gap: 4px;
-      z-index: 10;
-    }
-
-    .action-button {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      font-size: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      border: none;
-    }
-
-    .cancel-reserve-btn {
-      background: #f56c6c;
-      color: white;
-    }
-
-    .take-out-btn {
-      background: #ff9d00;
-      color: white;
-    }
-
-    .return-btn {
-      background: #1a73e8;
-      color: white;
-    }
-
-    .cancel-taken-btn {
-      background: #ff9d00;
-      color: white;
-    }
-
-    .confirm-borrow-btn {
-      background: #4caf50;
-      color: white;
-    }
-
-    .overdue-date {
-      color: #ff4d4f !important;
-      font-weight: 600;
-    }
-
-    /* 原有样式保留 */
+    /* 状态背景色 - 关键修复 */
     .status-free {
-      background-color: #f5f7fa;
-      border: 1px solid #e0e6ed !important;
+        background-color: #f5f7fa;
+        border: 1px solid #e0e6ed !important;
     }
 
     .status-in-use {
-      background-color: #e1f3e1;
-      background: linear-gradient(145deg, #d8f3d9, #e1f3e1);
-      border: none !important;
+        background-color: #e1f3e1;
+        background: linear-gradient(145deg, #d8f3d9, #e1f3e1);
+        border: none !important;
     }
 
+    /* 修改保留状态为黄色 */
     .status-reserved {
-      background-color: #fff8e1;
-      background: linear-gradient(145deg, #ffecb3, #fff8e1);
-      border: none !important;
+        background-color: #fff8e1;
+        background: linear-gradient(145deg, #ffecb3, #fff8e1);
+        border: none !important;
     }
 
+    /* 新增：取出保留状态 */
     .status-taken-reserved {
-      background-color: #ffecd5;
-      background: linear-gradient(145deg, #ffe2c0, #ffecd5);
-      border: none !important;
+        background-color: #ffecd5;
+        background: linear-gradient(145deg, #ffe2c0, #ffecd5);
+        border: none !important;
+    }
+
+    .cell-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+
+    .cell-main-info {
+        flex-shrink: 0;
+    }
+
+    .position-id {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 2px;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+
+    .status-text {
+        font-size: 12px;
+        color: #666;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 3px;
+    }
+
+    /* 超期日期样式 */
+    .overdue-date {
+        color: #ff4d4f !important;
+        font-weight: 600;
+    }
+
+    .user-info {
+        font-size: 11px;
+        color: #5a5e66;
+        background: rgba(255, 255, 255, 0.4);
+        padding: 1px 4px;
+        border-radius: 2px;
+        margin-top: 2px;
+        line-height: 1.2;
+    }
+
+    .date-info {
+        font-size: 10px;
+        color: #777;
+        line-height: 1.2;
+        margin-top: 1px;
+    }
+
+    .cell-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        justify-content: center;
+        margin-top: 5px;
+        max-height: 50px;
+        overflow-y: auto;
+        padding: 2px;
+    }
+
+    .cell-buttons::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .cell-buttons::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 2px;
+    }
+
+    .cell-button {
+        padding: 3px 6px;
+        font-size: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.3s;
+        font-weight: 500;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        border: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .cancel-reserve-btn {
+        background: #f56c6c;
+        color: white;
+    }
+
+    .cancel-reserve-btn:hover {
+        background: #ff7875;
+        transform: scale(1.05);
+    }
+
+    .take-out-btn {
+        background: #ff9d00;
+        color: white;
+    }
+
+    .take-out-btn:hover {
+        background: #ffa940;
+        transform: scale(1.05);
+    }
+
+    .return-btn {
+        background: #1a73e8;
+        color: white;
+    }
+
+    .return-btn:hover {
+        background: #1669d6;
+        transform: scale(1.05);
+    }
+
+    .cancel-taken-btn {
+        background: #ff9d00;
+        color: white;
+    }
+
+    .cancel-taken-btn:hover {
+        background: #ffa940;
+        transform: scale(1.05);
+    }
+
+    .confirm-borrow-btn {
+        background: #4caf50;
+        color: white;
+    }
+
+    .confirm-borrow-btn:hover {
+        background: #66bb6a;
+        transform: scale(1.05);
+    }
+
+    /* 图例说明 */
+    .legend {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px dashed #eaeaea;
+        flex-wrap: wrap;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+    }
+
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+    }
+
+    .legend-free {
+        background-color: #f5f7fa;
+        border: 1px solid #e0e6ed;
+    }
+
+    .legend-in-use {
+        background: linear-gradient(145deg, #d8f3d9, #e1f3e1);
+    }
+
+    .legend-reserved {
+        background: linear-gradient(145deg, #ffecb3, #fff8e1);
+    }
+
+    /* 新增：取出保留状态图例 */
+    .legend-taken-reserved {
+        background: linear-gradient(145deg, #ffe2c0, #ffecd5);
+    }
+
+    /* 统计区域 */
+    .statistics {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background: linear-gradient(135deg, #f5f7fa 0%, #f9fafc 100%);
+        border: 1px solid #e0e6ed;
+    }
+
+    .stat-card {
+        text-align: center;
+        padding: 15px 25px;
+        min-width: 150px;
+    }
+
+    .stat-value {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #1a73e8;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+        color: #5a5e66;
+        font-weight: 500;
+    }
+
+    /* 超期状态背景 */
+    .status-overdue {
+        background: linear-gradient(145deg, #ffd7d7, #ffbfbf) !important;
+    }
+
+    /* 页脚 */
+    .cabinet-footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        color: #8c98ae;
+        font-size: 0.9rem;
+        border-top: 1px solid #eaeaea;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+        .cabinet-section {
+            padding: 15px;
+        }
+
+        .grid-table td {
+            height: 120px;
+        }
+
+        .position-id {
+            font-size: 14px;
+        }
+
+        .status-text {
+            font-size: 11px;
+        }
+
+        .user-info, .date-info {
+            font-size: 10px;
+        }
+
+        .cell-button {
+            padding: 2px 4px;
+            font-size: 9px;
+        }
+
+        .legend {
+            gap: 15px;
+        }
+
+        .stat-card {
+            padding: 10px;
+            min-width: 130px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .grid-table td {
+            height: 100px;
+        }
+
+        .position-id {
+            font-size: 12px;
+        }
+
+        .status-text {
+            font-size: 10px;
+        }
+
+        .user-info, .date-info {
+            font-size: 9px;
+        }
+
+        .cell-buttons {
+            max-height: 40px;
+        }
+
+        .cell-button {
+            padding: 1px 3px;
+            font-size: 8px;
+        }
+
+        .stat-card {
+            padding: 8px;
+            min-width: 100px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+        }
+    }
+
+    /* 添加柜体按钮样式 */
+    .el-button--primary {
+        background: #1a73e8;
+        border-color: #1a73e8;
+        transition: all 0.3s;
+        font-weight: 500;
+    }
+
+    .el-button--primary:hover {
+        background: #1669d6;
+        border-color: #1669d6;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
+    }
+
+    .el-button--primary:active {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    /* 悬浮提示样式 */
+    .cell-tooltip {
+        max-width: 300px;
+        padding: 10px;
+        background: white;
+        border-radius: 4px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        line-height: 1.5;
+        white-space: pre-line; /* 确保换行显示 */
+    }
+
+    .tooltip-overdue {
+        color: #ff4d4f;
+        font-weight: bold;
     }
 </style>
 {% endblock %}
@@ -1139,68 +711,61 @@
                                             @mouseleave="hoverCell = null"
                                             @click="handleCellClick(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
 
-                                            <div class="cell-content-container">
+                                            <div class="cell-content">
                                                 <div class="position-id">${ scope.row.cells[colIndex].position }</div>
-                                                <!-- 状态和用户信息 -->
-                                                <div class="status-user-row">
-                                                    <div class="status-text" :class="{'overdue-date': isReserveOverdue(scope.row.cells[colIndex])}">
-                                                        ${ scope.row.cells[colIndex].statusText }
-                                                    </div>
-                                                    <div v-if="scope.row.cells[colIndex].user" class="user-info">${ scope.row.cells[colIndex].user }</div>
+                                                <div class="status-text" :class="{'overdue-date': isReserveOverdue(scope.row.cells[colIndex])}">
+                                                    ${ scope.row.cells[colIndex].statusText }
                                                 </div>
+                                                <div v-if="scope.row.cells[colIndex].user" class="user-info">${ scope.row.cells[colIndex].user }</div>
 
                                                 <!-- 日期信息 -->
-                                                <div class="date-row">
-                                                    <div v-if="scope.row.cells[colIndex].borrowDate" class="date-info" :class="{'overdue-date': isOverdue(scope.row.cells[colIndex])}">
-                                                        借用: ${ formatDate(scope.row.cells[colIndex].borrowDate) }
-                                                    </div>
-                                                    <div v-if="scope.row.cells[colIndex].reserveDate" class="date-info" :class="{'overdue-date': isReserveOverdue(scope.row.cells[colIndex])}">
-                                                        保留: ${ formatDate(scope.row.cells[colIndex].reserveDate) }
-                                                    </div>
-                                                    <div v-if="scope.row.cells[colIndex].takeoutDate" class="date-info">
-                                                        取出: ${ formatDate(scope.row.cells[colIndex].takeoutDate) }
-                                                    </div>
+                                                <div v-if="scope.row.cells[colIndex].borrowDate" class="date-info" :class="{'overdue-date': isOverdue(scope.row.cells[colIndex])}">
+                                                    借用: ${ formatDate(scope.row.cells[colIndex].borrowDate) }
                                                 </div>
-                                                <!-- 操作按钮区域（右上角） -->
-                                                <div class="cell-actions">
-                                                    <!-- 取消预约按钮（只对预约用户显示） -->
-                                                    <div
-                                                        v-if="!isAdmin && scope.row.cells[colIndex].status === 2 && scope.row.cells[colIndex].user === currentUser.name"
-                                                        class="action-button cancel-reserve-btn"
-                                                        @click.stop="confirmCancelReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
-                                                        ×
-                                                    </div>
+                                                <div v-if="scope.row.cells[colIndex].reserveDate" class="date-info" :class="{'overdue-date': isReserveOverdue(scope.row.cells[colIndex])}">
+                                                    保留: ${ formatDate(scope.row.cells[colIndex].reserveDate) }
+                                                </div>
+                                                <div v-if="scope.row.cells[colIndex].takeoutDate" class="date-info">
+                                                    取出: ${ formatDate(scope.row.cells[colIndex].takeoutDate) }
+                                                </div>
 
-                                                    <!-- 取出按钮（只对借用用户显示） -->
-                                                    <div
-                                                        v-if="!isAdmin && scope.row.cells[colIndex].status === 1 && scope.row.cells[colIndex].user === currentUser.name"
-                                                        class="action-button take-out-btn"
-                                                        @click.stop="takeOutCell(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
-                                                        →
-                                                    </div>
+                                                <!-- 取消预约按钮（只对预约用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 2 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="cancel-reserve-btn"
+                                                    @click.stop="confirmCancelReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    取消预约
+                                                </div>
 
-                                                    <!-- 归还按钮（只对借用用户显示） -->
-                                                    <div
-                                                        v-if="!isAdmin && scope.row.cells[colIndex].status === 1 && scope.row.cells[colIndex].user === currentUser.name"
-                                                        class="action-button return-btn"
-                                                        @click.stop="confirmReturnCell(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
-                                                        ↻
-                                                    </div>
+                                                <!-- 取出按钮（只对借用用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 1 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="take-out-btn"
+                                                    @click.stop="takeOutCell(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    取出保留
+                                                </div>
 
-                                                    <!-- 取消保留按钮（只对取出保留用户显示） -->
-                                                    <div
-                                                        v-if="!isAdmin && scope.row.cells[colIndex].status === 3 && scope.row.cells[colIndex].user === currentUser.name"
-                                                        class="action-button cancel-taken-btn"
-                                                        @click.stop="cancelTakenReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
-                                                        ×
-                                                    </div>
-                                                    <!-- 管理员确认借出按钮（只对预定中状态显示） -->
-                                                    <div
-                                                        v-if="isAdmin && scope.row.cells[colIndex].status === 2"
-                                                        class="action-button confirm-borrow-btn"
-                                                        @click.stop="confirmBorrow(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
-                                                        ✓
-                                                    </div>
+                                                <!-- 归还按钮（只对借用用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 1 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="return-btn"
+                                                    @click.stop="confirmReturnCell(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    归还
+                                                </div>
+
+                                                <!-- 取消保留按钮（只对取出保留用户显示） -->
+                                                <div
+                                                    v-if="!isAdmin && scope.row.cells[colIndex].status === 3 && scope.row.cells[colIndex].user === currentUser.name"
+                                                    class="cancel-taken-btn"
+                                                    @click.stop="cancelTakenReserve(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    取消保留
+                                                </div>
+                                                <!-- 管理员确认借出按钮（只对预定中状态显示） -->
+                                                <div
+                                                    v-if="isAdmin && scope.row.cells[colIndex].status === 2"
+                                                    class="confirm-borrow-btn"
+                                                    @click.stop="confirmBorrow(cabinet.id, scope.row.cells[colIndex], scope.$index, colIndex)">
+                                                    确认借出
                                                 </div>
                                             </div>
 

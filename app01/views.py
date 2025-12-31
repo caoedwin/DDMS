@@ -124,7 +124,7 @@ def login(request):
             if user.password == Password:
                 # 往session字典内写入用户状态和数据,你完全可以往里面写任何数据，不仅仅限于用户相关！
                 request.session['is_login_DMS'] = True
-                request.session['user_id_DSM'] = user.id
+                request.session['user_id_DMS'] = user.id
                 request.session['user_name_DMS'] = user.username
                 request.session['CNname_DMS'] = user.CNname
                 request.session['account_DMS'] = Account
