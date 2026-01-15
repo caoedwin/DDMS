@@ -385,6 +385,7 @@ SAFE_URL = [
     r'/signinA31TPE/',
     r'/signinA32KS/',
     r'/signinA32TPE/',
+    r'/signinAPDQATPE/',
     '/admin/.*',
     r'/Project_log/',
     r'/index/',

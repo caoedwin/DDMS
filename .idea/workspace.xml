@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage20250911backup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage20250912.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage20250912icon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/SigninAPDQATPE.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DMS/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DMS/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/templatetags/custom_tag.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/templatetags/custom_tag.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CabinetManage/CabinetManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/DeviceAPDQATPE/M_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/DeviceAPDQATPE/M_edit.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,33 +220,33 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Django 服务器.DMS.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "last_opened_file_path": "C:/djangoproject/DMS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Django 服务器.DMS.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/djangoproject/DMS/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\djangoproject\DMS\static\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\djangoproject\DMS\templates" />
       <recent name="C:\djangoproject\DMS\templates\CabinetManage" />
       <recent name="C:\djangoproject\DMS\templates\DeviceA39" />
-      <recent name="C:\djangoproject\DMS\templates" />
       <recent name="C:\djangoproject\DMS\DeviceA32TPE" />
       <recent name="C:\djangoproject\DMS\DeviceA32KS" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\djangoproject\DMS\static\css" />
     </key>
   </component>
   <component name="RunManager" selected="Django 服务器.DMS">
@@ -376,12 +371,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django 服务器.DMS" />
       <item itemvalue="JavaScript 调试.login.html" />
-      <item itemvalue="Python.tests" />
-      <item itemvalue="Python.excelTrans" />
       <item itemvalue="Python.TestDeviceList" />
+      <item itemvalue="Python.excelTrans" />
       <item itemvalue="Python.test api" />
+      <item itemvalue="Python.tests" />
+      <item itemvalue="Django 服务器.DMS" />
     </list>
     <recent_temporary>
       <list>
@@ -499,7 +494,10 @@
       <workItem from="1675137874349" duration="28000" />
       <workItem from="1675751258624" duration="2941000" />
       <workItem from="1766453946401" duration="1283000" />
-      <workItem from="1766468202019" duration="35635000" />
+      <workItem from="1766468202019" duration="54781000" />
+      <workItem from="1768179100411" duration="25120000" />
+      <workItem from="1768373075276" duration="2882000" />
+      <workItem from="1768435455922" duration="4200000" />
     </task>
     <servers />
   </component>

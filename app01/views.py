@@ -541,6 +541,44 @@ def signinA32TPE(request):
             return render(request, 'login.html', locals())
     return render(request, 'SigninA32TPE.html', locals())
 
+@csrf_exempt
+def signinAPDQATPE(request):
+    # print("signin")
+    message = ""
+    inputRoles = Role.objects.filter(name__contains="Users").filter(name__contains="APDQATPE").order_by("name")
+    # print(inputRoles)
+    if request.method == "POST":
+        # message = "请检查填写的内容！"
+        account = request.POST.get('inputAccount')
+        password = request.POST.get('inputPassword1')
+        CNname = request.POST.get('inputCNname')
+        username = request.POST.get('inputUsrname')
+        Seat = request.POST.get('inputSeat')
+        email = request.POST.get('inputEmail')
+        role = request.POST.get('inputRole')
+        roles = request.POST.getlist('inputRole')
+        # print(role, roles)
+        if UserInfo.objects.filter(account=account).first():
+            message = "工號已注冊！"
+        else:
+            for i in roles:
+                if Role.objects.filter(name=i).first():
+                    message = "注冊成功！"
+                else:
+                    message = "角色内容不對，請聯係管理員！"
+                    return render(request, 'SigninAPDQATPE.html', locals())
+            createdic = {"account": account, "password": password, "CNname": CNname,
+                         "username": username, "Seat": Seat, "email": email,
+                         "department": 1, "is_active": True, "is_staff": False, "is_SVPuser": False,
+                         }
+            # Role.objects.filter(name=role).first(),
+            print(createdic)
+            UserInfo.objects.create(**createdic)
+            for i in roles:
+                UserInfo.objects.filter(account=account).first().role.add(Role.objects.filter(name=i).first(), )
+            return render(request, 'login.html', locals())
+    return render(request, 'SigninAPDQATPE.html', locals())
+
 from DeviceLNV.models import DeviceLNV
 from DeviceA39.models import DeviceA39
 from DeviceCQT88.models import DeviceCQT88
@@ -553,6 +591,7 @@ from DeviceA31LKE.models import DeviceA31LKE
 from DeviceA31CD.models import DeviceA31CD
 from DeviceA32KS.models import DeviceA32KS
 from DeviceA32TPE.models import DeviceA32TPE
+from DeviceAPDQATPE.models import DeviceAPDQATPE
 @csrf_exempt
 def DevicesSummary(request):
     if not request.session.get('is_login_DMS', None):
@@ -610,13 +649,16 @@ def DevicesSummary(request):
         }, {
             "label": "DeviceA32TPE",
             "value": "DeviceA32TPE",
+        }, {
+            "label": "DeviceAPDQATPE",
+            "value": "DeviceAPDQATPE",
         },
         ]
     ]
     database_list = {"DeviceLNV": DeviceLNV.objects.all(), "DeviceA39": DeviceA39.objects.all(), "DeviceCQT88": DeviceCQT88.objects.all(),
                      "DeviceABO": DeviceABO.objects.all(), "DeviceA31KS": DeviceA31KS.objects.all(), "DeviceA31CD": DeviceA31CD.objects.all(),
                      "DeviceA31TPE": DeviceA31TPE.objects.all(), "DeviceA31PCP": DeviceA31PCP.objects.all(), "DeviceA31LKE": DeviceA31LKE.objects.all(),
-                     "DeviceA32KS": DeviceA32KS.objects.all(), "DeviceA32TPE": DeviceA32TPE.objects.all(), }
+                     "DeviceA32KS": DeviceA32KS.objects.all(), "DeviceA32TPE": DeviceA32TPE.objects.all(), "DeviceAPDQATPE": DeviceAPDQATPE.objects.all(), }
     # print(request.method)
     if request.method == "POST":
         if 'SEARCH5' in str(request.body):
