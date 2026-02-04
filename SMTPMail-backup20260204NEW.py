@@ -138,7 +138,7 @@ def test_smtp_connection():
         return False
 
 
-def sync_send_email(devicelist):
+def sync_send_email(devicelist, devicelist_will):
     """同步方式发送邮件"""
     try:
         # 创建邮件z
@@ -158,6 +158,7 @@ def sync_send_email(devicelist):
         # 收集有效的邮箱地址
         unique_mail_addresses = []
         unique_name_cn = []
+        unique_name_cn_will = []
         for item in devicelist:
             mail_addr = item.get('MailAddress', '')
             if mail_addr and '@' in mail_addr and mail_addr not in unique_mail_addresses:
@@ -165,11 +166,21 @@ def sync_send_email(devicelist):
             Name_CN = item.get('Usrname', '')
             if Name_CN and Name_CN not in unique_name_cn:
                 unique_name_cn.append(Name_CN)
+        for item in devicelist_will:
+            mail_addr = item.get('MailAddress', '')
+            if mail_addr and '@' in mail_addr and mail_addr not in unique_mail_addresses:
+                unique_mail_addresses.append(mail_addr)
+            Name_CN = item.get('Usrname', '')
+            if Name_CN and Name_CN not in unique_name_cn_will:
+                unique_name_cn_will.append(Name_CN)
+
+        # print("unique_name_cn:", unique_name_cn)
+        # print("unique_name_cn_will:", unique_name_cn_will)
 
         # 添加必要的收件人
         required_recipients = [
             # 'DQA_LNV_ALL@compal.com',
-            'Edwin_Cao@compal.com']  # 保證unique_mail_addresses最終不爲空
+            'Xylia_Xie@compal.com']  # 保證unique_mail_addresses最終不爲空,設爲設備管理員的賬號
         for recipient in required_recipients:
             if recipient not in unique_mail_addresses:
                 unique_mail_addresses.append(recipient)
@@ -187,6 +198,16 @@ def sync_send_email(devicelist):
         else:
             name_cn_display = "<div>暂无相关人员</div>"
 
+        name_cn_display_will = ""
+        if unique_name_cn_will:
+            # 每8个一组
+            for i in range(0, len(unique_name_cn_will), 8):
+                batch = unique_name_cn_will[i:i + 8]
+                # 用中文逗号分隔
+                name_cn_display_will += f"<div>{'，'.join(batch)}</div>"
+        else:
+            name_cn_display_will = "<div>暂无相关人员</div>"
+
         # msg['To'] = ", ".join(valid_recipients)
         msg['To'] = ", ".join(unique_mail_addresses)
         # msg['To'] = 'DQA_LNV_ALL@compal.com'
@@ -195,55 +216,162 @@ def sync_send_email(devicelist):
         # msg['Cc'] = 'Edwin_Cao@compal.com'
         msg['Subject'] = '【APDQA設備超期提醒】'
 
+        # 生成即将超期设备的表格
+        will_overdue_table = ""
+        if devicelist_will:
+            will_overdue_table = """
+                    <h3 style="color: #f0ad4e; margin-top: 30px;">⚠️ 即将超期设备 ({count}台):</h3>
+                    <p style="color: #666; font-size: 0.9em;">以下设备将在近期超期，请提前处理：</p>
+                    <div style="overflow-x: auto; margin: 20px 0;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.9em;">
+                            <thead>
+                                <tr style="background-color: #f8f9fa;">
+                                    <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">设备编号</th>
+                                    <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">设备名称</th>
+                                    <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">借用人员</th>
+                                    <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">借用日期</th>
+                                    <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">归还日期</th>
+                                    <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">剩余天数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    """.format(count=len(devicelist_will))
+
+            for i, item in enumerate(devicelist_will):
+                # 交替行背景色
+                bg_color = '#ffffff' if i % 2 == 0 else '#f9f9f9'
+
+                # 获取设备信息
+                device_id = item.get('DeviceID', 'N/A')
+                device_name = item.get('DeviceName', 'N/A')
+                user_name = item.get('Usrname', 'N/A')
+                borrow_date = item.get('BorrowDate', 'N/A')
+                return_date = item.get('ReturnDate', 'N/A')
+                days_remaining = item.get('DaysRemaining', 'N/A')  # 假设有这个字段
+
+                # 如果days_remaining是数字，可以根据剩余天数显示不同颜色
+                days_color = '#333'
+                if isinstance(days_remaining, (int, float)):
+                    if days_remaining <= 3:
+                        days_color = '#d9534f'  # 红色，紧急
+                    elif days_remaining <= 7:
+                        days_color = '#f0ad4e'  # 橙色，警告
+                    else:
+                        days_color = '#5cb85c'  # 绿色，正常
+
+                will_overdue_table += f"""
+                                <tr style="background-color: {bg_color};">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{device_id}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{device_name}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{user_name}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{borrow_date}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{return_date}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; color: {days_color}; font-weight: bold;">
+                                        {days_remaining}
+                                    </td>
+                                </tr>
+                        """
+
+            will_overdue_table += """
+                            </tbody>
+                        </table>
+                    </div>
+                    """
+        else:
+            will_overdue_table = """
+                    <h3 style="color: #5cb85c; margin-top: 30px;">✅ 即将超期设备</h3>
+                    <p style="color: #666; font-size: 0.9em;">暂无即将超期的设备。</p>
+                    """
+
         # 添加邮件正文
         if len(devicelist) == 0:
-            body_html = """
-            <html>
-                <body>
-                    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-                        <p>Dear all,</p>
-                        <p style="color: #009900; font-weight: bold;">
-                            本期沒有設備超期，謝謝。
-                        </p>
-                        <div style="margin-top: 40px; font-size: 0.9em; color: #d9534f;">
-                            <p>此邮件由系统自动发送，请勿回复</p>
-                            <p>APDQA 设备管理系统</p>
-                        </div>
-                    </div>
-                </body>
-            </html>
-            """
+            body_html = f"""
+                    <html>
+                        <body>
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                                <p>Dear all,</p>
+                                <p style="color: #009900; font-weight: bold;">
+                                    本期沒有設備超期，謝謝。
+                                </p>
+                                <h3>即將到期涉及人员 ({len(unique_name_cn_will)}人):</h3>
+                                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                                    {name_cn_display_will}
+                                </div>
+                                
+
+                                <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0;">
+                                    <p style="margin: 0; color: #856404;">
+                                        <strong>温馨提示：</strong><br>
+                                        1. 已超期设备请立即归还<br>
+                                        2. 即将超期设备请提前预约归还<br>
+                                        3. 如有疑问，请联系设备管理员
+                                    </p>
+                                </div>
+
+                                <p style="margin-top: 30px;">
+                                    <a href="http://10.129.83.21:8004/DeviceLNV/R_Borrowed/" 
+                                    style="background-color: #337ab7; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+                                    📅 立即预约归还
+                                    </a>
+                                </p>
+
+                                <div style="margin-top: 40px; font-size: 0.9em; color: #d9534f;">
+                                    <p>此邮件由系统自动发送，请勿回复</p>
+                                    <p>APDQA 设备管理系统</p>
+                                </div>
+                            </div>
+                        </body>
+                    </html>
+                    """
             body = MIMEText(body_html, "html", "utf-8")
         else:
             body_html = f"""
-            <html>
-                <body>
-                    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-                        <p>Dear all,</p>
-                        <p style="color: #d9534f; font-weight: bold;">
-                            你有設備超期！！！請立即預約歸還！！！
-                        </p>
-                        <h3>涉及人员 ({len(unique_name_cn)}人):</h3>
-                        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
-                            {name_cn_display}
-                        </div>
-                        <h2>设备报告数据</h2>
-                        <p>附件是完整的设备报告数据，请查收。</p>
-                        <p>此邮件包含 {len(devicelist)} 条设备记录。</p>
-                        <p style="margin-top: 30px;">
-                            <a href="http://10.129.83.21:8004/DeviceLNV/R_Borrowed/" 
-                            style="background-color: #337ab7; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">
-                            立即预约归还
-                            </a>
-                        </p>
-                        <div style="margin-top: 40px; font-size: 0.9em; color: #d9534f;">
-                            <p>此邮件由系统自动发送，请勿回复</p>
-                            <p>APDQA 设备管理系统</p>
-                        </div>
-                    </div>
-                </body>
-            </html>
-            """
+                    <html>
+                        <body>
+                            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                                <p>Dear all,</p>
+                                <p style="color: #d9534f; font-weight: bold;">
+                                    ⚠️ 你有設備已超期！！！請立即預約歸還！！！
+                                </p>
+
+                                <h3>超期涉及人员 ({len(unique_name_cn)}人):</h3>
+                                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                                    {name_cn_display}
+                                </div>
+
+                                <h2>📋 已超期设备报告</h2>
+                                <p>附件是完整的已超期设备报告数据，请查收。</p>
+                                
+                                <h3>即將到期涉及人员 ({len(unique_name_cn_will)}人):</h3>
+                                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                                    {name_cn_display_will}
+                                </div>
+                                
+
+                                <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0;">
+                                    <p style="margin: 0; color: #856404;">
+                                        <strong>温馨提示：</strong><br>
+                                        1. 已超期设备请立即归还<br>
+                                        2. 即将超期设备请提前预约归还<br>
+                                        3. 如有疑问，请联系设备管理员
+                                    </p>
+                                </div>
+
+                                <p style="margin-top: 30px;">
+                                    <a href="http://10.129.83.21:8004/DeviceLNV/R_Borrowed/" 
+                                    style="background-color: #337ab7; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+                                    📅 立即预约归还
+                                    </a>
+                                </p>
+
+                                <div style="margin-top: 40px; font-size: 0.9em; color: #d9534f;">
+                                    <p>此邮件由系统自动发送，请勿回复</p>
+                                    <p>APDQA 设备管理系统</p>
+                                </div>
+                            </div>
+                        </body>
+                    </html>
+                    """
             body = MIMEText(body_html, "html", "utf-8")
 
         msg.attach(body)
@@ -251,8 +379,14 @@ def sync_send_email(devicelist):
         # 添加附件（只在有数据时）
         if devicelist:
             excel_data = create_excel_in_memory(devicelist)
-            attachment = MIMEApplication(excel_data, Name="设备报告.xlsx")
-            attachment['Content-Disposition'] = 'attachment; filename="设备报告.xlsx"'
+            attachment = MIMEApplication(excel_data, Name="超期设备报告.xlsx")
+            attachment['Content-Disposition'] = 'attachment; filename="超期设备报告.xlsx"'
+            msg.attach(attachment)
+        # 添加附件（只在有数据时）
+        if devicelist_will:
+            excel_data = create_excel_in_memory(devicelist_will)
+            attachment = MIMEApplication(excel_data, Name="即將到期设备报告.xlsx")
+            attachment['Content-Disposition'] = 'attachment; filename="即將到期设备报告.xlsx"'
             msg.attach(attachment)
 
         # 发送邮件
@@ -344,8 +478,10 @@ if __name__ == "__main__":
 
         # 检查超期设备
         Num = 0  # 超过多少天提醒
+        Num_will = -1  # 超过多少天提醒
         today = date.today()
         devicelist = []
+        devicelist_will = []
 
         for item in all_devices:
             if item.get("Plandate"):
@@ -356,6 +492,11 @@ if __name__ == "__main__":
                         item_copy = item.copy()
                         item_copy["OverDay"] = over_days
                         devicelist.append(item_copy)
+                    else:
+                        if over_days > Num_will:
+                            item_copy = item.copy()
+                            item_copy["OverDay"] = over_days
+                            devicelist_will.append(item_copy)
                 except ValueError:
                     continue
 
@@ -386,12 +527,29 @@ if __name__ == "__main__":
                 device['MailAddress'] = f"{clean_name}@compal.com"
             else:
                 device['MailAddress'] = ''
+        for device in devicelist_will:
+            group_key = device.get('BR_per_code', '')
+            dept_code, eng_name = group_info_map.get(group_key, ('', ''))
+
+            device['Department'] = dept_code if dept_code else ''
+
+            if eng_name:
+                # 清理英文名中的特殊字符和空格
+                clean_name = ''.join(e for e in eng_name if e.isalnum() or e in ['.', '_', '-'])
+                clean_name.replace(' ', '')
+                if '.' in clean_name:
+                    # 分割并交换顺序
+                    xing, ming = clean_name.split('.', 1)
+                    clean_name = f"{ming}_{xing}"
+                device['MailAddress'] = f"{clean_name}@compal.com"
+            else:
+                device['MailAddress'] = ''
 
 
 
         # 发送正式邮件
         print("开始发送正式邮件...")
-        success = sync_send_email(devicelist)
+        success = sync_send_email(devicelist, devicelist_will)
 
         if success:
             print("✓ Email sent successfully!")
