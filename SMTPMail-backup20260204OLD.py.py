@@ -138,7 +138,7 @@ def test_smtp_connection():
         return False
 
 
-def sync_send_email(devicelist):
+def sync_send_email(devicelist, email_list):
     """同步方式发送邮件"""
     try:
         # 创建邮件z
@@ -155,41 +155,9 @@ def sync_send_email(devicelist):
         # if not valid_recipients:
         #     valid_recipients = ['Edwin_Cao@compal.com']
         #     print("警告：没有有效的收件人，使用默认地址")
-        # 收集有效的邮箱地址
-        unique_mail_addresses = []
-        unique_name_cn = []
-        for item in devicelist:
-            mail_addr = item.get('MailAddress', '')
-            if mail_addr and '@' in mail_addr and mail_addr not in unique_mail_addresses:
-                unique_mail_addresses.append(mail_addr)
-            Name_CN = item.get('Usrname', '')
-            if Name_CN and Name_CN not in unique_name_cn:
-                unique_name_cn.append(Name_CN)
-
-        # 添加必要的收件人
-        required_recipients = [
-            # 'DQA_LNV_ALL@compal.com',
-            'Edwin_Cao@compal.com']  # 保證unique_mail_addresses最終不爲空
-        for recipient in required_recipients:
-            if recipient not in unique_mail_addresses:
-                unique_mail_addresses.append(recipient)
-
-        print(f"有效的收件人地址: {unique_mail_addresses}")
-
-        # 生成中文姓名的HTML显示（每行最多8个，用逗号分隔）
-        name_cn_display = ""
-        if unique_name_cn:
-            # 每8个一组
-            for i in range(0, len(unique_name_cn), 8):
-                batch = unique_name_cn[i:i + 8]
-                # 用中文逗号分隔
-                name_cn_display += f"<div>{'，'.join(batch)}</div>"
-        else:
-            name_cn_display = "<div>暂无相关人员</div>"
 
         # msg['To'] = ", ".join(valid_recipients)
-        msg['To'] = ", ".join(unique_mail_addresses)
-        # msg['To'] = 'DQA_LNV_ALL@compal.com'
+        msg['To'] = 'DQA_LNV_ALL@compal.com'
         # msg['To'] = 'Edwin_Cao@compal.com'
         msg['Cc'] = 'DQA_LNV_Managers@compal.com'
         # msg['Cc'] = 'Edwin_Cao@compal.com'
@@ -223,10 +191,6 @@ def sync_send_email(devicelist):
                         <p style="color: #d9534f; font-weight: bold;">
                             你有設備超期！！！請立即預約歸還！！！
                         </p>
-                        <h3>涉及人员 ({len(unique_name_cn)}人):</h3>
-                        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
-                            {name_cn_display}
-                        </div>
                         <h2>设备报告数据</h2>
                         <p>附件是完整的设备报告数据，请查收。</p>
                         <p>此邮件包含 {len(devicelist)} 条设备记录。</p>
@@ -378,20 +342,30 @@ if __name__ == "__main__":
             if eng_name:
                 # 清理英文名中的特殊字符和空格
                 clean_name = ''.join(e for e in eng_name if e.isalnum() or e in ['.', '_', '-'])
-                clean_name.replace(' ', '')
-                if '.' in clean_name:
-                    # 分割并交换顺序
-                    xing, ming = clean_name.split('.', 1)
-                    clean_name = f"{ming}_{xing}"
                 device['MailAddress'] = f"{clean_name}@compal.com"
             else:
                 device['MailAddress'] = ''
 
+        # 收集有效的邮箱地址
+        unique_mail_addresses = []
+        # for item in devicelist:
+        #     mail_addr = item.get('MailAddress', '')
+        #     if mail_addr and '@' in mail_addr and mail_addr not in unique_mail_addresses:
+        #         unique_mail_addresses.append(mail_addr)
 
+        # 添加必要的收件人
+        required_recipients = [
+            'DQA_LNV_ALL@compal.com',
+            'Edwin_Cao@compal.com']
+        for recipient in required_recipients:
+            if recipient not in unique_mail_addresses:
+                unique_mail_addresses.append(recipient)
+
+        print(f"有效的收件人地址: {unique_mail_addresses}")
 
         # 发送正式邮件
         print("开始发送正式邮件...")
-        success = sync_send_email(devicelist)
+        success = sync_send_email(devicelist, unique_mail_addresses)
 
         if success:
             print("✓ Email sent successfully!")

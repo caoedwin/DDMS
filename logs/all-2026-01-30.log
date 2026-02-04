@@ -1,0 +1,116 @@
+[2026-01-30 10:24:28,228] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-01-30 10:24:28,240] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-01-30 10:24:28,524] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-01-30 10:24:28,534] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-01-30 10:24:31,771] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-01-30 10:24:32,015] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-01-30 10:24:32,113] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-01-30 10:24:32,364] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 46792
+[2026-01-30 10:24:33,002] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-01-30 10:24:33,067] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-01-30 10:24:33: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-01-30 10:24:33,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-01-30 10:24:33,182] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-01-30 10:24:33,184] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-01-30 10:24:35,767] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 116389
+[2026-01-30 10:24:36,122] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-01-30 10:24:36,587] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-01-30 10:24:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-01-30 10:24:36,629] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36822
+[2026-01-30 10:30:48,846] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-01-30 10:30:48: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-01-30 10:30:48,882] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36916
+[2026-01-30 10:31:01,445] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-01-30 10:31:01: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-01-30 10:31:01,502] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36912
+[2026-01-30 10:31:20,280] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-01-30 10:31:20: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-01-30 10:31:20,312] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36816
+[2026-01-30 10:31:28,971] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-01-30 10:31:28: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-01-30 10:31:29,011] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 27827
+[2026-01-30 10:31:44,148] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-01-30 10:31:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-01-30 10:31:44,193] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36790
+[2026-02-02 09:11:43,004] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 302 0
+[2026-02-02 09:11:43,103] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-02 09:11:43,377] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-02-02 09:11:43,384] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-02 09:11:45,416] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:11:45,521] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-02-02 09:11:45,573] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-02-02 09:11:45,657] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 116389
+[2026-02-02 09:11:46,177] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:11:46,493] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-02 09:11:46: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-02-02 09:11:46,507] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36790
+[2026-02-02 09:11:58,053] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2026-02-02 09:11:58,131] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2026-02-02 09:11:58,427] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:12:01,116] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:12:01,128] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2026-02-02 09:12:02,249] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 56928
+[2026-02-02 09:12:02,587] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:12:08,557] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 37715
+[2026-02-02 09:12:08,688] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:12:12,357] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 116389
+[2026-02-02 09:12:12,624] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:12:13,021] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-02 09:12:13: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-02-02 09:12:13,038] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36790
+[2026-02-02 09:12:17,332] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:12:18,349] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:12:18,816] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:12:19,141] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80193
+[2026-02-02 09:12:19,194] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:12:19,414] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 67550
+[2026-02-02 09:12:19,457] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:12:19,602] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 166045
+[2026-02-02 09:12:19,643] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:12:27,375] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/69/change/ HTTP/1.1" 200 23929
+[2026-02-02 09:12:27,411] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:13:42,199] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:13:42,209] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/menu/69/change/ HTTP/1.1" 302 0
+[2026-02-02 09:13:42,650] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 67719
+[2026-02-02 09:13:42,691] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:13:46,086] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/add/ HTTP/1.1" 200 23307
+[2026-02-02 09:13:46,123] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:13:49,918] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 67571
+[2026-02-02 09:15:15,224] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 56870
+[2026-02-02 09:15:15,705] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 67571
+[2026-02-02 09:15:15,735] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:15:15,797] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:15:28,720] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/69/change/ HTTP/1.1" 200 23943
+[2026-02-02 09:15:28,752] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:16:15,656] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:16:15,668] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/menu/69/change/ HTTP/1.1" 302 0
+[2026-02-02 09:16:16,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 67687
+[2026-02-02 09:16:16,099] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:16:22,471] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/add/ HTTP/1.1" 200 23299
+[2026-02-02 09:16:22,506] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:16:43,601] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:16:43,613] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/menu/add/ HTTP/1.1" 302 0
+[2026-02-02 09:16:44,001] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 68230
+[2026-02-02 09:16:44,036] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:16:59,029] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:16:59,944] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 166045
+[2026-02-02 09:16:59,983] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:17:19,015] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/150/change/ HTTP/1.1" 200 24552
+[2026-02-02 09:17:19,051] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:17:26,041] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 166045
+[2026-02-02 09:17:35,130] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/add/ HTTP/1.1" 200 23877
+[2026-02-02 09:17:35,165] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:19:19,922] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:19:19,935] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/permission/add/ HTTP/1.1" 302 0
+[2026-02-02 09:19:20,916] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 167097
+[2026-02-02 09:19:20,951] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:19:25,493] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:19:27,157] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80193
+[2026-02-02 09:19:27,194] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:19:31,482] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/1/change/ HTTP/1.1" 200 35654
+[2026-02-02 09:19:31,526] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:19:36,070] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:19:36,082] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/role/1/change/ HTTP/1.1" 302 0
+[2026-02-02 09:19:37,706] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80313
+[2026-02-02 09:19:37,754] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:19:43,804] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/1/change/ HTTP/1.1" 200 35654
+[2026-02-02 09:19:43,839] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:19:47,238] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-02 09:19:47,250] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/role/1/change/ HTTP/1.1" 302 0
+[2026-02-02 09:19:48,854] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80356
+[2026-02-02 09:19:48,911] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-02 09:19:49,044] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:20:34,554] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 37715
+[2026-02-02 09:20:35,863] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/add/ HTTP/1.1" 200 23877
+[2026-02-02 09:20:35,915] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684

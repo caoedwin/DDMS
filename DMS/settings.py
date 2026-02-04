@@ -172,6 +172,7 @@ INSTALLED_APPS = [
     'DeviceAPDQATPE',
     'TestDeviceLNV',
     'CabinetManage',
+    'RetainedSample',
 
 ]
 

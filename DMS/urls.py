@@ -72,6 +72,7 @@ urlpatterns = [
     path('DeviceAPDQATPE/', include('DeviceAPDQATPE.urls', namespace='DeviceAPDQATPE')),
     path('TestDeviceLNV/', include('TestDeviceLNV.urls', namespace='TestDeviceLNV')),
     path('CabinetManage/', include('CabinetManage.urls', namespace='CabinetManage')),
+    path('RetainedSample/', include('RetainedSample.urls', namespace='RetainedSample')),
 ]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
