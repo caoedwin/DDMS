@@ -1,0 +1,939 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}留樣管理系統{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+<style lang="scss" rel="stylesheet/scss" scoped>
+.showColor:hover{
+    color: red;
+}
+
+.fullScreen{
+    position: fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 101;
+    overflow:hidden;
+}
+
+.el-dialog {
+    width: 700px;
+}
+
+.content{
+    width:25px;
+    height: 70px;
+    position: fixed;
+    right: 10px;
+    top:60px;
+    background-color:#343957;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 24px;
+    writing-mode: vertical-lr;
+    z-index: 99;
+    opacity: 0.9;
+}
+
+.el-table--border th.gutter:last-of-type {
+    display: block!important;
+}
+
+.el-table th.gutter{
+    display: table-cell!important;
+}
+
+#container-yansebiaoshi{
+    display:none;
+    position: fixed;
+    right: 35px;
+    top:60px;
+    z-index: 99;
+    border: 2px solid  #deb887;
+}
+
+.el-pagination__total,.el-pagination__jump{
+    color:black;
+}
+
+.gutter{
+    display:block!important;
+    width:17px!important;
+}
+
+.cell-green{
+    background: greenyellow;
+}
+
+.tips{
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+    margin-left: 15px;
+}
+
+.el-table .cell {
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-break: break-all;
+    line-height: 23px;
+}
+
+tbody tr td:last-child {
+    text-align: left;
+}
+
+.inputError{
+    text-align: center;
+    color: crimson;
+    background-color: beige;
+    width: 50%;
+    margin: 10px auto 5px;
+    position: relative;
+}
+
+.inputError,#Customer{
+    display:inline-block;
+}
+
+.oneLine {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.el-table .my-cell {
+    vertical-align: top
+}
+
+.tableAround{
+    padding: 20px;
+    -moz-box-shadow: 0px 0px 10px #333333;
+    -webkit-box-shadow: 0px 0px 10px #333333;
+    box-shadow: 0px 0px 10px #333333;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.admin-only {
+    display: none;
+}
+
+.is-admin .admin-only {
+    display: inline-block;
+}
+
+.borrow-btn {
+    background-color: #67C23A;
+    color: white;
+}
+
+.scrap-btn {
+    background-color: #F56C6C;
+    color: white;
+}
+
+.status-warning {
+    color: #E6A23C;
+}
+
+.status-success {
+    color: #67C23A;
+}
+
+.status-danger {
+    color: #F56C6C;
+}
+
+.status-info {
+    color: #909399;
+}
+/* 添加以下CSS到你的style标签中 */
+.search-row-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+.search-row-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.search-row-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.search-row-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.search-row-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.search-label {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 5px;
+    flex-shrink: 0;
+}
+
+.search-input {
+    width: 100px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding-left: 20px;
+}
+
+.action-button {
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+
+/* 针对小屏幕的优化 */
+@media screen and (max-width: 1200px) {
+    .search-item {
+        min-width: 160px;
+    }
+    
+    .search-input {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .search-item {
+        min-width: 150px;
+    }
+    
+    .search-input {
+        width: 80px;
+    }
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="app">
+    <template>
+        <el-backtop></el-backtop>
+    </template>
+
+    <div class="row" style="white-space: nowrap;">
+        <div class="col-md-12">
+            <h2 style="text-align: center; color: black;">APDQA留樣管理系統 ${ currentTime }</h2>
+        </div>
+    </div>
+    
+    <div class="row" style="margin-bottom: 20px;">
+    <div class="col-md-12 search-row-container">
+        <!-- 搜索条件区域 -->
+        <div style="display: flex; flex-wrap: nowrap; align-items: center; flex-shrink: 0;">
+            <div class="search-item">
+                <label class="search-label">專案名稱</label>
+                <el-input v-model="searchProject" placeholder="搜索" class="search-input" size="small" @keyup.enter="handleSearch"></el-input>
+            </div>
+            
+            <div class="search-item">
+                <label class="search-label">樣品名稱</label>
+                <el-input v-model="searchSample" placeholder="搜索" class="search-input" size="small" @keyup.enter="handleSearch"></el-input>
+            </div>
+            
+            <div class="search-item">
+                <label class="search-label">樣品廠商</label>
+                <el-input v-model="searchManufacturer" placeholder="搜索" class="search-input" size="small" @keyup.enter="handleSearch"></el-input>
+            </div>
+            
+            <div class="search-item">
+                <label class="search-label">借用人</label>
+                <el-input v-model="searchBorrower" placeholder="搜索" class="search-input" size="small" @keyup.enter="handleSearch"></el-input>
+            </div>
+        </div>
+        
+        <!-- 按钮区域 -->
+        <div class="button-group">
+            <el-button type="primary" size="small" @click="handleSearch" class="action-button">搜索</el-button>
+            <el-button size="small" @click="handleReset" class="action-button">重置</el-button>
+            
+            <el-button type="primary" size="small" @click="showAddDialog" class="action-button">添加</el-button>
+            <el-button class="borrow-btn action-button" size="small" @click="showBorrowDialog" :disabled="selectedSamples.length !== 1">借用</el-button>
+            <el-button class="scrap-btn admin-only action-button" size="small" @click="showScrapDialog" :disabled="selectedSamples.length !== 1">報廢</el-button>
+        </div>
+    </div>
+</div>
+
+    <!-- 添加留样对话框 -->
+    <el-dialog title="添加留樣" width="60%" :visible.sync="addDialogVisible">
+        <el-form :model="addForm" label-width="120px">
+            <el-form-item label="專案名稱">
+                <el-input v-model="addForm.Project"></el-input>
+            </el-form-item>
+            <el-form-item label="專案負責人">
+                <el-input v-model="addForm.Owner"></el-input>
+            </el-form-item>
+            <el-form-item label="樣品名稱">
+                <el-input v-model="addForm.SampleName"></el-input>
+            </el-form-item>
+            <el-form-item label="樣品廠商">
+                <el-input v-model="addForm.Manufacturer"></el-input>
+            </el-form-item>
+            <el-form-item label="樣品批次/版本號">
+                <el-input v-model="addForm.SampleBatch"></el-input>
+            </el-form-item>
+            <el-form-item label="樣品數量">
+                <el-input-number v-model="addForm.SampleQuantity" :min="1"></el-input-number>
+            </el-form-item>
+            <el-form-item label="留樣人">
+                <el-input v-model="addForm.Retainer"></el-input>
+            </el-form-item>
+            <el-form-item label="留樣日期">
+                <el-date-picker v-model="addForm.RetainStart" type="date" value-format="yyyy-MM-dd"></el-date-picker>
+            </el-form-item>
+            <el-form-item label="留樣周期(年)">
+                <el-input-number v-model="addForm.RetainPeriod" :min="0.1" :step="0.1"></el-input-number>
+            </el-form-item>
+            <el-form-item label="留樣位置">
+                <el-select v-model="addForm.RetainPosition">
+                    <el-option label="Plant5-#23" value="Plant5-#23"></el-option>
+                </el-select>
+            </el-form-item>
+        </el-form>
+        <div slot="footer">
+            <el-button @click="addDialogVisible = false">取消</el-button>
+            <el-button type="primary" @click="addRetainedSample">確認</el-button>
+        </div>
+    </el-dialog>
+
+    <!-- 借用对话框 -->
+    <el-dialog title="借用留樣" width="50%" :visible.sync="borrowDialogVisible">
+        <el-form :model="borrowForm" label-width="120px">
+            <el-form-item label="借用數量">
+                <el-input-number v-model="borrowForm.BorrowQuantity" :min="1" :max="selectedSample?.RemainedQuantity || 0"></el-input-number>
+                <span style="margin-left: 10px;">最大可借: ${ selectedSample ? selectedSample.RemainedQuantity : 0 }</span>
+            </el-form-item>
+            <el-form-item label="借用用途">
+                <el-radio-group v-model="borrowForm.BorrowedReson">
+                    <el-radio label="质量追溯">质量追溯</el-radio>
+                    <el-radio label="客户投诉">客户投诉</el-radio>
+                    <el-radio label="复检">复检</el-radio>
+                    <el-radio label="其他">其他</el-radio>
+                </el-radio-group>
+                <el-input v-if="borrowForm.BorrowedReson === '其他'" v-model="borrowForm.OtherReason" placeholder="請輸入其他原因" style="margin-top: 10px;"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer">
+            <el-button @click="borrowDialogVisible = false">取消</el-button>
+            <el-button type="primary" @click="borrowSample">確認借用</el-button>
+        </div>
+    </el-dialog>
+
+    <!-- 报废对话框 -->
+    <el-dialog title="報廢留樣" width="50%" :visible.sync="scrapDialogVisible">
+        <el-form :model="scrapForm" label-width="120px">
+            <el-form-item label="報廢數量">
+                <el-input-number v-model="scrapForm.ScrapQuantity" :min="1" :max="selectedSample?.RemainedQuantity || 0"></el-input-number>
+            </el-form-item>
+            <el-form-item label="報廢原因">
+                <el-input type="textarea" v-model="scrapForm.ScrapReason" :rows="3"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer">
+            <el-button @click="scrapDialogVisible = false">取消</el-button>
+            <el-button type="danger" @click="scrapSample">確認報廢</el-button>
+        </div>
+    </el-dialog>
+
+    <div class="tableAround" v-cloak>
+        <div class="col-md-12">
+            <el-tabs v-model="activeTab" @tab-click="handleTabClick">
+                <el-tab-pane label="留樣總覽" name="summary">
+                    <el-table
+                        ref="sampleTable"
+                        :data="filteredSamples"
+                        border
+                        height="600"
+                        @selection-change="handleSelectionChange"
+                        v-loading="loading"
+                        element-loading-text="數據加載中..."
+                        :header-cell-style="{background: '#CCDDFF', color: '#333', fontWeight: 'bold'}">
+
+                        <el-table-column type="selection" width="55" align="center"></el-table-column>
+                        <el-table-column prop="Project" label="專案名稱" align="center" width="150"></el-table-column>
+                        <el-table-column prop="Owner" label="專案負責人" align="center" width="120"></el-table-column>
+                        <el-table-column prop="SampleName" label="樣品名稱" align="center" width="150"></el-table-column>
+                        <el-table-column prop="Manufacturer" label="樣品廠商" align="center" width="150"></el-table-column>
+                        <el-table-column prop="SampleBatch" label="樣品批次/版本" align="center" width="120"></el-table-column>
+                        <el-table-column prop="SampleQuantity" label="留樣數量" align="center" width="100"></el-table-column>
+                        <el-table-column prop="Retainer" label="留樣人" align="center" width="100"></el-table-column>
+                        <el-table-column prop="RetainStart" label="留樣日期" align="center" width="120"></el-table-column>
+                        <el-table-column prop="RetainPeriod" label="留樣周期(年)" align="center" width="120"></el-table-column>
+                        <el-table-column prop="RetainPosition" label="留樣位置" align="center" width="120"></el-table-column>
+                        <el-table-column prop="BorrowedQuantity" label="已借出數量" align="center" width="100">
+                            <template slot-scope="scope">
+                                <span :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
+                                    {{ scope.row.BorrowedQuantity }}
+                                </span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="RemainedQuantity" label="剩餘留樣數量" align="center" width="120">
+                            <template slot-scope="scope">
+                                <span :class="{
+                                    'status-success': scope.row.RemainedQuantity > 0,
+                                    'status-danger': scope.row.RemainedQuantity <= 0
+                                }" style="font-weight: bold;">
+                                    {{ scope.row.RemainedQuantity }}
+                                </span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="UnderApprovalQuantity" label="簽核中數量" align="center" width="100">
+                            <template slot-scope="scope">
+                                <span :class="{'status-warning': scope.row.UnderApprovalQuantity > 0}">
+                                    {{ scope.row.UnderApprovalQuantity }}
+                                </span>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </el-tab-pane>
+
+                <el-tab-pane label="我的借用" name="myBorrow">
+                    <el-table :data="myBorrows" border height="600" v-loading="loading">
+                        <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
+                        <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
+                        <el-table-column prop="BorrowQuantity" label="借用數量" align="center"></el-table-column>
+                        <el-table-column prop="BorrowedReson" label="借用用途" align="center"></el-table-column>
+                        <el-table-column prop="Status" label="狀態" align="center">
+                            <template slot-scope="scope">
+                                <el-tag :type="getStatusType(scope.row.Status)">
+                                    {{ scope.row.Status }}
+                                </el-tag>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="created_at" label="申請時間" align="center"></el-table-column>
+                    </el-table>
+                </el-tab-pane>
+
+                <el-tab-pane label="我的簽核" name="myApproval" v-if="isAdmin">
+                    <el-table :data="approvalList" border height="600" v-loading="loading">
+                        <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
+                        <el-table-column prop="Borrower" label="借用人" align="center"></el-table-column>
+                        <el-table-column prop="BorrowQuantity" label="借用數量" align="center"></el-table-column>
+                        <el-table-column prop="BorrowedReson" label="借用用途" align="center"></el-table-column>
+                        <el-table-column label="操作" align="center">
+                            <template slot-scope="scope">
+                                <el-button size="mini" type="success" @click="approveBorrow(scope.row)">同意</el-button>
+                                <el-button size="mini" type="danger" @click="rejectBorrow(scope.row)">拒絕</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </el-tab-pane>
+
+                <el-tab-pane label="借還記錄" name="records">
+                    <el-table :data="borrowRecords" border height="600" v-loading="loading">
+                        <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
+                        <el-table-column prop="Borrower" label="借用人" align="center"></el-table-column>
+                        <el-table-column prop="BorrowQuantity" label="借用數量" align="center"></el-table-column>
+                        <el-table-column prop="BorrowedReson" label="借用用途" align="center"></el-table-column>
+                        <el-table-column prop="BorrowedStatus" label="借用狀態" align="center"></el-table-column>
+                        <el-table-column prop="ReturnedStatus" label="歸還狀態" align="center"></el-table-column>
+                        <el-table-column prop="created_at" label="申請時間" align="center"></el-table-column>
+                    </el-table>
+                </el-tab-pane>
+            </el-tabs>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script type="text/babel">
+new Vue({
+    el: '#app',
+    delimiters: ['${', '}'],
+    data: function() {
+        return {
+
+            currentTime: new Date().toLocaleString('zh-TW'),
+            activeTab: 'summary',
+            loading: false,
+            isAdmin: false,
+            
+            // 搜索条件
+            searchProject: '',
+            searchSample: '',
+            searchManufacturer: '',
+            searchBorrower: '',
+            
+            // 存储原始数据，用于重置
+            allSamples: [],
+            allBorrows: [],
+            allApprovals: [],
+            allRecords: [],
+            
+            // 对话框控制
+            addDialogVisible: false,
+            borrowDialogVisible: false,
+            scrapDialogVisible: false,
+            
+            // 当前选中的样品
+            selectedSample: null,
+            
+            // 表单数据
+            addForm: {
+                Key_Post: '',
+                Project: '',
+                Owner: '',
+                SampleName: '',
+                Manufacturer: '',
+                SampleBatch: '',
+                SampleQuantity: 1,
+                Retainer: '',
+                RetainStart: '',
+                RetainPeriod: 1,
+                RetainPosition: 'Plant5-#23'
+            },
+            
+            borrowForm: {
+                BorrowQuantity: 1,
+                BorrowedReson: '质量追溯',
+                OtherReason: ''
+            },
+            
+            scrapForm: {
+                ScrapQuantity: 1,
+                ScrapReason: ''
+            },
+            
+            // 数据列表（显示用）
+            samples: [],
+            myBorrows: [],
+            approvalList: [],
+            borrowRecords: [],
+            selectedSamples: [],
+        }
+    },
+    computed: {
+        filteredSamples() {
+        return this.samples.filter(sample => {
+            const matchesProject = !this.searchProject || sample.Project.includes(this.searchProject);
+            const matchesSample = !this.searchSample || sample.SampleName.includes(this.searchSample);
+            const matchesManufacturer = !this.searchManufacturer || sample.Manufacturer.includes(this.searchManufacturer);
+            return matchesProject && matchesSample && matchesManufacturer;
+        });
+    }
+    },
+    mounted() {
+        // 初始加载 summary 数据
+        this.loadData('summary');
+        // 更新当前时间
+        setInterval(() => {
+            this.currentTime = new Date().toLocaleString('zh-TW');
+        }, 1000);
+    },
+    methods: {
+        // 搜索方法
+        handleSearch() {
+            if (this.activeTab === 'summary') {
+                this.filterSamples();
+            } else if (this.activeTab === 'myBorrow') {
+                this.filterMyBorrows();
+            } else if (this.activeTab === 'myApproval') {
+                this.filterApprovalList();
+            } else if (this.activeTab === 'records') {
+                this.filterBorrowRecords();
+            }
+        },
+        
+        // 重置搜索
+        handleReset() {
+            this.searchProject = '';
+            this.searchSample = '';
+            this.searchManufacturer = '';
+            this.searchBorrower = '';
+            
+            // 重置为原始数据
+            if (this.activeTab === 'summary') {
+                this.samples = [...this.allSamples];
+            } else if (this.activeTab === 'myBorrow') {
+                this.myBorrows = [...this.allBorrows];
+            } else if (this.activeTab === 'myApproval') {
+                this.approvalList = [...this.allApprovals];
+            } else if (this.activeTab === 'records') {
+                this.borrowRecords = [...this.allRecords];
+            }
+        },
+        
+        // 各个标签页的过滤方法
+        filterSamples() {
+            if (!this.searchProject && !this.searchSample && !this.searchManufacturer && !this.searchBorrower) {
+                // 如果搜索条件都为空，显示所有数据
+                this.samples = [...this.allSamples];
+                return;
+            }
+            
+            this.samples = this.allSamples.filter(sample => {
+                const matchesProject = !this.searchProject || sample.Project.includes(this.searchProject);
+                const matchesSample = !this.searchSample || sample.SampleName.includes(this.searchSample);
+                const matchesManufacturer = !this.searchManufacturer || sample.Manufacturer.includes(this.searchManufacturer);
+                
+                // 如果要搜索借用人，需要检查是否有借用记录
+                let matchesBorrower = true;
+                if (this.searchBorrower) {
+                    // 这里需要根据你的数据结构调整
+                    // 假设借用记录中有借用人信息
+                    matchesBorrower = false; // 默认设为false，需要实现具体逻辑
+                }
+                
+                return matchesProject && matchesSample && matchesManufacturer && matchesBorrower;
+            });
+        },
+        
+        filterMyBorrows() {
+            if (!this.searchProject && !this.searchSample && !this.searchBorrower) {
+                this.myBorrows = [...this.allBorrows];
+                return;
+            }
+            
+            this.myBorrows = this.allBorrows.filter(record => {
+                const matchesProject = !this.searchProject || record.Project.includes(this.searchProject);
+                const matchesSample = !this.searchSample || record.SampleName.includes(this.searchSample);
+                const matchesBorrower = !this.searchBorrower || record.Borrower.includes(this.searchBorrower);
+                
+                return matchesProject && matchesSample && matchesBorrower;
+            });
+        },
+        
+        filterApprovalList() {
+            if (!this.searchProject && !this.searchSample && !this.searchBorrower) {
+                this.approvalList = [...this.allApprovals];
+                return;
+            }
+            
+            this.approvalList = this.allApprovals.filter(record => {
+                const matchesProject = !this.searchProject || record.Project.includes(this.searchProject);
+                const matchesSample = !this.searchSample || record.SampleName.includes(this.searchSample);
+                const matchesBorrower = !this.searchBorrower || record.Borrower.includes(this.searchBorrower);
+                
+                return matchesProject && matchesSample && matchesBorrower;
+            });
+        },
+        
+        filterBorrowRecords() {
+            if (!this.searchProject && !this.searchSample && !this.searchBorrower) {
+                this.borrowRecords = [...this.allRecords];
+                return;
+            }
+            
+            this.borrowRecords = this.allRecords.filter(record => {
+                const matchesProject = !this.searchProject || record.Project.includes(this.searchProject);
+                const matchesSample = !this.searchSample || record.SampleName.includes(this.searchSample);
+                const matchesBorrower = !this.searchBorrower || record.Borrower.includes(this.searchBorrower);
+                
+                return matchesProject && matchesSample && matchesBorrower;
+            });
+        },
+        loadData() {
+        this.loading = true;
+        axios.get('/RetainedSample/RetainedSample_summary/', {
+            params: { tab: 'first' }
+        })
+            .then(response => {
+                const data = response.data;
+                if (data.success) {
+                    // 保存原始数据
+                    this.allSamples = data.samples || [];
+                    this.allBorrows = data.my_borrows || [];
+                    this.allApprovals = data.approval_list || [];
+                    this.allRecords = data.borrow_records || [];
+                    
+                    // 设置显示数据
+                    this.samples = [...this.allSamples];
+                    this.myBorrows = [...this.allBorrows];
+                    this.approvalList = [...this.allApprovals];
+                    this.borrowRecords = [...this.allRecords];
+                    
+                    this.isAdmin = data.is_admin || false;
+                    
+                    // 根据管理员状态更新页面显示
+                    if (this.isAdmin) {
+                        document.body.classList.add('is-admin');
+                    }
+                } else {
+                    this.$message.error(data.message || '加载数据失败');
+                }
+                this.loading = false;
+            })
+            .catch(error => {
+                console.error('加载数据失败:', error);
+                this.$message.error('加载数据失败');
+                this.loading = false;
+            });
+    },
+
+        handleTabClick(tab) {
+            this.activeTab = tab.name;
+            // 重置搜索条件
+            this.searchProject = '';
+            this.searchSample = '';
+            this.searchManufacturer = '';
+            this.searchBorrower = '';
+            
+            // 加载对应标签页的数据
+            if (tab.name === 'summary') {
+                this.loadData();
+            }
+            // 其他标签页的数据已经在 loadData 中加载了
+        },
+
+        handleSelectionChange(selection) {
+            this.selectedSamples = selection;
+            this.selectedSample = selection.length > 0 ? selection[0] : null;
+        },
+
+        showAddDialog() {
+            this.addDialogVisible = true;
+        },
+
+        showBorrowDialog() {
+            if (this.selectedSamples.length === 0) {
+                this.$message.warning('请选择要借用的样品');
+                return;
+            }
+            if (this.selectedSamples.length > 1) {
+                this.$message.warning('一次只能借用一种样品');
+                return;
+            }
+
+            const sample = this.selectedSamples[0];
+            if (sample.RemainedQuantity <= 0) {
+                this.$message.error('该样品已无库存');
+                return;
+            }
+
+            this.borrowForm.BorrowQuantity = 1;
+            this.borrowDialogVisible = true;
+        },
+
+        showScrapDialog() {
+            if (this.selectedSamples.length === 0) {
+                this.$message.warning('请选择要报废的样品');
+                return;
+            }
+            if (this.selectedSamples.length > 1) {
+                this.$message.warning('一次只能报废一种样品');
+                return;
+            }
+
+            const sample = this.selectedSamples[0];
+            if (sample.RemainedQuantity <= 0) {
+                this.$message.error('该样品已无库存');
+                return;
+            }
+
+            this.scrapForm.ScrapQuantity = 1;
+            this.scrapDialogVisible = true;
+        },
+
+        addRetainedSample() {
+            this.addForm['Key_Post'] = 'adddata',
+            axios.post('/RetainedSample/RetainedSample_summary/', this.addForm)
+                .then(response => {
+                    const data = response.data;
+                    if (data.success) {
+                        this.$message.success('添加成功');
+                        this.addDialogVisible = false;
+                        this.loadData();
+                        this.resetAddForm();
+                    } else {
+                        this.$message.error(data.message || '添加失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('添加失败:', error);
+                    this.$message.error('添加失败');
+                });
+        },
+
+        borrowSample() {
+            if (this.selectedSamples.length === 0) return;
+
+            const borrowData = {
+                borrowData: 'borrowData',
+                sample_id: this.selectedSamples[0].id,
+                borrow_quantity: this.borrowForm.BorrowQuantity,
+                borrow_reason: this.borrowForm.BorrowedReson === '其他' ?
+                    this.borrowForm.OtherReason : this.borrowForm.BorrowedReson
+            };
+
+            axios.post('/RetainedSample/RetainedSample_summary/', borrowData)
+                .then(response => {
+                    const data = response.data;
+                    if (data.success) {
+                        this.$message.success('借用申请提交成功，等待管理员审核');
+                        this.borrowDialogVisible = false;
+                        this.loadData();
+                        this.resetBorrowForm();
+                        this.selectedSamples = [];
+                        this.selectedSample = null;
+                    } else {
+                        this.$message.error(data.message || '借用失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('借用失败:', error);
+                    this.$message.error('借用失败');
+                });
+        },
+
+        scrapSample() {
+            if (this.selectedSamples.length === 0) return;
+
+            const scrapData = {
+                scrapData: 'scrapData',
+                sample_id: this.selectedSamples[0].id,
+                scrap_quantity: this.scrapForm.ScrapQuantity,
+                scrap_reason: this.scrapForm.ScrapReason
+            };
+
+            axios.post('/RetainedSample/RetainedSample_summary/', scrapData)
+                .then(response => {
+                    const data = response.data;
+                    if (data.success) {
+                        this.$message.success('报废成功');
+                        this.scrapDialogVisible = false;
+                        this.loadData();
+                        this.resetScrapForm();
+                        this.selectedSamples = [];
+                        this.selectedSample = null;
+                    } else {
+                        this.$message.error(data.message || '报废失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('报废失败:', error);
+                    this.$message.error('报废失败');
+                });
+        },
+
+        approveBorrow(record) {
+            this.$confirm('确认同意借用申请吗?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                axios.post('/RetainedSample/RetainedSample_summary/', { record_id: record.id, scrapData: 'scrapData' })
+                    .then(response => {
+                        const data = response.data;
+                        if (data.success) {
+                            this.$message.success('审核通过');
+                            this.loadData();
+                        } else {
+                            this.$message.error(data.message || '审核失败');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('审核失败:', error);
+                        this.$message.error('审核失败');
+                    });
+            });
+        },
+
+        rejectBorrow(record) {
+            this.$confirm('确认拒绝借用申请吗?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                axios.post('/RetainedSample/RetainedSample_summary/', { record_id: record.id, reject: 'reject' })
+                    .then(response => {
+                        const data = response.data;
+                        if (data.success) {
+                            this.$message.success('已拒绝');
+                            this.loadData();
+                        } else {
+                            this.$message.error(data.message || '操作失败');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('操作失败:', error);
+                        this.$message.error('操作失败');
+                    });
+            });
+        },
+
+        getStatusType(status) {
+            const typeMap = {
+                '借用確認中': 'warning',
+                '已借用': 'success',
+                '歸還確認中': 'info',
+                '已歸還': 'primary',
+                '已拒絕': 'danger'
+            };
+            return typeMap[status] || 'info';
+        },
+
+        resetAddForm() {
+            this.addForm = {
+                Key_Post: '',
+                Project: '',
+                Owner: '',
+                SampleName: '',
+                Manufacturer: '',
+                SampleBatch: '',
+                SampleQuantity: 1,
+                Retainer: '',
+                RetainStart: '',
+                RetainPeriod: 1,
+                RetainPosition: 'Plant5-#23'
+            };
+        },
+
+        resetBorrowForm() {
+            this.borrowForm = {
+                BorrowQuantity: 1,
+                BorrowedReson: '质量追溯',
+                OtherReason: ''
+            };
+        },
+
+        resetScrapForm() {
+            this.scrapForm = {
+                ScrapQuantity: 1,
+                ScrapReason: ''
+            };
+        }
+    }
+});
+</script>
+{% endblock %}

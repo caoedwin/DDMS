@@ -24,3 +24,6 @@
 [2026-02-03 15:54:26,127] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-03 15:54:26: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
 [2026-02-03 16:09:20,474] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-03 16:09:20: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
 [2026-02-03 16:18:05,797] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-03 16:18:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-02-05 09:01:18,509] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-05 09:01:19,593] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-05 09:01:19: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-02-05 09:01:23,563] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-05 09:01:23: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>

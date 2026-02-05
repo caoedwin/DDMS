@@ -154,3 +154,449 @@
 [2026-02-03 16:18:05,339] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
 [2026-02-03 16:18:05,797] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-03 16:18:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
 [2026-02-03 16:18:05,816] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36790
+[2026-02-05 09:01:16,596] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-02-05 09:01:16,644] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-05 09:01:16,884] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-02-05 09:01:16,891] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-05 09:01:18,509] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-05 09:01:18,612] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-02-05 09:01:18,670] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-02-05 09:01:18,809] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47473
+[2026-02-05 09:01:19,555] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:01:19,593] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-05 09:01:19: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-02-05 09:01:19,618] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-02-05 09:01:19,714] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-02-05 09:01:19,714] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-02-05 09:01:22,475] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 117070
+[2026-02-05 09:01:23,091] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:01:23,563] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-05 09:01:23: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/CabinetManage/CabinetManage_edit/'>
+[2026-02-05 09:01:23,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /CabinetManage/CabinetManage_edit/ HTTP/1.1" 200 36790
+[2026-02-05 09:42:31,885] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 61758
+[2026-02-05 09:42:32,225] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:46:08,837] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 177, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[0].RemainedQuantity' from 'selectedSamples[0].RemainedQuantity'
+[2026-02-05 09:46:09,007] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 192636
+[2026-02-05 09:46:09,349] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:47:05,701] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 177, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[0].RemainedQuantity' from 'selectedSamples[0].RemainedQuantity'
+[2026-02-05 09:47:05,719] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 192636
+[2026-02-05 09:47:05,819] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:47:07,417] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 177, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[0].RemainedQuantity' from 'selectedSamples[0].RemainedQuantity'
+[2026-02-05 09:47:07,427] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 192636
+[2026-02-05 09:47:07,550] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:47:07,646] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 177, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[0].RemainedQuantity' from 'selectedSamples[0].RemainedQuantity'
+[2026-02-05 09:47:07,659] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 192636
+[2026-02-05 09:47:07,764] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:47:07,953] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 177, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[0].RemainedQuantity' from 'selectedSamples[0].RemainedQuantity'
+[2026-02-05 09:47:07,961] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 192636
+[2026-02-05 09:47:08,055] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:47:08,225] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 177, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[0].RemainedQuantity' from 'selectedSamples[0].RemainedQuantity'
+[2026-02-05 09:47:08,234] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 192636
+[2026-02-05 09:47:08,318] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:48:21,666] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 63471
+[2026-02-05 09:48:22,666] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 63471
+[2026-02-05 09:48:22,721] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:48:25,929] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-05 09:48:26,532] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-05 09:48:26,534] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-05 09:48:26,859] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-05 09:54:19,665] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 177, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ' ? selectedSample.RemainedQuantity : 0' from 'selectedSample ? selectedSample.RemainedQuantity : 0'
+[2026-02-05 09:54:19,752] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 192045
+[2026-02-05 09:54:19,963] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-05 09:54:20,038] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 09:58:18,461] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66173
+[2026-02-05 09:58:18,584] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-05 09:58:18,662] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-05 09:58:18,761] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-05 09:58:18,968] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-05 09:58:19,718] [log.py:228] [log:log_response] [WARNING]- Not Found: /RetainedSample/RetainedSample_summary/data/
+[2026-02-05 09:58:19,718] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /RetainedSample/RetainedSample_summary/data/ HTTP/1.1" 404 8026
+[2026-02-05 09:58:19,782] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 10:06:50,862] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:06:50,938] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-05 10:06:50,981] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-05 10:06:51,076] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-05 10:06:51,264] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-05 10:06:51,766] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 10:06:51,776] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:07:24,028] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:07:42,439] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:18:13,414] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:18:13,488] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-05 10:18:13,534] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-05 10:18:13,555] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-05 10:18:13,727] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-05 10:18:14,234] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:18:14,251] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 10:18:49,344] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:22:35,379] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66370
+[2026-02-05 10:24:18,874] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66265
+[2026-02-05 10:24:18,955] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-05 10:24:19,004] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-05 10:24:19,034] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-05 10:24:19,193] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-05 10:24:19,647] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 66265
+[2026-02-05 10:24:19,702] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 10:24:24,013] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 66265
+[2026-02-05 10:24:25,655] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 66265
+[2026-02-05 10:25:43,009] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 66265
+[2026-02-05 10:25:43,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 66265
+[2026-02-05 10:29:10,086] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 66265
+[2026-02-05 10:29:10,585] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 66265
+[2026-02-05 10:29:11,077] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 66265
+[2026-02-05 10:29:12,249] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 66265
+[2026-02-05 10:29:28,328] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 66265
+[2026-02-05 10:29:28,410] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-05 10:29:28,478] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-05 10:29:28,619] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-05 10:29:28,980] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 66265
+[2026-02-05 10:29:29,012] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-05 10:29:29,021] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
