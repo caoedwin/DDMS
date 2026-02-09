@@ -210,6 +210,23 @@ tbody tr td:last-child {
     margin-right: 8px;
 }
 
+/* 修复表格单元格内容的显示 */
+.el-table .cell {
+    white-space: nowrap !important;  /* 禁止换行 */
+    word-break: keep-all !important; /* 保持单词不换行 */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* 或者更具体的针对数字列 */
+.el-table td .status-danger,
+.el-table td .status-success,
+.el-table td .status-warning {
+    white-space: nowrap !important;
+    display: inline-block !important;
+    min-width: 20px;  /* 设置最小宽度 */
+}
+
 /* 针对小屏幕的优化 */
 @media screen and (max-width: 1200px) {
     .search-item {
@@ -645,7 +662,7 @@ tbody tr td:last-child {
                         <el-table-column prop="BorrowedQuantity" label="已借出數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <span :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
-                                    ${ scope.row.BorrowedQuantity }
+                                    ${ formatNumber(scope.row.BorrowedQuantity) }
                                 </span>
                             </template>
                         </el-table-column>
@@ -655,14 +672,14 @@ tbody tr td:last-child {
                                     'status-success': scope.row.RemainedQuantity > 0,
                                     'status-danger': scope.row.RemainedQuantity <= 0
                                 }" style="font-weight: bold;">
-                                    ${ scope.row.RemainedQuantity }
+                                    ${ formatNumber(scope.row.RemainedQuantity) }
                                 </span>
                             </template>
                         </el-table-column>
                         <el-table-column prop="UnderApprovalQuantity" label="簽核中數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <span :class="{'status-warning': scope.row.UnderApprovalQuantity > 0}">
-                                    ${ scope.row.UnderApprovalQuantity }
+                                    ${ formatNumber(scope.row.UnderApprovalQuantity) }
                                 </span>
                             </template>
                         </el-table-column>
@@ -1711,6 +1728,11 @@ new Vue({
                 ReturnReason: ''
             };
             this.selectedBorrowRecord = null;
+        },
+        // 格式化数字显示，去除空格和换行
+        formatNumber(value) {
+            if (value === null || value === undefined) return '0';
+            return String(value).trim().replace(/\n/g, '');
         },
     }
 });
