@@ -41,14 +41,6 @@
     opacity: 0.9;
 }
 
-.el-table--border th.gutter:last-of-type {
-    display: block!important;
-}
-
-.el-table th.gutter{
-    display: table-cell!important;
-}
-
 #container-yansebiaoshi{
     display:none;
     position: fixed;
@@ -588,6 +580,32 @@ tbody tr td:last-child {
             <el-button type="danger" @click="scrapSample">確認報廢</el-button>
         </div>
     </el-dialog>
+    
+    <!-- 添加归还对话框（放在其他对话框后面） -->
+    <el-dialog :title="returnDialogTitle" width="50%" :visible.sync="returnDialogVisible">
+        <el-form :model="returnForm" label-width="120px">
+            <el-form-item label="歸還數量">
+                <el-input-number 
+                    v-model="returnForm.ReturnQuantity" 
+                    :min="1" 
+                    :max="selectedBorrowRecord?.RemainedQuantity || 0">
+                </el-input-number>
+                <span style="margin-left: 10px;">最多可還: ${ selectedBorrowRecord ? selectedBorrowRecord.RemainedQuantity : 0 }</span>
+            </el-form-item>
+            <el-form-item label="歸還原因" prop="ReturnReason">
+                <el-input 
+                    type="textarea" 
+                    v-model="returnForm.ReturnReason" 
+                    placeholder="請輸入歸還原因（可選）"
+                    :rows="3">
+                </el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer">
+            <el-button @click="returnDialogVisible = false">取消</el-button>
+            <el-button type="primary" @click="submitReturnRequest">確認歸還</el-button>
+        </div>
+    </el-dialog>
 
     <div class="tableAround" v-cloak>
         <div class="col-md-12">
@@ -608,16 +626,17 @@ tbody tr td:last-child {
                         <!-- 修改表格中的專案負責人和留樣人列 -->
                         <el-table-column prop="Owner" label="專案負責人" align="center" width="120">
                             <template slot-scope="scope">
-                                ${ getDisplayNameByEmployeeId(scope.row.Owner) }
+                                <span v-text="getDisplayNameByEmployeeId(scope.row.Owner)"></span>
                             </template>
                         </el-table-column>
+
                         <el-table-column prop="SampleName" label="樣品名稱" align="center" width="150"></el-table-column>
                         <el-table-column prop="Manufacturer" label="樣品廠商" align="center" width="150"></el-table-column>
                         <el-table-column prop="SampleBatch" label="樣品批次/版本" align="center" width="120"></el-table-column>
                         <el-table-column prop="SampleQuantity" label="留樣數量" align="center" width="100"></el-table-column>
                         <el-table-column prop="Retainer" label="留樣人" align="center" width="100">
                             <template slot-scope="scope">
-                                ${ getDisplayNameByEmployeeId(scope.row.Retainer) }
+                                <span v-text="getDisplayNameByEmployeeId(scope.row.Retainer)"></span>
                             </template>
                         </el-table-column>
                         <el-table-column prop="RetainStart" label="留樣日期" align="center" width="120"></el-table-column>
@@ -626,7 +645,7 @@ tbody tr td:last-child {
                         <el-table-column prop="BorrowedQuantity" label="已借出數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <span :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
-                                    {{ scope.row.BorrowedQuantity }}
+                                    ${ scope.row.BorrowedQuantity }
                                 </span>
                             </template>
                         </el-table-column>
@@ -636,28 +655,30 @@ tbody tr td:last-child {
                                     'status-success': scope.row.RemainedQuantity > 0,
                                     'status-danger': scope.row.RemainedQuantity <= 0
                                 }" style="font-weight: bold;">
-                                    {{ scope.row.RemainedQuantity }}
+                                    ${ scope.row.RemainedQuantity }
                                 </span>
                             </template>
                         </el-table-column>
                         <el-table-column prop="UnderApprovalQuantity" label="簽核中數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <span :class="{'status-warning': scope.row.UnderApprovalQuantity > 0}">
-                                    {{ scope.row.UnderApprovalQuantity }}
+                                    ${ scope.row.UnderApprovalQuantity }
                                 </span>
                             </template>
                         </el-table-column>
                         <!-- 在留样总览表格中添加操作列 -->
-                        <el-table-column label="操作" align="center" width="150" class-name="admin-only">
+                        <el-table-column label="操作" v-if="isAdmin" align="center" min-width="200" fixed="right">
                             <template slot-scope="scope">
                                 <el-button
                                     size="mini"
+                                    v-if="isAdmin"
                                     type="primary"
                                     @click="handleEdit(scope.row)">
                                     编辑
                                 </el-button>
                                 <el-button
                                     size="mini"
+                                    v-if="isAdmin"
                                     type="danger"
                                     @click="handleDelete(scope.row)">
                                     删除
@@ -667,33 +688,69 @@ tbody tr td:last-child {
                     </el-table>
                 </el-tab-pane>
 
+                <!-- 修改 myBorrow 标签页的表格 -->
                 <el-tab-pane label="我的借用" name="myBorrow">
-                    <el-table :data="myBorrows" border height="600" v-loading="loading">
+                    <el-table :data="myBorrows" border height="600" v-loading="loading" @selection-change="handleBorrowSelectionChange">
+                        <el-table-column type="selection" width="55" align="center"></el-table-column>
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
                         <el-table-column prop="BorrowQuantity" label="借用數量" align="center"></el-table-column>
+                        <el-table-column prop="RemainedQuantity" label="未歸還數量" align="center"></el-table-column>
                         <el-table-column prop="BorrowedReson" label="借用用途" align="center"></el-table-column>
-                        <el-table-column prop="Status" label="狀態" align="center">
+                        <el-table-column prop="Status" label="狀態" align="center" width="120">
                             <template slot-scope="scope">
                                 <el-tag :type="getStatusType(scope.row.Status)">
-                                    {{ scope.row.Status }}
+                                    ${ scope.row.Status }
                                 </el-tag>
                             </template>
                         </el-table-column>
                         <el-table-column prop="created_at" label="申請時間" align="center"></el-table-column>
+                        <el-table-column label="操作" align="center" width="180" fixed="right">
+                            <template slot-scope="scope">
+                                <el-button 
+                                    v-if="scope.row.Status === '已借用' && scope.row.RemainedQuantity > 0"
+                                    size="mini" 
+                                    type="success" 
+                                    @click="showReturnDialog(scope.row)">
+                                    歸還
+                                </el-button>
+                            </template>
+                        </el-table-column>
                     </el-table>
                 </el-tab-pane>
 
+                <!-- 修改 myApproval 标签页的表格 -->
                 <el-tab-pane label="我的簽核" name="myApproval" v-if="isAdmin">
                     <el-table :data="approvalList" border height="600" v-loading="loading">
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
-                        <el-table-column prop="Borrower" label="借用人" align="center"></el-table-column>
-                        <el-table-column prop="BorrowQuantity" label="借用數量" align="center"></el-table-column>
-                        <el-table-column prop="BorrowedReson" label="借用用途" align="center"></el-table-column>
-                        <el-table-column label="操作" align="center">
+                        <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
+                        <el-table-column prop="RecordType" label="申請類型" align="center" width="100">
                             <template slot-scope="scope">
-                                <el-button size="mini" type="success" @click="approveBorrow(scope.row)">同意</el-button>
-                                <el-button size="mini" type="danger" @click="rejectBorrow(scope.row)">拒絕</el-button>
+                                <el-tag :type="scope.row.RecordType === '借用申請' ? 'primary' : 'success'">
+                                    ${ scope.row.RecordType }
+                                </el-tag>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="Borrower" label="申請人" align="center"></el-table-column>
+                        <el-table-column prop="Quantity" label="數量" align="center"></el-table-column>
+                        <el-table-column prop="Reason" label="原因" align="center"></el-table-column>
+                        <el-table-column prop="created_at" label="申請時間" align="center"></el-table-column>
+                        <el-table-column label="操作" align="center" width="200" fixed="right">
+                            <template slot-scope="scope">
+                                <el-button 
+                                    v-if="scope.row.Status === '待审批' || scope.row.Status === '待确认'"
+                                    size="mini" 
+                                    type="success" 
+                                    @click="handleApprove(scope.row)">
+                                    同意
+                                </el-button>
+                                <el-button 
+                                    v-if="scope.row.Status === '待审批' || scope.row.Status === '待确认'"
+                                    size="mini" 
+                                    type="danger" 
+                                    @click="handleReject(scope.row)">
+                                    拒絕
+                                </el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -817,6 +874,16 @@ new Vue({
             // 对话框控制（合并新增和编辑）
             isEditMode: false,
             currentEditId: null,
+            
+            // 归还相关
+            returnDialogVisible: false,
+            returnDialogTitle: '申請歸還',
+            returnForm: {
+                ReturnQuantity: 1,
+                ReturnReason: ''
+            },
+            selectedBorrowRecord: null,
+            selectedBorrowRecords: [],
 
             // 表单数据
             addForm: {
@@ -856,6 +923,9 @@ new Vue({
                 ],
                 SampleName: [
                     { required: true, message: '请输入樣品名稱', trigger: 'blur' }
+                ],
+                Manufacturer: [
+                    { required: true, message: '请输入樣品廠商', trigger: 'blur' }
                 ],
                 SampleBatch: [
                     { required: true, message: '请输入樣品批次/版本號', trigger: 'blur' }
@@ -1013,6 +1083,10 @@ new Vue({
                 return;
             }
             if (!this.addForm.SampleName || this.addForm.SampleName.trim() === '') {
+                this.$message.warning('请输入樣品名稱');
+                return;
+            }
+            if (!this.addForm.Manufacturer || this.addForm.Manufacturer.trim() === '') {
                 this.$message.warning('请输入樣品名稱');
                 return;
             }
@@ -1459,7 +1533,8 @@ new Vue({
                 '已借用': 'success',
                 '歸還確認中': 'info',
                 '已歸還': 'primary',
-                '已拒絕': 'danger'
+                '已拒絕': 'danger',
+                '歸還確認中': 'warning'  // 添加归还确认中的状态
             };
             return typeMap[status] || 'info';
         },
@@ -1477,7 +1552,166 @@ new Vue({
                 ScrapQuantity: 1,
                 ScrapReason: ''
             };
-        }
+        },
+        
+        // 处理我的借用表格的选择
+        handleBorrowSelectionChange(selection) {
+            this.selectedBorrowRecords = selection;
+            this.selectedBorrowRecord = selection.length > 0 ? selection[0] : null;
+        },
+        
+        // 显示归还对话框
+        showReturnDialog(record) {
+            if (record.Status !== '已借用') {
+                this.$message.warning('只有已借用的樣品可以歸還');
+                return;
+            }
+            
+            if (record.RemainedQuantity <= 0) {
+                this.$message.warning('該樣品已無需歸還數量');
+                return;
+            }
+            
+            this.selectedBorrowRecord = record;
+            this.returnForm.ReturnQuantity = record.RemainedQuantity;
+            this.returnForm.ReturnReason = '';
+            this.returnDialogTitle = `歸還樣品：${record.SampleName}`;
+            this.returnDialogVisible = true;
+        },
+        
+        // 提交归还申请
+        submitReturnRequest() {
+            if (!this.selectedBorrowRecord) {
+                this.$message.warning('請選擇要歸還的記錄');
+                return;
+            }
+            
+            if (this.returnForm.ReturnQuantity <= 0) {
+                this.$message.warning('歸還數量必須大於0');
+                return;
+            }
+            
+            if (this.returnForm.ReturnQuantity > this.selectedBorrowRecord.RemainedQuantity) {
+                this.$message.warning('歸還數量不能超過未歸還數量');
+                return;
+            }
+            
+            this.loading = true;
+            
+            const returnData = {
+                action_type: 'request_return',
+                record_id: this.selectedBorrowRecord.id,
+                return_quantity: this.returnForm.ReturnQuantity,
+                return_reason: this.returnForm.ReturnReason || '正常歸還'
+            };
+            
+            axios.post('/RetainedSample/handle_return/', returnData)
+                .then(response => {
+                    this.loading = false;
+                    const data = response.data;
+                    if (data.success) {
+                        this.$message.success('歸還申請提交成功，等待管理員確認');
+                        this.returnDialogVisible = false;
+                        // 重新加载数据
+                        this.loadTabData('myBorrow');
+                        this.resetReturnForm();
+                    } else {
+                        this.$message.error(data.message || '歸還申請失敗');
+                    }
+                })
+                .catch(error => {
+                    this.loading = false;
+                    console.error('歸還申請失敗:', error);
+                    this.$message.error('歸還申請失敗');
+                });
+        },
+        
+        // 同意审批
+        handleApprove(record) {
+            this.$confirm(`確定要${record.RecordType === '歸還申請' ? '同意歸還' : '同意借用'}嗎?`, '提示', {
+                confirmButtonText: '確定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.loading = true;
+                
+                const approveData = {
+                    action_type: 'confirm_approval',
+                    record_id: record.id,
+                    record_type: record.RecordType,
+                    confirm_quantity: record.Quantity
+                };
+                
+                axios.post('/RetainedSample/handle_approval/', approveData)
+                    .then(response => {
+                        this.loading = false;
+                        const data = response.data;
+                        if (data.success) {
+                            this.$message.success('操作成功');
+                            // 重新加载相关标签页数据
+                            this.loadTabData('myApproval');
+                            this.loadTabData('summary');
+                            this.loadTabData('records');
+                        } else {
+                            this.$message.error(data.message || '操作失敗');
+                        }
+                    })
+                    .catch(error => {
+                        this.loading = false;
+                        console.error('操作失敗:', error);
+                        this.$message.error('操作失敗');
+                    });
+            });
+        },
+        
+        // 拒绝审批
+        handleReject(record) {
+            this.$prompt('請輸入拒絕原因', '提示', {
+                confirmButtonText: '確定',
+                cancelButtonText: '取消',
+                inputPattern: /.+/,
+                inputErrorMessage: '請輸入拒絕原因'
+            }).then(({ value }) => {
+                this.loading = true;
+                
+                const rejectData = {
+                    action_type: 'reject_approval',
+                    record_id: record.id,
+                    record_type: record.RecordType,
+                    reject_reason: value
+                };
+                
+                axios.post('/RetainedSample/handle_approval/', rejectData)
+                    .then(response => {
+                        this.loading = false;
+                        const data = response.data;
+                        if (data.success) {
+                            this.$message.success('操作成功');
+                            // 重新加载相关标签页数据
+                            this.loadTabData('myApproval');
+                            this.loadTabData('summary');
+                        } else {
+                            this.$message.error(data.message || '操作失敗');
+                        }
+                    })
+                    .catch(error => {
+                        this.loading = false;
+                        console.error('操作失敗:', error);
+                        this.$message.error('操作失敗');
+                    });
+            }).catch(() => {
+                // 用户取消
+            });
+        },
+        
+        // 重置归还表单
+        resetReturnForm() {
+            this.returnForm = {
+                ReturnQuantity: 1,
+                ReturnReason: ''
+            };
+            this.selectedBorrowRecord = null;
+        },
     }
 });
 </script>

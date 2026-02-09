@@ -23,24 +23,44 @@ class RetainedSample(models.Model):
     BorrowedQuantity = models.IntegerField(verbose_name="已借出數量")
     RemainedQuantity = models.IntegerField(verbose_name="剩餘留樣數量")
     UnderApprovalQuantity = models.IntegerField(verbose_name="簽核中數量")
+
+    ReturnRequestedAt = models.DateTimeField(null=True, blank=True, verbose_name="归还申请时间")
+    ReturnRequestedQuantity = models.IntegerField(default=0, verbose_name="申请归还数量")
+    ReturnReason = models.CharField(max_length=500, blank=True, verbose_name="归还原因")
+    ReturnedAt = models.DateTimeField(null=True, blank=True, verbose_name="实际归还时间")
+    ReturnedQuantity = models.IntegerField(default=0, verbose_name="已归还数量")
+
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新时间")
 
 
 class PersonalRetainedSample(models.Model):
     """個人留样信息"""
-    Sample = models.ManyToManyField("RetainedSample")
-    Borrowed = models.CharField(max_length=30, verbose_name="借用人")  # 工號
+    Sample = models.ForeignKey("RetainedSample", default='', on_delete=models.CASCADE, verbose_name="留样样品")
+    Borrower = models.CharField(max_length=30, verbose_name="借用人")  # 工號
     Status = models.CharField(max_length=30, verbose_name="借還狀態")  # 借用確認中，已借用，歸還確認中，已歸還
 
     BorrowQuantity = models.IntegerField(verbose_name="借用數量")
     BorrowedReson = models.CharField(max_length=1000, blank=True, verbose_name="借用用途")
+
+    RemainedQuantity = models.IntegerField(default=0, verbose_name="剩余借用数量")
+    ReturnRequestedAt = models.DateTimeField(null=True, blank=True, verbose_name="归还申请时间")
+    ReturnRequestedQuantity = models.IntegerField(default=0, verbose_name="申请归还数量")
+    ReturnReason = models.CharField(max_length=500, blank=True, verbose_name="归还原因")
+    ReturnedAt = models.DateTimeField(null=True, blank=True, verbose_name="实际归还时间")
+    ReturnedQuantity = models.IntegerField(default=0, verbose_name="已归还数量")
+    ApprovedAt = models.DateTimeField(null=True, blank=True, verbose_name="批准时间")
+    ApprovedBy = models.CharField(max_length=100, blank=True, verbose_name="批准人")
+    RejectedAt = models.DateTimeField(null=True, blank=True, verbose_name="拒绝时间")
+    RejectedBy = models.CharField(max_length=100, blank=True, verbose_name="拒绝人")
+
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新时间")
 
 class RetainedSampleRecord(models.Model):
     """個人留样信息"""
-    Sample = models.ManyToManyField("RetainedSample")
+    Sample = models.ForeignKey("RetainedSample", default='', on_delete=models.CASCADE, verbose_name="留样样品")
+    RecordType = models.CharField(max_length=30, blank=True ,verbose_name="記錄類型")  # 借還，報廢
     Borrowed = models.CharField(max_length=30, verbose_name="借用人")  # 工號
     BorrowQuantity = models.IntegerField(verbose_name="借用數量")
     BorrowedReson = models.CharField(max_length=1000, blank=True, verbose_name="借用用途")

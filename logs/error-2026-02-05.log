@@ -101,3 +101,4 @@ Traceback (most recent call last):
     'current_user': current_user_info,
 UnboundLocalError: local variable 'current_user_info' referenced before assignment
 [2026-02-05 16:18:33,827] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 500 97353
+[2026-02-06 08:22:39,959] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)

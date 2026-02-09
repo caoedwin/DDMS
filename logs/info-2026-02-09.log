@@ -1,0 +1,14 @@
+[2026-02-09 13:40:07,409] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 13:40:07: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-09 13:45:33,965] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 13:45:33: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-09 13:47:36,064] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 13:47:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-09 14:47:03,624] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 14:47:03: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-09 14:47:26,946] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 14:47:26: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-09 14:51:02,949] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 14:51:02: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-09 15:20:52,628] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-09 15:20:53,536] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 15:20:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-02-09 15:21:02,640] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-09 15:32:30,793] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 15:32:30: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-02-09 15:53:38,177] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 15:53:38: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-09 15:54:21,265] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 15:54:21: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-09 15:54:42,152] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 15:54:42: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-09 16:15:16,484] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-09 16:15:16: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
