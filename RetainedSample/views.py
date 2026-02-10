@@ -36,7 +36,6 @@ def RetainedSample_summary(request):
         return render(request, 'RetainedSample/RetainedSample.html', locals())
     if request.method == 'GET':
         tab = request.GET.get('tab', 'summary')
-        print('tab')
 
         if tab == 'summary':
             queryset = RetainedSample.objects.all()
@@ -225,6 +224,7 @@ def RetainedSample_summary(request):
                     sample_qs = sample_qs.filter(Manufacturer__icontains=manufacturer)
 
                 sample_ids = sample_qs.values_list('id', flat=True)
+                print(sample_ids)
                 records = records.filter(Sample_id__in=sample_ids)
 
             if borrower:
@@ -323,7 +323,6 @@ def RetainedSample_summary(request):
         try:
             post_data = json.loads(request.body)
 
-            # 处理借用申请
             # 处理借用申请
             if post_data.get('borrowData') == 'borrowData':
                 sample_id = post_data.get('sample_id')
@@ -663,6 +662,7 @@ def handle_approval(request):
         action_type = post_data.get('action_type', '')
         record_id = post_data.get('record_id')
         record_type = post_data.get('record_type', '')
+        print(record_type)
 
         if not record_id:
             return JsonResponse({'success': False, 'message': '记录ID不能为空'})
@@ -670,6 +670,7 @@ def handle_approval(request):
         if action_type == 'confirm_approval':
             # 同意审批
             # 处理同意借用（在handle_approval函数中）
+
             if record_type == '借用申請':
                 try:
                     with transaction.atomic():
@@ -698,8 +699,10 @@ def handle_approval(request):
                         return JsonResponse({'success': True, 'message': '同意借用成功'})
 
                 except PersonalRetainedSample.DoesNotExist:
+                    print(str(PersonalRetainedSample.DoesNotExist))
                     return JsonResponse({'success': False, 'message': '借用记录不存在或状态不正确'})
                 except Exception as e:
+                    print(str(e))
                     return JsonResponse({'success': False, 'message': f'审批失败: {str(e)}'})
 
             elif record_type == '歸還申請':
@@ -807,12 +810,15 @@ def handle_approval(request):
                             BorrowedStatus='已拒绝',
                             ReturnedStatus='未歸還'
                         )
+                        print({'success': True, 'message': '拒絕借用成功'})
 
                         return JsonResponse({'success': True, 'message': '拒絕借用成功'})
 
                 except PersonalRetainedSample.DoesNotExist:
+                    print(str(PersonalRetainedSample.DoesNotExist))
                     return JsonResponse({'success': False, 'message': '借用记录不存在或状态不正确'})
                 except Exception as e:
+                    print(str(e))
                     return JsonResponse({'success': False, 'message': f'拒绝失败: {str(e)}'})
 
             elif record_type == '歸還申請':
@@ -865,6 +871,7 @@ def handle_approval(request):
     except json.JSONDecodeError:
         return JsonResponse({'success': False, 'message': '请求数据格式错误'})
     except Exception as e:
+        print(str(e))
         import traceback
         print(traceback.format_exc())
         return JsonResponse({'success': False, 'message': str(e)})

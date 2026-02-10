@@ -74,3 +74,4 @@ Traceback (most recent call last):
     if request.method == 'GET' and not is_ajax and not has_tab_param:
 NameError: name 'is_ajax' is not defined
 [2026-02-09 15:43:44,866] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 87160
+[2026-02-10 07:56:45,527] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)

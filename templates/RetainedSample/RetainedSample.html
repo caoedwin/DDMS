@@ -477,11 +477,11 @@ tbody tr td:last-child {
                 <span v-if="isEditMode" style="color: #999; font-size: 12px; margin-left: 10px;">(專案名稱不可修改)</span>
             </el-form-item>
             <el-form-item label="專案負責人" prop="Owner">
-                <el-select 
-                    v-model="addForm.Owner" 
-                    placeholder="請輸入工號或姓名" 
-                    style="width: 100%;" 
-                    filterable 
+                <el-select
+                    v-model="addForm.Owner"
+                    placeholder="請輸入工號或姓名"
+                    style="width: 100%;"
+                    filterable
                     clearable
                     :filter-method="filterUsers"
                     @change="handleOwnerChange">
@@ -509,11 +509,11 @@ tbody tr td:last-child {
                 <el-input-number v-model="addForm.SampleQuantity" :min="1" style="width: 100%;"></el-input-number>
             </el-form-item>
             <el-form-item label="留樣人" prop="Retainer">
-                <el-select 
-                    v-model="addForm.Retainer" 
-                    placeholder="請輸入工號或姓名" 
-                    style="width: 100%;" 
-                    filterable 
+                <el-select
+                    v-model="addForm.Retainer"
+                    placeholder="請輸入工號或姓名"
+                    style="width: 100%;"
+                    filterable
                     clearable
                     :filter-method="filterUsers"
                     @change="handleRetainerChange">
@@ -529,9 +529,9 @@ tbody tr td:last-child {
                 </div>
             </el-form-item>
             <el-form-item label="留樣日期" prop="RetainStart">
-                <el-date-picker 
-                    v-model="addForm.RetainStart" 
-                    type="date" 
+                <el-date-picker
+                    v-model="addForm.RetainStart"
+                    type="date"
                     value-format="yyyy-MM-dd"
                     placeholder="選擇留樣日期"
                     style="width: 100%;">
@@ -597,22 +597,22 @@ tbody tr td:last-child {
             <el-button type="danger" @click="scrapSample">確認報廢</el-button>
         </div>
     </el-dialog>
-    
+
     <!-- 添加归还对话框（放在其他对话框后面） -->
     <el-dialog :title="returnDialogTitle" width="50%" :visible.sync="returnDialogVisible">
         <el-form :model="returnForm" label-width="120px">
             <el-form-item label="歸還數量">
-                <el-input-number 
-                    v-model="returnForm.ReturnQuantity" 
-                    :min="1" 
+                <el-input-number
+                    v-model="returnForm.ReturnQuantity"
+                    :min="1"
                     :max="selectedBorrowRecord?.RemainedQuantity || 0">
                 </el-input-number>
                 <span style="margin-left: 10px;">最多可還: ${ selectedBorrowRecord ? selectedBorrowRecord.RemainedQuantity : 0 }</span>
             </el-form-item>
             <el-form-item label="歸還原因" prop="ReturnReason">
-                <el-input 
-                    type="textarea" 
-                    v-model="returnForm.ReturnReason" 
+                <el-input
+                    type="textarea"
+                    v-model="returnForm.ReturnReason"
                     placeholder="請輸入歸還原因（可選）"
                     :rows="3">
                 </el-input>
@@ -724,10 +724,10 @@ tbody tr td:last-child {
                         <el-table-column prop="created_at" label="申請時間" align="center"></el-table-column>
                         <el-table-column label="操作" align="center" width="180" fixed="right">
                             <template slot-scope="scope">
-                                <el-button 
+                                <el-button
                                     v-if="scope.row.Status === '已借用' && scope.row.RemainedQuantity > 0"
-                                    size="mini" 
-                                    type="success" 
+                                    size="mini"
+                                    type="success"
                                     @click="showReturnDialog(scope.row)">
                                     歸還
                                 </el-button>
@@ -754,17 +754,17 @@ tbody tr td:last-child {
                         <el-table-column prop="created_at" label="申請時間" align="center"></el-table-column>
                         <el-table-column label="操作" align="center" width="200" fixed="right">
                             <template slot-scope="scope">
-                                <el-button 
+                                <el-button
                                     v-if="scope.row.Status === '待审批' || scope.row.Status === '待确认'"
-                                    size="mini" 
-                                    type="success" 
+                                    size="mini"
+                                    type="success"
                                     @click="handleApprove(scope.row)">
                                     同意
                                 </el-button>
-                                <el-button 
+                                <el-button
                                     v-if="scope.row.Status === '待审批' || scope.row.Status === '待确认'"
-                                    size="mini" 
-                                    type="danger" 
+                                    size="mini"
+                                    type="danger"
                                     @click="handleReject(scope.row)">
                                     拒絕
                                 </el-button>
@@ -820,7 +820,7 @@ new Vue({
             activeTab: 'summary',
             loading: false,
             isAdmin: false,
-            
+
             // 当前登录用户信息
             currentUser: null,
 
@@ -891,7 +891,7 @@ new Vue({
             // 对话框控制（合并新增和编辑）
             isEditMode: false,
             currentEditId: null,
-            
+
             // 归还相关
             returnDialogVisible: false,
             returnDialogTitle: '申請歸還',
@@ -929,7 +929,7 @@ new Vue({
             },
 
             selectedSamples: [],
-            
+
             // 添加表单验证规则
             addFormRules: {
                 Project: [
@@ -975,70 +975,70 @@ new Vue({
             const day = String(date.getDate()).padStart(2, '0');
             return `${year}-${month}-${day}`;
         },
-        
+
         // 过滤用户列表
         filterUsers(query) {
             if (query) {
                 this.filteredUsers = this.filterOptions.summary.users.filter(user => {
-                    return user.label.toLowerCase().includes(query.toLowerCase()) || 
+                    return user.label.toLowerCase().includes(query.toLowerCase()) ||
                            user.value.toLowerCase().includes(query.toLowerCase());
                 });
             } else {
                 this.filteredUsers = this.filterOptions.summary.users;
             }
         },
-        
+
         // 处理负责人选择变化
         handleOwnerChange(value) {
             const selectedUser = this.filterOptions.summary.users.find(user => user.value === value);
             this.selectedOwnerDisplay = selectedUser ? selectedUser.label : '';
         },
-        
+
         // 处理留样人选择变化
         handleRetainerChange(value) {
             const selectedUser = this.filterOptions.summary.users.find(user => user.value === value);
             this.selectedRetainerDisplay = selectedUser ? selectedUser.label : '';
         },
-        
+
         // 根据工号获取显示名称
         getDisplayNameByEmployeeId(employeeId) {
             if (!employeeId) return '';
             const user = this.filterOptions.summary.users.find(u => u.value === employeeId);
             return user ? user.label : employeeId;
         },
-    
+
         // 显示新增对话框
         showAddDialog() {
             this.isEditMode = false;
             this.currentEditId = null;
             this.resetAddForm();
-            
+
             // 设置留样日期为当天
             this.addForm.RetainStart = this.formatDate(new Date());
-            
+
             // 设置留样人为当前登录用户（默认选中）
             if (this.currentUser && this.currentUser.value) {
                 this.addForm.Retainer = this.currentUser.value;
                 this.selectedRetainerDisplay = this.currentUser.display_name;
-                
+
                 // 确保当前用户在下拉选项中
                 this.ensureUserInList(this.currentUser.value, this.currentUser.display_name);
             }
-            
+
             // 初始化用户列表
             this.filteredUsers = this.filterOptions.summary.users;
-            
+
             // 使用$nextTick确保DOM更新后再打开对话框
             this.$nextTick(() => {
                 this.addDialogVisible = true;
             });
         },
-    
+
         // 编辑留样
         handleEdit(row) {
             this.isEditMode = true;
             this.currentEditId = row.id;
-            
+
             // 将当前行的数据复制到表单中
             this.addForm = {
                 Key_Post: '',
@@ -1053,37 +1053,37 @@ new Vue({
                 RetainPeriod: row.RetainPeriod,
                 RetainPosition: row.RetainPosition
             };
-            
+
             // 确保负责人和留样人都在用户列表中
             if (row.Owner) {
                 const ownerDisplay = this.getDisplayNameByEmployeeId(row.Owner);
                 this.ensureUserInList(row.Owner, ownerDisplay || row.Owner);
                 this.selectedOwnerDisplay = ownerDisplay;
             }
-            
+
             if (row.Retainer) {
                 const retainerDisplay = this.getDisplayNameByEmployeeId(row.Retainer);
                 this.ensureUserInList(row.Retainer, retainerDisplay || row.Retainer);
                 this.selectedRetainerDisplay = retainerDisplay;
             }
-            
+
             // 初始化用户列表
             this.filteredUsers = this.filterOptions.summary.users;
-            
+
             // 使用$nextTick确保DOM更新后再打开对话框
             this.$nextTick(() => {
                 this.addDialogVisible = true;
             });
         },
-        
+
         // 确保用户在下拉列表中
         ensureUserInList(userValue, userLabel) {
             if (!userValue) return;
-            
+
             const userExists = this.filterOptions.summary.users.some(
                 user => user.value === userValue
             );
-            
+
             if (!userExists) {
                 this.filterOptions.summary.users.unshift({
                     value: userValue,
@@ -1091,7 +1091,7 @@ new Vue({
                 });
             }
         },
-    
+
         // 保存留样（新增或编辑）
         saveRetainedSample() {
             // 表单验证
@@ -1127,20 +1127,20 @@ new Vue({
                 this.$message.warning('请选择留樣位置');
                 return;
             }
-    
+
             this.loading = true;
-            
+
             // 根据模式设置不同的Key_Post值
             const formData = {
                 ...this.addForm,
                 Key_Post: this.isEditMode ? 'editdata' : 'adddata'
             };
-            
+
             // 如果是编辑模式，添加ID
             if (this.isEditMode) {
                 formData.id = this.currentEditId;
             }
-            
+
             axios.post('/RetainedSample/RetainedSample_summary/', formData)
                 .then(response => {
                     this.loading = false;
@@ -1162,7 +1162,7 @@ new Vue({
                     this.$message.error('操作失败');
                 });
         },
-    
+
         // 删除留样
         handleDelete(row) {
             this.$confirm('确认删除这条留样记录吗？删除后无法恢复。', '提示', {
@@ -1171,12 +1171,12 @@ new Vue({
                 type: 'warning'
             }).then(() => {
                 this.loading = true;
-                
+
                 const deleteData = {
                     Key_Post: 'deletedata',
                     id: row.id
                 };
-                
+
                 axios.post('/RetainedSample/RetainedSample_summary/', deleteData)
                     .then(response => {
                         this.loading = false;
@@ -1198,7 +1198,7 @@ new Vue({
                 // 用户取消删除
             });
         },
-    
+
         resetAddForm() {
             this.addForm = {
                 Key_Post: '',
@@ -1220,10 +1220,10 @@ new Vue({
         // 根据标签页加载数据
         loadTabData(tab) {
             this.loading = true;
-            
+
             // 根据不同的标签页构造不同的参数
             let params = { tab: tab };
-            
+
             // 添加搜索条件到参数中（如果有的话）
             switch(tab) {
                 case 'summary':
@@ -1247,7 +1247,7 @@ new Vue({
                     // 这些标签页没有搜索条件
                     break;
             }
-            
+
             axios.get('/RetainedSample/RetainedSample_summary/', { params: params })
                 .then(response => {
                     const data = response.data;
@@ -1262,7 +1262,7 @@ new Vue({
                         switch(tab) {
                             case 'summary':
                                 this.summaryDisplayData = data.samples || [];
-                                
+
                                 // 更新下拉选项
                                 if (data.filter_options) {
                                     this.filterOptions.summary.projects = data.filter_options.projects || [];
@@ -1271,15 +1271,15 @@ new Vue({
                                     this.filterOptions.summary.users = data.filter_options.users || [];
                                     this.filterOptions.summary.retain_positions = data.filter_options.retain_positions || [];
                                 }
-                                
+
                                 // 保存当前用户信息
                                 if (data.current_user) {
                                     this.currentUser = data.current_user;
-                                    
+
                                     // 确保当前用户在下拉选项中
                                     this.ensureUserInList(this.currentUser.value, this.currentUser.display_name);
                                 }
-                                
+
                                 // 初始化用户列表
                                 this.filteredUsers = this.filterOptions.summary.users;
                                 break;
@@ -1378,7 +1378,7 @@ new Vue({
             this.selectedSamples = selection;
             this.selectedSample = selection.length > 0 ? selection[0] : null;
         },
-        
+
         showBorrowDialog() {
             if (this.selectedSamples.length === 0) {
                 this.$message.warning('请选择要借用的样品');
@@ -1570,58 +1570,58 @@ new Vue({
                 ScrapReason: ''
             };
         },
-        
+
         // 处理我的借用表格的选择
         handleBorrowSelectionChange(selection) {
             this.selectedBorrowRecords = selection;
             this.selectedBorrowRecord = selection.length > 0 ? selection[0] : null;
         },
-        
+
         // 显示归还对话框
         showReturnDialog(record) {
             if (record.Status !== '已借用') {
                 this.$message.warning('只有已借用的樣品可以歸還');
                 return;
             }
-            
+
             if (record.RemainedQuantity <= 0) {
                 this.$message.warning('該樣品已無需歸還數量');
                 return;
             }
-            
+
             this.selectedBorrowRecord = record;
             this.returnForm.ReturnQuantity = record.RemainedQuantity;
             this.returnForm.ReturnReason = '';
             this.returnDialogTitle = `歸還樣品：${record.SampleName}`;
             this.returnDialogVisible = true;
         },
-        
+
         // 提交归还申请
         submitReturnRequest() {
             if (!this.selectedBorrowRecord) {
                 this.$message.warning('請選擇要歸還的記錄');
                 return;
             }
-            
+
             if (this.returnForm.ReturnQuantity <= 0) {
                 this.$message.warning('歸還數量必須大於0');
                 return;
             }
-            
+
             if (this.returnForm.ReturnQuantity > this.selectedBorrowRecord.RemainedQuantity) {
                 this.$message.warning('歸還數量不能超過未歸還數量');
                 return;
             }
-            
+
             this.loading = true;
-            
+
             const returnData = {
                 action_type: 'request_return',
                 record_id: this.selectedBorrowRecord.id,
                 return_quantity: this.returnForm.ReturnQuantity,
                 return_reason: this.returnForm.ReturnReason || '正常歸還'
             };
-            
+
             axios.post('/RetainedSample/handle_return/', returnData)
                 .then(response => {
                     this.loading = false;
@@ -1642,7 +1642,7 @@ new Vue({
                     this.$message.error('歸還申請失敗');
                 });
         },
-        
+
         // 同意审批
         handleApprove(record) {
             this.$confirm(`確定要${record.RecordType === '歸還申請' ? '同意歸還' : '同意借用'}嗎?`, '提示', {
@@ -1651,18 +1651,19 @@ new Vue({
                 type: 'warning'
             }).then(() => {
                 this.loading = true;
-                
+
                 const approveData = {
                     action_type: 'confirm_approval',
                     record_id: record.id,
                     record_type: record.RecordType,
                     confirm_quantity: record.Quantity
                 };
-                
+
                 axios.post('/RetainedSample/handle_approval/', approveData)
                     .then(response => {
                         this.loading = false;
                         const data = response.data;
+                        //console.log(data);
                         if (data.success) {
                             this.$message.success('操作成功');
                             // 重新加载相关标签页数据
@@ -1680,7 +1681,7 @@ new Vue({
                     });
             });
         },
-        
+
         // 拒绝审批
         handleReject(record) {
             this.$prompt('請輸入拒絕原因', '提示', {
@@ -1690,18 +1691,19 @@ new Vue({
                 inputErrorMessage: '請輸入拒絕原因'
             }).then(({ value }) => {
                 this.loading = true;
-                
+
                 const rejectData = {
                     action_type: 'reject_approval',
                     record_id: record.id,
                     record_type: record.RecordType,
                     reject_reason: value
                 };
-                
+
                 axios.post('/RetainedSample/handle_approval/', rejectData)
                     .then(response => {
                         this.loading = false;
                         const data = response.data;
+                        console.log(data);
                         if (data.success) {
                             this.$message.success('操作成功');
                             // 重新加载相关标签页数据
@@ -1720,7 +1722,7 @@ new Vue({
                 // 用户取消
             });
         },
-        
+
         // 重置归还表单
         resetReturnForm() {
             this.returnForm = {

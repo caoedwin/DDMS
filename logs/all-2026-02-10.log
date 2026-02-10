@@ -1,0 +1,475 @@
+[2026-02-10 09:24:26,812] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:24:54,500] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 487
+[2026-02-10 09:25:04,809] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:25:07,590] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 487
+[2026-02-10 09:25:08,282] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:25:09,279] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 487
+[2026-02-10 09:25:10,015] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:25:29,430] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 482
+[2026-02-10 09:25:37,422] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 487
+[2026-02-10 09:25:38,474] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:25:55,627] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:25:55: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 09:25:55,658] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 56
+[2026-02-10 09:25:55,729] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:25:55,809] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 354
+[2026-02-10 09:26:00,322] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 354
+[2026-02-10 09:26:03,623] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:27:44,346] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:27:54,514] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:27:54: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 09:27:54,632] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 09:31:29,504] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:31:29: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 09:31:29,640] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 09:31:46,784] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110748
+[2026-02-10 09:31:47,432] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 09:31:47,450] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 09:31:47,485] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 09:31:47,963] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 09:31:48,724] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:31:48,760] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 09:31:53,414] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 09:32:03,081] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 475
+[2026-02-10 09:32:19,299] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:32:20,960] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 475
+[2026-02-10 09:32:26,847] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:32:36,687] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 757
+[2026-02-10 09:32:54,378] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:33:13,370] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:33:13: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 09:33:13,455] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 09:33:13,890] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:33:13,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 699
+[2026-02-10 09:33:17,795] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 699
+[2026-02-10 09:33:23,451] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:33:36,963] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:33:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 09:33:36,995] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 09:36:24,941] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110748
+[2026-02-10 09:36:25,132] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 09:36:25,198] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 09:36:25,201] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 09:36:25,518] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 09:36:26,289] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 09:36:26,301] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:36:30,284] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 09:36:33,632] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 687
+[2026-02-10 09:36:34,998] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 1032
+[2026-02-10 09:36:44,475] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:37:03,291] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:37:03: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 09:37:03,313] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 09:37:03,413] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 911
+[2026-02-10 09:37:03,437] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:39:08,724] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:39:17,146] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:39:17: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 09:39:17,780] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 09:54:18,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110748
+[2026-02-10 09:54:18,751] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 09:54:18,751] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 09:54:18,957] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 09:54:19,278] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 09:54:20,011] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:54:20,173] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 09:54:28,788] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 09:54:30,252] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:54:40,756] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:54:40: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 09:54:40,857] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 09:54:41,877] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 1123
+[2026-02-10 09:54:42,633] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:54:46,011] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:54:53,953] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:54:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 09:54:54,330] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 09:56:59,520] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:57:07,840] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:57:07: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 09:57:08,002] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 09:57:08,675] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 1335
+[2026-02-10 09:57:09,283] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:57:09,979] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 1582
+[2026-02-10 09:57:14,900] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:57:22,423] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:57:22: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 09:57:25,275] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 09:59:05,777] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:59:08,297] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 09:59:10,063] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:59:15,291] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:59:15: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 09:59:15,410] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 09:59:20,191] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 1547
+[2026-02-10 09:59:20,562] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:59:20,727] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:59:20,876] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 09:59:22,253] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 09:59:30,643] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 09:59:30: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 09:59:33,524] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 10:00:36,650] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110070
+[2026-02-10 10:00:37,604] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:00:37,702] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:00:38,063] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:00:38,141] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:00:38,835] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:00:39,125] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:00:49,722] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:00:49: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:00:49,756] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:00:50,238] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 1759
+[2026-02-10 10:00:50,359] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:00:52,907] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 10:01:02,815] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:01:02: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:01:03,035] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 10:01:53,201] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110070
+[2026-02-10 10:01:53,483] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:01:53,878] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:01:53,888] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:01:53,958] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:01:53,967] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:01:53,975] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:02:05,624] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:02:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:02:05,783] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:02:06,301] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 1971
+[2026-02-10 10:02:06,471] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:02:09,448] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 10:02:14,396] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:02:14: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:02:14,600] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 10:04:26,330] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 10:04:26,467] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:04:26,477] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:04:26,498] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:04:26,605] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:04:27,264] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:04:27,271] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:04:33,511] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:04:33: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:04:33,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:04:33,894] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:04:33,947] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 2184
+[2026-02-10 10:04:35,297] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:04:45,331] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:04:45: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:04:45,725] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 10:06:23,539] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 10:06:23,797] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:06:23,813] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:06:24,074] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:06:24,106] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:06:24,372] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:06:24,425] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:06:25,735] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:06:28,170] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:06:35,514] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:06:35: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:06:35,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:06:35,845] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 2397
+[2026-02-10 10:06:36,087] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:06:37,473] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:06:45,010] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:06:45: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:06:45,255] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 10:09:42,918] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 10:09:43,032] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:09:43,063] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:09:43,178] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:09:43,414] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:09:44,079] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:09:44,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:09:47,552] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:09:49,295] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:09:55,744] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:09:55: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:09:55,886] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:09:56,436] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 2610
+[2026-02-10 10:09:56,757] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:09:58,266] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:10:02,542] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:10:02: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:10:03,338] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 38396
+[2026-02-10 10:31:01,133] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:31:01,554] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-02-10 10:31:01,561] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:31:11,691] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:31:11,744] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-02-10 10:31:11,790] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-02-10 10:31:11,988] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47473
+[2026-02-10 10:31:12,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:31:12,671] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:31:12: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-02-10 10:31:12,686] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-02-10 10:31:12,770] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-02-10 10:31:12,771] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-02-10 10:31:14,952] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2026-02-10 10:31:15,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4026
+[2026-02-10 10:31:15,245] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:31:17,990] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:31:18,006] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2026-02-10 10:31:19,315] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 56695
+[2026-02-10 10:31:19,702] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:31:27,344] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:31:29,654] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80417
+[2026-02-10 10:31:29,702] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:31:31,568] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:31:32,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 170532
+[2026-02-10 10:31:32,620] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:31:40,248] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:31:40,678] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 68088
+[2026-02-10 10:31:40,711] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:31:49,465] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:32:26,207] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/165/change/ HTTP/1.1" 200 24566
+[2026-02-10 10:32:26,253] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:32:37,045] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 170532
+[2026-02-10 10:32:40,281] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/161/change/ HTTP/1.1" 200 24557
+[2026-02-10 10:32:40,320] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:33:04,155] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 170532
+[2026-02-10 10:33:23,144] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/add/ HTTP/1.1" 200 23878
+[2026-02-10 10:33:23,188] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:34:34,636] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:34:34,649] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/permission/add/ HTTP/1.1" 302 0
+[2026-02-10 10:34:35,906] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 171538
+[2026-02-10 10:34:35,955] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:34:40,188] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/add/ HTTP/1.1" 200 23878
+[2026-02-10 10:34:40,231] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:34:43,688] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 171394
+[2026-02-10 10:34:49,068] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/166/change/ HTTP/1.1" 200 24551
+[2026-02-10 10:34:49,106] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:34:55,282] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 171394
+[2026-02-10 10:34:58,233] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/add/ HTTP/1.1" 200 23878
+[2026-02-10 10:34:58,275] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:35:51,338] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:35:51,352] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/permission/add/ HTTP/1.1" 302 0
+[2026-02-10 10:35:52,418] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 172386
+[2026-02-10 10:35:52,458] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:36:12,549] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2026-02-10 10:36:12,559] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:36:12,656] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2026-02-10 10:36:12,664] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:36:12,743] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:36:12,785] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-02-10 10:36:12,794] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:36:14,406] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:36:14,426] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-02-10 10:36:14,456] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-02-10 10:36:14,492] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 10:36:14,582] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:36:14,631] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:36:14,766] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:36:15,373] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:36:15,413] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:36:15,424] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:36:20,792] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 56661
+[2026-02-10 10:36:22,015] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 172244
+[2026-02-10 10:36:22,064] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:36:22,204] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:36:25,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:36:27,307] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80417
+[2026-02-10 10:36:27,343] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:36:30,048] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/1/change/ HTTP/1.1" 200 36094
+[2026-02-10 10:36:30,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:36:35,199] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:36:35,212] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/role/1/change/ HTTP/1.1" 302 0
+[2026-02-10 10:36:37,111] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80607
+[2026-02-10 10:36:37,151] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:36:40,013] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 56643
+[2026-02-10 10:36:40,408] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/RetainedSample/retainedsample/ HTTP/1.1" 200 44634
+[2026-02-10 10:36:40,527] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:36:40,901] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:36:52,342] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2026-02-10 10:36:52,347] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:36:52,386] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2026-02-10 10:36:52,393] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:36:52,417] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:36:52,426] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-02-10 10:36:52,434] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 10:36:54,470] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:36:54,485] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-02-10 10:36:54,504] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-02-10 10:36:54,536] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 10:36:54,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:36:54,647] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:36:54,669] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:36:55,264] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:36:55,308] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:36:55,316] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:37:12,880] [log.py:228] [log:log_response] [WARNING]- Not Found: /RetainedSample/RetainedSample_MyBorrow/
+[2026-02-10 10:37:12,881] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /RetainedSample/RetainedSample_MyBorrow/ HTTP/1.1" 404 7532
+[2026-02-10 10:37:12,956] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:37:13,000] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:37:14,885] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:37:14,889] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:37:14,889] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:37:15,243] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:37:15,251] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:37:15,252] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:37:15,291] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:37:17,076] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 3507
+[2026-02-10 10:37:26,894] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:37:42,256] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:37:42: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:37:42,268] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:37:42,372] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 2823
+[2026-02-10 10:37:42,380] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:37:44,736] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 3507
+[2026-02-10 10:37:45,196] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:37:50,454] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:37:50: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:37:50,467] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 68
+[2026-02-10 10:37:50,558] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:37:50,573] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:38:02,597] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:38:18,474] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:38:18,488] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/permission/ HTTP/1.1" 200 7364
+[2026-02-10 10:38:18,512] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/cancel.js HTTP/1.1" 200 423
+[2026-02-10 10:38:19,898] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 10:38:19,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/app01/permission/ HTTP/1.1" 302 0
+[2026-02-10 10:38:20,987] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/permission/ HTTP/1.1" 200 168716
+[2026-02-10 10:38:21,028] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 10:38:28,304] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 10:38:28,415] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:38:28,432] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:38:28,463] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:38:28,642] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:38:29,376] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:38:29,387] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:44:17,356] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:44:17: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:44:17,369] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:44:17,432] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:44:17,489] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3036
+[2026-02-10 10:44:19,600] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:44:41,352] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:44:41: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:44:41,365] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 68
+[2026-02-10 10:44:41,415] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:44:41,445] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:48:30,511] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 10:48:30,611] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 10:48:30,658] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 10:48:30,703] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 10:48:30,815] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 10:48:31,353] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 10:48:31,377] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:48:32,721] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3024
+[2026-02-10 10:49:53,053] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:50:01,001] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:50:01: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:50:01,012] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:50:01,138] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3249
+[2026-02-10 10:50:01,148] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:50:02,495] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:50:04,678] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:50:04: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:50:04,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 68
+[2026-02-10 10:50:04,819] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:50:04,847] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:50:04,916] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4332
+[2026-02-10 10:50:05,817] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3237
+[2026-02-10 10:50:11,276] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:50:11: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_return/'>
+[2026-02-10 10:50:11,287] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_return/ HTTP/1.1" 200 80
+[2026-02-10 10:50:11,340] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3249
+[2026-02-10 10:50:14,822] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:50:21,949] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:50:21: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:50:21,960] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 74
+[2026-02-10 10:50:22,017] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:50:22,037] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:50:23,234] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3237
+[2026-02-10 10:50:33,697] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:50:33: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_return/'>
+[2026-02-10 10:50:33,706] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_return/ HTTP/1.1" 200 80
+[2026-02-10 10:50:33,776] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3249
+[2026-02-10 10:50:34,764] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:50:40,881] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:50:40: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:50:40,890] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 74
+[2026-02-10 10:50:40,945] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:50:40,961] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:50:42,469] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3237
+[2026-02-10 10:50:45,212] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:50:45: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_return/'>
+[2026-02-10 10:50:45,222] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_return/ HTTP/1.1" 200 80
+[2026-02-10 10:50:45,305] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3249
+[2026-02-10 10:50:48,844] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:50:49,412] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4344
+[2026-02-10 10:50:51,084] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3249
+[2026-02-10 10:50:52,174] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:50:52,683] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3249
+[2026-02-10 10:50:55,880] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:51:03,769] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:51:03: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:51:03,779] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 68
+[2026-02-10 10:51:03,826] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:51:03,859] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:51:03,866] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4332
+[2026-02-10 10:51:05,358] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3237
+[2026-02-10 10:51:14,484] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:51:15,422] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4332
+[2026-02-10 10:56:30,401] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 354
+[2026-02-10 10:56:42,501] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4332
+[2026-02-10 10:56:44,410] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:56:45,337] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4332
+[2026-02-10 10:58:16,289] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3237
+[2026-02-10 10:58:23,060] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:58:25,147] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4332
+[2026-02-10 10:58:36,692] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:58:41,775] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:58:41: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 10:58:41,786] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 10:58:41,934] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:58:42,007] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3462
+[2026-02-10 10:58:43,261] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3462
+[2026-02-10 10:58:46,211] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 296
+[2026-02-10 10:58:51,772] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:58:51: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:58:51,783] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 68
+[2026-02-10 10:58:51,844] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:58:51,863] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:58:52,719] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3450
+[2026-02-10 10:58:56,605] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 10:59:28,935] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:59:30,311] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3450
+[2026-02-10 10:59:36,057] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:59:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_return/'>
+[2026-02-10 10:59:36,067] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_return/ HTTP/1.1" 200 80
+[2026-02-10 10:59:36,143] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3462
+[2026-02-10 10:59:37,726] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 295
+[2026-02-10 10:59:44,700] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 10:59:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-02-10 10:59:44,712] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/handle_approval/ HTTP/1.1" 200 74
+[2026-02-10 10:59:44,804] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 10:59:44,884] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 10:59:46,237] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:00:14,743] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 11:00:15,855] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3450
+[2026-02-10 11:00:32,475] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:04:02,472] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records&borrower=C1010S3 HTTP/1.1" 200 4607
+[2026-02-10 11:06:47,909] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:08:22,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records&borrower=C1010S3 HTTP/1.1" 200 4607
+[2026-02-10 11:08:33,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3450
+[2026-02-10 11:08:40,986] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 11:08:43,223] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records&borrower=C1010S3 HTTP/1.1" 200 4607
+[2026-02-10 11:11:15,028] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 354
+[2026-02-10 11:11:33,422] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records&borrower=C1010S3 HTTP/1.1" 200 4607
+[2026-02-10 11:11:33,825] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 11:11:35,175] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3450
+[2026-02-10 11:11:37,970] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 11:11:38,479] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3450
+[2026-02-10 11:11:38,964] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:11:40,815] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3450
+[2026-02-10 11:11:42,096] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 11:11:42,758] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records&borrower=C1010S3 HTTP/1.1" 200 4607
+[2026-02-10 11:11:46,023] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:11:47,368] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records&borrower=C1010S3 HTTP/1.1" 200 4607
+[2026-02-10 11:11:52,894] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 110115
+[2026-02-10 11:11:52,974] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38396
+[2026-02-10 11:11:53,007] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-02-10 11:11:53,143] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-02-10 11:11:53,610] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:11:53,643] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 11:11:53,653] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-02-10 11:11:55,187] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 56
+[2026-02-10 11:11:56,552] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:12:18,675] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:13:07,034] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:13:07,498] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:13:26,751] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:13:46,403] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 11:13:46: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 11:13:46,416] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 11:13:46,560] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:13:46,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3675
+[2026-02-10 11:13:58,479] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 11:13:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 11:13:58,490] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 80
+[2026-02-10 11:13:58,612] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:13:58,629] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3900
+[2026-02-10 11:14:04,552] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3900
+[2026-02-10 11:14:13,651] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 538
+[2026-02-10 11:14:22,699] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:14:39,905] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 538
+[2026-02-10 11:14:50,506] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:14:52,121] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 538
+[2026-02-10 11:15:06,237] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:15:07,447] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 538
+[2026-02-10 11:15:09,067] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 354
+[2026-02-10 11:15:10,678] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:15:12,186] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 354
+[2026-02-10 11:15:12,708] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 538
+[2026-02-10 11:15:18,544] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:15:21,446] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 3900
+[2026-02-10 11:15:22,978] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 538
+[2026-02-10 11:15:24,159] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:15:25,848] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:15:27,948] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 354
+[2026-02-10 11:15:28,761] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 4607
+[2026-02-10 11:15:29,083] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 538
+[2026-02-10 11:15:31,958] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 22602
+[2026-02-10 11:17:31,913] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 11:17:31: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-02-10 11:17:31,923] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 56
+[2026-02-10 11:17:31,996] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23127
