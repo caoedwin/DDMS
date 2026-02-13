@@ -473,3 +473,36 @@
 [2026-02-10 11:17:31,913] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-02-10 11:17:31: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
 [2026-02-10 11:17:31,923] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 56
 [2026-02-10 11:17:31,996] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23127
+[2026-02-10 13:54:45,460] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23127
+[2026-02-10 13:55:38,796] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 13:55:43,611] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/1/change/ HTTP/1.1" 200 35784
+[2026-02-10 13:55:43,774] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 13:56:21,643] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/role/ HTTP/1.1" 200 80306
+[2026-02-10 13:56:22,366] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 13:56:22,814] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/app01/menu/ HTTP/1.1" 200 68088
+[2026-02-10 13:56:22,846] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7684
+[2026-02-10 13:56:28,860] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
+[2026-02-10 13:56:44,440] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2026-02-10 13:56:44,452] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 13:56:44,591] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-02-10 13:56:44,599] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-02-10 13:56:45,647] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-02-10 13:56:45,701] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-02-10 13:56:45,719] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-02-10 13:56:45,773] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 109746
+[2026-02-10 13:56:46,370] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-02-10 13:56:46,394] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23127
+[2026-02-10 14:00:42,941] [log.py:228] [log:log_response] [WARNING]- Forbidden: /DeviceLNV/DeviceLNV_api/
+[2026-02-10 14:00:42,942] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /DeviceLNV/DeviceLNV_api/ HTTP/1.1" 403 9979
+[2026-02-10 14:00:42,972] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+[2026-02-10 14:00:42,972] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+[2026-02-10 14:00:42,972] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+[2026-02-10 14:00:42,976] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+[2026-02-10 14:00:42,979] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/js/jquery-3.4.1.min.js HTTP/1.1" 200 88145
+[2026-02-10 14:00:42,981] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+[2026-02-10 14:00:42,986] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1719
+[2026-02-10 14:00:42,990] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[2026-02-10 14:00:42,991] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[2026-02-10 14:00:42,991] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+[2026-02-10 14:00:43,019] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+[2026-02-10 14:00:43,331] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38396
