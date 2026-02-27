@@ -38,6 +38,11 @@ def RetainedSample_summary(request):
         tab = request.GET.get('tab', 'summary')
 
         if tab == 'summary':
+            # 提取过滤选项（基于所有数据）
+            all_projects = RetainedSample.objects.values_list('Project', flat=True).distinct()
+            all_samples = RetainedSample.objects.values_list('SampleName', flat=True).distinct()
+            all_manufacturers = RetainedSample.objects.values_list('Manufacturer', flat=True).distinct()
+
             queryset = RetainedSample.objects.all()
 
             # 应用搜索条件
@@ -99,16 +104,39 @@ def RetainedSample_summary(request):
 
             # 获取留样位置选项
             retain_positions = RetainedSample.objects.values_list('RetainPosition', flat=True).distinct()
+            all_retain_positions = RetainedSample.objects.values_list('RetainPosition', flat=True).distinct()
 
+            # ... 在 queryset 获取之后，构造 samples 数据之前 ...
+            # 获取当前过滤后的样品ID列表
+            sample_ids = queryset.values_list('id', flat=True)
+
+            # 统计每个样品的报废数量（汇总 BorrowQuantity）
+            from django.db.models import Sum
+            scrap_stats = RetainedSampleRecord.objects.filter(
+                Sample_id__in=sample_ids,
+                RecordType='報廢'
+            ).values('Sample_id').annotate(total_scrap=Sum('BorrowQuantity'))
+
+            # 转换为字典，方便快速查找
+            scrap_dict = {item['Sample_id']: item['total_scrap'] for item in scrap_stats}
+
+            # 获取基础样品数据（字典列表）
+            samples_data = list(queryset.values())
+
+            # 为每个样品添加 ScrappedQuantity 字段
+            for sample in samples_data:
+                sample['ScrappedQuantity'] = scrap_dict.get(sample['id'], 0)
+
+            # 然后在 updateData 中使用 samples_data 而不是原来的 queryset.values()
             updateData = {
                 'success': True,
-                'samples': list(queryset.values()),
+                'samples': samples_data,
                 'filter_options': {
-                    'projects': list(projects),
-                    'samples': list(samples),
-                    'manufacturers': list(manufacturers),
+                    'projects': list(all_projects),      # 使用全部选项
+                    'samples': list(all_samples),
+                    'manufacturers': list(all_manufacturers),
                     'users': user_options,
-                    'retain_positions': list(retain_positions)
+                    'retain_positions': list(all_retain_positions)
                 },
                 'current_user': current_user_info,
                 'is_admin': isAdmin
@@ -238,6 +266,14 @@ def RetainedSample_summary(request):
 
             records_data = []
             for ps in records:
+                # 确定归还状态
+                if ps.Status == '已歸還':
+                    returned_status = '已歸還'
+                elif ps.Status == '已拒絕':
+                    returned_status = '已拒绝'
+                else:
+                    returned_status = '未歸還'
+
                 records_data.append({
                     'SampleName': ps.Sample.SampleName if ps.Sample else '',
                     'Project': ps.Sample.Project if ps.Sample else '',
@@ -246,7 +282,7 @@ def RetainedSample_summary(request):
                     'BorrowQuantity': ps.BorrowQuantity,
                     'BorrowedReson': ps.BorrowedReson,
                     'BorrowedStatus': '已借用' if ps.Status == '已借用' else ps.Status,
-                    'ReturnedStatus': '已歸還' if ps.Status == '已歸還' else '未歸還',
+                    'ReturnedStatus': returned_status,
                     'created_at': ps.created_at.strftime('%Y-%m-%d %H:%M:%S') if ps.created_at else ''
                 })
 
@@ -696,6 +732,15 @@ def handle_approval(request):
                         personal_sample.save()
 
                         # 创建审批记录...
+                        RetainedSampleRecord.objects.create(
+                            Sample=sample,
+                            RecordType='借用審批',
+                            Borrowed=personal_sample.Borrower,
+                            BorrowQuantity=personal_sample.BorrowQuantity,
+                            BorrowedReson=personal_sample.BorrowedReson,
+                            BorrowedStatus='已批准',
+                            ReturnedStatus='未歸還'
+                        )
                         return JsonResponse({'success': True, 'message': '同意借用成功'})
 
                 except PersonalRetainedSample.DoesNotExist:

@@ -638,27 +638,16 @@ tbody tr td:last-child {
                         element-loading-text="數據加載中..."
                         :header-cell-style="{background: '#CCDDFF', color: '#333', fontWeight: 'bold'}">
 
-                        <el-table-column type="selection" width="55" align="center"></el-table-column>
-                        <el-table-column prop="Project" label="專案名稱" align="center" width="150"></el-table-column>
-                        <!-- 修改表格中的專案負責人和留樣人列 -->
-                        <el-table-column prop="Owner" label="專案負責人" align="center" width="120">
-                            <template slot-scope="scope">
-                                <span v-text="getDisplayNameByEmployeeId(scope.row.Owner)"></span>
-                            </template>
-                        </el-table-column>
+                        <el-table-column type="selection" width="30" align="center" fixed></el-table-column>
+                        
 
                         <el-table-column prop="SampleName" label="樣品名稱" align="center" width="150"></el-table-column>
-                        <el-table-column prop="Manufacturer" label="樣品廠商" align="center" width="150"></el-table-column>
+                        <el-table-column prop="Manufacturer" label="樣品廠商" align="center" width="80"></el-table-column>
                         <el-table-column prop="SampleBatch" label="樣品批次/版本" align="center" width="120"></el-table-column>
-                        <el-table-column prop="SampleQuantity" label="留樣數量" align="center" width="100"></el-table-column>
-                        <el-table-column prop="Retainer" label="留樣人" align="center" width="100">
-                            <template slot-scope="scope">
-                                <span v-text="getDisplayNameByEmployeeId(scope.row.Retainer)"></span>
-                            </template>
-                        </el-table-column>
-                        <el-table-column prop="RetainStart" label="留樣日期" align="center" width="120"></el-table-column>
-                        <el-table-column prop="RetainPeriod" label="留樣周期(年)" align="center" width="120"></el-table-column>
-                        <el-table-column prop="RetainPosition" label="留樣位置" align="center" width="120"></el-table-column>
+                        <!-- 留样数量列（原有） -->
+                        <el-table-column prop="SampleQuantity" label="留樣數量" align="center" width="80"></el-table-column>
+                        
+                        <!-- 已借出数量列（原有，但可调整样式） -->
                         <el-table-column prop="BorrowedQuantity" label="已借出數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <span :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
@@ -666,7 +655,27 @@ tbody tr td:last-child {
                                 </span>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="RemainedQuantity" label="剩餘留樣數量" align="center" width="120">
+                        
+                        <!-- 签核中数量列（原有） -->
+                        <el-table-column prop="UnderApprovalQuantity" label="簽核中數量" align="center" width="100">
+                            <template slot-scope="scope">
+                                <span :class="{'status-warning': scope.row.UnderApprovalQuantity > 0}">
+                                    ${ formatNumber(scope.row.UnderApprovalQuantity) }
+                                </span>
+                            </template>
+                        </el-table-column>
+                        
+                        <!-- 新增：报废数量列 -->
+                        <el-table-column prop="ScrappedQuantity" label="報廢數量" align="center" width="80">
+                            <template slot-scope="scope">
+                                <span :class="{'status-danger': scope.row.ScrappedQuantity > 0}">
+                                    ${ formatNumber(scope.row.ScrappedQuantity) }
+                                </span>
+                            </template>
+                        </el-table-column>
+                        
+                        <!-- 剩余留样数量列（原有） -->
+                        <el-table-column prop="RemainedQuantity" label="剩餘留樣數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <span :class="{
                                     'status-success': scope.row.RemainedQuantity > 0,
@@ -676,13 +685,22 @@ tbody tr td:last-child {
                                 </span>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="UnderApprovalQuantity" label="簽核中數量" align="center" width="100">
+                        <el-table-column prop="Project" label="專案名稱" align="center" width="100"></el-table-column>
+                        <!-- 修改表格中的專案負責人和留樣人列 -->
+                        <el-table-column prop="Owner" label="專案負責人" align="center" width="100">
                             <template slot-scope="scope">
-                                <span :class="{'status-warning': scope.row.UnderApprovalQuantity > 0}">
-                                    ${ formatNumber(scope.row.UnderApprovalQuantity) }
-                                </span>
+                                <span v-text="getDisplayNameByEmployeeId(scope.row.Owner)"></span>
                             </template>
                         </el-table-column>
+                        <el-table-column prop="Retainer" label="留樣人" align="center" width="100">
+                            <template slot-scope="scope">
+                                <span v-text="getDisplayNameByEmployeeId(scope.row.Retainer)"></span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="RetainStart" label="留樣日期" align="center" width="120"></el-table-column>
+                        <el-table-column prop="RetainPeriod" label="留樣周期(年)" align="center" width="120"></el-table-column>
+                        <el-table-column prop="RetainPosition" label="留樣位置" align="center" width="120"></el-table-column>
+                        
                         <!-- 在留样总览表格中添加操作列 -->
                         <el-table-column label="操作" v-if="isAdmin" align="center" min-width="200" fixed="right">
                             <template slot-scope="scope">

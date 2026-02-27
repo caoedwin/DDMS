@@ -58,9 +58,9 @@ class PersonalRetainedSample(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新时间")
 
 class RetainedSampleRecord(models.Model):
-    """個人留样信息"""
+    """留样记录"""
     Sample = models.ForeignKey("RetainedSample", default='', on_delete=models.CASCADE, verbose_name="留样样品")
-    RecordType = models.CharField(max_length=30, blank=True ,verbose_name="記錄類型")  # 借還，報廢
+    RecordType = models.CharField(max_length=30, blank=True ,verbose_name="記錄類型")  # 借還，報廢，借用審批
     Borrowed = models.CharField(max_length=30, verbose_name="借用人")  # 工號
     BorrowQuantity = models.IntegerField(verbose_name="借用數量")
     BorrowedReson = models.CharField(max_length=1000, blank=True, verbose_name="借用用途")
