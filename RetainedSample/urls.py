@@ -7,6 +7,7 @@ urlpatterns = [
     path('RetainedSample_summary/', views.RetainedSample_summary, name='RetainedSample_summary'),
     path('handle_return/', views.handle_return, name='handle_return'),
     path('handle_approval/', views.handle_approval, name='handle_approval'),
+    path('get_borrow_details/', views.get_borrow_details, name='get_borrow_details'),
     # path('RetainedSample_MyBorrow/', views.RetainedSample_MyBorrow, name='RetainedSample_MyBorrow'),
     # path('RetainedSample_MyApproval/', views.RetainedSample_MyApproval, name='RetainedSample_MyApproval'),
     # path('RetainedSample_BRRecord/', views.RetainedSample_BRRecord, name='RetainedSample_BRRecord'),

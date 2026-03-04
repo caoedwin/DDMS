@@ -246,6 +246,11 @@ tbody tr td:last-child {
     .search-input {
         width: 90px;
     }
+    /* 自定义 popover 样式 */
+    .borrow-detail-popover {
+        max-height: 300px;
+        overflow-y: auto;
+    }
 }
 </style>
 {% endblock %}
@@ -650,9 +655,31 @@ tbody tr td:last-child {
                         <!-- 已借出数量列（原有，但可调整样式） -->
                         <el-table-column prop="BorrowedQuantity" label="已借出數量" align="center" width="100">
                             <template slot-scope="scope">
-                                <span :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
-                                    ${ formatNumber(scope.row.BorrowedQuantity) }
-                                </span>
+                                <el-popover
+                                    placement="right"
+                                    width="260"
+                                    trigger="hover"
+                                    :disabled="scope.row.BorrowedQuantity === 0"
+                                    @show="handlePopoverShow(scope.row.id)"
+                                    popper-class="borrow-detail-popover">
+                                    <!-- 内容区域 -->
+                                    <div v-if="borrowDetailsMap[scope.row.id] && borrowDetailsMap[scope.row.id].length">
+                                        <div v-for="(item, index) in borrowDetailsMap[scope.row.id]" :key="item.id" style="margin-bottom: 8px;">
+                                            <div><strong>借用人：</strong>${ item.borrower_display }</div>
+                                            <div><strong>借用數量：</strong>${ item.borrow_quantity }</div>
+                                            <div v-if="item.borrow_reason"><strong>用途：</strong>${ item.borrow_reason }</div>
+                                            <div><strong>借用時間：</strong>${ item.created_at }</div>
+                                            <el-divider v-if="index < borrowDetailsMap[scope.row.id].length - 1" style="margin: 8px 0;"></el-divider>
+                                        </div>
+                                    </div>
+                                    <div v-else-if="scope.row.BorrowedQuantity === 0">暫無借用</div>
+                                    <div v-else style="text-align: center;">加載中...</div>
+                        
+                                    <!-- 引用元素：显示数字 -->
+                                    <span slot="reference" :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
+                                        ${ formatNumber(scope.row.BorrowedQuantity) }
+                                    </span>
+                                </el-popover>
                             </template>
                         </el-table-column>
                         
@@ -838,6 +865,7 @@ new Vue({
             activeTab: 'summary',
             loading: false,
             isAdmin: false,
+            borrowDetailsMap: {},   // 存储样品借用详情，键为样品ID
 
             // 当前登录用户信息
             currentUser: null,
@@ -1004,6 +1032,29 @@ new Vue({
             } else {
                 this.filteredUsers = this.filterOptions.summary.users;
             }
+        },
+        
+        // 当 popover 显示时触发，按需加载借用详情
+        handlePopoverShow(sampleId) {
+            if (!this.borrowDetailsMap[sampleId] && sampleId) {
+                this.fetchBorrowDetails(sampleId);
+            }
+        },
+        
+        // 请求借用详情
+        fetchBorrowDetails(sampleId) {
+            axios.get('/RetainedSample/get_borrow_details/', { params: { sample_id: sampleId } })
+                .then(response => {
+                    if (response.data.success) {
+                        // 使用 $set 确保响应式
+                        this.$set(this.borrowDetailsMap, sampleId, response.data.details);
+                    } else {
+                        this.$set(this.borrowDetailsMap, sampleId, []);
+                    }
+                })
+                .catch(() => {
+                    this.$set(this.borrowDetailsMap, sampleId, []);
+                });
         },
 
         // 处理负责人选择变化
@@ -1280,6 +1331,8 @@ new Vue({
                         switch(tab) {
                             case 'summary':
                                 this.summaryDisplayData = data.samples || [];
+                                // 清空借用详情缓存，确保下次hover重新获取
+                                this.borrowDetailsMap = {};
 
                                 // 更新下拉选项
                                 if (data.filter_options) {
@@ -1649,6 +1702,7 @@ new Vue({
                         this.returnDialogVisible = false;
                         // 重新加载数据
                         this.loadTabData('myBorrow');
+                        this.loadTabData('summary');  // 新增这一行
                         this.resetReturnForm();
                     } else {
                         this.$message.error(data.message || '歸還申請失敗');

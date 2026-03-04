@@ -1003,3 +1003,45 @@ def handle_return(request):
         import traceback
         print(traceback.format_exc())
         return JsonResponse({'success': False, 'message': str(e)})
+
+@csrf_exempt
+def get_borrow_details(request):
+    """根据样品ID获取当前已借出的明细"""
+    if not request.session.get('is_login_DMS', None):
+        return JsonResponse({'success': False, 'message': '请先登录'})
+
+    sample_id = request.GET.get('sample_id')
+    if not sample_id:
+        return JsonResponse({'success': False, 'message': '缺少 sample_id 参数'})
+
+    try:
+        # 查询当前样品所有“已借用”状态的记录
+        borrow_records = PersonalRetainedSample.objects.filter(
+            Sample_id=sample_id,
+            Status__in=['已借用', '借用確認中', '歸還確認中']
+        ).select_related('Sample')
+        print(borrow_records)
+        details = []
+        for record in borrow_records:
+            # 获取借用人显示名（中文名+工号）
+            try:
+                print(1)
+                user = UserInfo.objects.get(account=record.Borrower)
+                borrower_display = f"{user.CNname} ({user.account})" if user.CNname else user.username
+            except UserInfo.DoesNotExist:
+                print(2)
+                borrower_display = record.Borrower
+
+            details.append({
+                'id': record.id,
+                'borrower': record.Borrower,
+                'borrower_display': borrower_display,
+                'borrow_quantity': record.RemainedQuantity,
+                'created_at': record.created_at.strftime('%Y-%m-%d %H:%M:%S') if record.created_at else '',
+                'borrow_reason': record.BorrowedReson,  # 可选，显示用途
+            })
+
+        return JsonResponse({'success': True, 'details': details})
+    except Exception as e:
+        print(str(e))
+        return JsonResponse({'success': False, 'message': str(e)})
