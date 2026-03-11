@@ -6,7 +6,7 @@ from django.db.models import Max, Min, Sum, Count, Q
 from django.http import JsonResponse
 from app01.models import UserInfo
 from .models import RetainedSample, PersonalRetainedSample, RetainedSampleRecord
-
+from dateutil.relativedelta import relativedelta
 
 @csrf_exempt
 def RetainedSample_summary(request):
@@ -124,8 +124,28 @@ def RetainedSample_summary(request):
             samples_data = list(queryset.values())
 
             # 为每个样品添加 ScrappedQuantity 字段
+            # 为每个样品添加 is_expired 字段
             for sample in samples_data:
                 sample['ScrappedQuantity'] = scrap_dict.get(sample['id'], 0)
+                is_expired = False
+                retain_start = sample.get('RetainStart')
+                retain_period = sample.get('RetainPeriod')
+                if retain_start and retain_period is not None:
+                    try:
+                        # retain_start 可能是 date 对象或字符串，确保转为 date
+                        if isinstance(retain_start, datetime.date):
+                            retain_date = retain_start
+                        else:
+                            # 如果是字符串，格式为 'YYYY-MM-DD'
+                            retain_date = datetime.datetime.strptime(retain_start, '%Y-%m-%d').date()
+                        # 计算到期日
+                        expiration_date = retain_date + relativedelta(years=float(retain_period))
+                        # 如果到期日小于今天，则视为过期
+                        if expiration_date < datetime.date.today():
+                            is_expired = True
+                    except Exception:
+                        pass
+                sample['is_expired'] = is_expired
 
             # 然后在 updateData 中使用 samples_data 而不是原来的 queryset.values()
             updateData = {
@@ -700,10 +720,86 @@ def handle_approval(request):
         record_type = post_data.get('record_type', '')
         print(record_type)
 
-        if not record_id:
+        if not record_id and not post_data.get('borrow_ids', []):
             return JsonResponse({'success': False, 'message': '记录ID不能为空'})
 
-        if action_type == 'confirm_approval':
+        if action_type == 'batch_approve':
+            if not isAdmin:
+                return JsonResponse({'success': False, 'message': '无权限操作'})
+            borrow_ids = post_data.get('borrow_ids', [])
+            return_ids = post_data.get('return_ids', [])
+
+            try:
+                with transaction.atomic():
+                    # 批量同意借用申请
+                    for rid in borrow_ids:
+                        personal_sample = PersonalRetainedSample.objects.select_for_update().get(
+                            id=rid,
+                            Status='借用確認中'
+                        )
+                        sample = personal_sample.Sample
+                        # 更新样品数据
+                        sample.BorrowedQuantity += personal_sample.BorrowQuantity
+                        sample.UnderApprovalQuantity -= personal_sample.BorrowQuantity
+                        sample.save()
+                        # 更新记录状态
+                        personal_sample.Status = '已借用'
+                        personal_sample.ApprovedAt = datetime.datetime.now()
+                        personal_sample.ApprovedBy = onlineuser
+                        personal_sample.save()
+                        # 记录审批日志
+                        RetainedSampleRecord.objects.create(
+                            Sample=sample,
+                            RecordType='借用審批',
+                            Borrowed=personal_sample.Borrower,
+                            BorrowQuantity=personal_sample.BorrowQuantity,
+                            BorrowedReson=personal_sample.BorrowedReson,
+                            BorrowedStatus='已批准',
+                            ReturnedStatus='未歸還'
+                        )
+
+                    # 批量同意归还申请
+                    for rid in return_ids:
+                        personal_sample = PersonalRetainedSample.objects.select_for_update().get(
+                            id=rid,
+                            Status='歸還確認中'
+                        )
+                        sample = personal_sample.Sample
+                        return_quantity = personal_sample.ReturnRequestedQuantity
+                        # 更新个人记录
+                        personal_sample.RemainedQuantity -= return_quantity
+                        if personal_sample.RemainedQuantity <= 0:
+                            personal_sample.Status = '已歸還'
+                            personal_sample.ReturnedAt = datetime.datetime.now()
+                            personal_sample.ReturnedQuantity = personal_sample.BorrowQuantity
+                        else:
+                            personal_sample.Status = '已借用'
+                            personal_sample.ReturnedQuantity = personal_sample.BorrowQuantity - personal_sample.RemainedQuantity
+                        personal_sample.save()
+                        # 更新样品库存
+                        sample.BorrowedQuantity -= return_quantity
+                        sample.RemainedQuantity += return_quantity
+                        sample.save()
+                        # 记录日志
+                        RetainedSampleRecord.objects.create(
+                            Sample=sample,
+                            RecordType='歸還確認',
+                            Borrowed=personal_sample.Borrower,
+                            BorrowQuantity=return_quantity,
+                            BorrowedReson=personal_sample.ReturnReason,
+                            BorrowedStatus='已批准',
+                            ReturnedStatus='已歸還' if personal_sample.RemainedQuantity <= 0 else '部分歸還'
+                        )
+
+                return JsonResponse({'success': True, 'message': '批量同意成功'})
+            except PersonalRetainedSample.DoesNotExist as e:
+                return JsonResponse({'success': False, 'message': '记录不存在或状态不正确'})
+            except Exception as e:
+                import traceback
+                print(traceback.format_exc())
+                return JsonResponse({'success': False, 'message': str(e)})
+
+        elif action_type == 'confirm_approval':
             # 同意审批
             # 处理同意借用（在handle_approval函数中）
 
@@ -1018,18 +1114,18 @@ def get_borrow_details(request):
         # 查询当前样品所有“已借用”状态的记录
         borrow_records = PersonalRetainedSample.objects.filter(
             Sample_id=sample_id,
-            Status__in=['已借用', '借用確認中', '歸還確認中']
+            Status__in=['已借用', '歸還確認中']
         ).select_related('Sample')
-        print(borrow_records)
+        # print(borrow_records)
         details = []
         for record in borrow_records:
             # 获取借用人显示名（中文名+工号）
             try:
-                print(1)
+                # print(1)
                 user = UserInfo.objects.get(account=record.Borrower)
                 borrower_display = f"{user.CNname} ({user.account})" if user.CNname else user.username
             except UserInfo.DoesNotExist:
-                print(2)
+                # print(2)
                 borrower_display = record.Borrower
 
             details.append({
@@ -1044,4 +1140,80 @@ def get_borrow_details(request):
         return JsonResponse({'success': True, 'details': details})
     except Exception as e:
         print(str(e))
+        return JsonResponse({'success': False, 'message': str(e)})
+
+@csrf_exempt
+def handle_batch_cancel(request):
+    if not request.session.get('is_login_DMS', None):
+        return JsonResponse({'success': False, 'message': '请先登录'})
+
+    onlineuser = request.session.get('account_DMS')
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'message': '仅支持POST'})
+    print('111')
+    try:
+        data = json.loads(request.body)
+        record_ids = data.get('record_ids', [])
+        if not record_ids:
+            return JsonResponse({'success': False, 'message': '未选择记录'})
+
+        with transaction.atomic():
+            for rid in record_ids:
+                # 获取记录并锁定
+                record = PersonalRetainedSample.objects.select_for_update().get(
+                    id=rid,
+                    Borrower=onlineuser  # 确保只能撤销自己的记录
+                )
+                sample = record.Sample
+
+                if record.Status == '借用確認中':
+                    # 撤销借用申请：恢复库存
+                    sample.UnderApprovalQuantity -= record.BorrowQuantity
+                    sample.RemainedQuantity += record.BorrowQuantity
+                    sample.save()
+                    # 标记记录为“已撤销”（或直接删除，这里改为“已撤销”）
+                    record.Status = '已撤销'
+                    record.save()
+                    # 可选：记录操作日志
+                    RetainedSampleRecord.objects.create(
+                        Sample=sample,
+                        RecordType='撤销借用',
+                        Borrowed=onlineuser,
+                        BorrowQuantity=record.BorrowQuantity,
+                        BorrowedReson='用户撤销',
+                        BorrowedStatus='已撤销',
+                        ReturnedStatus='未歸還'
+                    )
+
+                elif record.Status == '歸還確認中':
+                    # 撤销归还申请：恢复为“已借用”，清空归还请求字段
+                    record.Status = '已借用'
+                    record.ReturnRequestedAt = None
+                    record.ReturnRequestedQuantity = 0
+                    record.ReturnReason = ''
+                    record.save()
+                    # 样品库存不变，无需修改 sample
+                    # 可选：记录操作日志
+                    RetainedSampleRecord.objects.create(
+                        Sample=sample,
+                        RecordType='撤销归还',
+                        Borrowed=onlineuser,
+                        BorrowQuantity=record.ReturnRequestedQuantity,
+                        BorrowedReson='用户撤销',
+                        BorrowedStatus='已撤销',
+                        ReturnedStatus='未歸還'
+                    )
+                else:
+                    # 如果有非法状态，回滚事务
+                    return JsonResponse({'success': False, 'message': f'记录 {rid} 状态不可撤销'})
+
+        return JsonResponse({'success': True, 'message': '批量撤销成功'})
+
+    except PersonalRetainedSample.DoesNotExist:
+        print(222)
+        return JsonResponse({'success': False, 'message': '记录不存在或无权限'})
+    except Exception as e:
+        print(str(e))
+        import traceback
+        print(traceback.format_exc())
         return JsonResponse({'success': False, 'message': str(e)})

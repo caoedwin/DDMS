@@ -38,7 +38,7 @@ class RbacMiddleware(MiddlewareMixin):
             # print (re.match(url, request_url))
             if re.match(url, request_url):
                 if re.match(url, request_url):
-                    if '/login/' not in request_url and '/logout/' not in request_url and '/index/' not in request_url and '/admin' not in request_url and request_url in str(url):
+                    if '/RetainedSample/' not in request_url and 'signin' not in request_url and '/login/' not in request_url and '/logout/' not in request_url and '/index/' not in request_url and '/admin' not in request_url and request_url in str(url):
                         # print(path, 'path')
                         response.set_cookie('current_page_DMS', value=request_url)
                         # request.session.set_expiry(

@@ -227,6 +227,10 @@ tbody tr td:last-child {
     min-width: 20px;  /* 设置最小宽度 */
 }
 
+.el-table .expired-row {
+    background-color: #fde2e2 !important;  /* 浅红色背景 */
+}
+
 /* 针对小屏幕的优化 */
 @media screen and (max-width: 1200px) {
     .search-item {
@@ -260,11 +264,11 @@ tbody tr td:last-child {
         <el-backtop></el-backtop>
     </template>
 
-    <div class="row" style="white-space: nowrap;">
+    {% comment %}<div class="row" style="white-space: nowrap;">
         <div class="col-md-12">
             <h2 style="text-align: center; color: black;">APDQA留樣管理系統 ${ currentTime }</h2>
         </div>
-    </div>
+    </div>{% endcomment %}
 
     <!-- 搜索条件区域，根据当前标签页显示不同的搜索条件 -->
     <div class="row" style="margin-bottom: 20px;" v-if="activeTab !== 'myBorrow' && activeTab !== 'myApproval'">
@@ -567,6 +571,15 @@ tbody tr td:last-child {
     <!-- 借用对话框 -->
     <el-dialog title="借用留樣" width="50%" :visible.sync="borrowDialogVisible">
         <el-form :model="borrowForm" label-width="120px">
+            <el-form-item label="專案名稱">
+            <span>${ selectedSample?.Project }</span>
+            </el-form-item>
+            <el-form-item label="樣品名稱">
+                <span>${ selectedSample?.SampleName }</span>
+            </el-form-item>
+            <el-form-item label="樣品廠商">
+                <span>${ selectedSample?.Manufacturer }</span>
+            </el-form-item>
             <el-form-item label="借用數量">
                 <el-input-number v-model="borrowForm.BorrowQuantity" :min="1" :max="selectedSample?.RemainedQuantity || 0"></el-input-number>
                 <span style="margin-left: 10px;">最大可借: ${ selectedSample ? selectedSample.RemainedQuantity : 0 }</span>
@@ -590,6 +603,15 @@ tbody tr td:last-child {
     <!-- 报废对话框 -->
     <el-dialog title="報廢留樣" width="50%" :visible.sync="scrapDialogVisible">
         <el-form :model="scrapForm" label-width="120px">
+            <el-form-item label="專案名稱">
+            <span>${ selectedSample?.Project }</span>
+            </el-form-item>
+            <el-form-item label="樣品名稱">
+                <span>${ selectedSample?.SampleName }</span>
+            </el-form-item>
+            <el-form-item label="樣品廠商">
+                <span>${ selectedSample?.Manufacturer }</span>
+            </el-form-item>
             <el-form-item label="報廢數量">
                 <el-input-number v-model="scrapForm.ScrapQuantity" :min="1" :max="selectedSample?.RemainedQuantity || 0"></el-input-number>
             </el-form-item>
@@ -630,8 +652,56 @@ tbody tr td:last-child {
     </el-dialog>
 
     <div class="tableAround" v-cloak>
-        <div class="col-md-12">
+        <div class="col-md-12" style="position: relative;">
+            {% comment %}<div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-12" style="text-align: right;">
+                    <!-- 我的借用标签页的批量撤销按钮 -->
+                    <el-button
+                        v-if="activeTab === 'myBorrow'"
+                        type="warning"
+                        size="small"
+                        @click="handleBatchCancel"
+                        :loading="loading">
+                        批量撤销 ({{ selectedBorrowRecords.length }})
+                    </el-button>
+                    <!-- 我的签核标签页的批量同意按钮 -->
+                    <el-button
+                        v-if="activeTab === 'myApproval'"
+                        type="success"
+                        size="small"
+                        @click="handleBatchApprove"
+                        :loading="loading">
+                        批量同意 ({{ selectedApprovalRecords.length }})
+                    </el-button>
+                </div>
+            </div>{% endcomment %}
             <el-tabs v-model="activeTab" @tab-click="handleTabClick">
+                {% comment %}<!-- extra 插槽：显示在标签右侧 -->
+                <template slot="extra">
+                    <!-- 使用的 Element UI 版本较老，不支持 extra 插槽（该功能在 2.13.0+ 版本中才引入）-->
+                    <div>当前标签：${ activeTab }</div>
+                    <div style="margin-bottom: 10px; text-align: right;">
+                        <!-- 我的借用标签页的批量撤销按钮 -->
+                        <el-button
+                            v-if="activeTab === 'myBorrow'"
+                            type="warning"
+                            size="small"
+                            @click="handleBatchCancel"
+                            :loading="loading">
+                            批量撤销 (${ selectedBorrowRecords.length })
+                        </el-button>
+                        <!-- 我的签核标签页的批量同意按钮 -->
+                        <el-button
+                            v-if="activeTab === 'myApproval'"
+                            type="success"
+                            size="small"
+                            @click="handleBatchApprove"
+                            :loading="loading">
+                            批量同意 (${ selectedApprovalRecords.length })
+                        </el-button>
+                    </div>
+                </template>{% endcomment %}
+
                 <el-tab-pane label="留樣總覽" name="summary">
                     <el-table
                         ref="sampleTable"
@@ -641,17 +711,18 @@ tbody tr td:last-child {
                         @selection-change="handleSelectionChange"
                         v-loading="loading"
                         element-loading-text="數據加載中..."
-                        :header-cell-style="{background: '#CCDDFF', color: '#333', fontWeight: 'bold'}">
+                        :header-cell-style="{background: '#CCDDFF', color: '#333', fontWeight: 'bold'}"
+                        :row-class-name="tableRowClassName">
 
                         <el-table-column type="selection" width="30" align="center" fixed></el-table-column>
-                        
+
 
                         <el-table-column prop="SampleName" label="樣品名稱" align="center" width="150"></el-table-column>
                         <el-table-column prop="Manufacturer" label="樣品廠商" align="center" width="80"></el-table-column>
                         <el-table-column prop="SampleBatch" label="樣品批次/版本" align="center" width="120"></el-table-column>
                         <!-- 留样数量列（原有） -->
                         <el-table-column prop="SampleQuantity" label="留樣數量" align="center" width="80"></el-table-column>
-                        
+
                         <!-- 已借出数量列（原有，但可调整样式） -->
                         <el-table-column prop="BorrowedQuantity" label="已借出數量" align="center" width="100">
                             <template slot-scope="scope">
@@ -674,7 +745,7 @@ tbody tr td:last-child {
                                     </div>
                                     <div v-else-if="scope.row.BorrowedQuantity === 0">暫無借用</div>
                                     <div v-else style="text-align: center;">加載中...</div>
-                        
+
                                     <!-- 引用元素：显示数字 -->
                                     <span slot="reference" :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
                                         ${ formatNumber(scope.row.BorrowedQuantity) }
@@ -682,7 +753,7 @@ tbody tr td:last-child {
                                 </el-popover>
                             </template>
                         </el-table-column>
-                        
+
                         <!-- 签核中数量列（原有） -->
                         <el-table-column prop="UnderApprovalQuantity" label="簽核中數量" align="center" width="100">
                             <template slot-scope="scope">
@@ -691,7 +762,7 @@ tbody tr td:last-child {
                                 </span>
                             </template>
                         </el-table-column>
-                        
+
                         <!-- 新增：报废数量列 -->
                         <el-table-column prop="ScrappedQuantity" label="報廢數量" align="center" width="80">
                             <template slot-scope="scope">
@@ -700,9 +771,9 @@ tbody tr td:last-child {
                                 </span>
                             </template>
                         </el-table-column>
-                        
+
                         <!-- 剩余留样数量列（原有） -->
-                        <el-table-column prop="RemainedQuantity" label="剩餘留樣數量" align="center" width="100">
+                        <el-table-column prop="RemainedQuantity" label="剩餘留樣數量" align="center" width="110">
                             <template slot-scope="scope">
                                 <span :class="{
                                     'status-success': scope.row.RemainedQuantity > 0,
@@ -727,7 +798,7 @@ tbody tr td:last-child {
                         <el-table-column prop="RetainStart" label="留樣日期" align="center" width="120"></el-table-column>
                         <el-table-column prop="RetainPeriod" label="留樣周期(年)" align="center" width="120"></el-table-column>
                         <el-table-column prop="RetainPosition" label="留樣位置" align="center" width="120"></el-table-column>
-                        
+
                         <!-- 在留样总览表格中添加操作列 -->
                         <el-table-column label="操作" v-if="isAdmin" align="center" min-width="200" fixed="right">
                             <template slot-scope="scope">
@@ -753,7 +824,7 @@ tbody tr td:last-child {
                 <!-- 修改 myBorrow 标签页的表格 -->
                 <el-tab-pane label="我的借用" name="myBorrow">
                     <el-table :data="myBorrows" border height="600" v-loading="loading" @selection-change="handleBorrowSelectionChange">
-                        <el-table-column type="selection" width="55" align="center"></el-table-column>
+                        <el-table-column type="selection" width="55" align="center" fixed></el-table-column>
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
                         <el-table-column prop="BorrowQuantity" label="借用數量" align="center"></el-table-column>
@@ -783,7 +854,9 @@ tbody tr td:last-child {
 
                 <!-- 修改 myApproval 标签页的表格 -->
                 <el-tab-pane label="我的簽核" name="myApproval" v-if="isAdmin">
-                    <el-table :data="approvalList" border height="600" v-loading="loading">
+                    <el-table :key="activeTab" :data="approvalList" border height="600" v-loading="loading"
+                    @selection-change="handleApprovalSelectionChange">
+                        <el-table-column type="selection" width="55" align="center" fixed></el-table-column>
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
                         <el-table-column prop="RecordType" label="申請類型" align="center" width="100">
@@ -793,7 +866,11 @@ tbody tr td:last-child {
                                 </el-tag>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="Borrower" label="申請人" align="center"></el-table-column>
+                        <el-table-column prop="Borrower" label="申請人" align="center">
+                            <template slot-scope="scope">
+                                <span v-text="getDisplayNameByEmployeeId(scope.row.Borrower)"></span>
+                            </template>
+                        </el-table-column>
                         <el-table-column prop="Quantity" label="數量" align="center"></el-table-column>
                         <el-table-column prop="Reason" label="原因" align="center"></el-table-column>
                         <el-table-column prop="created_at" label="申請時間" align="center"></el-table-column>
@@ -823,7 +900,11 @@ tbody tr td:last-child {
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
                         <el-table-column prop="Manufacturer" label="樣品廠商" align="center"></el-table-column>
-                        <el-table-column prop="Borrower" label="借用人" align="center"></el-table-column>
+                        <el-table-column prop="Borrower" label="借用人" align="center">
+                            <template slot-scope="scope">
+                                <span v-text="getDisplayNameByEmployeeId(scope.row.Borrower)"></span>
+                            </template>
+                        </el-table-column>
                         <el-table-column prop="BorrowQuantity" label="借用數量" align="center"></el-table-column>
                         <el-table-column prop="BorrowedReson" label="借用用途" align="center"></el-table-column>
                         <el-table-column prop="BorrowedStatus" label="借用狀態" align="center"></el-table-column>
@@ -837,13 +918,37 @@ tbody tr td:last-child {
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
                         <el-table-column prop="Manufacturer" label="樣品廠商" align="center"></el-table-column>
-                        <el-table-column prop="ScrappedBy" label="報廢人" align="center"></el-table-column>
+                        <el-table-column prop="ScrappedBy" label="報廢人" align="center">
+                            <template slot-scope="scope">
+                                <span v-text="getDisplayNameByEmployeeId(scope.row.ScrappedBy)"></span>
+                            </template>
+                        </el-table-column>
                         <el-table-column prop="ScrapQuantity" label="報廢數量" align="center"></el-table-column>
                         <el-table-column prop="ScrapReason" label="報廢原因" align="center"></el-table-column>
                         <el-table-column prop="created_at" label="報廢時間" align="center"></el-table-column>
                     </el-table>
                 </el-tab-pane>
             </el-tabs>
+            <div class="tab-buttons" style="position: absolute; right: 0; top: 8px; z-index: 1;">
+                <!-- 我的借用标签页的批量撤销按钮 -->
+                <el-button
+                    v-if="activeTab === 'myBorrow'"
+                    type="warning"
+                    size="small"
+                    @click="handleBatchCancel"
+                    :loading="loading">
+                    批量撤销 ({{ selectedBorrowRecords.length }})
+                </el-button>
+                <!-- 我的签核标签页的批量同意按钮 -->
+                <el-button
+                    v-if="activeTab === 'myApproval'"
+                    type="success"
+                    size="small"
+                    @click="handleBatchApprove"
+                    :loading="loading">
+                    批量同意 ({{ selectedApprovalRecords.length }})
+                </el-button>
+            </div>
         </div>
     </div>
 </div>
@@ -862,6 +967,7 @@ new Vue({
     data: function() {
         return {
             currentTime: new Date().toLocaleString('zh-TW'),
+            selectedApprovalRecords: [],  // 存储选中的签核记录
             activeTab: 'summary',
             loading: false,
             isAdmin: false,
@@ -1013,7 +1119,38 @@ new Vue({
             this.currentTime = new Date().toLocaleString('zh-TW');
         }, 1000);
     },
+    computed: {
+        canBatchCancel() {
+            //console.log('selectedBorrowRecords:', JSON.parse(JSON.stringify(this.selectedBorrowRecords))); // 深拷贝打印
+            if (this.selectedBorrowRecords.length === 0) {
+                //console.log('无选中记录');
+                return false;
+            }
+            const result = this.selectedBorrowRecords.every(record => {
+                //console.log('检查记录状态:', record.Status);
+                return record.Status === '借用確認中' || record.Status === '歸還確認中';
+            });
+            //console.log('canBatchCancel 结果:', result);
+            return result;
+        },
+        canBatchApprove() {
+            if (this.selectedApprovalRecords.length === 0) return false;
+            // 检查是否全为同一类型（借用申请 或 归还申请）
+            {% comment %}const types = this.selectedApprovalRecords.map(r => r.RecordType);
+            const allSame = types.every(t => t === types[0]);{% endcomment %}
+            const allSame = true
+            return allSame;
+        }
+    },
     methods: {
+        tableRowClassName({row}) {
+            // 根据后端返回的 is_expired 字段决定行样式
+            if (row.is_expired) {
+                return 'expired-row';
+            }
+            return '';
+        },
+
         // 格式化日期为 YYYY-MM-DD
         formatDate(date) {
             const year = date.getFullYear();
@@ -1033,14 +1170,14 @@ new Vue({
                 this.filteredUsers = this.filterOptions.summary.users;
             }
         },
-        
+
         // 当 popover 显示时触发，按需加载借用详情
         handlePopoverShow(sampleId) {
             if (!this.borrowDetailsMap[sampleId] && sampleId) {
                 this.fetchBorrowDetails(sampleId);
             }
         },
-        
+
         // 请求借用详情
         fetchBorrowDetails(sampleId) {
             axios.get('/RetainedSample/get_borrow_details/', { params: { sample_id: sampleId } })
@@ -1648,6 +1785,39 @@ new Vue({
             this.selectedBorrowRecord = selection.length > 0 ? selection[0] : null;
         },
 
+        handleBatchCancel() {
+            //console.log(this.canBatchCancel)
+            if (!this.canBatchCancel) {
+                this.$message.warning('只能撤销“借用確認中”或“歸還確認中”的记录');
+                return;
+            }
+            const recordIds = this.selectedBorrowRecords.map(r => r.id);
+            this.$confirm('确认批量撤销选中的申请吗？', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.loading = true;
+                axios.post('/RetainedSample/handle_batch_cancel/', {
+                    record_ids: recordIds
+                }).then(response => {
+                    this.loading = false;
+                    if (response.data.success) {
+                        console.log(response.data)
+                        this.$message.success('撤销成功');
+                        this.loadTabData('myBorrow');  // 刷新我的借用
+                        this.loadTabData('summary');    // 刷新总览（库存变化）
+                    } else {
+                        this.$message.error(response.data.message || '撤销失败');
+                    }
+                }).catch(error => {
+                    this.loading = false;
+                    console.error('撤销失败:', error);
+                    this.$message.error('撤销失败');
+                });
+            }).catch(() => {});
+        },
+
         // 显示归还对话框
         showReturnDialog(record) {
             if (record.Status !== '已借用') {
@@ -1713,6 +1883,51 @@ new Vue({
                     console.error('歸還申請失敗:', error);
                     this.$message.error('歸還申請失敗');
                 });
+        },
+
+        handleApprovalSelectionChange(selection) {
+            this.selectedApprovalRecords = selection;
+        },
+
+        handleBatchApprove() {
+            if (!this.canBatchApprove) {
+                this.$message.warning('请只选择同一类型的申请（全部借用或全部归还）');
+                return;
+            }
+            // 按类型分组
+            const borrowIds = this.selectedApprovalRecords
+                .filter(r => r.RecordType === '借用申請')
+                .map(r => r.id);
+            const returnIds = this.selectedApprovalRecords
+                .filter(r => r.RecordType === '歸還申請')
+                .map(r => r.id);
+
+            this.$confirm(`确定批量同意选中的 ${this.selectedApprovalRecords.length} 条申请吗？`, '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.loading = true;
+                axios.post('/RetainedSample/handle_approval/', {
+                    action_type: 'batch_approve',
+                    borrow_ids: borrowIds,
+                    return_ids: returnIds
+                }).then(response => {
+                    this.loading = false;
+                    if (response.data.success) {
+                        this.$message.success('批量同意成功');
+                        this.loadTabData('myApproval');
+                        this.loadTabData('summary');
+                        this.loadTabData('records');
+                    } else {
+                        this.$message.error(response.data.message || '操作失败');
+                    }
+                }).catch(error => {
+                    this.loading = false;
+                    console.error('批量同意失败:', error);
+                    this.$message.error('操作失败');
+                });
+            }).catch(() => {});
         },
 
         // 同意审批
@@ -1808,6 +2023,7 @@ new Vue({
             if (value === null || value === undefined) return '0';
             return String(value).trim().replace(/\n/g, '');
         },
+
     }
 });
 </script>

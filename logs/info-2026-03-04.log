@@ -27,3 +27,12 @@
 [2026-03-04 10:06:10,479] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-04 10:06:10: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
 [2026-03-04 10:06:22,555] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-04 10:06:22: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_return/'>
 [2026-03-04 10:06:34,174] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-04 10:06:34: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-03-04 13:27:56,030] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-04 13:27:56: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-03-04 13:28:05,989] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-04 13:28:05: C1010S3/edwin/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
+[2026-03-04 13:46:52,359] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-04 14:02:45,019] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-04 14:03:17,585] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-04 14:04:49,212] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-04 14:05:28,001] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-04 14:05:28: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-03-05 08:34:22,004] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-05 08:47:58,896] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-05 08:47:58: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_approval/'>
