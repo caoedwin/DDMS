@@ -720,7 +720,7 @@ def handle_approval(request):
         record_type = post_data.get('record_type', '')
         print(record_type)
 
-        if not record_id and not post_data.get('borrow_ids', []):
+        if not record_id and not post_data.get('borrow_ids', []) and not post_data.get('return_ids', []):
             return JsonResponse({'success': False, 'message': '记录ID不能为空'})
 
         if action_type == 'batch_approve':

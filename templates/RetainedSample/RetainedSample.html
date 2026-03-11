@@ -937,7 +937,7 @@ tbody tr td:last-child {
                     size="small"
                     @click="handleBatchCancel"
                     :loading="loading">
-                    批量撤销 ({{ selectedBorrowRecords.length }})
+                    批量撤销 (${ selectedBorrowRecords.length })
                 </el-button>
                 <!-- 我的签核标签页的批量同意按钮 -->
                 <el-button
@@ -946,7 +946,7 @@ tbody tr td:last-child {
                     size="small"
                     @click="handleBatchApprove"
                     :loading="loading">
-                    批量同意 ({{ selectedApprovalRecords.length }})
+                    批量同意 (${ selectedApprovalRecords.length })
                 </el-button>
             </div>
         </div>
