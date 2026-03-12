@@ -823,7 +823,7 @@ tbody tr td:last-child {
 
                 <!-- 修改 myBorrow 标签页的表格 -->
                 <el-tab-pane label="我的借用" name="myBorrow">
-                    <el-table :data="myBorrows" border height="600" v-loading="loading" @selection-change="handleBorrowSelectionChange">
+                    <el-table :data="sortedMyBorrows" border height="600" v-loading="loading" @selection-change="handleBorrowSelectionChange">
                         <el-table-column type="selection" width="55" align="center" fixed></el-table-column>
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
@@ -854,7 +854,7 @@ tbody tr td:last-child {
 
                 <!-- 修改 myApproval 标签页的表格 -->
                 <el-tab-pane label="我的簽核" name="myApproval" v-if="isAdmin">
-                    <el-table :key="activeTab" :data="approvalList" border height="600" v-loading="loading"
+                    <el-table :key="activeTab" :data="sortedApprovalList" border height="600" v-loading="loading"
                     @selection-change="handleApprovalSelectionChange">
                         <el-table-column type="selection" width="55" align="center" fixed></el-table-column>
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
@@ -1140,6 +1140,39 @@ new Vue({
             const allSame = types.every(t => t === types[0]);{% endcomment %}
             const allSame = true
             return allSame;
+        },
+        sortedMyBorrows() {
+            const list = [...this.myBorrows];
+            return list.sort((a, b) => {
+                // 状态优先级：已借用 > 其他
+                const getStatusPriority = (status) => (status === '已借用' ? 0 : 1);
+                const priorityA = getStatusPriority(a.Status);
+                const priorityB = getStatusPriority(b.Status);
+                if (priorityA !== priorityB) {
+                    return priorityA - priorityB;
+                }
+                // 相同状态按 created_at 降序
+                return (b.created_at || '').localeCompare(a.created_at || '');
+            });
+        },
+    
+        sortedApprovalList() {
+            const list = [...this.approvalList];
+            return list.sort((a, b) => {
+                // 类型优先级：借用申請 > 歸還申請
+                const getTypePriority = (type) => {
+                    if (type === '借用申請') return 0;
+                    if (type === '歸還申請') return 1;
+                    return 2; // 其他类型（如有）
+                };
+                const priorityA = getTypePriority(a.RecordType);
+                const priorityB = getTypePriority(b.RecordType);
+                if (priorityA !== priorityB) {
+                    return priorityA - priorityB;
+                }
+                // 相同类型按 created_at 降序
+                return (b.created_at || '').localeCompare(a.created_at || '');
+            });
         }
     },
     methods: {
