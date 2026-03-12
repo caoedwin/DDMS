@@ -539,7 +539,7 @@ def RetainedSample_summary(request):
                             Borrowed=personal_sample.Borrower,
                             BorrowQuantity=personal_sample.BorrowQuantity,
                             BorrowedReson=personal_sample.BorrowedReson,
-                            BorrowedStatus='已拒绝',
+                            BorrowedStatus='已拒绝借用',
                             ReturnedStatus='未歸還'
                         )
 
@@ -948,7 +948,7 @@ def handle_approval(request):
                             Borrowed=personal_sample.Borrower,
                             BorrowQuantity=personal_sample.BorrowQuantity,
                             BorrowedReson=f'拒絕: {reject_reason}',
-                            BorrowedStatus='已拒绝',
+                            BorrowedStatus='已拒绝借用',
                             ReturnedStatus='未歸還'
                         )
                         print({'success': True, 'message': '拒絕借用成功'})
@@ -993,7 +993,7 @@ def handle_approval(request):
                             Borrowed=personal_sample.Borrower,
                             BorrowQuantity=0,
                             BorrowedReson=f'拒絕歸還: {reject_reason}',
-                            BorrowedStatus='已拒绝',
+                            BorrowedStatus='已拒绝歸還',
                             ReturnedStatus='未歸還'
                         )
 

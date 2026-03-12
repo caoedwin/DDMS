@@ -896,7 +896,7 @@ tbody tr td:last-child {
                 </el-tab-pane>
 
                 <el-tab-pane label="借還記錄" name="records">
-                    <el-table :data="recordsDisplayData" border height="600" v-loading="loading">
+                    <el-table :data="sortedRecordsDisplayData" border height="600" v-loading="loading">
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
                         <el-table-column prop="Manufacturer" label="樣品廠商" align="center"></el-table-column>
@@ -947,6 +947,15 @@ tbody tr td:last-child {
                     @click="handleBatchApprove"
                     :loading="loading">
                     批量同意 (${ selectedApprovalRecords.length })
+                </el-button>
+                <!-- 导出按钮：始终显示 -->
+                <el-button
+                    type="info"
+                    size="small"
+                    @click="exportData"
+                    :loading="loading"
+                    style="margin-left: 8px;">
+                    导出Excel
                 </el-button>
             </div>
         </div>
@@ -1171,6 +1180,21 @@ new Vue({
                     return priorityA - priorityB;
                 }
                 // 相同类型按 created_at 降序
+                return (b.created_at || '').localeCompare(a.created_at || '');
+            });
+        },
+        
+        sortedRecordsDisplayData() {
+            const list = [...(this.recordsDisplayData || [])];
+            return list.sort((a, b) => {
+                // 定义优先级：未歸還（0）> 其他（1）
+                const getPriority = (status) => (status === '未歸還' ? 0 : 1);
+                const priorityA = getPriority(a.ReturnedStatus);
+                const priorityB = getPriority(b.ReturnedStatus);
+                if (priorityA !== priorityB) {
+                    return priorityA - priorityB;
+                }
+                // 相同归还状态，按申请时间降序
                 return (b.created_at || '').localeCompare(a.created_at || '');
             });
         }
@@ -2055,6 +2079,130 @@ new Vue({
         formatNumber(value) {
             if (value === null || value === undefined) return '0';
             return String(value).trim().replace(/\n/g, '');
+        },
+        
+        // 导出当前表格数据为 CSV
+        exportData() {
+            const tab = this.activeTab;
+            let data = [];
+            let headers = [];
+            let rows = [];
+        
+            // 根据标签页选择数据和表头
+            switch (tab) {
+                case 'summary':
+                    data = this.summaryDisplayData; // 已包含 is_expired 等字段，但导出不需要 is_expired
+                    headers = ['樣品名稱', '樣品廠商', '批次/版本', '留樣數量', '已借出', '簽核中', '報廢數量', '剩餘數量', '專案名稱', '專案負責人', '留樣人', '留樣日期', '周期(年)', '留樣位置'];
+                    rows = data.map(item => [
+                        item.SampleName,
+                        item.Manufacturer,
+                        item.SampleBatch,
+                        item.SampleQuantity,
+                        item.BorrowedQuantity,
+                        item.UnderApprovalQuantity,
+                        item.ScrappedQuantity,
+                        item.RemainedQuantity,
+                        item.Project,
+                        this.getDisplayNameByEmployeeId(item.Owner),
+                        this.getDisplayNameByEmployeeId(item.Retainer),
+                        item.RetainStart,
+                        item.RetainPeriod,
+                        item.RetainPosition
+                    ]);
+                    break;
+                case 'myBorrow':
+                    data = this.sortedMyBorrows;
+                    headers = ['樣品名稱', '專案名稱', '借用數量', '未歸還數量', '借用用途', '狀態', '申請時間'];
+                    rows = data.map(item => [
+                        item.SampleName,
+                        item.Project,
+                        item.BorrowQuantity,
+                        item.RemainedQuantity,
+                        item.BorrowedReson,
+                        item.Status,
+                        item.created_at
+                    ]);
+                    break;
+                case 'myApproval':
+                    data = this.sortedApprovalList;
+                    headers = ['樣品名稱', '專案名稱', '申請類型', '申請人', '數量', '原因', '申請時間'];
+                    rows = data.map(item => [
+                        item.SampleName,
+                        item.Project,
+                        item.RecordType,
+                        this.getDisplayNameByEmployeeId(item.Borrower),
+                        item.Quantity,
+                        item.Reason,
+                        item.created_at
+                    ]);
+                    break;
+                case 'records':
+                    data = this.sortedRecordsDisplayData;
+                    headers = ['樣品名稱', '專案名稱', '樣品廠商', '借用人', '借用數量', '借用用途', '借用狀態', '歸還狀態', '申請時間'];
+                    rows = data.map(item => [
+                        item.SampleName,
+                        item.Project,
+                        item.Manufacturer,
+                        this.getDisplayNameByEmployeeId(item.Borrower),
+                        item.BorrowQuantity,
+                        item.BorrowedReson,
+                        item.BorrowedStatus,
+                        item.ReturnedStatus,
+                        item.created_at
+                    ]);
+                    break;
+                case 'scrapRecords':
+                    data = this.scrapRecordsDisplayData;
+                    headers = ['樣品名稱', '專案名稱', '樣品廠商', '報廢人', '報廢數量', '報廢原因', '報廢時間'];
+                    rows = data.map(item => [
+                        item.SampleName,
+                        item.Project,
+                        item.Manufacturer,
+                        this.getDisplayNameByEmployeeId(item.ScrappedBy),
+                        item.ScrapQuantity,
+                        item.ScrapReason,
+                        item.created_at
+                    ]);
+                    break;
+                default:
+                    this.$message.warning('当前标签页暂无导出功能');
+                    return;
+            }
+        
+            if (rows.length === 0) {
+                this.$message.warning('没有数据可导出');
+                return;
+            }
+        
+            // 将二维数组转换为 CSV 字符串
+            const csvContent = this.arrayToCSV([headers, ...rows]);
+            // 下载文件
+            this.downloadCSV(csvContent, `留样系统_${tab}_${new Date().toISOString().slice(0,10)}.csv`);
+        },
+        
+        // 辅助方法：将二维数组转换为 CSV（处理特殊字符）
+        arrayToCSV(arrays) {
+            return arrays.map(row =>
+                row.map(cell => {
+                    if (cell === null || cell === undefined) return '';
+                    const str = String(cell);
+                    // 如果包含逗号、换行符或双引号，需用双引号包围并转义内部双引号
+                    if (str.includes(',') || str.includes('\n') || str.includes('"')) {
+                        return '"' + str.replace(/"/g, '""') + '"';
+                    }
+                    return str;
+                }).join(',')
+            ).join('\n');
+        },
+        
+        // 下载 CSV 文件（添加 UTF-8 BOM）
+        downloadCSV(csv, filename) {
+            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' }); // 添加 BOM 处理中文
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(link.href);
         },
 
     }
