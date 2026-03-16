@@ -1,35 +1,13 @@
-<!-- 
-  继承自基础模板base.html 
-  base.html通常包含全局的<head>、导航栏、页脚等公共结构。
--->
 {% extends 'base.html' %}
-
-<!-- 加载静态文件标签，用于引入CSS、JS等静态资源 -->
 {% load staticfiles %}
-
-<!-- 定义页面标题，会被填充到base.html的title块中 -->
 {% block title %}留樣管理系統{% endblock %}
-
-<!-- 
-  CSS块：在base.html的样式之后插入自定义CSS。
-  包含全局样式、组件覆盖样式、响应式设计等。
--->
 {% block css %}
-<!-- 引入外部CSS文件（静态文件路径） -->
 <link rel="stylesheet" href="/static/css/index.css">
-
-<!-- 
-  使用<style>标签定义当前页面的专属样式。
-  lang="scss"表示使用SCSS语法，但浏览器不识别，实际需要预编译，此处可能只是标记。
-  scoped属性（Vue单文件组件概念）在这里不生效，因为这是纯HTML，但可能意图是限制样式作用域，实际需通过CSS选择器实现。
--->
 <style lang="scss" rel="stylesheet/scss" scoped>
-/* 鼠标悬停时文字变红 */
 .showColor:hover{
     color: red;
 }
 
-/* 全屏遮罩层，用于模态框背景 */
 .fullScreen{
     position: fixed;
     top:0;
@@ -41,12 +19,10 @@
     overflow:hidden;
 }
 
-/* 覆盖Element UI对话框默认宽度 */
 .el-dialog {
     width: 700px;
 }
 
-/* 固定在右侧的竖排文字标签（可能是颜色标识） */
 .content{
     width:25px;
     height: 70px;
@@ -60,12 +36,11 @@
     margin: 0 auto;
     word-wrap: break-word;
     line-height: 24px;
-    writing-mode: vertical-lr;  /* 文字竖排 */
+    writing-mode: vertical-lr;
     z-index: 99;
     opacity: 0.9;
 }
 
-/* 右侧颜色标识容器，默认隐藏 */
 #container-yansebiaoshi{
     display:none;
     position: fixed;
@@ -75,23 +50,19 @@
     border: 2px solid  #deb887;
 }
 
-/* 分页组件文字颜色 */
 .el-pagination__total,.el-pagination__jump{
     color:black;
 }
 
-/* 表格的gutter列（可能指表头之间的间隔）强制显示并设置宽度 */
 .gutter{
     display:block!important;
     width:17px!important;
 }
 
-/* 自定义绿色背景单元格 */
 .cell-green{
     background: greenyellow;
 }
 
-/* 提示文字样式 */
 .tips{
     font-size: 20px;
     font-weight: bold;
@@ -99,7 +70,6 @@
     margin-left: 15px;
 }
 
-/* 覆盖Element UI表格单元格内容样式：允许换行 */
 .el-table .cell {
     box-sizing: border-box;
     white-space: pre-line;
@@ -107,12 +77,10 @@
     line-height: 23px;
 }
 
-/* 表格最后一列（操作列）文字左对齐 */
 tbody tr td:last-child {
     text-align: left;
 }
 
-/* 输入错误提示样式 */
 .inputError{
     text-align: center;
     color: crimson;
@@ -122,24 +90,20 @@ tbody tr td:last-child {
     position: relative;
 }
 
-/* 行内块显示 */
 .inputError,#Customer{
     display:inline-block;
 }
 
-/* 单行省略号 */
 .oneLine {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-/* 表格单元格垂直顶部对齐 */
 .el-table .my-cell {
     vertical-align: top
 }
 
-/* 表格容器添加阴影和圆角 */
 .tableAround{
     padding: 20px;
     -moz-box-shadow: 0px 0px 10px #333333;
@@ -149,31 +113,40 @@ tbody tr td:last-child {
     background-color: rgba(255,255,255,0.1);
 }
 
-/* 管理员专属元素的隐藏与显示 */
 .admin-only {
     display: none;
 }
+
 .is-admin .admin-only {
     display: inline-block;
 }
 
-/* 按钮颜色自定义 */
 .borrow-btn {
     background-color: #67C23A;
     color: white;
 }
+
 .scrap-btn {
     background-color: #F56C6C;
     color: white;
 }
 
-/* 状态文本颜色 */
-.status-warning { color: #E6A23C; }
-.status-success { color: #67C23A; }
-.status-danger { color: #F56C6C; }
-.status-info { color: #909399; }
+.status-warning {
+    color: #E6A23C;
+}
 
-/* 搜索行容器：flex水平滚动，适配小屏 */
+.status-success {
+    color: #67C23A;
+}
+
+.status-danger {
+    color: #F56C6C;
+}
+
+.status-info {
+    color: #909399;
+}
+/* 添加以下CSS到你的style标签中 */
 .search-row-container {
     display: flex;
     flex-wrap: nowrap;
@@ -183,23 +156,25 @@ tbody tr td:last-child {
     scrollbar-width: thin;
     scrollbar-color: #c1c1c1 #f1f1f1;
 }
-/* 自定义滚动条样式 */
+
 .search-row-container::-webkit-scrollbar {
     height: 6px;
 }
+
 .search-row-container::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 3px;
 }
+
 .search-row-container::-webkit-scrollbar-thumb {
     background: #c1c1c1;
     border-radius: 3px;
 }
+
 .search-row-container::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
 }
 
-/* 每个搜索项：标签+输入框 */
 .search-item {
     display: flex;
     align-items: center;
@@ -207,6 +182,7 @@ tbody tr td:last-child {
     min-width: 180px;
     flex-shrink: 0;
 }
+
 .search-label {
     color: black;
     font-size: 14px;
@@ -215,11 +191,11 @@ tbody tr td:last-child {
     margin-right: 5px;
     flex-shrink: 0;
 }
+
 .search-input {
     width: 120px;
 }
 
-/* 按钮组：靠右排列 */
 .button-group {
     display: flex;
     flex-wrap: nowrap;
@@ -228,19 +204,21 @@ tbody tr td:last-child {
     flex-shrink: 0;
     padding-left: 20px;
 }
+
 .action-button {
     flex-shrink: 0;
     margin-right: 8px;
 }
 
-/* 表格单元格内容默认不换行，超出省略 */
+/* 修复表格单元格内容的显示 */
 .el-table .cell {
-    white-space: nowrap !important;
-    word-break: keep-all !important;
+    white-space: nowrap !important;  /* 禁止换行 */
+    word-break: keep-all !important; /* 保持单词不换行 */
     overflow: hidden !important;
     text-overflow: ellipsis !important;
 }
-/* 状态标签强制内联块，避免换行 */
+
+/* 或者更具体的针对数字列 */
 .el-table td .status-danger,
 .el-table td .status-success,
 .el-table td .status-warning {
@@ -249,16 +227,16 @@ tbody tr td:last-child {
     min-width: 20px;  /* 设置最小宽度 */
 }
 
-/* 过期待办行样式：浅红色背景 */
 .el-table .expired-row {
     background-color: #fde2e2 !important;  /* 浅红色背景 */
 }
 
-/* 响应式调整 */
+/* 针对小屏幕的优化 */
 @media screen and (max-width: 1200px) {
     .search-item {
         min-width: 160px;
     }
+
     .search-input {
         width: 100px;
     }
@@ -268,6 +246,7 @@ tbody tr td:last-child {
     .search-item {
         min-width: 150px;
     }
+
     .search-input {
         width: 90px;
     }
@@ -279,39 +258,25 @@ tbody tr td:last-child {
 }
 </style>
 {% endblock %}
-
-<!-- 页面主要内容块 -->
 {% block content %}
-<!-- 
-  Vue应用的根元素，id="app"。
-  Vue实例会挂载到这个元素上，管理其内部的所有内容。
-  使用自定义分隔符 ${ } 以避免与Django模板 {{ }} 冲突（通过delimiters配置）。
--->
 <div id="app">
     <template>
-        <!-- Element UI的回到顶部组件 -->
         <el-backtop></el-backtop>
     </template>
 
-    <!-- 原计划显示当前时间的标题，被注释掉了 -->
     {% comment %}<div class="row" style="white-space: nowrap;">
         <div class="col-md-12">
             <h2 style="text-align: center; color: black;">APDQA留樣管理系統 ${ currentTime }</h2>
         </div>
     </div>{% endcomment %}
 
-    <!-- 
-      搜索条件区域，根据当前激活的标签页（activeTab）决定显示哪些搜索项。
-      当标签页为myBorrow或myApproval时不显示搜索条件。
-    -->
+    <!-- 搜索条件区域，根据当前标签页显示不同的搜索条件 -->
     <div class="row" style="margin-bottom: 20px;" v-if="activeTab !== 'myBorrow' && activeTab !== 'myApproval'">
         <div class="col-md-12 search-row-container">
-            <!-- 留樣總覽和报废记录共用的搜索条件（项目、样品、厂商） -->
+            <!-- 留樣總覽和报废记录共用相同的搜索条件 -->
             <div v-if="activeTab === 'summary' || activeTab === 'scrapRecords'" style="display: flex; flex-wrap: nowrap; align-items: center; flex-shrink: 0;">
-                <!-- 專案名稱搜索项 -->
                 <div class="search-item">
                     <label class="search-label">專案名稱</label>
-                    <!-- 根据标签页绑定不同的v-model和选项数据 -->
                     <el-select
                         v-if="activeTab === 'summary'"
                         v-model="searchConditions.summary.project"
@@ -346,7 +311,6 @@ tbody tr td:last-child {
                     </el-select>
                 </div>
 
-                <!-- 樣品名稱搜索项 -->
                 <div class="search-item">
                     <label class="search-label">樣品名稱</label>
                     <el-select
@@ -383,7 +347,6 @@ tbody tr td:last-child {
                     </el-select>
                 </div>
 
-                <!-- 樣品廠商搜索项 -->
                 <div class="search-item">
                     <label class="search-label">樣品廠商</label>
                     <el-select
@@ -421,7 +384,7 @@ tbody tr td:last-child {
                 </div>
             </div>
 
-            <!-- 借還記錄的搜索条件（增加借用人） -->
+            <!-- 借還記錄的搜索条件 -->
             <div v-if="activeTab === 'records'" style="display: flex; flex-wrap: nowrap; align-items: center; flex-shrink: 0;">
                 <div class="search-item">
                     <label class="search-label">專案名稱</label>
@@ -500,14 +463,13 @@ tbody tr td:last-child {
                 </div>
             </div>
 
-            <!-- 按钮区域：搜索、重置、添加、借用、报废（管理员可见） -->
+            <!-- 按钮区域 -->
             <div class="button-group">
                 <template v-if="activeTab !== 'myBorrow' && activeTab !== 'myApproval'">
                     <el-button type="primary" size="small" @click="handleSearch" class="action-button">搜索</el-button>
                     <el-button size="small" @click="handleReset" class="action-button">重置</el-button>
                 </template>
 
-                <!-- 管理员专属按钮：添加、报废（admin-only类控制显示） -->
                 <el-button v-if="activeTab === 'summary'" class="admin-only action-button" type="primary" size="small" @click="showAddDialog" class="action-button">添加</el-button>
                 <el-button v-if="activeTab === 'summary'" class="borrow-btn action-button" size="small" @click="showBorrowDialog" :disabled="selectedSamples.length !== 1">借用</el-button>
                 <el-button v-if="activeTab === 'summary'" class="scrap-btn admin-only action-button" size="small" @click="showScrapDialog" :disabled="selectedSamples.length !== 1">報廢</el-button>
@@ -519,12 +481,10 @@ tbody tr td:last-child {
     <!-- 合并后的添加/编辑留样对话框 -->
     <el-dialog :title="isEditMode ? '编辑留樣' : '添加留樣'" width="60%" :visible.sync="addDialogVisible">
         <el-form :model="addForm" label-width="120px" ref="addFormRef" :rules="addFormRules">
-            <!-- 專案名稱（编辑模式下不可修改） -->
             <el-form-item label="專案名稱" prop="Project">
                 <el-input v-model="addForm.Project" placeholder="請輸入專案名稱" :disabled="isEditMode"></el-input>
                 <span v-if="isEditMode" style="color: #999; font-size: 12px; margin-left: 10px;">(專案名稱不可修改)</span>
             </el-form-item>
-            <!-- 專案負責人：可搜索选择用户，显示选中后的名称 -->
             <el-form-item label="專案負責人" prop="Owner">
                 <el-select
                     v-model="addForm.Owner"
@@ -715,7 +675,6 @@ tbody tr td:last-child {
                     </el-button>
                 </div>
             </div>{% endcomment %}
-            <!-- 标签页组件，v-model绑定当前激活的标签页，@tab-click处理切换 -->
             <el-tabs v-model="activeTab" @tab-click="handleTabClick">
                 {% comment %}<!-- extra 插槽：显示在标签右侧 -->
                 <template slot="extra">
@@ -743,7 +702,6 @@ tbody tr td:last-child {
                     </div>
                 </template>{% endcomment %}
 
-                <!-- 留樣總覽标签页 -->
                 <el-tab-pane label="留樣總覽" name="summary">
                     <el-table
                         ref="sampleTable"
@@ -754,9 +712,10 @@ tbody tr td:last-child {
                         v-loading="loading"
                         element-loading-text="數據加載中..."
                         :header-cell-style="{background: '#CCDDFF', color: '#333', fontWeight: 'bold'}"
-                        :row-class-name="tableRowClassName"> <!-- 根据是否过期添加行样式 -->
+                        :row-class-name="tableRowClassName">
 
                         <el-table-column type="selection" width="30" align="center" fixed></el-table-column>
+
 
                         <el-table-column prop="SampleName" label="樣品名稱" align="center" width="150"></el-table-column>
                         <el-table-column prop="Manufacturer" label="樣品廠商" align="center" width="80"></el-table-column>
@@ -764,7 +723,7 @@ tbody tr td:last-child {
                         <!-- 留样数量列（原有） -->
                         <el-table-column prop="SampleQuantity" label="留樣數量" align="center" width="80"></el-table-column>
 
-                        <!-- 已借出数量列，带popover显示详细借用信息（hover时触发） -->
+                        <!-- 已借出数量列（原有，但可调整样式） -->
                         <el-table-column prop="BorrowedQuantity" label="已借出數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <el-popover
@@ -787,7 +746,7 @@ tbody tr td:last-child {
                                     <div v-else-if="scope.row.BorrowedQuantity === 0">暫無借用</div>
                                     <div v-else style="text-align: center;">加載中...</div>
 
-                                    <!-- 引用元素：显示数字，并根据是否有借用显示红色 -->
+                                    <!-- 引用元素：显示数字 -->
                                     <span slot="reference" :class="{'status-danger': scope.row.BorrowedQuantity > 0}">
                                         ${ formatNumber(scope.row.BorrowedQuantity) }
                                     </span>
@@ -795,7 +754,7 @@ tbody tr td:last-child {
                             </template>
                         </el-table-column>
 
-                        <!-- 簽核中数量列 -->
+                        <!-- 签核中数量列（原有） -->
                         <el-table-column prop="UnderApprovalQuantity" label="簽核中數量" align="center" width="100">
                             <template slot-scope="scope">
                                 <span :class="{'status-warning': scope.row.UnderApprovalQuantity > 0}">
@@ -813,7 +772,7 @@ tbody tr td:last-child {
                             </template>
                         </el-table-column>
 
-                        <!-- 剩余留样数量列，根据剩余值显示不同颜色 -->
+                        <!-- 剩余留样数量列（原有） -->
                         <el-table-column prop="RemainedQuantity" label="剩餘留樣數量" align="center" width="110">
                             <template slot-scope="scope">
                                 <span :class="{
@@ -825,7 +784,7 @@ tbody tr td:last-child {
                             </template>
                         </el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center" width="100"></el-table-column>
-                        <!-- 修改表格中的專案負責人和留樣人列，通过getDisplayNameByEmployeeId方法显示姓名（而非工号） -->
+                        <!-- 修改表格中的專案負責人和留樣人列 -->
                         <el-table-column prop="Owner" label="專案負責人" align="center" width="100">
                             <template slot-scope="scope">
                                 <span v-text="getDisplayNameByEmployeeId(scope.row.Owner)"></span>
@@ -840,7 +799,7 @@ tbody tr td:last-child {
                         <el-table-column prop="RetainPeriod" label="留樣周期(年)" align="center" width="120"></el-table-column>
                         <el-table-column prop="RetainPosition" label="留樣位置" align="center" width="120"></el-table-column>
 
-                        <!-- 在留样总览表格中添加操作列，仅管理员可见 -->
+                        <!-- 在留样总览表格中添加操作列 -->
                         <el-table-column label="操作" v-if="isAdmin" align="center" min-width="200" fixed="right">
                             <template slot-scope="scope">
                                 <el-button
@@ -893,7 +852,7 @@ tbody tr td:last-child {
                     </el-table>
                 </el-tab-pane>
 
-                <!-- 修改 myApproval 标签页的表格，仅管理员可见 -->
+                <!-- 修改 myApproval 标签页的表格 -->
                 <el-tab-pane label="我的簽核" name="myApproval" v-if="isAdmin">
                     <el-table :key="activeTab" :data="sortedApprovalList" border height="600" v-loading="loading"
                     @selection-change="handleApprovalSelectionChange">
@@ -936,7 +895,6 @@ tbody tr td:last-child {
                     </el-table>
                 </el-tab-pane>
 
-                <!-- 借還記錄标签页 -->
                 <el-tab-pane label="借還記錄" name="records">
                     <el-table :data="sortedRecordsDisplayData" border height="600" v-loading="loading">
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
@@ -955,7 +913,6 @@ tbody tr td:last-child {
                     </el-table>
                 </el-tab-pane>
 
-                <!-- 報廢記錄标签页，仅管理员可见 -->
                 <el-tab-pane label="報廢記錄" name="scrapRecords" v-if="isAdmin">
                     <el-table :data="scrapRecordsDisplayData" border height="600" v-loading="loading">
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
@@ -972,7 +929,6 @@ tbody tr td:last-child {
                     </el-table>
                 </el-tab-pane>
             </el-tabs>
-            <!-- 标签页右侧的按钮组：批量撤销、批量同意、导出Excel，绝对定位 -->
             <div class="tab-buttons" style="position: absolute; right: 0; top: 8px; z-index: 1;">
                 <!-- 我的借用标签页的批量撤销按钮 -->
                 <el-button
@@ -1006,8 +962,6 @@ tbody tr td:last-child {
     </div>
 </div>
 {% endblock %}
-
-<!-- JavaScript脚本块 -->
 {% block scripts %}
 <script src="/static/js/es6/polyfill.min.js"></script>
 <script src="/static/js/es6/babel.min.js"></script>
@@ -1015,22 +969,18 @@ tbody tr td:last-child {
 <script src="/static/js/vue.min.js"></script>
 <script src="/static/js/qs.js"></script>
 <script src="/static/js/Element/index.js"></script>
-
-<!-- 使用type="text/babel"启用Babel转换，使浏览器支持ES6+语法 -->
 <script type="text/babel">
-// 创建Vue实例，挂载到#app
 new Vue({
     el: '#app',
-    // 自定义分隔符，避免与Django模板冲突
     delimiters: ['${', '}'],
     data: function() {
         return {
-            currentTime: new Date().toLocaleString('zh-TW'),    // 当前时间，每秒更新
-            selectedApprovalRecords: [],                         // 选中的签核记录
-            activeTab: 'summary',                                 // 当前激活的标签页，默认summary
-            loading: false,                                       // 全局加载状态
-            isAdmin: false,                                       // 当前用户是否为管理员
-            borrowDetailsMap: {},                                 // 缓存借用详情，键为样品ID
+            currentTime: new Date().toLocaleString('zh-TW'),
+            selectedApprovalRecords: [],  // 存储选中的签核记录
+            activeTab: 'summary',
+            loading: false,
+            isAdmin: false,
+            borrowDetailsMap: {},   // 存储样品借用详情，键为样品ID
 
             // 当前登录用户信息
             currentUser: null,
@@ -1171,15 +1121,14 @@ new Vue({
         }
     },
     mounted() {
-        // 组件挂载后，加载summary数据
+        // 初始加载 summary 数据
         this.loadTabData('summary');
-        // 每秒更新当前时间
+        // 更新当前时间
         setInterval(() => {
             this.currentTime = new Date().toLocaleString('zh-TW');
         }, 1000);
     },
     computed: {
-        // 计算属性：是否可以批量撤销（仅当选中记录的Status为“借用確認中”或“歸還確認中”时）
         canBatchCancel() {
             //console.log('selectedBorrowRecords:', JSON.parse(JSON.stringify(this.selectedBorrowRecords))); // 深拷贝打印
             if (this.selectedBorrowRecords.length === 0) {
@@ -1193,27 +1142,14 @@ new Vue({
             //console.log('canBatchCancel 结果:', result);
             return result;
         },
-        // 是否可以批量同意（所有选中的记录为同一类型）
         canBatchApprove() {
             if (this.selectedApprovalRecords.length === 0) return false;
             // 检查是否全为同一类型（借用申请 或 归还申请）
             {% comment %}const types = this.selectedApprovalRecords.map(r => r.RecordType);
-            <!--作用：map 会遍历数组 this.selectedApprovalRecords 中的每一个元素，并对每个元素执行回调函数，然后将每次执行的结果收集起来，组成一个新数组返回。
-
-            回调函数：r => r.RecordType 是一个箭头函数。r 是形参，代表当前遍历到的数组元素（即每个审批记录对象）。函数返回该元素的 RecordType 属性值。
-            
-            结果：types 变成了一个由所有选中记录的 RecordType 值组成的数组，例如 ['借用申請', '借用申請', '借用申請'] 或 ['歸還申請', '借用申請'] 等。
-            作用：every 会遍历数组 types 中的每一个元素，对每个元素执行回调函数，只有当所有元素都使回调函数返回 true 时，every 才返回 true；如果有一个元素使回调返回 false，则立即返回 false。
-            
-            回调函数：t => t === types[0] 是一个箭头函数。t 是形参，代表当前遍历到的 types 数组中的元素。函数判断当前元素 t 是否等于数组的第一个元素 types[0]。
-            
-            结果：allSame 为 true 表示数组中所有元素都等于第一个元素，即所有记录的 RecordType 都相同；否则为 false。
-            -->
             const allSame = types.every(t => t === types[0]);{% endcomment %}
             const allSame = true
             return allSame;
         },
-        // 排序后的我的借用列表（已借用优先，再按时间倒序）
         sortedMyBorrows() {
             const list = [...this.myBorrows];
             return list.sort((a, b) => {
@@ -1229,7 +1165,6 @@ new Vue({
             });
         },
     
-        // 排序后的签核列表
         sortedApprovalList() {
             const list = [...this.approvalList];
             return list.sort((a, b) => {
@@ -1249,7 +1184,6 @@ new Vue({
             });
         },
         
-        // 排序后的借还记录（未归还优先）
         sortedRecordsDisplayData() {
             const list = [...(this.recordsDisplayData || [])];
             return list.sort((a, b) => {
@@ -1266,7 +1200,6 @@ new Vue({
         }
     },
     methods: {
-        // 根据row的is_expired字段返回行类名，用于高亮过期行
         tableRowClassName({row}) {
             // 根据后端返回的 is_expired 字段决定行样式
             if (row.is_expired) {
@@ -1283,7 +1216,7 @@ new Vue({
             return `${year}-${month}-${day}`;
         },
 
-        // 过滤用户列表（用于下拉搜索）
+        // 过滤用户列表
         filterUsers(query) {
             if (query) {
                 this.filteredUsers = this.filterOptions.summary.users.filter(user => {
@@ -1295,14 +1228,14 @@ new Vue({
             }
         },
 
-        // 当 popover 显示时触发，按需加载借用详情（避免一次性加载所有详情）
+        // 当 popover 显示时触发，按需加载借用详情
         handlePopoverShow(sampleId) {
             if (!this.borrowDetailsMap[sampleId] && sampleId) {
                 this.fetchBorrowDetails(sampleId);
             }
         },
 
-        // 请求借用详情API
+        // 请求借用详情
         fetchBorrowDetails(sampleId) {
             axios.get('/RetainedSample/get_borrow_details/', { params: { sample_id: sampleId } })
                 .then(response => {
@@ -1330,7 +1263,7 @@ new Vue({
             this.selectedRetainerDisplay = selectedUser ? selectedUser.label : '';
         },
 
-        // 根据工号获取显示名称（姓名+工号）
+        // 根据工号获取显示名称
         getDisplayNameByEmployeeId(employeeId) {
             if (!employeeId) return '';
             const user = this.filterOptions.summary.users.find(u => u.value === employeeId);
@@ -1529,7 +1462,6 @@ new Vue({
             });
         },
 
-        // 重置添加表单
         resetAddForm() {
             this.addForm = {
                 Key_Post: '',
@@ -1548,7 +1480,7 @@ new Vue({
             this.selectedRetainerDisplay = '';
         },
 
-        // 根据标签页加载数据（核心方法）
+        // 根据标签页加载数据
         loadTabData(tab) {
             this.loading = true;
 
@@ -1666,7 +1598,6 @@ new Vue({
                 });
         },
 
-        // 标签页点击处理
         handleTabClick(tab) {
             this.activeTab = tab.name;
             this.loadTabData(tab.name);
@@ -1708,13 +1639,11 @@ new Vue({
             }
         },
 
-        // 表格选择变化
         handleSelectionChange(selection) {
             this.selectedSamples = selection;
             this.selectedSample = selection.length > 0 ? selection[0] : null;
         },
 
-        // 显示借用对话框
         showBorrowDialog() {
             if (this.selectedSamples.length === 0) {
                 this.$message.warning('请选择要借用的样品');
@@ -1735,7 +1664,6 @@ new Vue({
             this.borrowDialogVisible = true;
         },
 
-        // 显示报废对话框
         showScrapDialog() {
             if (this.selectedSamples.length === 0) {
                 this.$message.warning('请选择要报废的样品');
@@ -1756,7 +1684,6 @@ new Vue({
             this.scrapDialogVisible = true;
         },
 
-        // 提交借用申请
         borrowSample() {
             if (this.selectedSamples.length === 0) return;
 
@@ -1793,7 +1720,6 @@ new Vue({
                 });
         },
 
-        // 报废样品
         scrapSample() {
             if (this.selectedSamples.length === 0) return;
 
@@ -1829,7 +1755,6 @@ new Vue({
                 });
         },
 
-        // 以下是一些备用方法（可能未使用，但保留）
         approveBorrow(record) {
             this.$confirm('确认同意借用申请吗?', '提示', {
                 confirmButtonText: '确定',
@@ -1884,7 +1809,6 @@ new Vue({
             });
         },
 
-        // 获取状态对应的标签类型
         getStatusType(status) {
             const typeMap = {
                 '借用確認中': 'warning',
@@ -1897,7 +1821,6 @@ new Vue({
             return typeMap[status] || 'info';
         },
 
-        // 重置表单
         resetBorrowForm() {
             this.borrowForm = {
                 BorrowQuantity: 1,
@@ -1919,7 +1842,6 @@ new Vue({
             this.selectedBorrowRecord = selection.length > 0 ? selection[0] : null;
         },
 
-        // 批量撤销申请
         handleBatchCancel() {
             //console.log(this.canBatchCancel)
             if (!this.canBatchCancel) {
@@ -2020,12 +1942,10 @@ new Vue({
                 });
         },
 
-        // 处理我的签核表格的选择
         handleApprovalSelectionChange(selection) {
             this.selectedApprovalRecords = selection;
         },
 
-        // 批量同意
         handleBatchApprove() {
             if (!this.canBatchApprove) {
                 this.$message.warning('请只选择同一类型的申请（全部借用或全部归还）');
@@ -2161,7 +2081,7 @@ new Vue({
             return String(value).trim().replace(/\n/g, '');
         },
         
-        // 导出当前表格数据为 CSV 文件
+        // 导出当前表格数据为 CSV
         exportData() {
             const tab = this.activeTab;
             let data = [];
@@ -2275,7 +2195,7 @@ new Vue({
             ).join('\n');
         },
         
-        // 下载 CSV 文件（添加 UTF-8 BOM 以支持中文）
+        // 下载 CSV 文件（添加 UTF-8 BOM）
         downloadCSV(csv, filename) {
             const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' }); // 添加 BOM 处理中文
             const link = document.createElement('a');
