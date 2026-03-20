@@ -102,9 +102,29 @@ def RetainedSample_summary(request):
                     'name': onlineuser
                 }
 
-            # 获取留样位置选项
-            retain_positions = RetainedSample.objects.values_list('RetainPosition', flat=True).distinct()
-            all_retain_positions = RetainedSample.objects.values_list('RetainPosition', flat=True).distinct()
+            # # 获取留样位置选项
+            # retain_positions = RetainedSample.objects.values_list('RetainPosition', flat=True).distinct()
+            # all_retain_positions = RetainedSample.objects.values_list('RetainPosition', flat=True).distinct()
+            # all_retain_positions = Location.objects.all().values_list('area', 'cell')
+            # retain_positions_list = [f"{area}_{cell}" for area, cell in all_retain_positions]  # 格式 "Plant3 1FA-28_J1-1"
+            locations = Location.objects.all().values('area', 'rack', 'cell', 'description')
+            retain_positions_list = []
+            for loc in locations:
+                value = f"{loc['area']}_{loc['cell']}"
+                # 构建显示文本，例如：Plant3 1FA-28_J1-1(四層鋼架:測試機台，留樣品等)
+                # 如果 rack 和 description 存在则附加，否则只显示简写
+                label = value
+                if loc['rack'] or loc['description']:
+                    details = []
+                    if loc['rack']:
+                        details.append(loc['rack'])
+                    if loc['description']:
+                        details.append(loc['description'])
+                    label = f"{value}({':'.join(details)})"
+                retain_positions_list.append({
+                    'value': value,
+                    'label': label
+                })
 
             # ... 在 queryset 获取之后，构造 samples 数据之前 ...
             # 获取当前过滤后的样品ID列表
@@ -156,7 +176,8 @@ def RetainedSample_summary(request):
                     'samples': list(all_samples),
                     'manufacturers': list(all_manufacturers),
                     'users': user_options,
-                    'retain_positions': list(all_retain_positions)
+                    # 'retain_positions': list(all_retain_positions)
+                    'retain_positions': retain_positions_list
                 },
                 'current_user': current_user_info,
                 'is_admin': isAdmin
@@ -1217,3 +1238,142 @@ def handle_batch_cancel(request):
         import traceback
         print(traceback.format_exc())
         return JsonResponse({'success': False, 'message': str(e)})
+
+from .models import Location  # 确保导入
+
+@csrf_exempt
+def location_management(request):
+    """位置管理页面"""
+    if not request.session.get('is_login_DMS', None):
+        return redirect('/login/')
+    # 检查权限（仅管理员可访问）
+    onlineuser = request.session.get('account_DMS')
+    isAdmin = False
+    try:
+        user_info = UserInfo.objects.get(account=onlineuser)
+        for role in user_info.role.all():
+            if 'Sys_Admin' in role.name or 'C38_RetainedSam_admin' in role.name:
+                isAdmin = True
+                break
+    except:
+        pass
+    if not isAdmin:
+        return HttpResponse('无权限访问', status=403)
+    return render(request, 'RetainedSample/location_management.html', locals())
+
+@csrf_exempt
+def location_api(request):
+    """位置管理API：获取列表、新增、编辑、删除"""
+    if not request.session.get('is_login_DMS', None):
+        return JsonResponse({'success': False, 'message': '请先登录'})
+
+    onlineuser = request.session.get('account_DMS')
+    # 检查管理员权限（除查询外，修改操作需验证）
+    isAdmin = False
+    try:
+        user_info = UserInfo.objects.get(account=onlineuser)
+        for role in user_info.role.all():
+            if 'Sys_Admin' in role.name or 'C38_RetainedSam_admin' in role.name:
+                isAdmin = True
+                break
+    except:
+        pass
+
+    if request.method == 'GET':
+        # 获取列表
+        search = request.GET.get('search', '')
+        queryset = Location.objects.all()
+        if search:
+            queryset = queryset.filter(
+                Q(area__icontains=search) | Q(cell__icontains=search) | Q(rack__icontains=search)
+            )
+        # 按创建时间倒序
+        queryset = queryset.order_by('-created_at')
+        data = []
+        for loc in queryset:
+            data.append({
+                'id': loc.id,
+                'area': loc.area,
+                'rack': loc.rack,
+                'cell': loc.cell,
+                'description': loc.description,
+                'created_at': loc.created_at.strftime('%Y-%m-%d %H:%M:%S') if loc.created_at else ''
+            })
+        return JsonResponse({'success': True, 'data': data})
+
+    elif request.method == 'POST':
+        if not isAdmin:
+            return JsonResponse({'success': False, 'message': '无权限操作'})
+
+        try:
+            post_data = json.loads(request.body)
+            action = post_data.get('Key_Post')
+
+            if action == 'adddata':
+                # 新增
+                area = post_data.get('area', '').strip()
+                cell = post_data.get('cell', '').strip()
+                if not area or not cell:
+                    return JsonResponse({'success': False, 'message': '留樣位置和No.为必填项'})
+                # 检查唯一性（可选，根据业务决定）
+                if Location.objects.filter(area=area, cell=cell).exists():
+                    return JsonResponse({'success': False, 'message': '该位置已存在'})
+                Location.objects.create(
+                    area=area,
+                    rack=post_data.get('rack', '').strip(),
+                    cell=cell,
+                    description=post_data.get('description', '').strip()
+                )
+                return JsonResponse({'success': True, 'message': '新增成功'})
+
+            elif action == 'editdata':
+                # 编辑
+                loc_id = post_data.get('id')
+                if not loc_id:
+                    return JsonResponse({'success': False, 'message': 'ID不能为空'})
+                try:
+                    loc = Location.objects.get(id=loc_id)
+                except Location.DoesNotExist:
+                    return JsonResponse({'success': False, 'message': '记录不存在'})
+
+                area = post_data.get('area', '').strip()
+                cell = post_data.get('cell', '').strip()
+                if not area or not cell:
+                    return JsonResponse({'success': False, 'message': '留樣位置和No.为必填项'})
+
+                # 检查唯一性（排除自身）
+                if Location.objects.filter(area=area, cell=cell).exclude(id=loc_id).exists():
+                    return JsonResponse({'success': False, 'message': '该位置已存在'})
+
+                loc.area = area
+                loc.rack = post_data.get('rack', '').strip()
+                loc.cell = cell
+                loc.description = post_data.get('description', '').strip()
+                loc.save()
+                return JsonResponse({'success': True, 'message': '修改成功'})
+
+            elif action == 'deletedata':
+                loc_id = post_data.get('id')
+                if not loc_id:
+                    return JsonResponse({'success': False, 'message': 'ID不能为空'})
+                try:
+                    loc = Location.objects.get(id=loc_id)
+                except Location.DoesNotExist:
+                    return JsonResponse({'success': False, 'message': '记录不存在'})
+
+                # 可选：检查是否被 RetainedSample 引用
+                if RetainedSample.objects.filter(RetainPosition=f"{loc.area}_{loc.cell}").exists():
+                    return JsonResponse({'success': False, 'message': '该位置已被留样记录引用，无法删除'})
+
+                loc.delete()
+                return JsonResponse({'success': True, 'message': '删除成功'})
+
+            else:
+                return JsonResponse({'success': False, 'message': '未知操作'})
+
+        except Exception as e:
+            import traceback
+            print(traceback.format_exc())
+            return JsonResponse({'success': False, 'message': str(e)})
+
+    return JsonResponse({'success': False, 'message': '不支持的请求方法'})

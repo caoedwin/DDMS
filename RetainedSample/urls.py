@@ -9,6 +9,9 @@ urlpatterns = [
     path('handle_approval/', views.handle_approval, name='handle_approval'),
     path('get_borrow_details/', views.get_borrow_details, name='get_borrow_details'),
     path('handle_batch_cancel/', views.handle_batch_cancel, name='handle_batch_cancel'),
+
+    path('location/', views.location_management, name='location_management'),
+    path('location_api/', views.location_api, name='location_api'),
     # path('RetainedSample_MyBorrow/', views.RetainedSample_MyBorrow, name='RetainedSample_MyBorrow'),
     # path('RetainedSample_MyApproval/', views.RetainedSample_MyApproval, name='RetainedSample_MyApproval'),
     # path('RetainedSample_BRRecord/', views.RetainedSample_BRRecord, name='RetainedSample_BRRecord'),

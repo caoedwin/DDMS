@@ -19,7 +19,7 @@ class RetainedSample(models.Model):
     Retainer = models.CharField(max_length=30, verbose_name="留樣人")  # 工號
     RetainStart = models.DateField(verbose_name="留樣日期")
     RetainPeriod = models.FloatField(verbose_name="留樣周期(年)")
-    RetainPosition = models.CharField(choices=Position_CHOICES, max_length=300, verbose_name="留樣位置")
+    RetainPosition = models.CharField(max_length=300, verbose_name="留樣位置")
     BorrowedQuantity = models.IntegerField(verbose_name="已借出數量")
     RemainedQuantity = models.IntegerField(verbose_name="剩餘留樣數量")
     UnderApprovalQuantity = models.IntegerField(verbose_name="簽核中數量")
@@ -69,3 +69,24 @@ class RetainedSampleRecord(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新时间")
+
+class Location(models.Model):
+    """
+    留样位置信息模型
+    存储所有可用的留样点位，如 "Plant3 1FA-28_J1-1"
+    """
+    # full_name = models.CharField(max_length=200, unique=True, verbose_name="完整位置名称")
+    area = models.CharField(max_length=100, verbose_name="留樣位置")          # 例如：Plant3 1FA-28
+    rack = models.CharField(max_length=100, blank=True, verbose_name="留樣載具")  # 例如：四層鋼架
+    cell = models.CharField(max_length=50, verbose_name="No.")          # 例如：J1-1
+    description = models.TextField(blank=True, verbose_name="目前擺放物品")       # 可选备注
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="更新时间")
+
+    class Meta:
+        verbose_name = "留样位置"
+        verbose_name_plural = "留样位置"
+        ordering = ['area', 'rack', 'cell']
+
+    def __str__(self):
+        return f"{self.area}_{self.cell}"   # 格式：Plant3 1FA-28_J1-1

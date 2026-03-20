@@ -1,0 +1,258 @@
+[2026-03-17 11:01:21,869] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 36, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 445, in parse
+    raise self.error(token, 'Empty variable tag on line %d' % token.lineno)
+django.template.exceptions.TemplateSyntaxError: Empty variable tag on line 288
+[2026-03-17 11:01:21,945] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 178627
+[2026-03-17 11:01:22,318] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-03-17 11:01:22,339] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-17 11:01:22,409] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38027
+[2026-03-17 11:01:23,108] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-03-17 11:01:23,124] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-17 11:01:23,626] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-17 11:01:24,462] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-17 11:01:24,525] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-03-17 11:01:24,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-03-17 11:01:24,808] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47104
+[2026-03-17 11:01:25,546] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-17 11:01:25: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-03-17 11:01:25,572] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-03-17 11:01:25,618] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-17 11:01:25,817] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-03-17 11:01:25,820] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-03-17 11:02:07,481] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /RetainedSample/RetainedSample_summary/
+Traceback (most recent call last):
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python3129\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python3129\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\RetainedSample\views.py", line 36, in RetainedSample_summary
+    return render(request, 'RetainedSample/RetainedSample.html', locals())
+  File "C:\Python3129\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python3129\mecheck\lib\site-packages\django\template\base.py", line 445, in parse
+    raise self.error(token, 'Empty variable tag on line %d' % token.lineno)
+django.template.exceptions.TemplateSyntaxError: Empty variable tag on line 288
+[2026-03-17 11:02:07,486] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 500 178201
+[2026-03-17 11:02:07,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-17 11:03:16,407] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134029
+[2026-03-17 11:03:17,358] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-17 11:03:17,440] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-17 11:03:33,621] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38027
+[2026-03-17 11:03:33,709] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-03-17 11:03:33,710] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-03-17 11:03:33,736] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-03-17 11:05:13,488] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=3 HTTP/1.1" 200 215
+[2026-03-17 11:15:57,009] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=4 HTTP/1.1" 200 400
+[2026-03-17 15:07:17,105] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 362
+[2026-03-17 15:07:19,358] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 7369
+[2026-03-18 09:48:28,682] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-03-18 09:48:28,711] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-18 09:48:29,003] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-03-18 09:48:29,012] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-18 09:48:31,376] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-18 09:48:31,530] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-03-18 09:48:31,642] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-03-18 09:48:31,917] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47104
+[2026-03-18 09:48:32,608] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-18 09:48:32,606] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-18 09:48:32: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-03-18 09:48:32,631] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-03-18 09:48:32,750] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-03-18 09:48:32,751] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-03-18 09:48:34,866] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134029
+[2026-03-18 09:48:35,392] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-18 09:48:35,616] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-18 09:48:36,579] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=3 HTTP/1.1" 200 215
+[2026-03-18 09:56:38,458] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=2 HTTP/1.1" 200 400
+[2026-03-18 09:58:39,980] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38027
+[2026-03-18 09:58:40,054] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38027
+[2026-03-18 09:58:40,138] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38027
+[2026-03-18 09:58:40,213] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-18 09:58:40,259] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38027
+[2026-03-18 09:58:40,311] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-18 09:58:40,364] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-18 09:58:40,433] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-18 09:58:56,277] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134029
+[2026-03-18 09:58:56,640] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-18 09:58:56,682] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-18 10:20:58,750] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=2 HTTP/1.1" 200 400
+[2026-03-18 10:21:24,406] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=3 HTTP/1.1" 200 215
+[2026-03-18 10:21:30,272] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=4 HTTP/1.1" 200 400
+[2026-03-18 10:21:35,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 10:21:45,455] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 10:21:51,330] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 7369
+[2026-03-18 10:22:11,509] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 10:22:43,093] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 7369
+[2026-03-18 10:22:47,235] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 10:22:48,723] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 10:22:54,726] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 362
+[2026-03-18 10:23:03,007] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 7369
+[2026-03-18 10:23:06,160] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 10:23:08,203] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 10:23:11,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-18 11:20:15,352] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary&project=GLA20 HTTP/1.1" 200 21595
+[2026-03-18 11:21:23,477] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 11:21:26,713] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary&project=GLA20 HTTP/1.1" 200 21595
+[2026-03-18 11:21:28,482] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 11:21:30,730] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 11:21:33,773] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 11:21:34,823] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 7369
+[2026-03-18 11:21:36,545] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 11:21:39,602] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 11:21:42,614] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 11:21:44,248] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary&project=GLA20 HTTP/1.1" 200 21595
+[2026-03-18 11:21:47,631] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-18 11:21:50,240] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 11:21:52,972] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 11:21:54,307] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=records HTTP/1.1" 200 7369
+[2026-03-18 11:21:56,059] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 362
+[2026-03-18 11:21:56,868] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-18 11:21:57,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-18 11:58:56,499] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-18 11:59:44,221] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=3 HTTP/1.1" 200 215
+[2026-03-18 11:59:44,424] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=4 HTTP/1.1" 200 400
+[2026-03-18 11:59:57,048] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=2 HTTP/1.1" 200 400
+[2026-03-19 08:57:30,763] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 302 0
+[2026-03-19 08:57:30,901] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-19 08:57:31,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-03-19 08:57:31,704] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-19 08:57:44,580] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-19 08:57:44,595] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-19 08:57:45,479] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-03-19 08:57:45,480] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-03-19 08:57:45,810] [basehttp.py:154] [basehttp:log_message] [ERROR]- "POST /login/ HTTP/1.1" 500 59
+[2026-03-19 08:57:46,065] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-03-19 08:57:47,283] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/ HTTP/1.1" 200 68
+[2026-03-19 08:57:47,844] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-19 08:57:54,325] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/ HTTP/1.1" 200 38027
+[2026-03-19 08:57:54,949] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-19 08:57:57,767] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 54309
+[2026-03-19 08:57:58,010] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/image.js HTTP/1.1" 200 26016
+[2026-03-19 08:57:58,660] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-19 08:58:00,852] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-19 08:58:00: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/SysAdmin/UserInfo-edit/'>
+[2026-03-19 08:58:00,886] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /SysAdmin/UserInfo-edit/ HTTP/1.1" 200 70925
+[2026-03-19 08:58:02,450] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134029
+[2026-03-19 08:58:03,574] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-19 08:58:03,650] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-19 09:39:08,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38027
+[2026-03-19 09:39:09,124] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-19 09:39:12,153] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134029
+[2026-03-19 09:39:13,208] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-19 09:39:13,223] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-19 09:48:46,239] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=3 HTTP/1.1" 200 215
+[2026-03-19 09:49:18,924] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=4 HTTP/1.1" 200 400
+[2026-03-19 10:19:31,671] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 362
+[2026-03-19 10:19:32,816] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-19 10:21:06,486] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=4 HTTP/1.1" 200 400
+[2026-03-19 10:21:35,503] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=2 HTTP/1.1" 200 400
+[2026-03-19 10:24:32,067] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=3 HTTP/1.1" 200 215
+[2026-03-19 10:24:50,260] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38027
+[2026-03-19 10:24:50,338] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-03-19 10:24:50,636] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-03-19 10:24:50,643] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-03-19 10:24:55,103] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-19 10:48:25,123] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-19 10:48:27,048] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-19 10:48:27,972] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-19 13:21:01,028] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134029
+[2026-03-19 13:21:01,404] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38027
+[2026-03-19 13:21:01,414] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-03-19 13:21:01,466] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-03-19 13:21:01,641] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-03-19 13:21:02,334] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-19 13:21:02,642] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-19 13:21:13,075] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-19 13:21:14,979] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myApproval HTTP/1.1" 200 1022
+[2026-03-19 16:06:09,701] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-20 08:06:38,970] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 302 0
+[2026-03-20 08:06:39,145] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-20 08:06:39,498] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2026-03-20 08:06:39,512] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-20 08:06:39,674] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-03-20 08:06:39,739] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-03-20 08:06:39,749] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-20 08:06:46,543] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-20 08:06:46,665] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-03-20 08:06:46,771] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-03-20 08:06:46,998] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134029
+[2026-03-20 08:06:47,113] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38027
+[2026-03-20 08:06:47,168] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-03-20 08:06:47,198] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-03-20 08:06:47,845] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-20 08:06:47,900] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38027
+[2026-03-20 08:06:47,908] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-03-20 08:47:26,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=scrapRecords HTTP/1.1" 200 362
+[2026-03-20 08:47:28,330] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=myBorrow HTTP/1.1" 200 6051
+[2026-03-20 08:50:12,661] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23302
+[2026-03-20 09:04:36,168] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=2 HTTP/1.1" 200 400

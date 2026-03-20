@@ -1,5 +1,5 @@
-<!-- 
-  继承自基础模板base.html 
+<!--
+  继承自基础模板base.html
   base.html通常包含全局的<head>、导航栏、页脚等公共结构。
 -->
 {% extends 'base.html' %}
@@ -10,7 +10,7 @@
 <!-- 定义页面标题，会被填充到base.html的title块中 -->
 {% block title %}留樣管理系統{% endblock %}
 
-<!-- 
+<!--
   CSS块：在base.html的样式之后插入自定义CSS。
   包含全局样式、组件覆盖样式、响应式设计等。
 -->
@@ -18,7 +18,7 @@
 <!-- 引入外部CSS文件（静态文件路径） -->
 <link rel="stylesheet" href="/static/css/index.css">
 
-<!-- 
+<!--
   使用<style>标签定义当前页面的专属样式。
   lang="scss"表示使用SCSS语法，但浏览器不识别，实际需要预编译，此处可能只是标记。
   scoped属性（Vue单文件组件概念）在这里不生效，因为这是纯HTML，但可能意图是限制样式作用域，实际需通过CSS选择器实现。
@@ -282,10 +282,10 @@ tbody tr td:last-child {
 
 <!-- 页面主要内容块 -->
 {% block content %}
-<!-- 
+<!--
   Vue应用的根元素，id="app"。
   Vue实例会挂载到这个元素上，管理其内部的所有内容。
-  使用自定义分隔符 ${ } 以避免与Django模板 {{ }} 冲突（通过delimiters配置）。
+  使用自定义分隔符 ${ } 以避免与Django模板  冲突（通过delimiters配置）。
 -->
 <div id="app">
     <template>
@@ -300,7 +300,7 @@ tbody tr td:last-child {
         </div>
     </div>{% endcomment %}
 
-    <!-- 
+    <!--
       搜索条件区域，根据当前激活的标签页（activeTab）决定显示哪些搜索项。
       当标签页为myBorrow或myApproval时不显示搜索条件。
     -->
@@ -511,6 +511,7 @@ tbody tr td:last-child {
                 <el-button v-if="activeTab === 'summary'" class="admin-only action-button" type="primary" size="small" @click="showAddDialog" class="action-button">添加</el-button>
                 <el-button v-if="activeTab === 'summary'" class="borrow-btn action-button" size="small" @click="showBorrowDialog" :disabled="selectedSamples.length !== 1">借用</el-button>
                 <el-button v-if="activeTab === 'summary'" class="scrap-btn admin-only action-button" size="small" @click="showScrapDialog" :disabled="selectedSamples.length !== 1">報廢</el-button>
+                <el-button v-if="activeTab === 'summary' && isAdmin" type="info" size="small" @click="goToLocationManagement" class="action-button">位置管理</el-button>
             </div>
         </div>
     </div>
@@ -593,9 +594,9 @@ tbody tr td:last-child {
                 <el-select v-model="addForm.RetainPosition" placeholder="請選擇留樣位置" style="width: 100%;" filterable allow-create>
                     <el-option
                         v-for="item in filterOptions.summary.retain_positions"
-                        :key="item"
-                        :label="item"
-                        :value="item">
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
                     </el-option>
                 </el-select>
             </el-form-item>
@@ -824,6 +825,7 @@ tbody tr td:last-child {
                                 </span>
                             </template>
                         </el-table-column>
+                        <el-table-column prop="RetainPosition" label="留樣位置" align="center" width="180"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center" width="100"></el-table-column>
                         <!-- 修改表格中的專案負責人和留樣人列，通过getDisplayNameByEmployeeId方法显示姓名（而非工号） -->
                         <el-table-column prop="Owner" label="專案負責人" align="center" width="100">
@@ -838,7 +840,7 @@ tbody tr td:last-child {
                         </el-table-column>
                         <el-table-column prop="RetainStart" label="留樣日期" align="center" width="120"></el-table-column>
                         <el-table-column prop="RetainPeriod" label="留樣周期(年)" align="center" width="120"></el-table-column>
-                        <el-table-column prop="RetainPosition" label="留樣位置" align="center" width="120"></el-table-column>
+
 
                         <!-- 在留样总览表格中添加操作列，仅管理员可见 -->
                         <el-table-column label="操作" v-if="isAdmin" align="center" min-width="200" fixed="right">
@@ -1125,7 +1127,7 @@ new Vue({
                 Retainer: '',  // 保存工号
                 RetainStart: this.formatDate(new Date()),
                 RetainPeriod: 1,
-                RetainPosition: 'Plant5-#23'
+                RetainPosition: ''
             },
 
             borrowForm: {
@@ -1199,14 +1201,11 @@ new Vue({
             // 检查是否全为同一类型（借用申请 或 归还申请）
             {% comment %}const types = this.selectedApprovalRecords.map(r => r.RecordType);
             <!--作用：map 会遍历数组 this.selectedApprovalRecords 中的每一个元素，并对每个元素执行回调函数，然后将每次执行的结果收集起来，组成一个新数组返回。
-
             回调函数：r => r.RecordType 是一个箭头函数。r 是形参，代表当前遍历到的数组元素（即每个审批记录对象）。函数返回该元素的 RecordType 属性值。
-            
             结果：types 变成了一个由所有选中记录的 RecordType 值组成的数组，例如 ['借用申請', '借用申請', '借用申請'] 或 ['歸還申請', '借用申請'] 等。
+
             作用：every 会遍历数组 types 中的每一个元素，对每个元素执行回调函数，只有当所有元素都使回调函数返回 true 时，every 才返回 true；如果有一个元素使回调返回 false，则立即返回 false。
-            
             回调函数：t => t === types[0] 是一个箭头函数。t 是形参，代表当前遍历到的 types 数组中的元素。函数判断当前元素 t 是否等于数组的第一个元素 types[0]。
-            
             结果：allSame 为 true 表示数组中所有元素都等于第一个元素，即所有记录的 RecordType 都相同；否则为 false。
             -->
             const allSame = types.every(t => t === types[0]);{% endcomment %}
@@ -1228,7 +1227,7 @@ new Vue({
                 return (b.created_at || '').localeCompare(a.created_at || '');
             });
         },
-    
+
         // 排序后的签核列表
         sortedApprovalList() {
             const list = [...this.approvalList];
@@ -1248,7 +1247,7 @@ new Vue({
                 return (b.created_at || '').localeCompare(a.created_at || '');
             });
         },
-        
+
         // 排序后的借还记录（未归还优先）
         sortedRecordsDisplayData() {
             const list = [...(this.recordsDisplayData || [])];
@@ -1542,7 +1541,7 @@ new Vue({
                 Retainer: '',
                 RetainStart: this.formatDate(new Date()),
                 RetainPeriod: 1,
-                RetainPosition: 'Plant5-#23'
+                RetainPosition: ''
             };
             this.selectedOwnerDisplay = '';
             this.selectedRetainerDisplay = '';
@@ -2160,14 +2159,14 @@ new Vue({
             if (value === null || value === undefined) return '0';
             return String(value).trim().replace(/\n/g, '');
         },
-        
+
         // 导出当前表格数据为 CSV 文件
         exportData() {
             const tab = this.activeTab;
             let data = [];
             let headers = [];
             let rows = [];
-        
+
             // 根据标签页选择数据和表头
             switch (tab) {
                 case 'summary':
@@ -2248,18 +2247,18 @@ new Vue({
                     this.$message.warning('当前标签页暂无导出功能');
                     return;
             }
-        
+
             if (rows.length === 0) {
                 this.$message.warning('没有数据可导出');
                 return;
             }
-        
+
             // 将二维数组转换为 CSV 字符串
             const csvContent = this.arrayToCSV([headers, ...rows]);
             // 下载文件
             this.downloadCSV(csvContent, `留样系统_${tab}_${new Date().toISOString().slice(0,10)}.csv`);
         },
-        
+
         // 辅助方法：将二维数组转换为 CSV（处理特殊字符）
         arrayToCSV(arrays) {
             return arrays.map(row =>
@@ -2274,7 +2273,11 @@ new Vue({
                 }).join(',')
             ).join('\n');
         },
-        
+
+        goToLocationManagement() {
+            window.location.href = '/RetainedSample/location/';
+        },
+
         // 下载 CSV 文件（添加 UTF-8 BOM 以支持中文）
         downloadCSV(csv, filename) {
             const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' }); // 添加 BOM 处理中文
