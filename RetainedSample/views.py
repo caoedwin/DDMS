@@ -57,6 +57,9 @@ def RetainedSample_summary(request):
             if manufacturer:
                 queryset = queryset.filter(Manufacturer__icontains=manufacturer)
 
+            # 排除完全报废的样品：剩余数量=0 且 已借出数量=0 且 签核中数量=0
+            queryset = queryset.exclude(RemainedQuantity=0, BorrowedQuantity=0, UnderApprovalQuantity=0)
+
             # 提取过滤选项
             projects = queryset.values_list('Project', flat=True).distinct()
             samples = queryset.values_list('SampleName', flat=True).distinct()
@@ -273,7 +276,7 @@ def RetainedSample_summary(request):
         elif tab == "records":
             # 获取所有借用记录（不包括未审批的）
             records = PersonalRetainedSample.objects.exclude(
-                Status='借用確認中'
+                # Status='借用確認中'
             ).order_by('-created_at')
 
             # 应用搜索条件
@@ -378,6 +381,7 @@ def RetainedSample_summary(request):
                     'SampleName': sr.Sample.SampleName if sr.Sample else '',
                     'Project': sr.Sample.Project if sr.Sample else '',
                     'Manufacturer': sr.Sample.Manufacturer if sr.Sample else '',
+                    'SampleBatch': sr.Sample.SampleBatch if sr.Sample else '',
                     'ScrappedBy': sr.Borrowed,
                     'ScrapQuantity': sr.BorrowQuantity,
                     'ScrapReason': sr.BorrowedReson,

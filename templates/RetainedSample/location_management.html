@@ -31,6 +31,8 @@
     <div class="tableAround">
         <div class="search-row">
             <el-button type="primary" size="small" @click="showAddDialog">新增位置</el-button>
+            <!-- 新增导出按钮 -->
+            <el-button type="success" size="small" icon="el-icon-download" @click="exportData">导出</el-button>
             <el-input v-model="searchKeyword" placeholder="搜索區域或編號" style="width: 200px;" size="small" @keyup.enter.native="loadData"></el-input>
             <el-button type="primary" size="small" @click="loadData">搜索</el-button>
         </div>
@@ -204,7 +206,56 @@ new Vue({
                     this.loading = false;
                 });
             }).catch(() => {});
-        }
+        },
+        exportData() {
+            if (!this.locationList || this.locationList.length === 0) {
+                this.$message.warning('暂无数据可导出');
+                return;
+            }
+        
+            // 定义 CSV 列名（与表格显示一致）
+            const headers = ['留樣位置', '留樣載具', 'No.', '目前擺放物品', '創建時間'];
+            // 从数据中提取对应的字段
+            const rows = this.locationList.map(item => [
+                item.area || '',
+                item.rack || '',
+                item.cell || '',
+                item.description || '',
+                item.created_at || ''
+            ]);
+        
+            // 将二维数组转换为 CSV 字符串（处理特殊字符）
+            const escapeCSV = (cell) => {
+                if (cell === null || cell === undefined) return '';
+                const str = String(cell);
+                // 如果包含逗号、换行符或双引号，则用双引号包裹，并转义内部双引号
+                if (str.includes(',') || str.includes('\n') || str.includes('"')) {
+                    return `"${str.replace(/"/g, '""')}"`;
+                }
+                return str;
+            };
+        
+            const csvContent = [
+                headers.map(escapeCSV).join(','),
+                ...rows.map(row => row.map(escapeCSV).join(','))
+            ].join('\n');
+        
+            // 添加 BOM 以支持中文（UTF-8 with BOM）
+            const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.href = url;
+            // 生成文件名（包含当前时间）
+            const now = new Date();
+            const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}${String(now.getSeconds()).padStart(2, '0')}`;
+            link.download = `留樣位置管理_${timestamp}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        
+            this.$message.success('导出成功');
+        },
     }
 });
 </script>

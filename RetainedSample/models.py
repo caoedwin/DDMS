@@ -38,7 +38,7 @@ class PersonalRetainedSample(models.Model):
     """個人留样信息"""
     Sample = models.ForeignKey("RetainedSample", default='', on_delete=models.CASCADE, verbose_name="留样样品")
     Borrower = models.CharField(max_length=30, verbose_name="借用人")  # 工號
-    Status = models.CharField(max_length=30, verbose_name="借還狀態")  # 借用確認中，已借用，歸還確認中，已歸還
+    Status = models.CharField(max_length=30, verbose_name="借還狀態")  # 借用確認中，已借用，歸還確認中，已歸還，已撤销
 
     BorrowQuantity = models.IntegerField(verbose_name="借用數量")
     BorrowedReson = models.CharField(max_length=1000, blank=True, verbose_name="借用用途")

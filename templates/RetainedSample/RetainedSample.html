@@ -963,6 +963,7 @@ tbody tr td:last-child {
                         <el-table-column prop="SampleName" label="樣品名稱" align="center"></el-table-column>
                         <el-table-column prop="Project" label="專案名稱" align="center"></el-table-column>
                         <el-table-column prop="Manufacturer" label="樣品廠商" align="center"></el-table-column>
+                        <el-table-column prop="SampleBatch" label="樣品批次/版本" align="center"></el-table-column>
                         <el-table-column prop="ScrappedBy" label="報廢人" align="center">
                             <template slot-scope="scope">
                                 <span v-text="getDisplayNameByEmployeeId(scope.row.ScrappedBy)"></span>

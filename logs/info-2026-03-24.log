@@ -1,0 +1,11 @@
+[2026-03-25 08:37:27,041] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-25 15:28:17,790] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-25 15:28:17: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_return/'>
+[2026-03-25 15:28:33,542] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-25 15:28:33: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_batch_cancel/'>
+[2026-03-25 15:28:42,250] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-25 15:28:42: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/handle_return/'>
+[2026-03-25 15:29:38,660] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-25 15:29:38: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-03-25 15:29:42,693] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-25 15:29:42: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/RetainedSample/RetainedSample_summary/'>
+[2026-03-25 15:38:14,400] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-25 15:38:42,339] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-26 08:11:59,357] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-26 08:12:00,771] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-26 08:12:00: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-03-26 13:21:08,738] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
