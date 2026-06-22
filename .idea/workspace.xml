@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="">
+    <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="Default Changelist">
+      <change beforePath="$PROJECT_DIR$/.idea/DMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DMS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RetainedSample/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/RetainedSample/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RetainedSample/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RetainedSample/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/all-2026-03-20.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2026-03-20.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error-2026-03-20.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2026-03-20.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2026-03-20.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2026-03-20.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/RetainedSample/RetainedSample.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/RetainedSample/RetainedSample.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/RetainedSample/location_management.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/RetainedSample/location_management.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,17 +221,21 @@
   &quot;keyToString&quot;: {
     &quot;Django 服务器.DMS.executor&quot;: &quot;Run&quot;,
     &quot;Python.choujiang.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dev_score.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dev_score2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Coverage&quot;,
     &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/djangoproject/Reliability_Row_data&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/djangoproject/DMS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -252,45 +251,7 @@
       <recent name="C:\djangoproject\DMS\static\css" />
     </key>
   </component>
-  <component name="RunAnythingCache">
-    <myKeys>
-      <visibility group="Grunt" flag="true" />
-      <visibility group="Gulp" flag="true" />
-      <visibility group="HTTP 请求" flag="true" />
-      <visibility group="Node.js" flag="true" />
-      <visibility group="npm" flag="true" />
-      <visibility group="yarn" flag="true" />
-      <visibility group="最近的项目" flag="true" />
-      <visibility group="运行 Python 文件" flag="true" />
-      <visibility group="运行 conda 命令" flag="true" />
-      <visibility group="运行 pip 命令" flag="true" />
-      <visibility group="运行配置" flag="true" />
-    </myKeys>
-  </component>
-  <component name="RunManager" selected="Django 服务器.DMS">
-    <configuration name="TestDeviceList" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DMS" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../PythonProject/DDMS_TestDeviceList" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../PythonProject/DDMS_TestDeviceList/TestDeviceList.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.dev_score2">
     <configuration name="choujiang" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DMS" />
       <option name="ENV_FILES" value="" />
@@ -314,7 +275,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="excelTrans" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="dev_score" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DMS" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -323,12 +284,58 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../PythonProject/DDISExcel" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../PythonProject/dev_score" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../PythonProject/DDISExcel/excelTrans.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../PythonProject/dev_score/dev_score.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev_score2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DMS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../PythonProject/dev_score" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../PythonProject/dev_score/dev_score2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DMS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestDeviceLNV" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestDeviceLNV/models.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -352,29 +359,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../PythonProject/test/test api.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DMS" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app01" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app01/tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -411,18 +395,18 @@
     <list>
       <item itemvalue="Django 服务器.DMS" />
       <item itemvalue="Python.choujiang" />
-      <item itemvalue="Python.TestDeviceList" />
-      <item itemvalue="Python.excelTrans" />
+      <item itemvalue="Python.dev_score2" />
+      <item itemvalue="Python.dev_score" />
+      <item itemvalue="Python.models" />
       <item itemvalue="Python.test api" />
-      <item itemvalue="Python.tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.dev_score2" />
+        <item itemvalue="Python.models" />
+        <item itemvalue="Python.dev_score" />
         <item itemvalue="Python.choujiang" />
         <item itemvalue="Python.test api" />
-        <item itemvalue="Python.excelTrans" />
-        <item itemvalue="Python.TestDeviceList" />
-        <item itemvalue="Python.tests" />
       </list>
     </recent_temporary>
   </component>
@@ -542,6 +526,15 @@
       <workItem from="1770855252643" duration="3562000" />
       <workItem from="1772168502280" duration="113026000" />
       <workItem from="1773984764437" duration="50408000" />
+      <workItem from="1774842741549" duration="2476000" />
+      <workItem from="1776318851397" duration="1512000" />
+      <workItem from="1779154229666" duration="16633000" />
+      <workItem from="1779675151385" duration="23849000" />
+      <workItem from="1780038711204" duration="12637000" />
+      <workItem from="1780285637819" duration="24674000" />
+      <workItem from="1781068502468" duration="2275000" />
+      <workItem from="1781137822770" duration="190000" />
+      <workItem from="1781244337752" duration="691000" />
     </task>
     <servers />
   </component>
@@ -617,6 +610,8 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DMS$dev_score2.coverage" NAME="dev_score2 覆盖结果" MODIFIED="1780302551393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../PythonProject/dev_score" />
+    <SUITE FILE_PATH="coverage/DMS$dev_score.coverage" NAME="dev_score 覆盖结果" MODIFIED="1779845767295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../PythonProject/dev_score" />
     <SUITE FILE_PATH="coverage/DMS$choujiang.coverage" NAME="choujiang 覆盖结果" MODIFIED="1768785020754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../PythonProject" />
   </component>
   <component name="editorHistoryManager">

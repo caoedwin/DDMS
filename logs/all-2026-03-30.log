@@ -1,0 +1,26 @@
+[2026-03-30 11:53:06,905] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-03-30 11:53:06,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-30 11:53:07,077] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-03-30 11:53:07,084] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-30 11:53:23,670] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-03-30 11:53:23,711] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-03-30 11:53:23,771] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-03-30 11:53:23,931] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47176
+[2026-03-30 11:53:24,715] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38099
+[2026-03-30 11:53:24,762] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-03-30 11:53:24: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-03-30 11:53:24,786] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-03-30 11:53:24,880] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-03-30 11:53:24,881] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-03-30 11:54:06,905] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134441
+[2026-03-30 11:54:07,344] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38099
+[2026-03-30 11:54:07,464] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/?tab=summary HTTP/1.1" 200 23033
+[2026-03-30 11:54:57,257] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/location/ HTTP/1.1" 200 48399
+[2026-03-30 11:54:57,432] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/location_api/?search= HTTP/1.1" 200 423
+[2026-03-30 11:54:57,444] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38099
+[2026-03-30 14:55:59,199] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/RetainedSample_summary/ HTTP/1.1" 200 134441
+[2026-03-30 14:55:59,701] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38099
+[2026-03-30 14:56:08,566] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /RetainedSample/get_borrow_details/?sample_id=4 HTTP/1.1" 200 400
+[2026-03-30 16:54:23,428] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-03-30 16:54:23,523] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-03-30 16:54:24,096] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-03-30 16:54:24,109] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
