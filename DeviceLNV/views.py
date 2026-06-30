@@ -3232,6 +3232,11 @@ def M_Return(request):
                 if request.POST.get('BorrowerNum', None):
                     checkAdaPow['BR_per_code'] = request.POST.get('BorrowerNum')
 
+                # 新增设备ID过滤
+                dev_id = request.POST.get('DevID')
+                if dev_id:
+                    checkAdaPow['NID'] = dev_id  # 注意模型字段名为 DevID
+
                 # mock_data
                 if checkAdaPow:
                     mock_datalist = DeviceLNV.objects.filter(**checkAdaPow)

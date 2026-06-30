@@ -192,6 +192,8 @@
             <div class="name">${ item.value }&nbsp;(${ item.number })</div>
            </template>
          </el-autocomplete>
+        <label style="color: black;font-size: 18px;font-weight: bold;margin-left:30px;" for="DevID">設備ID</label>&nbsp;&nbsp;
+        <el-input v-model="selectedDevID" placeholder="请输入設備ID" style="width:200px;"></el-input>
 
         <el-button size="medium" style="height:35px;border-color:black;color:white;margin-left: 90px;background-color:#7fa0ff" value="Search" name="Search" @click="selectMsg">Search</el-button>
     </div>
@@ -390,8 +392,8 @@
              selectDevproperties:{},
              selectDevsize:{},
              selectOption:{},
-             selectedBorrower:'',
-             selectBorrower:[],
+             {#selectedBorrower:'',#}
+             {#selectBorrower:[],#}
              selectedIntfCtgry:null,
              selectedDevCtgry:null,
              selectedDevproperties:null,
@@ -399,6 +401,7 @@
              selectedDevsize :null,
              selectedBorrower:'',
              selectBorrower:[],
+             selectedDevID: '',   // 新增
 
          }
      },
@@ -406,6 +409,26 @@
             this.getdata("first");
      },
      methods: {
+         selectMsg :function(){
+            let Borrower = this.$refs.Borrower.value;
+            let BorrowerNum = this.number;
+            let DevID = this.selectedDevID;   // 获取设备ID
+            let data = {
+                "isGetData":"SEARCH",
+                "Borrower":Borrower,
+                "BorrowerNum":BorrowerNum,
+                "DevID": DevID,               // 新增参数
+                "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()
+            };
+            axios.post("/DeviceLNV/M_Return/", Qs.stringify(data), {
+                headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+            }).then((res) => {
+                this.tableContent=res.data.content;
+                this.selectItem=res.data.select;
+                this.totalNum=this.tableContent.length;
+                this.$refs.multipleTable.clearSelection();
+            })
+        },
         //获取数据
         getdata: function (e) {
             let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
@@ -467,20 +490,7 @@
           },
 
           //上传搜索项：以此选项搜索符合条件的内容
-         selectMsg :function(){
-               let Borrower = this.$refs.Borrower.value;
-               let BorrowerNum = this.number;
-               let data ={"isGetData":"SEARCH","Borrower":Borrower,"BorrowerNum":BorrowerNum, "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
-               axios.post("/DeviceLNV/M_Return/",Qs.stringify(data), {
-               headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
-                }).then((res) => {
-                  this.tableContent=res.data.content;
-                  this.selectItem=res.data.select;
-                  this.totalNum=this.tableContent.length;
-                  this.$refs.multipleTable.clearSelection();
-
-                })
-         },
+         
 
          showDetial(row, column, cell, event) {
             if( column.label == "設備序號") {
