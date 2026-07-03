@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render,redirect,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.db import transaction
-import datetime,os, json
+import os, json
 from django.db.models import Max,Min,Sum,Count,Q
 from django.http import JsonResponse
 from service.init_permission import init_permission
@@ -181,7 +181,7 @@ def TestDeviceListLNV(request):
         #             {'id': 2, 'prop': 'createTime', 'lable': '创建时间', 'type': 'text', 'width': '180', 'align': 'center'}
     ]
     tableColumns = get_table_columns(TestDeviceLNV)
-    print(tableColumns)
+    # print(tableColumns)
 
     categoryOptions = [
         # "Sensor", "USB Function", "Thonderbolt"
@@ -202,10 +202,10 @@ def TestDeviceListLNV(request):
     for i in DeviceLNV.objects.all():# NID是唯一不需要去重
         Purchase_period = ''
         if i.Pchsdate:
-            if datetime.datetime.now().date() > i.Pchsdate:
+            if datetime.now().date() > i.Pchsdate:
                 Purchase_period = round(
                     float(
-                        str((datetime.datetime.now().date() - i.Pchsdate)).split(' ')[
+                        str((datetime.now().date() - i.Pchsdate)).split(' ')[
                             0]) / 365,
                     1)
         DeviceOptions.append(
@@ -492,10 +492,10 @@ def TestDeviceListLNV(request):
                     Device_obj = DeviceLNV.objects.filter(NID=value).first()
                     Status_dict[keyStatus] = Device_obj.DevStatus + "/" + Device_obj.BrwStatus
                     if Device_obj.Pchsdate:
-                        if datetime.datetime.now().date() > Device_obj.Pchsdate:
+                        if datetime.now().date() > Device_obj.Pchsdate:
                             Useyears_dict[keyUse] = round(
                                 float(
-                                    str((datetime.datetime.now().date() - Device_obj.Pchsdate)).split(' ')[
+                                    str((datetime.now().date() - Device_obj.Pchsdate)).split(' ')[
                                         0]) / 365,
                                 1)
             mock_dic = {"id": i.id, "Category": i.Category, "Class": i.Class,
@@ -555,4 +555,540 @@ def TestDeviceListLNV(request):
         return HttpResponse(json.dumps(data), content_type="application/json")
     return render(request, 'TestDeviceLNV/TestDeviceListLNV.html', locals())
 
+import requests
+import json
+from datetime import datetime, timedelta
+from collections import defaultdict
+from django.db.models import Q
 
+def device_score_page(request):
+    """设备评分页面"""
+    return render(request, 'TestDeviceLNV/device_score.html')
+
+def device_demand_week_page(request):
+    """设备需求按周统计页面"""
+    return render(request, 'TestDeviceLNV/device_demand_week.html')
+
+
+# ===================== API 认证与请求 =====================
+def get_api_token():
+    """获取API认证token"""
+    url = 'http://127.0.0.1:8002/PersonalInfo/api_Per/login/'
+    headers = {"Content-Type": "application/json;charset=UTF-8"}
+    body = {"username": "API_CQM", "password": "Qs!3m6Tc7"}
+    try:
+        r = requests.post(url, headers=headers, data=json.dumps(body), timeout=5)
+        if r.status_code == 200 and r.json().get("token"):
+            return "Bearer " + r.json()["token"]
+    except Exception as e:
+        print(f"获取token失败: {e}")
+    return None
+
+def api_request(url, params=None):
+    token = get_api_token()
+    if not token:
+        return None
+    headers = {"Authorization": token}
+    try:
+        resp = requests.get(url, headers=headers, params=params, timeout=10)
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            print(f"API请求失败: {resp.status_code} - {resp.text}")
+    except Exception as e:
+        print(f"请求异常: {e}")
+    return None
+
+def fetch_testprojects():
+    """获取四个测试项目API的数据，合并返回列表"""
+    urls = [
+        'http://127.0.0.1:8002/TestPlanSW/api/testprojects/',
+        'http://127.0.0.1:8002/TestPlanSW/api/testprojects_aio/',
+        'http://127.0.0.1:8002/TestPlanSWOS/api/testprojects/',
+        'http://127.0.0.1:8002/TestPlanSWOS/api/testprojects_aio/',
+    ]
+    all_projects = []
+    for url in urls:
+        data = api_request(url)
+        if data and isinstance(data, list):
+            all_projects.extend(data)
+        elif data and isinstance(data, dict) and 'results' in data:
+            all_projects.extend(data['results'])
+    # print(all_projects)
+    return all_projects
+
+
+# ===================== 设备评分核心函数（完整移植） =====================
+def parse_date(date_str):
+    if not date_str:
+        return None
+    for fmt in ('%Y-%m-%d', '%Y/%m/%d', '%Y%m%d'):
+        try:
+            return datetime.strptime(str(date_str), fmt).date()
+        except:
+            continue
+    return None
+
+def tech_score(dev):
+    """技术评分（完整版）"""
+    ctgry = (dev.DevCtgry or '').lower()
+    prop = (dev.Devproperties or '').lower()
+    intf = (dev.IntfCtgry or '').lower()
+
+    if 'mouse' in ctgry or 'keyboard' in ctgry:
+        if 'usb1' in intf or 'ps2' in prop:
+            return 100
+        elif 'usb2' in intf or '2.4g' in prop:
+            return 50
+        elif 'usb3' in intf or 'bt5' in prop or 'bluetooth 5' in prop:
+            return 0
+        else:
+            return 70
+    elif 'usb memory' in ctgry:
+        size = (dev.Devsize or '').lower()
+        if 'usb2' in intf or ('gb' in size and int(size.split('gb')[0]) < 8):
+            return 100
+        elif 'usb3' in intf:
+            return 50
+        else:
+            return 70
+    elif 'hdd' in ctgry or 'ssd' in ctgry:
+        if 'hdd' in prop.lower():
+            return 100
+        elif 'ssd' in prop.lower() and 'usb3.0' in intf:
+            return 50
+        elif 'nvme' in prop.lower() or 'usb3.1' in intf or 'thunderbolt' in intf:
+            return 0
+        else:
+            return 70
+    elif 'headphone' in ctgry or 'speaker' in ctgry:
+        if 'usb2.0' in intf or ('bt' in intf and 'bt3' in intf):
+            return 100
+        elif 'usb3.0' in intf or 'bt4' in intf or 'audio jack' in intf:
+            return 50
+        elif 'bt5' in intf or 'type-c' in intf:
+            return 0
+        else:
+            return 70
+    elif 'ap' in ctgry or 'router' in ctgry:
+        if '802.11b' in prop or '802.11g' in prop or '802.11a' in prop:
+            return 100
+        elif '802.11n' in prop:
+            return 50
+        elif 'ac' in prop or 'ax' in prop or 'wifi6' in prop:
+            return 0
+        else:
+            return 80
+    elif 'card reader' in ctgry:
+        if 'usb2.0' in intf:
+            return 100
+        elif 'usb3.0' in intf:
+            return 50
+        else:
+            return 70
+    elif 'hub' in ctgry or 'dongle' in ctgry:
+        if 'usb2.0' in intf:
+            return 100
+        elif 'usb3.0' in intf and 'vga' not in intf:
+            return 50
+        elif 'usb-c' in intf or '4k' in intf:
+            return 0
+        else:
+            return 70
+    elif 'monitor' in ctgry:
+        if 'vga' in intf or '1366' in prop:
+            return 100
+        elif 'hdmi 1.4' in intf or '1080p' in prop:
+            return 50
+        elif '4k' in prop or 'type-c' in intf:
+            return 0
+        else:
+            return 70
+    elif 'odd' in ctgry:
+        if 'dvd-rom' in prop:
+            return 100
+        elif 'dvd-rw' in prop:
+            return 50
+        elif 'blu-ray' in prop:
+            return 0
+        else:
+            return 80
+    elif 'camera' in ctgry:
+        if 'usb2.0' in intf or '720p' in prop or 'vga' in prop:
+            return 100
+        elif 'usb3.0' in intf and ('1080p' in prop or 'full hd' in prop):
+            return 50
+        elif '4k' in prop or 'usb-c' in intf or 'type-c' in intf:
+            return 0
+        else:
+            return 70
+    elif 'cable' in ctgry or 'audio jack' in ctgry:
+        if 'vga' in intf or 'dvi' in intf or 'composite' in intf:
+            return 100
+        elif 'hdmi 1.4' in prop or 'dp 1.2' in prop or 'usb2.0' in intf:
+            return 50
+        elif 'hdmi 2.' in prop or 'dp 1.4' in prop or 'thunderbolt' in intf or 'usb-c' in intf:
+            return 0
+        else:
+            return 70
+    elif 'power adapter' in ctgry or ('adapter' in ctgry and 'power' in prop):
+        if ('round' in intf or 'slim' in intf) and '65w' not in prop:
+            return 100
+        elif 'usb-c' in intf and '65w' not in prop:
+            return 50
+        elif 'gan' in prop or '65w' in prop or '100w' in prop or 'quick charge' in prop:
+            return 0
+        else:
+            return 70
+    elif 'phone' in ctgry or 'ipad' in ctgry or 'iphone' in ctgry or 'tablet' in ctgry:
+        if 'micro usb' in intf or '30-pin' in intf:
+            return 100
+        elif 'lightning' in intf or ('usb-c' in intf and 'fast' not in prop):
+            return 50
+        elif 'wireless' in prop or 'fast charge' in prop or 'type-c' in intf:
+            return 0
+        else:
+            return 70
+    elif 'game' in ctgry or 'joystick' in ctgry or 'gamepad' in ctgry:
+        if 'usb2.0' in intf or 'gameport' in intf:
+            return 100
+        elif 'usb3.0' in intf or '2.4g' in prop:
+            return 50
+        elif 'bt5' in intf or 'usb-c' in intf:
+            return 0
+        else:
+            return 70
+    elif 'microphone' in ctgry:
+        if 'usb2.0' in intf or '3.5mm' in intf:
+            return 100
+        elif 'usb3.0' in intf or 'bt4' in intf:
+            return 50
+        elif 'type-c' in intf or 'bt5' in intf:
+            return 0
+        else:
+            return 70
+    elif 'projector' in ctgry:
+        if 'vga' in intf or 'svga' in prop:
+            return 100
+        elif 'hdmi' in intf and '1080p' in prop:
+            return 50
+        elif '4k' in prop or 'laser' in prop:
+            return 0
+        else:
+            return 70
+    else:
+        return 70
+
+def compute_score(dev, today):
+    """计算综合评分及各项子分"""
+    pdate = parse_date(dev.Pchsdate)
+    if pdate:
+        years = (today - pdate).days / 365.25
+        age_score = 100 if years > 10 else (80 if years > 8 else (60 if years > 5 else (30 if years > 1 else 0)))
+    else:
+        age_score = 50
+
+    usr = dev.UsrTimes or 0
+    try:
+        usr = int(usr)
+    except:
+        usr = 0
+    borrow_score = 100 if usr > 500 else (70 if usr > 300 else (40 if usr > 200 else (20 if usr > 100 else 0)))
+
+    use_count = dev.uscyc or 0
+    try:
+        use_count = int(use_count)
+    except:
+        use_count = 0
+    if use_count == 0:
+        usage_score = 50
+    else:
+        usage_score = 100 if use_count > 2000 else (90 if use_count > 1500 else (80 if use_count > 1000 else (70 if use_count > 500 else (40 if use_count > 200 else (20 if use_count > 100 else 0)))))
+
+    tech = tech_score(dev)
+
+    eol_date = parse_date(dev.EOL)
+    eol_score = 80 if (eol_date and eol_date < today) else 50
+
+    status = (dev.DevStatus or '').lower()
+    status_score = 100 if 'damaged' in status else (90 if 'lost' in status else (50 if 'long' in status else 0))
+
+    weights = [0.3, 0.2, 0.1, 0.2, 0.1, 0.1]
+    scores = [age_score, usage_score, borrow_score, tech, eol_score, status_score]
+    total = sum(s * w for s, w in zip(scores, weights)) / sum(weights)
+    return total, {'age': age_score, 'usage': usage_score, 'borrow': borrow_score,
+                   'tech': tech, 'eol': eol_score, 'status': status_score}
+
+def upgrade_suggestion(dev, score):
+    """生成升级建议"""
+    ctgry = (dev.DevCtgry or '').lower()
+    urgency = "紧急更换" if score >= 90 else ("酌情更换" if score >= 70 else ("可观察" if score >= 40 else "继续使用"))
+    suggestion = "暂无特殊建议"
+    if 'mouse' in ctgry:
+        suggestion = "推荐升级至蓝牙5.0/5.2无线鼠标，支持多设备切换，更高DPI。"
+    elif 'keyboard' in ctgry:
+        suggestion = "推荐升级至USB-C或蓝牙机械键盘，支持多模连接。"
+    elif 'usb memory' in ctgry:
+        suggestion = "推荐升级至USB 3.1/3.2接口、容量≥128GB的高速U盘。"
+    elif 'hdd' in ctgry or 'ssd' in ctgry:
+        if 'hdd' in (dev.Devproperties or '').lower():
+            suggestion = "强烈建议更换为NVMe SSD或USB3.2外置固态硬盘。"
+        else:
+            suggestion = "考虑升级为Thunderbolt 3/4或USB4接口的外置SSD。"
+    elif 'headphone' in ctgry or 'speaker' in ctgry:
+        suggestion = "推荐升级至蓝牙5.2+ANC主动降噪耳机，或Type-C有线高解析度耳机。"
+    elif 'ap' in ctgry or 'router' in ctgry:
+        suggestion = "推荐升级至Wi-Fi 6/6E路由器，支持OFDMA和更高速率。"
+    elif 'card reader' in ctgry:
+        suggestion = "升级至USB3.1读卡器，支持UHS-II SD卡。"
+    elif 'hub' in ctgry or 'dongle' in ctgry:
+        suggestion = "考虑升级为USB-C多功能扩展坞，支持4K输出、千兆网口、PD充电。"
+    elif 'monitor' in ctgry:
+        suggestion = "升级至4K分辨率、高刷新率、支持DisplayPort 1.4或Type-C一线连的显示器。"
+    elif 'odd' in ctgry:
+        suggestion = "当前光驱技术已过时，如必要可更换为外置蓝光刻录机。"
+    elif 'camera' in ctgry:
+        suggestion = "推荐升级至USB3.0或Type-C接口的4K网络摄像头。"
+    elif 'cable' in ctgry or 'audio jack' in ctgry:
+        suggestion = "建议更换为HDMI 2.1、DP 1.4或雷电4线缆。"
+    elif 'power adapter' in ctgry or ('adapter' in ctgry and 'power' in (dev.Devproperties or '').lower()):
+        suggestion = "推荐升级至氮化镓(GaN)充电器，支持USB-C PD快充。"
+    elif 'phone' in ctgry or 'ipad' in ctgry or 'iphone' in ctgry or 'tablet' in ctgry:
+        suggestion = "建议升级至支持5G、无线充电和快充的当前主流手机/平板。"
+    elif 'game' in ctgry or 'joystick' in ctgry or 'gamepad' in ctgry:
+        suggestion = "推荐升级至支持蓝牙5.0+、低延迟无线或有线USB-C的游戏手柄。"
+    elif 'microphone' in ctgry:
+        suggestion = "建议升级至USB-C接口或支持高采样率的专业麦克风。"
+    elif 'projector' in ctgry:
+        suggestion = "推荐升级至4K激光投影仪，支持HDR和无线投屏。"
+    else:
+        suggestion = "建议对照最新技术规范进行资产评估。"
+    return urgency, suggestion
+
+
+# ===================== JSON 接口视图 =====================
+from django.core.cache import cache
+from django.db.models import Q
+
+@csrf_exempt
+def device_score_view(request):
+    """返回设备评分数据（JSON），过滤损坏/丢失设备，按分数降序，使用缓存优化性能"""
+    if request.method != 'GET':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    # 缓存键（可添加版本号，便于清理）
+    cache_key = 'device_score_data'
+    cached_data = cache.get(cache_key)
+
+    if cached_data is not None:
+        # 如果缓存存在，直接返回
+        return JsonResponse(cached_data)
+
+    today = datetime.now().date()
+    result = []
+
+    # 1. 查询优化：只获取评分所需的字段，排除损坏/丢失设备
+    # 如果状态值大小写不一致，可改用 Q 对象的 __iexact
+    devices = DeviceLNV.objects.exclude(
+        Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
+    ).only(
+        'id', 'NID', 'DevVendor', 'DevModel', 'DevName', 'DevCtgry',
+        'DevStatus', 'Pchsdate', 'UsrTimes', 'uscyc', 'Devproperties',
+        'IntfCtgry', 'Devsize', 'EOL'
+    )
+
+    # 2. 计算评分
+    for dev in devices:
+        total, detail = compute_score(dev, today)
+        urgency, sug = upgrade_suggestion(dev, total)
+        result.append({
+            'id': dev.id,
+            'NID': dev.NID,
+            'DevVendor': dev.DevVendor,
+            'DevModel': dev.DevModel,
+            'DevName': dev.DevName,
+            'DevCtgry': dev.DevCtgry,
+            'DevStatus': dev.DevStatus,
+            'Score': round(total, 2),
+            'Priority': urgency,
+            'Suggestion': sug,
+            'AgeScore': detail['age'],
+            'UsageScore': detail['usage'],
+            'BorrowScore': detail['borrow'],
+            'TechScore': detail['tech'],
+            'EOLScore': detail['eol'],
+            'StatusScore': detail['status'],
+        })
+
+    # 按综合评分降序排列
+    result.sort(key=lambda x: x['Score'], reverse=True)
+
+    # 构造最终响应数据
+    response_data = {'data': result, 'count': len(result)}
+
+    # 缓存 5 分钟（300秒），可根据实际情况调整
+    cache.set(cache_key, response_data, timeout=300)
+
+    return JsonResponse(response_data)
+
+def get_device_type(dev):
+    """返回设备的类型三元组"""
+    return ((dev.IntfCtgry or ''), (dev.DevCtgry or ''), (dev.Devproperties or ''))
+
+
+# import logging
+# logger = logging.getLogger('django')  # 使用 settings.py 中的 'log' logger
+
+import logging
+from difflib import get_close_matches
+from collections import defaultdict
+from datetime import datetime, timedelta
+from django.db.models import Q
+from django.core.cache import cache
+
+logger = logging.getLogger('django')
+
+@csrf_exempt
+def device_demand_week_view(request):
+    """按周统计设备需求（所有项目共享相同设备需求）"""
+    if request.method != 'GET':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    # ---------- 1. 获取所有设备需求项（从 TestDeviceLNV） ----------
+    test_records = TestDeviceLNV.objects.all()
+    if not test_records.exists():
+        return JsonResponse({'error': 'TestDeviceLNV 表中没有数据'}, status=404)
+
+    all_devices = list(DeviceLNV.objects.all())
+    device_name_map = {dev.NID: dev for dev in all_devices}
+    dev_full_names = [f"{dev.DevName} {dev.DevModel}".lower() for dev in all_devices]
+
+    requirement_items = []  # (type_key, nid)
+
+    for rec in test_records:
+        nid = rec.Device1 if rec.Device1 else None
+        if nid:
+            dev = device_name_map.get(nid)
+            if dev and dev.DevStatus.lower() not in ['damaged', 'lost']:
+                type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
+                requirement_items.append((type_key, nid))
+                continue
+
+        type_name = rec.Type or ''
+        if not type_name:
+            if rec.Category and rec.Class:
+                type_name = f"{rec.Category}|{rec.Class}"
+            else:
+                continue
+
+        matched_nid = None
+        for nid, dev in device_name_map.items():
+            if dev.DevStatus.lower() in ['damaged', 'lost']:
+                continue
+            full = f"{dev.DevName} {dev.DevModel} {dev.DevVendor}".lower()
+            if type_name.lower() in full:
+                matched_nid = nid
+                break
+
+        if not matched_nid:
+            closest = get_close_matches(type_name, dev_full_names, n=1, cutoff=0.6)
+            if closest:
+                for dev in all_devices:
+                    if f"{dev.DevName} {dev.DevModel}".lower() == closest[0]:
+                        if dev.DevStatus.lower() not in ['damaged', 'lost']:
+                            matched_nid = dev.NID
+                            break
+
+        if matched_nid:
+            dev = device_name_map[matched_nid]
+            type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
+            requirement_items.append((type_key, matched_nid))
+            logger.info(f"为需求 '{type_name}' 匹配到设备 NID: {matched_nid}")
+        else:
+            logger.warning(f"无法为需求 '{type_name}' 匹配任何设备")
+
+    if not requirement_items:
+        return JsonResponse({'error': '无法为任何需求项匹配到可用设备'}, status=404)
+
+    # ---------- 2. 获取项目计划 ----------
+    projects = fetch_testprojects()
+    if not projects:
+        return JsonResponse({'error': '无法获取项目计划数据'}, status=500)
+
+    valid_projects = []
+    for proj in projects:
+        start_str = proj.get('ScheduleBegin') or proj.get('start_date') or proj.get('StartDate')
+        end_str = proj.get('ScheduleEnd') or proj.get('end_date') or proj.get('EndDate')
+        if not start_str or not end_str:
+            continue
+        try:
+            start = datetime.strptime(start_str, '%Y-%m-%d').date()
+            end = datetime.strptime(end_str, '%Y-%m-%d').date()
+        except Exception as e:
+            logger.warning(f"日期解析失败: {start_str} / {end_str}，错误: {e}")
+            continue
+        valid_projects.append({
+            'name': proj.get('Project') or proj.get('project_name') or proj.get('name') or 'Unknown',
+            'Phase': proj.get('Phase') or '',
+            'start': start,
+            'end': end
+        })
+
+    if not valid_projects:
+        logger.error("没有有效的项目计划数据")
+        return JsonResponse({'error': '没有有效的项目计划数据'}, status=404)
+
+    # ---------- 3. 统计库存 ----------
+    inventory = defaultdict(int)
+    for dev in DeviceLNV.objects.exclude(Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')):
+        type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
+        inventory[type_key] += 1
+
+    # ---------- 4. 按周汇总需求（包含项目名称） ----------
+    week_demand = defaultdict(lambda: defaultdict(lambda: {'demand': 0, 'projects': set()}))
+
+    for proj in valid_projects:
+        start = proj['start']
+        end = proj['end']
+        days_since_monday = start.weekday()
+        week_start = start - timedelta(days=days_since_monday)
+        while week_start <= end:
+            week_end = week_start + timedelta(days=6)
+            effective_start = max(start, week_start)
+            effective_end = min(end, week_end)
+            if effective_start <= effective_end:
+                for type_key, nid in requirement_items:
+                    week_demand[week_start][type_key]['demand'] += 1
+                    week_demand[week_start][type_key]['projects'].add(proj['name'])
+            week_start += timedelta(days=7)
+
+    # ---------- 5. 生成输出（仅未来周） ----------
+    # 测试日期 2019-01-29
+    today = datetime(2019, 1, 29).date()
+    # 正式时启用下面一行：
+    # today = datetime.now().date()
+    days_since_monday = today.weekday()
+    this_week_start = today - timedelta(days=days_since_monday)
+
+    output = []
+    for week_start in sorted(week_demand.keys()):
+        if week_start < this_week_start:
+            continue  # 跳过过去周
+        week_end = week_start + timedelta(days=6)
+        for type_key, info in week_demand[week_start].items():
+            total_available = inventory.get(type_key, 0)
+            demand = info['demand']
+            sufficient = total_available >= demand
+            output.append({
+                'week_start': week_start.strftime('%Y-%m-%d'),
+                'week_end': week_end.strftime('%Y-%m-%d'),
+                'IntfCtgry': type_key[0] or 'N/A',
+                'DevCtgry': type_key[1] or 'N/A',
+                'Devproperties': type_key[2] or 'N/A',
+                '需求量': demand,
+                '库存量': total_available,
+                '是否满足': '是' if sufficient else '否',
+                '机种列表': list(info['projects'])
+            })
+
+    return JsonResponse({'data': output, 'count': len(output)}, safe=False)

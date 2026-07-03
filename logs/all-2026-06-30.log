@@ -189,3 +189,66 @@
 [2026-06-30 14:50:45,406] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/3203.jpg HTTP/1.1" 404 1803
 [2026-06-30 14:50:46,853] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-06-30 14:50:46: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_Return/'>
 [2026-06-30 14:50:47,075] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_Return/ HTTP/1.1" 200 24980
+[2026-06-30 14:52:40,317] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/M_Return/ HTTP/1.1" 200 61822
+[2026-06-30 14:52:40,462] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-06-30 14:52:40,521] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-06-30 14:52:40,536] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38099
+[2026-06-30 14:52:40,689] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-06-30 14:52:40,763] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-06-30 14:52:41,060] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-06-30 14:52:41: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_Return/'>
+[2026-06-30 14:52:41,079] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38099
+[2026-06-30 14:52:41,131] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_Return/ HTTP/1.1" 200 24980
+[2026-06-30 14:52:41,400] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2017.jpg
+[2026-06-30 14:52:41,402] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2017.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:41,436] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1190.jpg
+[2026-06-30 14:52:41,491] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1190.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:41,661] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/949.jpg
+[2026-06-30 14:52:41,693] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/949.jpg HTTP/1.1" 404 1800
+[2026-06-30 14:52:41,754] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/616.jpg
+[2026-06-30 14:52:41,791] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1372.jpg
+[2026-06-30 14:52:41,793] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/616.jpg HTTP/1.1" 404 1800
+[2026-06-30 14:52:41,819] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1372.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:41,820] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1274.jpg
+[2026-06-30 14:52:41,823] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1274.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:41,823] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1265.jpg
+[2026-06-30 14:52:41,830] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1265.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:41,862] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1257.jpg
+[2026-06-30 14:52:41,863] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1257.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:42,067] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/371.jpg
+[2026-06-30 14:52:42,068] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/371.jpg HTTP/1.1" 404 1800
+[2026-06-30 14:52:42,203] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1373.jpg
+[2026-06-30 14:52:42,325] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1373.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:42,354] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1058.jpg
+[2026-06-30 14:52:42,355] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1058.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:42,598] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2177.jpg
+[2026-06-30 14:52:42,606] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2177.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:42,616] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2264.jpg
+[2026-06-30 14:52:42,618] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2264.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:42,752] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2042.jpg
+[2026-06-30 14:52:42,775] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2042.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:42,781] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1973.jpg
+[2026-06-30 14:52:42,850] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1973.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:43,031] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1327.jpg
+[2026-06-30 14:52:43,032] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1327.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:43,329] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2412.jpg
+[2026-06-30 14:52:43,330] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2412.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:43,415] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1435.jpg
+[2026-06-30 14:52:43,416] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1435.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:43,694] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2869.jpg
+[2026-06-30 14:52:43,696] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2869.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:43,796] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2851.jpg
+[2026-06-30 14:52:43,798] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2511.jpg
+[2026-06-30 14:52:43,799] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2851.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:43,799] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2511.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:43,838] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2876.jpg
+[2026-06-30 14:52:43,926] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/3157.jpg
+[2026-06-30 14:52:43,930] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/3203.jpg
+[2026-06-30 14:52:44,206] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/3092.jpg
+[2026-06-30 14:52:44,350] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2876.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:44,354] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/3157.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:44,356] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/3203.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:44,357] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/3092.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:44,574] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/3204.jpg
+[2026-06-30 14:52:44,574] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/3204.jpg HTTP/1.1" 404 1803
+[2026-06-30 14:52:53,047] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-06-30 14:52:53: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_Return/'>
+[2026-06-30 14:52:53,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_Return/ HTTP/1.1" 200 1319

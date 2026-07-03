@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}设备需求按周统计（日历视图）{% endblock %}
+
+{% block css %}
+<style>
+    .calendar-container {
+        padding: 20px 30px;
+        background: #f5f7fa;
+        min-height: calc(100vh - 120px);
+    }
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e4e7ed;
+    }
+    .calendar-header h2 {
+        margin: 0;
+        font-weight: 600;
+        color: #303133;
+        font-size: 24px;
+    }
+    .week-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 10px;
+    }
+    .week-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        padding: 16px 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-left: 6px solid #67C23A; /* 默认绿色 */
+        position: relative;
+    }
+    .week-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    .week-card.insufficient {
+        border-left-color: #F56C6C;
+        background: #fef0f0;
+    }
+    .week-card .week-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #303133;
+        margin-bottom: 8px;
+    }
+    .week-card .week-range {
+        font-size: 14px;
+        color: #606266;
+        margin-bottom: 10px;
+    }
+    .week-card .status-badge {
+        display: inline-block;
+        padding: 2px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .week-card .status-badge.sufficient {
+        background: #f0f9eb;
+        color: #67C23A;
+    }
+    .week-card .status-badge.insufficient {
+        background: #fef0f0;
+        color: #F56C6C;
+    }
+    .week-card .summary {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #909399;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .week-card .summary span {
+        margin-right: 10px;
+    }
+    .el-dialog .el-table {
+        margin-top: 10px;
+    }
+    .no-data {
+        text-align: center;
+        padding: 50px 0;
+        color: #909399;
+        font-size: 16px;
+    }
+    .loading-mask {
+        text-align: center;
+        padding: 50px 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% verbatim %}
+<div id="app" class="calendar-container">
+    <div class="calendar-header">
+        <h2>📅 设备需求日历（未来周）</h2>
+        <div>
+            <el-button size="medium" type="primary" icon="el-icon-refresh" @click="fetchData">刷新</el-button>
+        </div>
+    </div>
+
+    <div v-loading="loading" element-loading-text="加载中...">
+        <div v-if="weekData.length === 0 && !loading" class="no-data">
+            <p>暂无未来周数据</p>
+        </div>
+        <div class="week-grid">
+            <div
+                v-for="week in weekData"
+                :key="week.week_start"
+                class="week-card"
+                :class="{ insufficient: !week.allSatisfied }"
+                @click="showWeekDetail(week)"
+            >
+                <div class="week-title">第 ${ week.weekNumber } 周</div>
+                <div class="week-range">${ week.week_start } ~ ${ week.week_end }</div>
+                <div>
+                    <span class="status-badge" :class="week.allSatisfied ? 'sufficient' : 'insufficient'">
+                        ${ week.allSatisfied ? '✅ 满足' : '❌ 不满足' }
+                    </span>
+                </div>
+                <div class="summary">
+                    <span>需求项: ${ week.totalItems } 种</span>
+                    <span>不满足: ${ week.unsatisfiedCount } 项</span>
+                    <span>涉及机种: ${ week.projectsCount } 个</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 周详情弹窗 -->
+    <el-dialog
+        :title="'📋 ' + selectedWeek.week_start + ' ~ ' + selectedWeek.week_end + ' 设备需求明细'"
+        :visible.sync="dialogVisible"
+        width="85%"
+        top="5vh"
+    >
+        <el-table :data="selectedWeek.details" border stripe max-height="500">
+            <el-table-column prop="IntfCtgry" label="接口类别" min-width="120"></el-table-column>
+            <el-table-column prop="DevCtgry" label="设备类别" min-width="120"></el-table-column>
+            <el-table-column prop="Devproperties" label="设备属性" min-width="150"></el-table-column>
+            <el-table-column prop="需求量" label="需求量" width="100" align="center"></el-table-column>
+            <el-table-column prop="库存量" label="库存量" width="100" align="center"></el-table-column>
+            <el-table-column label="是否满足" width="100" align="center">
+                <template slot-scope="scope">
+                    <el-tag :type="scope.row.是否满足 === '是' ? 'success' : 'danger'">
+                        ${ scope.row.是否满足 }
+                    </el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column prop="机种列表" label="涉及机种" min-width="200">
+                <template slot-scope="scope">
+                    <el-tooltip placement="top" effect="light">
+                        <div slot="content">
+                            <div v-for="proj in scope.row.机种列表" :key="proj" style="line-height:1.6;">
+                                ${ proj }
+                            </div>
+                        </div>
+                        <span>${ scope.row.机种列表.length } 个机种</span>
+                    </el-tooltip>
+                </template>
+            </el-table-column>
+        </el-table>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">关闭</el-button>
+        </span>
+    </el-dialog>
+</div>
+{% endverbatim %}
+{% endblock %}
+
+{% block scripts %}
+{# 本地静态资源 #}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/Element/table.js"></script>
+<script src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/message.js"></script>
+
+<script type="text/babel">
+new Vue({
+    el: '#app',
+    delimiters: ['${', '}'],
+    data: function () {
+        return {
+            loading: false,
+            rawData: [],       // 后端返回的明细数据（已过滤未来周）
+            weekData: [],      // 组装后的周卡片数据
+            dialogVisible: false,
+            selectedWeek: {
+                week_start: '',
+                week_end: '',
+                details: []
+            }
+        };
+    },
+    mounted: function () {
+        this.fetchData();
+    },
+    methods: {
+        fetchData: function () {
+            var self = this;
+            self.loading = true;
+            axios.get('/TestDeviceLNV/device-demand-week/')
+                .then(function (response) {
+                    if (response.data && response.data.data) {
+                        self.rawData = response.data.data;
+                        self.buildWeekData();
+                    } else {
+                        self.$message.error('数据格式错误');
+                    }
+                    self.loading = false;
+                })
+                .catch(function (error) {
+                    console.error('加载数据失败:', error);
+                    self.loading = false;
+                    self.$message.error('加载数据失败，请检查网络或后端服务。');
+                });
+        },
+        buildWeekData: function () {
+            var self = this;
+            var weekMap = {};
+
+            self.rawData.forEach(function (item) {
+                var key = item.week_start;
+                if (!weekMap[key]) {
+                    weekMap[key] = {
+                        week_start: item.week_start,
+                        week_end: item.week_end,
+                        details: [],
+                        allSatisfied: true,
+                        unsatisfiedCount: 0,
+                        totalItems: 0,
+                        projectsCount: 0,
+                        weekNumber: self.getWeekNumber(new Date(item.week_start))
+                    };
+                }
+                var week = weekMap[key];
+                week.details.push(item);
+                if (item.是否满足 === '否') {
+                    week.allSatisfied = false;
+                    week.unsatisfiedCount += 1;
+                }
+                // 统计机种数量（去重）
+                var projs = item.机种列表 || [];
+                // 由于每个item的机种列表可能重复，我们用Set来收集所有机种
+                if (!week._projectSet) {
+                    week._projectSet = new Set();
+                }
+                projs.forEach(function (p) { week._projectSet.add(p); });
+            });
+
+            // 计算每个周的总项数和机种数
+            var result = [];
+            for (var key in weekMap) {
+                var w = weekMap[key];
+                w.totalItems = w.details.length;
+                w.projectsCount = w._projectSet ? w._projectSet.size : 0;
+                delete w._projectSet; // 清除临时Set
+                // 按周起始排序
+                result.push(w);
+            }
+            result.sort(function (a, b) {
+                return a.week_start.localeCompare(b.week_start);
+            });
+            self.weekData = result;
+        },
+        getWeekNumber: function (date) {
+            // 计算ISO周数
+            var d = new Date(date);
+            d.setHours(0,0,0,0);
+            d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
+            var week1 = new Date(d.getFullYear(), 0, 4);
+            return 1 + Math.round(((d - week1) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+        },
+        showWeekDetail: function (week) {
+            this.selectedWeek = {
+                week_start: week.week_start,
+                week_end: week.week_end,
+                details: week.details
+            };
+            this.dialogVisible = true;
+        }
+    }
+});
+</script>
+{% endblock %}

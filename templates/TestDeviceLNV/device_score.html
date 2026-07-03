@@ -1,0 +1,477 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}设备评分与更换建议{% endblock %}
+
+{% block css %}
+<style>
+    .score-container {
+        padding: 20px 30px;
+        background: #f5f7fa;
+        min-height: calc(100vh - 120px);
+    }
+    .score-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e4e7ed;
+        flex-wrap: wrap;
+    }
+    .score-header h2 {
+        margin: 0;
+        font-weight: 600;
+        color: #303133;
+        font-size: 22px;
+        white-space: nowrap;
+    }
+    .score-header .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .score-header .total-info {
+        color: #909399;
+        font-size: 13px;
+        margin-right: 5px;
+    }
+    .score-table-wrap {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        padding: 4px 0;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+    .el-table .cell {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .el-table .col-suggestion .cell {
+        white-space: normal;
+        word-break: break-word;
+    }
+    .el-table tbody tr:hover > td {
+        background-color: #f0f7ff !important;
+    }
+    .el-tag {
+        white-space: nowrap;
+    }
+    .pagination-wrap {
+        padding: 12px 20px;
+        display: flex;
+        justify-content: flex-end;
+        border-top: 1px solid #ebeef5;
+    }
+    .info-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 12px;
+    }
+    .info-card {
+        flex: 1 1 300px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        padding: 14px 18px;
+    }
+    .info-card h4 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #303133;
+        border-bottom: 1px solid #e4e7ed;
+        padding-bottom: 6px;
+        font-size: 16px;
+    }
+    .chart-container {
+        height: 200px;
+        width: 100%;
+        margin-top: 4px;
+    }
+    .priority-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin-top: 2px;
+    }
+    .priority-table th, .priority-table td {
+        border: 1px solid #dcdfe6;
+        padding: 5px 10px;
+        text-align: center;
+    }
+    .priority-table th {
+        background-color: #f5f7fa;
+        color: #303133;
+        font-weight: 600;
+        font-size: 13px;
+    }
+    .priority-table .tag-danger {
+        background: #fef0f0;
+        color: #f56c6c;
+        font-weight: bold;
+    }
+    .priority-table .tag-warning {
+        background: #fdf6ec;
+        color: #e6a23c;
+        font-weight: bold;
+    }
+    .priority-table .tag-info {
+        background: #f4f4f5;
+        color: #909399;
+        font-weight: bold;
+    }
+    .priority-table .tag-success {
+        background: #f0f9eb;
+        color: #67c23a;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% verbatim %}
+<div id="app" class="score-container">
+    <div class="score-header">
+        <h2>📊 设备评分与更换建议</h2>
+        <div class="header-actions">
+            <span class="total-info">共 ${ total } 条记录</span>
+            <el-button type="primary" size="medium" icon="el-icon-download" @click="exportExcel">导出 Excel</el-button>
+        </div>
+    </div>
+
+    <!-- 评分标准说明 + Top10 图表 -->
+    <div class="info-cards">
+        <div class="info-card" style="flex: 2;">
+            <h4>📋 评分标准说明</h4>
+            <table class="priority-table">
+                <thead>
+                    <tr>
+                        <th>综合评分范围</th>
+                        <th>更换优先级</th>
+                        <th>处理建议</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>≥ 90</b></td>
+                        <td class="tag-danger">紧急更换</td>
+                        <td>设备已严重落后或损坏，建议立即安排更换</td>
+                    </tr>
+                    <tr>
+                        <td><b>70 ~ 89</b></td>
+                        <td class="tag-warning">酌情更换</td>
+                        <td>可根据实际情况安排来年更换计划</td>
+                    </tr>
+                    <tr>
+                        <td><b>40 ~ 69</b></td>
+                        <td class="tag-info">可观察</td>
+                        <td>设备尚可正常使用，可继续观察，暂缓更换</td>
+                    </tr>
+                    <tr>
+                        <td><b>< 40</b></td>
+                        <td class="tag-success">继续使用</td>
+                        <td>设备状况良好，无需更换</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-card" style="flex: 1.5;">
+            <h4>🏆 评分 Top 10 设备</h4>
+            <div id="top10Chart" class="chart-container"></div>
+        </div>
+    </div>
+
+    <!-- 表格 -->
+    <div class="score-table-wrap">
+        <el-table
+            :data="currentPageData"
+            border
+            stripe
+            style="width: 100%"
+            v-loading="loading"
+            :default-sort="{prop: 'Score', order: 'descending'}"
+            max-height="700"
+            row-key="id"
+        >
+            <el-table-column prop="NID" label="设备编号" min-width="80" fixed></el-table-column>
+            <el-table-column prop="DevVendor" label="厂商" min-width="100"></el-table-column>
+            <el-table-column prop="DevModel" label="型号" min-width="140"></el-table-column>
+            <el-table-column prop="DevName" label="名称" min-width="140"></el-table-column>
+            <el-table-column prop="DevCtgry" label="类别" min-width="120"></el-table-column>
+            <el-table-column prop="DevStatus" label="状态" min-width="100" align="center">
+                <template slot-scope="scope">
+                    <el-tag :type="scope.row.DevStatus && (scope.row.DevStatus.toLowerCase().includes('damaged') || scope.row.DevStatus.toLowerCase().includes('lost')) ? 'danger' : 'success'">
+                        ${ scope.row.DevStatus }
+                    </el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column prop="Score" label="综合评分" min-width="110" sortable align="center">
+                <template slot-scope="scope">
+                    <span :style="{color: scope.row.Score >= 90 ? '#F56C6C' : (scope.row.Score >= 70 ? '#E6A23C' : '#67C23A'), fontWeight: 'bold'}">
+                        ${ scope.row.Score }
+                    </span>
+                </template>
+            </el-table-column>
+            <el-table-column prop="Priority" label="优先级" min-width="110" align="center">
+                <template slot-scope="scope">
+                    <el-tag :type="scope.row.Priority === '紧急更换' ? 'danger' : (scope.row.Priority === '酌情更换' ? 'warning' : '')">
+                        ${ scope.row.Priority }
+                    </el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column prop="Suggestion" label="升级建议" min-width="260" class-name="col-suggestion">
+                <template slot-scope="scope">
+                    ${ scope.row.Suggestion }
+                </template>
+            </el-table-column>
+            <el-table-column label="详细评分" width="130" align="center" fixed="right">
+                <template slot-scope="scope">
+                    <el-popover placement="left" trigger="hover" width="240">
+                        <div style="line-height: 1.8; font-size: 14px;">
+                            <div>📅 使用年限: <b>${ scope.row.AgeScore }</b></div>
+                            <div>📊 使用频率: <b>${ scope.row.UsageScore }</b></div>
+                            <div>🔁 借用次数: <b>${ scope.row.BorrowScore }</b></div>
+                            <div>🔬 技术先进性: <b>${ scope.row.TechScore }</b></div>
+                            <div>⏳ EOL状态: <b>${ scope.row.EOLScore }</b></div>
+                            <div>⚙️ 设备状态: <b>${ scope.row.StatusScore }</b></div>
+                        </div>
+                        <el-button slot="reference" type="text" size="small">查看详情</el-button>
+                    </el-popover>
+                </template>
+            </el-table-column>
+        </el-table>
+
+        <div class="pagination-wrap">
+            <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage"
+                :page-sizes="[20, 50, 100, 200]"
+                :page-size="pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="total"
+            ></el-pagination>
+        </div>
+    </div>
+</div>
+{% endverbatim %}
+{% endblock %}
+
+{% block scripts %}
+{# 本地静态资源 #}
+<script src="/static/js/es6/polyfill.min.js"></script>
+<script src="/static/js/es6/babel.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/Element/index.js"></script>
+<script src="/static/js/Element/table.js"></script>
+<script src="/static/js/Element/main.js"></script>
+<script src="/static/js/Element/input.js"></script>
+<script src="/static/js/Element/table-column.js"></script>
+<script src="/static/js/Element/icon.js"></script>
+<script src="/static/js/Element/message.js"></script>
+{# XLSX 导出库 #}
+<script src="/static/js/xlsx/xlsx.core.min.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
+{# ECharts 图表库 #}
+<script src="/static/js/echart/echart.js"></script>
+
+<script type="text/babel">
+new Vue({
+    el: '#app',
+    delimiters: ['${', '}'],
+    data: function () {
+        return {
+            allData: [],
+            currentPage: 1,
+            pageSize: 50,
+            total: 0,
+            loading: true,
+            chart: null
+        };
+    },
+    computed: {
+        currentPageData: function () {
+            var start = (this.currentPage - 1) * this.pageSize;
+            var end = this.currentPage * this.pageSize;
+            return this.allData.slice(start, end);
+        },
+        top10Data: function () {
+            if (!this.allData || this.allData.length === 0) return [];
+            var sorted = this.allData.slice().sort(function (a, b) {
+                return b.Score - a.Score;
+            });
+            return sorted.slice(0, 10);
+        }
+    },
+    watch: {
+        top10Data: function (newVal) {
+            this.$nextTick(function () {
+                this.renderChart(newVal);
+            });
+        }
+    },
+    mounted: function () {
+        this.fetchData();
+        var self = this;
+        window.addEventListener('resize', function () {
+            if (self.chart) {
+                self.chart.resize();
+            }
+        });
+    },
+    methods: {
+        fetchData: function () {
+            var self = this;
+            self.loading = true;
+            axios.get('/TestDeviceLNV/device-score/')
+                .then(function (response) {
+                    if (response.data && response.data.data) {
+                        self.allData = response.data.data;
+                        self.total = response.data.count || self.allData.length;
+                        self.currentPage = 1;
+                        self.$nextTick(function () {
+                            self.renderChart(self.top10Data);
+                        });
+                    } else {
+                        self.$message.error('数据格式错误');
+                    }
+                    self.loading = false;
+                })
+                .catch(function (error) {
+                    console.error('加载数据失败:', error);
+                    self.loading = false;
+                    self.$message.error('加载数据失败，请检查网络或后端服务。');
+                });
+        },
+        handleSizeChange: function (val) {
+            this.pageSize = val;
+            this.currentPage = 1;
+        },
+        handleCurrentChange: function (val) {
+            this.currentPage = val;
+        },
+        exportExcel: function () {
+            if (!this.allData || this.allData.length === 0) {
+                this.$message.warning('没有数据可导出');
+                return;
+            }
+            var exportData = this.allData.map(function (item) {
+                return {
+                    '设备编号': item.NID || '',
+                    '厂商': item.DevVendor || '',
+                    '型号': item.DevModel || '',
+                    '名称': item.DevName || '',
+                    '类别': item.DevCtgry || '',
+                    '状态': item.DevStatus || '',
+                    '综合评分': item.Score || '',
+                    '优先级': item.Priority || '',
+                    '升级建议': item.Suggestion || '',
+                    '使用年限分': item.AgeScore || '',
+                    '使用频率分': item.UsageScore || '',
+                    '借用次数分': item.BorrowScore || '',
+                    '技术先进性分': item.TechScore || '',
+                    'EOL状态分': item.EOLScore || '',
+                    '设备状态分': item.StatusScore || ''
+                };
+            });
+
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.json_to_sheet(exportData);
+            XLSX.utils.book_append_sheet(wb, ws, '设备评分');
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+            var blob = new Blob([wbout], { type: 'application/octet-stream' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = '设备评分_' + new Date().toISOString().slice(0,10) + '.xlsx';
+            link.click();
+            URL.revokeObjectURL(link.href);
+            this.$message.success('导出成功');
+        },
+        renderChart: function (data) {
+            if (!data || data.length === 0) {
+                if (this.chart) {
+                    this.chart.clear();
+                    this.chart.setOption({
+                        title: { text: '暂无数据', left: 'center', top: 'center', textStyle: { color: '#999', fontSize: 16 } }
+                    });
+                }
+                return;
+            }
+            var chartDom = document.getElementById('top10Chart');
+            if (!chartDom) return;
+            if (!this.chart) {
+                this.chart = echarts.init(chartDom);
+            }
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' },
+                    formatter: function (params) {
+                        var p = params[0];
+                        var item = data[p.dataIndex];
+                        return '<b>' + item.NID + '</b><br/>评分: ' + item.Score + '<br/>优先级: ' + item.Priority;
+                    }
+                },
+                grid: {
+                    containLabel: true,   // 自动容纳坐标轴标签和名称，防止被遮挡
+                    bottom: '15%',
+                    top: '10%',
+                    left: '3%',
+                    right: '3%'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: data.map(function (item) { return item.NID; }),
+                    axisLabel: {
+                        rotate: 30,
+                        interval: 0,
+                        fontSize: 11
+                    },
+                    axisLine: { show: true }
+                },
+                yAxis: {
+                    type: 'value',
+                    min: 0,
+                    max: 100,
+                    splitLine: { lineStyle: { type: 'dashed', color: '#e4e7ed' } },
+                    name: '综合评分',
+                    nameTextStyle: { fontSize: 12 }
+                },
+                series: [
+                    {
+                        name: '综合评分',
+                        type: 'bar',
+                        data: data.map(function (item) { return item.Score; }),
+                        itemStyle: {
+                            color: function (params) {
+                                var val = params.value;
+                                if (val >= 90) return '#F56C6C';
+                                else if (val >= 70) return '#E6A23C';
+                                else return '#67C23A';
+                            },
+                            borderRadius: [4, 4, 0, 0]
+                        },
+                        barWidth: '45%',
+                        label: {
+                            show: true,
+                            position: 'top',
+                            formatter: function (params) { return params.value; },
+                            fontSize: 11,
+                            fontWeight: 'bold'
+                        }
+                    }
+                ]
+            };
+            this.chart.setOption(option);
+            this.chart.resize();
+        }
+    }
+});
+</script>
+{% endblock %}
