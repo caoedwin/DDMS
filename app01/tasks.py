@@ -623,3 +623,16 @@ from celery import shared_task,task
 # @task(ignore_result=True,max_retries=1,default_retry_delay=10)
 # def just_print():
 #     print ("Print from celery task")
+
+@shared_task
+def warmup_cache():
+    from TestDeviceLNV.views import fetch_testprojects, get_requirement_items
+    from django.core.cache import cache
+    try:
+        if not cache.get('testprojects_data'):
+            fetch_testprojects()
+        if not cache.get('requirement_items_v2'):
+            get_requirement_items()
+        logger.info("缓存预热完成")
+    except Exception as e:
+        logger.error(f"缓存预热失败: {e}")

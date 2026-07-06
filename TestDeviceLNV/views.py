@@ -573,7 +573,7 @@ def device_demand_week_page(request):
 # ===================== API 认证与请求 =====================
 def get_api_token():
     """获取API认证token"""
-    url = 'http://127.0.0.1:8002/PersonalInfo/api_Per/login/'
+    url = 'http://127.0.0.1:8002/TestPlanSW/api/token/'
     headers = {"Content-Type": "application/json;charset=UTF-8"}
     body = {"username": "API_CQM", "password": "Qs!3m6Tc7"}
     try:

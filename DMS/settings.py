@@ -439,6 +439,10 @@ CELERY_BEAT_SCHEDULE = {
         # 'schedule': crontab(minute='30', hour='8', day_of_week='1,2,3,4,5'),#每周的1-5，10点0分执行
         # 'args': ()
         },
+    'warmup-cache': {
+        'task': 'app01.tasks.warmup_cache',
+        'schedule': crontab(minute='0', hour='3'),
+    },
     # 周期性任务
     # 'task-one': {
     #     'task': 'app01.tasks.MailhtmlSync',
