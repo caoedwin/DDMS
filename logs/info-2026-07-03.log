@@ -792,3 +792,5 @@
 [2026-07-03 14:00:22,087] [views.py:974] [views:device_demand_week_view] [WARNING]- 机种 'Moto g34' (ID=4606) 没有任何设备字段填写，请检查 Device1~Device10 字段
 [2026-07-03 14:00:22,087] [views.py:974] [views:device_demand_week_view] [WARNING]- 机种 'Moto X40' (ID=4607) 没有任何设备字段填写，请检查 Device1~Device10 字段
 [2026-07-03 14:00:22,087] [views.py:974] [views:device_demand_week_view] [WARNING]- 机种 '联想小新学习平板12.7英寸' (ID=4608) 没有任何设备字段填写，请检查 Device1~Device10 字段
+[2026-07-06 08:26:02,707] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-07-06 08:26:25,016] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)

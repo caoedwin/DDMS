@@ -599,24 +599,43 @@ def api_request(url, params=None):
         print(f"请求异常: {e}")
     return None
 
+from django.core.cache import cache
+#这样第一次请求较慢，后续请求直接命中缓存，响应时间降至毫秒级。
+import concurrent.futures
+
+#并行请求 + 缓存
 def fetch_testprojects():
-    """获取四个测试项目API的数据，合并返回列表"""
+    """获取四个测试项目API的数据，合并返回列表（缓存10分钟，并行请求）"""
+    cache_key = 'testprojects_data'
+    cached = cache.get(cache_key)
+    if cached is not None:
+        return cached
+
     urls = [
         'http://127.0.0.1:8002/TestPlanSW/api/testprojects/',
         'http://127.0.0.1:8002/TestPlanSW/api/testprojects_aio/',
         'http://127.0.0.1:8002/TestPlanSWOS/api/testprojects/',
         'http://127.0.0.1:8002/TestPlanSWOS/api/testprojects_aio/',
     ]
-    all_projects = []
-    for url in urls:
+
+    def fetch_single(url):
         data = api_request(url)
         if data and isinstance(data, list):
-            all_projects.extend(data)
+            return data
         elif data and isinstance(data, dict) and 'results' in data:
-            all_projects.extend(data['results'])
-    # print(all_projects)
-    return all_projects
+            return data['results']
+        return []
 
+    all_projects = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        future_to_url = {executor.submit(fetch_single, url): url for url in urls}
+        for future in concurrent.futures.as_completed(future_to_url):
+            result = future.result()
+            if result:
+                all_projects.extend(result)
+
+    cache.set(cache_key, all_projects, timeout=600)  # 10分钟
+    return all_projects
 
 # ===================== 设备评分核心函数（完整移植） =====================
 def parse_date(date_str):
@@ -948,73 +967,45 @@ from django.core.cache import cache
 
 logger = logging.getLogger('django')
 
+import time
+
 @csrf_exempt
 def device_demand_week_view(request):
-    """按周统计设备需求（所有项目共享相同设备需求）"""
+    """按周统计设备需求（所有项目共享相同设备需求），缓存优化"""
+    import time
+    start_total = time.time()
+
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
-    # ---------- 1. 获取所有设备需求项（从 TestDeviceLNV） ----------
-    test_records = TestDeviceLNV.objects.all()
-    if not test_records.exists():
-        return JsonResponse({'error': 'TestDeviceLNV 表中没有数据'}, status=404)
+    # ---------- 固定测试日期，正式时改为 datetime.now().date() ----------
+    today = datetime(2019, 1, 29).date()
+    # 正式启用：
+    # today = datetime.now().date()
 
-    all_devices = list(DeviceLNV.objects.all())
-    device_name_map = {dev.NID: dev for dev in all_devices}
-    dev_full_names = [f"{dev.DevName} {dev.DevModel}".lower() for dev in all_devices]
+    cache_key = f'demand_week_result_{today.isoformat()}'
+    cached_result = cache.get(cache_key)
+    if cached_result is not None:
+        return JsonResponse(cached_result)
 
-    requirement_items = []  # (type_key, nid)
-
-    for rec in test_records:
-        nid = rec.Device1 if rec.Device1 else None
-        if nid:
-            dev = device_name_map.get(nid)
-            if dev and dev.DevStatus.lower() not in ['damaged', 'lost']:
-                type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
-                requirement_items.append((type_key, nid))
-                continue
-
-        type_name = rec.Type or ''
-        if not type_name:
-            if rec.Category and rec.Class:
-                type_name = f"{rec.Category}|{rec.Class}"
-            else:
-                continue
-
-        matched_nid = None
-        for nid, dev in device_name_map.items():
-            if dev.DevStatus.lower() in ['damaged', 'lost']:
-                continue
-            full = f"{dev.DevName} {dev.DevModel} {dev.DevVendor}".lower()
-            if type_name.lower() in full:
-                matched_nid = nid
-                break
-
-        if not matched_nid:
-            closest = get_close_matches(type_name, dev_full_names, n=1, cutoff=0.6)
-            if closest:
-                for dev in all_devices:
-                    if f"{dev.DevName} {dev.DevModel}".lower() == closest[0]:
-                        if dev.DevStatus.lower() not in ['damaged', 'lost']:
-                            matched_nid = dev.NID
-                            break
-
-        if matched_nid:
-            dev = device_name_map[matched_nid]
-            type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
-            requirement_items.append((type_key, matched_nid))
-            logger.info(f"为需求 '{type_name}' 匹配到设备 NID: {matched_nid}")
-        else:
-            logger.warning(f"无法为需求 '{type_name}' 匹配任何设备")
-
+    # ---------- 1. 获取需求项（缓存，使用新函数） ----------
+    t1 = time.time()
+    requirement_items = get_requirement_items()
+    t2 = time.time()
+    logger.info(f"获取需求项耗时: {t2-t1:.2f}s, 共 {len(requirement_items)} 项")
     if not requirement_items:
         return JsonResponse({'error': '无法为任何需求项匹配到可用设备'}, status=404)
 
-    # ---------- 2. 获取项目计划 ----------
+    # ---------- 2. 获取项目计划（缓存） ----------
+    t1 = time.time()
     projects = fetch_testprojects()
+    t2 = time.time()
+    logger.info(f"获取项目计划耗时: {t2-t1:.2f}s, 共 {len(projects) if projects else 0} 个项目")
     if not projects:
         return JsonResponse({'error': '无法获取项目计划数据'}, status=500)
 
+    # 过滤有效项目
+    t1 = time.time()
     valid_projects = []
     for proj in projects:
         start_str = proj.get('ScheduleBegin') or proj.get('start_date') or proj.get('StartDate')
@@ -1033,18 +1024,23 @@ def device_demand_week_view(request):
             'start': start,
             'end': end
         })
-
+    t2 = time.time()
+    logger.info(f"过滤项目耗时: {t2-t1:.2f}s, 有效项目: {len(valid_projects)}")
     if not valid_projects:
         logger.error("没有有效的项目计划数据")
         return JsonResponse({'error': '没有有效的项目计划数据'}, status=404)
 
     # ---------- 3. 统计库存 ----------
+    t1 = time.time()
     inventory = defaultdict(int)
     for dev in DeviceLNV.objects.exclude(Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')):
         type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
         inventory[type_key] += 1
+    t2 = time.time()
+    logger.info(f"统计库存耗时: {t2-t1:.2f}s, 共 {len(inventory)} 种设备类型")
 
-    # ---------- 4. 按周汇总需求（包含项目名称） ----------
+    # ---------- 4. 按周汇总需求（包含项目名称和Phase） ----------
+    t1 = time.time()
     week_demand = defaultdict(lambda: defaultdict(lambda: {'demand': 0, 'projects': set()}))
 
     for proj in valid_projects:
@@ -1052,28 +1048,27 @@ def device_demand_week_view(request):
         end = proj['end']
         days_since_monday = start.weekday()
         week_start = start - timedelta(days=days_since_monday)
+        proj_info = f"{proj['name']} ({proj['Phase']})" if proj.get('Phase') else proj['name']
         while week_start <= end:
-            week_end = week_start + timedelta(days=6)
             effective_start = max(start, week_start)
-            effective_end = min(end, week_end)
+            effective_end = min(end, week_start + timedelta(days=6))
             if effective_start <= effective_end:
                 for type_key, nid in requirement_items:
                     week_demand[week_start][type_key]['demand'] += 1
-                    week_demand[week_start][type_key]['projects'].add(proj['name'])
+                    week_demand[week_start][type_key]['projects'].add(proj_info)
             week_start += timedelta(days=7)
+    t2 = time.time()
+    logger.info(f"按周汇总耗时: {t2-t1:.2f}s, 共 {len(week_demand)} 周")
 
     # ---------- 5. 生成输出（仅未来周） ----------
-    # 测试日期 2019-01-29
-    today = datetime(2019, 1, 29).date()
-    # 正式时启用下面一行：
-    # today = datetime.now().date()
+    t1 = time.time()
     days_since_monday = today.weekday()
     this_week_start = today - timedelta(days=days_since_monday)
 
     output = []
     for week_start in sorted(week_demand.keys()):
         if week_start < this_week_start:
-            continue  # 跳过过去周
+            continue
         week_end = week_start + timedelta(days=6)
         for type_key, info in week_demand[week_start].items():
             total_available = inventory.get(type_key, 0)
@@ -1090,5 +1085,107 @@ def device_demand_week_view(request):
                 '是否满足': '是' if sufficient else '否',
                 '机种列表': list(info['projects'])
             })
+    t2 = time.time()
+    logger.info(f"生成输出耗时: {t2-t1:.2f}s, 输出 {len(output)} 条")
 
-    return JsonResponse({'data': output, 'count': len(output)}, safe=False)
+    result_data = {'data': output, 'count': len(output)}
+    cache.set(cache_key, result_data, timeout=300)  # 5分钟
+
+    logger.info(f"总耗时: {time.time() - start_total:.2f}s")
+    return JsonResponse(result_data)
+
+def get_requirement_items():
+    """获取并缓存需求项列表 (type_key, nid)，优化匹配速度"""
+    cache_key = 'requirement_items_v2'
+    cached = cache.get(cache_key)
+    if cached is not None:
+        return cached
+
+    test_records = TestDeviceLNV.objects.all()
+    if not test_records.exists():
+        return []
+
+    # 获取可用设备（排除 Damaged/Lost）
+    all_devices = list(DeviceLNV.objects.exclude(
+        Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
+    ))
+
+    # 预计算设备信息
+    device_infos = []
+    for dev in all_devices:
+        full_lower = f"{dev.DevName} {dev.DevModel} {dev.DevVendor}".lower()
+        name_model_lower = f"{dev.DevName} {dev.DevModel}".lower()
+        device_infos.append({
+            'dev': dev,
+            'full_lower': full_lower,
+            'name_model_lower': name_model_lower,
+            'nid': dev.NID,
+        })
+
+    req_items = []
+    for rec in test_records:
+        # 优先使用 Device1
+        nid = rec.Device1 if rec.Device1 else None
+        if nid:
+            dev = next((d for d in all_devices if d.NID == nid), None)
+            if dev:
+                type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
+                req_items.append((type_key, nid))
+                continue
+
+        # 获取 Type 名称
+        type_name = rec.Type or ''
+        if not type_name and rec.Category and rec.Class:
+            type_name = f"{rec.Category}|{rec.Class}"
+        if not type_name:
+            continue
+
+        type_lower = type_name.lower()
+        matched_nid = None
+
+        # 1. 精确包含匹配（快速）
+        for info in device_infos:
+            if type_lower in info['full_lower']:
+                matched_nid = info['nid']
+                break
+
+        # 2. 单词匹配（拆分 type_name 为单词，要求所有单词都在 full_lower 中出现）
+        if not matched_nid:
+            import re
+            words = re.split(r'[\s|]+', type_lower)
+            words = [w for w in words if len(w) > 2]
+            if words:
+                # 先尝试匹配所有单词
+                for info in device_infos:
+                    if all(w in info['full_lower'] for w in words):
+                        matched_nid = info['nid']
+                        break
+                # 如果失败，降级为匹配任意一个单词
+                if not matched_nid:
+                    for info in device_infos:
+                        if any(w in info['full_lower'] for w in words):
+                            matched_nid = info['nid']
+                            break
+
+        # 3. 模糊匹配（作为最后手段，极少触发）
+        if not matched_nid:
+            from difflib import get_close_matches
+            name_model_list = [info['name_model_lower'] for info in device_infos]
+            closest = get_close_matches(type_lower, name_model_list, n=1, cutoff=0.6)
+            if closest:
+                for info in device_infos:
+                    if info['name_model_lower'] == closest[0]:
+                        matched_nid = info['nid']
+                        break
+
+        if matched_nid:
+            dev = next(d for d in all_devices if d.NID == matched_nid)
+            type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
+            req_items.append((type_key, matched_nid))
+            # logger.info(f"为需求 '{type_name}' 匹配到设备 NID: {matched_nid}")
+        else:
+            # logger.warning(f"无法为需求 '{type_name}' 匹配任何设备")
+            pass
+    # 缓存1天（86400秒），因为设备库和需求表变化不频繁
+    cache.set(cache_key, req_items, timeout=86400)
+    return req_items

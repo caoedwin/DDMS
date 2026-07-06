@@ -17,12 +17,25 @@
         margin-bottom: 20px;
         padding-bottom: 10px;
         border-bottom: 2px solid #e4e7ed;
+        flex-wrap: wrap;
     }
     .calendar-header h2 {
         margin: 0;
         font-weight: 600;
         color: #303133;
         font-size: 24px;
+        white-space: nowrap;
+    }
+    .calendar-header .nav-area {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .calendar-header .nav-area .range-label {
+        font-size: 16px;
+        color: #606266;
+        min-width: 200px;
+        text-align: center;
     }
     .week-grid {
         display: grid;
@@ -37,7 +50,7 @@
         padding: 16px 20px;
         cursor: pointer;
         transition: all 0.3s;
-        border-left: 6px solid #67C23A; /* 默认绿色 */
+        border-left: 6px solid #67C23A;
         position: relative;
     }
     .week-card:hover {
@@ -94,9 +107,18 @@
         color: #909399;
         font-size: 16px;
     }
-    .loading-mask {
-        text-align: center;
-        padding: 50px 0;
+    .pagination-wrap {
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        border-top: 1px solid #ebeef5;
+        margin-top: 15px;
+    }
+    .el-button-group .el-button {
+        padding: 10px 20px;
+    }
+    .el-button-group .el-button+.el-button {
+        margin-left: 0;
     }
 </style>
 {% endblock %}
@@ -105,19 +127,24 @@
 {% verbatim %}
 <div id="app" class="calendar-container">
     <div class="calendar-header">
-        <h2>📅 设备需求日历（未来周）</h2>
-        <div>
-            <el-button size="medium" type="primary" icon="el-icon-refresh" @click="fetchData">刷新</el-button>
+        <h2>📅 设备需求日历</h2>
+        <div class="nav-area">
+            <el-button-group>
+                <el-button icon="el-icon-arrow-left" @click="prevPage" size="medium">上一页</el-button>
+                <el-button @click="nextPage" size="medium">下一页 <i class="el-icon-arrow-right el-icon--right"></i></el-button>
+            </el-button-group>
+            <span class="range-label">${ pageStartDate } ~ ${ pageEndDate }</span>
+            <el-button size="medium" icon="el-icon-refresh" @click="fetchData">刷新</el-button>
         </div>
     </div>
 
     <div v-loading="loading" element-loading-text="加载中...">
-        <div v-if="weekData.length === 0 && !loading" class="no-data">
-            <p>暂无未来周数据</p>
+        <div v-if="pagedData.length === 0 && !loading" class="no-data">
+            <p>当前页暂无数据</p>
         </div>
         <div class="week-grid">
             <div
-                v-for="week in weekData"
+                v-for="week in pagedData"
                 :key="week.week_start"
                 class="week-card"
                 :class="{ insufficient: !week.allSatisfied }"
@@ -133,13 +160,22 @@
                 <div class="summary">
                     <span>需求项: ${ week.totalItems } 种</span>
                     <span>不满足: ${ week.unsatisfiedCount } 项</span>
-                    <span>涉及机种: ${ week.projectsCount } 个</span>
+                    <span>机种: ${ week.projectsCount } 个</span>
                 </div>
             </div>
         </div>
+
+        <!-- 底部页码指示 -->
+        <div class="pagination-wrap" v-if="totalPages > 1">
+            <span style="margin-right: 10px; color: #909399;">第 ${ currentPage + 1 } / ${ totalPages } 页</span>
+            <el-button-group>
+                <el-button icon="el-icon-arrow-left" size="small" :disabled="currentPage === 0" @click="prevPage">上一页</el-button>
+                <el-button size="small" :disabled="currentPage === totalPages - 1" @click="nextPage">下一页</el-button>
+            </el-button-group>
+        </div>
     </div>
 
-    <!-- 周详情弹窗 -->
+    <!-- 周详情弹窗（保持不变） -->
     <el-dialog
         :title="'📋 ' + selectedWeek.week_start + ' ~ ' + selectedWeek.week_end + ' 设备需求明细'"
         :visible.sync="dialogVisible"
@@ -202,8 +238,10 @@ new Vue({
     data: function () {
         return {
             loading: false,
-            rawData: [],       // 后端返回的明细数据（已过滤未来周）
-            weekData: [],      // 组装后的周卡片数据
+            rawData: [],       // 后端返回的所有未来周明细
+            weekData: [],      // 组装后的周卡片数据（全量）
+            currentPage: 0,    // 当前页索引（从0开始）
+            pageSize: 20,      // 每页显示的周数
             dialogVisible: false,
             selectedWeek: {
                 week_start: '',
@@ -211,6 +249,27 @@ new Vue({
                 details: []
             }
         };
+    },
+    computed: {
+        // 总页数
+        totalPages: function () {
+            return Math.ceil(this.weekData.length / this.pageSize);
+        },
+        // 当前页的数据
+        pagedData: function () {
+            var start = this.currentPage * this.pageSize;
+            var end = start + this.pageSize;
+            return this.weekData.slice(start, end);
+        },
+        // 当前页显示的日期范围
+        pageStartDate: function () {
+            if (this.pagedData.length === 0) return '无';
+            return this.pagedData[0].week_start;
+        },
+        pageEndDate: function () {
+            if (this.pagedData.length === 0) return '无';
+            return this.pagedData[this.pagedData.length - 1].week_end;
+        }
     },
     mounted: function () {
         this.fetchData();
@@ -224,6 +283,8 @@ new Vue({
                     if (response.data && response.data.data) {
                         self.rawData = response.data.data;
                         self.buildWeekData();
+                        // 重置到第一页
+                        self.currentPage = 0;
                     } else {
                         self.$message.error('数据格式错误');
                     }
@@ -259,32 +320,27 @@ new Vue({
                     week.allSatisfied = false;
                     week.unsatisfiedCount += 1;
                 }
-                // 统计机种数量（去重）
-                var projs = item.机种列表 || [];
-                // 由于每个item的机种列表可能重复，我们用Set来收集所有机种
                 if (!week._projectSet) {
                     week._projectSet = new Set();
                 }
-                projs.forEach(function (p) { week._projectSet.add(p); });
+                (item.机种列表 || []).forEach(function (p) { week._projectSet.add(p); });
             });
 
-            // 计算每个周的总项数和机种数
             var result = [];
             for (var key in weekMap) {
                 var w = weekMap[key];
                 w.totalItems = w.details.length;
                 w.projectsCount = w._projectSet ? w._projectSet.size : 0;
-                delete w._projectSet; // 清除临时Set
-                // 按周起始排序
+                delete w._projectSet;
                 result.push(w);
             }
             result.sort(function (a, b) {
                 return a.week_start.localeCompare(b.week_start);
             });
             self.weekData = result;
+            self.currentPage = 0;
         },
         getWeekNumber: function (date) {
-            // 计算ISO周数
             var d = new Date(date);
             d.setHours(0,0,0,0);
             d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
@@ -298,6 +354,16 @@ new Vue({
                 details: week.details
             };
             this.dialogVisible = true;
+        },
+        prevPage: function () {
+            if (this.currentPage > 0) {
+                this.currentPage--;
+            }
+        },
+        nextPage: function () {
+            if (this.currentPage < this.totalPages - 1) {
+                this.currentPage++;
+            }
         }
     }
 });
