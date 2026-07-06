@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="Default Changelist">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/all-2026-07-03.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2026-07-03.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error-2026-07-03.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2026-07-03.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2026-07-03.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2026-07-03.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/checkper.py" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/checkper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -554,7 +548,7 @@
       <workItem from="1781068502468" duration="2275000" />
       <workItem from="1781137822770" duration="190000" />
       <workItem from="1781244337752" duration="691000" />
-      <workItem from="1782710915648" duration="36753000" />
+      <workItem from="1782710915648" duration="37025000" />
     </task>
     <servers />
   </component>
