@@ -1098,19 +1098,15 @@ def device_demand_week_view(request):
 import re
 from difflib import get_close_matches
 
-import re
-from difflib import get_close_matches
-from collections import defaultdict
-
 def get_requirement_items():
-    """获取并缓存需求项列表，按连续相同Comments分组，组内共享需求量"""
+    """获取并缓存需求项列表 (type_key, nid)，支持 Must/Optional 和多设备选择"""
     cache_key = 'requirement_items_v2'
     cached = cache.get(cache_key)
     if cached is not None:
         return cached
 
-    test_records = list(TestDeviceLNV.objects.all().order_by('id'))  # 确保顺序
-    if not test_records:
+    test_records = TestDeviceLNV.objects.all()
+    if not test_records.exists():
         return []
 
     # 获取可用设备（排除 Damaged/Lost）
@@ -1121,7 +1117,9 @@ def get_requirement_items():
     # 预计算设备信息（全量组合字符串用于包含匹配）
     device_infos = []
     for dev in all_devices:
+        # 构建用于包含匹配的完整字符串
         full_match_str = f"{dev.IntfCtgry or ''} {dev.DevCtgry or ''} {dev.Devproperties or ''} {dev.DevName or ''} {dev.DevModel or ''} {dev.DevVendor or ''}".lower()
+        # 用于模糊匹配的字符串（不含 Vendor）
         fuzzy_match_str = f"{dev.IntfCtgry or ''} {dev.DevCtgry or ''} {dev.Devproperties or ''} {dev.DevName or ''} {dev.DevModel or ''}".lower()
         device_infos.append({
             'dev': dev,
@@ -1134,140 +1132,143 @@ def get_requirement_items():
 
     req_items = []
 
-    # 1. 按连续相同 Comments 分组
-    groups = []
-    current_group = None
     for rec in test_records:
-        comments = rec.Comments or ''
-        if current_group is None or current_group['comments'] != comments:
-            # 新组
-            current_group = {
-                'comments': comments,
-                'records': [rec],
-                'has_must': rec.Require_State and rec.Require_State.lower() == 'must',
-            }
-            groups.append(current_group)
-        else:
-            current_group['records'].append(rec)
-            if rec.Require_State and rec.Require_State.lower() == 'must':
-                current_group['has_must'] = True
+        # 构建匹配字符串：Category + Class + Type（空格连接）
+        match_parts = [rec.Category or '', rec.Class or '', rec.Type or '']
+        match_str = ' '.join([p for p in match_parts if p]).strip()
+        if not match_str:
+            continue
+        match_lower = match_str.lower()
 
-    # 2. 处理每个组
-    for group in groups:
-        comments = group['comments']
-        records = group['records']
-        is_must = group['has_must']
-
-        # 提取组需求量（从 comments 中提取数字，若没有则默认等于组内记录数）
+        # 解析数量（从 Comments 中提取数字）
         quantity = 1
-        if comments:
-            num_match = re.search(r'(\d+)', comments)
+        require_state = rec.Require_State or ''  # 假设字段名为 Require_State，值为 Must/Optional
+        is_must = require_state.lower() == 'must'
+
+        if rec.Comments:
+            num_match = re.search(r'(\d+)', rec.Comments)
             if num_match:
                 quantity = int(num_match.group(1))
                 if quantity < 1:
                     quantity = 1
-            else:
-                # 若 comments 中有其他描述但无数字，可自定义，这里默认组内记录数
-                quantity = len(records)
-        else:
-            # comments 为空，默认组内记录数
-            quantity = len(records)
 
-        # 收集组内所有记录的匹配字符串
-        match_strs = []
-        for rec in records:
-            parts = [rec.Category or '', rec.Class or '', rec.Type or '']
-            s = ' '.join([p for p in parts if p]).strip()
-            if s:
-                match_strs.append(s.lower())
+        # 如果是 Optional 且数量为1，可能只是示例，但保持默认1
 
-        if not match_strs:
-            continue
+        # ---------- 匹配候选设备 ----------
+        candidates = []
 
-        # 合并候选设备（对每个 match_str 分别匹配，取并集）
-        all_candidates = []  # 存放设备信息字典
-        seen_nids = set()
+        # 1. 包含匹配（在 full_lower 中查找 match_lower）
+        for info in device_infos:
+            if match_lower in info['full_lower']:
+                candidates.append(info)
 
-        for match_lower in match_strs:
-            # 1. 包含匹配
-            candidates = []
-            for info in device_infos:
-                if match_lower in info['full_lower']:
-                    candidates.append(info)
-
-            # 2. 单词匹配（若包含匹配无结果）
-            if not candidates:
-                words = re.split(r'[\s|]+', match_lower)
-                words = [w for w in words if len(w) > 2]
-                if words:
+        # 2. 单词匹配（若包含匹配无结果）
+        if not candidates:
+            # 分割单词（按空格和 |）
+            words = re.split(r'[\s|]+', match_lower)
+            words = [w for w in words if len(w) > 2]
+            if words:
+                # 所有单词匹配
+                for info in device_infos:
+                    if all(w in info['full_lower'] for w in words):
+                        candidates.append(info)
+                # 若没有完全匹配，降级为任意单词匹配
+                if not candidates:
                     for info in device_infos:
-                        if all(w in info['full_lower'] for w in words):
+                        if any(w in info['full_lower'] for w in words):
                             candidates.append(info)
-                    if not candidates:
-                        for info in device_infos:
-                            if any(w in info['full_lower'] for w in words):
-                                candidates.append(info)
 
-            # 3. 模糊匹配
-            if not candidates:
-                fuzzy_list = [info['fuzzy_lower'] for info in device_infos]
-                closest = get_close_matches(match_lower, fuzzy_list, n=10, cutoff=0.8)
-                if closest:
-                    for name in closest:
-                        for info in device_infos:
-                            if info['fuzzy_lower'] == name:
-                                candidates.append(info)
-                                break
+        # 3. 模糊匹配（最后手段，cutoff=0.8）
+        if not candidates:
+            fuzzy_list = [info['fuzzy_lower'] for info in device_infos]
+            closest = get_close_matches(match_lower, fuzzy_list, n=10, cutoff=0.8)
+            if closest:
+                for name in closest:
+                    for info in device_infos:
+                        if info['fuzzy_lower'] == name:
+                            candidates.append(info)
+                            break
 
-            # 去重并加入总候选
-            for info in candidates:
-                if info['nid'] not in seen_nids:
-                    seen_nids.add(info['nid'])
-                    all_candidates.append(info)
-
-        if not all_candidates:
-            logger.warning(f"组 '{comments}' 无法匹配到任何设备")
+        if not candidates:
+            logger.warning(f"无法为需求 '{match_str}' (Require_State={require_state}) 匹配任何设备")
             continue
 
-        # 按状态优先级排序 (Good > Fixed > Long > 其他)
+        # 去重（按 NID）
+        unique_candidates = {}
+        for info in candidates:
+            if info['nid'] not in unique_candidates:
+                unique_candidates[info['nid']] = info
+        candidates = list(unique_candidates.values())
+
+        # 排序：优先 Good，其次 Fixed，最后 Long（或未知）
         status_priority = {'good': 0, 'fixed': 1, 'long': 2}
-        all_candidates.sort(key=lambda x: status_priority.get(x['status'], 3))
+        candidates.sort(key=lambda x: status_priority.get(x['status'], 3))
 
-        # 按厂商分散选取所需数量的设备
+        # ---------- 选取设备（尽量不同厂商） ----------
         selected = []
-        # 按厂商分组
-        vendor_groups = defaultdict(list)
-        for info in all_candidates:
-            vendor_groups[info['vendor']].append(info)
+        if is_must:
+            # Must：必须选取 quantity 台，若不足则报错（记录日志）
+            # 按厂商分组
+            vendor_groups = {}
+            for info in candidates:
+                vendor = info['vendor'] or 'unknown'
+                vendor_groups.setdefault(vendor, []).append(info)
 
-        vendor_keys = list(vendor_groups.keys())
-        # 轮询不同厂商取一个
-        temp_candidates = all_candidates[:]
-        while len(selected) < quantity and temp_candidates:
-            for vendor in vendor_keys:
-                if len(selected) >= quantity:
-                    break
-                if vendor_groups.get(vendor):
-                    info = vendor_groups[vendor].pop(0)
-                    selected.append(info)
-                    temp_candidates = [c for c in temp_candidates if c['nid'] != info['nid']]
-            # 若所有厂商都取完但还不够，从剩余同厂商补充
-            if len(selected) < quantity and temp_candidates:
-                for info in temp_candidates:
+            # 轮询不同厂商取一个
+            vendor_keys = list(vendor_groups.keys())
+            # 先尽量从不同厂商取
+            temp_candidates = candidates[:]  # 复制
+            while len(selected) < quantity and temp_candidates:
+                for vendor in vendor_keys:
                     if len(selected) >= quantity:
                         break
-                    selected.append(info)
-                break
+                    if vendor_groups.get(vendor):
+                        info = vendor_groups[vendor].pop(0)
+                        selected.append(info)
+                        # 从临时候选移除
+                        temp_candidates = [c for c in temp_candidates if c['nid'] != info['nid']]
+                # 如果所有厂商都取完了但还不够，从剩余同厂商补充
+                if len(selected) < quantity and temp_candidates:
+                    for info in temp_candidates:
+                        if len(selected) >= quantity:
+                            break
+                        selected.append(info)
+                    break
 
-        if is_must and len(selected) < quantity:
-            logger.warning(f"必须组 '{comments}' 需求 {quantity} 台，仅匹配到 {len(selected)} 台")
+            if len(selected) < quantity:
+                logger.warning(f"需求 '{match_str}' 为 Must，但只匹配到 {len(selected)} 台，需要 {quantity} 台")
+        else:
+            # Optional：尽量选取 quantity 台，但若不足则选取全部可用
+            # 按厂商分组，同样策略
+            vendor_groups = {}
+            for info in candidates:
+                vendor = info['vendor'] or 'unknown'
+                vendor_groups.setdefault(vendor, []).append(info)
 
-        # 生成需求项
+            vendor_keys = list(vendor_groups.keys())
+            temp_candidates = candidates[:]
+            while len(selected) < quantity and temp_candidates:
+                for vendor in vendor_keys:
+                    if len(selected) >= quantity:
+                        break
+                    if vendor_groups.get(vendor):
+                        info = vendor_groups[vendor].pop(0)
+                        selected.append(info)
+                        temp_candidates = [c for c in temp_candidates if c['nid'] != info['nid']]
+                if len(selected) < quantity and temp_candidates:
+                    for info in temp_candidates:
+                        if len(selected) >= quantity:
+                            break
+                        selected.append(info)
+                    break
+            # 若不足，只取已有的，不报错
+
+        # ---------- 生成需求项 ----------
         for info in selected:
             dev = info['dev']
             type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
             req_items.append((type_key, dev.NID))
-            logger.info(f"组 '{comments}' 匹配设备 NID: {dev.NID}")
+            logger.info(f"为需求 '{match_str}' (Require_State={require_state}) 匹配到设备 NID: {dev.NID}")
 
     cache.set(cache_key, req_items, timeout=86400)
     return req_items

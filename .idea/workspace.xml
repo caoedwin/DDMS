@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="Default Changelist">
+      <change afterPath="$PROJECT_DIR$/TestDeviceLNV/views20260707.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestDeviceLNV/匹配说明" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DMS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestDeviceLNV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/all-2026-07-06.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2026-07-06.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/error-2026-07-06.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2026-07-06.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info-2026-07-06.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2026-07-06.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/checkper.py" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/checkper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +234,7 @@
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "django.template.preview.state": "SHOW_EDITOR",
-    "last_opened_file_path": "C:/djangoproject/DMS/templates/TestDeviceLNV",
+    "last_opened_file_path": "C:/djangoproject/DMS/TestDeviceLNV",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -247,11 +246,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\djangoproject\DMS\TestDeviceLNV" />
       <recent name="C:\djangoproject\DMS\templates\TestDeviceLNV" />
       <recent name="C:\djangoproject\DMS\templates\RetainedSample" />
       <recent name="C:\djangoproject\DMS\templates" />
       <recent name="C:\djangoproject\DMS\templates\CabinetManage" />
-      <recent name="C:\djangoproject\DMS\templates\DeviceA39" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\djangoproject\DMS\static\css" />
@@ -556,7 +555,7 @@
       <workItem from="1781068502468" duration="2275000" />
       <workItem from="1781137822770" duration="190000" />
       <workItem from="1781244337752" duration="691000" />
-      <workItem from="1782710915648" duration="44022000" />
+      <workItem from="1782710915648" duration="58071000" />
     </task>
     <servers />
   </component>

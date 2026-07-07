@@ -187,7 +187,15 @@
             <el-table-column prop="DevCtgry" label="设备类别" min-width="120"></el-table-column>
             <el-table-column prop="Devproperties" label="设备属性" min-width="150"></el-table-column>
             <el-table-column prop="需求量" label="需求量" width="100" align="center"></el-table-column>
-            <el-table-column prop="库存量" label="库存量" width="100" align="center"></el-table-column>
+            <el-table-column prop="库存量" label="库存量" width="100" align="center">
+                <template slot-scope="scope">
+                    <el-tooltip placement="top" effect="light" :content="scope.row.库存设备NID || '无'">
+                        <span style="cursor: pointer; border-bottom: 1px dashed #409EFF;">
+                            ${ scope.row.库存量 }
+                        </span>
+                    </el-tooltip>
+                </template>
+            </el-table-column>
             <el-table-column label="是否满足" width="100" align="center">
                 <template slot-scope="scope">
                     <el-tag :type="scope.row.是否满足 === '是' ? 'success' : 'danger'">
