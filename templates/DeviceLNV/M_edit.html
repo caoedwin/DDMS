@@ -1270,6 +1270,7 @@ ax<script type="text/babel">
      delimiters: ['${', '}'],
      data: function () {
          return {
+             allTableContent: [],   // 新增：保存所有设备数据
              selectedIntfCtgry:null,
              selectedDevCtgry:null,
              selectedDevproperties:null,
@@ -1531,6 +1532,7 @@ ax<script type="text/babel">
                 this.sectionStatus=res.data.sectionStatus;
                 this.sectionDeviceStatus=res.data.sectionDeviceStatus;
                 this.tableContent = res.data.content;
+                this.allTableContent = res.data.content;   // 新增这一行
                 this.totalNum=this.tableContent.length;
                 this.elbuttonloading = false;
                 this.tableloading = false;
@@ -1581,6 +1583,7 @@ ax<script type="text/babel">
                headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
                 }).then((res) => {
                   this.tableContent=res.data.content;
+                  this.allTableContent = res.data.content;   // 新增这一行
                   this.totalNum=this.tableContent.length;
                   this.$refs.multipleTable.clearSelection();
                   this.elbuttonloading = false;
@@ -1834,8 +1837,81 @@ ax<script type="text/babel">
                  this.fileName=first;
              }
           },
-
+         
          exportExcel: function () {
+            if (!this.allTableContent || this.allTableContent.length === 0) {
+                this.$message('暂无数据可导出');
+                return;
+            }
+        
+            // 定义上传模板的列顺序（必须与模板第一行完全一致）
+            const headerOrder = [
+                '客戶別', '廠區', '設備序號', '設備用途', '介面種類', '設備種類',
+                '設備屬性', '設備容量', '設備廠家', '設備型號', '設備名稱', '借還狀態',
+                '用戶名稱', '預計歸還日期', '借用時間', '歸還日期', '超期天數',
+                'HW Ver.', 'FW Ver.', '設備描述', '附帶品', '保固期', '價值 RMB(單價)',
+                '設備來源', '購買時間', '料號', 'LNV/ABO 設備審核清单', '申購單號',
+                '報關單號', '資產編號', '購買年限', '使用次數', '借還次數',
+                '設備添加人員', '設備添加日期', '備註', '設備狀態', '借還人員工號',
+                '機種', 'Phase', '上一次借用人員', '上一次借用人員工号',
+                '上一次預計歸還日期', '上一次借用日期', '上一次歸還日期'
+            ];
+        
+            // 中文字段名 → 后端返回的字段名映射
+            const fieldMap = {
+                '客戶別': 'Customer', '廠區': 'Plant', '設備序號': 'NID',
+                '設備用途': 'DevID', '介面種類': 'IntfCtgry', '設備種類': 'DevCtgry',
+                '設備屬性': 'Devproperties', '設備容量': 'Devsize', '設備廠家': 'DevVendor',
+                '設備型號': 'DevModel', '設備名稱': 'DevName', '借還狀態': 'BrwStatus',
+                '用戶名稱': 'Usrname', '預計歸還日期': 'Plandate', '借用時間': 'Btime',
+                '歸還日期': 'Rtime', '超期天數': 'Overday', 'HW Ver.': 'HWVer',
+                'FW Ver.': 'FWVer', '設備描述': 'DevDescription', '附帶品': 'PckgIncludes',
+                '保固期': 'expirdate', '價值 RMB(單價)': 'DevPrice', '設備來源': 'Source',
+                '購買時間': 'Pchsdate', '料號': 'PN', 'LNV/ABO 設備審核清单': 'LNV_ST',
+                '申購單號': 'Purchase_NO', '報關單號': 'Declaration_NO', '資產編號': 'AssetNum',
+                '購買年限': 'UsYear', '使用次數': 'uscyc', '借還次數': 'UsrTimes',
+                '設備添加人員': 'addnewname', '設備添加日期': 'addnewdate', '備註': 'Comment',
+                '設備狀態': 'DevStatus', '借還人員工號': 'Usrnumber',
+                '機種': 'ProjectCode', 'Phase': 'Phase',
+                '上一次借用人員': 'Last_BR_per', '上一次借用人員工号': 'Last_BR_per_code',
+                '上一次預計歸還日期': 'Last_Predict_return', '上一次借用日期': 'Last_Borrow_date',
+                '上一次歸還日期': 'Last_Return_date'
+            };
+        
+            // 将全部数据按列顺序转换为二维对象数组（每行一个对象）
+            const rows = this.allTableContent.map(item => {
+                const row = {};
+                headerOrder.forEach(header => {
+                    const field = fieldMap[header];
+                    let val = item[field] !== undefined ? item[field] : '';
+                    if (val === null || val === undefined) val = '';
+                    row[header] = val;
+                });
+                return row;
+            });
+        
+            // 创建工作簿
+            const ws = XLSX.utils.json_to_sheet(rows);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+        
+            // 导出为 xlsx 文件
+            const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+            const blob = new Blob([wbout], { type: 'application/octet-stream' });
+        
+            // 使用 FileSaver 或降级方案
+            try {
+                saveAs(blob, '所有设备信息.xlsx');
+            } catch (e) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = '设备信息.xlsx';
+                link.click();
+                URL.revokeObjectURL(link.href);
+            }
+        },
+
+         {% comment %}exportExcel: function () {
              /* 从表生成工作簿对象 */
              {#console.log(document.querySelector("#out-table"));#}
              let temp = [];
@@ -1882,7 +1958,7 @@ ax<script type="text/babel">
                  temp = [];
                  return wbout;
              }, 100);
-         },
+         },{% endcomment %}
 
          //批量上傳
           fileUpload:function(){

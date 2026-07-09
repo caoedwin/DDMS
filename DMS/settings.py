@@ -464,3 +464,23 @@ CELERY_BEAT_SCHEDULE = {
 # CELERY_TASK_SERIALIZER = 'json'
 # CELERY_RESULT_SERIALIZER = 'json'
 # CELERY_TIMEZONE = 'Asia/Shanghai'
+
+# # Redis 缓存配置
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': 'redis://:DCT2019@127.0.0.1:6379/6',  # 使用 DB 5，避免与 Celery 的 3/4 冲突
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#             'CONNECTION_POOL_CLASS': 'redis.BlockingConnectionPool',
+#             'CONNECTION_POOL_CLASS_KWARGS': {
+#                 'max_connections': 50,
+#                 'timeout': 20,
+#             },
+#             'MAX_CONNECTIONS': 1000,
+#             'PICKLE_VERSION': -1,  # 使用最新 pickle 协议
+#         },
+#         'KEY_PREFIX': 'django_cache',  # 可选，避免键冲突
+#         'TIMEOUT': 300,  # 默认缓存超时（秒）
+#     }
+# }
