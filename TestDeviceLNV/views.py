@@ -14,7 +14,83 @@ from django.core.mail import EmailMultiAlternatives
 from app01 import tasks
 from app01.models import UserInfo
 from .models import TestDeviceLNV
-from DeviceLNV.models import DeviceLNV
+# 尝试导入其他客户模型（若不存在则置为 None）
+try:
+    from DeviceLNV.models import DeviceLNV
+except ImportError:
+    DeviceLNV = None
+
+try:
+    from DeviceA31CD.models import DeviceA31CD
+except ImportError:
+    DeviceA31CD = None
+try:
+    from DeviceA31KS.models import DeviceA31KS
+except ImportError:
+    DeviceA31KS = None
+try:
+    from DeviceA31LKE.models import DeviceA31LKE
+except ImportError:
+    DeviceA31LKE = None
+try:
+    from DeviceA31PCP.models import DeviceA31PCP
+except ImportError:
+    DeviceA31PCP = None
+try:
+    from DeviceA31TPE.models import DeviceA31TPE
+except ImportError:
+    DeviceA31TPE = None
+try:
+    from DeviceA32KS.models import DeviceA32KS
+except ImportError:
+    DeviceA32KS = None
+try:
+    from DeviceA32TPE.models import DeviceA32TPE
+except ImportError:
+    DeviceA32TPE = None
+try:
+    from DeviceA39.models import DeviceA39
+except ImportError:
+    DeviceA39 = None
+try:
+    from DeviceABO.models import DeviceABO
+except ImportError:
+    DeviceABO = None
+try:
+    from DeviceAPDQATPE.models import DeviceAPDQATPE
+except ImportError:
+    DeviceAPDQATPE = None
+try:
+    from DeviceCQT88.models import DeviceCQT88
+except ImportError:
+    DeviceCQT88 = None
+
+# 定义模型映射（只包含非 None 的模型）
+DEVICE_MODELS = {
+    'LNV': DeviceLNV,
+}
+if DeviceA31CD:
+    DEVICE_MODELS['A31CD'] = DeviceA31CD
+if DeviceA31KS:
+    DEVICE_MODELS['A31KS'] = DeviceA31KS
+if DeviceA31LKE:
+    DEVICE_MODELS['A31LKE'] = DeviceA31LKE
+if DeviceA31PCP:
+    DEVICE_MODELS['A31PCP'] = DeviceA31PCP
+if DeviceA31TPE:
+    DEVICE_MODELS['A31TPE'] = DeviceA31TPE
+if DeviceA32KS:
+    DEVICE_MODELS['A32KS'] = DeviceA32KS
+if DeviceA32TPE:
+    DEVICE_MODELS['A32TPE'] = DeviceA32TPE
+if DeviceA39:
+    DEVICE_MODELS['A39'] = DeviceA39
+if DeviceABO:
+    DEVICE_MODELS['ABO'] = DeviceABO
+if DeviceAPDQATPE:
+    DEVICE_MODELS['APDQATPE'] = DeviceAPDQATPE
+if DeviceCQT88:
+    DEVICE_MODELS['CQT88'] = DeviceCQT88
 
 headermodel_TestDevice = {
     'Category': 'Category', 'Class': 'Class', 'Type': 'Type',
@@ -839,84 +915,180 @@ def compute_score(dev, today):
                    'tech': tech, 'eol': eol_score, 'status': status_score}
 
 def upgrade_suggestion(dev, score):
-    """生成升级建议"""
+    """
+    生成升级建议，针对不同设备类型给出具体建议。
+    针对显示器（Monitor）额外增加碎屏险购买建议。
+
+    :param dev: DeviceLNV 模型实例
+    :param score: 综合评分 (0-100)
+    :return: (urgency, suggestion) 元组
+    """
+    # 提取设备属性（统一小写以便匹配）
     ctgry = (dev.DevCtgry or '').lower()
-    urgency = "紧急更换" if score >= 90 else ("酌情更换" if score >= 70 else ("可观察" if score >= 40 else "继续使用"))
-    suggestion = "暂无特殊建议"
-    if 'mouse' in ctgry:
-        suggestion = "推荐升级至蓝牙5.0/5.2无线鼠标，支持多设备切换，更高DPI。"
-    elif 'keyboard' in ctgry:
-        suggestion = "推荐升级至USB-C或蓝牙机械键盘，支持多模连接。"
-    elif 'usb memory' in ctgry:
-        suggestion = "推荐升级至USB 3.1/3.2接口、容量≥128GB的高速U盘。"
-    elif 'hdd' in ctgry or 'ssd' in ctgry:
-        if 'hdd' in (dev.Devproperties or '').lower():
-            suggestion = "强烈建议更换为NVMe SSD或USB3.2外置固态硬盘。"
+    prop = (dev.Devproperties or '').lower()
+    intf = (dev.IntfCtgry or '').lower()
+
+    # ---------- 安全获取价格（DevPrice 为 CharField，需转数值） ----------
+    price_raw = getattr(dev, 'DevPrice', None) or '0'
+    try:
+        # 去除可能的前后缀，只保留数字和小数点
+        import re
+        price_str = re.sub(r'[^0-9.]', '', price_raw)
+        price = float(price_str) if price_str else 0.0
+    except (ValueError, TypeError):
+        price = 0.0
+
+    # ---------- 1. 基础升级建议（原逻辑完整保留） ----------
+    base_suggestion = "暂无特殊建议"
+    if 'mouse' in ctgry or 'keyboard' in ctgry:
+        if 'mouse' in ctgry:
+            base_suggestion = "推荐升级至蓝牙5.0/5.2无线鼠标，支持多设备切换，更高DPI。"
         else:
-            suggestion = "考虑升级为Thunderbolt 3/4或USB4接口的外置SSD。"
+            base_suggestion = "推荐升级至USB-C或蓝牙机械键盘，支持多模连接。"
+    elif 'usb memory' in ctgry:
+        base_suggestion = "推荐升级至USB 3.1/3.2接口、容量≥128GB的高速U盘。"
+    elif 'hdd' in ctgry or 'ssd' in ctgry:
+        if 'hdd' in prop:
+            base_suggestion = "强烈建议更换为NVMe SSD或USB3.2外置固态硬盘。"
+        else:
+            base_suggestion = "考虑升级为Thunderbolt 3/4或USB4接口的外置SSD。"
     elif 'headphone' in ctgry or 'speaker' in ctgry:
-        suggestion = "推荐升级至蓝牙5.2+ANC主动降噪耳机，或Type-C有线高解析度耳机。"
+        base_suggestion = "推荐升级至蓝牙5.2+ANC主动降噪耳机，或Type-C有线高解析度耳机。"
     elif 'ap' in ctgry or 'router' in ctgry:
-        suggestion = "推荐升级至Wi-Fi 6/6E路由器，支持OFDMA和更高速率。"
+        base_suggestion = "推荐升级至Wi-Fi 6/6E路由器，支持OFDMA和更高速率。"
     elif 'card reader' in ctgry:
-        suggestion = "升级至USB3.1读卡器，支持UHS-II SD卡。"
+        base_suggestion = "升级至USB3.1读卡器，支持UHS-II SD卡。"
     elif 'hub' in ctgry or 'dongle' in ctgry:
-        suggestion = "考虑升级为USB-C多功能扩展坞，支持4K输出、千兆网口、PD充电。"
+        base_suggestion = "考虑升级为USB-C多功能扩展坞，支持4K输出、千兆网口、PD充电。"
     elif 'monitor' in ctgry:
-        suggestion = "升级至4K分辨率、高刷新率、支持DisplayPort 1.4或Type-C一线连的显示器。"
+        base_suggestion = "升级至4K分辨率、高刷新率、支持DisplayPort 1.4或Type-C一线连的显示器。"
     elif 'odd' in ctgry:
-        suggestion = "当前光驱技术已过时，如必要可更换为外置蓝光刻录机。"
+        base_suggestion = "当前光驱技术已过时，如必要可更换为外置蓝光刻录机。"
     elif 'camera' in ctgry:
-        suggestion = "推荐升级至USB3.0或Type-C接口的4K网络摄像头。"
+        base_suggestion = "推荐升级至USB3.0或Type-C接口的4K网络摄像头。"
     elif 'cable' in ctgry or 'audio jack' in ctgry:
-        suggestion = "建议更换为HDMI 2.1、DP 1.4或雷电4线缆。"
-    elif 'power adapter' in ctgry or ('adapter' in ctgry and 'power' in (dev.Devproperties or '').lower()):
-        suggestion = "推荐升级至氮化镓(GaN)充电器，支持USB-C PD快充。"
+        base_suggestion = "建议更换为HDMI 2.1、DP 1.4或雷电4线缆。"
+    elif 'power adapter' in ctgry or ('adapter' in ctgry and 'power' in prop):
+        base_suggestion = "推荐升级至氮化镓(GaN)充电器，支持USB-C PD快充。"
     elif 'phone' in ctgry or 'ipad' in ctgry or 'iphone' in ctgry or 'tablet' in ctgry:
-        suggestion = "建议升级至支持5G、无线充电和快充的当前主流手机/平板。"
+        base_suggestion = "建议升级至支持5G、无线充电和快充的当前主流手机/平板。"
     elif 'game' in ctgry or 'joystick' in ctgry or 'gamepad' in ctgry:
-        suggestion = "推荐升级至支持蓝牙5.0+、低延迟无线或有线USB-C的游戏手柄。"
+        base_suggestion = "推荐升级至支持蓝牙5.0+、低延迟无线或有线USB-C的游戏手柄。"
     elif 'microphone' in ctgry:
-        suggestion = "建议升级至USB-C接口或支持高采样率的专业麦克风。"
+        base_suggestion = "建议升级至USB-C接口或支持高采样率的专业麦克风。"
     elif 'projector' in ctgry:
-        suggestion = "推荐升级至4K激光投影仪，支持HDR和无线投屏。"
+        base_suggestion = "推荐升级至4K激光投影仪，支持HDR和无线投屏。"
     else:
-        suggestion = "建议对照最新技术规范进行资产评估。"
-    return urgency, suggestion
+        base_suggestion = "建议对照最新技术规范进行资产评估。"
 
+    # ---------- 2. 新增：碎屏险购买建议（仅针对显示器） ----------
+    """
+    判断维度	具体条件	推荐动作	底层逻辑
+    价格 (Price)	≥ 5000 元	强烈建议购买	高端显示器换屏成本极高（通常占售价的50%~70%），保险杠杆率高
+    3000 ~ 5000 元	结合其他条件	中等价位，若属于“便携”或“OLED”则建议购买
+    < 3000 元	不建议购买	换屏费用接近整机价格，保险性价比低
+    屏幕技术	OLED / Mini-LED / 曲面 / 4K / 高刷	强烈建议购买	这类面板维修费用是普通IPS屏的2~3倍，且更易出现烧屏或物理损伤
+    便携性	含有“Portable”或“便携”标签	强烈建议购买	便携显示器随电脑包移动，受挤压/磕碰概率远高于固定工位显示器
+    设备新旧 (Score)	Score < 40 (设备很新)	强烈建议购买	残值高，维修不划算，保险价值最大
+    Score > 75 (设备很旧)	不建议购买	设备本身已不值钱，可考虑直接报废更换，无需额外投保
+    """
+    insurance_advice = ""
+    if 'monitor' in ctgry:
+        need_insurance = False
+        reasons = []
 
+        # 判断依据 1：价格阈值（单位：人民币，可根据实际调整）
+        if price >= 3000:
+            need_insurance = True
+            reasons.append("价格较高（≥5000元）")
+        elif price >= 1500:
+            reasons.append("价格中等（3000-5000元）")
+        else:
+            reasons.append("价格较低（<3000元）")
+
+        # 判断依据 2：屏幕技术/类型（高端面板维修费极高）
+        high_end_panel_keywords = ['oled', 'mini-led', '曲面', '4k', '高刷', 'hdr']
+        if any(key in prop for key in high_end_panel_keywords):
+            need_insurance = True
+            reasons.append("高端面板（OLED/Mini-LED/4K/高刷/HDR）")
+
+        # 判断依据 3：便携性（便携显示器移动频繁，易碎风险高）
+        if 'portable' in prop or '便携' in intf:
+            need_insurance = True
+            reasons.append("便携式设计，移动风险高")
+
+        # 判断依据 4：设备新旧程度（score 越高代表设备越老旧/落后）
+        if score < 40:  # 设备较新，残值高，值得投保
+            need_insurance = True
+            reasons.append("设备较新，残值较高")
+        elif score > 75:  # 设备非常老旧，不建议额外花钱买保险
+            need_insurance = False
+            # 如果之前因为其他原因已标记为需要，但设备太旧，则推翻
+            if reasons and not any(kw in ' '.join(reasons) for kw in ['价格较高', '高端面板', '便携']):
+                reasons = ["设备已过时，维修价值低"]
+            else:
+                # 若已有强理由（如高端面板），则保留
+                pass
+
+        # --- 生成最终保险建议文本 ---
+        if need_insurance and reasons:
+            insurance_advice = f"当前设备【强烈建议】购买碎屏险。原因：{', '.join(reasons)}。屏幕维修成本通常占整机50%~70%，建议额外购买意外保障。"
+        elif not need_insurance and price >= 1000:
+            insurance_advice = "当前设备【中性建议】设备价格中等，可视使用环境（如是否经常移动）决定是否购买碎屏险。"
+        else:
+            insurance_advice = "当前设备【不建议】购买碎屏险。设备价格较低或已过时，购买保险性价比不高。"
+
+    # ---------- 3. 合并最终建议 ----------
+    if 'monitor' in ctgry:
+        final_suggestion = base_suggestion + " " + insurance_advice
+    else:
+        final_suggestion = base_suggestion
+
+    # 紧急程度（沿用原有逻辑）
+    urgency = "紧急更换" if score >= 90 else ("酌情更换" if score >= 70 else ("可观察" if score >= 40 else "继续使用"))
+
+    return urgency, final_suggestion
 # ===================== JSON 接口视图 =====================
 from django.core.cache import cache
 from django.db.models import Q
 
 @csrf_exempt
 def device_score_view(request):
-    """返回设备评分数据（JSON），过滤损坏/丢失设备，按分数降序，使用缓存优化性能"""
+    """统一入口：返回模型列表 或 设备评分数据"""
+    # 若请求参数包含 action=get_models，则返回可用模型列表
+    if request.method == 'GET' and request.GET.get('action') == 'get_models':
+        data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
+        return JsonResponse(data, safe=False)
+    # 也支持 POST 方式（若需兼容）
+    if request.method == 'POST' and request.POST.get('action') == 'get_models':
+        data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
+        return JsonResponse(data, safe=False)
+
+    # ---- 以下是原有的设备评分逻辑（需支持动态 model） ----
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
-    # 缓存键（可添加版本号，便于清理）
-    cache_key = 'device_score_data'
-    cached_data = cache.get(cache_key)
+    model_key = request.GET.get('model', 'LNV')
+    model = DEVICE_MODELS.get(model_key)
+    if not model:
+        return JsonResponse({'error': f'Unknown model: {model_key}'}, status=400)
 
+    cache_key = f'device_score_data_{model_key}'
+    cached_data = cache.get(cache_key)
     if cached_data is not None:
-        # 如果缓存存在，直接返回
         return JsonResponse(cached_data)
 
     today = datetime.now().date()
     result = []
 
-    # 1. 查询优化：只获取评分所需的字段，排除损坏/丢失设备
-    # 如果状态值大小写不一致，可改用 Q 对象的 __iexact
-    devices = DeviceLNV.objects.exclude(
+    devices = model.objects.exclude(
         Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
     ).only(
         'id', 'NID', 'DevVendor', 'DevModel', 'DevName', 'DevCtgry',
         'DevStatus', 'Pchsdate', 'UsrTimes', 'uscyc', 'Devproperties',
-        'IntfCtgry', 'Devsize', 'EOL'
+        'IntfCtgry', 'Devsize', 'EOL', 'DevPrice'
     )
 
-    # 2. 计算评分
     for dev in devices:
         total, detail = compute_score(dev, today)
         urgency, sug = upgrade_suggestion(dev, total)
@@ -930,6 +1102,7 @@ def device_score_view(request):
             'DevStatus': dev.DevStatus,
             'Score': round(total, 2),
             'Priority': urgency,
+            'DevPrice': dev.DevPrice,
             'Suggestion': sug,
             'AgeScore': detail['age'],
             'UsageScore': detail['usage'],
@@ -939,15 +1112,9 @@ def device_score_view(request):
             'StatusScore': detail['status'],
         })
 
-    # 按综合评分降序排列
     result.sort(key=lambda x: x['Score'], reverse=True)
-
-    # 构造最终响应数据
-    response_data = {'data': result, 'count': len(result)}
-
-    # 缓存 5 分钟（300秒），可根据实际情况调整
+    response_data = {'data': result, 'count': len(result), 'model': model_key}
     cache.set(cache_key, response_data, timeout=300)
-
     return JsonResponse(response_data)
 
 def get_device_type(dev):

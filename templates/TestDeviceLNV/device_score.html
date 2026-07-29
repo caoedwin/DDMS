@@ -138,6 +138,21 @@
     <div class="score-header">
         <h2>📊 设备评分与更换建议</h2>
         <div class="header-actions">
+            <!-- 新增客户下拉 -->
+            <el-select
+                v-model="selectedModel"
+                placeholder="请选择客户"
+                size="medium"
+                style="width: 140px; margin-right: 12px;"
+                @change="onModelChange"
+            >
+                <el-option
+                    v-for="item in modelList"
+                    :key="item.key"
+                    :label="item.name"
+                    :value="item.key"
+                ></el-option>
+            </el-select>
             <span class="total-info">共 ${ total } 条记录</span>
             <el-button type="primary" size="medium" icon="el-icon-download" @click="exportExcel">导出 Excel</el-button>
         </div>
@@ -292,7 +307,9 @@ new Vue({
             pageSize: 50,
             total: 0,
             loading: true,
-            chart: null
+            chart: null,
+            modelList: [],          // 可选客户列表
+            selectedModel: 'LNV',   // 当前选中的客户
         };
     },
     computed: {
@@ -317,6 +334,7 @@ new Vue({
         }
     },
     mounted: function () {
+        this.fetchModelList();
         this.fetchData();
         var self = this;
         window.addEventListener('resize', function () {
@@ -326,28 +344,56 @@ new Vue({
         });
     },
     methods: {
+        fetchModelList: function () {
+            var self = this;
+            axios.get('/TestDeviceLNV/device-score/', {
+                params: { action: 'get_models' }   // 使用同一个接口，参数区分
+            })
+            .then(function (response) {
+                if (response.data && response.data.length) {
+                    self.modelList = response.data;
+                    if (self.modelList.length > 0) {
+                        self.selectedModel = self.modelList[0].key;
+                        self.fetchData();   // 初次加载评分数据
+                    }
+                } else {
+                    self.$message.warning('未获取到客户列表');
+                }
+            })
+            .catch(function (error) {
+                console.error('获取客户列表失败:', error);
+                self.$message.error('获取客户列表失败');
+            });
+        },
+        onModelChange: function (newVal) {
+            // 切换客户时重新加载数据
+            this.currentPage = 1;    // 重置分页
+            this.fetchData();
+        },
         fetchData: function () {
             var self = this;
             self.loading = true;
-            axios.get('/TestDeviceLNV/device-score/')
-                .then(function (response) {
-                    if (response.data && response.data.data) {
-                        self.allData = response.data.data;
-                        self.total = response.data.count || self.allData.length;
-                        self.currentPage = 1;
-                        self.$nextTick(function () {
-                            self.renderChart(self.top10Data);
-                        });
-                    } else {
-                        self.$message.error('数据格式错误');
-                    }
-                    self.loading = false;
-                })
-                .catch(function (error) {
-                    console.error('加载数据失败:', error);
-                    self.loading = false;
-                    self.$message.error('加载数据失败，请检查网络或后端服务。');
-                });
+            axios.get('/TestDeviceLNV/device-score/', {
+                params: { model: self.selectedModel }
+            })
+            .then(function (response) {
+                if (response.data && response.data.data) {
+                    self.allData = response.data.data;
+                    self.total = response.data.count || self.allData.length;
+                    self.currentPage = 1;
+                    self.$nextTick(function () {
+                        self.renderChart(self.top10Data);
+                    });
+                } else {
+                    self.$message.error('数据格式错误');
+                }
+                self.loading = false;
+            })
+            .catch(function (error) {
+                console.error('加载数据失败:', error);
+                self.loading = false;
+                self.$message.error('加载数据失败，请检查网络或后端服务。');
+            });
         },
         handleSizeChange: function (val) {
             this.pageSize = val;

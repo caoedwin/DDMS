@@ -8801,3 +8801,958 @@ Can be replaced by the same models and specifications.' 匹配设备 NID: 1553
 [2026-07-09 13:40:35,779] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
 [2026-07-09 13:40:36,066] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
 [2026-07-09 13:40:36,080] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-10 08:38:27,949] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-10 08:38:28,156] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-07-10 08:38:28,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-10 08:56:33,763] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week-page/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 570, in device_demand_week_page
+    return render(request, 'TestDeviceLNV/device_demand_week.html')
+  File "C:\Python372\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\library.py", line 192, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 260, in rbac_menu
+    menu_data = get_structure_data(request)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 11, in get_structure_data
+    menu = request.session[settings.SESSION_MENU_KEY]
+  File "C:\Python372\mecheck\lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+KeyError: 'awesome'
+[2026-07-10 08:56:33,781] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 302 0
+[2026-07-10 08:56:33,833] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-10 08:56:33,908] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 54645
+[2026-07-10 08:56:33,926] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/test1.css HTTP/1.1" 200 29532
+[2026-07-10 08:56:33,943] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/sb-admin.css HTTP/1.1" 200 225559
+[2026-07-10 08:56:33,984] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 200 2532
+[2026-07-10 08:56:33,997] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 76314
+[2026-07-10 08:56:34,098] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery/jquery.min.js HTTP/1.1" 200 86929
+[2026-07-10 08:56:34,400] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/yellow.jpg HTTP/1.1" 200 81394
+[2026-07-10 08:56:34,664] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-07-10 08:56:34,670] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-14 09:24:33,438] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-07-14 09:24:33,477] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-14 09:24:33,575] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/test1.css HTTP/1.1" 200 29532
+[2026-07-14 09:24:33,575] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 54645
+[2026-07-14 09:24:33,607] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/sb-admin.css HTTP/1.1" 200 225559
+[2026-07-14 09:24:33,650] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 200 2532
+[2026-07-14 09:24:33,665] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 76314
+[2026-07-14 09:24:33,667] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/yellow.jpg HTTP/1.1" 200 81394
+[2026-07-14 09:24:33,685] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery/jquery.min.js HTTP/1.1" 200 86929
+[2026-07-14 09:24:34,339] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-07-14 09:24:34,735] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-14 09:24:41,059] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-07-14 09:24:41,346] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-07-14 09:24:41,519] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-07-14 09:24:42,385] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 537
+[2026-07-14 09:24:42,389] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 310
+[2026-07-14 09:24:42,390] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2458
+[2026-07-14 09:24:42,390] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2021
+[2026-07-14 09:24:42,401] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'A similar device can be used instead' 无法匹配到任何设备
+[2026-07-14 09:24:42,410] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3 vendor device
+(Type for reference) ' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,410] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3 vendor device
+(Type for reference) ' 匹配设备 NID: 334
+[2026-07-14 09:24:42,410] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3 vendor device
+(Type for reference) ' 匹配设备 NID: 316
+[2026-07-14 09:24:42,449] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 331
+[2026-07-14 09:24:42,449] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1462
+[2026-07-14 09:24:42,449] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 250
+[2026-07-14 09:24:42,449] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 446
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2141
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2228
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1349
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 987
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2868
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3156
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 920
+[2026-07-14 09:24:42,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 281
+[2026-07-14 09:24:42,458] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 5 device
+(3 vendor,cover A/C port
+Type for reference)' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,458] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 5 device
+(3 vendor,cover A/C port
+Type for reference)' 匹配设备 NID: 334
+[2026-07-14 09:24:42,458] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 5 device
+(3 vendor,cover A/C port
+Type for reference)' 匹配设备 NID: 316
+[2026-07-14 09:24:42,458] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 5 device
+(3 vendor,cover A/C port
+Type for reference)' 匹配设备 NID: 331
+[2026-07-14 09:24:42,458] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 5 device
+(3 vendor,cover A/C port
+Type for reference)' 匹配设备 NID: 1178
+[2026-07-14 09:24:42,547] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 331
+[2026-07-14 09:24:42,547] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 446
+[2026-07-14 09:24:42,547] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3173
+[2026-07-14 09:24:42,547] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 281
+[2026-07-14 09:24:42,547] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1374
+[2026-07-14 09:24:42,547] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 431
+[2026-07-14 09:24:42,547] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1140
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 361
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 346
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 347
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 348
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 378
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 377
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 380
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 974
+[2026-07-14 09:24:42,548] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 328
+[2026-07-14 09:24:42,555] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Function case select
+At least 3' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,556] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Function case select
+At least 3' 匹配设备 NID: 334
+[2026-07-14 09:24:42,556] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Function case select
+At least 3' 匹配设备 NID: 316
+[2026-07-14 09:24:42,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1407
+[2026-07-14 09:24:42,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1538
+[2026-07-14 09:24:42,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1434
+[2026-07-14 09:24:42,579] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 758
+[2026-07-14 09:24:42,582] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'for USB4 test' 匹配设备 NID: 1538
+[2026-07-14 09:24:42,582] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'for USB4 test' 匹配设备 NID: 1434
+[2026-07-14 09:24:42,582] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'for USB4 test' 匹配设备 NID: 2180
+[2026-07-14 09:24:42,582] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'for USB4 test' 匹配设备 NID: 2067
+[2026-07-14 09:24:42,595] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Unique Must for HVOTG' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,602] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,603] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2' 匹配设备 NID: 334
+[2026-07-14 09:24:42,614] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1462
+[2026-07-14 09:24:42,615] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 250
+[2026-07-14 09:24:42,620] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,632] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1057
+[2026-07-14 09:24:42,633] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2252
+[2026-07-14 09:24:42,642] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,656] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1057
+[2026-07-14 09:24:42,656] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2252
+[2026-07-14 09:24:42,666] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2 vendor
+(Type for reference) ' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,667] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2 vendor
+(Type for reference) ' 匹配设备 NID: 334
+[2026-07-14 09:24:42,740] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1407
+[2026-07-14 09:24:42,741] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1538
+[2026-07-14 09:24:42,741] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1434
+[2026-07-14 09:24:42,741] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 758
+[2026-07-14 09:24:42,742] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1190
+[2026-07-14 09:24:42,742] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 798
+[2026-07-14 09:24:42,749] [views.py:1261] [views:get_requirement_items] [WARNING]- 必须组 'For USB4 compatibility test 
+At least 2' 需求 4 台，仅匹配到 3 台
+[2026-07-14 09:24:42,753] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'For USB4 compatibility test 
+At least 2' 匹配设备 NID: 2737
+[2026-07-14 09:24:42,753] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'For USB4 compatibility test 
+At least 2' 匹配设备 NID: 2870
+[2026-07-14 09:24:42,753] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'For USB4 compatibility test 
+At least 2' 匹配设备 NID: 3157
+[2026-07-14 09:24:42,770] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1186
+[2026-07-14 09:24:42,770] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2124
+[2026-07-14 09:24:42,781] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,793] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 331
+[2026-07-14 09:24:42,793] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 281
+[2026-07-14 09:24:42,803] [views.py:1268] [views:get_requirement_items] [INFO]- 组 ' At least 5(cover different protocol and vendor)' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,804] [views.py:1268] [views:get_requirement_items] [INFO]- 组 ' At least 5(cover different protocol and vendor)' 匹配设备 NID: 2214
+[2026-07-14 09:24:42,804] [views.py:1268] [views:get_requirement_items] [INFO]- 组 ' At least 5(cover different protocol and vendor)' 匹配设备 NID: 1383
+[2026-07-14 09:24:42,804] [views.py:1268] [views:get_requirement_items] [INFO]- 组 ' At least 5(cover different protocol and vendor)' 匹配设备 NID: 334
+[2026-07-14 09:24:42,804] [views.py:1268] [views:get_requirement_items] [INFO]- 组 ' At least 5(cover different protocol and vendor)' 匹配设备 NID: 316
+[2026-07-14 09:24:42,944] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2180
+[2026-07-14 09:24:42,945] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2014
+[2026-07-14 09:24:42,945] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1132
+[2026-07-14 09:24:42,945] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2229
+[2026-07-14 09:24:42,945] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2222
+[2026-07-14 09:24:42,945] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1917
+[2026-07-14 09:24:42,945] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1919
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2104
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2099
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1127
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1926
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2456
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3181
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3203
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 334
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 344
+[2026-07-14 09:24:42,946] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1178
+[2026-07-14 09:24:42,947] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2067
+[2026-07-14 09:24:42,947] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1374
+[2026-07-14 09:24:42,954] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'cover all USB protocol ' 匹配设备 NID: 2214
+[2026-07-14 09:24:42,985] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1513
+[2026-07-14 09:24:42,985] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 334
+[2026-07-14 09:24:42,986] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 316
+[2026-07-14 09:24:42,986] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 331
+[2026-07-14 09:24:43,027] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2256
+[2026-07-14 09:24:43,028] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2012
+[2026-07-14 09:24:43,028] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1334
+[2026-07-14 09:24:43,028] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1135
+[2026-07-14 09:24:43,028] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2238
+[2026-07-14 09:24:43,040] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'cover all USB protocol ' 匹配设备 NID: 2256
+[2026-07-14 09:24:43,083] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2014
+[2026-07-14 09:24:43,084] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2139
+[2026-07-14 09:24:43,084] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2232
+[2026-07-14 09:24:43,085] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2104
+[2026-07-14 09:24:43,085] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2204
+[2026-07-14 09:24:43,102] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1099
+[2026-07-14 09:24:43,103] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1100
+[2026-07-14 09:24:43,109] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 1' 无法匹配到任何设备
+[2026-07-14 09:24:43,124] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1570
+[2026-07-14 09:24:43,153] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:43,153] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 320
+[2026-07-14 09:24:43,153] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 521
+[2026-07-14 09:24:43,162] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1360
+[2026-07-14 09:24:43,169] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2872
+[2026-07-14 09:24:43,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1991
+[2026-07-14 09:24:43,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1105
+[2026-07-14 09:24:43,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1104
+[2026-07-14 09:24:43,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1421
+[2026-07-14 09:24:43,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2727
+[2026-07-14 09:24:43,213] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'one of each type' 匹配设备 NID: 1538
+[2026-07-14 09:24:43,251] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1538
+[2026-07-14 09:24:43,252] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1434
+[2026-07-14 09:24:43,252] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2180
+[2026-07-14 09:24:43,253] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2067
+[2026-07-14 09:24:43,253] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2014
+[2026-07-14 09:24:43,263] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1538
+[2026-07-14 09:24:43,276] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,283] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1105
+[2026-07-14 09:24:43,291] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,299] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2
+Cover U flash disk and SSD
+Cover A/C port' 匹配设备 NID: 1065
+[2026-07-14 09:24:43,301] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2
+Cover U flash disk and SSD
+Cover A/C port' 匹配设备 NID: 334
+[2026-07-14 09:24:43,322] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1065
+[2026-07-14 09:24:43,322] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 334
+[2026-07-14 09:24:43,322] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 344
+[2026-07-14 09:24:43,330] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2
+Cover U flash disk and SSD
+Cover A/C port' 匹配设备 NID: 1434
+[2026-07-14 09:24:43,330] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2
+Cover U flash disk and SSD
+Cover A/C port' 匹配设备 NID: 2398
+[2026-07-14 09:24:43,386] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1407
+[2026-07-14 09:24:43,386] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1538
+[2026-07-14 09:24:43,387] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1434
+[2026-07-14 09:24:43,387] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 758
+[2026-07-14 09:24:43,387] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1190
+[2026-07-14 09:24:43,387] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 798
+[2026-07-14 09:24:43,388] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2008
+[2026-07-14 09:24:43,400] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2014
+[2026-07-14 09:24:43,410] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1513
+[2026-07-14 09:24:43,425] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,435] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 402
+[2026-07-14 09:24:43,443] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,451] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 233
+[2026-07-14 09:24:43,460] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,470] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 233
+[2026-07-14 09:24:43,482] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,544] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 233
+[2026-07-14 09:24:43,544] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2260
+[2026-07-14 09:24:43,544] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2214
+[2026-07-14 09:24:43,545] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 261
+[2026-07-14 09:24:43,545] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 268
+[2026-07-14 09:24:43,545] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2098
+[2026-07-14 09:24:43,545] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 214
+[2026-07-14 09:24:43,545] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 259
+[2026-07-14 09:24:43,555] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 331
+[2026-07-14 09:24:43,563] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 331
+[2026-07-14 09:24:43,569] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 402
+[2026-07-14 09:24:43,596] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 402
+[2026-07-14 09:24:43,597] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 403
+[2026-07-14 09:24:43,597] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 396
+[2026-07-14 09:24:43,597] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 397
+[2026-07-14 09:24:43,604] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 1151
+[2026-07-14 09:24:43,627] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1360
+[2026-07-14 09:24:43,627] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 671
+[2026-07-14 09:24:43,650] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2256
+[2026-07-14 09:24:43,650] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2012
+[2026-07-14 09:24:43,657] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '1 out of 2' 无法匹配到任何设备
+[2026-07-14 09:24:43,668] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,700] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1186
+[2026-07-14 09:24:43,701] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2124
+[2026-07-14 09:24:43,701] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 738
+[2026-07-14 09:24:43,708] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '1 out of 2' 匹配设备 NID: 2256
+[2026-07-14 09:24:43,715] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:43,720] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '1 out of 2' 匹配设备 NID: 2256
+[2026-07-14 09:24:43,727] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1991
+[2026-07-14 09:24:43,736] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '1 out of 3
+' 匹配设备 NID: 1186
+[2026-07-14 09:24:43,747] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2877
+[2026-07-14 09:24:43,747] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2878
+[2026-07-14 09:24:43,803] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 259
+[2026-07-14 09:24:43,805] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 443
+[2026-07-14 09:24:43,805] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:43,805] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2256
+[2026-07-14 09:24:43,806] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2012
+[2026-07-14 09:24:43,806] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1377
+[2026-07-14 09:24:43,807] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1334
+[2026-07-14 09:24:43,815] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3' 匹配设备 NID: 2124
+[2026-07-14 09:24:43,815] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3' 匹配设备 NID: 728
+[2026-07-14 09:24:43,816] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3' 匹配设备 NID: 1346
+[2026-07-14 09:24:43,901] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2124
+[2026-07-14 09:24:43,902] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 728
+[2026-07-14 09:24:43,902] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1346
+[2026-07-14 09:24:43,902] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1360
+[2026-07-14 09:24:43,904] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2236
+[2026-07-14 09:24:43,904] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2238
+[2026-07-14 09:24:43,904] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1319
+[2026-07-14 09:24:43,925] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:43,925] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2256
+[2026-07-14 09:24:43,929] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'Can be replaced by other vendor' 无法匹配到任何设备
+[2026-07-14 09:24:43,936] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1440
+[2026-07-14 09:24:43,944] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Can be replaced by other vendor' 匹配设备 NID: 2157
+[2026-07-14 09:24:43,978] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2014
+[2026-07-14 09:24:43,978] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1924
+[2026-07-14 09:24:43,979] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1193
+[2026-07-14 09:24:43,979] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2121
+[2026-07-14 09:24:43,979] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1366
+[2026-07-14 09:24:43,986] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'For TGL or above platform' 匹配设备 NID: 2752
+[2026-07-14 09:24:43,995] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '' 无法匹配到任何设备
+[2026-07-14 09:24:44,005] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3' 匹配设备 NID: 1513
+[2026-07-14 09:24:44,006] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3' 匹配设备 NID: 3168
+[2026-07-14 09:24:44,007] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 3' 匹配设备 NID: 2352
+[2026-07-14 09:24:44,048] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1513
+[2026-07-14 09:24:44,049] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3168
+[2026-07-14 09:24:44,049] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 458
+[2026-07-14 09:24:44,049] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1178
+[2026-07-14 09:24:44,050] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2047
+[2026-07-14 09:24:44,050] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2352
+[2026-07-14 09:24:44,057] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 2868
+[2026-07-14 09:24:44,083] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1199
+[2026-07-14 09:24:44,085] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2157
+[2026-07-14 09:24:44,085] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2158
+[2026-07-14 09:24:44,097] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'one of each type' 匹配设备 NID: 2195
+[2026-07-14 09:24:44,116] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2195
+[2026-07-14 09:24:44,117] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1967
+[2026-07-14 09:24:44,117] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1197
+[2026-07-14 09:24:44,262] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2166
+[2026-07-14 09:24:44,262] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 3086
+[2026-07-14 09:24:44,263] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 3186
+[2026-07-14 09:24:44,263] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2098
+[2026-07-14 09:24:44,263] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1292
+[2026-07-14 09:24:44,263] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 228
+[2026-07-14 09:24:44,264] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2049
+[2026-07-14 09:24:44,264] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 334
+[2026-07-14 09:24:44,264] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2047
+[2026-07-14 09:24:44,264] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1099
+[2026-07-14 09:24:44,265] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1100
+[2026-07-14 09:24:44,265] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 402
+[2026-07-14 09:24:44,266] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1458
+[2026-07-14 09:24:44,266] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1672
+[2026-07-14 09:24:44,266] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 798
+[2026-07-14 09:24:44,266] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 681
+[2026-07-14 09:24:44,273] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'If product support DP monitor' 无法匹配到任何设备
+[2026-07-14 09:24:44,307] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2256
+[2026-07-14 09:24:44,308] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2012
+[2026-07-14 09:24:44,308] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1967
+[2026-07-14 09:24:44,308] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1197
+[2026-07-14 09:24:44,308] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1135
+[2026-07-14 09:24:44,317] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support USB4.' 匹配设备 NID: 383
+[2026-07-14 09:24:44,317] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support USB4.' 匹配设备 NID: 994
+[2026-07-14 09:24:44,318] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support USB4.' 匹配设备 NID: 2257
+[2026-07-14 09:24:44,318] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support USB4.' 匹配设备 NID: 499
+[2026-07-14 09:24:44,334] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:44,335] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 283
+[2026-07-14 09:24:44,344] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support TBT4 or USB4.' 匹配设备 NID: 2727
+[2026-07-14 09:24:44,345] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support TBT4 or USB4.' 匹配设备 NID: 2750
+[2026-07-14 09:24:44,345] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support TBT4 or USB4.' 匹配设备 NID: 3166
+[2026-07-14 09:24:44,346] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'If product support TBT4 or USB4.' 匹配设备 NID: 2928
+[2026-07-14 09:24:44,351] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3' 匹配设备 NID: 440
+[2026-07-14 09:24:44,351] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3' 匹配设备 NID: 1059
+[2026-07-14 09:24:44,351] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3' 匹配设备 NID: 441
+[2026-07-14 09:24:44,378] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2108
+[2026-07-14 09:24:44,378] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3134
+[2026-07-14 09:24:44,378] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2851
+[2026-07-14 09:24:44,378] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2852
+[2026-07-14 09:24:44,386] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3
+(DAC+NON DAC)' 匹配设备 NID: 2256
+[2026-07-14 09:24:44,387] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3
+(DAC+NON DAC)' 匹配设备 NID: 2012
+[2026-07-14 09:24:44,387] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3
+(DAC+NON DAC)' 匹配设备 NID: 1135
+[2026-07-14 09:24:44,414] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:44,421] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3' 匹配设备 NID: 2256
+[2026-07-14 09:24:44,421] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3' 匹配设备 NID: 2012
+[2026-07-14 09:24:44,421] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'at least 3' 匹配设备 NID: 1135
+[2026-07-14 09:24:44,459] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3190
+[2026-07-14 09:24:44,459] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2195
+[2026-07-14 09:24:44,460] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1970
+[2026-07-14 09:24:44,460] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1338
+[2026-07-14 09:24:44,486] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 440
+[2026-07-14 09:24:44,487] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1059
+[2026-07-14 09:24:44,487] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 441
+[2026-07-14 09:24:44,498] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'one of each type' 无法匹配到任何设备
+[2026-07-14 09:24:44,633] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 402
+[2026-07-14 09:24:44,633] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1057
+[2026-07-14 09:24:44,633] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2252
+[2026-07-14 09:24:44,634] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1029
+[2026-07-14 09:24:44,634] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2269
+[2026-07-14 09:24:44,634] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1963
+[2026-07-14 09:24:44,635] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3083
+[2026-07-14 09:24:44,635] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2256
+[2026-07-14 09:24:44,635] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2012
+[2026-07-14 09:24:44,635] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1334
+[2026-07-14 09:24:44,635] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1135
+[2026-07-14 09:24:44,636] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1372
+[2026-07-14 09:24:44,636] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1936
+[2026-07-14 09:24:44,636] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1420
+[2026-07-14 09:24:44,636] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2860
+[2026-07-14 09:24:44,636] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2877
+[2026-07-14 09:24:44,636] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2915
+[2026-07-14 09:24:44,637] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3154
+[2026-07-14 09:24:44,637] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3181
+[2026-07-14 09:24:44,637] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3190
+[2026-07-14 09:24:44,643] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Our recommended device.
+Can be replaced by the same models and specifications.' 匹配设备 NID: 1553
+[2026-07-14 09:24:44,731] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1513
+[2026-07-14 09:24:44,731] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2749
+[2026-07-14 09:24:44,731] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2927
+[2026-07-14 09:24:44,732] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2984
+[2026-07-14 09:24:44,732] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3073
+[2026-07-14 09:24:44,732] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3168
+[2026-07-14 09:24:44,732] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 441
+[2026-07-14 09:24:44,732] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 320
+[2026-07-14 09:24:44,739] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 233
+[2026-07-14 09:24:44,755] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 609
+[2026-07-14 09:24:44,756] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1323
+[2026-07-14 09:24:44,762] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 1' 无法匹配到任何设备
+[2026-07-14 09:24:44,770] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:44,778] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 1' 无法匹配到任何设备
+[2026-07-14 09:24:44,786] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:44,794] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 3' 无法匹配到任何设备
+[2026-07-14 09:24:44,837] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2214
+[2026-07-14 09:24:44,838] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1057
+[2026-07-14 09:24:44,838] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 974
+[2026-07-14 09:24:44,838] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 609
+[2026-07-14 09:24:44,838] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1323
+[2026-07-14 09:24:44,838] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1020
+[2026-07-14 09:24:44,847] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:44,855] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 1' 无法匹配到任何设备
+[2026-07-14 09:24:44,865] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:44,873] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 1' 无法匹配到任何设备
+[2026-07-14 09:24:44,884] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:45,157] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:45,157] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 334
+[2026-07-14 09:24:45,157] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 316
+[2026-07-14 09:24:45,158] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 331
+[2026-07-14 09:24:45,158] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1178
+[2026-07-14 09:24:45,158] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 307
+[2026-07-14 09:24:45,158] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2031
+[2026-07-14 09:24:45,159] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 29
+[2026-07-14 09:24:45,159] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1407
+[2026-07-14 09:24:45,159] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1434
+[2026-07-14 09:24:45,159] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2180
+[2026-07-14 09:24:45,161] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2067
+[2026-07-14 09:24:45,161] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 441
+[2026-07-14 09:24:45,161] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 434
+[2026-07-14 09:24:45,162] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2269
+[2026-07-14 09:24:45,162] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 738
+[2026-07-14 09:24:45,162] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 950
+[2026-07-14 09:24:45,163] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2014
+[2026-07-14 09:24:45,163] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2012
+[2026-07-14 09:24:45,163] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 476
+[2026-07-14 09:24:45,163] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1346
+[2026-07-14 09:24:45,163] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1967
+[2026-07-14 09:24:45,163] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1360
+[2026-07-14 09:24:45,163] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1334
+[2026-07-14 09:24:45,164] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1135
+[2026-07-14 09:24:45,164] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1190
+[2026-07-14 09:24:45,165] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1924
+[2026-07-14 09:24:45,165] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1193
+[2026-07-14 09:24:45,165] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1343
+[2026-07-14 09:24:45,165] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 703
+[2026-07-14 09:24:45,166] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 706
+[2026-07-14 09:24:45,166] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 798
+[2026-07-14 09:24:45,167] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 772
+[2026-07-14 09:24:45,167] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1571
+[2026-07-14 09:24:45,167] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1465
+[2026-07-14 09:24:45,173] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '1.AP list中勾选的Requirement为must的路由器为测试对应case时必需要使用的路由器。
+2.其余未被勾选的Requirement为must的路由器不做对应case要求，但至少要在一个case中测试到。
+3.每个case至少需测到两个Requirement为option的路由器。不做对应case要求。' 匹配设备 NID: 1360
+[2026-07-14 09:24:45,448] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1319
+[2026-07-14 09:24:45,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 855
+[2026-07-14 09:24:45,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 307
+[2026-07-14 09:24:45,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 876
+[2026-07-14 09:24:45,450] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3168
+[2026-07-14 09:24:45,451] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 948
+[2026-07-14 09:24:45,451] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3125
+[2026-07-14 09:24:45,451] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2238
+[2026-07-14 09:24:45,451] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1936
+[2026-07-14 09:24:45,452] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3167
+[2026-07-14 09:24:45,452] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 738
+[2026-07-14 09:24:45,452] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2164
+[2026-07-14 09:24:45,452] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 837
+[2026-07-14 09:24:45,452] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3184
+[2026-07-14 09:24:45,452] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1462
+[2026-07-14 09:24:45,453] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 250
+[2026-07-14 09:24:45,453] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 974
+[2026-07-14 09:24:45,453] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1349
+[2026-07-14 09:24:45,453] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 987
+[2026-07-14 09:24:45,453] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2868
+[2026-07-14 09:24:45,454] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3156
+[2026-07-14 09:24:45,454] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2352
+[2026-07-14 09:24:45,455] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 920
+[2026-07-14 09:24:45,455] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1321
+[2026-07-14 09:24:45,455] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1320
+[2026-07-14 09:24:45,455] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1323
+[2026-07-14 09:24:45,456] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 477
+[2026-07-14 09:24:45,456] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1322
+[2026-07-14 09:24:45,456] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 863
+[2026-07-14 09:24:45,456] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 870
+[2026-07-14 09:24:45,456] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 872
+[2026-07-14 09:24:45,457] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 873
+[2026-07-14 09:24:45,457] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 874
+[2026-07-14 09:24:45,457] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2366
+[2026-07-14 09:24:45,457] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2367
+[2026-07-14 09:24:45,459] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 869
+[2026-07-14 09:24:45,459] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 864
+[2026-07-14 09:24:45,459] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 947
+[2026-07-14 09:24:45,459] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2228
+[2026-07-14 09:24:45,476] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:45,477] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 307
+[2026-07-14 09:24:45,485] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Can be replaced by other vendor' 匹配设备 NID: 214
+[2026-07-14 09:24:45,495] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:45,501] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2' 匹配设备 NID: 2141
+[2026-07-14 09:24:45,502] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2' 匹配设备 NID: 421
+[2026-07-14 09:24:45,541] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2749
+[2026-07-14 09:24:45,541] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2927
+[2026-07-14 09:24:45,542] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2984
+[2026-07-14 09:24:45,542] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3073
+[2026-07-14 09:24:45,542] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1570
+[2026-07-14 09:24:45,542] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1057
+[2026-07-14 09:24:45,598] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2047
+[2026-07-14 09:24:45,599] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2749
+[2026-07-14 09:24:45,599] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2927
+[2026-07-14 09:24:45,599] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 3073
+[2026-07-14 09:24:45,599] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1462
+[2026-07-14 09:24:45,600] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 250
+[2026-07-14 09:24:45,600] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2141
+[2026-07-14 09:24:45,600] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1346
+[2026-07-14 09:24:45,600] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 974
+[2026-07-14 09:24:45,606] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 1' 匹配设备 NID: 233
+[2026-07-14 09:24:45,614] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:45,621] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 4' 匹配设备 NID: 1057
+[2026-07-14 09:24:45,622] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 4' 匹配设备 NID: 2252
+[2026-07-14 09:24:45,622] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 4' 匹配设备 NID: 1058
+[2026-07-14 09:24:45,623] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 4' 匹配设备 NID: 3172
+[2026-07-14 09:24:45,681] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1570
+[2026-07-14 09:24:45,682] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1972
+[2026-07-14 09:24:45,682] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3185
+[2026-07-14 09:24:45,683] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1380
+[2026-07-14 09:24:45,683] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1464
+[2026-07-14 09:24:45,683] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2064
+[2026-07-14 09:24:45,705] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '' 无法匹配到任何设备
+[2026-07-14 09:24:45,713] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 2' 无法匹配到任何设备
+[2026-07-14 09:24:45,775] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2749
+[2026-07-14 09:24:45,775] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2927
+[2026-07-14 09:24:45,776] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3073
+[2026-07-14 09:24:45,776] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1462
+[2026-07-14 09:24:45,776] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 250
+[2026-07-14 09:24:45,787] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2749
+[2026-07-14 09:24:45,787] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2927
+[2026-07-14 09:24:45,787] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 3073
+[2026-07-14 09:24:45,794] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2' 匹配设备 NID: 1462
+[2026-07-14 09:24:45,794] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least 2' 匹配设备 NID: 250
+[2026-07-14 09:24:45,807] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1464
+[2026-07-14 09:24:45,807] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2064
+[2026-07-14 09:24:45,843] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1462
+[2026-07-14 09:24:45,843] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 250
+[2026-07-14 09:24:45,843] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2141
+[2026-07-14 09:24:45,843] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 974
+[2026-07-14 09:24:45,843] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2228
+[2026-07-14 09:24:45,843] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1349
+[2026-07-14 09:24:45,844] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 987
+[2026-07-14 09:24:45,844] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2868
+[2026-07-14 09:24:45,849] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 1' 无法匹配到任何设备
+[2026-07-14 09:24:45,897] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1057
+[2026-07-14 09:24:45,897] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2252
+[2026-07-14 09:24:45,898] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1464
+[2026-07-14 09:24:45,898] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2064
+[2026-07-14 09:24:45,898] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1058
+[2026-07-14 09:24:45,898] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3172
+[2026-07-14 09:24:45,898] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2175
+[2026-07-14 09:24:45,916] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1057
+[2026-07-14 09:24:45,916] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2252
+[2026-07-14 09:24:45,925] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 5 ' 无法匹配到任何设备
+[2026-07-14 09:24:46,107] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1546
+[2026-07-14 09:24:46,107] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 334
+[2026-07-14 09:24:46,108] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 316
+[2026-07-14 09:24:46,108] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 331
+[2026-07-14 09:24:46,108] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1178
+[2026-07-14 09:24:46,108] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 351
+[2026-07-14 09:24:46,109] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 385
+[2026-07-14 09:24:46,109] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2228
+[2026-07-14 09:24:46,109] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 353
+[2026-07-14 09:24:46,109] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3125
+[2026-07-14 09:24:46,109] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3126
+[2026-07-14 09:24:46,109] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 3173
+[2026-07-14 09:24:46,110] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2508
+[2026-07-14 09:24:46,110] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2510
+[2026-07-14 09:24:46,110] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1509
+[2026-07-14 09:24:46,110] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1728
+[2026-07-14 09:24:46,112] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1065
+[2026-07-14 09:24:46,112] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1046
+[2026-07-14 09:24:46,112] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1492
+[2026-07-14 09:24:46,113] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 317
+[2026-07-14 09:24:46,233] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2205
+[2026-07-14 09:24:46,234] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2385
+[2026-07-14 09:24:46,234] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 283
+[2026-07-14 09:24:46,235] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 375
+[2026-07-14 09:24:46,235] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 281
+[2026-07-14 09:24:46,236] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 304
+[2026-07-14 09:24:46,236] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 307
+[2026-07-14 09:24:46,236] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 385
+[2026-07-14 09:24:46,236] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 308
+[2026-07-14 09:24:46,236] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2746
+[2026-07-14 09:24:46,238] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 3156
+[2026-07-14 09:24:46,238] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2509
+[2026-07-14 09:24:46,238] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:46,239] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 286
+[2026-07-14 09:24:46,240] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1550
+[2026-07-14 09:24:46,250] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'At least 4' 无法匹配到任何设备
+[2026-07-14 09:24:46,355] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '合并标识' 无法匹配到任何设备
+[2026-07-14 09:24:46,431] [views.py:1261] [views:get_requirement_items] [WARNING]- 必须组 '' 需求 9 台，仅匹配到 1 台
+[2026-07-14 09:24:46,431] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 3173
+[2026-07-14 09:24:46,438] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '屏蔽箱需要的设备' 匹配设备 NID: 1513
+[2026-07-14 09:24:46,498] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2252
+[2026-07-14 09:24:46,498] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1341
+[2026-07-14 09:24:46,498] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 233
+[2026-07-14 09:24:46,499] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2260
+[2026-07-14 09:24:46,499] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2214
+[2026-07-14 09:24:46,499] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 261
+[2026-07-14 09:24:46,508] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1383
+[2026-07-14 09:24:46,516] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'old' 匹配设备 NID: 1195
+[2026-07-14 09:24:46,598] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:46,598] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 334
+[2026-07-14 09:24:46,598] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 316
+[2026-07-14 09:24:46,598] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 331
+[2026-07-14 09:24:46,598] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1178
+[2026-07-14 09:24:46,599] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 307
+[2026-07-14 09:24:46,599] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2031
+[2026-07-14 09:24:46,599] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 29
+[2026-07-14 09:24:46,600] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1407
+[2026-07-14 09:24:46,600] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1434
+[2026-07-14 09:24:46,637] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1513
+[2026-07-14 09:24:46,637] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 334
+[2026-07-14 09:24:46,638] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 316
+[2026-07-14 09:24:46,638] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 331
+[2026-07-14 09:24:46,638] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1178
+[2026-07-14 09:24:46,638] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 307
+[2026-07-14 09:24:46,639] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2031
+[2026-07-14 09:24:46,639] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 29
+[2026-07-14 09:24:46,639] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1407
+[2026-07-14 09:24:46,641] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1434
+[2026-07-14 09:24:46,641] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2180
+[2026-07-14 09:24:46,642] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2067
+[2026-07-14 09:24:46,642] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 441
+[2026-07-14 09:24:46,642] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 434
+[2026-07-14 09:24:46,642] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2269
+[2026-07-14 09:24:46,643] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 738
+[2026-07-14 09:24:46,643] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1458
+[2026-07-14 09:24:46,643] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 950
+[2026-07-14 09:24:46,644] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2014
+[2026-07-14 09:24:46,645] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2012
+[2026-07-14 09:24:46,645] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 476
+[2026-07-14 09:24:46,646] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1346
+[2026-07-14 09:24:46,646] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1967
+[2026-07-14 09:24:46,646] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1360
+[2026-07-14 09:24:46,646] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1334
+[2026-07-14 09:24:46,648] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1135
+[2026-07-14 09:24:46,648] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1190
+[2026-07-14 09:24:46,649] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1924
+[2026-07-14 09:24:46,649] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1193
+[2026-07-14 09:24:46,649] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1343
+[2026-07-14 09:24:46,649] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 798
+[2026-07-14 09:24:46,656] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 772
+[2026-07-14 09:24:46,657] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1571
+[2026-07-14 09:24:46,657] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2008
+[2026-07-14 09:24:46,657] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1176
+[2026-07-14 09:24:46,657] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2238
+[2026-07-14 09:24:46,657] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1319
+[2026-07-14 09:24:46,659] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1304
+[2026-07-14 09:24:46,659] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1020
+[2026-07-14 09:24:46,659] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1308
+[2026-07-14 09:24:46,659] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1307
+[2026-07-14 09:24:46,660] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1018
+[2026-07-14 09:24:46,660] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 834
+[2026-07-14 09:24:46,661] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 942
+[2026-07-14 09:24:46,661] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 943
+[2026-07-14 09:24:46,662] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1024
+[2026-07-14 09:24:46,662] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2205
+[2026-07-14 09:24:46,662] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 948
+[2026-07-14 09:24:46,663] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 949
+[2026-07-14 09:24:46,663] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1963
+[2026-07-14 09:24:46,664] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2252
+[2026-07-14 09:24:46,664] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1419
+[2026-07-14 09:24:46,664] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1570
+[2026-07-14 09:24:46,665] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1719
+[2026-07-14 09:24:46,671] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1315
+[2026-07-14 09:24:46,671] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 458
+[2026-07-14 09:24:46,671] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1200
+[2026-07-14 09:24:46,671] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 497
+[2026-07-14 09:24:46,671] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 977
+[2026-07-14 09:24:46,673] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2099
+[2026-07-14 09:24:46,673] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1127
+[2026-07-14 09:24:46,673] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1936
+[2026-07-14 09:24:46,673] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 817
+[2026-07-14 09:24:46,673] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 947
+[2026-07-14 09:24:46,673] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1199
+[2026-07-14 09:24:46,674] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1194
+[2026-07-14 09:24:46,674] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 1174
+[2026-07-14 09:24:46,675] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 178
+[2026-07-14 09:24:46,676] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 499
+[2026-07-14 09:24:46,676] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2419
+[2026-07-14 09:24:46,676] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2546
+[2026-07-14 09:24:46,677] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2727
+[2026-07-14 09:24:46,677] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2737
+[2026-07-14 09:24:46,678] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2860
+[2026-07-14 09:24:46,678] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2863
+[2026-07-14 09:24:46,678] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2870
+[2026-07-14 09:24:46,679] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2872
+[2026-07-14 09:24:46,686] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2877
+[2026-07-14 09:24:46,686] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2900
+[2026-07-14 09:24:46,687] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2911
+[2026-07-14 09:24:46,687] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2914
+[2026-07-14 09:24:46,687] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2915
+[2026-07-14 09:24:46,687] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2929
+[2026-07-14 09:24:46,688] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2974
+[2026-07-14 09:24:46,688] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2975
+[2026-07-14 09:24:46,688] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2976
+[2026-07-14 09:24:46,688] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2977
+[2026-07-14 09:24:46,688] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2978
+[2026-07-14 09:24:46,690] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2980
+[2026-07-14 09:24:46,690] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2981
+[2026-07-14 09:24:46,690] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2982
+[2026-07-14 09:24:46,690] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2983
+[2026-07-14 09:24:46,690] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2985
+[2026-07-14 09:24:46,691] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 2990
+[2026-07-14 09:24:46,691] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 3125
+[2026-07-14 09:24:46,691] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 3130
+[2026-07-14 09:24:46,692] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 3132
+[2026-07-14 09:24:46,692] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 3134
+[2026-07-14 09:24:46,692] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 3156
+[2026-07-14 09:24:46,692] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'Cover difference vendor/USB Port protocol/100/1000 Mbps/2.5G/10G LAN speed' 匹配设备 NID: 3157
+[2026-07-14 09:24:47,196] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1513
+[2026-07-14 09:24:47,196] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 334
+[2026-07-14 09:24:47,196] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 316
+[2026-07-14 09:24:47,197] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 331
+[2026-07-14 09:24:47,197] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1178
+[2026-07-14 09:24:47,197] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 307
+[2026-07-14 09:24:47,197] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2031
+[2026-07-14 09:24:47,198] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 29
+[2026-07-14 09:24:47,198] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1407
+[2026-07-14 09:24:47,198] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1434
+[2026-07-14 09:24:47,198] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2180
+[2026-07-14 09:24:47,198] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2067
+[2026-07-14 09:24:47,198] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 441
+[2026-07-14 09:24:47,199] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 434
+[2026-07-14 09:24:47,199] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2269
+[2026-07-14 09:24:47,199] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 738
+[2026-07-14 09:24:47,199] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 418
+[2026-07-14 09:24:47,199] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1458
+[2026-07-14 09:24:47,199] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 950
+[2026-07-14 09:24:47,200] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2014
+[2026-07-14 09:24:47,200] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2012
+[2026-07-14 09:24:47,200] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 476
+[2026-07-14 09:24:47,200] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1346
+[2026-07-14 09:24:47,200] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1967
+[2026-07-14 09:24:47,201] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1360
+[2026-07-14 09:24:47,201] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1334
+[2026-07-14 09:24:47,201] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1135
+[2026-07-14 09:24:47,202] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1190
+[2026-07-14 09:24:47,202] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1924
+[2026-07-14 09:24:47,203] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1193
+[2026-07-14 09:24:47,203] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1343
+[2026-07-14 09:24:47,203] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 798
+[2026-07-14 09:24:47,203] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 772
+[2026-07-14 09:24:47,204] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1571
+[2026-07-14 09:24:47,204] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2008
+[2026-07-14 09:24:47,204] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1176
+[2026-07-14 09:24:47,204] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2238
+[2026-07-14 09:24:47,205] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1319
+[2026-07-14 09:24:47,205] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1304
+[2026-07-14 09:24:47,205] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1020
+[2026-07-14 09:24:47,205] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1308
+[2026-07-14 09:24:47,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1307
+[2026-07-14 09:24:47,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1018
+[2026-07-14 09:24:47,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 834
+[2026-07-14 09:24:47,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 942
+[2026-07-14 09:24:47,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 943
+[2026-07-14 09:24:47,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1024
+[2026-07-14 09:24:47,206] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2205
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 948
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 949
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1963
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2252
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1419
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1570
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1719
+[2026-07-14 09:24:47,207] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1315
+[2026-07-14 09:24:47,208] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 458
+[2026-07-14 09:24:47,250] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1513
+[2026-07-14 09:24:47,251] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 334
+[2026-07-14 09:24:47,251] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 316
+[2026-07-14 09:24:47,251] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 331
+[2026-07-14 09:24:47,252] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1178
+[2026-07-14 09:24:47,280] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 'The machine can be used as a server is OK ' 无法匹配到任何设备
+[2026-07-14 09:24:47,287] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '1 out of 3
+(if UUT support 3.5 mm audio jack)' 匹配设备 NID: 1513
+[2026-07-14 09:24:47,304] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2256
+[2026-07-14 09:24:47,305] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2511
+[2026-07-14 09:24:47,313] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '1 out of 4
+(if UUT not support 3.5 mm audio jack and not shipped with 3.5 mm audio jack converter)' 匹配设备 NID: 1057
+[2026-07-14 09:24:47,335] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1057
+[2026-07-14 09:24:47,335] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 2252
+[2026-07-14 09:24:47,336] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1058
+[2026-07-14 09:24:47,570] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1462
+[2026-07-14 09:24:47,570] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 250
+[2026-07-14 09:24:47,571] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2141
+[2026-07-14 09:24:47,571] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 974
+[2026-07-14 09:24:47,571] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2228
+[2026-07-14 09:24:47,572] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1349
+[2026-07-14 09:24:47,572] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 987
+[2026-07-14 09:24:47,572] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2868
+[2026-07-14 09:24:47,572] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 3156
+[2026-07-14 09:24:47,572] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 515
+[2026-07-14 09:24:47,572] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 537
+[2026-07-14 09:24:47,572] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2103
+[2026-07-14 09:24:47,573] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 443
+[2026-07-14 09:24:47,573] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 924
+[2026-07-14 09:24:47,573] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 942
+[2026-07-14 09:24:47,573] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 357
+[2026-07-14 09:24:47,574] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1370
+[2026-07-14 09:24:47,575] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 421
+[2026-07-14 09:24:47,575] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1961
+[2026-07-14 09:24:47,575] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 344
+[2026-07-14 09:24:47,576] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1178
+[2026-07-14 09:24:47,576] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 29
+[2026-07-14 09:24:47,577] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2067
+[2026-07-14 09:24:47,577] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 441
+[2026-07-14 09:24:47,577] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 434
+[2026-07-14 09:24:47,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 2269
+[2026-07-14 09:24:47,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 1186
+[2026-07-14 09:24:47,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 418
+[2026-07-14 09:24:47,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 950
+[2026-07-14 09:24:47,578] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '' 匹配设备 NID: 476
+[2026-07-14 09:24:47,587] [views.py:1268] [views:get_requirement_items] [INFO]- 组 'At least one Moto phone needed' 匹配设备 NID: 1991
+[2026-07-14 09:24:47,621] [views.py:1268] [views:get_requirement_items] [INFO]- 组 '合并标识' 匹配设备 NID: 1571
+[2026-07-14 09:24:47,629] [views.py:1230] [views:get_requirement_items] [WARNING]- 组 '' 无法匹配到任何设备
+[2026-07-14 09:24:47,660] [views.py:995] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 6.07s, 共 713 项
+[2026-07-14 09:24:50,700] [views.py:1003] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 3.04s, 共 390 个项目
+[2026-07-14 09:24:50,738] [views.py:1028] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.04s, 有效项目: 389
+[2026-07-14 09:24:53,378] [views.py:1061] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 2.23s, 共 227 周
+[2026-07-14 09:24:54,583] [views.py:1090] [views:device_demand_week_view] [INFO]- 生成输出耗时: 1.20s, 输出 39150 条
+[2026-07-14 09:24:54,780] [views.py:1095] [views:device_demand_week_view] [INFO]- 总耗时: 13.23s
+[2026-07-14 09:24:55,362] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 20333067
+[2026-07-14 09:25:01,285] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-14 09:25:11,146] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38274
+[2026-07-14 09:25:11,282] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/blue.jpg HTTP/1.1" 200 60343
+[2026-07-14 09:25:11,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-14 09:25:26,032] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-07-14 09:25:26,280] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/download_UPK/element-ui@2.12.0/lib/theme-chalk/fonts/element-icons.woff HTTP/1.1" 200 28200
+[2026-07-14 09:25:27,142] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 20333067
+[2026-07-14 09:25:27,148] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-14 11:12:57,506] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-14 11:12:57,925] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/FileSaver.min.js HTTP/1.1" 200 2613
+[2026-07-14 11:12:58,252] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/echart/echart.js HTTP/1.1" 200 771071
+[2026-07-14 11:12:58,523] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-14 11:12:58,937] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-14 13:55:43,438] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-07-14 13:55:43,443] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-07-14 13:55:43,472] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-07-14 13:55:43,474] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-07-14 13:55:44,976] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-07-14 13:55:45,132] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-07-14 13:55:45,238] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 500 59
+[2026-07-14 13:55:45,249] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 500 59
+[2026-07-14 13:59:10,094] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-14 15:50:54,997] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38274
+[2026-07-14 15:50:55,240] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/blue.jpg HTTP/1.1" 200 60343
+[2026-07-14 15:50:55,491] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-14 15:51:13,496] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-07-14 15:51:13,688] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/download_UPK/element-ui@2.12.0/lib/theme-chalk/fonts/element-icons.woff HTTP/1.1" 200 28200
+[2026-07-14 15:51:13,801] [views.py:995] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.01s, 共 713 项
+[2026-07-14 15:51:14,112] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-14 15:51:16,026] [views.py:1003] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 2.20s, 共 390 个项目
+[2026-07-14 15:51:16,064] [views.py:1028] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.02s, 有效项目: 389
+[2026-07-14 15:51:18,491] [views.py:1061] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.99s, 共 227 周
+[2026-07-14 15:51:19,555] [views.py:1090] [views:device_demand_week_view] [INFO]- 生成输出耗时: 1.06s, 输出 39150 条
+[2026-07-14 15:51:19,747] [views.py:1095] [views:device_demand_week_view] [INFO]- 总耗时: 5.98s
+[2026-07-14 15:51:20,243] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 20333067
+[2026-07-15 08:24:42,409] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-07-15 08:24:42,529] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-15 08:24:42,735] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/test1.css HTTP/1.1" 200 29532
+[2026-07-15 08:24:42,750] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 54645
+[2026-07-15 08:24:42,768] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/sb-admin.css HTTP/1.1" 200 225559
+[2026-07-15 08:24:42,824] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 200 2532
+[2026-07-15 08:24:42,835] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 76314
+[2026-07-15 08:24:42,836] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery/jquery.min.js HTTP/1.1" 200 86929
+[2026-07-15 08:24:42,841] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/yellow.jpg HTTP/1.1" 200 81394
+[2026-07-15 08:24:43,195] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-07-15 08:24:43,202] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-07-15 08:24:46,210] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-07-15 08:24:46,402] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-07-15 08:24:46,514] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-07-15 08:24:46,551] [views.py:995] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.01s, 共 713 项
+[2026-07-15 08:24:48,692] [views.py:1003] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 2.13s, 共 390 个项目
+[2026-07-15 08:24:48,721] [views.py:1028] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.02s, 有效项目: 389
+[2026-07-15 08:24:50,733] [views.py:1061] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.51s, 共 227 周
+[2026-07-15 08:24:52,236] [views.py:1090] [views:device_demand_week_view] [INFO]- 生成输出耗时: 1.50s, 输出 39150 条
+[2026-07-15 08:24:52,408] [views.py:1095] [views:device_demand_week_view] [INFO]- 总耗时: 5.89s
+[2026-07-15 08:24:52,978] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 20333067
+[2026-07-15 08:24:54,824] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 20333067
+[2026-07-15 08:24:56,883] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 08:24:58,010] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /T HTTP/1.1" 200 38274
+[2026-07-15 08:24:58,112] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/blue.jpg HTTP/1.1" 200 60343
+[2026-07-15 08:24:58,417] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 08:25:09,177] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-15 08:25:09,317] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/FileSaver.min.js HTTP/1.1" 200 2613
+[2026-07-15 08:25:09,519] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/echart/echart.js HTTP/1.1" 200 771071
+[2026-07-15 08:25:09,651] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/download_UPK/element-ui@2.12.0/lib/theme-chalk/fonts/element-icons.woff HTTP/1.1" 200 28200
+[2026-07-15 08:25:09,730] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 08:25:10,228] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-15 09:44:24,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-15 09:44:26,796] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 09:44:29,066] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-15 10:16:38,707] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-15 10:16:40,324] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 10:16:40,717] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-15 10:48:54,669] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-15 10:48:55,580] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 10:48:56,003] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-15 14:07:11,760] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 14:51:17,556] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-15 14:51:18,928] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 14:51:19,410] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-15 15:08:51,638] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-15 15:08:52,489] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 15:08:52,872] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-15 15:09:15,037] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 55434
+[2026-07-15 15:09:15,286] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 1102826
+[2026-07-15 15:09:15,295] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-07-15 15:38:04,478] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-07-15 15:38:04,479] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-07-15 15:38:04,488] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-07-15 15:38:04,490] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-07-15 15:38:07,148] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
