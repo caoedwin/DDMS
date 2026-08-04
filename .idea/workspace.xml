@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/all-2026-07-09.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2026-07-09.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error-2026-07-09.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2026-07-09.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2026-07-09.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2026-07-09.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/device_score.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/device_score.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,6 +248,21 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\djangoproject\DMS\static\css" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <myKeys>
+      <visibility group="Grunt" flag="true" />
+      <visibility group="Gulp" flag="true" />
+      <visibility group="HTTP 请求" flag="true" />
+      <visibility group="Node.js" flag="true" />
+      <visibility group="npm" flag="true" />
+      <visibility group="yarn" flag="true" />
+      <visibility group="最近的项目" flag="true" />
+      <visibility group="运行 Python 文件" flag="true" />
+      <visibility group="运行 conda 命令" flag="true" />
+      <visibility group="运行 pip 命令" flag="true" />
+      <visibility group="运行配置" flag="true" />
+    </myKeys>
   </component>
   <component name="RunManager" selected="Django 服务器.DMS">
     <configuration name="choujiang" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -541,7 +551,7 @@
       <workItem from="1782710915648" duration="70846000" />
       <workItem from="1783575528129" duration="13552000" />
       <workItem from="1784691219669" duration="767000" />
-      <workItem from="1785210363936" duration="8021000" />
+      <workItem from="1785210363936" duration="45716000" />
     </task>
     <servers />
   </component>
