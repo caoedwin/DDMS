@@ -918,27 +918,49 @@ def upgrade_suggestion(dev, score):
     """
     生成升级建议，针对不同设备类型给出具体建议。
     针对显示器（Monitor）额外增加碎屏险购买建议。
-
-    :param dev: DeviceLNV 模型实例
-    :param score: 综合评分 (0-100)
-    :return: (urgency, suggestion) 元组
+    判断依据（参考图片）：
+      1. 价格 ≥ 6000 且 曲面OLED
+      2. 价格 ≥ 6000 且 OLED
+      3. 价格 ≥ 6000 且 窄/无边框
+    面板类型从 DevProperties 和 DevDescription 中联合提取。
     """
     # 提取设备属性（统一小写以便匹配）
     ctgry = (dev.DevCtgry or '').lower()
     prop = (dev.Devproperties or '').lower()
     intf = (dev.IntfCtgry or '').lower()
+    dev_desc = (dev.DevDescription or '').lower()  # 新增 DevDescription
 
-    # ---------- 安全获取价格（DevPrice 为 CharField，需转数值） ----------
+    # 合并用于关键词匹配的文本（优先使用 prop，但 dev_desc 也参与判断）
+    combined_text = f"{prop} {dev_desc} {intf}".lower()
+
+    # ---------- 安全获取价格 ----------
     price_raw = getattr(dev, 'DevPrice', None) or '0'
     try:
-        # 去除可能的前后缀，只保留数字和小数点
         import re
         price_str = re.sub(r'[^0-9.]', '', price_raw)
         price = float(price_str) if price_str else 0.0
     except (ValueError, TypeError):
         price = 0.0
 
-    # ---------- 1. 基础升级建议（原逻辑完整保留） ----------
+    # ---------- 辅助：识别面板类型（基于 combined_text） ----------
+    def get_panel_type():
+        """从设备属性及描述中提取面板类型"""
+        if 'oled' in combined_text:
+            return 'OLED'
+        elif 'mini-led' in combined_text:
+            return 'Mini-LED'
+        elif '曲面' in combined_text:
+            return '曲面屏'
+        elif 'ips' in combined_text:
+            return 'IPS'
+        elif 'va' in combined_text:
+            return 'VA'
+        elif 'tn' in combined_text:
+            return 'TN'
+        else:
+            return '未知面板类型'
+
+    # ---------- 1. 基础升级建议（完整保留，与之前一致） ----------
     base_suggestion = "暂无特殊建议"
     if 'mouse' in ctgry or 'keyboard' in ctgry:
         if 'mouse' in ctgry:
@@ -981,62 +1003,38 @@ def upgrade_suggestion(dev, score):
     else:
         base_suggestion = "建议对照最新技术规范进行资产评估。"
 
-    # ---------- 2. 新增：碎屏险购买建议（仅针对显示器） ----------
-    """
-    判断维度	具体条件	推荐动作	底层逻辑
-    价格 (Price)	≥ 5000 元	强烈建议购买	高端显示器换屏成本极高（通常占售价的50%~70%），保险杠杆率高
-    3000 ~ 5000 元	结合其他条件	中等价位，若属于“便携”或“OLED”则建议购买
-    < 3000 元	不建议购买	换屏费用接近整机价格，保险性价比低
-    屏幕技术	OLED / Mini-LED / 曲面 / 4K / 高刷	强烈建议购买	这类面板维修费用是普通IPS屏的2~3倍，且更易出现烧屏或物理损伤
-    便携性	含有“Portable”或“便携”标签	强烈建议购买	便携显示器随电脑包移动，受挤压/磕碰概率远高于固定工位显示器
-    设备新旧 (Score)	Score < 40 (设备很新)	强烈建议购买	残值高，维修不划算，保险价值最大
-    Score > 75 (设备很旧)	不建议购买	设备本身已不值钱，可考虑直接报废更换，无需额外投保
-    """
+    # ---------- 2. 碎屏险购买建议（仅针对显示器，严格按图片规则，综合 prop 和 DevDescription） ----------
     insurance_advice = ""
     if 'monitor' in ctgry:
         need_insurance = False
         reasons = []
+        panel = get_panel_type()  # 获取当前面板类型
 
-        # 判断依据 1：价格阈值（单位：人民币，可根据实际调整）
-        if price >= 3000:
-            need_insurance = True
-            reasons.append("价格较高（≥5000元）")
-        elif price >= 1500:
-            reasons.append("价格中等（3000-5000元）")
-        else:
-            reasons.append("价格较低（<3000元）")
-
-        # 判断依据 2：屏幕技术/类型（高端面板维修费极高）
-        high_end_panel_keywords = ['oled', 'mini-led', '曲面', '4k', '高刷', 'hdr']
-        if any(key in prop for key in high_end_panel_keywords):
-            need_insurance = True
-            reasons.append("高端面板（OLED/Mini-LED/4K/高刷/HDR）")
-
-        # 判断依据 3：便携性（便携显示器移动频繁，易碎风险高）
-        if 'portable' in prop or '便携' in intf:
-            need_insurance = True
-            reasons.append("便携式设计，移动风险高")
-
-        # 判断依据 4：设备新旧程度（score 越高代表设备越老旧/落后）
-        if score < 40:  # 设备较新，残值高，值得投保
-            need_insurance = True
-            reasons.append("设备较新，残值较高")
-        elif score > 75:  # 设备非常老旧，不建议额外花钱买保险
-            need_insurance = False
-            # 如果之前因为其他原因已标记为需要，但设备太旧，则推翻
-            if reasons and not any(kw in ' '.join(reasons) for kw in ['价格较高', '高端面板', '便携']):
-                reasons = ["设备已过时，维修价值低"]
+        # 判断依据：价格 ≥ 6000 且满足以下任一面板特征
+        if price >= 6000:
+            # 条件1：曲面OLED
+            if '曲面' in combined_text and 'oled' in combined_text:
+                need_insurance = True
+                reasons.append(f"价格≥6000元且{panel}（曲面OLED）")
+            # 条件2：OLED
+            elif 'oled' in combined_text:
+                need_insurance = True
+                reasons.append(f"价格≥6000元且{panel}")
+            # 条件3：窄/无边框
+            elif any(key in combined_text for key in ['窄边框', '无边框', '窄/无边框']):
+                need_insurance = True
+                reasons.append(f"价格≥6000元且{panel}（窄/无边框）")
             else:
-                # 若已有强理由（如高端面板），则保留
-                pass
+                # 明确告知当前面板类型不符合推荐条件
+                reasons.append(f"价格≥6000元，但当前面板为【{panel}】，不属于上述推荐类型（曲面OLED / OLED / 窄/无边框）")
+        else:
+            reasons.append(f"价格{price}元（低于6000元），当前面板为【{panel}】")
 
         # --- 生成最终保险建议文本 ---
         if need_insurance and reasons:
-            insurance_advice = f"当前设备【强烈建议】购买碎屏险。原因：{', '.join(reasons)}。屏幕维修成本通常占整机50%~70%，建议额外购买意外保障。"
-        elif not need_insurance and price >= 1000:
-            insurance_advice = "当前设备【中性建议】设备价格中等，可视使用环境（如是否经常移动）决定是否购买碎屏险。"
+            insurance_advice = f"当前设备【强烈建议】购买碎屏险。原因：{', '.join(reasons)}。屏幕维修成本高，建议额外购买意外保障。"
         else:
-            insurance_advice = "当前设备【不建议】购买碎屏险。设备价格较低或已过时，购买保险性价比不高。"
+            insurance_advice = f"当前设备【不建议】购买碎屏险。原因：{', '.join(reasons)}，购买保险性价比不高。"
 
     # ---------- 3. 合并最终建议 ----------
     if 'monitor' in ctgry:
@@ -1086,7 +1084,8 @@ def device_score_view(request):
     ).only(
         'id', 'NID', 'DevVendor', 'DevModel', 'DevName', 'DevCtgry',
         'DevStatus', 'Pchsdate', 'UsrTimes', 'uscyc', 'Devproperties',
-        'IntfCtgry', 'Devsize', 'EOL', 'DevPrice'
+        'IntfCtgry', 'Devsize', 'EOL', 'DevPrice',
+        'DevDescription'  # <--- 新增此行
     )
 
     for dev in devices:
