@@ -46,6 +46,7 @@ django-import-export==1.2.0
 django-jsonfield==1.4.1
 django-mongoengine==0.4.1
 django-mongonaut==0.2.21
+django-mysql==3.7.0
 django-ranged-response==0.2.0
 django-redis==4.10.0
 django-rest-framework-mongoengine==3.4.1
@@ -129,6 +130,7 @@ pywin32-ctypes==0.2.0
 PyYAML==5.1.1
 qt5-applications==5.15.2.2.2
 qt5-tools==5.15.2.1.2
+rapidfuzz==3.3.1
 redis==5.0.1
 requests==2.21.0
 requests-ntlm==1.1.0
