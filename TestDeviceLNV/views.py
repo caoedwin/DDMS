@@ -924,6 +924,36 @@ def upgrade_suggestion(dev, score):
       3. 价格 ≥ 6000 且 窄/无边框
     面板类型从 DevProperties 和 DevDescription 中联合提取。
     """
+    # ---------- 新增：特殊处理 Damaged / Lost 设备 ----------
+    status_lower = (dev.DevStatus or '').lower()
+    if 'damaged' in status_lower or 'lost' in status_lower:
+        # 计算同类型设备数量（IntfCtgry + DevCtgry + Devproperties）
+        same_type_count = 0
+        try:
+            # print(dev.IntfCtgry,dev.DevCtgry,dev.Devproperties)
+            same_type_count = DeviceLNV.objects.filter(
+                IntfCtgry=dev.IntfCtgry,
+                DevCtgry=dev.DevCtgry,
+                Devproperties=dev.Devproperties
+            ).count()
+            # print(same_type_count)
+        except Exception as e:
+            # 若 DeviceLNV 不存在或查询出错，则忽略统计，建议中不显示数量
+            # print(str(e))
+            pass
+        target_count = 5  # 目标数量，暂定 5 台（后续可改为数据库配置）
+        urgency = "紧急更换" if score >= 90 else ("酌情更换" if score >= 70 else ("可观察" if score >= 40 else "继续使用"))
+        if same_type_count >= 0:
+            suggestion = f"设备状态为 {dev.DevStatus}，"
+            if same_type_count >= target_count:
+                suggestion += f"同类型设备共有 {same_type_count} 件，已达到 {target_count} 台目标。"
+            else:
+                suggestion += f"同类型设备共有 {same_type_count} 件，未达到 {target_count} 台目标（缺 {target_count - same_type_count} 台），建议管理员酌情更替补充。"
+        else:
+            suggestion = f"设备状态为 {dev.DevStatus}，建议立即处理并考虑更换。"
+        return urgency, suggestion
+
+    # ---------- 以下是原有逻辑（保留全部注释和代码） ----------
     # 提取设备属性（统一小写以便匹配）
     ctgry = (dev.DevCtgry or '').lower()
     prop = (dev.Devproperties or '').lower()
@@ -1079,14 +1109,20 @@ def device_score_view(request):
     today = datetime.now().date()
     result = []
 
-    devices = model.objects.exclude(
-        Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
-    ).only(
+    devices = model.objects.only(
         'id', 'NID', 'DevVendor', 'DevModel', 'DevName', 'DevCtgry',
         'DevStatus', 'Pchsdate', 'UsrTimes', 'uscyc', 'Devproperties',
         'IntfCtgry', 'Devsize', 'EOL', 'DevPrice',
         'DevDescription'  # <--- 新增此行
     )
+    # devices = model.objects.exclude(
+    #     Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
+    # ).only(
+    #     'id', 'NID', 'DevVendor', 'DevModel', 'DevName', 'DevCtgry',
+    #     'DevStatus', 'Pchsdate', 'UsrTimes', 'uscyc', 'Devproperties',
+    #     'IntfCtgry', 'Devsize', 'EOL', 'DevPrice',
+    #     'DevDescription'  # <--- 新增此行
+    # )
 
     for dev in devices:
         total, detail = compute_score(dev, today)
@@ -1094,10 +1130,12 @@ def device_score_view(request):
         result.append({
             'id': dev.id,
             'NID': dev.NID,
+            'IntfCtgry': dev.IntfCtgry or '',
+            'DevCtgry': dev.DevCtgry or '',
+            'Devproperties': dev.Devproperties or '',
             'DevVendor': dev.DevVendor,
             'DevModel': dev.DevModel,
             'DevName': dev.DevName,
-            'DevCtgry': dev.DevCtgry,
             'DevStatus': dev.DevStatus,
             'Score': round(total, 2),
             'Priority': urgency,

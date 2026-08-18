@@ -245,7 +245,7 @@
                <option v-for="(item,key,index) in selectDevCtgry" >${ item.DevCtgry }</option>
            </select>
 
-           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="Devproperties">設備屬性</label>
+           <label style="color: black;font-size: 16px;font-weight: bold;margin-left: 15px;" for="Devproperties">設備屬性/制式</label>
            <select id="Devproperties" ref="Devproperties" v-model="selectedDevproperties" @change="changeDevVendor" style="height:30px;width:120px;border-radius:5px 5px 5px 5px;margin-left: 2px;">
                <option value="All">All</option>
                <option v-for="(item,key,index) in selectDevproperties" >${ item }</option>
@@ -419,7 +419,7 @@
 </el-row>
 <el-row>
     <el-col span="10">
-      <el-form-item label="設備屬性" prop="Devproperties">
+      <el-form-item label="設備屬性/制式" prop="Devproperties">
          <el-select v-model="form.Devproperties" placeholder="請選擇" @change="changeDevVendor">
             <el-option
                 v-for="item in formselectDevproperties"
@@ -766,7 +766,7 @@
 </el-row>
 <el-row>
     <el-col span="10">
-      <el-form-item label="設備屬性" prop="Devproperties">
+      <el-form-item label="設備屬性/制式" prop="Devproperties">
          <el-select v-model="form1.Devproperties" placeholder="請選擇" @change="changeDevVendor">
             <el-option
                 v-for="item in form1selectDevproperties"
@@ -1112,7 +1112,7 @@
         </el-table-column>
         <el-table-column prop="DevCtgry" label="設備種類" width="100" align="center">
         </el-table-column>
-        <el-table-column prop="Devproperties" label="設備屬性" width="160" align="center">
+        <el-table-column prop="Devproperties" label="設備屬性/制式" width="160" align="center">
         </el-table-column>
         <el-table-column prop="Devsize" label="設備容量" align="center" width="100">
         </el-table-column>
@@ -1280,7 +1280,7 @@
                 { required: true, message: '请選擇設備種類', trigger: 'change' },
               ],
               Devproperties: [
-                { required: true, message: '请選擇設備屬性', trigger: 'change' },
+                { required: true, message: '请選擇設備屬性/制式', trigger: 'change' },
               ],
               DevVendor: [
                 { required: true, message: '请選擇設備廠家', trigger: 'change' },
