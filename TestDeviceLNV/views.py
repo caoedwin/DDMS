@@ -916,81 +916,79 @@ def compute_score(dev, today):
 
 def upgrade_suggestion(dev, score):
     """
-    生成升级建议，针对不同设备类型给出具体建议。
-    针对显示器（Monitor）额外增加碎屏险购买建议。
-    判断依据（参考图片）：
-      1. 价格 ≥ 6000 且 曲面OLED
-      2. 价格 ≥ 6000 且 OLED
-      3. 价格 ≥ 6000 且 窄/无边框
-    面板类型从 DevProperties 和 DevDescription 中联合提取。
+    生成升级建议：
+    - 所有设备统一逻辑，Damaged/Lost固定基准优先级为"紧急更换"
+    - 若同类可用设备数量达标，则优先级降一级
+    - 保留原技术建议，末尾追加数量评估信息
     """
-    # ---------- 新增：特殊处理 Damaged / Lost 设备 ----------
-    status_lower = (dev.DevStatus or '').lower()
-    if 'damaged' in status_lower or 'lost' in status_lower:
-        # 计算同类型设备数量（IntfCtgry + DevCtgry + Devproperties）
-        same_type_count = 0
-        try:
-            # print(dev.IntfCtgry,dev.DevCtgry,dev.Devproperties)
-            same_type_count = DeviceLNV.objects.filter(
-                IntfCtgry=dev.IntfCtgry,
-                DevCtgry=dev.DevCtgry,
-                Devproperties=dev.Devproperties
-            ).count()
-            # print(same_type_count)
-        except Exception as e:
-            # 若 DeviceLNV 不存在或查询出错，则忽略统计，建议中不显示数量
-            # print(str(e))
-            pass
-        target_count = 5  # 目标数量，暂定 5 台（后续可改为数据库配置）
-        urgency = "紧急更换" if score >= 90 else ("酌情更换" if score >= 70 else ("可观察" if score >= 40 else "继续使用"))
-        if same_type_count >= 0:
-            suggestion = f"设备状态为 {dev.DevStatus}，"
-            if same_type_count >= target_count:
-                suggestion += f"同类型设备共有 {same_type_count} 件，已达到 {target_count} 台目标。"
-            else:
-                suggestion += f"同类型设备共有 {same_type_count} 件，未达到 {target_count} 台目标（缺 {target_count - same_type_count} 台），建议管理员酌情更替补充。"
-        else:
-            suggestion = f"设备状态为 {dev.DevStatus}，建议立即处理并考虑更换。"
-        return urgency, suggestion
-
-    # ---------- 以下是原有逻辑（保留全部注释和代码） ----------
-    # 提取设备属性（统一小写以便匹配）
-    ctgry = (dev.DevCtgry or '').lower()
-    prop = (dev.Devproperties or '').lower()
-    intf = (dev.IntfCtgry or '').lower()
-    dev_desc = (dev.DevDescription or '').lower()  # 新增 DevDescription
-
-    # 合并用于关键词匹配的文本（优先使用 prop，但 dev_desc 也参与判断）
-    combined_text = f"{prop} {dev_desc} {intf}".lower()
-
-    # ---------- 安全获取价格 ----------
+    # ---------- 1. 解析价格并确定目标数量 ----------
     price_raw = getattr(dev, 'DevPrice', None) or '0'
     try:
         import re
-        price_str = re.sub(r'[^0-9.]', '', price_raw)
+        price_str = re.sub(r'[^0-9.]', '', str(price_raw))
         price = float(price_str) if price_str else 0.0
     except (ValueError, TypeError):
         price = 0.0
 
-    # ---------- 辅助：识别面板类型（基于 combined_text） ----------
-    def get_panel_type():
-        """从设备属性及描述中提取面板类型"""
-        if 'oled' in combined_text:
-            return 'OLED'
-        elif 'mini-led' in combined_text:
-            return 'Mini-LED'
-        elif '曲面' in combined_text:
-            return '曲面屏'
-        elif 'ips' in combined_text:
-            return 'IPS'
-        elif 'va' in combined_text:
-            return 'VA'
-        elif 'tn' in combined_text:
-            return 'TN'
-        else:
-            return '未知面板类型'
+    if price <= 1000:
+        target_count = 5
+    elif price <= 1500:
+        target_count = 3
+    else:   # > 1500
+        target_count = 2
 
-    # ---------- 1. 基础升级建议（完整保留，与之前一致） ----------
+    # ---------- 2. 统计同类可用设备数量（排除 Damaged / Lost） ----------
+    same_type_available = 0
+    try:
+        model_class = dev.__class__
+        same_type_available = model_class.objects.filter(
+            IntfCtgry=dev.IntfCtgry,
+            DevCtgry=dev.DevCtgry,
+            Devproperties=dev.Devproperties,
+            DevVendor=dev.DevVendor,
+            Devsize=dev.Devsize
+        ).exclude(
+            Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
+        ).count()
+    except Exception:
+        same_type_available = 0
+
+    is_sufficient = same_type_available >= target_count
+
+    # ---------- 3. 确定基准优先级 ----------
+    status_lower = (dev.DevStatus or '').lower()
+    is_damaged_lost = ('damaged' in status_lower or 'lost' in status_lower)
+
+    if is_damaged_lost:
+        base_priority = "紧急更换"
+    else:
+        if score >= 90:
+            base_priority = "紧急更换"
+        elif score >= 70:
+            base_priority = "酌情更换"
+        elif score >= 40:
+            base_priority = "可观察"
+        else:
+            base_priority = "继续使用"
+
+    # ---------- 4. 降级逻辑（所有设备统一） ----------
+    if is_sufficient and base_priority != "继续使用":
+        priority_map = {
+            "紧急更换": "酌情更换",
+            "酌情更换": "可观察",
+            "可观察": "继续使用"
+        }
+        final_priority = priority_map.get(base_priority, base_priority)
+    else:
+        final_priority = base_priority
+
+    # ---------- 5. 生成技术建议（完全保留原有代码，一字不改） ----------
+    ctgry = (dev.DevCtgry or '').lower()
+    prop = (dev.Devproperties or '').lower()
+    intf = (dev.IntfCtgry or '').lower()
+    dev_desc = (dev.DevDescription or '').lower()
+    combined_text = f"{prop} {dev_desc} {intf}".lower()
+
     base_suggestion = "暂无特殊建议"
     if 'mouse' in ctgry or 'keyboard' in ctgry:
         if 'mouse' in ctgry:
@@ -1033,49 +1031,63 @@ def upgrade_suggestion(dev, score):
     else:
         base_suggestion = "建议对照最新技术规范进行资产评估。"
 
-    # ---------- 2. 碎屏险购买建议（仅针对显示器，严格按图片规则，综合 prop 和 DevDescription） ----------
     insurance_advice = ""
     if 'monitor' in ctgry:
+        def get_panel_type():
+            if 'oled' in combined_text:
+                return 'OLED'
+            elif 'mini-led' in combined_text:
+                return 'Mini-LED'
+            elif '曲面' in combined_text:
+                return '曲面屏'
+            elif 'ips' in combined_text:
+                return 'IPS'
+            elif 'va' in combined_text:
+                return 'VA'
+            elif 'tn' in combined_text:
+                return 'TN'
+            else:
+                return '未知面板类型'
+
+        panel = get_panel_type()
         need_insurance = False
         reasons = []
-        panel = get_panel_type()  # 获取当前面板类型
-
-        # 判断依据：价格 ≥ 6000 且满足以下任一面板特征
         if price >= 6000:
-            # 条件1：曲面OLED
             if '曲面' in combined_text and 'oled' in combined_text:
                 need_insurance = True
                 reasons.append(f"价格≥6000元且{panel}（曲面OLED）")
-            # 条件2：OLED
             elif 'oled' in combined_text:
                 need_insurance = True
                 reasons.append(f"价格≥6000元且{panel}")
-            # 条件3：窄/无边框
             elif any(key in combined_text for key in ['窄边框', '无边框', '窄/无边框']):
                 need_insurance = True
                 reasons.append(f"价格≥6000元且{panel}（窄/无边框）")
             else:
-                # 明确告知当前面板类型不符合推荐条件
-                reasons.append(f"价格≥6000元，但当前面板为【{panel}】，不属于上述推荐类型（曲面OLED / OLED / 窄/无边框）")
+                reasons.append(f"价格≥6000元，但当前面板为【{panel}】，不属于推荐类型")
         else:
             reasons.append(f"价格{price}元（低于6000元），当前面板为【{panel}】")
 
-        # --- 生成最终保险建议文本 ---
         if need_insurance and reasons:
             insurance_advice = f"当前设备【强烈建议】购买碎屏险。原因：{', '.join(reasons)}。屏幕维修成本高，建议额外购买意外保障。"
         else:
             insurance_advice = f"当前设备【不建议】购买碎屏险。原因：{', '.join(reasons)}，购买保险性价比不高。"
 
-    # ---------- 3. 合并最终建议 ----------
-    if 'monitor' in ctgry:
-        final_suggestion = base_suggestion + " " + insurance_advice
+        tech_suggestion = base_suggestion + " " + insurance_advice
     else:
-        final_suggestion = base_suggestion
+        tech_suggestion = base_suggestion
 
-    # 紧急程度（沿用原有逻辑）
-    urgency = "紧急更换" if score >= 90 else ("酌情更换" if score >= 70 else ("可观察" if score >= 40 else "继续使用"))
+    # ---------- 6. 末尾追加数量评估信息 ----------
+    type_str = f"{dev.IntfCtgry}/{dev.DevCtgry}/{dev.Devproperties}/{dev.DevVendor}/{dev.Devsize}"
+    if is_sufficient:
+        status_text = "已达标"
+    else:
+        shortage = target_count - same_type_available
+        status_text = f"缺 {shortage} 台"
+    quantity_info = f"（同类型设备：{type_str}，可用 {same_type_available} 台，需达到 {target_count} 台，{status_text}）"
 
-    return urgency, final_suggestion
+    final_suggestion = tech_suggestion + " " + quantity_info
+
+    return final_priority, final_suggestion
 # ===================== JSON 接口视图 =====================
 from django.core.cache import cache
 from django.db.models import Q
@@ -1083,16 +1095,14 @@ from django.db.models import Q
 @csrf_exempt
 def device_score_view(request):
     """统一入口：返回模型列表 或 设备评分数据"""
-    # 若请求参数包含 action=get_models，则返回可用模型列表
+    # 返回客户列表（用于前端下拉）
     if request.method == 'GET' and request.GET.get('action') == 'get_models':
         data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
         return JsonResponse(data, safe=False)
-    # 也支持 POST 方式（若需兼容）
     if request.method == 'POST' and request.POST.get('action') == 'get_models':
         data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
         return JsonResponse(data, safe=False)
 
-    # ---- 以下是原有的设备评分逻辑（需支持动态 model） ----
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
@@ -1109,20 +1119,13 @@ def device_score_view(request):
     today = datetime.now().date()
     result = []
 
+    # 查询包含 Devsize 字段（用于统计）
     devices = model.objects.only(
         'id', 'NID', 'DevVendor', 'DevModel', 'DevName', 'DevCtgry',
         'DevStatus', 'Pchsdate', 'UsrTimes', 'uscyc', 'Devproperties',
         'IntfCtgry', 'Devsize', 'EOL', 'DevPrice',
-        'DevDescription'  # <--- 新增此行
+        'DevDescription'
     )
-    # devices = model.objects.exclude(
-    #     Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
-    # ).only(
-    #     'id', 'NID', 'DevVendor', 'DevModel', 'DevName', 'DevCtgry',
-    #     'DevStatus', 'Pchsdate', 'UsrTimes', 'uscyc', 'Devproperties',
-    #     'IntfCtgry', 'Devsize', 'EOL', 'DevPrice',
-    #     'DevDescription'  # <--- 新增此行
-    # )
 
     for dev in devices:
         total, detail = compute_score(dev, today)
@@ -1137,6 +1140,7 @@ def device_score_view(request):
             'DevModel': dev.DevModel,
             'DevName': dev.DevName,
             'DevStatus': dev.DevStatus,
+            'Devsize': dev.Devsize or '',   # 新增容量
             'Score': round(total, 2),
             'Priority': urgency,
             'DevPrice': dev.DevPrice,
@@ -1149,7 +1153,10 @@ def device_score_view(request):
             'StatusScore': detail['status'],
         })
 
-    result.sort(key=lambda x: x['Score'], reverse=True)
+    # ---------- 排序：先按优先级，再按得分降序 ----------
+    priority_order = {"紧急更换": 1, "酌情更换": 2, "可观察": 3, "继续使用": 4}
+    result.sort(key=lambda x: (priority_order.get(x['Priority'].strip(), 5), -x['Score']))
+
     response_data = {'data': result, 'count': len(result), 'model': model_key}
     cache.set(cache_key, response_data, timeout=300)
     return JsonResponse(response_data)
