@@ -5896,6 +5896,8 @@ def M_edit(request):
             allDevStatus.append(i["DevStatus"])
 
     Pers_list = ImportPersonalInfo()
+    if not isinstance(Pers_list, list):
+        Pers_list = []
 
     if DeviceIntfCtgryList.objects.all():
         for i in DeviceIntfCtgryList.objects.all():

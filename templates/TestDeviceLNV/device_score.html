@@ -323,11 +323,15 @@ new Vue({
         },
         top10Data: function () {
             if (!this.allData || this.allData.length === 0) return [];
+            var priorityOrder = {"紧急更换": 1, "酌情更换": 2, "可观察": 3, "继续使用": 4};
             var sorted = this.allData.slice().sort(function (a, b) {
-                return b.Score - a.Score;
+                var pa = priorityOrder[a.Priority] || 5;   // 未定义映射的放在最后
+                var pb = priorityOrder[b.Priority] || 5;
+                if (pa !== pb) return pa - pb;              // 优先级小的排前面（紧急=1）
+                return b.Score - a.Score;                   // 同优先级内得分降序
             });
             return sorted.slice(0, 10);
-        }
+        },
     },
     watch: {
         top10Data: function (newVal) {
