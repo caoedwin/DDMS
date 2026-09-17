@@ -313,37 +313,59 @@
                 >
                     <el-table-column type="index" label="序號" width="70" align="center" fixed></el-table-column>
                     <el-table-column prop="Category" label="Category" min-width="120" fixed></el-table-column>
-                    <el-table-column prop="Class" label="Class" min-width="160"></el-table-column>
-                    <el-table-column prop="Type" label="Type" min-width="200"></el-table-column>
+                    <el-table-column prop="Class" label="Class" min-width="140"></el-table-column>
+                    <el-table-column prop="Type" label="Type" min-width="180"></el-table-column>
                     <el-table-column prop="Require_State" label="Require State" min-width="110" align="center">
                         <template slot-scope="scope">
                             <el-tag type="warning">${ scope.row.Require_State }</el-tag>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="Covered_range_for_case" label="Covered range for case" min-width="200"></el-table-column>
+                    <el-table-column prop="Covered_range_for_case" label="Covered range for case" min-width="180"></el-table-column>
+
                     <el-table-column prop="Device_NIDs" label="已绑定设备" min-width="150"></el-table-column>
-                    <el-table-column label="可用设备" min-width="220">
+
+                    <el-table-column label="可用设备" min-width="240">
                         <template slot-scope="scope">
                             <div v-if="scope.row.Available_Devices && scope.row.Available_Devices.length > 0">
                                 <div v-for="dev in scope.row.Available_Devices" :key="dev.NID" style="line-height: 1.6;">
                                     <b>${ dev.NID }</b> — ${ dev.DevModel || '未知型号' }
-                                    <el-tag size="mini" :type="(dev.DevStatus||'').toLowerCase().includes('damaged') || (dev.DevStatus||'').toLowerCase().includes('lost') ? 'danger' : 'success'" style="margin-left:6px;">
+                                    <el-tag size="mini"
+                                            :type="(dev.DevStatus||'').toLowerCase().includes('damaged') || (dev.DevStatus||'').toLowerCase().includes('lost') ? 'danger' : 'success'"
+                                            style="margin-left:6px;">
                                         ${ dev.DevStatus }/${ dev.BrwStatus }
                                     </el-tag>
+                                    <span v-if="dev.Score !== undefined" style="margin-left:6px;color:#909399;font-size:12px;">
+                                        (评分 ${ dev.Score })
+                                    </span>
                                 </div>
                             </div>
                             <span v-else style="color: #909399;">暂无可用设备</span>
                         </template>
                     </el-table-column>
-                    <el-table-column label="采购状态" min-width="110" align="center" fixed="right">
+
+                    <el-table-column prop="Score" label="评分" width="80" align="center">
                         <template slot-scope="scope">
-                            <el-tag :type="scope.row.Need_Purchase ? 'danger' : 'success'" effect="dark">
-                                ${ scope.row.Need_Purchase ? '需购买' : '已有设备' }
+                            <span :style="{color: scope.row.Score >= 80 ? '#F56C6C' : (scope.row.Score >= 60 ? '#E6A23C' : '#67C23A'), fontWeight: 'bold'}">
+                                ${ scope.row.Score }
+                            </span>
+                        </template>
+                    </el-table-column>
+
+                    <el-table-column label="判定" width="110" align="center" fixed="right">
+                        <template slot-scope="scope">
+                            <el-tag
+                                :type="scope.row.Suggestion_Level === '建议更换' ? 'danger' :
+                                       (scope.row.Suggestion_Level === '考虑更换' ? 'warning' : 'success')"
+                                effect="dark"
+                            >
+                                ${ scope.row.Suggestion_Level }
                             </el-tag>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="Comments" label="Comments" min-width="200"></el-table-column>
-                    <el-table-column prop="Remark" label="Remark" min-width="150"></el-table-column>
+
+                    <el-table-column prop="Reason" label="判定原因" min-width="240"></el-table-column>
+                    <el-table-column prop="Comments" label="Comments" min-width="180"></el-table-column>
+                    <el-table-column prop="Remark" label="Remark" min-width="140"></el-table-column>
                 </el-table>
             </div>
         </el-tab-pane>
@@ -525,11 +547,14 @@ new Vue({
                 this.$message.warning('没有数据可导出');
                 return;
             }
-            var exportData = this.auditData.map(function (item) {
+            var exportData = this.auditData.map(function (item, idx) {
                 var availStr = (item.Available_Devices || []).map(function (d) {
-                    return d.NID + '(' + (d.DevStatus || '') + '/' + (d.BrwStatus || '') + ')';
+                    var s = d.NID + '(' + (d.DevStatus || '') + '/' + (d.BrwStatus || '') + ')';
+                    if (d.Score !== undefined) s += '[评分' + d.Score + ']';
+                    return s;
                 }).join('；');
                 return {
+                    '序號': idx + 1,
                     'Category': item.Category || '',
                     'Class': item.Class || '',
                     'Type': item.Type || '',
@@ -537,7 +562,9 @@ new Vue({
                     'Covered range for case': item.Covered_range_for_case || '',
                     '已绑定设备': item.Device_NIDs || '',
                     '可用设备': availStr,
-                    '采购状态': item.Need_Purchase ? '需购买' : '已有设备',
+                    '评分': item.Score || 0,
+                    '判定': item.Suggestion_Level || '',
+                    '判定原因': item.Reason || '',
                     'Comments': item.Comments || '',
                     'Remark': item.Remark || ''
                 };

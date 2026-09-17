@@ -1124,56 +1124,150 @@ def upgrade_suggestion(dev, score):
     final_suggestion = tech_suggestion + " " + quantity_info
     return final_priority, final_suggestion
 
-def check_audit_device_availability(rec):
-    """检查单条 audit 记录是否有可用设备"""
-    # 1. 先检查 Device1-Device10 里是否填写了设备 ID
+def match_audit_type_to_device_type(rec):
+    """
+    预留接口：根据 audit 记录的字段推断设备库中的类型三元组。
+    返回 dict 形如 {'IntfCtgry':..., 'DevCtgry':..., 'Devproperties':...} 或 None。
+
+    目前 audit list 的 Category/Class/Type 与设备库字段尚未对齐，
+    后期会改造为一致格式后在此补充映射逻辑。
+    """
+    return None
+
+
+def evaluate_audit_record(rec, today):
+    """
+    评估单条 audit 记录，决定是否需要采购。
+
+    返回 dict:
+        Need_Purchase      : bool
+        Suggestion_Level   : '无需购买' / '考虑更换' / '建议更换'
+        Score              : 0 / 60 / 80
+        Bound_Devices      : Device1~Device10 中存在的设备详细信息
+        Missing_NIDs       : Device1~Device10 中在设备库中查不到的 NID
+        Available_Devices  : 最终可用设备列表（好设备或同类型设备）
+        Reason             : 判定原因
+        Matched_Type_Count : 同类型可用数量
+    """
+    # ---------- 1. 收集 Device1~Device10 中的 NID ----------
     device_nids = []
     for i in range(1, 11):
         nid = getattr(rec, f'Device{i}', None)
         if nid and str(nid).strip():
             device_nids.append(str(nid).strip())
 
-    available = []
-    missing = []
+    # ---------- 2. 逐个查设备库 ----------
+    good_devices = []    # 非 Damaged/Lost 且评分 < 80
+    bound_devices = []   # 所有在设备库中能查到的绑定设备（无论好坏）
+    missing_nids = []    # 在设备库中查不到的
+    ref_dev = None       # 用于推断同类型（取第一个查到的绑定设备）
+
     for nid in device_nids:
         try:
             dev = DeviceLNV.objects.filter(NID=nid).first()
         except Exception:
             dev = None
-        if dev:
-            available.append({
-                'NID': nid,
-                'DevStatus': dev.DevStatus or '',
-                'BrwStatus': dev.BrwStatus or '',
-                'DevModel': dev.DevModel or '',
-                'DevName': dev.DevName or '',
-            })
-        else:
-            missing.append(nid)
+        if not dev:
+            missing_nids.append(nid)
+            continue
 
-    if available:
+        total, _ = compute_score(dev, today)
+        status_lower = (dev.DevStatus or '').lower()
+        is_damaged_lost = ('damaged' in status_lower or 'lost' in status_lower)
+
+        info = {
+            'NID': nid,
+            'DevStatus': dev.DevStatus or '',
+            'BrwStatus': dev.BrwStatus or '',
+            'DevModel': dev.DevModel or '',
+            'DevName': dev.DevName or '',
+            'Score': round(total, 2),
+        }
+        bound_devices.append(info)
+        if ref_dev is None:
+            ref_dev = dev
+        if (not is_damaged_lost) and total < 80:
+            good_devices.append(info)
+
+    # ---------- 3. 场景 A：存在好设备 ----------
+    if good_devices:
         return {
-            'available': True,
-            'devices': available,
-            'missing': missing,
-            'source': 'Device字段',
+            'Need_Purchase': False,
+            'Suggestion_Level': '无需购买',
+            'Score': 0,
+            'Bound_Devices': bound_devices,
+            'Missing_NIDs': missing_nids,
+            'Available_Devices': good_devices,
+            'Reason': '已绑定可用设备：' + '、'.join(d['NID'] for d in good_devices),
+            'Matched_Type_Count': 0,
         }
 
-    # 2. 预留接口：按 audit list 描述去设备库匹配
-    matched = match_audit_by_device_library(rec)
-    if matched:
+    # ---------- 4. 场景 B/C：无好设备，尝试找同类型可用设备 ----------
+    same_type_available_devices = []
+    used_type = None
+
+    if ref_dev is not None:
+        used_type = {
+            'IntfCtgry': ref_dev.IntfCtgry,
+            'DevCtgry': ref_dev.DevCtgry,
+            'Devproperties': ref_dev.Devproperties,
+        }
+    else:
+        used_type = match_audit_type_to_device_type(rec)
+
+    is_monitor = False
+    if used_type:
+        is_monitor = 'monitor' in (used_type.get('DevCtgry') or '').lower()
+
+    if used_type and not is_monitor:
+        try:
+            qs = DeviceLNV.objects.filter(
+                IntfCtgry=used_type.get('IntfCtgry'),
+                DevCtgry=used_type.get('DevCtgry'),
+                Devproperties=used_type.get('Devproperties'),
+            ).exclude(
+                Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
+            )
+            for d in qs:
+                same_type_available_devices.append({
+                    'NID': d.NID,
+                    'DevStatus': d.DevStatus or '',
+                    'BrwStatus': d.BrwStatus or '',
+                    'DevModel': d.DevModel or '',
+                    'DevName': d.DevName or '',
+                })
+        except Exception:
+            same_type_available_devices = []
+
+    # ---------- 5. 场景 B：同类型有可用设备 ----------
+    if same_type_available_devices:
         return {
-            'available': True,
-            'devices': matched,
-            'missing': [],
-            'source': '设备库匹配',
+            'Need_Purchase': False,
+            'Suggestion_Level': '考虑更换',
+            'Score': 60,
+            'Bound_Devices': bound_devices,
+            'Missing_NIDs': missing_nids,
+            'Available_Devices': same_type_available_devices,
+            'Reason': f"无可用绑定设备，但同类型有 {len(same_type_available_devices)} 台可替换，建议考虑更换",
+            'Matched_Type_Count': len(same_type_available_devices),
         }
 
+    # ---------- 6. 场景 C：同类型也无可用 → 建议更换 ----------
+    if is_monitor:
+        reason = '绑定设备不可用，Monitor 类不做同类型匹配，建议采购'
+    elif ref_dev is None and used_type is None:
+        reason = '无绑定设备且暂未支持同类型匹配，建议采购'
+    else:
+        reason = '无可用绑定设备，且同类型无可用库存，建议采购'
     return {
-        'available': False,
-        'devices': [],
-        'missing': device_nids,
-        'source': None,
+        'Need_Purchase': True,
+        'Suggestion_Level': '建议更换',
+        'Score': 80,
+        'Bound_Devices': bound_devices,
+        'Missing_NIDs': missing_nids,
+        'Available_Devices': [],
+        'Reason': reason,
+        'Matched_Type_Count': 0,
     }
 
 
@@ -1187,23 +1281,23 @@ def match_audit_by_device_library(rec):
 
 
 def get_audit_list_data():
-    """获取所有 Require_State=Must 的 audit list 记录 + 是否有可用设备
+    """获取所有 Require_State=Must 的 audit list 记录，并做设备采购评估
 
     注意：TestDeviceLNV 表中某些行多个字段存在"合并标识"，
     还原规则：按 id 升序扫描全表，每个字段都用"最近一次出现的非'合并标识'值"覆盖。
     还原完成后再过滤 Require_State='Must'。
     """
-    cache_key = 'audit_list_data_v3'   # 再次升版本号，确保缓存刷新
+    cache_key = 'audit_list_data_v5'   # 版本升级，确保刷新
     cached = cache.get(cache_key)
     if cached is not None:
         return cached
 
+    today = datetime.now().date()
+
     # ---------- 1. 按 id 排序取全部记录 ----------
     all_records = list(TestDeviceLNV.objects.all().order_by('id'))
-
     MERGE_TAG = '合并标识'
 
-    # 需要还原的字段列表（涵盖所有可能含"合并标识"的文本字段）
     restore_fields = [
         'Category',
         'Class',
@@ -1219,31 +1313,21 @@ def get_audit_list_data():
     ]
 
     # ---------- 2. 逐行还原每个字段 ----------
-    # current_values 保存"到目前为止每个字段最近一次的有效值"
     current_values = {f: '' for f in restore_fields}
-
     filled_records = []
     for rec in all_records:
         restored = {}
         for f in restore_fields:
             val = getattr(rec, f, None)
             val_str = str(val).strip() if val is not None else ''
-
             if val_str == MERGE_TAG:
-                # 本行是合并标识 → 使用"最近有效值"
                 restored[f] = current_values[f]
             else:
-                # 本行是真实值 → 更新"最近有效值"
                 current_values[f] = val_str
                 restored[f] = val_str
-
-        filled_records.append({
-            'rec': rec,
-            'restored': restored,
-        })
+        filled_records.append({'rec': rec, 'restored': restored})
 
     # ---------- 3. 过滤出 Require_State=Must 的记录 ----------
-    # 注意：过滤要用"还原后"的 Require_State
     must_records = [
         item for item in filled_records
         if (item['restored'].get('Require_State', '') or '').strip().lower() == 'must'
@@ -1254,7 +1338,7 @@ def get_audit_list_data():
     for item in must_records:
         rec = item['rec']
         r = item['restored']
-        info = check_audit_device_availability(rec)
+        ev = evaluate_audit_record(rec, today)
 
         result.append({
             'id': rec.id,
@@ -1265,19 +1349,22 @@ def get_audit_list_data():
             'Covered_range_for_case': r.get('Covered_range_for_case', ''),
             'Comments': r.get('Comments', ''),
             'Remark': r.get('Remark', ''),
-            'ODM_status': r.get('ODM_status', ''),
-            'Purchase_Plan': r.get('Purchase_Plan', ''),
-            'Act_Status': r.get('Act_Status', ''),
-            'Device_Know_Issue': r.get('Device_Know_Issue', ''),
+
+            # 采购评估结果
+            'Need_Purchase': ev['Need_Purchase'],
+            'Suggestion_Level': ev['Suggestion_Level'],
+            'Score': ev['Score'],
+            'Reason': ev['Reason'],
+            'Matched_Type_Count': ev['Matched_Type_Count'],
+
+            # 设备信息
             'Device_NIDs': '、'.join(
                 [str(getattr(rec, f'Device{i}', '') or '') for i in range(1, 11)
                  if getattr(rec, f'Device{i}', None)]
             ),
-            'Available_Devices': info['devices'],
-            'Missing_NIDs': info['missing'],
-            'Has_Device': info['available'],
-            'Source': info['source'] or '',
-            'Need_Purchase': not info['available'],
+            'Bound_Devices': ev['Bound_Devices'],
+            'Missing_NIDs': ev['Missing_NIDs'],
+            'Available_Devices': ev['Available_Devices'],
         })
 
     cache.set(cache_key, result, timeout=300)
