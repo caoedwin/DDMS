@@ -875,101 +875,53 @@ def tech_score(dev):
         return 70
 
 def compute_score(dev, today):
-    """计算综合评分及各项子分
-    权重：使用年限10% + 使用次数40% + 技术先进性5% + 借用次数40% + EOL状态5%
-    """
-    # ---- 使用年限 10% ----
+    """计算综合评分及各项子分"""
     pdate = parse_date(dev.Pchsdate)
     if pdate:
         years = (today - pdate).days / 365.25
-        if years > 10:
-            age_score = 100
-        elif years > 8:
-            age_score = 80
-        elif years > 5:
-            age_score = 60
-        elif years > 1:
-            age_score = 30
-        else:
-            age_score = 0
+        age_score = 100 if years > 10 else (80 if years > 8 else (60 if years > 5 else (30 if years > 1 else 0)))
     else:
         age_score = 50
 
-    # ---- 使用次数 40% ----
-    use_count = dev.uscyc or 0
-    try:
-        use_count = int(use_count)
-    except Exception:
-        use_count = 0
-    if use_count > 2000:
-        usage_score = 100
-    elif use_count > 1500:
-        usage_score = 90
-    elif use_count > 1000:
-        usage_score = 80
-    elif use_count > 500:
-        usage_score = 70
-    elif use_count > 200:
-        usage_score = 40
-    elif use_count > 100:
-        usage_score = 20
-    else:
-        usage_score = 0
-
-    # ---- 技术先进性 5% ----
-    tech = tech_score(dev)
-
-    # ---- 借用次数 40% ----
     usr = dev.UsrTimes or 0
     try:
         usr = int(usr)
-    except Exception:
+    except:
         usr = 0
-    if usr > 500:
-        borrow_score = 100
-    elif usr > 300:
-        borrow_score = 70
-    elif usr > 200:
-        borrow_score = 40
-    elif usr > 100:
-        borrow_score = 20
-    else:
-        borrow_score = 0
+    borrow_score = 100 if usr > 500 else (70 if usr > 300 else (40 if usr > 200 else (20 if usr > 100 else 0)))
 
-    # ---- EOL 状态 5% ----
+    use_count = dev.uscyc or 0
+    try:
+        use_count = int(use_count)
+    except:
+        use_count = 0
+    if use_count == 0:
+        usage_score = 50
+    else:
+        usage_score = 100 if use_count > 2000 else (90 if use_count > 1500 else (80 if use_count > 1000 else (70 if use_count > 500 else (40 if use_count > 200 else (20 if use_count > 100 else 0)))))
+
+    tech = tech_score(dev)
+
     eol_date = parse_date(dev.EOL)
-    if eol_date:
-        if eol_date < today:
-            eol_score = 100
-        else:
-            eol_score = 60
-    else:
-        eol_score = 0
+    eol_score = 80 if (eol_date and eol_date < today) else 50
 
-    # 权重求和（合计 1.0）
-    weights = [0.10, 0.40, 0.05, 0.40, 0.05]
-    scores = [age_score, usage_score, tech, borrow_score, eol_score]
-    total = sum(s * w for s, w in zip(scores, weights))
-    return total, {
-        'age': age_score,
-        'usage': usage_score,
-        'borrow': borrow_score,
-        'tech': tech,
-        'eol': eol_score,
-        'status': 0,  # 状态分已从权重中移除，保留字段以兼容前端
-    }
+    status = (dev.DevStatus or '').lower()
+    status_score = 100 if 'damaged' in status else (90 if 'lost' in status else (50 if 'long' in status else 0))
+
+    weights = [0.3, 0.2, 0.1, 0.2, 0.1, 0.1]
+    scores = [age_score, usage_score, borrow_score, tech, eol_score, status_score]
+    total = sum(s * w for s, w in zip(scores, weights)) / sum(weights)
+    return total, {'age': age_score, 'usage': usage_score, 'borrow': borrow_score,
+                   'tech': tech, 'eol': eol_score, 'status': status_score}
 
 def upgrade_suggestion(dev, score):
     """
-    生成升级建议（新版逻辑）：
-    - 设备状态 Damaged / Lost：需要购买（优先级紧急更换）
-    - 同类可用设备数量不足（Monitor 除外，至少 2 台）：需要购买（紧急更换）
-    - 综合评分 >= 80：评估购买（酌情更换）
-    - 40 ~ 79：可观察
-    - < 40：继续使用
-    技术建议完整保留，末尾追加数量评估信息。
+    生成升级建议：
+    - 所有设备统一逻辑，Damaged/Lost固定基准优先级为"紧急更换"
+    - 若同类可用设备数量达标，则优先级降一级
+    - 保留原技术建议，末尾追加数量评估信息
     """
-    # ---------- 1. 价格解析 ----------
+    # ---------- 1. 解析价格并确定目标数量 ----------
     price_raw = getattr(dev, 'DevPrice', None) or '0'
     try:
         import re
@@ -978,10 +930,14 @@ def upgrade_suggestion(dev, score):
     except (ValueError, TypeError):
         price = 0.0
 
-    # ---------- 2. 判断是否 monitor 类 + 统计同类可用数量 ----------
-    ctgry = (dev.DevCtgry or '').lower()
-    is_monitor = ('monitor' in ctgry)
+    if price <= 1000:
+        target_count = 5
+    elif price <= 1500:
+        target_count = 3
+    else:   # > 1500
+        target_count = 2
 
+    # ---------- 2. 统计同类可用设备数量（排除 Damaged / Lost） ----------
     same_type_available = 0
     try:
         model_class = dev.__class__
@@ -989,33 +945,44 @@ def upgrade_suggestion(dev, score):
             IntfCtgry=dev.IntfCtgry,
             DevCtgry=dev.DevCtgry,
             Devproperties=dev.Devproperties,
+            DevVendor=dev.DevVendor,
+            Devsize=dev.Devsize
         ).exclude(
             Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
         ).count()
     except Exception:
         same_type_available = 0
 
-    target_count = 2  # 非 Monitor 类型同类至少 2 台
+    is_sufficient = same_type_available >= target_count
 
-    # ---------- 3. 优先级判定 ----------
+    # ---------- 3. 确定基准优先级 ----------
     status_lower = (dev.DevStatus or '').lower()
     is_damaged_lost = ('damaged' in status_lower or 'lost' in status_lower)
-    qty_shortage = (not is_monitor) and (same_type_available < target_count)
 
     if is_damaged_lost:
         base_priority = "紧急更换"
-    elif qty_shortage:
-        base_priority = "紧急更换"
-    elif score >= 80:
-        base_priority = "酌情更换"
-    elif score >= 40:
-        base_priority = "可观察"
     else:
-        base_priority = "继续使用"
+        if score >= 90:
+            base_priority = "紧急更换"
+        elif score >= 70:
+            base_priority = "酌情更换"
+        elif score >= 40:
+            base_priority = "可观察"
+        else:
+            base_priority = "继续使用"
 
-    final_priority = base_priority
+    # ---------- 4. 降级逻辑（所有设备统一） ----------
+    if is_sufficient and base_priority != "继续使用":
+        priority_map = {
+            "紧急更换": "酌情更换",
+            "酌情更换": "可观察",
+            "可观察": "继续使用"
+        }
+        final_priority = priority_map.get(base_priority, base_priority)
+    else:
+        final_priority = base_priority
 
-    # ---------- 4. 生成技术建议（保留原有逻辑） ----------
+    # ---------- 5. 生成技术建议（完全保留原有代码，一字不改） ----------
     ctgry = (dev.DevCtgry or '').lower()
     prop = (dev.Devproperties or '').lower()
     intf = (dev.IntfCtgry or '').lower()
@@ -1064,7 +1031,6 @@ def upgrade_suggestion(dev, score):
     else:
         base_suggestion = "建议对照最新技术规范进行资产评估。"
 
-    # ---------- Monitor 碎屏险建议 ----------
     insurance_advice = ""
     if 'monitor' in ctgry:
         def get_panel_type():
@@ -1110,186 +1076,25 @@ def upgrade_suggestion(dev, score):
     else:
         tech_suggestion = base_suggestion
 
-    # ---------- 5. 末尾追加数量评估信息 ----------
-    if is_monitor:
-        quantity_info = "（Monitor 类设备无需数量检查）"
-    elif same_type_available >= target_count:
-        quantity_info = f"（同类可用设备 {same_type_available} 台，已满足至少 {target_count} 台，无需额外采购）"
+    # ---------- 6. 末尾追加数量评估信息 ----------
+    type_str = f"{dev.IntfCtgry}/{dev.DevCtgry}/{dev.Devproperties}/{dev.DevVendor}/{dev.Devsize}"
+    if is_sufficient:
+        status_text = "已达标"
     else:
-        quantity_info = f"（同类可用设备仅 {same_type_available} 台，未达 {target_count} 台，建议采购）"
-
-    if is_damaged_lost:
-        quantity_info += "；设备已损坏/丢失，新设备入库后请将原设备状态改为 Replaced。"
+        shortage = target_count - same_type_available
+        status_text = f"缺 {shortage} 台"
+    quantity_info = f"（同类型设备：{type_str}，可用 {same_type_available} 台，需达到 {target_count} 台，{status_text}）"
 
     final_suggestion = tech_suggestion + " " + quantity_info
+
     return final_priority, final_suggestion
-
-def check_audit_device_availability(rec):
-    """检查单条 audit 记录是否有可用设备"""
-    # 1. 先检查 Device1-Device10 里是否填写了设备 ID
-    device_nids = []
-    for i in range(1, 11):
-        nid = getattr(rec, f'Device{i}', None)
-        if nid and str(nid).strip():
-            device_nids.append(str(nid).strip())
-
-    available = []
-    missing = []
-    for nid in device_nids:
-        try:
-            dev = DeviceLNV.objects.filter(NID=nid).first()
-        except Exception:
-            dev = None
-        if dev:
-            available.append({
-                'NID': nid,
-                'DevStatus': dev.DevStatus or '',
-                'BrwStatus': dev.BrwStatus or '',
-                'DevModel': dev.DevModel or '',
-                'DevName': dev.DevName or '',
-            })
-        else:
-            missing.append(nid)
-
-    if available:
-        return {
-            'available': True,
-            'devices': available,
-            'missing': missing,
-            'source': 'Device字段',
-        }
-
-    # 2. 预留接口：按 audit list 描述去设备库匹配
-    matched = match_audit_by_device_library(rec)
-    if matched:
-        return {
-            'available': True,
-            'devices': matched,
-            'missing': [],
-            'source': '设备库匹配',
-        }
-
-    return {
-        'available': False,
-        'devices': [],
-        'missing': device_nids,
-        'source': None,
-    }
-
-
-def match_audit_by_device_library(rec):
-    """
-    预留接口：根据 audit 记录的 Category / Class / Type 去设备库匹配。
-    （等 audit list 格式改成 device 库的格式后启用）
-    目前返回空列表，即不做自动匹配。
-    """
-    return []
-
-
-def get_audit_list_data():
-    """获取所有 Require_State=Must 的 audit list 记录 + 是否有可用设备
-
-    注意：TestDeviceLNV 表中某些行多个字段存在"合并标识"，
-    还原规则：按 id 升序扫描全表，每个字段都用"最近一次出现的非'合并标识'值"覆盖。
-    还原完成后再过滤 Require_State='Must'。
-    """
-    cache_key = 'audit_list_data_v3'   # 再次升版本号，确保缓存刷新
-    cached = cache.get(cache_key)
-    if cached is not None:
-        return cached
-
-    # ---------- 1. 按 id 排序取全部记录 ----------
-    all_records = list(TestDeviceLNV.objects.all().order_by('id'))
-
-    MERGE_TAG = '合并标识'
-
-    # 需要还原的字段列表（涵盖所有可能含"合并标识"的文本字段）
-    restore_fields = [
-        'Category',
-        'Class',
-        'Type',
-        'Covered_range_for_case',
-        'Require_State',
-        'Comments',
-        'Remark',
-        'ODM_status',
-        'Purchase_Plan',
-        'Act_Status',
-        'Device_Know_Issue',
-    ]
-
-    # ---------- 2. 逐行还原每个字段 ----------
-    # current_values 保存"到目前为止每个字段最近一次的有效值"
-    current_values = {f: '' for f in restore_fields}
-
-    filled_records = []
-    for rec in all_records:
-        restored = {}
-        for f in restore_fields:
-            val = getattr(rec, f, None)
-            val_str = str(val).strip() if val is not None else ''
-
-            if val_str == MERGE_TAG:
-                # 本行是合并标识 → 使用"最近有效值"
-                restored[f] = current_values[f]
-            else:
-                # 本行是真实值 → 更新"最近有效值"
-                current_values[f] = val_str
-                restored[f] = val_str
-
-        filled_records.append({
-            'rec': rec,
-            'restored': restored,
-        })
-
-    # ---------- 3. 过滤出 Require_State=Must 的记录 ----------
-    # 注意：过滤要用"还原后"的 Require_State
-    must_records = [
-        item for item in filled_records
-        if (item['restored'].get('Require_State', '') or '').strip().lower() == 'must'
-    ]
-
-    # ---------- 4. 组装输出 ----------
-    result = []
-    for item in must_records:
-        rec = item['rec']
-        r = item['restored']
-        info = check_audit_device_availability(rec)
-
-        result.append({
-            'id': rec.id,
-            'Category': r.get('Category', ''),
-            'Class': r.get('Class', ''),
-            'Type': r.get('Type', ''),
-            'Require_State': r.get('Require_State', ''),
-            'Covered_range_for_case': r.get('Covered_range_for_case', ''),
-            'Comments': r.get('Comments', ''),
-            'Remark': r.get('Remark', ''),
-            'ODM_status': r.get('ODM_status', ''),
-            'Purchase_Plan': r.get('Purchase_Plan', ''),
-            'Act_Status': r.get('Act_Status', ''),
-            'Device_Know_Issue': r.get('Device_Know_Issue', ''),
-            'Device_NIDs': '、'.join(
-                [str(getattr(rec, f'Device{i}', '') or '') for i in range(1, 11)
-                 if getattr(rec, f'Device{i}', None)]
-            ),
-            'Available_Devices': info['devices'],
-            'Missing_NIDs': info['missing'],
-            'Has_Device': info['available'],
-            'Source': info['source'] or '',
-            'Need_Purchase': not info['available'],
-        })
-
-    cache.set(cache_key, result, timeout=300)
-    return result
 # ===================== JSON 接口视图 =====================
 from django.core.cache import cache
 from django.db.models import Q
 
 @csrf_exempt
-@csrf_exempt
 def device_score_view(request):
-    """统一入口：返回模型列表 / 设备评分数据 / Audit list 数据"""
+    """统一入口：返回模型列表 或 设备评分数据"""
     # 返回客户列表（用于前端下拉）
     if request.method == 'GET' and request.GET.get('action') == 'get_models':
         data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
@@ -1297,14 +1102,6 @@ def device_score_view(request):
     if request.method == 'POST' and request.POST.get('action') == 'get_models':
         data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
         return JsonResponse(data, safe=False)
-
-    # 返回 Audit list 数据
-    if request.method == 'GET' and request.GET.get('action') == 'get_audit_list':
-        audit_data = get_audit_list_data()
-        return JsonResponse({'data': audit_data, 'count': len(audit_data)})
-    if request.method == 'POST' and request.POST.get('action') == 'get_audit_list':
-        audit_data = get_audit_list_data()
-        return JsonResponse({'data': audit_data, 'count': len(audit_data)})
 
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
@@ -1314,8 +1111,7 @@ def device_score_view(request):
     if not model:
         return JsonResponse({'error': f'Unknown model: {model_key}'}, status=400)
 
-    # 缓存键改为 _v2 避免旧缓存干扰
-    cache_key = f'device_score_data_{model_key}_v2'
+    cache_key = f'device_score_data_{model_key}'
     cached_data = cache.get(cache_key)
     if cached_data is not None:
         return JsonResponse(cached_data)
@@ -1334,21 +1130,6 @@ def device_score_view(request):
     for dev in devices:
         total, detail = compute_score(dev, today)
         urgency, sug = upgrade_suggestion(dev, total)
-
-        # 同类可用数量（仅展示用）
-        is_monitor = 'monitor' in (dev.DevCtgry or '').lower()
-        same_type = 0
-        try:
-            same_type = model.objects.filter(
-                IntfCtgry=dev.IntfCtgry,
-                DevCtgry=dev.DevCtgry,
-                Devproperties=dev.Devproperties,
-            ).exclude(
-                Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
-            ).count()
-        except Exception:
-            same_type = 0
-
         result.append({
             'id': dev.id,
             'NID': dev.NID,
@@ -1359,7 +1140,7 @@ def device_score_view(request):
             'DevModel': dev.DevModel,
             'DevName': dev.DevName,
             'DevStatus': dev.DevStatus,
-            'Devsize': dev.Devsize or '',
+            'Devsize': dev.Devsize or '',   # 新增容量
             'Score': round(total, 2),
             'Priority': urgency,
             'DevPrice': dev.DevPrice,
@@ -1370,9 +1151,6 @@ def device_score_view(request):
             'TechScore': detail['tech'],
             'EOLScore': detail['eol'],
             'StatusScore': detail['status'],
-            'IsMonitor': is_monitor,
-            'SameTypeAvailable': same_type,
-            'NeedPurchase': urgency in ('紧急更换',),
         })
 
     # ---------- 排序：先按优先级，再按得分降序 ----------

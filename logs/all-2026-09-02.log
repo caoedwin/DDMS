@@ -1,0 +1,997 @@
+[2026-09-02 13:56:58,649] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-09-02 13:56:58,665] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 13:56:58,968] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-02 13:56:58,981] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 13:57:00,266] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-02 13:57:00,364] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-02 13:57:00,440] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-02 13:57:00,886] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47351
+[2026-09-02 13:57:01,730] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 13:57:01,737] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-02 13:57:01: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-09-02 13:57:01,751] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-09-02 13:57:01,890] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-09-02 13:57:01,891] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-09-02 13:57:07,762] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 126667
+[2026-09-02 13:57:07,840] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/back/document_save_2_24px_539656_easyicon.net.png HTTP/1.1" 200 2187
+[2026-09-02 13:57:07,857] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/index.css HTTP/1.1" 200 232694
+[2026-09-02 13:57:08,321] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/image.js HTTP/1.1" 200 26016
+[2026-09-02 13:57:08,610] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js HTTP/1.1" 200 947702
+[2026-09-02 13:57:09,334] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js HTTP/1.1" 200 1931084
+[2026-09-02 13:57:09,636] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/fonts/element-icons.woff HTTP/1.1" 200 28200
+[2026-09-02 13:57:09,752] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 13:57:10,450] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-02 13:57:10: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2026-09-02 13:57:10,467] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 952508
+[2026-09-02 13:57:16,743] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/modelfiles/DDMS_TestDeviceList.zip HTTP/1.1" 200 74525783
+[2026-09-02 14:17:35,802] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 126667
+[2026-09-02 14:17:36,254] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:17:36,820] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-02 14:17:36: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2026-09-02 14:17:36,841] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 952508
+[2026-09-02 14:17:49,043] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/BorrowedDeviceLNV/ HTTP/1.1" 200 78234
+[2026-09-02 14:17:49,409] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:17:50,865] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-02 14:17:50: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/BorrowedDeviceLNV/'>
+[2026-09-02 14:17:50,889] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/BorrowedDeviceLNV/ HTTP/1.1" 200 2147285
+[2026-09-02 14:17:51,370] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/DeviceLNV/Device/2156.jpg HTTP/1.1" 200 201323
+[2026-09-02 14:17:51,374] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2260.jpg
+[2026-09-02 14:17:51,376] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2260.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,387] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/233.jpg
+[2026-09-02 14:17:51,389] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/233.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,397] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/244.jpg
+[2026-09-02 14:17:51,402] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/244.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,422] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2214.jpg
+[2026-09-02 14:17:51,428] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2214.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,429] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1462.jpg
+[2026-09-02 14:17:51,433] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2218.jpg
+[2026-09-02 14:17:51,434] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1462.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,435] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2218.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,443] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/253.jpg
+[2026-09-02 14:17:51,446] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/253.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,453] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/DeviceLNV/Device/1513.jpg HTTP/1.1" 200 215360
+[2026-09-02 14:17:51,454] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/261.jpg
+[2026-09-02 14:17:51,464] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/261.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,469] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/262.jpg
+[2026-09-02 14:17:51,489] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/262.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,496] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/268.jpg
+[2026-09-02 14:17:51,501] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/268.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,504] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/266.jpg
+[2026-09-02 14:17:51,515] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/266.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,520] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/269.jpg
+[2026-09-02 14:17:51,525] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/267.jpg
+[2026-09-02 14:17:51,533] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/267.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,535] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/269.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,542] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2098.jpg
+[2026-09-02 14:17:51,546] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2098.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,550] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1292.jpg
+[2026-09-02 14:17:51,561] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1292.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,595] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/209.jpg
+[2026-09-02 14:17:51,596] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/264.jpg
+[2026-09-02 14:17:51,598] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/264.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,602] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/209.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,624] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/214.jpg
+[2026-09-02 14:17:51,633] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/228.jpg
+[2026-09-02 14:17:51,639] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/214.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,640] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2049.jpg
+[2026-09-02 14:17:51,640] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/228.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,648] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2050.jpg
+[2026-09-02 14:17:51,650] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2049.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,664] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2050.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,679] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1298.jpg
+[2026-09-02 14:17:51,691] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1301.jpg
+[2026-09-02 14:17:51,691] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1298.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,699] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1301.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,708] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/260.jpg
+[2026-09-02 14:17:51,723] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/259.jpg
+[2026-09-02 14:17:51,723] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/260.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,728] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/259.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,733] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1383.jpg
+[2026-09-02 14:17:51,741] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1383.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,755] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1294.jpg
+[2026-09-02 14:17:51,765] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1294.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,765] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1296.jpg
+[2026-09-02 14:17:51,773] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1297.jpg
+[2026-09-02 14:17:51,775] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1296.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,777] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1297.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,792] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1302.jpg
+[2026-09-02 14:17:51,807] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/223.jpg
+[2026-09-02 14:17:51,819] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1302.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,826] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/223.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,853] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1934.jpg
+[2026-09-02 14:17:51,857] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1934.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,863] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2220.jpg
+[2026-09-02 14:17:51,868] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2220.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,893] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1460.jpg
+[2026-09-02 14:17:51,896] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1460.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:51,896] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/246.jpg
+[2026-09-02 14:17:51,900] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/248.jpg
+[2026-09-02 14:17:51,910] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/246.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,911] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/242.jpg
+[2026-09-02 14:17:51,915] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/248.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,922] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/251.jpg
+[2026-09-02 14:17:51,925] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/242.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,929] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/251.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,936] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/252.jpg
+[2026-09-02 14:17:51,945] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/252.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,971] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/243.jpg
+[2026-09-02 14:17:51,981] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/250.jpg
+[2026-09-02 14:17:51,981] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/243.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,989] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/250.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,990] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/254.jpg
+[2026-09-02 14:17:51,998] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/254.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:51,999] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/334.jpg
+[2026-09-02 14:17:52,020] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1065.jpg
+[2026-09-02 14:17:52,023] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/334.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,031] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1065.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,035] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/316.jpg
+[2026-09-02 14:17:52,048] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/316.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,075] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/331.jpg
+[2026-09-02 14:17:52,079] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1492.jpg
+[2026-09-02 14:17:52,079] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/331.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,091] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1046.jpg
+[2026-09-02 14:17:52,091] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1492.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,093] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/317.jpg
+[2026-09-02 14:17:52,097] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1046.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,100] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/344.jpg
+[2026-09-02 14:17:52,103] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/317.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,110] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/319.jpg
+[2026-09-02 14:17:52,113] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/344.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,116] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/319.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,152] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/322.jpg
+[2026-09-02 14:17:52,160] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1066.jpg
+[2026-09-02 14:17:52,161] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/345.jpg
+[2026-09-02 14:17:52,165] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/322.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,168] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1066.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,177] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/341.jpg
+[2026-09-02 14:17:52,177] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/345.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,184] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/341.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,202] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/332.jpg
+[2026-09-02 14:17:52,204] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/337.jpg
+[2026-09-02 14:17:52,211] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/332.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,217] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/337.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,238] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/326.jpg
+[2026-09-02 14:17:52,253] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/326.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,264] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1178.jpg
+[2026-09-02 14:17:52,269] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1178.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,272] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/324.jpg
+[2026-09-02 14:17:52,281] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/324.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,292] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/327.jpg
+[2026-09-02 14:17:52,303] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/327.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,305] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1179.jpg
+[2026-09-02 14:17:52,311] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/321.jpg
+[2026-09-02 14:17:52,314] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1179.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,318] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/321.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,328] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/283.jpg
+[2026-09-02 14:17:52,340] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/283.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,351] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/292.jpg
+[2026-09-02 14:17:52,359] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/294.jpg
+[2026-09-02 14:17:52,360] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/292.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,370] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/294.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,371] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/286.jpg
+[2026-09-02 14:17:52,384] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1550.jpg
+[2026-09-02 14:17:52,386] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/286.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,387] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1551.jpg
+[2026-09-02 14:17:52,393] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1550.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,400] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1551.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,401] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/375.jpg
+[2026-09-02 14:17:52,413] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/375.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,423] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/374.jpg
+[2026-09-02 14:17:52,432] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/374.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,439] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1553.jpg
+[2026-09-02 14:17:52,445] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/289.jpg
+[2026-09-02 14:17:52,447] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1553.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,457] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/281.jpg
+[2026-09-02 14:17:52,457] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/289.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,468] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/281.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,469] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/373.jpg
+[2026-09-02 14:17:52,472] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/373.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,472] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1044.jpg
+[2026-09-02 14:17:52,490] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1044.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,506] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1512.jpg
+[2026-09-02 14:17:52,518] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1512.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,521] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1461.jpg
+[2026-09-02 14:17:52,530] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1461.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,539] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2047.jpg
+[2026-09-02 14:17:52,545] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/338.jpg
+[2026-09-02 14:17:52,550] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/338.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,553] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2047.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,560] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/339.jpg
+[2026-09-02 14:17:52,563] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/339.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,566] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/340.jpg
+[2026-09-02 14:17:52,572] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1552.jpg
+[2026-09-02 14:17:52,575] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/340.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,580] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1552.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,599] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/282.jpg
+[2026-09-02 14:17:52,605] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/307.jpg
+[2026-09-02 14:17:52,606] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/282.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,610] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/307.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,611] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/304.jpg
+[2026-09-02 14:17:52,620] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/304.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,620] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/299.jpg
+[2026-09-02 14:17:52,631] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/290.jpg
+[2026-09-02 14:17:52,631] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/299.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,635] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/290.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,638] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/370.jpg
+[2026-09-02 14:17:52,646] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/370.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,671] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/296.jpg
+[2026-09-02 14:17:52,673] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/291.jpg
+[2026-09-02 14:17:52,675] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/296.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,678] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/291.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,683] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1177.jpg
+[2026-09-02 14:17:52,703] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1177.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,707] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/305.jpg
+[2026-09-02 14:17:52,715] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/288.jpg
+[2026-09-02 14:17:52,716] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/305.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,718] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/288.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,718] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2128.jpg
+[2026-09-02 14:17:52,726] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2128.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,737] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/287.jpg
+[2026-09-02 14:17:52,738] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/287.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:17:52,743] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2129.jpg
+[2026-09-02 14:17:52,745] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2129.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:17:52,758] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/295.jpg
+[2026-09-02 14:17:52,759] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/295.jpg HTTP/1.1" 404 1800
+[2026-09-02 14:39:08,704] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 302 0
+[2026-09-02 14:39:08,733] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 14:39:08,850] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 54645
+[2026-09-02 14:39:08,857] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/test1.css HTTP/1.1" 200 29532
+[2026-09-02 14:39:08,887] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/bootstrap.min.css HTTP/1.1" 200 144883
+[2026-09-02 14:39:08,898] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/sb-admin.css HTTP/1.1" 200 225559
+[2026-09-02 14:39:08,915] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/yellow.jpg HTTP/1.1" 200 81394
+[2026-09-02 14:39:08,984] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 200 2532
+[2026-09-02 14:39:09,064] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 76314
+[2026-09-02 14:39:09,065] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/jquery/jquery.min.js HTTP/1.1" 200 86929
+[2026-09-02 14:39:09,098] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-02 14:39:09,104] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 14:39:10,443] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-02 14:39:10,479] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-02 14:39:10,517] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-02 14:39:10,725] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47351
+[2026-09-02 14:39:10,770] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/calendar2/pignose.calendar.min.css HTTP/1.1" 200 14709
+[2026-09-02 14:39:10,772] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/chartist/chartist.min.css HTTP/1.1" 200 11508
+[2026-09-02 14:39:10,824] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/themify-icons.css HTTP/1.1" 200 18695
+[2026-09-02 14:39:10,828] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/owl.carousel.min.css HTTP/1.1" 200 3016
+[2026-09-02 14:39:10,830] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/font-awesome.min.css HTTP/1.1" 200 41765
+[2026-09-02 14:39:10,834] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/download_UPK/element-ui@2.12.0/lib/theme-chalk/index.css HTTP/1.1" 200 232694
+[2026-09-02 14:39:10,850] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/menubar/sidebar.css HTTP/1.1" 200 17496
+[2026-09-02 14:39:10,850] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/weather-icons.css HTTP/1.1" 200 32590
+[2026-09-02 14:39:10,855] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/helper.css HTTP/1.1" 200 55773
+[2026-09-02 14:39:10,859] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/lib/owl.theme.default.min.css HTTP/1.1" 200 1008
+[2026-09-02 14:39:10,869] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/style.css HTTP/1.1" 200 91486
+[2026-09-02 14:39:10,869] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/bootstrap-icons/font/bootstrap-icons.css HTTP/1.1" 200 73271
+[2026-09-02 14:39:10,879] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/uploadbutton.css HTTP/1.1" 200 175
+[2026-09-02 14:39:10,880] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/home_zerogrid.css HTTP/1.1" 200 4828
+[2026-09-02 14:39:10,920] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/home_menu.css HTTP/1.1" 200 8597
+[2026-09-02 14:39:10,926] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/home_style.css HTTP/1.1" 200 23905
+[2026-09-02 14:39:10,934] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/ElementUI.css HTTP/1.1" 200 232696
+[2026-09-02 14:39:11,016] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/menubar/sidebar.js HTTP/1.1" 200 7681
+[2026-09-02 14:39:11,023] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/admin/assets/fonts/themify.woff?-fvbane HTTP/1.1" 200 0
+[2026-09-02 14:39:11,039] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/preloader/pace.min.js HTTP/1.1" 200 27501
+[2026-09-02 14:39:11,046] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/scripts.js HTTP/1.1" 200 1906
+[2026-09-02 14:39:11,048] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/admin/assets/fonts/themify.ttf?-fvbane HTTP/1.1" 200 0
+[2026-09-02 14:39:11,049] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/jquery.nanoscroller.min.js HTTP/1.1" 200 12440
+[2026-09-02 14:39:11,054] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/bootstrap-icons/font/fonts/bootstrap-icons.woff2?30af91bf14e37666a085fb8a161ff36d HTTP/1.1" 200 92064
+[2026-09-02 14:39:11,056] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/bootstrap.min.js HTTP/1.1" 200 69811
+[2026-09-02 14:39:11,074] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/pignose.init.js HTTP/1.1" 200 258
+[2026-09-02 14:39:11,084] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/circle-progress/circle-progress-init.js HTTP/1.1" 200 1252
+[2026-09-02 14:39:11,130] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 97367
+[2026-09-02 14:39:11,146] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/circle-progress/circle-progress.min.js HTTP/1.1" 200 4462
+[2026-09-02 14:39:11,152] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/fonts/themify.woff?-fvbane HTTP/1.1" 200 56108
+[2026-09-02 14:39:11,155] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/moment.latest.min.js HTTP/1.1" 200 61867
+[2026-09-02 14:39:11,185] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/owl-carousel/owl.carousel-init.js HTTP/1.1" 200 1044
+[2026-09-02 14:39:11,187] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/sparklinechart/sparkline.init.js HTTP/1.1" 200 9974
+[2026-09-02 14:39:11,202] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/date.js HTTP/1.1" 200 764
+[2026-09-02 14:39:11,206] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/pignose.calendar.min.js HTTP/1.1" 200 24271
+[2026-09-02 14:39:11,218] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/owl-carousel/owl.carousel.min.js HTTP/1.1" 200 42860
+[2026-09-02 14:39:11,286] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/sparklinechart/jquery.sparkline.min.js HTTP/1.1" 200 43251
+[2026-09-02 14:39:11,448] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/datatables/jquery.dataTables.js HTTP/1.1" 200 462902
+[2026-09-02 14:39:11,455] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/datapicker.js HTTP/1.1" 200 11813
+[2026-09-02 14:39:11,470] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/prism.min.js HTTP/1.1" 200 8828
+[2026-09-02 14:39:11,495] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/qs.js HTTP/1.1" 200 26204
+[2026-09-02 14:39:11,537] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/lib/calendar-2/semantic.ui.min.js HTTP/1.1" 200 287792
+[2026-09-02 14:39:11,550] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/xlsx.core.min.js HTTP/1.1" 200 480575
+[2026-09-02 14:39:11,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/vue-router.min.js HTTP/1.1" 200 27797
+[2026-09-02 14:39:11,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/table.js HTTP/1.1" 200 29314
+[2026-09-02 14:39:11,647] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/es6/polyfill.min.js HTTP/1.1" 200 97799
+[2026-09-02 14:39:11,673] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/main.js HTTP/1.1" 200 8989
+[2026-09-02 14:39:11,679] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/FileSaver.min.js HTTP/1.1" 200 2613
+[2026-09-02 14:39:11,680] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/axios.min.js HTTP/1.1" 200 13704
+[2026-09-02 14:39:11,689] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/input.js HTTP/1.1" 200 30197
+[2026-09-02 14:39:11,692] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/vue.min.js HTTP/1.1" 200 93680
+[2026-09-02 14:39:11,752] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/table-column.js HTTP/1.1" 200 29272
+[2026-09-02 14:39:11,758] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/icon.js HTTP/1.1" 200 8963
+[2026-09-02 14:39:11,760] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/form.js HTTP/1.1" 200 10523
+[2026-09-02 14:39:11,768] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/dialog.js HTTP/1.1" 200 12452
+[2026-09-02 14:39:11,783] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/date-picker.js HTTP/1.1" 200 192225
+[2026-09-02 14:39:11,848] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/tooltip.js HTTP/1.1" 200 8774
+[2026-09-02 14:39:11,877] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/xlsx/xlsx.js HTTP/1.1" 200 5900
+[2026-09-02 14:39:11,880] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/message.js HTTP/1.1" 200 11465
+[2026-09-02 14:39:11,885] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/pagination.js HTTP/1.1" 200 23027
+[2026-09-02 14:39:11,892] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/es6/babel.min.js HTTP/1.1" 200 791258
+[2026-09-02 14:39:12,055] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/index.js HTTP/1.1" 200 563790
+[2026-09-02 14:39:12,188] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/jinqiu5.jpg HTTP/1.1" 200 76515
+[2026-09-02 14:39:12,200] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/fonts/element-icons.ttf HTTP/1.1" 200 55956
+[2026-09-02 14:39:12,288] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/lu.jpg HTTP/1.1" 200 680519
+[2026-09-02 14:39:12,298] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/qiu1.jpg HTTP/1.1" 200 611283
+[2026-09-02 14:39:12,334] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-02 14:39:12: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-09-02 14:39:12,359] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-09-02 14:39:12,387] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:39:12,405] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-09-02 14:39:12,406] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-09-02 14:39:24,012] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-02 14:39:24,165] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/download_UPK/element-ui@2.12.0/lib/theme-chalk/fonts/element-icons.woff HTTP/1.1" 200 28200
+[2026-09-02 14:39:24,364] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:39:24,747] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Desk lamp' 无法匹配到设备
+[2026-09-02 14:39:24,767] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Light Meter_TES1336A' 无法匹配到设备
+[2026-09-02 14:39:24,774] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Chroma Meter_CS-100A' 无法匹配到设备
+[2026-09-02 14:39:24,780] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo 定制化performance test 治具（黑板+反光条）' 无法匹配到设备
+[2026-09-02 14:39:24,794] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:24,804] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '奥睿科 SSD（TBT3 interface）' 无法匹配到设备
+[2026-09-02 14:39:24,813] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Power Z Tool（POWER-Z KM003C）支持高压充电的项目' 无法匹配到设备
+[2026-09-02 14:39:24,822] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联 Type-C扩展坞8K60Hz投屏USB-C3.2转HDMI分线器' 无法匹配到设备
+[2026-09-02 14:39:24,829] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'OWC Thunderbolt4 HUB' 无法匹配到设备
+[2026-09-02 14:39:24,835] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'SanDisk 至尊超极速 CZ880 USB3.1' 无法匹配到设备
+[2026-09-02 14:39:24,844] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '闪迪16GB USB2.0 U盘 CZ50酷刃 黑红色' 无法匹配到设备
+[2026-09-02 14:39:24,852] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '闪迪SDDDC4' 无法匹配到设备
+[2026-09-02 14:39:24,859] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'HUAWEI TypeC 耳机' 无法匹配到设备
+[2026-09-02 14:39:24,865] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '小米（MI）降噪耳机Type-C版' 无法匹配到设备
+[2026-09-02 14:39:24,877] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'SAMSUNG T7 Touch  MU-PC500S' 无法匹配到设备
+[2026-09-02 14:39:24,887] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '希捷固态移动硬盘500GB USB3.2 STJP500400' 无法匹配到设备
+[2026-09-02 14:39:24,895] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'SanDisk Extreme Pro® Portable SSD' 无法匹配到设备
+[2026-09-02 14:39:24,914] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Iphone Xs/13 or later' 无法匹配到设备
+[2026-09-02 14:39:24,924] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '荣耀V20 or 华为P50 or later (Harmony OS)' 无法匹配到设备
+[2026-09-02 14:39:25,989] [views.py:1547] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-02 14:39:25,990] [views.py:1508] [views:get_requirement_items] [WARNING]- Optional 组 'At least 3 vendor device
+(Type for reference) ' 需求 86 台，仅匹配到 2 台
+[2026-09-02 14:39:26,000] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Intel Gatkex Creek (Need 5 devices for daisy chain)' 无法匹配到设备
+[2026-09-02 14:39:26,011] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'OWC Thunderbolt4 HUB' 无法匹配到设备
+[2026-09-02 14:39:26,019] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Kensinton TBT4 dock' 无法匹配到设备
+[2026-09-02 14:39:26,028] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Thinkpad TBT4 Dock' 无法匹配到设备
+[2026-09-02 14:39:26,039] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Intel Tapex Creek' 无法匹配到设备
+[2026-09-02 14:39:26,048] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'AKiTiO Thunder3 PCIe SSD' 无法匹配到设备
+[2026-09-02 14:39:26,058] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Sumsang Thunderbolt3 X5 SSD' 无法匹配到设备
+[2026-09-02 14:39:26,070] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Thunderbolt 3 cable 40G 0.5M/0.7M' 无法匹配到设备
+[2026-09-02 14:39:26,182] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:26,192] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '闪迪大师 SDPH81G-ZBAND Armor ATD系列 (TBT3)' 无法匹配到设备
+[2026-09-02 14:39:26,487] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-02 14:39:26,497] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'SD UHS-I V30 128G' 无法匹配到设备
+[2026-09-02 14:39:26,506] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'SD UHS-II V90 128G' 无法匹配到设备
+[2026-09-02 14:39:26,515] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'MMC 1G' 无法匹配到设备
+[2026-09-02 14:39:26,524] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'MMC 512M' 无法匹配到设备
+[2026-09-02 14:39:26,536] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Micro-SD SDXC-I V30 256G' 无法匹配到设备
+[2026-09-02 14:39:26,546] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Mini SD 8G' 无法匹配到设备
+[2026-09-02 14:39:26,557] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ScanDisk 1GB' 无法匹配到设备
+[2026-09-02 14:39:26,573] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Trek 8GB' 无法匹配到设备
+[2026-09-02 14:39:26,604] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-02 14:39:26,704] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-02 14:39:26,717] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Apple USB-C to  lighting' 无法匹配到设备
+[2026-09-02 14:39:26,762] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-02 14:39:26,774] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Apple USB-C VGA multiport adapter' 无法匹配到设备
+[2026-09-02 14:39:26,787] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Apple USB-C HDMI multiport adapter' 无法匹配到设备
+[2026-09-02 14:39:26,802] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '苹果原装USB-C至Digital AV Multiport Adapter转换器1K2' 无法匹配到设备
+[2026-09-02 14:39:26,814] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '苹果A 1621多端口转换器' 无法匹配到设备
+[2026-09-02 14:39:26,825] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Sony M2 Adaptor 卡套' 无法匹配到设备
+[2026-09-02 14:39:26,833] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to VGA' 无法匹配到设备
+[2026-09-02 14:39:26,842] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联Type-C转HDMI2.1转换器线 ' 无法匹配到设备
+[2026-09-02 14:39:26,853] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to HDMI' 无法匹配到设备
+[2026-09-02 14:39:26,860] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to HDMI+VGA HUB' 无法匹配到设备
+[2026-09-02 14:39:26,870] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to DP' 无法匹配到设备
+[2026-09-02 14:39:26,877] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联 USB转RJ45网线转接头 百兆有线网卡转换器 适30304' 无法匹配到设备
+[2026-09-02 14:39:27,109] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:27,122] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Qreator27 or ThinkVision T27p-30 4K' 无法匹配到设备
+[2026-09-02 14:39:27,134] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Thinkvision P27pz-30 4K' 无法匹配到设备
+[2026-09-02 14:39:27,145] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'LG Ultrafine 5K or LG 34WK95U  5K' 无法匹配到设备
+[2026-09-02 14:39:27,157] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'P40w-20' 无法匹配到设备
+[2026-09-02 14:39:27,174] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '飞利浦27B1U7903 ' 无法匹配到设备
+[2026-09-02 14:39:27,186] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'P24h-2L or ThinkVision  P24h-30' 无法匹配到设备
+[2026-09-02 14:39:27,195] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '三星G95NC' 无法匹配到设备
+[2026-09-02 14:39:27,206] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Dell U3224KB' 无法匹配到设备
+[2026-09-02 14:39:27,213] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '戴尔（DELL） UP3218K 8K 显示器' 无法匹配到设备
+[2026-09-02 14:39:27,223] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'TV:索尼 KDL-60LX900 3D电视(HDMI1.4)' 无法匹配到设备
+[2026-09-02 14:39:27,237] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '联想 CH310 HDMI线1.4版  2米' 无法匹配到设备
+[2026-09-02 14:39:27,248] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '山泽（SAMZHE）SM-5530 豪华镀金 HDMI2.0 3M' 无法匹配到设备
+[2026-09-02 14:39:27,259] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '开博尔Kaiboer光纤HDMI线2.0版高清无损传输4K 15米' 无法匹配到设备
+[2026-09-02 14:39:27,271] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '品胜 Micro USB数据线  1米' 无法匹配到设备
+[2026-09-02 14:39:27,282] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联 Micro USB数据线  1米' 无法匹配到设备
+[2026-09-02 14:39:27,292] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '飞利浦 HDMI2.1版8K数字高清线 1.5米 SWL4281B/93' 无法匹配到设备
+[2026-09-02 14:39:27,299] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '菲伯尔(FIBBR) DP1.4光纤高清线  黑色 2米' 无法匹配到设备
+[2026-09-02 14:39:27,309] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '益盾（YIDUN）3D红蓝眼镜赠光盘' 无法匹配到设备
+[2026-09-02 14:39:27,524] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:27,535] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'HDMI display Monitor （带声音和HDMI连接线)' 无法匹配到设备
+[2026-09-02 14:39:27,543] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Digital audio Speaker' 无法匹配到设备
+[2026-09-02 14:39:27,556] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'USB 3.0 Debug Cable' 无法匹配到设备
+[2026-09-02 14:39:27,568] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Touch Tool:Part number TR10500-001-PT3 High Precision' 无法匹配到设备
+[2026-09-02 14:39:27,582] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Touch Tool:Part number TR10516-001-RA Tool' 无法匹配到设备
+[2026-09-02 14:39:27,597] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Touchpen测试治具: TR10974-004 Stylus Attachment, TR10974-005 Stylus Attachment,TR10989-001 Stylus Force Test Tool,TR10974-006 Stylus Rail Assembly,TR10975-001 RA Mounting Bracket,TR10976-001 PT3 Mounting Bracket,Stackable Weight 5 gram/20 gram/100 gram' 无法匹配到设备
+[2026-09-02 14:39:27,607] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'BT Speaker' 无法匹配到设备
+[2026-09-02 14:39:27,617] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'USB3.0 U disk' 无法匹配到设备
+[2026-09-02 14:39:27,625] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'DP显示器（带声音和DP连接线）' 无法匹配到设备
+[2026-09-02 14:39:27,634] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'MUTT ConnEx-C' 无法匹配到设备
+[2026-09-02 14:39:27,645] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Type-C to Type-C Cable' 无法匹配到设备
+[2026-09-02 14:39:27,656] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '天平，砝码' 无法匹配到设备
+[2026-09-02 14:39:27,666] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'MCCI  Type-C SuperMUTT Model 3501' 无法匹配到设备
+[2026-09-02 14:39:27,675] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Netgear R6300 AP' 无法匹配到设备
+[2026-09-02 14:39:27,684] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'MCCI Model 3141 USB4TM Switch' 无法匹配到设备
+[2026-09-02 14:39:27,694] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Traduci board' 无法匹配到设备
+[2026-09-02 14:39:27,708] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'RN52 radio/BM62 radio' 无法匹配到设备
+[2026-09-02 14:39:27,720] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'TBT4 Dock*3' 无法匹配到设备
+[2026-09-02 14:39:27,730] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '雷蛇（Razer）北海巨妖 Kraken 游戏耳麦' 无法匹配到设备
+[2026-09-02 14:39:27,738] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'M-Audio BX5D3 音箱' 无法匹配到设备
+[2026-09-02 14:39:27,747] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联20850国标美标耳机转换头' 无法匹配到设备
+[2026-09-02 14:39:28,195] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'at least 3' 无法匹配到任何设备
+[2026-09-02 14:39:28,315] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'Our recommended device.
+Can be replaced by the same models and specifications.' 无法匹配到任何设备
+[2026-09-02 14:39:28,326] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '全区-韩版蓝光-钢铁侠/Iron Man' 无法匹配到设备
+[2026-09-02 14:39:28,333] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '全区-阿凡达/泰坦尼克号套餐3D蓝光' 无法匹配到设备
+[2026-09-02 14:39:28,343] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '爱丽丝梦游仙境 3D' 无法匹配到设备
+[2026-09-02 14:39:28,354] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '4K+HDR 蓝光 银河护卫队2 双碟/全区.中文(美)' 无法匹配到设备
+[2026-09-02 14:39:28,367] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '3D蓝光 复仇者联盟3无限战争' 无法匹配到设备
+[2026-09-02 14:39:28,584] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-02 14:39:28,594] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'adjustable resistor link to USB cable' 无法匹配到设备
+[2026-09-02 14:39:28,603] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '易速ICGW08 【PDU FW：V1.2.8&1.2.9】' 无法匹配到设备
+[2026-09-02 14:39:28,615] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Iphone 29W type-c port adapter' 无法匹配到设备
+[2026-09-02 14:39:28,625] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Metal Finger (diameter = 18&23 mm)' 无法匹配到设备
+[2026-09-02 14:39:28,634] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Real Bubee 皮肤水分测试仪' 无法匹配到设备
+[2026-09-02 14:39:28,646] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:28,655] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'The capacitance pen' 无法匹配到设备
+[2026-09-02 14:39:28,667] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'AC\DC switch (electric relay)' 无法匹配到设备
+[2026-09-02 14:39:28,679] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Touchpanel Stress fixture' 无法匹配到设备
+[2026-09-02 14:39:28,689] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'D-Link DIR-890L' 无法匹配到设备
+[2026-09-02 14:39:28,699] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '华硕（ASUS）RT-AC88U' 无法匹配到设备
+[2026-09-02 14:39:28,708] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'TP-LINK WDR7660' 无法匹配到设备
+[2026-09-02 14:39:28,717] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ASUS RT-AX88U' 无法匹配到设备
+[2026-09-02 14:39:28,726] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ASUS XD4' 无法匹配到设备
+[2026-09-02 14:39:28,736] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Huawei AR101W-S' 无法匹配到设备
+[2026-09-02 14:39:28,745] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '360 5pro' 无法匹配到设备
+[2026-09-02 14:39:28,755] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'CISCO AIR-AP1815I-H-K9' 无法匹配到设备
+[2026-09-02 14:39:28,763] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'H3C EWP-WA5320-SI-FIT' 无法匹配到设备
+[2026-09-02 14:39:28,772] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ASUS GT-AXE11000' 无法匹配到设备
+[2026-09-02 14:39:28,782] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'NETGEAR RAXE500' 无法匹配到设备
+[2026-09-02 14:39:28,791] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ThundeRobot RA66' 无法匹配到设备
+[2026-09-02 14:39:28,803] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'HUAWEI AX6' 无法匹配到设备
+[2026-09-02 14:39:28,813] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Aruba AP-505' 无法匹配到设备
+[2026-09-02 14:39:28,823] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'TP-Link AX5400' 无法匹配到设备
+[2026-09-02 14:39:28,837] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'TP-Link Archer BE900' 无法匹配到设备
+[2026-09-02 14:39:28,847] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Tenda AX2 Pro' 无法匹配到设备
+[2026-09-02 14:39:28,856] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Xiaomi AX6000' 无法匹配到设备
+[2026-09-02 14:39:28,867] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Linksys MX5501' 无法匹配到设备
+[2026-09-02 14:39:28,879] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'HUAWEI AR611W-S' 无法匹配到设备
+[2026-09-02 14:39:28,889] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '小米WIFI7' 无法匹配到设备
+[2026-09-02 14:39:28,904] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '华为路由 BE3 Pro' 无法匹配到设备
+[2026-09-02 14:39:28,916] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ASUS RT-BE96U BE19000 802.11BE Tri-Band Performance WiFi 7' 无法匹配到设备
+[2026-09-02 14:39:29,427] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:29,437] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ez share 8G' 无法匹配到设备
+[2026-09-02 14:39:29,449] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:29,473] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '漫步者（EDIFIER）W280BT ' 无法匹配到设备
+[2026-09-02 14:39:29,482] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '索尼（SONY） WI-XB400' 无法匹配到设备
+[2026-09-02 14:39:29,494] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '三星 SAMSUNG Galaxy Buds' 无法匹配到设备
+[2026-09-02 14:39:29,502] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Apple AirPods Pro ' 无法匹配到设备
+[2026-09-02 14:39:29,512] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '华为（ HUAWEI）FreeBuds3 ' 无法匹配到设备
+[2026-09-02 14:39:29,520] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '酷狗（KUGOU）M3能量圈' 无法匹配到设备
+[2026-09-02 14:39:29,530] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '兰士顿 L5C' 无法匹配到设备
+[2026-09-02 14:39:29,541] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'QCY T1C' 无法匹配到设备
+[2026-09-02 14:39:29,550] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'QCY T8S真无线蓝牙耳机' 无法匹配到设备
+[2026-09-02 14:39:29,558] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '华为骨传导蓝牙耳机' 无法匹配到设备
+[2026-09-02 14:39:29,566] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '索爱（soaiy）SL6真无线蓝牙耳机' 无法匹配到设备
+[2026-09-02 14:39:29,576] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '酷狗【5级通话降噪】蓝牙耳机入耳式' 无法匹配到设备
+[2026-09-02 14:39:29,587] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '索尼（SONY）WF-1000XM4 真无线蓝牙降噪耳机' 无法匹配到设备
+[2026-09-02 14:39:29,602] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '华为（HUAWEI）HUAWEI FreeBuds 5半入耳式降噪蓝牙耳机' 无法匹配到设备
+[2026-09-02 14:39:29,612] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '三星（SAMSUNG）Galaxy Buds2 Pro' 无法匹配到设备
+[2026-09-02 14:39:29,619] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '华为FreeBuds Pro 3' 无法匹配到设备
+[2026-09-02 14:39:29,629] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '漫步者（EDIFIER）Zero Air' 无法匹配到设备
+[2026-09-02 14:39:29,638] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '倍思 M2s 真无线蓝牙耳机' 无法匹配到设备
+[2026-09-02 14:39:29,645] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '小米（MI）Redmi Buds 5' 无法匹配到设备
+[2026-09-02 14:39:29,656] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'OPPO Enco Air3' 无法匹配到设备
+[2026-09-02 14:39:29,667] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '索尼（SONY）WF-1000XM5 真无线蓝牙降噪耳机 新一代降噪豆 智能AI 蓝牙5.3 黑色' 无法匹配到设备
+[2026-09-02 14:39:29,682] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'vivo TWS 3 Pro 真无线Hi-Fi耳机 蓝图 无感体温监测 49dB双芯降噪 无损音质 通用苹果小米华为手机' 无法匹配到设备
+[2026-09-02 14:39:29,696] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'BolaButty Bluetooth Speaker' 无法匹配到设备
+[2026-09-02 14:39:29,708] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'JBL PULSE4 音乐脉动四代' 无法匹配到设备
+[2026-09-02 14:39:29,718] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Surface Precision Mouse' 无法匹配到设备
+[2026-09-02 14:39:29,730] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '微软（Microsoft）Arc Touch蓝牙鼠标' 无法匹配到设备
+[2026-09-02 14:39:29,742] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '微软 Designer蓝牙鼠标' 无法匹配到设备
+[2026-09-02 14:39:29,752] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（G）G603 LIGHTSPEED ' 无法匹配到设备
+[2026-09-02 14:39:29,762] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '小米无线蓝牙双模鼠标' 无法匹配到设备
+[2026-09-02 14:39:29,772] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '英菲克（INPHIC) PM9bS' 无法匹配到设备
+[2026-09-02 14:39:29,780] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '戴尔（DELL）WM615' 无法匹配到设备
+[2026-09-02 14:39:29,790] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（Logitech）MX Master 3S' 无法匹配到设备
+[2026-09-02 14:39:29,799] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（G）G304 LIGHTSPEED' 无法匹配到设备
+[2026-09-02 14:39:29,806] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '华为蓝牙鼠标(第二代)青春版 ' 无法匹配到设备
+[2026-09-02 14:39:29,817] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '雷柏（Rapoo） MT760L' 无法匹配到设备
+[2026-09-02 14:39:29,826] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '联想YOGA M5' 无法匹配到设备
+[2026-09-02 14:39:29,837] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '雷蛇(Razer)炼狱蝰蛇V2专业版' 无法匹配到设备
+[2026-09-02 14:39:29,847] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '前行者可充电式无线蓝牙双模机械鼠标' 无法匹配到设备
+[2026-09-02 14:39:29,857] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '英菲克（INPHIC）IN9无线蓝牙鼠标' 无法匹配到设备
+[2026-09-02 14:39:29,868] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '微软（Microsoft）微软通用折叠键盘' 无法匹配到设备
+[2026-09-02 14:39:29,880] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（Logitech）MX Keys 键盘' 无法匹配到设备
+[2026-09-02 14:39:29,892] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '米物（MIIIW）苹果电脑蓝牙键盘' 无法匹配到设备
+[2026-09-02 14:39:29,900] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '英菲克（INPHIC）V780B' 无法匹配到设备
+[2026-09-02 14:39:29,912] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '雷蛇 Razer 黑寡妇蜘蛛V3无线版' 无法匹配到设备
+[2026-09-02 14:39:29,920] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '达尔优（dareu）A98三模热插拔游戏办公机械键盘' 无法匹配到设备
+[2026-09-02 14:39:29,932] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '樱桃（CHERRY）MX3.0S无线键盘' 无法匹配到设备
+[2026-09-02 14:39:29,940] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '戴尔（DELL）蓝牙键鼠套装 KM7321W黑' 无法匹配到设备
+[2026-09-02 14:39:29,953] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'VGN S99 三模连接 蓝牙/无线 客制化键盘' 无法匹配到设备
+[2026-09-02 14:39:29,963] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（G）G913蓝牙无线有线三模机械键盘' 无法匹配到设备
+[2026-09-02 14:39:30,855] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'At least 2' 无法匹配到任何设备
+[2026-09-02 14:39:30,922] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '屏蔽箱需要的设备' 无法匹配到任何设备
+[2026-09-02 14:39:30,939] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:30,949] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '优越者(UNITEK)usb转网口 免驱 rj45外置网卡 百兆有线网口 苹果/联想笔记本电脑有线网络转换器 Y-1468BK' 无法匹配到设备
+[2026-09-02 14:39:30,958] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '毕亚兹 USB转RJ45网线接口 USB2.0百兆有线网卡 苹果Mac小米盒子笔记本电脑网口转换器 WIN免驱 ZH99-白' 无法匹配到设备
+[2026-09-02 14:39:30,969] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '飞利浦 USB分线器3.0 USB网卡 外置网口 3口USB转RJ45转换器 USB3.0 键盘鼠标 SWR1656/93(PHILIPS)' 无法匹配到设备
+[2026-09-02 14:39:30,977] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '小米（MI）USB-C转VGA/千兆网口多功能转接器 Type-C拓展坞转接线 PD3.0快充' 无法匹配到设备
+[2026-09-02 14:39:30,988] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '誉拓 网线接口网口转换器USB/Type-c网络转接头联想华硕苹果Macbook电脑网卡 USB-C(Type-C) 3.0 百兆 银色' 无法匹配到设备
+[2026-09-02 14:39:30,998] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联（UGREEN）USB百兆有线网卡 USB转RJ45网线接口 USB分线器2.0 苹果Mac小米盒子网口转换器接U盘 黑 30298' 无法匹配到设备
+[2026-09-02 14:39:31,009] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联（UGREEN）千兆有线网卡 USB转RJ45网线接口 USB3.0外置网口转换器 任天堂Switch转接器 黑色 2025' 无法匹配到设备
+[2026-09-02 14:39:31,023] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '毕亚兹(biaze) USB分线器 TYPE-C转USB HUB集线器 macbook扩展分线器 带百兆网卡 支持苹果Mac小米 ZH29-PC ' 无法匹配到设备
+[2026-09-02 14:39:31,034] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '秋叶原（CHOSEAL）Type-C转百兆有线网卡RJ45网线接口 适用苹果Mac 轻薄笔记本电脑网口转换器 银色QS9534B ' 无法匹配到设备
+[2026-09-02 14:39:31,043] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '山泽(SAMZHE)USB3.0千兆有线网卡转RJ45网线接口转换器 适用小米盒子微软surface接外置网口转接头UW013 ' 无法匹配到设备
+[2026-09-02 14:39:31,050] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '优越者Type-C扩展坞 千兆网卡带3口HUB usb3.0分线器苹果华为小米笔记本电脑外置rj45网线网口转换器 Y-3083W' 无法匹配到设备
+[2026-09-02 14:39:31,062] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '飞利浦(PHILIPS)type-c扩展坞 usb-c转hdmi网口拓展坞分线器适用华为苹果电脑转换器macbook雷电3网线转接头' 无法匹配到设备
+[2026-09-02 14:39:31,073] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '绿联Type-C扩展坞通用iPadPro苹果M1电脑MacBook华为笔记本USB-C转HDMI雷电3转换器4K拓展坞网口转接头分线器' 无法匹配到设备
+[2026-09-02 14:39:31,087] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '倍思 Type-C扩展坞 苹果MacBook华为笔记本电脑拓展坞4K投屏iPadPro平板电脑转接头雷电3分线器转换器' 无法匹配到设备
+[2026-09-02 14:39:31,102] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '威联通（QNAP）QNA-T310G1T Thunderbolt 3 雷电3 转换10GbE 万兆网络存储转换器 NAS配件' 无法匹配到设备
+[2026-09-02 14:39:31,904] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:31,916] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'The machine can be used as a server is OK ' 无法匹配到任何设备
+[2026-09-02 14:39:31,929] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '1MORE万魔 好声音入耳式耳机1M301 金色 低音震撼 三键式线控' 无法匹配到设备
+[2026-09-02 14:39:31,940] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'JBL TUNE520BT' 无法匹配到设备
+[2026-09-02 14:39:31,999] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '1 out of 3
+(if UUT support 3.5 mm audio jack)' 无法匹配到任何设备
+[2026-09-02 14:39:32,009] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Konica CS100-A' 无法匹配到设备
+[2026-09-02 14:39:32,046] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'CA-DP40(主机)+CA-VP427(探头)' 无法匹配到设备
+[2026-09-02 14:39:32,052] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'X-rite i1Display Pro' 无法匹配到设备
+[2026-09-02 14:39:32,059] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'X-Rite i1D3HL-i1D3 OEM High Luminance Device' 无法匹配到设备
+[2026-09-02 14:39:32,067] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Hover test fixture' 无法匹配到设备
+[2026-09-02 14:39:32,075] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'X-Rite ColorChecker 24' 无法匹配到设备
+[2026-09-02 14:39:32,083] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'eSENSE D704 bluetooth receiver' 无法匹配到设备
+[2026-09-02 14:39:32,108] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:32,115] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Computer' 无法匹配到设备
+[2026-09-02 14:39:32,124] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Raspberry' 无法匹配到设备
+[2026-09-02 14:39:32,133] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'UARM Swift' 无法匹配到设备
+[2026-09-02 14:39:32,140] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Network Switch' 无法匹配到设备
+[2026-09-02 14:39:32,151] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Router' 无法匹配到设备
+[2026-09-02 14:39:32,160] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Type-C/USB 3.0 to LAN' 无法匹配到设备
+[2026-09-02 14:39:32,169] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'LAN Cable' 无法匹配到设备
+[2026-09-02 14:39:32,181] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Camera for Raspberry*' 无法匹配到设备
+[2026-09-02 14:39:32,193] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Shelf for Raspberry camera' 无法匹配到设备
+[2026-09-02 14:39:32,204] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'MicroUSB' 无法匹配到设备
+[2026-09-02 14:39:32,215] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'ScienceMosaic LatencyKit' 无法匹配到设备
+[2026-09-02 14:39:32,226] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '4K(120HZ or above)' 无法匹配到设备
+[2026-09-02 14:39:32,242] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Press Fixture' 无法匹配到设备
+[2026-09-02 14:39:32,253] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 'Iphone 29W/30W type-c port adapter' 无法匹配到设备
+[2026-09-02 14:39:32,261] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '倍思 氮化镓GaN快充充电器 65W/120W' 无法匹配到设备
+[2026-09-02 14:39:32,266] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '紫米65W' 无法匹配到设备
+[2026-09-02 14:39:32,276] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '小米GaN 65W type-c充电器' 无法匹配到设备
+[2026-09-02 14:39:32,283] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '联想thinkplus 口红电源适配器 65W Type-C 黑色' 无法匹配到设备
+[2026-09-02 14:39:32,319] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-02 14:39:32,392] [views.py:1497] [views:get_requirement_items] [WARNING]- Optional 组 'At least one Moto phone needed' 无法匹配到任何设备
+[2026-09-02 14:39:32,409] [views.py:1416] [views:get_requirement_items] [WARNING]- Must 记录 '联想小新学习平板12.7英寸' 无法匹配到设备
+[2026-09-02 14:39:32,415] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 8.13s, 共 4 项
+[2026-09-02 14:39:34,487] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 2.07s, 共 0 个项目
+[2026-09-02 14:39:34,496] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:39:34,497] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:41:13,733] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week-page/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 646, in device_demand_week_page
+    return render(request, 'TestDeviceLNV/device_demand_week.html')
+  File "C:\Python372\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\library.py", line 192, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 260, in rbac_menu
+    menu_data = get_structure_data(request)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 11, in get_structure_data
+    menu = request.session[settings.SESSION_MENU_KEY]
+  File "C:\Python372\mecheck\lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+KeyError: 'awesome'
+[2026-09-02 14:41:13,745] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 302 0
+[2026-09-02 14:41:13,756] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 14:41:13,805] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-02 14:41:13,811] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 14:41:17,592] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-02 14:41:17,607] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-02 14:41:17,629] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-02 14:41:17,633] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 14:41:17,633] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-09-02 14:41:17,668] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:41:17,670] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:41:17,759] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:41:21,660] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38274
+[2026-09-02 14:41:21,893] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/kiwi.jpg HTTP/1.1" 200 83786
+[2026-09-02 14:41:22,140] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:41:30,668] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-02 14:41:30,869] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 14:41:30,869] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-09-02 14:41:30,875] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:41:30,876] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:41:30,948] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:41:43,308] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-02 14:41:43,407] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 14:41:43,409] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-09-02 14:41:43,438] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:41:43,441] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:41:43,447] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:41:51,539] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-02 14:41:51,705] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-02 14:41:51,709] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-02 14:41:51,740] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-02 14:41:59,117] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-02 14:41:59,208] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-02 14:41:59,225] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-02 14:41:59,234] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-02 14:41:59,397] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-02 14:41:59,495] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 14:41:59,495] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-09-02 14:41:59,502] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:41:59,503] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:41:59,559] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:43:12,791] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2026-09-02 14:43:12,795] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 14:43:12,850] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2026-09-02 14:43:12,856] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 14:43:12,886] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-02 14:43:12,906] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-02 14:43:12,923] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-02 14:43:13,005] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 303386
+[2026-09-02 14:43:15,682] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-02 14:43:15,710] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-02 14:43:15,743] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-02 14:43:15,749] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 14:43:15,749] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-09-02 14:43:15,772] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:43:15,774] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:43:15,876] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-02 14:43:15,884] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:43:21,215] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/ HTTP/1.1" 200 38274
+[2026-09-02 14:43:21,282] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-02 14:43:21,301] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-02 14:43:21,311] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-02 14:43:21,442] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:43:35,121] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-02 14:43:35,197] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-02 14:43:35,232] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-02 14:43:35,240] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-02 14:43:35,399] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-02 14:43:35,483] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 14:43:35,483] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-09-02 14:43:35,491] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:43:35,492] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:43:35,545] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 14:45:31,956] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-02 14:45:32,048] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-02 14:45:32,065] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-02 14:45:32,080] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-02 14:45:32,246] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-02 14:45:32,333] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 14:45:32,334] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-09-02 14:45:32,340] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-09-02 14:45:32,341] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-09-02 14:45:32,378] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 15:10:07,786] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-02 15:10:07,844] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-02 15:10:07,870] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-02 15:10:07,889] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-02 15:10:08,029] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-02 15:10:08,107] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-02 15:10:08,151] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-02 15:10:09,769] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.66s, 共 390 个项目
+[2026-09-02 15:10:09,795] [views.py:1239] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.03s, 有效项目: 389
+[2026-09-02 15:10:10,226] [views.py:1272] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 0.01s, 共 227 周
+[2026-09-02 15:10:10,239] [views.py:1301] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.01s, 输出 675 条
+[2026-09-02 15:10:10,242] [views.py:1306] [views:device_demand_week_view] [INFO]- 总耗时: 2.14s
+[2026-09-02 15:10:10,267] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 352081
+[2026-09-03 07:52:53,180] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week-page/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 646, in device_demand_week_page
+    return render(request, 'TestDeviceLNV/device_demand_week.html')
+  File "C:\Python372\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\library.py", line 192, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 260, in rbac_menu
+    menu_data = get_structure_data(request)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 11, in get_structure_data
+    menu = request.session[settings.SESSION_MENU_KEY]
+  File "C:\Python372\mecheck\lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+KeyError: 'awesome'
+[2026-09-03 07:52:53,194] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 302 0
+[2026-09-03 07:52:53,226] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-03 07:52:53,353] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2026-09-03 07:52:53,358] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-03 07:52:53,405] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 07:52:53,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-03 07:52:53,426] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-03 07:52:55,260] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-03 07:52:55,298] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-03 07:52:55,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-03 07:52:55,345] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-03 07:52:56,790] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-03 07:52:56,800] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-03 07:52:56,803] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 4 项
+[2026-09-03 07:52:56,948] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.60s, 共 390 个项目
+[2026-09-03 07:52:56,968] [views.py:1239] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.02s, 有效项目: 389
+[2026-09-03 07:52:57,422] [views.py:1272] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 0.01s, 共 227 周
+[2026-09-03 07:52:57,439] [views.py:1301] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.02s, 输出 675 条
+[2026-09-03 07:52:57,442] [views.py:1306] [views:device_demand_week_view] [INFO]- 总耗时: 2.10s
+[2026-09-03 07:52:57,485] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 352081
+[2026-09-03 07:52:57,522] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 59
+[2026-09-03 07:52:58,495] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.69s, 共 390 个项目
+[2026-09-03 07:52:58,514] [views.py:1239] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.02s, 有效项目: 389
+[2026-09-03 07:52:58,924] [views.py:1272] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 0.01s, 共 227 周
+[2026-09-03 07:52:58,938] [views.py:1301] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.01s, 输出 675 条
+[2026-09-03 07:52:58,940] [views.py:1306] [views:device_demand_week_view] [INFO]- 总耗时: 2.14s
+[2026-09-03 07:52:58,964] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 352081
+[2026-09-03 07:52:59,068] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 07:52:59,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 07:53:04,791] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 38274
+[2026-09-03 07:53:04,884] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 07:53:04,901] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 07:53:04,920] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 07:53:05,029] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 07:53:50,175] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-03 07:53:50,280] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 07:53:50,290] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 07:53:50,307] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 07:53:50,419] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 07:53:50,525] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 352081
+[2026-09-03 07:53:50,534] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 07:56:11,222] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/BorrowedDeviceLNV/ HTTP/1.1" 200 78234
+[2026-09-03 07:56:11,320] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/index.css HTTP/1.1" 200 232694
+[2026-09-03 07:56:11,335] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/Element/image.js HTTP/1.1" 200 26016
+[2026-09-03 07:56:11,727] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/css/fonts/element-icons.woff HTTP/1.1" 200 28200
+[2026-09-03 07:56:11,850] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 07:56:13,261] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-03 07:56:13: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/BorrowedDeviceLNV/'>
+[2026-09-03 07:56:13,284] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/BorrowedDeviceLNV/ HTTP/1.1" 200 2147285
+[2026-09-03 07:56:13,690] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/233.jpg
+[2026-09-03 07:56:13,692] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/233.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,708] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/DeviceLNV/Device/1513.jpg HTTP/1.1" 200 215360
+[2026-09-03 07:56:13,737] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2260.jpg
+[2026-09-03 07:56:13,743] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/244.jpg
+[2026-09-03 07:56:13,749] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2260.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:13,749] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/DeviceLNV/Device/2156.jpg HTTP/1.1" 200 201323
+[2026-09-03 07:56:13,750] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/244.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,753] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2214.jpg
+[2026-09-03 07:56:13,770] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2214.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:13,786] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1462.jpg
+[2026-09-03 07:56:13,797] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1462.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:13,805] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2218.jpg
+[2026-09-03 07:56:13,808] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2218.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:13,829] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/253.jpg
+[2026-09-03 07:56:13,839] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/253.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,847] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/268.jpg
+[2026-09-03 07:56:13,849] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/261.jpg
+[2026-09-03 07:56:13,850] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/262.jpg
+[2026-09-03 07:56:13,852] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/268.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,857] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/262.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,858] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/261.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,863] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/266.jpg
+[2026-09-03 07:56:13,866] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/269.jpg
+[2026-09-03 07:56:13,875] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/266.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,880] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/269.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,905] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/267.jpg
+[2026-09-03 07:56:13,911] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/267.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,919] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1292.jpg
+[2026-09-03 07:56:13,925] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/209.jpg
+[2026-09-03 07:56:13,928] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1292.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:13,935] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2098.jpg
+[2026-09-03 07:56:13,935] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/209.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,946] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2098.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:13,947] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/264.jpg
+[2026-09-03 07:56:13,950] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/228.jpg
+[2026-09-03 07:56:13,951] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/264.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,962] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/228.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,971] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/214.jpg
+[2026-09-03 07:56:13,981] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/214.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:13,993] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2049.jpg
+[2026-09-03 07:56:13,997] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2049.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,006] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1298.jpg
+[2026-09-03 07:56:14,017] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2050.jpg
+[2026-09-03 07:56:14,023] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1298.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,024] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2050.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,028] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/259.jpg
+[2026-09-03 07:56:14,038] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/259.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,039] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1301.jpg
+[2026-09-03 07:56:14,044] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1301.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,052] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/260.jpg
+[2026-09-03 07:56:14,061] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/260.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,065] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1383.jpg
+[2026-09-03 07:56:14,070] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1383.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,079] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1294.jpg
+[2026-09-03 07:56:14,082] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1294.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,088] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1296.jpg
+[2026-09-03 07:56:14,092] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1297.jpg
+[2026-09-03 07:56:14,095] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1296.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,096] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1297.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,106] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1302.jpg
+[2026-09-03 07:56:14,113] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/223.jpg
+[2026-09-03 07:56:14,121] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1302.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,121] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/223.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,121] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1934.jpg
+[2026-09-03 07:56:14,132] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1934.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,151] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2220.jpg
+[2026-09-03 07:56:14,152] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1460.jpg
+[2026-09-03 07:56:14,156] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2220.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,158] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1460.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,161] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/246.jpg
+[2026-09-03 07:56:14,162] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/248.jpg
+[2026-09-03 07:56:14,164] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/246.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,172] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/248.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,173] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/242.jpg
+[2026-09-03 07:56:14,183] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/242.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,193] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/251.jpg
+[2026-09-03 07:56:14,200] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/251.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,210] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/243.jpg
+[2026-09-03 07:56:14,217] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/243.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,220] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/252.jpg
+[2026-09-03 07:56:14,224] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/252.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,237] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/250.jpg
+[2026-09-03 07:56:14,240] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/254.jpg
+[2026-09-03 07:56:14,247] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/254.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,250] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/250.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,255] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1065.jpg
+[2026-09-03 07:56:14,267] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/334.jpg
+[2026-09-03 07:56:14,270] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1065.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,272] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/334.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,279] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/316.jpg
+[2026-09-03 07:56:14,287] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/316.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,297] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/331.jpg
+[2026-09-03 07:56:14,305] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1046.jpg
+[2026-09-03 07:56:14,305] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/331.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,307] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1492.jpg
+[2026-09-03 07:56:14,309] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1046.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,330] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1492.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,332] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/317.jpg
+[2026-09-03 07:56:14,333] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/344.jpg
+[2026-09-03 07:56:14,347] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/317.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,350] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/344.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,364] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/319.jpg
+[2026-09-03 07:56:14,370] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/319.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,383] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/322.jpg
+[2026-09-03 07:56:14,387] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/322.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,393] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1066.jpg
+[2026-09-03 07:56:14,404] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1066.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,412] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/337.jpg
+[2026-09-03 07:56:14,415] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/337.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,420] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/341.jpg
+[2026-09-03 07:56:14,427] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/345.jpg
+[2026-09-03 07:56:14,431] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/345.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,432] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/341.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,437] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/332.jpg
+[2026-09-03 07:56:14,448] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/332.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,448] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1178.jpg
+[2026-09-03 07:56:14,455] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/326.jpg
+[2026-09-03 07:56:14,456] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1178.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,458] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/326.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,465] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/327.jpg
+[2026-09-03 07:56:14,472] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/327.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,484] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/324.jpg
+[2026-09-03 07:56:14,493] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/324.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,494] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1179.jpg
+[2026-09-03 07:56:14,498] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/321.jpg
+[2026-09-03 07:56:14,504] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1179.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,507] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/321.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,509] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/292.jpg
+[2026-09-03 07:56:14,523] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/292.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,535] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/294.jpg
+[2026-09-03 07:56:14,541] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/294.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,544] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/283.jpg
+[2026-09-03 07:56:14,549] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/286.jpg
+[2026-09-03 07:56:14,552] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/283.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,553] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1550.jpg
+[2026-09-03 07:56:14,556] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/286.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,558] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1551.jpg
+[2026-09-03 07:56:14,558] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1550.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,568] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1551.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,569] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/375.jpg
+[2026-09-03 07:56:14,578] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/375.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,583] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1553.jpg
+[2026-09-03 07:56:14,593] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1553.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,617] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/374.jpg
+[2026-09-03 07:56:14,619] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/374.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,628] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/289.jpg
+[2026-09-03 07:56:14,634] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/281.jpg
+[2026-09-03 07:56:14,634] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/289.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,639] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/281.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,640] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1044.jpg
+[2026-09-03 07:56:14,645] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1512.jpg
+[2026-09-03 07:56:14,654] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1044.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,659] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1512.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,661] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/373.jpg
+[2026-09-03 07:56:14,668] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/373.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,672] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1461.jpg
+[2026-09-03 07:56:14,689] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2047.jpg
+[2026-09-03 07:56:14,691] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1461.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,692] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2047.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,703] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/338.jpg
+[2026-09-03 07:56:14,710] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/338.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,720] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1552.jpg
+[2026-09-03 07:56:14,721] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/339.jpg
+[2026-09-03 07:56:14,723] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1552.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,728] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/339.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,731] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/340.jpg
+[2026-09-03 07:56:14,735] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/340.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,748] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/282.jpg
+[2026-09-03 07:56:14,756] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/282.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,769] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/304.jpg
+[2026-09-03 07:56:14,770] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/307.jpg
+[2026-09-03 07:56:14,776] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/299.jpg
+[2026-09-03 07:56:14,779] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/304.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,781] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/307.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,782] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/299.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,788] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/370.jpg
+[2026-09-03 07:56:14,792] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/290.jpg
+[2026-09-03 07:56:14,799] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/370.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,805] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/290.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,806] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/291.jpg
+[2026-09-03 07:56:14,813] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/291.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,832] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/305.jpg
+[2026-09-03 07:56:14,834] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/305.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,837] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/296.jpg
+[2026-09-03 07:56:14,841] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/1177.jpg
+[2026-09-03 07:56:14,841] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/296.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,850] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/288.jpg
+[2026-09-03 07:56:14,851] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/1177.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,853] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2128.jpg
+[2026-09-03 07:56:14,854] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/288.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,864] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2128.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,866] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/2129.jpg
+[2026-09-03 07:56:14,868] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/2129.jpg HTTP/1.1" 404 1803
+[2026-09-03 07:56:14,873] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/287.jpg
+[2026-09-03 07:56:14,874] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/287.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:14,879] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/DeviceLNV/Device/295.jpg
+[2026-09-03 07:56:14,880] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/DeviceLNV/Device/295.jpg HTTP/1.1" 404 1800
+[2026-09-03 07:56:50,418] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 07:56:50,515] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 07:56:50,529] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 07:56:50,535] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-09-03 07:56:51,666] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/BorrowedDeviceLNV/ HTTP/1.1" 200 78234
+[2026-09-03 07:56:51,722] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800

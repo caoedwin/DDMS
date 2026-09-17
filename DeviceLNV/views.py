@@ -5925,6 +5925,7 @@ def M_edit(request):
     guihuanqueren = ''  # 歸還確認中
     errMsg = ''
     errMsgNumber = ''#新增弹框
+    sealMsg = ''  # 一键封存结果提示
     # print(DeviceLNV._meta.fields)
     # # print([f.name for f DeviceLNV._meta.fields])
     # iii=0
@@ -6980,6 +6981,121 @@ def M_edit(request):
                              "Plandate": Plandate_str, "useday": usedays, "Btime": Btime_str, "Rtime": Rtime_str,
                              "Overday": Exceed_days},
                         )
+                if 'SEAL' in str(request.body):
+                    responseData = json.loads(request.body)
+                    checkAdaPow = {}
+                    DevCtgry = responseData.get('DevCtgry')
+                    if DevCtgry and DevCtgry != "All":
+                        checkAdaPow['DevCtgry'] = DevCtgry
+                    DevVendor = responseData.get('DevVendor')
+                    if DevVendor and DevVendor != "All":
+                        checkAdaPow['DevVendor'] = DevVendor
+                    Devproperties = responseData.get('Devproperties')
+                    if Devproperties and Devproperties != "All":
+                        checkAdaPow['Devproperties'] = Devproperties
+                    IntfCtgry = responseData.get('IntfCtgry')
+                    if IntfCtgry and IntfCtgry != "All":
+                        checkAdaPow['IntfCtgry'] = IntfCtgry
+                    Devsize = responseData.get('Devsize')
+                    if Devsize and Devsize != "All":
+                        checkAdaPow['Devsize'] = Devsize
+
+                    sealedCount = 0
+                    skippedCount = 0
+                    for i in responseData.get('params', []):
+                        obj = DeviceLNV.objects.filter(id=i).first()
+                        if obj and obj.DevStatus in ['Damaged', 'Lost']:
+                            DeviceLNV.objects.filter(id=i).update(DevStatus='Replaced')
+                            sealedCount += 1
+                        else:
+                            skippedCount += 1
+                    sealMsg = '封存成功 %s 條' % sealedCount
+                    if skippedCount:
+                        sealMsg += '，另有 %s 條因設備狀態不為 Damaged/Lost 未處理' % skippedCount
+
+                    # mock_data
+                    if checkAdaPow:
+                        if "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys() and "Devproperties" in checkAdaPow.keys() and "DevVendor" in checkAdaPow.keys() and "Devsize" in checkAdaPow.keys():
+                            mock_datalist = DeviceLNV.objects.filter(
+                                Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry'])
+                                & Q(Devproperties__icontains=checkAdaPow['Devproperties']) & Q(
+                                    DevVendor=checkAdaPow['DevVendor'])
+                                & Q(Devsize=checkAdaPow['Devsize']))
+                        elif "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys() and "Devproperties" in checkAdaPow.keys() and "DevVendor" in checkAdaPow.keys():
+                            mock_datalist = DeviceLNV.objects.filter(
+                                Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry'])
+                                & Q(Devproperties__icontains=checkAdaPow['Devproperties']) & Q(
+                                    DevVendor=checkAdaPow['DevVendor']))
+                        elif "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys() and "Devproperties" in checkAdaPow.keys():
+                            mock_datalist = DeviceLNV.objects.filter(
+                                Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry'])
+                                & Q(Devproperties__icontains=checkAdaPow['Devproperties']))
+                        elif "IntfCtgry" in checkAdaPow.keys() and "DevCtgry" in checkAdaPow.keys():
+                            mock_datalist = DeviceLNV.objects.filter(
+                                Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']) & Q(DevCtgry=checkAdaPow['DevCtgry']))
+                        elif "IntfCtgry" in checkAdaPow.keys():
+                            mock_datalist = DeviceLNV.objects.filter(
+                                Q(IntfCtgry__icontains=checkAdaPow['IntfCtgry']))
+                        else:
+                            mock_datalist = DeviceLNV.objects.filter(**checkAdaPow)
+                    else:
+                        mock_datalist = DeviceLNV.objects.all()
+                    for i in mock_datalist:
+                        EOLflag = 0
+                        if i.EOL:
+                            if datetime.datetime.now().date() < i.EOL:
+                                flag_days = round(
+                                    float(str((i.EOL - datetime.datetime.now().date())).split(' ')[0]), 0)
+                                if flag_days <= 7:
+                                    EOLflag = 1
+                            else:
+                                EOLflag = 1
+                        if i.Plandate and i.Btime and not i.Rtime:
+                            if datetime.datetime.now().date() > i.Plandate:
+                                Exceed_days = round(
+                                    float(str((datetime.datetime.now().date() - i.Plandate)).split(' ')[0]), 0)
+                            else:
+                                Exceed_days = ''
+                            if datetime.datetime.now().date() > i.Btime:
+                                usedays = round(
+                                    float(str((datetime.datetime.now().date() - i.Btime)).split(' ')[0]), 0)
+                            else:
+                                usedays = ''
+                        else:
+                            usedays = ''
+                            Exceed_days = ''
+                        Useyears = ''
+                        if i.Pchsdate:
+                            if datetime.datetime.now().date() > i.Pchsdate:
+                                Useyears = round(
+                                    float(str((datetime.datetime.now().date() - i.Pchsdate)).split(' ')[0]) / 365, 1)
+                        addnewdate_str = str(i.addnewdate) if i.addnewdate else ''
+                        EOL_str = str(i.EOL) if i.EOL else ''
+                        Pchsdate_str = str(i.Pchsdate) if i.Pchsdate else ''
+                        Plandate_str = str(i.Plandate) if i.Plandate else ''
+                        Btime_str = str(i.Btime) if i.Btime else ''
+                        Rtime_str = str(i.Rtime) if i.Rtime else ''
+
+                        mock_data.append(
+                            {"id": i.id, "Customer": i.Customer, "Plant": i.Plant,
+                             "NID": i.NID, "DevID": i.DevID, "IntfCtgry": i.IntfCtgry,
+                             "DevCtgry": i.DevCtgry, "Devproperties": i.Devproperties, "DevVendor": i.DevVendor,
+                             "Devsize": i.Devsize, "DevModel": i.DevModel,
+                             "DevName": i.DevName,
+                             "HWVer": i.HWVer, "FWVer": i.FWVer, "DevDescription": i.DevDescription,
+                             "PckgIncludes": i.PckgIncludes,
+                             "expirdate": i.expirdate, "DevPrice": i.DevPrice, "Source": i.Source,
+                             "Pchsdate": Pchsdate_str,
+                             "PN": i.PN,
+                             "LNV_ST": i.LSTA, "Purchase_NO": i.ApplicationNo, "Declaration_NO": i.DeclarationNo,
+                             "AssetNum": i.AssetNum, "UsYear": Useyears,
+                             "addnewname": i.addnewname, "addnewdate": addnewdate_str, "EOL": EOL_str, "EOLflag": EOLflag,
+                             "Comment": i.Comment, "uscyc": i.uscyc, "UsrTimes": i.UsrTimes,
+                             "DevStatus": i.DevStatus, "BrwStatus": i.BrwStatus,
+                             "Usrname": i.Usrname, 'Usrnumber': i.BR_per_code,
+                             "Plandate": Plandate_str, "useday": usedays, "Btime": Btime_str, "Rtime": Rtime_str,
+                             "Overday": Exceed_days},
+                        )
                 if 'ExcelData' in str(request.body):
                     responseData = json.loads(request.body)
                     # print(responseData)
@@ -7406,6 +7522,7 @@ def M_edit(request):
             # "sectionDeviceStatus": sectionDeviceStatus,
             "errMsg": errMsg,
             "errMsgNumber": errMsgNumber,
+            "sealMsg": sealMsg,  # <-- 新增
 
             "allIntfCtgry": allIntfCtgry,
             "allDevCtgry": allDevCtgry,

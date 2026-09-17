@@ -1,0 +1,881 @@
+[2026-09-03 08:49:53,172] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-03 08:49:53,295] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 08:49:53,343] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 08:49:53,374] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 08:49:53,542] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 08:49:53,713] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 08:49:54,087] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Desk lamp' 无法匹配到任何设备 (match_str='sensor sensor test device desk lamp')
+[2026-09-03 08:49:54,127] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Light Meter_TES1336A' 无法匹配到任何设备 (match_str='合并标识 合并标识 light meter_tes1336a')
+[2026-09-03 08:49:54,140] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Chroma Meter_CS-100A' 无法匹配到任何设备 (match_str='合并标识 合并标识 chroma meter_cs-100a')
+[2026-09-03 08:49:54,148] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo 定制化performance test 治具（黑板+反光条）' 无法匹配到任何设备 (match_str='合并标识 合并标识 lenovo 定制化performance test 治具（黑板+反光条）')
+[2026-09-03 08:49:54,159] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:54,170] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '奥睿科 SSD（TBT3 interface）' 无法匹配到任何设备 (match_str='合并标识 usb4 ssd 奥睿科 ssd（tbt3 interface）')
+[2026-09-03 08:49:54,178] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Power Z Tool（POWER-Z KM003C）支持高压充电的项目' 无法匹配到任何设备 (match_str='合并标识 usb power z power z tool（power-z km003c）支持高压充电的项目')
+[2026-09-03 08:49:54,180] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '绿联 Type-C扩展坞8K60Hz投屏USB-C3.2转HDMI分线器' 匹配到设备 NID=2985
+[2026-09-03 08:49:54,190] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'OWC Thunderbolt4 HUB' 无法匹配到任何设备 (match_str='合并标识 合并标识 owc thunderbolt4 hub')
+[2026-09-03 08:49:54,193] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'SanDisk 至尊超极速 CZ880 USB3.1' 匹配到设备 NID=2222
+[2026-09-03 08:49:54,193] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '闪迪16GB USB2.0 U盘 CZ50酷刃 黑红色' 匹配到设备 NID=69
+[2026-09-03 08:49:54,202] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '闪迪SDDDC4' 无法匹配到任何设备 (match_str='合并标识 合并标识 闪迪sdddc4')
+[2026-09-03 08:49:54,215] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'HUAWEI TypeC 耳机' 匹配到设备 NID=1936
+[2026-09-03 08:49:54,232] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '小米（MI）降噪耳机Type-C版' 无法匹配到任何设备 (match_str='合并标识 合并标识 小米（mi）降噪耳机type-c版')
+[2026-09-03 08:49:54,234] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'SAMSUNG T7 Touch  MU-PC500S' 匹配到设备 NID=1039
+[2026-09-03 08:49:54,237] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '希捷固态移动硬盘500GB USB3.2 STJP500400' 匹配到设备 NID=1039
+[2026-09-03 08:49:54,237] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'SanDisk Extreme Pro® Portable SSD' 匹配到设备 NID=1462
+[2026-09-03 08:49:54,246] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Iphone Xs/13 or later' 无法匹配到任何设备 (match_str='合并标识 phone iphone xs/13 or later')
+[2026-09-03 08:49:54,247] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '荣耀V20 or 华为P50 or later (Harmony OS)' 匹配到设备 NID=2396
+[2026-09-03 08:49:55,194] [views.py:1551] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-03 08:49:55,194] [views.py:1509] [views:get_requirement_items] [WARNING]- Optional 组 'At least 3 vendor device
+(Type for reference) ' 需求 86 台，仅匹配到 2 台
+[2026-09-03 08:49:55,195] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Intel Gatkex Creek (Need 5 devices for daisy chain)' 匹配到设备 NID=2727
+[2026-09-03 08:49:55,204] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'OWC Thunderbolt4 HUB' 无法匹配到任何设备 (match_str='合并标识 合并标识 owc thunderbolt4 hub')
+[2026-09-03 08:49:55,211] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Kensinton TBT4 dock' 无法匹配到任何设备 (match_str='合并标识 合并标识 kensinton tbt4 dock')
+[2026-09-03 08:49:55,221] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Thinkpad TBT4 Dock' 无法匹配到任何设备 (match_str='合并标识 合并标识 thinkpad tbt4 dock')
+[2026-09-03 08:49:55,230] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Intel Tapex Creek' 无法匹配到任何设备 (match_str='合并标识 合并标识 intel tapex creek')
+[2026-09-03 08:49:55,239] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'AKiTiO Thunder3 PCIe SSD' 无法匹配到任何设备 (match_str='合并标识 合并标识 akitio thunder3 pcie ssd')
+[2026-09-03 08:49:55,240] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Sumsang Thunderbolt3 X5 SSD' 匹配到设备 NID=2014
+[2026-09-03 08:49:55,242] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Thunderbolt 3 cable 40G 0.5M/0.7M' 匹配到设备 NID=2929
+[2026-09-03 08:49:55,337] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:55,344] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '闪迪大师 SDPH81G-ZBAND Armor ATD系列 (TBT3)' 无法匹配到任何设备 (match_str='合并标识 tbt 闪迪大师 sdph81g-zband armor atd系列 (tbt3)')
+[2026-09-03 08:49:55,605] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-03 08:49:55,617] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'SD UHS-I V30 128G' 无法匹配到任何设备 (match_str='合并标识 sd card sd uhs-i v30 128g')
+[2026-09-03 08:49:55,625] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'SD UHS-II V90 128G' 无法匹配到任何设备 (match_str='合并标识 合并标识 sd uhs-ii v90 128g')
+[2026-09-03 08:49:55,636] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'MMC 1G' 无法匹配到任何设备 (match_str='合并标识 mmc mobile card mmc 1g')
+[2026-09-03 08:49:55,637] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'MMC 512M' 匹配到设备 NID=2929
+[2026-09-03 08:49:55,638] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Micro-SD SDXC-I V30 256G' 匹配到设备 NID=2929
+[2026-09-03 08:49:55,646] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Mini SD 8G' 无法匹配到任何设备 (match_str='合并标识 mini sd mini sd 8g')
+[2026-09-03 08:49:55,655] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'ScanDisk 1GB' 匹配到设备 NID=2097
+[2026-09-03 08:49:55,664] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Trek 8GB' 无法匹配到任何设备 (match_str='合并标识 sd wifi card trek 8gb')
+[2026-09-03 08:49:55,683] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-03 08:49:55,767] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-03 08:49:55,776] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Apple USB-C to  lighting' 匹配到设备 NID=3202
+[2026-09-03 08:49:55,814] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-03 08:49:55,823] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Apple USB-C VGA multiport adapter' 匹配到设备 NID=1377
+[2026-09-03 08:49:55,834] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Apple USB-C HDMI multiport adapter' 匹配到设备 NID=1327
+[2026-09-03 08:49:55,843] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '苹果原装USB-C至Digital AV Multiport Adapter转换器1K2' 无法匹配到任何设备 (match_str='合并标识 合并标识 苹果原装usb-c至digital av multiport adapter转换器1k2')
+[2026-09-03 08:49:55,853] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '苹果A 1621多端口转换器' 无法匹配到任何设备 (match_str='合并标识 合并标识 苹果a 1621多端口转换器')
+[2026-09-03 08:49:55,859] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Sony M2 Adaptor 卡套' 无法匹配到任何设备 (match_str='合并标识 m2 adaptor sony m2 adaptor 卡套')
+[2026-09-03 08:49:55,870] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to VGA' 无法匹配到任何设备 (match_str='合并标识 合并标识 lenovo type c to vga')
+[2026-09-03 08:49:55,881] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '绿联Type-C转HDMI2.1转换器线 ' 无法匹配到任何设备 (match_str='合并标识 合并标识 绿联type-c转hdmi2.1转换器线')
+[2026-09-03 08:49:55,891] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to HDMI' 无法匹配到任何设备 (match_str='合并标识 合并标识 lenovo type c to hdmi')
+[2026-09-03 08:49:55,901] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to HDMI+VGA HUB' 无法匹配到任何设备 (match_str='合并标识 合并标识 lenovo type c to hdmi+vga hub')
+[2026-09-03 08:49:55,908] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Lenovo Type C to DP' 无法匹配到任何设备 (match_str='合并标识 合并标识 lenovo type c to dp')
+[2026-09-03 08:49:55,910] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '绿联 USB转RJ45网线转接头 百兆有线网卡转换器 适30304' 匹配到设备 NID=2929
+[2026-09-03 08:49:56,098] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:56,100] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Lenovo Qreator27 or ThinkVision T27p-30 4K' 匹配到设备 NID=1971
+[2026-09-03 08:49:56,101] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Thinkvision P27pz-30 4K' 匹配到设备 NID=2850
+[2026-09-03 08:49:56,101] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'LG Ultrafine 5K or LG 34WK95U  5K' 匹配到设备 NID=2259
+[2026-09-03 08:49:56,102] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'P40w-20' 匹配到设备 NID=2727
+[2026-09-03 08:49:56,111] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '飞利浦27B1U7903 ' 无法匹配到任何设备 (match_str='合并标识 合并标识 飞利浦27b1u7903')
+[2026-09-03 08:49:56,122] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'P24h-2L or ThinkVision  P24h-30' 匹配到设备 NID=2721
+[2026-09-03 08:49:56,124] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '三星G95NC' 匹配到设备 NID=2929
+[2026-09-03 08:49:56,125] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Dell U3224KB' 匹配到设备 NID=2850
+[2026-09-03 08:49:56,126] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '戴尔（DELL） UP3218K 8K 显示器' 匹配到设备 NID=2752
+[2026-09-03 08:49:56,135] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'TV:索尼 KDL-60LX900 3D电视(HDMI1.4)' 无法匹配到任何设备 (match_str='合并标识 合并标识 tv:索尼 kdl-60lx900 3d电视(hdmi1.4)')
+[2026-09-03 08:49:56,142] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '联想 CH310 HDMI线1.4版  2米' 无法匹配到任何设备 (match_str='合并标识 合并标识 联想 ch310 hdmi线1.4版  2米')
+[2026-09-03 08:49:56,143] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '山泽（SAMZHE）SM-5530 豪华镀金 HDMI2.0 3M' 匹配到设备 NID=2095
+[2026-09-03 08:49:56,144] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '开博尔Kaiboer光纤HDMI线2.0版高清无损传输4K 15米' 匹配到设备 NID=2850
+[2026-09-03 08:49:56,153] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '品胜 Micro USB数据线  1米' 无法匹配到任何设备 (match_str='合并标识 合并标识 品胜 micro usb数据线  1米')
+[2026-09-03 08:49:56,162] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '绿联 Micro USB数据线  1米' 无法匹配到任何设备 (match_str='合并标识 合并标识 绿联 micro usb数据线  1米')
+[2026-09-03 08:49:56,164] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '飞利浦 HDMI2.1版8K数字高清线 1.5米 SWL4281B/93' 匹配到设备 NID=2184
+[2026-09-03 08:49:56,165] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '菲伯尔(FIBBR) DP1.4光纤高清线  黑色 2米' 匹配到设备 NID=3020
+[2026-09-03 08:49:56,173] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '益盾（YIDUN）3D红蓝眼镜赠光盘' 无法匹配到任何设备 (match_str='合并标识 3d glass 益盾（yidun）3d红蓝眼镜赠光盘')
+[2026-09-03 08:49:56,363] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:56,373] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'HDMI display Monitor （带声音和HDMI连接线)' 无法匹配到任何设备 (match_str='whck/whlk whck/whlk hdmi display monitor （带声音和hdmi连接线)')
+[2026-09-03 08:49:56,382] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Digital audio Speaker' 无法匹配到任何设备 (match_str='合并标识 whck/whlk digital audio speaker')
+[2026-09-03 08:49:56,391] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'USB 3.0 Debug Cable' 无法匹配到任何设备 (match_str='合并标识 whck/whlk usb 3.0 debug cable')
+[2026-09-03 08:49:56,392] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Touch Tool:Part number TR10500-001-PT3 High Precision' 匹配到设备 NID=1039
+[2026-09-03 08:49:56,394] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Touch Tool:Part number TR10516-001-RA Tool' 匹配到设备 NID=2929
+[2026-09-03 08:49:56,396] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Touchpen测试治具: TR10974-004 Stylus Attachment, TR10974-005 Stylus Attachment,TR10989-001 Stylus Force Test Tool,TR10974-006 Stylus Rail Assembly,TR10975-001 RA Mounting Bracket,TR10976-001 PT3 Mounting Bracket,Stackable Weight 5 gram/20 gram/100 gram' 匹配到设备 NID=2929
+[2026-09-03 08:49:56,407] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'BT Speaker' 无法匹配到任何设备 (match_str='合并标识 whck/whlk bt speaker')
+[2026-09-03 08:49:56,419] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'USB3.0 U disk' 无法匹配到任何设备 (match_str='合并标识 whck/whlk usb3.0 u disk')
+[2026-09-03 08:49:56,427] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'DP显示器（带声音和DP连接线）' 无法匹配到任何设备 (match_str='合并标识 whck/whlk dp显示器（带声音和dp连接线）')
+[2026-09-03 08:49:56,440] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'MUTT ConnEx-C' 无法匹配到任何设备 (match_str='合并标识 whck/whlk mutt connex-c')
+[2026-09-03 08:49:56,448] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Type-C to Type-C Cable' 无法匹配到任何设备 (match_str='合并标识 whck/whlk type-c to type-c cable')
+[2026-09-03 08:49:56,457] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '天平，砝码' 无法匹配到任何设备 (match_str='合并标识 whck/whlk 天平，砝码')
+[2026-09-03 08:49:56,461] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'MCCI  Type-C SuperMUTT Model 3501' 匹配到设备 NID=2929
+[2026-09-03 08:49:56,462] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Netgear R6300 AP' 匹配到设备 NID=1497
+[2026-09-03 08:49:56,475] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'MCCI Model 3141 USB4TM Switch' 无法匹配到任何设备 (match_str='合并标识 whck/whlk mcci model 3141 usb4tm switch')
+[2026-09-03 08:49:56,482] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Traduci board' 无法匹配到任何设备 (match_str='合并标识 whck/whlk traduci board')
+[2026-09-03 08:49:56,484] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'RN52 radio/BM62 radio' 匹配到设备 NID=2929
+[2026-09-03 08:49:56,492] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'TBT4 Dock*3' 无法匹配到任何设备 (match_str='合并标识 whck/whlk tbt4 dock*3')
+[2026-09-03 08:49:56,500] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '雷蛇（Razer）北海巨妖 Kraken 游戏耳麦' 无法匹配到任何设备 (match_str='合并标识 audio out 雷蛇（razer）北海巨妖 kraken 游戏耳麦')
+[2026-09-03 08:49:56,501] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'M-Audio BX5D3 音箱' 匹配到设备 NID=2014
+[2026-09-03 08:49:56,502] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '绿联20850国标美标耳机转换头' 匹配到设备 NID=2929
+[2026-09-03 08:49:56,894] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'at least 3' 无法匹配到任何设备
+[2026-09-03 08:49:56,975] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'Our recommended device.
+Can be replaced by the same models and specifications.' 无法匹配到任何设备
+[2026-09-03 08:49:56,985] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '全区-韩版蓝光-钢铁侠/Iron Man' 无法匹配到任何设备 (match_str='合并标识 bd 全区-韩版蓝光-钢铁侠/iron man')
+[2026-09-03 08:49:56,995] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '全区-阿凡达/泰坦尼克号套餐3D蓝光' 无法匹配到任何设备 (match_str='合并标识 合并标识 全区-阿凡达/泰坦尼克号套餐3d蓝光')
+[2026-09-03 08:49:57,006] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '爱丽丝梦游仙境 3D' 无法匹配到任何设备 (match_str='合并标识 合并标识 爱丽丝梦游仙境 3d')
+[2026-09-03 08:49:57,008] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '4K+HDR 蓝光 银河护卫队2 双碟/全区.中文(美)' 匹配到设备 NID=2850
+[2026-09-03 08:49:57,020] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '3D蓝光 复仇者联盟3无限战争' 无法匹配到任何设备 (match_str='合并标识 合并标识 3d蓝光 复仇者联盟3无限战争')
+[2026-09-03 08:49:57,213] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'At least 1' 无法匹配到任何设备
+[2026-09-03 08:49:57,221] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'adjustable resistor link to USB cable' 无法匹配到任何设备 (match_str='power power loading adjustable resistor link to usb cable')
+[2026-09-03 08:49:57,230] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '易速ICGW08 【PDU FW：V1.2.8&1.2.9】' 无法匹配到任何设备 (match_str='power switch pdu device 易速icgw08 【pdu fw：v1.2.8&1.2.9】')
+[2026-09-03 08:49:57,242] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Iphone 29W type-c port adapter' 匹配到设备 NID=2089
+[2026-09-03 08:49:57,253] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Metal Finger (diameter = 18&23 mm)' 无法匹配到任何设备 (match_str='合并标识 合并标识 metal finger (diameter = 18&23 mm)')
+[2026-09-03 08:49:57,262] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Real Bubee 皮肤水分测试仪' 无法匹配到任何设备 (match_str='合并标识 合并标识 real bubee 皮肤水分测试仪')
+[2026-09-03 08:49:57,271] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:57,284] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'The capacitance pen' 无法匹配到任何设备 (match_str='touch touch the capacitance pen')
+[2026-09-03 08:49:57,299] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'AC\DC switch (electric relay)' 匹配到设备 NID=2257
+[2026-09-03 08:49:57,310] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Touchpanel Stress fixture' 无法匹配到任何设备 (match_str='touch stress touchpanel stress fixture')
+[2026-09-03 08:49:57,319] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'D-Link DIR-890L' 无法匹配到任何设备 (match_str='合并标识 合并标识 d-link dir-890l')
+[2026-09-03 08:49:57,321] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '华硕（ASUS）RT-AC88U' 匹配到设备 NID=2240
+[2026-09-03 08:49:57,329] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'TP-LINK WDR7660' 无法匹配到任何设备 (match_str='合并标识 合并标识 tp-link wdr7660')
+[2026-09-03 08:49:57,339] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'ASUS RT-AX88U' 无法匹配到任何设备 (match_str='合并标识 合并标识 asus rt-ax88u')
+[2026-09-03 08:49:57,347] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'ASUS XD4' 无法匹配到任何设备 (match_str='合并标识 合并标识 asus xd4')
+[2026-09-03 08:49:57,356] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Huawei AR101W-S' 无法匹配到任何设备 (match_str='合并标识 合并标识 huawei ar101w-s')
+[2026-09-03 08:49:57,357] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '360 5pro' 匹配到设备 NID=2929
+[2026-09-03 08:49:57,358] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'CISCO AIR-AP1815I-H-K9' 匹配到设备 NID=2929
+[2026-09-03 08:49:57,359] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'H3C EWP-WA5320-SI-FIT' 匹配到设备 NID=2929
+[2026-09-03 08:49:57,360] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'ASUS GT-AXE11000' 匹配到设备 NID=349
+[2026-09-03 08:49:57,361] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'NETGEAR RAXE500' 匹配到设备 NID=1039
+[2026-09-03 08:49:57,369] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'ThundeRobot RA66' 无法匹配到任何设备 (match_str='合并标识 合并标识 thunderobot ra66')
+[2026-09-03 08:49:57,377] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'HUAWEI AX6' 无法匹配到任何设备 (match_str='合并标识 合并标识 huawei ax6')
+[2026-09-03 08:49:57,379] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Aruba AP-505' 匹配到设备 NID=2929
+[2026-09-03 08:49:57,380] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'TP-Link AX5400' 匹配到设备 NID=2014
+[2026-09-03 08:49:57,389] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'TP-Link Archer BE900' 无法匹配到任何设备 (match_str='合并标识 合并标识 tp-link archer be900')
+[2026-09-03 08:49:57,398] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Tenda AX2 Pro' 无法匹配到任何设备 (match_str='合并标识 合并标识 tenda ax2 pro')
+[2026-09-03 08:49:57,399] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Xiaomi AX6000' 匹配到设备 NID=2134
+[2026-09-03 08:49:57,400] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Linksys MX5501' 匹配到设备 NID=2014
+[2026-09-03 08:49:57,410] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'HUAWEI AR611W-S' 无法匹配到任何设备 (match_str='合并标识 合并标识 huawei ar611w-s')
+[2026-09-03 08:49:57,420] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '小米WIFI7' 无法匹配到任何设备 (match_str='合并标识 合并标识 小米wifi7')
+[2026-09-03 08:49:57,428] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '华为路由 BE3 Pro' 无法匹配到任何设备 (match_str='合并标识 合并标识 华为路由 be3 pro')
+[2026-09-03 08:49:57,436] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'ASUS RT-BE96U BE19000 802.11BE Tri-Band Performance WiFi 7' 无法匹配到任何设备 (match_str='合并标识 合并标识 asus rt-be96u be19000 802.11be tri-band performance wifi 7')
+[2026-09-03 08:49:57,858] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:57,866] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'ez share 8G' 匹配到设备 NID=384
+[2026-09-03 08:49:57,877] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:57,878] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'SanDisk 至尊超极速 CZ880 USB3.1 128GB' 匹配到设备 NID=2222
+[2026-09-03 08:49:57,887] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '漫步者（EDIFIER）W280BT ' 无法匹配到任何设备 (match_str='合并标识 合并标识 漫步者（edifier）w280bt')
+[2026-09-03 08:49:57,895] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '索尼（SONY） WI-XB400' 无法匹配到任何设备 (match_str='合并标识 合并标识 索尼（sony） wi-xb400')
+[2026-09-03 08:49:57,904] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '三星 SAMSUNG Galaxy Buds' 无法匹配到任何设备 (match_str='合并标识 合并标识 三星 samsung galaxy buds')
+[2026-09-03 08:49:57,912] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Apple AirPods Pro ' 无法匹配到任何设备 (match_str='合并标识 合并标识 apple airpods pro')
+[2026-09-03 08:49:57,918] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '华为（ HUAWEI）FreeBuds3 ' 无法匹配到任何设备 (match_str='合并标识 合并标识 华为（ huawei）freebuds3')
+[2026-09-03 08:49:57,927] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '酷狗（KUGOU）M3能量圈' 无法匹配到任何设备 (match_str='合并标识 合并标识 酷狗（kugou）m3能量圈')
+[2026-09-03 08:49:57,928] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '兰士顿 L5C' 匹配到设备 NID=2929
+[2026-09-03 08:49:57,940] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'QCY T1C' 无法匹配到任何设备 (match_str='合并标识 合并标识 qcy t1c')
+[2026-09-03 08:49:57,950] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'QCY T8S真无线蓝牙耳机' 无法匹配到任何设备 (match_str='合并标识 合并标识 qcy t8s真无线蓝牙耳机')
+[2026-09-03 08:49:57,959] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '华为骨传导蓝牙耳机' 无法匹配到任何设备 (match_str='合并标识 合并标识 华为骨传导蓝牙耳机')
+[2026-09-03 08:49:57,969] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '索爱（soaiy）SL6真无线蓝牙耳机' 无法匹配到任何设备 (match_str='合并标识 合并标识 索爱（soaiy）sl6真无线蓝牙耳机')
+[2026-09-03 08:49:57,970] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '酷狗【5级通话降噪】蓝牙耳机入耳式' 匹配到设备 NID=2929
+[2026-09-03 08:49:57,970] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '索尼（SONY）WF-1000XM4 真无线蓝牙降噪耳机' 匹配到设备 NID=349
+[2026-09-03 08:49:57,971] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '华为（HUAWEI）HUAWEI FreeBuds 5半入耳式降噪蓝牙耳机' 匹配到设备 NID=2929
+[2026-09-03 08:49:57,979] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '三星（SAMSUNG）Galaxy Buds2 Pro' 无法匹配到任何设备 (match_str='合并标识 合并标识 三星（samsung）galaxy buds2 pro')
+[2026-09-03 08:49:57,988] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '华为FreeBuds Pro 3' 无法匹配到任何设备 (match_str='合并标识 合并标识 华为freebuds pro 3')
+[2026-09-03 08:49:57,997] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '漫步者（EDIFIER）Zero Air' 无法匹配到任何设备 (match_str='合并标识 合并标识 漫步者（edifier）zero air')
+[2026-09-03 08:49:58,008] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '倍思 M2s 真无线蓝牙耳机' 无法匹配到任何设备 (match_str='合并标识 合并标识 倍思 m2s 真无线蓝牙耳机')
+[2026-09-03 08:49:58,008] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '小米（MI）Redmi Buds 5' 匹配到设备 NID=2929
+[2026-09-03 08:49:58,019] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'OPPO Enco Air3' 无法匹配到任何设备 (match_str='合并标识 合并标识 oppo enco air3')
+[2026-09-03 08:49:58,020] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '索尼（SONY）WF-1000XM5 真无线蓝牙降噪耳机 新一代降噪豆 智能AI 蓝牙5.3 黑色' 匹配到设备 NID=349
+[2026-09-03 08:49:58,028] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'vivo TWS 3 Pro 真无线Hi-Fi耳机 蓝图 无感体温监测 49dB双芯降噪 无损音质 通用苹果小米华为手机' 无法匹配到任何设备 (match_str='合并标识 合并标识 vivo tws 3 pro 真无线hi-fi耳机 蓝图 无感体温监测 49db双芯降噪 无损音质 通用苹果小米华为手机')
+[2026-09-03 08:49:58,039] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'BolaButty Bluetooth Speaker' 匹配到设备 NID=1961
+[2026-09-03 08:49:58,047] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'JBL PULSE4 音乐脉动四代' 无法匹配到任何设备 (match_str='合并标识 合并标识 jbl pulse4 音乐脉动四代')
+[2026-09-03 08:49:58,058] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Surface Precision Mouse' 无法匹配到任何设备 (match_str='合并标识 bt mouse surface precision mouse')
+[2026-09-03 08:49:58,070] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '微软（Microsoft）Arc Touch蓝牙鼠标' 无法匹配到任何设备 (match_str='合并标识 合并标识 微软（microsoft）arc touch蓝牙鼠标')
+[2026-09-03 08:49:58,082] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '微软 Designer蓝牙鼠标' 无法匹配到任何设备 (match_str='合并标识 合并标识 微软 designer蓝牙鼠标')
+[2026-09-03 08:49:58,097] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（G）G603 LIGHTSPEED ' 无法匹配到任何设备 (match_str='合并标识 合并标识 罗技（g）g603 lightspeed')
+[2026-09-03 08:49:58,110] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '小米无线蓝牙双模鼠标' 无法匹配到任何设备 (match_str='合并标识 合并标识 小米无线蓝牙双模鼠标')
+[2026-09-03 08:49:58,121] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '英菲克（INPHIC) PM9bS' 无法匹配到任何设备 (match_str='合并标识 合并标识 英菲克（inphic) pm9bs')
+[2026-09-03 08:49:58,123] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '戴尔（DELL）WM615' 匹配到设备 NID=2929
+[2026-09-03 08:49:58,133] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（Logitech）MX Master 3S' 无法匹配到任何设备 (match_str='合并标识 合并标识 罗技（logitech）mx master 3s')
+[2026-09-03 08:49:58,141] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（G）G304 LIGHTSPEED' 无法匹配到任何设备 (match_str='合并标识 合并标识 罗技（g）g304 lightspeed')
+[2026-09-03 08:49:58,149] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '华为蓝牙鼠标(第二代)青春版 ' 无法匹配到任何设备 (match_str='合并标识 合并标识 华为蓝牙鼠标(第二代)青春版')
+[2026-09-03 08:49:58,157] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '雷柏（Rapoo） MT760L' 无法匹配到任何设备 (match_str='合并标识 合并标识 雷柏（rapoo） mt760l')
+[2026-09-03 08:49:58,158] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '联想YOGA M5' 匹配到设备 NID=2929
+[2026-09-03 08:49:58,161] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '雷蛇(Razer)炼狱蝰蛇V2专业版' 匹配到设备 NID=2396
+[2026-09-03 08:49:58,169] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '前行者可充电式无线蓝牙双模机械鼠标' 无法匹配到任何设备 (match_str='合并标识 合并标识 前行者可充电式无线蓝牙双模机械鼠标')
+[2026-09-03 08:49:58,177] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '英菲克（INPHIC）IN9无线蓝牙鼠标' 无法匹配到任何设备 (match_str='合并标识 合并标识 英菲克（inphic）in9无线蓝牙鼠标')
+[2026-09-03 08:49:58,187] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '微软（Microsoft）微软通用折叠键盘' 无法匹配到任何设备 (match_str='合并标识 bt keyboard 微软（microsoft）微软通用折叠键盘')
+[2026-09-03 08:49:58,194] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（Logitech）MX Keys 键盘' 无法匹配到任何设备 (match_str='合并标识 合并标识 罗技（logitech）mx keys 键盘')
+[2026-09-03 08:49:58,202] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '米物（MIIIW）苹果电脑蓝牙键盘' 无法匹配到任何设备 (match_str='合并标识 合并标识 米物（miiiw）苹果电脑蓝牙键盘')
+[2026-09-03 08:49:58,204] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '英菲克（INPHIC）V780B' 匹配到设备 NID=2746
+[2026-09-03 08:49:58,210] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '雷蛇 Razer 黑寡妇蜘蛛V3无线版' 无法匹配到任何设备 (match_str='合并标识 合并标识 雷蛇 razer 黑寡妇蜘蛛v3无线版')
+[2026-09-03 08:49:58,219] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '达尔优（dareu）A98三模热插拔游戏办公机械键盘' 无法匹配到任何设备 (match_str='合并标识 合并标识 达尔优（dareu）a98三模热插拔游戏办公机械键盘')
+[2026-09-03 08:49:58,220] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '樱桃（CHERRY）MX3.0S无线键盘' 匹配到设备 NID=334
+[2026-09-03 08:49:58,227] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '戴尔（DELL）蓝牙键鼠套装 KM7321W黑' 无法匹配到任何设备 (match_str='合并标识 合并标识 戴尔（dell）蓝牙键鼠套装 km7321w黑')
+[2026-09-03 08:49:58,237] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'VGN S99 三模连接 蓝牙/无线 客制化键盘' 无法匹配到任何设备 (match_str='合并标识 合并标识 vgn s99 三模连接 蓝牙/无线 客制化键盘')
+[2026-09-03 08:49:58,245] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '罗技（G）G913蓝牙无线有线三模机械键盘' 无法匹配到任何设备 (match_str='合并标识 合并标识 罗技（g）g913蓝牙无线有线三模机械键盘')
+[2026-09-03 08:49:58,986] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'At least 2' 无法匹配到任何设备
+[2026-09-03 08:49:59,056] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '屏蔽箱需要的设备' 无法匹配到任何设备
+[2026-09-03 08:49:59,066] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Actiontec  SBWD100A' 匹配到设备 NID=1379
+[2026-09-03 08:49:59,077] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:59,079] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '优越者(UNITEK)usb转网口 免驱 rj45外置网卡 百兆有线网口 苹果/联想笔记本电脑有线网络转换器 Y-1468BK' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,080] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '毕亚兹 USB转RJ45网线接口 USB2.0百兆有线网卡 苹果Mac小米盒子笔记本电脑网口转换器 WIN免驱 ZH99-白' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,081] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '飞利浦 USB分线器3.0 USB网卡 外置网口 3口USB转RJ45转换器 USB3.0 键盘鼠标 SWR1656/93(PHILIPS)' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,091] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '小米（MI）USB-C转VGA/千兆网口多功能转接器 Type-C拓展坞转接线 PD3.0快充' 无法匹配到任何设备 (match_str='合并标识 usb lan 小米（mi）usb-c转vga/千兆网口多功能转接器 type-c拓展坞转接线 pd3.0快充')
+[2026-09-03 08:49:59,101] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '誉拓 网线接口网口转换器USB/Type-c网络转接头联想华硕苹果Macbook电脑网卡 USB-C(Type-C) 3.0 百兆 银色' 无法匹配到任何设备 (match_str='合并标识 usb lan 誉拓 网线接口网口转换器usb/type-c网络转接头联想华硕苹果macbook电脑网卡 usb-c(type-c) 3.0 百兆 银色')
+[2026-09-03 08:49:59,102] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '绿联（UGREEN）USB百兆有线网卡 USB转RJ45网线接口 USB分线器2.0 苹果Mac小米盒子网口转换器接U盘 黑 30298' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,104] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '绿联（UGREEN）千兆有线网卡 USB转RJ45网线接口 USB3.0外置网口转换器 任天堂Switch转接器 黑色 2025' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,115] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '毕亚兹(biaze) USB分线器 TYPE-C转USB HUB集线器 macbook扩展分线器 带百兆网卡 支持苹果Mac小米 ZH29-PC ' 无法匹配到任何设备 (match_str='合并标识 usb lan 毕亚兹(biaze) usb分线器 type-c转usb hub集线器 macbook扩展分线器 带百兆网卡 支持苹果mac小米 zh29-pc')
+[2026-09-03 08:49:59,118] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '秋叶原（CHOSEAL）Type-C转百兆有线网卡RJ45网线接口 适用苹果Mac 轻薄笔记本电脑网口转换器 银色QS9534B ' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,119] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '山泽(SAMZHE)USB3.0千兆有线网卡转RJ45网线接口转换器 适用小米盒子微软surface接外置网口转接头UW013 ' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,120] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '优越者Type-C扩展坞 千兆网卡带3口HUB usb3.0分线器苹果华为小米笔记本电脑外置rj45网线网口转换器 Y-3083W' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,133] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '飞利浦(PHILIPS)type-c扩展坞 usb-c转hdmi网口拓展坞分线器适用华为苹果电脑转换器macbook雷电3网线转接头' 无法匹配到任何设备 (match_str='合并标识 usb lan 飞利浦(philips)type-c扩展坞 usb-c转hdmi网口拓展坞分线器适用华为苹果电脑转换器macbook雷电3网线转接头')
+[2026-09-03 08:49:59,134] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '绿联Type-C扩展坞通用iPadPro苹果M1电脑MacBook华为笔记本USB-C转HDMI雷电3转换器4K拓展坞网口转接头分线器' 匹配到设备 NID=2850
+[2026-09-03 08:49:59,136] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '倍思 Type-C扩展坞 苹果MacBook华为笔记本电脑拓展坞4K投屏iPadPro平板电脑转接头雷电3分线器转换器' 匹配到设备 NID=2850
+[2026-09-03 08:49:59,137] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '威联通（QNAP）QNA-T310G1T Thunderbolt 3 雷电3 转换10GbE 万兆网络存储转换器 NAS配件' 匹配到设备 NID=2996
+[2026-09-03 08:49:59,836] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:49:59,849] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'The machine can be used as a server is OK ' 无法匹配到任何设备
+[2026-09-03 08:49:59,860] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '1MORE万魔 好声音入耳式耳机1M301 金色 低音震撼 三键式线控' 无法匹配到任何设备 (match_str='audio
+for battery life earphone 1more万魔 好声音入耳式耳机1m301 金色 低音震撼 三键式线控')
+[2026-09-03 08:49:59,862] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'JBL TUNE520BT' 匹配到设备 NID=2929
+[2026-09-03 08:49:59,919] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '1 out of 3
+(if UUT support 3.5 mm audio jack)' 无法匹配到任何设备
+[2026-09-03 08:49:59,926] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Konica CS100-A' 无法匹配到任何设备 (match_str='battery 亮度仪 konica cs100-a')
+[2026-09-03 08:49:59,936] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'CA-DP40(主机)+CA-VP427(探头)' 无法匹配到任何设备 (match_str='合并标识 亮度仪 ca-dp40(主机)+ca-vp427(探头)')
+[2026-09-03 08:49:59,947] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'X-rite i1Display Pro' 无法匹配到任何设备 (match_str='合并标识 色准测试仪 x-rite i1display pro')
+[2026-09-03 08:49:59,948] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'X-Rite i1D3HL-i1D3 OEM High Luminance Device' 匹配到设备 NID=2996
+[2026-09-03 08:49:59,956] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Hover test fixture' 匹配到设备 NID=2879
+[2026-09-03 08:49:59,970] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'X-Rite ColorChecker 24' 无法匹配到任何设备 (match_str='合并标识 color capture pen  x-rite colorchecker 24')
+[2026-09-03 08:49:59,981] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'eSENSE D704 bluetooth receiver' 无法匹配到任何设备 (match_str='合并标识 合并标识 esense d704 bluetooth receiver')
+[2026-09-03 08:50:00,007] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:50:00,020] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Computer' 无法匹配到任何设备 (match_str='ux performance
+2.0 server computer')
+[2026-09-03 08:50:00,034] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Raspberry' 无法匹配到任何设备 (match_str='合并标识 client raspberry')
+[2026-09-03 08:50:00,049] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'UARM Swift' 无法匹配到任何设备 (match_str='合并标识 robot arm uarm swift')
+[2026-09-03 08:50:00,059] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Network Switch' 无法匹配到任何设备 (match_str='合并标识 network network switch')
+[2026-09-03 08:50:00,071] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Router' 无法匹配到任何设备 (match_str='合并标识 network router')
+[2026-09-03 08:50:00,079] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Type-C/USB 3.0 to LAN' 无法匹配到任何设备 (match_str='合并标识 network type-c/usb 3.0 to lan')
+[2026-09-03 08:50:00,088] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'LAN Cable' 无法匹配到任何设备 (match_str='合并标识 network lan cable')
+[2026-09-03 08:50:00,097] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Camera for Raspberry*' 无法匹配到任何设备 (match_str='合并标识 camera camera for raspberry*')
+[2026-09-03 08:50:00,107] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Shelf for Raspberry camera' 无法匹配到任何设备 (match_str='合并标识 camera shelf for raspberry camera')
+[2026-09-03 08:50:00,115] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'MicroUSB' 无法匹配到任何设备 (match_str='合并标识 cable microusb')
+[2026-09-03 08:50:00,125] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'ScienceMosaic LatencyKit' 无法匹配到任何设备 (match_str='合并标识 device sciencemosaic latencykit')
+[2026-09-03 08:50:00,126] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '4K(120HZ or above)' 匹配到设备 NID=2850
+[2026-09-03 08:50:00,137] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 'Press Fixture' 无法匹配到任何设备 (match_str='合并标识 附件 press fixture')
+[2026-09-03 08:50:00,144] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 'Iphone 29W/30W type-c port adapter' 匹配到设备 NID=3129
+[2026-09-03 08:50:00,146] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '倍思 氮化镓GaN快充充电器 65W/120W' 匹配到设备 NID=2929
+[2026-09-03 08:50:00,146] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '紫米65W' 匹配到设备 NID=2929
+[2026-09-03 08:50:00,147] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '小米GaN 65W type-c充电器' 匹配到设备 NID=2929
+[2026-09-03 08:50:00,148] [views.py:1415] [views:get_requirement_items] [INFO]- Must 记录 '联想thinkplus 口红电源适配器 65W Type-C 黑色' 匹配到设备 NID=2929
+[2026-09-03 08:50:00,187] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 '' 无法匹配到任何设备
+[2026-09-03 08:50:00,240] [views.py:1498] [views:get_requirement_items] [WARNING]- Optional 组 'At least one Moto phone needed' 无法匹配到任何设备
+[2026-09-03 08:50:00,250] [views.py:1417] [views:get_requirement_items] [WARNING]- Must 记录 '联想小新学习平板12.7英寸' 无法匹配到任何设备 (match_str='tablet tablet 联想小新学习平板12.7英寸')
+[2026-09-03 08:50:00,254] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 6.61s, 共 88 项
+[2026-09-03 08:50:02,022] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.77s, 共 390 个项目
+[2026-09-03 08:50:02,051] [views.py:1239] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.03s, 有效项目: 389
+[2026-09-03 08:50:02,585] [views.py:1272] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 0.13s, 共 227 周
+[2026-09-03 08:50:02,847] [views.py:1301] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.26s, 输出 7200 条
+[2026-09-03 08:50:02,874] [views.py:1306] [views:device_demand_week_view] [INFO]- 总耗时: 9.23s
+[2026-09-03 08:50:02,985] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 3962970
+[2026-09-03 08:52:01,943] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 126667
+[2026-09-03 08:52:02,014] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/back/document_save_2_24px_539656_easyicon.net.png HTTP/1.1" 200 2187
+[2026-09-03 08:52:02,689] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js HTTP/1.1" 200 947702
+[2026-09-03 08:52:02,795] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 08:52:02,855] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js HTTP/1.1" 200 1931084
+[2026-09-03 08:52:02,950] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 08:52:03,044] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 08:52:03,364] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 08:52:03,541] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-09-03 08:52:04,066] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.min.js.map HTTP/1.1" 200 3249905
+[2026-09-03 08:52:04,684] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/VUE/exceljs/dist/exceljs.js.map HTTP/1.1" 200 3818697
+[2026-09-03 08:52:04,815] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 08:52:05,192] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-03 08:52:05: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/TestDeviceLNV/TestDeviceListLNV/'>
+[2026-09-03 08:52:05,208] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /TestDeviceLNV/TestDeviceListLNV/ HTTP/1.1" 200 952508
+[2026-09-03 09:02:49,782] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 51395
+[2026-09-03 09:02:49,869] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:02:49,896] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:02:49,925] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:02:50,129] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:02:50,323] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:02:50,846] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Sensor, Type=Desk lamp) 匹配不到设备
+[2026-09-03 09:02:50,854] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Sensor, Type=Light Meter_TES1336A) 匹配不到设备
+[2026-09-03 09:02:50,862] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Sensor, Type=Chroma Meter_CS-100A) 匹配不到设备
+[2026-09-03 09:02:50,868] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Sensor, Type=Lenovo 定制化performance test 治具（黑板+反光条）) 匹配不到设备
+[2026-09-03 09:02:50,877] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sensor) 无匹配设备
+[2026-09-03 09:02:50,887] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Function, Type=奥睿科 SSD（TBT3 interface）) 匹配不到设备
+[2026-09-03 09:02:50,896] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Function, Type=Power Z Tool（POWER-Z KM003C）支持高压充电的项目) 匹配不到设备
+[2026-09-03 09:02:50,914] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Function, Type=闪迪SDDDC4) 匹配不到设备
+[2026-09-03 09:02:50,942] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Function, Type=Iphone Xs/13 or later) 匹配不到设备
+[2026-09-03 09:02:51,628] [views.py:1605] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-03 09:02:51,628] [views.py:1495] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Function) 需求 86 台，仅匹配到 2 台
+[2026-09-03 09:02:51,695] [views.py:1495] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Thonderbolt) 需求 8 台，仅匹配到 1 台
+[2026-09-03 09:02:51,883] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Stress External Device) 无匹配设备
+[2026-09-03 09:02:51,909] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Media card, Type=MMC 1G) 匹配不到设备
+[2026-09-03 09:02:51,933] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Media card, Type=Trek 8GB) 匹配不到设备
+[2026-09-03 09:02:51,947] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media card) 无匹配设备
+[2026-09-03 09:02:51,954] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Audio, Type=雷蛇（Razer）北海巨妖 Kraken 游戏耳麦) 匹配不到设备
+[2026-09-03 09:02:52,306] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio) 无匹配设备
+[2026-09-03 09:02:52,335] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Cable) 无匹配设备
+[2026-09-03 09:02:52,374] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Adapter, Type=苹果A 1621多端口转换器) 匹配不到设备
+[2026-09-03 09:02:52,381] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Adapter, Type=Sony M2 Adaptor 卡套) 匹配不到设备
+[2026-09-03 09:02:52,397] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Adapter, Type=绿联Type-C转HDMI2.1转换器线 ) 匹配不到设备
+[2026-09-03 09:02:52,585] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Adapter) 无匹配设备
+[2026-09-03 09:02:52,610] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Monitor, Type=TV:索尼 KDL-60LX900 3D电视(HDMI1.4)) 匹配不到设备
+[2026-09-03 09:02:52,622] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Monitor, Type=益盾（YIDUN）3D红蓝眼镜赠光盘) 匹配不到设备
+[2026-09-03 09:02:52,766] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Monitor) 无匹配设备
+[2026-09-03 09:02:52,774] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=HDMI display Monitor （带声音和HDMI连接线)) 匹配不到设备
+[2026-09-03 09:02:52,782] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=Digital audio Speaker) 匹配不到设备
+[2026-09-03 09:02:52,790] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=USB 3.0 Debug Cable) 匹配不到设备
+[2026-09-03 09:02:52,799] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=BT Speaker) 匹配不到设备
+[2026-09-03 09:02:52,808] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=USB3.0 U disk) 匹配不到设备
+[2026-09-03 09:02:52,816] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=DP显示器（带声音和DP连接线）) 匹配不到设备
+[2026-09-03 09:02:52,824] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=MUTT ConnEx-C) 匹配不到设备
+[2026-09-03 09:02:52,831] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=Type-C to Type-C Cable) 匹配不到设备
+[2026-09-03 09:02:52,839] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=天平，砝码) 匹配不到设备
+[2026-09-03 09:02:52,848] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=MCCI Model 3141 USB4TM Switch) 匹配不到设备
+[2026-09-03 09:02:52,855] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=Traduci board) 匹配不到设备
+[2026-09-03 09:02:52,863] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=WHCK/WHLK, Type=TBT4 Dock*3) 匹配不到设备
+[2026-09-03 09:02:52,929] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Game) 无匹配设备
+[2026-09-03 09:02:52,937] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Media, Type=全区-韩版蓝光-钢铁侠/Iron Man) 匹配不到设备
+[2026-09-03 09:02:52,947] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Media, Type=全区-阿凡达/泰坦尼克号套餐3D蓝光) 匹配不到设备
+[2026-09-03 09:02:52,955] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Media, Type=爱丽丝梦游仙境 3D) 匹配不到设备
+[2026-09-03 09:02:52,963] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Media, Type=3D蓝光 复仇者联盟3无限战争) 匹配不到设备
+[2026-09-03 09:02:53,106] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media) 无匹配设备
+[2026-09-03 09:02:53,114] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Power, Type=adjustable resistor link to USB cable) 匹配不到设备
+[2026-09-03 09:02:53,121] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Power switch, Type=易速ICGW08 【PDU FW：V1.2.8&1.2.9】) 匹配不到设备
+[2026-09-03 09:02:53,136] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=adapter, Type=Metal Finger (diameter = 18&23 mm)) 匹配不到设备
+[2026-09-03 09:02:53,146] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=adapter, Type=Real Bubee 皮肤水分测试仪) 匹配不到设备
+[2026-09-03 09:02:53,154] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=adapter) 无匹配设备
+[2026-09-03 09:02:53,162] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=The capacitance pen) 匹配不到设备
+[2026-09-03 09:02:53,170] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=Touchpanel Stress fixture) 匹配不到设备
+[2026-09-03 09:02:53,178] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=D-Link DIR-890L) 匹配不到设备
+[2026-09-03 09:02:53,185] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=TP-LINK WDR7660) 匹配不到设备
+[2026-09-03 09:02:53,195] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=ASUS RT-AX88U) 匹配不到设备
+[2026-09-03 09:02:53,202] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=ASUS XD4) 匹配不到设备
+[2026-09-03 09:02:53,210] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=Huawei AR101W-S) 匹配不到设备
+[2026-09-03 09:02:53,219] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=ThundeRobot RA66) 匹配不到设备
+[2026-09-03 09:02:53,229] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=HUAWEI AX6) 匹配不到设备
+[2026-09-03 09:02:53,239] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=TP-Link Archer BE900) 匹配不到设备
+[2026-09-03 09:02:53,247] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=Tenda AX2 Pro) 匹配不到设备
+[2026-09-03 09:02:53,257] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=HUAWEI AR611W-S) 匹配不到设备
+[2026-09-03 09:02:53,264] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=小米WIFI7) 匹配不到设备
+[2026-09-03 09:02:53,273] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=华为路由 BE3 Pro) 匹配不到设备
+[2026-09-03 09:02:53,281] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Touch, Type=ASUS RT-BE96U BE19000 802.11BE Tri-Band Performance WiFi 7) 匹配不到设备
+[2026-09-03 09:02:53,597] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Touch) 无匹配设备
+[2026-09-03 09:02:53,642] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Wireless) 无匹配设备
+[2026-09-03 09:02:53,648] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=漫步者（EDIFIER）W280BT ) 匹配不到设备
+[2026-09-03 09:02:53,654] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=索尼（SONY） WI-XB400) 匹配不到设备
+[2026-09-03 09:02:53,662] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=三星 SAMSUNG Galaxy Buds) 匹配不到设备
+[2026-09-03 09:02:53,671] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=Apple AirPods Pro ) 匹配不到设备
+[2026-09-03 09:02:53,686] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=酷狗（KUGOU）M3能量圈) 匹配不到设备
+[2026-09-03 09:02:53,715] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=索爱（soaiy）SL6真无线蓝牙耳机) 匹配不到设备
+[2026-09-03 09:02:53,722] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=三星（SAMSUNG）Galaxy Buds2 Pro) 匹配不到设备
+[2026-09-03 09:02:53,734] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=漫步者（EDIFIER）Zero Air) 匹配不到设备
+[2026-09-03 09:02:53,752] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=OPPO Enco Air3) 匹配不到设备
+[2026-09-03 09:02:53,760] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=vivo TWS 3 Pro 真无线Hi-Fi耳机 蓝图 无感体温监测 49dB双芯降噪 无损音质 通用苹果小米华为手机) 匹配不到设备
+[2026-09-03 09:02:53,776] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=JBL PULSE4 音乐脉动四代) 匹配不到设备
+[2026-09-03 09:02:53,792] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=微软（Microsoft）Arc Touch蓝牙鼠标) 匹配不到设备
+[2026-09-03 09:02:53,826] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=英菲克（INPHIC) PM9bS) 匹配不到设备
+[2026-09-03 09:02:53,832] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=罗技（Logitech）MX Master 3S) 匹配不到设备
+[2026-09-03 09:02:53,853] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=华为蓝牙鼠标(第二代)青春版 ) 匹配不到设备
+[2026-09-03 09:02:53,860] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=雷柏（Rapoo） MT760L) 匹配不到设备
+[2026-09-03 09:02:53,871] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=前行者可充电式无线蓝牙双模机械鼠标) 匹配不到设备
+[2026-09-03 09:02:53,879] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=英菲克（INPHIC）IN9无线蓝牙鼠标) 匹配不到设备
+[2026-09-03 09:02:53,902] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=米物（MIIIW）苹果电脑蓝牙键盘) 匹配不到设备
+[2026-09-03 09:02:53,914] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=雷蛇 Razer 黑寡妇蜘蛛V3无线版) 匹配不到设备
+[2026-09-03 09:02:53,922] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=达尔优（dareu）A98三模热插拔游戏办公机械键盘) 匹配不到设备
+[2026-09-03 09:02:53,929] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=戴尔（DELL）蓝牙键鼠套装 KM7321W黑) 匹配不到设备
+[2026-09-03 09:02:53,937] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=VGN S99 三模连接 蓝牙/无线 客制化键盘) 匹配不到设备
+[2026-09-03 09:02:53,945] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=BT , Type=罗技（G）G913蓝牙无线有线三模机械键盘) 匹配不到设备
+[2026-09-03 09:02:54,599] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=BT ) 无匹配设备
+[2026-09-03 09:02:54,610] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Lan, Type=小米（MI）USB-C转VGA/千兆网口多功能转接器 Type-C拓展坞转接线 PD3.0快充) 匹配不到设备
+[2026-09-03 09:02:54,619] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Lan, Type=誉拓 网线接口网口转换器USB/Type-c网络转接头联想华硕苹果Macbook电脑网卡 USB-C(Type-C) 3.0 百兆 银色) 匹配不到设备
+[2026-09-03 09:02:54,630] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Lan, Type=毕亚兹(biaze) USB分线器 TYPE-C转USB HUB集线器 macbook扩展分线器 带百兆网卡 支持苹果Mac小米 ZH29-PC ) 匹配不到设备
+[2026-09-03 09:02:54,645] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=USB Lan, Type=飞利浦(PHILIPS)type-c扩展坞 usb-c转hdmi网口拓展坞分线器适用华为苹果电脑转换器macbook雷电3网线转接头) 匹配不到设备
+[2026-09-03 09:02:55,169] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Lan) 无匹配设备
+[2026-09-03 09:02:55,177] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sever) 无匹配设备
+[2026-09-03 09:02:55,185] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Audio
+for battery life, Type=1MORE万魔 好声音入耳式耳机1M301 金色 低音震撼 三键式线控) 匹配不到设备
+[2026-09-03 09:02:55,231] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio
+for battery life) 无匹配设备
+[2026-09-03 09:02:55,240] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Battery, Type=Konica CS100-A) 匹配不到设备
+[2026-09-03 09:02:55,247] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Battery, Type=CA-DP40(主机)+CA-VP427(探头)) 匹配不到设备
+[2026-09-03 09:02:55,257] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Battery, Type=X-rite i1Display Pro) 匹配不到设备
+[2026-09-03 09:02:55,275] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Active pen, Type=X-Rite ColorChecker 24) 匹配不到设备
+[2026-09-03 09:02:55,283] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Active pen, Type=eSENSE D704 bluetooth receiver) 匹配不到设备
+[2026-09-03 09:02:55,294] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=E-ink panel, Type=X-rite i1 Basic pro 2) 匹配不到设备
+[2026-09-03 09:02:55,302] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Computer) 匹配不到设备
+[2026-09-03 09:02:55,314] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Raspberry) 匹配不到设备
+[2026-09-03 09:02:55,323] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=UARM Swift) 匹配不到设备
+[2026-09-03 09:02:55,332] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Network Switch) 匹配不到设备
+[2026-09-03 09:02:55,344] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Router) 匹配不到设备
+[2026-09-03 09:02:55,352] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Type-C/USB 3.0 to LAN) 匹配不到设备
+[2026-09-03 09:02:55,362] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=LAN Cable) 匹配不到设备
+[2026-09-03 09:02:55,371] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Camera for Raspberry*) 匹配不到设备
+[2026-09-03 09:02:55,380] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Shelf for Raspberry camera) 匹配不到设备
+[2026-09-03 09:02:55,388] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=MicroUSB) 匹配不到设备
+[2026-09-03 09:02:55,395] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=ScienceMosaic LatencyKit) 匹配不到设备
+[2026-09-03 09:02:55,404] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=UX Performance
+2.0, Type=Press Fixture) 匹配不到设备
+[2026-09-03 09:02:55,445] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Phone) 无匹配设备
+[2026-09-03 09:02:55,453] [views.py:1424] [views:get_requirement_items] [WARNING]- Must 记录 (Category=Tablet, Type=联想小新学习平板12.7英寸) 匹配不到设备
+[2026-09-03 09:02:55,454] [views.py:1500] [views:get_requirement_items] [INFO]- 总共处理 Must 记录 222 条，成功匹配 123 条
+[2026-09-03 09:02:55,454] [views.py:1501] [views:get_requirement_items] [INFO]- 需求项总数: 126
+[2026-09-03 09:02:55,459] [views.py:1206] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 5.20s, 共 126 项
+[2026-09-03 09:02:56,956] [views.py:1214] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.50s, 共 390 个项目
+[2026-09-03 09:02:56,990] [views.py:1239] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.03s, 有效项目: 389
+[2026-09-03 09:02:57,584] [views.py:1272] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 0.27s, 共 227 周
+[2026-09-03 09:02:57,772] [views.py:1301] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.19s, 输出 10125 条
+[2026-09-03 09:02:57,817] [views.py:1306] [views:device_demand_week_view] [INFO]- 总耗时: 7.56s
+[2026-09-03 09:02:57,935] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 5394017
+[2026-09-03 09:19:21,064] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53291
+[2026-09-03 09:19:21,163] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:19:21,187] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:19:21,220] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:19:21,390] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:19:21,566] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:19:22,869] [views.py:1644] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-03 09:19:27,157] [views.py:1205] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 5.67s, 共 640 项
+[2026-09-03 09:19:28,730] [views.py:1213] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.57s, 共 390 个项目
+[2026-09-03 09:19:28,764] [views.py:1238] [views:device_demand_week_view] [INFO]- 过滤项目耗时: 0.03s, 有效项目: 389
+[2026-09-03 09:19:38,238] [views.py:1293] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 9.12s, 共 227 周
+[2026-09-03 09:19:38,455] [views.py:1325] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.22s, 输出 10350 条
+[2026-09-03 09:19:38,632] [views.py:1330] [views:device_demand_week_view] [INFO]- 总耗时: 17.15s
+[2026-09-03 09:19:39,189] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 24777193
+[2026-09-03 09:24:00,372] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53291
+[2026-09-03 09:24:00,497] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:24:00,524] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:24:00,541] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:24:00,731] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:24:00,887] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:24:07,787] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python372\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 1202, in device_demand_week_view
+    req_units = get_requirement_items()
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 1419, in get_requirement_items
+    matched_info = match_single_device(match_str, device_infos)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 1587, in match_single_device
+    if info['dev_model'] and info['dev_model'] in match_str:
+KeyError: 'dev_model'
+[2026-09-03 09:24:07,792] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 140957
+[2026-09-03 09:28:07,057] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53291
+[2026-09-03 09:28:07,164] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:28:07,165] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:28:07,193] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:28:07,380] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:28:07,534] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:28:07,973] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sensor) 无匹配设备
+[2026-09-03 09:28:08,847] [views.py:1548] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-03 09:28:09,126] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Stress External Device) 无匹配设备
+[2026-09-03 09:28:09,197] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media card) 无匹配设备
+[2026-09-03 09:28:09,627] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio) 无匹配设备
+[2026-09-03 09:28:09,664] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Cable) 无匹配设备
+[2026-09-03 09:28:09,948] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Adapter) 无匹配设备
+[2026-09-03 09:28:10,156] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Monitor) 无匹配设备
+[2026-09-03 09:28:10,373] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Game) 无匹配设备
+[2026-09-03 09:28:10,573] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media) 无匹配设备
+[2026-09-03 09:28:10,627] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=adapter) 无匹配设备
+[2026-09-03 09:28:11,096] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Touch) 无匹配设备
+[2026-09-03 09:28:11,138] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Wireless) 无匹配设备
+[2026-09-03 09:28:12,160] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=BT ) 无匹配设备
+[2026-09-03 09:28:12,780] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Lan) 无匹配设备
+[2026-09-03 09:28:12,793] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sever) 无匹配设备
+[2026-09-03 09:28:12,863] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio
+for battery life) 无匹配设备
+[2026-09-03 09:28:13,105] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Phone) 无匹配设备
+[2026-09-03 09:28:13,114] [views.py:1510] [views:get_requirement_items] [INFO]- 生成需求单元数: 549
+[2026-09-03 09:28:13,125] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 5.65s, 共 549 个需求单元
+[2026-09-03 09:28:15,468] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.96s, 共 390 个项目
+[2026-09-03 09:28:16,717] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.21s, 共 227 周
+[2026-09-03 09:28:17,227] [views.py:1319] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.51s, 输出 10350 条
+[2026-09-03 09:28:17,436] [views.py:1323] [views:device_demand_week_view] [INFO]- 总耗时: 9.96s
+[2026-09-03 09:28:18,168] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:30:18,217] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53154
+[2026-09-03 09:30:18,453] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:30:18,467] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:30:18,489] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:30:18,813] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:30:19,936] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:30:19,946] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:31:34,003] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53154
+[2026-09-03 09:31:34,180] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:31:34,188] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:31:34,195] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:31:34,441] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:31:35,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:31:35,563] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:34:03,166] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53170
+[2026-09-03 09:34:03,344] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:34:03,348] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:34:03,408] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:34:03,634] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:34:03,747] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 09:34:03,806] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:34:04,152] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 390 个项目
+[2026-09-03 09:34:05,269] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.10s, 共 227 周
+[2026-09-03 09:34:05,802] [views.py:1319] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.53s, 输出 10350 条
+[2026-09-03 09:34:06,018] [views.py:1323] [views:device_demand_week_view] [INFO]- 总耗时: 2.27s
+[2026-09-03 09:34:06,732] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:35:32,786] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53168
+[2026-09-03 09:35:32,967] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:35:32,971] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:35:33,020] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:35:33,234] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:35:34,175] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:35:34,185] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:37:26,167] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 52944
+[2026-09-03 09:37:26,344] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:37:26,380] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:37:26,463] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:37:26,662] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:37:27,817] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:37:27,819] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:38:52,747] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53020
+[2026-09-03 09:38:52,941] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:38:52,987] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:38:53,057] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:38:53,275] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:38:54,205] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:38:54,209] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:42:37,428] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53443
+[2026-09-03 09:42:37,639] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:42:37,649] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:42:37,738] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:42:37,942] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:42:38,046] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 09:42:38,107] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:42:40,052] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.53s, 共 390 个项目
+[2026-09-03 09:42:41,243] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.18s, 共 227 周
+[2026-09-03 09:42:41,780] [views.py:1319] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.54s, 输出 10350 条
+[2026-09-03 09:42:41,992] [views.py:1323] [views:device_demand_week_view] [INFO]- 总耗时: 3.95s
+[2026-09-03 09:42:42,740] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:46:14,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53332
+[2026-09-03 09:46:14,620] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:46:14,639] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:46:14,688] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:46:14,950] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:46:16,090] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:46:16,095] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:46:24,021] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53332
+[2026-09-03 09:46:24,199] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:46:24,203] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:46:24,254] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:46:24,439] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:46:25,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:46:25,696] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:48:10,423] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53825
+[2026-09-03 09:48:10,583] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:48:10,588] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:48:10,632] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:48:10,878] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:48:10,996] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 09:48:11,068] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:48:11,331] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 390 个项目
+[2026-09-03 09:48:12,511] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.17s, 共 227 周
+[2026-09-03 09:48:12,861] [views.py:1319] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.35s, 输出 10350 条
+[2026-09-03 09:48:13,071] [views.py:1323] [views:device_demand_week_view] [INFO]- 总耗时: 2.08s
+[2026-09-03 09:48:13,837] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 09:55:50,178] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53802
+[2026-09-03 09:55:50,383] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 09:55:50,398] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 09:55:50,427] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 09:55:50,660] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 09:55:50,775] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 09:55:50,839] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 09:55:52,677] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.51s, 共 390 个项目
+[2026-09-03 09:55:53,929] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.24s, 共 227 周
+[2026-09-03 09:55:54,309] [views.py:1319] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.38s, 输出 10350 条
+[2026-09-03 09:55:54,555] [views.py:1323] [views:device_demand_week_view] [INFO]- 总耗时: 3.78s
+[2026-09-03 09:55:55,350] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 10:10:23,979] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53732
+[2026-09-03 10:10:24,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:10:24,387] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:10:24,456] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:10:24,652] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:10:24,845] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:10:25,260] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sensor) 无匹配设备
+[2026-09-03 10:10:26,117] [views.py:1554] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-03 10:10:26,404] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Stress External Device) 无匹配设备
+[2026-09-03 10:10:26,480] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media card) 无匹配设备
+[2026-09-03 10:10:26,885] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio) 无匹配设备
+[2026-09-03 10:10:26,916] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Cable) 无匹配设备
+[2026-09-03 10:10:27,208] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Adapter) 无匹配设备
+[2026-09-03 10:10:27,402] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Monitor) 无匹配设备
+[2026-09-03 10:10:27,603] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Game) 无匹配设备
+[2026-09-03 10:10:27,796] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media) 无匹配设备
+[2026-09-03 10:10:27,852] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=adapter) 无匹配设备
+[2026-09-03 10:10:28,377] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Touch) 无匹配设备
+[2026-09-03 10:10:28,422] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Wireless) 无匹配设备
+[2026-09-03 10:10:29,476] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=BT ) 无匹配设备
+[2026-09-03 10:10:30,113] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Lan) 无匹配设备
+[2026-09-03 10:10:30,123] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sever) 无匹配设备
+[2026-09-03 10:10:30,183] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio
+for battery life) 无匹配设备
+[2026-09-03 10:10:30,403] [views.py:1484] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Phone) 无匹配设备
+[2026-09-03 10:10:30,414] [views.py:1516] [views:get_requirement_items] [INFO]- 生成需求单元数: 549
+[2026-09-03 10:10:30,422] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 5.67s, 共 549 个需求单元
+[2026-09-03 10:10:32,222] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.44s, 共 390 个项目
+[2026-09-03 10:10:33,377] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.12s, 共 227 周
+[2026-09-03 10:10:33,915] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.54s, 输出 10350 条
+[2026-09-03 10:10:34,159] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 9.41s
+[2026-09-03 10:10:35,070] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37129417
+[2026-09-03 10:12:07,099] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53725
+[2026-09-03 10:12:07,499] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:12:07,589] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:12:07,617] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:12:07,959] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:12:11,188] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:12:11,241] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37129417
+[2026-09-03 10:17:14,917] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 53585
+[2026-09-03 10:17:15,176] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:17:15,216] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:17:15,666] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:17:16,054] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:17:16,372] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:17:18,366] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sensor) 无匹配设备
+[2026-09-03 10:17:21,007] [views.py:1548] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-03 10:17:21,669] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Stress External Device) 无匹配设备
+[2026-09-03 10:17:21,881] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media card) 无匹配设备
+[2026-09-03 10:17:23,117] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio) 无匹配设备
+[2026-09-03 10:17:23,210] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Cable) 无匹配设备
+[2026-09-03 10:17:23,924] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Adapter) 无匹配设备
+[2026-09-03 10:17:24,468] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Monitor) 无匹配设备
+[2026-09-03 10:17:24,938] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Game) 无匹配设备
+[2026-09-03 10:17:26,027] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media) 无匹配设备
+[2026-09-03 10:17:26,495] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=adapter) 无匹配设备
+[2026-09-03 10:17:28,111] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Touch) 无匹配设备
+[2026-09-03 10:17:28,245] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Wireless) 无匹配设备
+[2026-09-03 10:17:30,124] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=BT ) 无匹配设备
+[2026-09-03 10:17:30,835] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Lan) 无匹配设备
+[2026-09-03 10:17:30,845] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sever) 无匹配设备
+[2026-09-03 10:17:30,917] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio
+for battery life) 无匹配设备
+[2026-09-03 10:17:31,141] [views.py:1478] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Phone) 无匹配设备
+[2026-09-03 10:17:31,150] [views.py:1510] [views:get_requirement_items] [INFO]- 生成需求单元数: 549
+[2026-09-03 10:17:31,159] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 14.87s, 共 549 个需求单元
+[2026-09-03 10:17:33,558] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.93s, 共 390 个项目
+[2026-09-03 10:17:35,516] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.92s, 共 227 周
+[2026-09-03 10:17:36,211] [views.py:1319] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.69s, 输出 10350 条
+[2026-09-03 10:17:36,535] [views.py:1323] [views:device_demand_week_view] [INFO]- 总耗时: 20.31s
+[2026-09-03 10:17:38,114] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 29879917
+[2026-09-03 10:24:23,233] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 55302
+[2026-09-03 10:24:23,680] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:24:23,681] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:24:23,852] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:24:24,239] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:24:25,041] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:24:26,414] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sensor) 无匹配设备
+[2026-09-03 10:24:28,512] [views.py:1559] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-09-03 10:24:28,982] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Stress External Device) 无匹配设备
+[2026-09-03 10:24:29,154] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media card) 无匹配设备
+[2026-09-03 10:24:30,216] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio) 无匹配设备
+[2026-09-03 10:24:30,342] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Cable) 无匹配设备
+[2026-09-03 10:24:31,238] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Adapter) 无匹配设备
+[2026-09-03 10:24:31,802] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Monitor) 无匹配设备
+[2026-09-03 10:24:32,483] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Game) 无匹配设备
+[2026-09-03 10:24:33,257] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media) 无匹配设备
+[2026-09-03 10:24:33,466] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=adapter) 无匹配设备
+[2026-09-03 10:24:35,650] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Touch) 无匹配设备
+[2026-09-03 10:24:35,863] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Wireless) 无匹配设备
+[2026-09-03 10:24:39,437] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=BT ) 无匹配设备
+[2026-09-03 10:24:40,118] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Lan) 无匹配设备
+[2026-09-03 10:24:40,129] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sever) 无匹配设备
+[2026-09-03 10:24:40,211] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio
+for battery life) 无匹配设备
+[2026-09-03 10:24:40,643] [views.py:1485] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Phone) 无匹配设备
+[2026-09-03 10:24:40,666] [views.py:1521] [views:get_requirement_items] [INFO]- 生成需求单元数: 549
+[2026-09-03 10:24:40,693] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 15.93s, 共 549 个需求单元
+[2026-09-03 10:24:43,457] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.81s, 共 390 个项目
+[2026-09-03 10:24:44,946] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.47s, 共 227 周
+[2026-09-03 10:24:45,659] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.71s, 输出 10350 条
+[2026-09-03 10:24:46,018] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 21.36s
+[2026-09-03 10:24:47,826] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:26:00,707] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 55296
+[2026-09-03 10:26:01,911] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:26:01,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:39:49,115] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 54168
+[2026-09-03 10:39:49,258] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 10:39:49,350] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:39:51,160] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.52s, 共 390 个项目
+[2026-09-03 10:39:52,396] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.22s, 共 227 周
+[2026-09-03 10:39:52,935] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.54s, 输出 10350 条
+[2026-09-03 10:39:53,195] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 3.94s
+[2026-09-03 10:39:54,062] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:42:09,226] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 57022
+[2026-09-03 10:42:10,356] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:42:10,371] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:42:36,589] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:42:36,752] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:42:36,752] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:42:36,764] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:42:39,312] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 57022
+[2026-09-03 10:42:39,440] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:42:39,457] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:42:39,472] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:42:39,590] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:42:40,662] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:42:40,671] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:42:51,672] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 57022
+[2026-09-03 10:42:51,813] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:42:51,823] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:42:51,831] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:42:51,951] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:42:53,183] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:42:53,190] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:45:26,443] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 55297
+[2026-09-03 10:45:26,598] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:45:26,606] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:45:26,607] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:45:26,745] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:45:26,833] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 10:45:26,890] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:45:27,155] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 390 个项目
+[2026-09-03 10:45:28,325] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.15s, 共 227 周
+[2026-09-03 10:45:28,728] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.40s, 输出 10350 条
+[2026-09-03 10:45:28,983] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 2.15s
+[2026-09-03 10:45:29,790] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:48:42,902] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 55324
+[2026-09-03 10:48:43,107] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:48:43,120] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:48:43,144] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:48:43,301] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:48:45,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:48:45,097] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:51:44,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 55385
+[2026-09-03 10:51:44,806] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:51:44,822] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:51:44,835] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:51:44,986] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:51:45,061] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 10:51:45,123] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:51:46,936] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.46s, 共 390 个项目
+[2026-09-03 10:51:48,169] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.22s, 共 227 周
+[2026-09-03 10:51:48,564] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.39s, 输出 10350 条
+[2026-09-03 10:51:48,818] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 3.76s
+[2026-09-03 10:51:49,684] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:54:24,611] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 56822
+[2026-09-03 10:54:24,764] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:54:24,778] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:54:24,791] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:54:24,911] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:54:26,180] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:54:26,184] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 10:54:52,584] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 55385
+[2026-09-03 10:54:52,751] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 10:54:52,754] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 10:54:52,761] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 10:54:52,895] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 10:54:54,036] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 10:54:54,044] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:01:23,951] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 56360
+[2026-09-03 11:01:24,112] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:01:24,134] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:01:24,145] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:01:24,273] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:01:24,351] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 11:01:24,404] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:01:24,686] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 390 个项目
+[2026-09-03 11:01:25,897] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.20s, 共 227 周
+[2026-09-03 11:01:26,360] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.46s, 输出 10350 条
+[2026-09-03 11:01:26,589] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 2.24s
+[2026-09-03 11:01:27,479] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:03:41,732] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 56882
+[2026-09-03 11:03:41,934] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:03:41,934] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:03:41,959] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:03:42,091] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:03:43,705] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:03:43,715] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:08:04,729] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 57180
+[2026-09-03 11:08:04,913] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:08:04,942] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:08:04,955] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:08:05,117] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:08:05,195] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 11:08:05,253] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:08:06,776] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 1.21s, 共 390 个项目
+[2026-09-03 11:08:08,013] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.22s, 共 227 周
+[2026-09-03 11:08:08,391] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.38s, 输出 10350 条
+[2026-09-03 11:08:08,628] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 3.43s
+[2026-09-03 11:08:09,561] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:16:21,685] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 56350
+[2026-09-03 11:16:21,872] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:16:21,905] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:16:21,923] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:16:22,077] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:16:22,178] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 11:16:22,267] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:16:22,716] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 390 个项目
+[2026-09-03 11:16:23,890] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.16s, 共 227 周
+[2026-09-03 11:16:24,535] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.65s, 输出 10350 条
+[2026-09-03 11:16:24,768] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 2.59s
+[2026-09-03 11:16:25,655] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:22:02,562] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 57208
+[2026-09-03 11:22:02,913] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:22:02,945] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:22:02,986] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:22:03,261] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:22:03,477] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.02s, 共 549 个需求单元
+[2026-09-03 11:22:03,792] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:22:11,385] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 4.85s, 共 390 个项目
+[2026-09-03 11:22:21,813] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 10.33s, 共 227 周
+[2026-09-03 11:22:23,481] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 1.67s, 输出 10350 条
+[2026-09-03 11:22:23,715] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 20.26s
+[2026-09-03 11:22:24,550] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:25:56,440] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 58653
+[2026-09-03 11:25:56,696] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:25:56,736] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:25:56,774] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:25:57,337] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:25:58,549] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:25:58,554] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:27:54,644] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 58653
+[2026-09-03 11:27:54,841] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:27:54,866] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:27:54,881] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:27:55,172] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:27:55,306] [views.py:1204] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-09-03 11:27:55,371] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:27:55,809] [views.py:1234] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 390 个项目
+[2026-09-03 11:27:57,019] [views.py:1284] [views:device_demand_week_view] [INFO]- 按周汇总耗时: 1.19s, 共 227 周
+[2026-09-03 11:27:57,600] [views.py:1322] [views:device_demand_week_view] [INFO]- 生成输出耗时: 0.58s, 输出 10350 条
+[2026-09-03 11:27:57,835] [views.py:1326] [views:device_demand_week_view] [INFO]- 总耗时: 2.53s
+[2026-09-03 11:27:58,782] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:30:38,978] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 59221
+[2026-09-03 11:30:39,205] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:30:39,215] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:30:39,240] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:30:39,529] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:30:40,835] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 11:30:40,844] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:31:04,944] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 60173
+[2026-09-03 11:31:05,290] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-03 11:31:05,325] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-03 11:31:05,358] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-03 11:31:05,591] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-03 11:31:06,997] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 200 37165417
+[2026-09-03 11:31:07,005] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 13:13:43,465] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-09-03 13:13:43,472] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-03 13:13:44,723] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-03 13:13:44,731] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-03 13:13:47,832] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-03 13:13:47,920] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-03 13:13:47,975] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-03 13:13:48,319] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /index/ HTTP/1.1" 200 47351
+[2026-09-03 13:13:49,047] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 13:13:49,118] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-03 13:13:49: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/index/'>
+[2026-09-03 13:13:49,132] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /index/ HTTP/1.1" 200 1621
+[2026-09-03 13:13:49,246] [log.py:228] [log:log_response] [WARNING]- Not Found: /media/img/UserInfo/Jully_Li.jpg
+[2026-09-03 13:13:49,247] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /media/img/UserInfo/Jully_Li.jpg HTTP/1.1" 404 1803
+[2026-09-03 13:48:55,787] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceABO/BorrowedDeviceABO HTTP/1.1" 301 0
+[2026-09-03 13:48:57,052] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceABO/BorrowedDeviceABO/ HTTP/1.1" 200 73224
+[2026-09-03 13:48:57,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-03 13:48:57,564] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-03 13:48:57: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceABO/BorrowedDeviceABO/'>
+[2026-09-03 13:48:57,580] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceABO/BorrowedDeviceABO/ HTTP/1.1" 200 186
+[2026-09-04 14:22:49,606] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceABO/BorrowedDeviceABO/ HTTP/1.1" 302 0
+[2026-09-04 14:22:49,819] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-04 14:22:50,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-04 14:22:50,068] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-07 11:52:56,043] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-07 11:52:56,104] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823

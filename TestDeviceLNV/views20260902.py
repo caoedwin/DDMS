@@ -875,101 +875,53 @@ def tech_score(dev):
         return 70
 
 def compute_score(dev, today):
-    """计算综合评分及各项子分
-    权重：使用年限10% + 使用次数40% + 技术先进性5% + 借用次数40% + EOL状态5%
-    """
-    # ---- 使用年限 10% ----
+    """计算综合评分及各项子分"""
     pdate = parse_date(dev.Pchsdate)
     if pdate:
         years = (today - pdate).days / 365.25
-        if years > 10:
-            age_score = 100
-        elif years > 8:
-            age_score = 80
-        elif years > 5:
-            age_score = 60
-        elif years > 1:
-            age_score = 30
-        else:
-            age_score = 0
+        age_score = 100 if years > 10 else (80 if years > 8 else (60 if years > 5 else (30 if years > 1 else 0)))
     else:
         age_score = 50
 
-    # ---- 使用次数 40% ----
-    use_count = dev.uscyc or 0
-    try:
-        use_count = int(use_count)
-    except Exception:
-        use_count = 0
-    if use_count > 2000:
-        usage_score = 100
-    elif use_count > 1500:
-        usage_score = 90
-    elif use_count > 1000:
-        usage_score = 80
-    elif use_count > 500:
-        usage_score = 70
-    elif use_count > 200:
-        usage_score = 40
-    elif use_count > 100:
-        usage_score = 20
-    else:
-        usage_score = 0
-
-    # ---- 技术先进性 5% ----
-    tech = tech_score(dev)
-
-    # ---- 借用次数 40% ----
     usr = dev.UsrTimes or 0
     try:
         usr = int(usr)
-    except Exception:
+    except:
         usr = 0
-    if usr > 500:
-        borrow_score = 100
-    elif usr > 300:
-        borrow_score = 70
-    elif usr > 200:
-        borrow_score = 40
-    elif usr > 100:
-        borrow_score = 20
-    else:
-        borrow_score = 0
+    borrow_score = 100 if usr > 500 else (70 if usr > 300 else (40 if usr > 200 else (20 if usr > 100 else 0)))
 
-    # ---- EOL 状态 5% ----
+    use_count = dev.uscyc or 0
+    try:
+        use_count = int(use_count)
+    except:
+        use_count = 0
+    if use_count == 0:
+        usage_score = 50
+    else:
+        usage_score = 100 if use_count > 2000 else (90 if use_count > 1500 else (80 if use_count > 1000 else (70 if use_count > 500 else (40 if use_count > 200 else (20 if use_count > 100 else 0)))))
+
+    tech = tech_score(dev)
+
     eol_date = parse_date(dev.EOL)
-    if eol_date:
-        if eol_date < today:
-            eol_score = 100
-        else:
-            eol_score = 60
-    else:
-        eol_score = 0
+    eol_score = 80 if (eol_date and eol_date < today) else 50
 
-    # 权重求和（合计 1.0）
-    weights = [0.10, 0.40, 0.05, 0.40, 0.05]
-    scores = [age_score, usage_score, tech, borrow_score, eol_score]
-    total = sum(s * w for s, w in zip(scores, weights))
-    return total, {
-        'age': age_score,
-        'usage': usage_score,
-        'borrow': borrow_score,
-        'tech': tech,
-        'eol': eol_score,
-        'status': 0,  # 状态分已从权重中移除，保留字段以兼容前端
-    }
+    status = (dev.DevStatus or '').lower()
+    status_score = 100 if 'damaged' in status else (90 if 'lost' in status else (50 if 'long' in status else 0))
+
+    weights = [0.3, 0.2, 0.1, 0.2, 0.1, 0.1]
+    scores = [age_score, usage_score, borrow_score, tech, eol_score, status_score]
+    total = sum(s * w for s, w in zip(scores, weights)) / sum(weights)
+    return total, {'age': age_score, 'usage': usage_score, 'borrow': borrow_score,
+                   'tech': tech, 'eol': eol_score, 'status': status_score}
 
 def upgrade_suggestion(dev, score):
     """
-    生成升级建议（新版逻辑）：
-    - 设备状态 Damaged / Lost：需要购买（优先级紧急更换）
-    - 同类可用设备数量不足（Monitor 除外，至少 2 台）：需要购买（紧急更换）
-    - 综合评分 >= 80：评估购买（酌情更换）
-    - 40 ~ 79：可观察
-    - < 40：继续使用
-    技术建议完整保留，末尾追加数量评估信息。
+    生成升级建议：
+    - 所有设备统一逻辑，Damaged/Lost固定基准优先级为"紧急更换"
+    - 若同类可用设备数量达标，则优先级降一级
+    - 保留原技术建议，末尾追加数量评估信息
     """
-    # ---------- 1. 价格解析 ----------
+    # ---------- 1. 解析价格并确定目标数量 ----------
     price_raw = getattr(dev, 'DevPrice', None) or '0'
     try:
         import re
@@ -978,10 +930,14 @@ def upgrade_suggestion(dev, score):
     except (ValueError, TypeError):
         price = 0.0
 
-    # ---------- 2. 判断是否 monitor 类 + 统计同类可用数量 ----------
-    ctgry = (dev.DevCtgry or '').lower()
-    is_monitor = ('monitor' in ctgry)
+    if price <= 1000:
+        target_count = 5
+    elif price <= 1500:
+        target_count = 3
+    else:   # > 1500
+        target_count = 2
 
+    # ---------- 2. 统计同类可用设备数量（排除 Damaged / Lost） ----------
     same_type_available = 0
     try:
         model_class = dev.__class__
@@ -989,33 +945,44 @@ def upgrade_suggestion(dev, score):
             IntfCtgry=dev.IntfCtgry,
             DevCtgry=dev.DevCtgry,
             Devproperties=dev.Devproperties,
+            DevVendor=dev.DevVendor,
+            Devsize=dev.Devsize
         ).exclude(
             Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
         ).count()
     except Exception:
         same_type_available = 0
 
-    target_count = 2  # 非 Monitor 类型同类至少 2 台
+    is_sufficient = same_type_available >= target_count
 
-    # ---------- 3. 优先级判定 ----------
+    # ---------- 3. 确定基准优先级 ----------
     status_lower = (dev.DevStatus or '').lower()
     is_damaged_lost = ('damaged' in status_lower or 'lost' in status_lower)
-    qty_shortage = (not is_monitor) and (same_type_available < target_count)
 
     if is_damaged_lost:
         base_priority = "紧急更换"
-    elif qty_shortage:
-        base_priority = "紧急更换"
-    elif score >= 80:
-        base_priority = "酌情更换"
-    elif score >= 40:
-        base_priority = "可观察"
     else:
-        base_priority = "继续使用"
+        if score >= 90:
+            base_priority = "紧急更换"
+        elif score >= 70:
+            base_priority = "酌情更换"
+        elif score >= 40:
+            base_priority = "可观察"
+        else:
+            base_priority = "继续使用"
 
-    final_priority = base_priority
+    # ---------- 4. 降级逻辑（所有设备统一） ----------
+    if is_sufficient and base_priority != "继续使用":
+        priority_map = {
+            "紧急更换": "酌情更换",
+            "酌情更换": "可观察",
+            "可观察": "继续使用"
+        }
+        final_priority = priority_map.get(base_priority, base_priority)
+    else:
+        final_priority = base_priority
 
-    # ---------- 4. 生成技术建议（保留原有逻辑） ----------
+    # ---------- 5. 生成技术建议（完全保留原有代码，一字不改） ----------
     ctgry = (dev.DevCtgry or '').lower()
     prop = (dev.Devproperties or '').lower()
     intf = (dev.IntfCtgry or '').lower()
@@ -1064,7 +1031,6 @@ def upgrade_suggestion(dev, score):
     else:
         base_suggestion = "建议对照最新技术规范进行资产评估。"
 
-    # ---------- Monitor 碎屏险建议 ----------
     insurance_advice = ""
     if 'monitor' in ctgry:
         def get_panel_type():
@@ -1110,186 +1076,25 @@ def upgrade_suggestion(dev, score):
     else:
         tech_suggestion = base_suggestion
 
-    # ---------- 5. 末尾追加数量评估信息 ----------
-    if is_monitor:
-        quantity_info = "（Monitor 类设备无需数量检查）"
-    elif same_type_available >= target_count:
-        quantity_info = f"（同类可用设备 {same_type_available} 台，已满足至少 {target_count} 台，无需额外采购）"
+    # ---------- 6. 末尾追加数量评估信息 ----------
+    type_str = f"{dev.IntfCtgry}/{dev.DevCtgry}/{dev.Devproperties}/{dev.DevVendor}/{dev.Devsize}"
+    if is_sufficient:
+        status_text = "已达标"
     else:
-        quantity_info = f"（同类可用设备仅 {same_type_available} 台，未达 {target_count} 台，建议采购）"
-
-    if is_damaged_lost:
-        quantity_info += "；设备已损坏/丢失，新设备入库后请将原设备状态改为 Replaced。"
+        shortage = target_count - same_type_available
+        status_text = f"缺 {shortage} 台"
+    quantity_info = f"（同类型设备：{type_str}，可用 {same_type_available} 台，需达到 {target_count} 台，{status_text}）"
 
     final_suggestion = tech_suggestion + " " + quantity_info
+
     return final_priority, final_suggestion
-
-def check_audit_device_availability(rec):
-    """检查单条 audit 记录是否有可用设备"""
-    # 1. 先检查 Device1-Device10 里是否填写了设备 ID
-    device_nids = []
-    for i in range(1, 11):
-        nid = getattr(rec, f'Device{i}', None)
-        if nid and str(nid).strip():
-            device_nids.append(str(nid).strip())
-
-    available = []
-    missing = []
-    for nid in device_nids:
-        try:
-            dev = DeviceLNV.objects.filter(NID=nid).first()
-        except Exception:
-            dev = None
-        if dev:
-            available.append({
-                'NID': nid,
-                'DevStatus': dev.DevStatus or '',
-                'BrwStatus': dev.BrwStatus or '',
-                'DevModel': dev.DevModel or '',
-                'DevName': dev.DevName or '',
-            })
-        else:
-            missing.append(nid)
-
-    if available:
-        return {
-            'available': True,
-            'devices': available,
-            'missing': missing,
-            'source': 'Device字段',
-        }
-
-    # 2. 预留接口：按 audit list 描述去设备库匹配
-    matched = match_audit_by_device_library(rec)
-    if matched:
-        return {
-            'available': True,
-            'devices': matched,
-            'missing': [],
-            'source': '设备库匹配',
-        }
-
-    return {
-        'available': False,
-        'devices': [],
-        'missing': device_nids,
-        'source': None,
-    }
-
-
-def match_audit_by_device_library(rec):
-    """
-    预留接口：根据 audit 记录的 Category / Class / Type 去设备库匹配。
-    （等 audit list 格式改成 device 库的格式后启用）
-    目前返回空列表，即不做自动匹配。
-    """
-    return []
-
-
-def get_audit_list_data():
-    """获取所有 Require_State=Must 的 audit list 记录 + 是否有可用设备
-
-    注意：TestDeviceLNV 表中某些行多个字段存在"合并标识"，
-    还原规则：按 id 升序扫描全表，每个字段都用"最近一次出现的非'合并标识'值"覆盖。
-    还原完成后再过滤 Require_State='Must'。
-    """
-    cache_key = 'audit_list_data_v3'   # 再次升版本号，确保缓存刷新
-    cached = cache.get(cache_key)
-    if cached is not None:
-        return cached
-
-    # ---------- 1. 按 id 排序取全部记录 ----------
-    all_records = list(TestDeviceLNV.objects.all().order_by('id'))
-
-    MERGE_TAG = '合并标识'
-
-    # 需要还原的字段列表（涵盖所有可能含"合并标识"的文本字段）
-    restore_fields = [
-        'Category',
-        'Class',
-        'Type',
-        'Covered_range_for_case',
-        'Require_State',
-        'Comments',
-        'Remark',
-        'ODM_status',
-        'Purchase_Plan',
-        'Act_Status',
-        'Device_Know_Issue',
-    ]
-
-    # ---------- 2. 逐行还原每个字段 ----------
-    # current_values 保存"到目前为止每个字段最近一次的有效值"
-    current_values = {f: '' for f in restore_fields}
-
-    filled_records = []
-    for rec in all_records:
-        restored = {}
-        for f in restore_fields:
-            val = getattr(rec, f, None)
-            val_str = str(val).strip() if val is not None else ''
-
-            if val_str == MERGE_TAG:
-                # 本行是合并标识 → 使用"最近有效值"
-                restored[f] = current_values[f]
-            else:
-                # 本行是真实值 → 更新"最近有效值"
-                current_values[f] = val_str
-                restored[f] = val_str
-
-        filled_records.append({
-            'rec': rec,
-            'restored': restored,
-        })
-
-    # ---------- 3. 过滤出 Require_State=Must 的记录 ----------
-    # 注意：过滤要用"还原后"的 Require_State
-    must_records = [
-        item for item in filled_records
-        if (item['restored'].get('Require_State', '') or '').strip().lower() == 'must'
-    ]
-
-    # ---------- 4. 组装输出 ----------
-    result = []
-    for item in must_records:
-        rec = item['rec']
-        r = item['restored']
-        info = check_audit_device_availability(rec)
-
-        result.append({
-            'id': rec.id,
-            'Category': r.get('Category', ''),
-            'Class': r.get('Class', ''),
-            'Type': r.get('Type', ''),
-            'Require_State': r.get('Require_State', ''),
-            'Covered_range_for_case': r.get('Covered_range_for_case', ''),
-            'Comments': r.get('Comments', ''),
-            'Remark': r.get('Remark', ''),
-            'ODM_status': r.get('ODM_status', ''),
-            'Purchase_Plan': r.get('Purchase_Plan', ''),
-            'Act_Status': r.get('Act_Status', ''),
-            'Device_Know_Issue': r.get('Device_Know_Issue', ''),
-            'Device_NIDs': '、'.join(
-                [str(getattr(rec, f'Device{i}', '') or '') for i in range(1, 11)
-                 if getattr(rec, f'Device{i}', None)]
-            ),
-            'Available_Devices': info['devices'],
-            'Missing_NIDs': info['missing'],
-            'Has_Device': info['available'],
-            'Source': info['source'] or '',
-            'Need_Purchase': not info['available'],
-        })
-
-    cache.set(cache_key, result, timeout=300)
-    return result
 # ===================== JSON 接口视图 =====================
 from django.core.cache import cache
 from django.db.models import Q
 
 @csrf_exempt
-@csrf_exempt
 def device_score_view(request):
-    """统一入口：返回模型列表 / 设备评分数据 / Audit list 数据"""
+    """统一入口：返回模型列表 或 设备评分数据"""
     # 返回客户列表（用于前端下拉）
     if request.method == 'GET' and request.GET.get('action') == 'get_models':
         data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
@@ -1297,14 +1102,6 @@ def device_score_view(request):
     if request.method == 'POST' and request.POST.get('action') == 'get_models':
         data = [{'key': k, 'name': k} for k in DEVICE_MODELS.keys()]
         return JsonResponse(data, safe=False)
-
-    # 返回 Audit list 数据
-    if request.method == 'GET' and request.GET.get('action') == 'get_audit_list':
-        audit_data = get_audit_list_data()
-        return JsonResponse({'data': audit_data, 'count': len(audit_data)})
-    if request.method == 'POST' and request.POST.get('action') == 'get_audit_list':
-        audit_data = get_audit_list_data()
-        return JsonResponse({'data': audit_data, 'count': len(audit_data)})
 
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
@@ -1314,8 +1111,7 @@ def device_score_view(request):
     if not model:
         return JsonResponse({'error': f'Unknown model: {model_key}'}, status=400)
 
-    # 缓存键改为 _v2 避免旧缓存干扰
-    cache_key = f'device_score_data_{model_key}_v2'
+    cache_key = f'device_score_data_{model_key}'
     cached_data = cache.get(cache_key)
     if cached_data is not None:
         return JsonResponse(cached_data)
@@ -1334,21 +1130,6 @@ def device_score_view(request):
     for dev in devices:
         total, detail = compute_score(dev, today)
         urgency, sug = upgrade_suggestion(dev, total)
-
-        # 同类可用数量（仅展示用）
-        is_monitor = 'monitor' in (dev.DevCtgry or '').lower()
-        same_type = 0
-        try:
-            same_type = model.objects.filter(
-                IntfCtgry=dev.IntfCtgry,
-                DevCtgry=dev.DevCtgry,
-                Devproperties=dev.Devproperties,
-            ).exclude(
-                Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
-            ).count()
-        except Exception:
-            same_type = 0
-
         result.append({
             'id': dev.id,
             'NID': dev.NID,
@@ -1359,7 +1140,7 @@ def device_score_view(request):
             'DevModel': dev.DevModel,
             'DevName': dev.DevName,
             'DevStatus': dev.DevStatus,
-            'Devsize': dev.Devsize or '',
+            'Devsize': dev.Devsize or '',   # 新增容量
             'Score': round(total, 2),
             'Priority': urgency,
             'DevPrice': dev.DevPrice,
@@ -1370,9 +1151,6 @@ def device_score_view(request):
             'TechScore': detail['tech'],
             'EOLScore': detail['eol'],
             'StatusScore': detail['status'],
-            'IsMonitor': is_monitor,
-            'SameTypeAvailable': same_type,
-            'NeedPurchase': urgency in ('紧急更换',),
         })
 
     # ---------- 排序：先按优先级，再按得分降序 ----------
@@ -1404,14 +1182,16 @@ import time
 
 @csrf_exempt
 def device_demand_week_view(request):
+    """按周统计设备需求（所有项目共享相同设备需求），缓存优化"""
     import time
     start_total = time.time()
 
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
-    # 固定测试日期，正式时改为 datetime.now().date()
+    # ---------- 固定测试日期，正式时改为 datetime.now().date() ----------
     today = datetime(2019, 1, 29).date()
+    # 正式启用：
     # today = datetime.now().date()
 
     cache_key = f'demand_week_result_{today.isoformat()}'
@@ -1419,37 +1199,15 @@ def device_demand_week_view(request):
     if cached_result is not None:
         return JsonResponse(cached_result)
 
-    # 1. 获取需求单元
+    # ---------- 1. 获取需求项（缓存，使用新函数） ----------
     t1 = time.time()
-    req_units = get_requirement_items()
+    requirement_items = get_requirement_items()
     t2 = time.time()
-    logger.info(f"获取需求项耗时: {t2-t1:.2f}s, 共 {len(req_units)} 个需求单元")
-    if not req_units:
-        return JsonResponse({'error': '无法获取需求项'}, status=404)
+    logger.info(f"获取需求项耗时: {t2-t1:.2f}s, 共 {len(requirement_items)} 项")
+    if not requirement_items:
+        return JsonResponse({'error': '无法为任何需求项匹配到可用设备'}, status=404)
 
-    # 按 type_key 分组统计需求量和明细
-    type_demand = defaultdict(int)
-    type_units = defaultdict(list)
-    for unit in req_units:
-        tk = unit['type_key']
-        if tk is not None:
-            type_demand[tk] += 1
-            type_units[tk].append(unit)
-        else:
-            # 未匹配
-            tk = ('未匹配', '未匹配', '未匹配')
-            type_demand[tk] += 1
-            type_units[tk].append(unit)
-
-    # 统计库存
-    inventory = defaultdict(int)
-    inventory_nids = defaultdict(list)
-    for dev in DeviceLNV.objects.exclude(Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')):
-        tk = (dev.IntfCtgry or '', dev.DevCtgry or '', dev.Devproperties or '')
-        inventory[tk] += 1
-        inventory_nids[tk].append(dev.NID)
-
-    # 2. 获取项目计划
+    # ---------- 2. 获取项目计划（缓存） ----------
     t1 = time.time()
     projects = fetch_testprojects()
     t2 = time.time()
@@ -1457,6 +1215,8 @@ def device_demand_week_view(request):
     if not projects:
         return JsonResponse({'error': '无法获取项目计划数据'}, status=500)
 
+    # 过滤有效项目
+    t1 = time.time()
     valid_projects = []
     for proj in projects:
         start_str = proj.get('ScheduleBegin') or proj.get('start_date') or proj.get('StartDate')
@@ -1475,12 +1235,24 @@ def device_demand_week_view(request):
             'start': start,
             'end': end
         })
+    t2 = time.time()
+    logger.info(f"过滤项目耗时: {t2-t1:.2f}s, 有效项目: {len(valid_projects)}")
     if not valid_projects:
+        logger.error("没有有效的项目计划数据")
         return JsonResponse({'error': '没有有效的项目计划数据'}, status=404)
 
-    # 3. 按周汇总需求
+    # ---------- 3. 统计库存 ----------
+    inventory = defaultdict(int)
+    inventory_nids = defaultdict(list)  # 新增：记录每个类型的NID列表
+
+    for dev in DeviceLNV.objects.exclude(Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')):
+        type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
+        inventory[type_key] += 1
+        inventory_nids[type_key].append(dev.NID)  # 记录NID
+
+    # ---------- 4. 按周汇总需求（包含项目名称和Phase） ----------
     t1 = time.time()
-    week_demand = defaultdict(lambda: defaultdict(lambda: {'demand': 0, 'projects': set(), 'units': [], '_seen_units': set()}))
+    week_demand = defaultdict(lambda: defaultdict(lambda: {'demand': 0, 'projects': set()}))
 
     for proj in valid_projects:
         start = proj['start']
@@ -1492,20 +1264,14 @@ def device_demand_week_view(request):
             effective_start = max(start, week_start)
             effective_end = min(end, week_start + timedelta(days=6))
             if effective_start <= effective_end:
-                for tk, demand_count in type_demand.items():
-                    week_demand[week_start][tk]['demand'] += demand_count
-                    week_demand[week_start][tk]['projects'].add(proj_info)
-                    # 添加明细单元（去重）
-                    for unit in type_units.get(tk, []):
-                        key = (unit['category'], unit['class'], unit['type'], unit['require_state'], unit['nid'], unit['is_must'])
-                        if key not in week_demand[week_start][tk]['_seen_units']:
-                            week_demand[week_start][tk]['_seen_units'].add(key)
-                            week_demand[week_start][tk]['units'].append(unit)
+                for type_key, nid in requirement_items:
+                    week_demand[week_start][type_key]['demand'] += 1
+                    week_demand[week_start][type_key]['projects'].add(proj_info)
             week_start += timedelta(days=7)
     t2 = time.time()
     logger.info(f"按周汇总耗时: {t2-t1:.2f}s, 共 {len(week_demand)} 周")
 
-    # 4. 生成输出
+    # ---------- 5. 生成输出（仅未来周） ----------
     t1 = time.time()
     days_since_monday = today.weekday()
     this_week_start = today - timedelta(days=days_since_monday)
@@ -1515,303 +1281,202 @@ def device_demand_week_view(request):
         if week_start < this_week_start:
             continue
         week_end = week_start + timedelta(days=6)
-        for tk, info in week_demand[week_start].items():
-            units_for_display = [{
-                'category': u['category'],
-                'class': u['class'],
-                'type': u['type'],
-                'require_state': u['require_state'],
-                'is_must': u['is_must'],
-                'nid': u['nid'] or '未匹配',
-                'dev_vendor': u.get('dev_vendor', ''),
-                'dev_model': u.get('dev_model', ''),
-                'dev_name': u.get('dev_name', ''),
-            } for u in info['units']]
+        for type_key, info in week_demand[week_start].items():
+            total_available = inventory.get(type_key, 0)
+            demand = info['demand']
+            sufficient = total_available >= demand
             output.append({
                 'week_start': week_start.strftime('%Y-%m-%d'),
                 'week_end': week_end.strftime('%Y-%m-%d'),
-                'IntfCtgry': tk[0] or 'N/A',
-                'DevCtgry': tk[1] or 'N/A',
-                'Devproperties': tk[2] or 'N/A',
-                '需求量': info['demand'],
-                '库存量': inventory.get(tk, 0),
-                '是否满足': '是' if inventory.get(tk, 0) >= info['demand'] else '否',
+                'IntfCtgry': type_key[0] or 'N/A',
+                'DevCtgry': type_key[1] or 'N/A',
+                'Devproperties': type_key[2] or 'N/A',
+                '需求量': demand,
+                '库存量': total_available,
+                '是否满足': '是' if sufficient else '否',
                 '机种列表': list(info['projects']),
-                '库存设备NID': ','.join(inventory_nids.get(tk, [])),
-                '需求项明细': units_for_display,
+                '库存设备NID': ','.join(inventory_nids.get(type_key, []))  # 新增
             })
     t2 = time.time()
     logger.info(f"生成输出耗时: {t2-t1:.2f}s, 输出 {len(output)} 条")
 
     result_data = {'data': output, 'count': len(output)}
-    cache.set(cache_key, result_data, timeout=300)
+    cache.set(cache_key, result_data, timeout=300)  # 5分钟
+
     logger.info(f"总耗时: {time.time() - start_total:.2f}s")
     return JsonResponse(result_data)
 
+
 import re
 from collections import defaultdict
-from rapidfuzz import fuzz, process
-from django.db.models import Q
-import logging
-
-logger = logging.getLogger('django')
-
-# 在 views.py 中替换或添加以下函数
+from rapidfuzz import process, fuzz   # 新增导入
 
 def get_requirement_items():
-    """
-    返回需求单元列表，每个单元包含：
-        category, class, type, require_state,
-        type_key, nid, is_must,
-        dev_vendor, dev_model, dev_name
-    """
-    cache_key = 'requirement_items_v5'
+    """获取并缓存需求项列表，按连续相同Comments分组，组内共享需求量"""
+    cache_key = 'requirement_items_v2'
     cached = cache.get(cache_key)
     if cached is not None:
         return cached
 
-    # 获取所有 Active 记录，按 id 排序
-    records = list(TestDeviceLNV.objects.filter(Act_Status__iexact='Active').order_by('id'))
-    if not records:
+    # 只获取 Act_Status 为 Active 的记录
+    test_records = list(TestDeviceLNV.objects.filter(Act_Status__iexact='Active').order_by('id'))
+    if not test_records:
         return []
 
-    # 填充合并标识
-    filled_records = []
-    current_category = None
-    current_class = None
-    for rec in records:
-        cat = rec.Category or ''
-        cls = rec.Class or ''
-        if cat != '合并标识':
-            current_category = cat
-        if cls != '合并标识':
-            current_class = cls
-        real_category = current_category if cat == '合并标识' else cat
-        real_class = current_class if cls == '合并标识' else cls
-        filled_records.append({
-            'id': rec.id,
-            'Category': real_category,
-            'Class': real_class,
-            'Type': rec.Type or '',
-            'Require_State': rec.Require_State or '',
-            'Comments': rec.Comments or '',
-            'original': rec,
-        })
-
-    # 按 Category 分组
-    groups = defaultdict(list)
-    for rec in filled_records:
-        groups[rec['Category']].append(rec)
-
-    # 获取可用设备
+    # 获取可用设备（排除 Damaged/Lost）
     all_devices = list(DeviceLNV.objects.exclude(
         Q(DevStatus__iexact='Damaged') | Q(DevStatus__iexact='Lost')
     ))
+
+    # 预计算设备信息（全量组合字符串用于包含匹配）
     device_infos = []
     for dev in all_devices:
-        match_str = f"{dev.IntfCtgry or ''} {dev.DevCtgry or ''} {dev.Devproperties or ''} {dev.DevVendor or ''} {dev.Devsize or ''} {dev.DevModel or ''} {dev.DevName or ''}".lower()
+        full_match_str = f"{dev.IntfCtgry or ''} {dev.DevCtgry or ''} {dev.Devproperties or ''} {dev.DevName or ''} {dev.DevModel or ''} {dev.DevVendor or ''}".lower()
+        fuzzy_match_str = f"{dev.IntfCtgry or ''} {dev.DevCtgry or ''} {dev.Devproperties or ''} {dev.DevName or ''} {dev.DevModel or ''}".lower()
         device_infos.append({
             'dev': dev,
-            'match_str': match_str,
+            'full_lower': full_match_str,
+            'fuzzy_lower': fuzzy_match_str,
             'nid': dev.NID,
             'vendor': (dev.DevVendor or '').lower(),
-            'intf': (dev.IntfCtgry or '').lower(),
-            'type_key': (dev.IntfCtgry or '', dev.DevCtgry or '', dev.Devproperties or ''),
             'status': (dev.DevStatus or '').lower(),
-            'dev_model': (dev.DevModel or '').lower(),
         })
 
-    req_units = []
+    req_items = []
 
-    for category, recs in groups.items():
-        # 取 Comments
-        comments = ''
-        for r in recs:
-            if r['Comments']:
-                comments = r['Comments']
-                break
+    # 1. 按连续相同 Comments 分组
+    groups = []
+    current_group = None
+    for rec in test_records:
+        comments = rec.Comments or ''
+        if current_group is None or current_group['comments'] != comments:
+            current_group = {
+                'comments': comments,
+                'records': [rec],
+                'has_must': rec.Require_State and rec.Require_State.lower() == 'must',
+            }
+            groups.append(current_group)
+        else:
+            current_group['records'].append(rec)
+            if rec.Require_State and rec.Require_State.lower() == 'must':
+                current_group['has_must'] = True
 
-        # 分离 Must 和 Optional
-        must_recs = [r for r in recs if r['Require_State'].lower() in ('must', 'unique must')]
-        opt_recs = [r for r in recs if r['Require_State'].lower() not in ('must', 'unique must')]
+    # 2. 处理每个组
+    for group in groups:
+        comments = group['comments']
+        records = group['records']
+        is_must = group['has_must']
 
-        # 处理 Must：每条独立
-        for rec in must_recs:
-            parts = [rec['Category'], rec['Class'], rec['Type']]
-            match_str = ' '.join([p for p in parts if p]).strip().lower()
-            if not match_str:
-                match_str = rec['Type'].lower()
-            matched_info = None
-            if match_str:
-                matched_info = match_single_device(match_str, device_infos)
-            req_units.append({
-                'category': rec['Category'],
-                'class': rec['Class'],
-                'type': rec['Type'],
-                'require_state': rec['Require_State'],
-                'type_key': matched_info['type_key'] if matched_info else None,
-                'nid': matched_info['nid'] if matched_info else None,
-                'is_must': True,
-                'dev_vendor': matched_info['dev'].DevVendor if matched_info else '',
-                'dev_model': matched_info['dev'].DevModel if matched_info else '',
-                'dev_name': matched_info['dev'].DevName if matched_info else '',
-            })
+        # 提取组需求量（从 comments 中提取数字，若没有则默认等于组内记录数）
+        quantity = 1
+        if comments:
+            num_match = re.search(r'(\d+)', comments)
+            if num_match:
+                quantity = int(num_match.group(1))
+                if quantity < 1:
+                    quantity = 1
+            else:
+                quantity = len(records)
+        else:
+            quantity = len(records)
 
-        # 处理 Optional：整组选取
-        if opt_recs:
-            quantity = 1
-            required_vendors = 0
-            require_a = False
-            require_c = False
-            if comments:
-                num_match = re.search(r'(\d+)\s*(?:device|devices|unit)', comments, re.IGNORECASE)
-                if num_match:
-                    quantity = int(num_match.group(1))
-                else:
-                    quantity = len(opt_recs)
-                vendor_match = re.search(r'(\d+)\s*vendor', comments, re.IGNORECASE)
-                if vendor_match:
-                    required_vendors = int(vendor_match.group(1))
-                if 'a port' in comments.lower() or 'type-a' in comments.lower():
-                    require_a = True
-                if 'c port' in comments.lower() or 'type-c' in comments.lower():
-                    require_c = True
+        # 收集组内所有记录的匹配字符串
+        match_strs = []
+        for rec in records:
+            parts = [rec.Category or '', rec.Class or '', rec.Type or '']
+            s = ' '.join([p for p in parts if p]).strip()
+            if s:
+                match_strs.append(s.lower())
 
-            # 构建候选设备
+        if not match_strs:
+            continue
+
+        # 合并候选设备（对每个 match_str 分别匹配，取并集）
+        all_candidates = []
+        seen_nids = set()
+
+        for match_lower in match_strs:
+            # 1. 包含匹配
             candidates = []
-            seen_nids = set()
-            for rec in opt_recs:
-                parts = [rec['Category'], rec['Class'], rec['Type']]
-                match_str = ' '.join([p for p in parts if p]).strip().lower()
-                if not match_str:
-                    match_str = rec['Type'].lower()
-                if not match_str:
-                    continue
-                # 包含匹配
-                for info in device_infos:
-                    if match_str in info['match_str']:
-                        if info['nid'] not in seen_nids:
-                            seen_nids.add(info['nid'])
-                            candidates.append(info)
-                # 模糊匹配
-                if len(candidates) < quantity:
-                    fuzzy_list = [info['match_str'] for info in device_infos if info['nid'] not in seen_nids]
-                    if fuzzy_list:
-                        matches = process.extract(match_str, fuzzy_list, scorer=fuzz.token_sort_ratio, limit=20, score_cutoff=65)
-                        for matched_str, score, idx in matches:
-                            info = device_infos[idx]
-                            if info['nid'] not in seen_nids:
-                                seen_nids.add(info['nid'])
-                                candidates.append(info)
+            for info in device_infos:
+                if match_lower in info['full_lower']:
+                    candidates.append(info)
+
+            # 2. 单词匹配（若包含匹配无结果）
             if not candidates:
-                logger.warning(f"Optional 组 (Category={category}) 无匹配设备")
-                for rec in opt_recs:
-                    req_units.append({
-                        'category': rec['Category'],
-                        'class': rec['Class'],
-                        'type': rec['Type'],
-                        'require_state': rec['Require_State'],
-                        'type_key': None,
-                        'nid': None,
-                        'is_must': False,
-                        'dev_vendor': '',
-                        'dev_model': '',
-                        'dev_name': '',
-                    })
-                continue
+                words = re.split(r'[\s|]+', match_lower)
+                words = [w for w in words if len(w) > 2]
+                if words:
+                    for info in device_infos:
+                        if all(w in info['full_lower'] for w in words):
+                            candidates.append(info)
+                    if not candidates:
+                        for info in device_infos:
+                            if any(w in info['full_lower'] for w in words):
+                                candidates.append(info)
 
-            # 按状态排序
-            status_priority = {'good': 0, 'fixed': 1, 'long': 2}
-            candidates.sort(key=lambda x: status_priority.get(x['status'], 3))
-            selected = select_devices(candidates, quantity, required_vendors, require_a, require_c)
+            # 3. 模糊匹配（使用 RapidFuzz，替换原 difflib）
+            if not candidates:
+                # 准备模糊匹配用的字符串列表（与 device_infos 顺序一致）
+                fuzzy_list = [info['fuzzy_lower'] for info in device_infos]
+                # 使用 RapidFuzz 提取最佳匹配，得分 >= 80，最多返回 10 个
+                matches = process.extract(
+                    match_lower,
+                    fuzzy_list,
+                    scorer=fuzz.QRatio,      # 快速比率算法
+                    limit=10,
+                    score_cutoff=80          # 对应原 cutoff=0.8
+                )
+                # matches 返回 [(匹配字符串, 得分, 索引), ...]
+                for matched_str, score, idx in matches:
+                    candidates.append(device_infos[idx])
 
-            sample_rec = opt_recs[0]
-            for info in selected:
-                req_units.append({
-                    'category': sample_rec['Category'],
-                    'class': sample_rec['Class'],
-                    'type': sample_rec['Type'],
-                    'require_state': sample_rec['Require_State'],
-                    'type_key': info['type_key'],
-                    'nid': info['nid'],
-                    'is_must': False,
-                    'dev_vendor': info['dev'].DevVendor if info.get('dev') else '',
-                    'dev_model': info['dev'].DevModel if info.get('dev') else '',
-                    'dev_name': info['dev'].DevName if info.get('dev') else '',
-                })
-
-    logger.info(f"生成需求单元数: {len(req_units)}")
-    cache.set(cache_key, req_units, timeout=86400)
-    return req_units
-
-
-def match_single_device(match_str, device_infos, threshold=50):
-    if not match_str:
-        return None
-    # 1. 子串包含匹配（match_str 在设备的 match_str 中）
-    for info in device_infos:
-        if match_str in info['match_str']:
-            return info
-    # 2. 反向包含：设备的 DevModel 出现在 match_str 中
-    for info in device_infos:
-        if info.get('dev_model') and info['dev_model'] in match_str:
-            return info
-    # 3. 模糊匹配（降低阈值）
-    fuzzy_list = [info['match_str'] for info in device_infos]
-    matches = process.extract(match_str, fuzzy_list, scorer=fuzz.token_sort_ratio, limit=1, score_cutoff=threshold)
-    if matches:
-        idx = matches[0][2]
-        return device_infos[idx]
-    return None
-
-
-def select_devices(candidates, required_count, required_vendors=0, require_a=False, require_c=False):
-    """从候选中按厂商分散选取设备，满足厂商数和接口要求"""
-    if not candidates:
-        return []
-
-    # 按厂商分组
-    vendor_groups = defaultdict(list)
-    for info in candidates:
-        vendor_groups[info['vendor']].append(info)
-
-    # 检查可用厂商数
-    vendors_available = list(vendor_groups.keys())
-    if required_vendors > 0 and len(vendors_available) < required_vendors:
-        logger.warning(f"要求 {required_vendors} 个厂商，实际只有 {len(vendors_available)} 个")
-
-    selected = []
-    # 轮询各厂商，每次取一个
-    vendor_cycle = vendors_available[:]
-
-    while len(selected) < required_count and candidates:
-        for vendor in vendor_cycle:
-            if len(selected) >= required_count:
-                break
-            if vendor_groups.get(vendor):
-                info = vendor_groups[vendor].pop(0)
-                # 接口检查（如果有要求）
-                if require_a and 'a' not in info['intf']:
-                    logger.debug(f"设备 {info['nid']} 不满足 A 口要求，但仍选取")
-                if require_c and 'c' not in info['intf']:
-                    logger.debug(f"设备 {info['nid']} 不满足 C 口要求，但仍选取")
-                selected.append(info)
-                candidates = [c for c in candidates if c['nid'] != info['nid']]
-        vendor_cycle = [v for v in vendor_cycle if vendor_groups.get(v)]
-        if not vendor_cycle and len(selected) < required_count:
-            # 补足
+            # 去重并加入总候选
             for info in candidates:
-                if len(selected) >= required_count:
+                if info['nid'] not in seen_nids:
+                    seen_nids.add(info['nid'])
+                    all_candidates.append(info)
+
+        if not all_candidates:
+            logger.warning(f"组 '{comments}' 无法匹配到任何设备")
+            continue
+
+        # 按状态优先级排序 (Good > Fixed > Long > 其他)
+        status_priority = {'good': 0, 'fixed': 1, 'long': 2}
+        all_candidates.sort(key=lambda x: status_priority.get(x['status'], 3))
+
+        # 按厂商分散选取所需数量的设备
+        selected = []
+        vendor_groups = defaultdict(list)
+        for info in all_candidates:
+            vendor_groups[info['vendor']].append(info)
+
+        vendor_keys = list(vendor_groups.keys())
+        temp_candidates = all_candidates[:]
+        while len(selected) < quantity and temp_candidates:
+            for vendor in vendor_keys:
+                if len(selected) >= quantity:
                     break
-                selected.append(info)
-            break
-
-    if len(selected) < required_count:
-        for info in candidates:
-            if len(selected) >= required_count:
+                if vendor_groups.get(vendor):
+                    info = vendor_groups[vendor].pop(0)
+                    selected.append(info)
+                    temp_candidates = [c for c in temp_candidates if c['nid'] != info['nid']]
+            if len(selected) < quantity and temp_candidates:
+                for info in temp_candidates:
+                    if len(selected) >= quantity:
+                        break
+                    selected.append(info)
                 break
-            if info not in selected:
-                selected.append(info)
 
-    return selected
+        if is_must and len(selected) < quantity:
+            logger.warning(f"必须组 '{comments}' 需求 {quantity} 台，仅匹配到 {len(selected)} 台")
 
+        # 生成需求项
+        for info in selected:
+            dev = info['dev']
+            type_key = (dev.IntfCtgry, dev.DevCtgry, dev.Devproperties)
+            req_items.append((type_key, dev.NID))
+            logger.info(f"组 '{comments}' 匹配设备 NID: {dev.NID}")
+
+    cache.set(cache_key, req_items, timeout=86400)
+    return req_items

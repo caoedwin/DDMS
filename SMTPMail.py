@@ -466,13 +466,14 @@ if __name__ == "__main__":
         # 获取设备数据
         print("获取设备数据...")
         Devicelist0 = ImportDeviceInfo(BrwStatus='已借出') or []
-        Devicelist1 = ImportDeviceInfo(BrwStatus='驗收中') or []
-        Devicelist2 = ImportDeviceInfo(BrwStatus='固定設備') or []
-        Devicelist3 = ImportDeviceInfo(BrwStatus='預定確認中') or []
-        Devicelist4 = ImportDeviceInfo(BrwStatus='續借確認中') or []
+        # Devicelist1 = ImportDeviceInfo(BrwStatus='驗收中') or []
+        # Devicelist2 = ImportDeviceInfo(BrwStatus='固定設備') or []
+        # Devicelist3 = ImportDeviceInfo(BrwStatus='預定確認中') or []
+        # Devicelist4 = ImportDeviceInfo(BrwStatus='續借確認中') or []
 
         # 合并设备列表
-        all_devices0 = Devicelist0 + Devicelist1 + Devicelist3 + Devicelist4
+        # all_devices0 = Devicelist0 + Devicelist1 + Devicelist3 + Devicelist4
+        all_devices0 = Devicelist0
         all_devices = [item for item in all_devices0 if item['DevStatus'] != 'Damaged' and item['DevStatus'] != 'Lost']
         print(f"总共获取到 {len(all_devices)} 台设备")
 

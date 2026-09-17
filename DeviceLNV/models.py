@@ -66,6 +66,7 @@ class DeviceLNV(models.Model):
         ('Long', 'Long'),
         ('Damaged', 'Damaged'),
         ('Lost', 'Lost'),
+        ('Replaced', 'Replaced'),
     )
     expirdate_choice = (
         # ('Select Customer', 'Select Customer'),

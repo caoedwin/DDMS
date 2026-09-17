@@ -1,0 +1,19 @@
+[2026-09-03 09:24:07,787] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python372\mecheck\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 1202, in device_demand_week_view
+    req_units = get_requirement_items()
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 1419, in get_requirement_items
+    matched_info = match_single_device(match_str, device_infos)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 1587, in match_single_device
+    if info['dev_model'] and info['dev_model'] in match_str:
+KeyError: 'dev_model'
+[2026-09-03 09:24:07,792] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 140957
+[2026-09-03 13:13:47,832] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)

@@ -135,146 +135,219 @@
 {% block content %}
 {% verbatim %}
 <div id="app" class="score-container">
-    <div class="score-header">
-        <h2>📊 设备评分与更换建议</h2>
-        <div class="header-actions">
-            <!-- 新增客户下拉 -->
-            <el-select
-                v-model="selectedModel"
-                placeholder="请选择客户"
-                size="medium"
-                style="width: 140px; margin-right: 12px;"
-                @change="onModelChange"
-            >
-                <el-option
-                    v-for="item in modelList"
-                    :key="item.key"
-                    :label="item.name"
-                    :value="item.key"
-                ></el-option>
-            </el-select>
-            <span class="total-info">共 ${ total } 条记录</span>
-            <el-button type="primary" size="medium" icon="el-icon-download" @click="exportExcel">导出 Excel</el-button>
-        </div>
-    </div>
+    <el-tabs v-model="activeTab" @tab-click="handleTabChange">
+        <!-- ==================== Tab 1: By Device ==================== -->
+        <el-tab-pane label="By Device" name="device">
+            <div class="score-header">
+                <h2>📊 设备评分与更换建议</h2>
+                <div class="header-actions">
+                    <el-select
+                        v-model="selectedModel"
+                        placeholder="请选择客户"
+                        size="medium"
+                        style="width: 140px; margin-right: 12px;"
+                        @change="onModelChange"
+                    >
+                        <el-option
+                            v-for="item in modelList"
+                            :key="item.key"
+                            :label="item.name"
+                            :value="item.key"
+                        ></el-option>
+                    </el-select>
+                    <span class="total-info">共 ${ total } 条记录</span>
+                    <el-button type="primary" size="medium" icon="el-icon-download" @click="exportExcel">导出 Excel</el-button>
+                </div>
+            </div>
 
-    <!-- 评分标准说明 + Top10 图表 -->
-    <div class="info-cards">
-        <div class="info-card" style="flex: 2;">
-            <h4>📋 评分标准说明</h4>
-            <table class="priority-table">
-                <thead>
-                    <tr>
-                        <th>综合评分范围</th>
-                        <th>更换优先级</th>
-                        <th>处理建议</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><b>≥ 90</b></td>
-                        <td class="tag-danger">紧急更换</td>
-                        <td>设备已严重落后或损坏，建议立即安排更换</td>
-                    </tr>
-                    <tr>
-                        <td><b>70 ~ 89</b></td>
-                        <td class="tag-warning">酌情更换</td>
-                        <td>可根据实际情况安排来年更换计划</td>
-                    </tr>
-                    <tr>
-                        <td><b>40 ~ 69</b></td>
-                        <td class="tag-info">可观察</td>
-                        <td>设备尚可正常使用，可继续观察，暂缓更换</td>
-                    </tr>
-                    <tr>
-                        <td><b>< 40</b></td>
-                        <td class="tag-success">继续使用</td>
-                        <td>设备状况良好，无需更换</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="info-card" style="flex: 1.5;">
-            <h4>🏆 评分 Top 10 设备</h4>
-            <div id="top10Chart" class="chart-container"></div>
-        </div>
-    </div>
+            <!-- 评分标准说明 + Top10 图表 -->
+            <div class="info-cards">
+                <div class="info-card" style="flex: 2;">
+                    <h4>📋 评分标准说明</h4>
+                    <table class="priority-table">
+                        <thead>
+                            <tr>
+                                <th>综合评分范围</th>
+                                <th>更换优先级</th>
+                                <th>处理建议</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>设备状态 Damaged/Lost 或 同类数量不足</b></td>
+                                <td class="tag-danger">紧急更换</td>
+                                <td>设备已损坏/丢失或同类可用设备不足，需立即采购</td>
+                            </tr>
+                            <tr>
+                                <td><b>≥ 80</b></td>
+                                <td class="tag-warning">评估购买</td>
+                                <td>综合评分较高，建议评估是否采购更换</td>
+                            </tr>
+                            <tr>
+                                <td><b>40 ~ 79</b></td>
+                                <td class="tag-info">可观察</td>
+                                <td>设备尚可正常使用，可继续观察，暂缓更换</td>
+                            </tr>
+                            <tr>
+                                <td><b>< 40</b></td>
+                                <td class="tag-success">继续使用</td>
+                                <td>设备状况良好，无需更换</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 10px; font-size: 12px; color: #606266; line-height: 1.7;">
+                        <b>权重：</b>使用年限 10% ｜ 使用次数 40% ｜ 技术先进性 5% ｜ 借用次数 40% ｜ EOL状态 5%<br>
+                        <b>数量规则：</b>同一组 (IntfCtgry + DevCtgry + Devproperties) 至少需 2 台（Monitor 类除外）
+                    </div>
+                </div>
+                <div class="info-card" style="flex: 1.5;">
+                    <h4>🏆 评分 Top 10 设备</h4>
+                    <div id="top10Chart" class="chart-container"></div>
+                </div>
+            </div>
 
-    <!-- 表格 -->
-    <div class="score-table-wrap">
-        <el-table
-            :data="currentPageData"
-            border
-            stripe
-            style="width: 100%"
-            v-loading="loading"
-            :default-sort="{prop: 'Score', order: 'descending'}"
-            max-height="700"
-            row-key="id"
-        >
-            <el-table-column prop="NID" label="设备编号" min-width="80" fixed></el-table-column>
-            <el-table-column prop="IntfCtgry" label="介面種類" min-width="120"></el-table-column>
-            <el-table-column prop="DevCtgry" label="設備種類" min-width="120"></el-table-column>
-            <el-table-column prop="Devproperties" label="設備屬性" min-width="150"></el-table-column>
-            <el-table-column prop="DevVendor" label="厂商" min-width="100"></el-table-column>
-            <el-table-column prop="Devsize" label="容量" min-width="100"></el-table-column>   <!-- 新增 -->
-            <el-table-column prop="DevModel" label="型号" min-width="140"></el-table-column>
-            <el-table-column prop="DevName" label="名称" min-width="140"></el-table-column>
-            <el-table-column prop="DevStatus" label="状态" min-width="100" align="center">
-                <template slot-scope="scope">
-                    <el-tag :type="scope.row.DevStatus && (scope.row.DevStatus.toLowerCase().includes('damaged') || scope.row.DevStatus.toLowerCase().includes('lost')) ? 'danger' : 'success'">
-                        ${ scope.row.DevStatus }
-                    </el-tag>
-                </template>
-            </el-table-column>
-            <el-table-column prop="Score" label="综合评分" min-width="110" sortable align="center">
-                <template slot-scope="scope">
-                    <span :style="{color: scope.row.Score >= 90 ? '#F56C6C' : (scope.row.Score >= 70 ? '#E6A23C' : '#67C23A'), fontWeight: 'bold'}">
-                        ${ scope.row.Score }
-                    </span>
-                </template>
-            </el-table-column>
-            <el-table-column prop="Priority" label="优先级" min-width="110" align="center">
-                <template slot-scope="scope">
-                    <el-tag :type="scope.row.Priority === '紧急更换' ? 'danger' : (scope.row.Priority === '酌情更换' ? 'warning' : '')">
-                        ${ scope.row.Priority }
-                    </el-tag>
-                </template>
-            </el-table-column>
-            <el-table-column prop="Suggestion" label="升级建议" min-width="260" class-name="col-suggestion">
-                <template slot-scope="scope">
-                    ${ scope.row.Suggestion }
-                </template>
-            </el-table-column>
-            <el-table-column label="详细评分" width="130" align="center" fixed="right">
-                <template slot-scope="scope">
-                    <el-popover placement="left" trigger="hover" width="240">
-                        <div style="line-height: 1.8; font-size: 14px;">
-                            <div>📅 使用年限: <b>${ scope.row.AgeScore }</b></div>
-                            <div>📊 使用频率: <b>${ scope.row.UsageScore }</b></div>
-                            <div>🔁 借用次数: <b>${ scope.row.BorrowScore }</b></div>
-                            <div>🔬 技术先进性: <b>${ scope.row.TechScore }</b></div>
-                            <div>⏳ EOL状态: <b>${ scope.row.EOLScore }</b></div>
-                            <div>⚙️ 设备状态: <b>${ scope.row.StatusScore }</b></div>
-                        </div>
-                        <el-button slot="reference" type="text" size="small">查看详情</el-button>
-                    </el-popover>
-                </template>
-            </el-table-column>
-        </el-table>
+            <!-- 表格 -->
+            <div class="score-table-wrap">
+                <el-table
+                    :data="currentPageData"
+                    border
+                    stripe
+                    style="width: 100%"
+                    v-loading="loading"
+                    :default-sort="{prop: 'Score', order: 'descending'}"
+                    max-height="700"
+                    row-key="id"
+                >
+                    <el-table-column prop="NID" label="设备编号" min-width="80" fixed></el-table-column>
+                    <el-table-column prop="IntfCtgry" label="介面種類" min-width="120"></el-table-column>
+                    <el-table-column prop="DevCtgry" label="設備種類" min-width="120"></el-table-column>
+                    <el-table-column prop="Devproperties" label="設備屬性" min-width="150"></el-table-column>
+                    <el-table-column prop="DevVendor" label="厂商" min-width="100"></el-table-column>
+                    <el-table-column prop="Devsize" label="容量" min-width="100"></el-table-column>
+                    <el-table-column prop="DevModel" label="型号" min-width="140"></el-table-column>
+                    <el-table-column prop="DevName" label="名称" min-width="140"></el-table-column>
+                    <el-table-column prop="DevStatus" label="状态" min-width="100" align="center">
+                        <template slot-scope="scope">
+                            <el-tag :type="scope.row.DevStatus && (scope.row.DevStatus.toLowerCase().includes('damaged') || scope.row.DevStatus.toLowerCase().includes('lost')) ? 'danger' : 'success'">
+                                ${ scope.row.DevStatus }
+                            </el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="同类可用" min-width="90" align="center">
+                        <template slot-scope="scope">
+                            <span v-if="scope.row.IsMonitor" style="color: #909399;">免检</span>
+                            <span v-else :style="{color: scope.row.SameTypeAvailable >= 2 ? '#67C23A' : '#F56C6C', fontWeight: 'bold'}">
+                                ${ scope.row.SameTypeAvailable }
+                            </span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="Score" label="综合评分" min-width="110" sortable align="center">
+                        <template slot-scope="scope">
+                            <span :style="{color: scope.row.Score >= 80 ? '#F56C6C' : (scope.row.Score >= 40 ? '#E6A23C' : '#67C23A'), fontWeight: 'bold'}">
+                                ${ scope.row.Score }
+                            </span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="Priority" label="优先级" min-width="110" align="center">
+                        <template slot-scope="scope">
+                            <el-tag :type="scope.row.Priority === '紧急更换' ? 'danger' : (scope.row.Priority === '酌情更换' ? 'warning' : '')">
+                                ${ scope.row.Priority }
+                            </el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="Suggestion" label="升级建议" min-width="320" class-name="col-suggestion">
+                        <template slot-scope="scope">
+                            ${ scope.row.Suggestion }
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="详细评分" width="130" align="center" fixed="right">
+                        <template slot-scope="scope">
+                            <el-popover placement="left" trigger="hover" width="240">
+                                <div style="line-height: 1.8; font-size: 14px;">
+                                    <div>📅 使用年限 (10%): <b>${ scope.row.AgeScore }</b></div>
+                                    <div>📊 使用次数 (40%): <b>${ scope.row.UsageScore }</b></div>
+                                    <div>🔁 借用次数 (40%): <b>${ scope.row.BorrowScore }</b></div>
+                                    <div>🔬 技术先进性 (5%): <b>${ scope.row.TechScore }</b></div>
+                                    <div>⏳ EOL状态 (5%): <b>${ scope.row.EOLScore }</b></div>
+                                </div>
+                                <el-button slot="reference" type="text" size="small">查看详情</el-button>
+                            </el-popover>
+                        </template>
+                    </el-table-column>
+                </el-table>
 
-        <div class="pagination-wrap">
-            <el-pagination
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :current-page="currentPage"
-                :page-sizes="[20, 50, 100, 200]"
-                :page-size="pageSize"
-                layout="total, sizes, prev, pager, next, jumper"
-                :total="total"
-            ></el-pagination>
-        </div>
-    </div>
+                <div class="pagination-wrap">
+                    <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="[20, 50, 100, 200]"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total"
+                    ></el-pagination>
+                </div>
+            </div>
+        </el-tab-pane>
+
+        <!-- ==================== Tab 2: By Audit List ==================== -->
+        <el-tab-pane label="By Audit List" name="audit">
+            <div class="score-header">
+                <h2>📋 By Audit List (Require State = Must)</h2>
+                <div class="header-actions">
+                    <span class="total-info">共 ${ auditTotal } 条需求，其中 <span style="color:#F56C6C;font-weight:bold;">${ auditNeedPurchaseCount }</span> 条需采购</span>
+                    <el-button type="primary" size="medium" icon="el-icon-refresh" @click="fetchAuditData">刷新</el-button>
+                    <el-button type="success" size="medium" icon="el-icon-download" @click="exportAuditExcel">导出 Excel</el-button>
+                </div>
+            </div>
+
+            <div class="score-table-wrap" style="margin-top: 15px;">
+                <el-table
+                    :data="auditData"
+                    border
+                    stripe
+                    style="width: 100%"
+                    v-loading="auditLoading"
+                    max-height="700"
+                    row-key="id"
+                >
+                    <el-table-column type="index" label="序號" width="70" align="center" fixed></el-table-column>
+                    <el-table-column prop="Category" label="Category" min-width="120" fixed></el-table-column>
+                    <el-table-column prop="Class" label="Class" min-width="160"></el-table-column>
+                    <el-table-column prop="Type" label="Type" min-width="200"></el-table-column>
+                    <el-table-column prop="Require_State" label="Require State" min-width="110" align="center">
+                        <template slot-scope="scope">
+                            <el-tag type="warning">${ scope.row.Require_State }</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="Covered_range_for_case" label="Covered range for case" min-width="200"></el-table-column>
+                    <el-table-column prop="Device_NIDs" label="已绑定设备" min-width="150"></el-table-column>
+                    <el-table-column label="可用设备" min-width="220">
+                        <template slot-scope="scope">
+                            <div v-if="scope.row.Available_Devices && scope.row.Available_Devices.length > 0">
+                                <div v-for="dev in scope.row.Available_Devices" :key="dev.NID" style="line-height: 1.6;">
+                                    <b>${ dev.NID }</b> — ${ dev.DevModel || '未知型号' }
+                                    <el-tag size="mini" :type="(dev.DevStatus||'').toLowerCase().includes('damaged') || (dev.DevStatus||'').toLowerCase().includes('lost') ? 'danger' : 'success'" style="margin-left:6px;">
+                                        ${ dev.DevStatus }/${ dev.BrwStatus }
+                                    </el-tag>
+                                </div>
+                            </div>
+                            <span v-else style="color: #909399;">暂无可用设备</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="采购状态" min-width="110" align="center" fixed="right">
+                        <template slot-scope="scope">
+                            <el-tag :type="scope.row.Need_Purchase ? 'danger' : 'success'" effect="dark">
+                                ${ scope.row.Need_Purchase ? '需购买' : '已有设备' }
+                            </el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="Comments" label="Comments" min-width="200"></el-table-column>
+                    <el-table-column prop="Remark" label="Remark" min-width="150"></el-table-column>
+                </el-table>
+            </div>
+        </el-tab-pane>
+    </el-tabs>
 </div>
 {% endverbatim %}
 {% endblock %}
@@ -313,6 +386,12 @@ new Vue({
             chart: null,
             modelList: [],          // 可选客户列表
             selectedModel: 'LNV',   // 当前选中的客户
+
+            // ---------- 新增 ----------
+            activeTab: 'device',
+            auditData: [],
+            auditTotal: 0,
+            auditLoading: false,
         };
     },
     computed: {
@@ -325,12 +404,16 @@ new Vue({
             if (!this.allData || this.allData.length === 0) return [];
             var priorityOrder = {"紧急更换": 1, "酌情更换": 2, "可观察": 3, "继续使用": 4};
             var sorted = this.allData.slice().sort(function (a, b) {
-                var pa = priorityOrder[a.Priority] || 5;   // 未定义映射的放在最后
+                var pa = priorityOrder[a.Priority] || 5;
                 var pb = priorityOrder[b.Priority] || 5;
-                if (pa !== pb) return pa - pb;              // 优先级小的排前面（紧急=1）
-                return b.Score - a.Score;                   // 同优先级内得分降序
+                if (pa !== pb) return pa - pb;
+                return b.Score - a.Score;
             });
             return sorted.slice(0, 10);
+        },
+        auditNeedPurchaseCount: function () {
+            if (!this.auditData) return 0;
+            return this.auditData.filter(function (d) { return d.Need_Purchase; }).length;
         },
     },
     watch: {
@@ -354,14 +437,14 @@ new Vue({
         fetchModelList: function () {
             var self = this;
             axios.get('/TestDeviceLNV/device-score/', {
-                params: { action: 'get_models' }   // 使用同一个接口，参数区分
+                params: { action: 'get_models' }
             })
             .then(function (response) {
                 if (response.data && response.data.length) {
                     self.modelList = response.data;
                     if (self.modelList.length > 0) {
                         self.selectedModel = self.modelList[0].key;
-                        self.fetchData();   // 初次加载评分数据
+                        self.fetchData();
                     }
                 } else {
                     self.$message.warning('未获取到客户列表');
@@ -373,8 +456,7 @@ new Vue({
             });
         },
         onModelChange: function (newVal) {
-            // 切换客户时重新加载数据
-            this.currentPage = 1;    // 重置分页
+            this.currentPage = 1;
             this.fetchData();
         },
         fetchData: function () {
@@ -402,6 +484,77 @@ new Vue({
                 self.$message.error('加载数据失败，请检查网络或后端服务。');
             });
         },
+
+        // ---------- 新增：Audit list 相关 ----------
+        handleTabChange: function (tab) {
+            var self = this;
+            if (tab.name === 'audit') {
+                if (this.auditData.length === 0) {
+                    this.fetchAuditData();
+                }
+            } else if (tab.name === 'device') {
+                this.$nextTick(function () {
+                    if (self.chart) self.chart.resize();
+                });
+            }
+        },
+        fetchAuditData: function () {
+            var self = this;
+            self.auditLoading = true;
+            axios.get('/TestDeviceLNV/device-score/', {
+                params: { action: 'get_audit_list' }
+            })
+            .then(function (response) {
+                if (response.data && response.data.data) {
+                    self.auditData = response.data.data;
+                    self.auditTotal = response.data.count || self.auditData.length;
+                } else {
+                    self.auditData = [];
+                    self.auditTotal = 0;
+                }
+                self.auditLoading = false;
+            })
+            .catch(function (error) {
+                console.error('获取 Audit list 失败:', error);
+                self.auditLoading = false;
+                self.$message.error('获取 Audit list 失败');
+            });
+        },
+        exportAuditExcel: function () {
+            if (!this.auditData || this.auditData.length === 0) {
+                this.$message.warning('没有数据可导出');
+                return;
+            }
+            var exportData = this.auditData.map(function (item) {
+                var availStr = (item.Available_Devices || []).map(function (d) {
+                    return d.NID + '(' + (d.DevStatus || '') + '/' + (d.BrwStatus || '') + ')';
+                }).join('；');
+                return {
+                    'Category': item.Category || '',
+                    'Class': item.Class || '',
+                    'Type': item.Type || '',
+                    'Require State': item.Require_State || '',
+                    'Covered range for case': item.Covered_range_for_case || '',
+                    '已绑定设备': item.Device_NIDs || '',
+                    '可用设备': availStr,
+                    '采购状态': item.Need_Purchase ? '需购买' : '已有设备',
+                    'Comments': item.Comments || '',
+                    'Remark': item.Remark || ''
+                };
+            });
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.json_to_sheet(exportData);
+            XLSX.utils.book_append_sheet(wb, ws, 'AuditList');
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+            var blob = new Blob([wbout], { type: 'application/octet-stream' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'AuditList_Must_' + new Date().toISOString().slice(0, 10) + '.xlsx';
+            link.click();
+            URL.revokeObjectURL(link.href);
+            this.$message.success('导出成功');
+        },
+
         handleSizeChange: function (val) {
             this.pageSize = val;
             this.currentPage = 1;
@@ -441,7 +594,7 @@ new Vue({
             var blob = new Blob([wbout], { type: 'application/octet-stream' });
             var link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = '设备评分_' + new Date().toISOString().slice(0,10) + '.xlsx';
+            link.download = '设备评分_' + new Date().toISOString().slice(0, 10) + '.xlsx';
             link.click();
             URL.revokeObjectURL(link.href);
             this.$message.success('导出成功');
@@ -472,7 +625,7 @@ new Vue({
                     }
                 },
                 grid: {
-                    containLabel: true,   // 自动容纳坐标轴标签和名称，防止被遮挡
+                    containLabel: true,
                     bottom: '15%',
                     top: '10%',
                     left: '3%',
@@ -504,8 +657,8 @@ new Vue({
                         itemStyle: {
                             color: function (params) {
                                 var val = params.value;
-                                if (val >= 90) return '#F56C6C';
-                                else if (val >= 70) return '#E6A23C';
+                                if (val >= 80) return '#F56C6C';
+                                else if (val >= 40) return '#E6A23C';
                                 else return '#67C23A';
                             },
                             borderRadius: [4, 4, 0, 0]

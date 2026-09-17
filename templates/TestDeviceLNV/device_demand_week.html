@@ -98,9 +98,6 @@
     .week-card .summary span {
         margin-right: 10px;
     }
-    .el-dialog .el-table {
-        margin-top: 10px;
-    }
     .no-data {
         text-align: center;
         padding: 50px 0;
@@ -119,6 +116,22 @@
     }
     .el-button-group .el-button+.el-button {
         margin-left: 0;
+    }
+    /* 列收缩按钮样式 */
+    .column-toggle-bar {
+        margin-bottom: 10px;
+        padding: 8px 16px;
+        background: #f0f2f5;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .column-toggle-bar .label {
+        font-weight: 600;
+        color: #606266;
+        margin-right: 8px;
     }
 </style>
 {% endblock %}
@@ -175,45 +188,141 @@
         </div>
     </div>
 
-    <!-- 周详情弹窗（保持不变） -->
+    <!-- 周详情弹窗（列收缩） -->
     <el-dialog
         :title="'📋 ' + selectedWeek.week_start + ' ~ ' + selectedWeek.week_end + ' 设备需求明细'"
         :visible.sync="dialogVisible"
-        width="85%"
+        width="95%"
         top="5vh"
     >
+        <!-- 列切换按钮 -->
+        <div class="column-toggle-bar">
+            <span class="label">列组显示：</span>
+            <el-checkbox v-model="showDemandGroup">需求信息</el-checkbox>
+            <el-checkbox v-model="showDeviceGroup">设备信息</el-checkbox>
+            <el-checkbox v-model="showSummaryGroup">汇总信息</el-checkbox>
+        </div>
+
         <el-table :data="selectedWeek.details" border stripe max-height="500">
-            <el-table-column prop="IntfCtgry" label="接口类别" min-width="120"></el-table-column>
-            <el-table-column prop="DevCtgry" label="设备类别" min-width="120"></el-table-column>
-            <el-table-column prop="Devproperties" label="设备属性" min-width="150"></el-table-column>
-            <el-table-column prop="需求量" label="需求量" width="100" align="center"></el-table-column>
-            <el-table-column prop="库存量" label="库存量" width="100" align="center">
-                <template slot-scope="scope">
-                    <el-tooltip placement="top" effect="light" :content="scope.row.库存设备NID || '无'">
-                        <span style="cursor: pointer; border-bottom: 1px dashed #409EFF;">
-                            ${ scope.row.库存量 }
-                        </span>
-                    </el-tooltip>
-                </template>
+            <el-table-column type="index"></el-table-column>
+            <!-- 需求信息分组 -->
+            <el-table-column label="需求信息" align="center" v-if="showDemandGroup">
+                <el-table-column prop="category" min-width="120" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#E6F7FF; color:#1890FF; font-weight:600;">Category</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="class" min-width="120" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#E6F7FF; color:#1890FF; font-weight:600;">Class</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="type" min-width="200" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#E6F7FF; color:#1890FF; font-weight:600;">Type</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="require_state" min-width="100" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#E6F7FF; color:#1890FF; font-weight:600;">Require State</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="is_must" min-width="80" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#E6F7FF; color:#1890FF; font-weight:600;">Must</div>
+                    </template>
+                    <template slot-scope="scope">
+                        ${ scope.row.is_must ? '是' : '否' }
+                    </template>
+                </el-table-column>
             </el-table-column>
-            <el-table-column label="是否满足" width="100" align="center">
-                <template slot-scope="scope">
-                    <el-tag :type="scope.row.是否满足 === '是' ? 'success' : 'danger'">
-                        ${ scope.row.是否满足 }
-                    </el-tag>
-                </template>
+
+            <!-- 设备信息分组 -->
+            <el-table-column label="设备信息" align="center" v-if="showDeviceGroup">
+                <el-table-column prop="IntfCtgry" min-width="100" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#F6FFED; color:#52C41A; font-weight:600;">接口类别</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="DevCtgry" min-width="100" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#F6FFED; color:#52C41A; font-weight:600;">设备类别</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="Devproperties" min-width="120" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#F6FFED; color:#52C41A; font-weight:600;">设备属性</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="DevVendor" min-width="100" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#F6FFED; color:#52C41A; font-weight:600;">厂商</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="DevModel" min-width="120" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#F6FFED; color:#52C41A; font-weight:600;">型号</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="DevName" min-width="150" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#F6FFED; color:#52C41A; font-weight:600;">名称</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="nid" min-width="120" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#F6FFED; color:#52C41A; font-weight:600;">匹配设备NID</div>
+                    </template>
+                    <template slot-scope="scope">
+                        ${ scope.row.nid || '未匹配' }
+                    </template>
+                </el-table-column>
             </el-table-column>
-            <el-table-column prop="机种列表" label="涉及机种" min-width="200">
-                <template slot-scope="scope">
-                    <el-tooltip placement="top" effect="light">
-                        <div slot="content">
-                            <div v-for="proj in scope.row.机种列表" :key="proj" style="line-height:1.6;">
-                                ${ proj }
+
+            <!-- 汇总信息分组 -->
+            <el-table-column label="汇总信息" align="center" v-if="showSummaryGroup">
+                <el-table-column prop="需求量" align="center" width="80" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#FFF7E6; color:#FA8C16; font-weight:600;">需求量</div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="库存量" align="center" width="80" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#FFF7E6; color:#FA8C16; font-weight:600;">库存量</div>
+                    </template>
+                    <template slot-scope="scope">
+                        <el-tooltip placement="top" effect="light" :content="scope.row.库存设备NID || '无'">
+                            <span style="cursor: pointer; border-bottom: 1px dashed #409EFF;">
+                                ${ scope.row.库存量 }
+                            </span>
+                        </el-tooltip>
+                    </template>
+                </el-table-column>
+                <el-table-column label="是否满足" align="center" width="80" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#FFF7E6; color:#FA8C16; font-weight:600;">是否满足</div>
+                    </template>
+                    <template slot-scope="scope">
+                        <el-tag :type="scope.row.是否满足 === '是' ? 'success' : 'danger'">
+                            ${ scope.row.是否满足 }
+                        </el-tag>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="机种列表" min-width="150" :header-cell-style="{ background: 'transparent', padding: '0' }">
+                    <template slot="header">
+                        <div style="height:100%; width:100%; padding:8px 0; text-align:center; background:#FFF7E6; color:#FA8C16; font-weight:600;">涉及机种</div>
+                    </template>
+                    <template slot-scope="scope">
+                        <el-tooltip placement="top" effect="light">
+                            <div slot="content">
+                                <div v-for="proj in (scope.row.机种列表 || [])" :key="proj" style="line-height:1.6;">
+                                    ${ proj }
+                                </div>
                             </div>
-                        </div>
-                        <span>${ scope.row.机种列表.length } 个机种</span>
-                    </el-tooltip>
-                </template>
+                            <span>${ (scope.row.机种列表 || []).length } 个机种</span>
+                        </el-tooltip>
+                    </template>
+                </el-table-column>
             </el-table-column>
         </el-table>
         <span slot="footer" class="dialog-footer">
@@ -246,11 +355,14 @@ new Vue({
     data: function () {
         return {
             loading: false,
-            rawData: [],       // 后端返回的所有未来周明细
-            weekData: [],      // 组装后的周卡片数据（全量）
-            currentPage: 0,    // 当前页索引（从0开始）
-            pageSize: 20,      // 每页显示的周数
+            rawData: [],
+            weekData: [],
+            currentPage: 0,
+            pageSize: 20,
             dialogVisible: false,
+            showDemandGroup: true,
+            showDeviceGroup: true,
+            showSummaryGroup: true,
             selectedWeek: {
                 week_start: '',
                 week_end: '',
@@ -259,17 +371,14 @@ new Vue({
         };
     },
     computed: {
-        // 总页数
         totalPages: function () {
             return Math.ceil(this.weekData.length / this.pageSize);
         },
-        // 当前页的数据
         pagedData: function () {
             var start = this.currentPage * this.pageSize;
             var end = start + this.pageSize;
             return this.weekData.slice(start, end);
         },
-        // 当前页显示的日期范围
         pageStartDate: function () {
             if (this.pagedData.length === 0) return '无';
             return this.pagedData[0].week_start;
@@ -291,7 +400,6 @@ new Vue({
                     if (response.data && response.data.data) {
                         self.rawData = response.data.data;
                         self.buildWeekData();
-                        // 重置到第一页
                         self.currentPage = 0;
                     } else {
                         self.$message.error('数据格式错误');
@@ -324,10 +432,14 @@ new Vue({
                 }
                 var week = weekMap[key];
                 week.details.push(item);
+
+                var units = item.需求项明细 || [];
+                week.totalItems += units.length;
+
                 if (item.是否满足 === '否') {
-                    week.allSatisfied = false;
-                    week.unsatisfiedCount += 1;
+                    week.unsatisfiedCount += units.length;
                 }
+
                 if (!week._projectSet) {
                     week._projectSet = new Set();
                 }
@@ -337,7 +449,7 @@ new Vue({
             var result = [];
             for (var key in weekMap) {
                 var w = weekMap[key];
-                w.totalItems = w.details.length;
+                w.allSatisfied = (w.unsatisfiedCount === 0);
                 w.projectsCount = w._projectSet ? w._projectSet.size : 0;
                 delete w._projectSet;
                 result.push(w);
@@ -356,11 +468,42 @@ new Vue({
             return 1 + Math.round(((d - week1) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
         },
         showWeekDetail: function (week) {
-            this.selectedWeek = {
-                week_start: week.week_start,
-                week_end: week.week_end,
-                details: week.details
-            };
+            var details = [];
+            if (!week || !week.details) {
+                this.selectedWeek.details = [];
+                this.dialogVisible = true;
+                return;
+            }
+            this.selectedWeek.week_start = week.week_start;
+            this.selectedWeek.week_end = week.week_end;
+
+            week.details.forEach(function (item) {
+                if (!item) return;
+                var items = item.需求项明细 || [];
+                items.forEach(function (sub) {
+                    if (!sub) return;
+                    details.push({
+                        category: sub.category || '',
+                        class: sub.class || '',
+                        type: sub.type || '',
+                        require_state: sub.require_state || '',
+                        is_must: sub.is_must || false,
+                        IntfCtgry: item.IntfCtgry || '',
+                        DevCtgry: item.DevCtgry || '',
+                        Devproperties: item.Devproperties || '',
+                        DevVendor: sub.dev_vendor || '',
+                        DevModel: sub.dev_model || '',
+                        DevName: sub.dev_name || '',
+                        nid: sub.nid || '未匹配',
+                        需求量: 1,
+                        库存量: item.库存量 || 0,
+                        是否满足: item.是否满足 || '否',
+                        机种列表: item.机种列表 || [],
+                        库存设备NID: item.库存设备NID || '',
+                    });
+                });
+            });
+            this.selectedWeek.details = details;
             this.dialogVisible = true;
         },
         prevPage: function () {

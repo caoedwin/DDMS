@@ -1123,6 +1123,7 @@
             <el-button size="medium" style="background-color:#69ec57;border-color:black;color:black;margin: 2px;margin-left: 50px;" name="新增" @click="addData()" v-cloak>新增</el-button>
             <el-button size="medium" style="background-color:#00CCFF;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="修改" @click="updateData()" v-cloak>修改</el-button>
             <el-button size="medium" style="background-color: #FF6666;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="刪除" @click="deleteData()" v-cloak>刪除</el-button>
+            <el-button size="medium" style="background-color:#FFB800;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="封存" @click="sealData()" v-cloak>一鍵封存</el-button>
     </div>
     {% csrf_token %}
     <template>
@@ -2173,6 +2174,92 @@ ax<script type="text/babel">
              }
             }
       },
+         sealData() {
+                    let selections = this.multipleSelection;   // multipleSelection存储了勾选到的数据
+                    if (selections.length === 0) {
+                        this.$alert('請至少選中一條數據', '提示', {
+                            type: 'warning',
+                        });
+                        return;
+                    }
+                
+                    // 前端先按规则分类
+                    let validIds = [];
+                    let invalidItems = [];
+                    selections.forEach(function (item) {
+                        if (item.DevStatus === 'Damaged' || item.DevStatus === 'Lost') {
+                            validIds.push(item.id);
+                        } else {
+                            invalidItems.push(item.NID + ' (' + item.DevStatus + ')');
+                        }
+                    });
+                
+                    if (validIds.length === 0) {
+                        this.$alert('只有設備狀態為 Damaged 或 Lost 的設備才可以封存', '提示', {
+                            type: 'warning',
+                        });
+                        return;
+                    }
+                
+                    let msgStr = '';
+                    if (invalidItems.length > 0) {
+                        msgStr = '以下設備狀態不是 Damaged / Lost，將被忽略：\n' + invalidItems.join('、') + '\n\n';
+                    }
+                
+                    let self = this;
+                    this.$confirm(msgStr + '確定要將 ' + validIds.length + ' 條設備封存嗎？封存後設備狀態將改為 Replaced。', '封存確認', {
+                        confirmButtonText: '確定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        let intfCtgry = self.$refs.IntfCtgry.value;
+                        let devCtgry = self.$refs.DevCtgry.value;
+                        let devproperties = self.$refs.Devproperties.value;
+                        let devVendor = self.$refs.DevVendor.value;
+                        let devsize = self.$refs.Devsize.value;
+                
+                        let data = {
+                            "isGetData": "SEAL",
+                            "params": validIds,
+                            "IntfCtgry": intfCtgry,
+                            "DevCtgry": devCtgry,
+                            "DevVendor": devVendor,
+                            "Devproperties": devproperties,
+                            "Devsize": devsize
+                        };
+                
+                        // 开启全屏 loading
+                        const loading = self.$loading({
+                            lock: true,
+                            text: '封存中，請稍後...',
+                            spinner: 'el-icon-loading',
+                            background: 'rgba(0, 0, 0, 0.7)'
+                        });
+                
+                        axios.post("/DeviceLNV/M_edit/", data, {
+                            headers: {'X-CSRFToken': $("[name='csrfmiddlewaretoken']").val()}
+                        }).then((res) => {
+                            self.tableContent = res.data.content;
+                            self.allTableContent = res.data.content;
+                            self.totalNum = self.tableContent.length;
+                            self.$refs.multipleTable.clearSelection();
+                            self.$message({
+                                message: res.data.sealMsg || '封存成功',
+                                type: 'success'
+                            });
+                        }).catch(function (e) {
+                            console.log('封存錯誤信息' + e);
+                            self.$message({
+                                message: '封存失敗',
+                                type: 'error'
+                            });
+                        }).finally(() => {
+                            // 关闭 loading
+                            loading.close();
+                        });
+                    }).catch(() => {
+                    });
+                },
 
          onSubmit(formName) {
             this.$refs[formName].validate((valid) => {

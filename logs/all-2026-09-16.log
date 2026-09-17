@@ -1,0 +1,20 @@
+[2026-09-16 15:43:39,573] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-09-16 15:43:39,606] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-16 15:43:40,319] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-16 15:43:40,325] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-16 15:43:42,683] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-16 15:43:43,091] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-16 15:43:43,286] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-16 15:43:43,759] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceABO/BorrowedDeviceABO/ HTTP/1.1" 200 73224
+[2026-09-16 15:43:44,801] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-16 15:43:44: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceABO/BorrowedDeviceABO/'>
+[2026-09-16 15:43:44,827] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceABO/BorrowedDeviceABO/ HTTP/1.1" 200 186
+[2026-09-16 15:43:45,104] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-16 15:44:08,879] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 57960
+[2026-09-16 15:44:09,490] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/js/echart/echart.js HTTP/1.1" 200 771071
+[2026-09-16 15:44:09,619] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?action=get_models HTTP/1.1" 200 422
+[2026-09-16 15:44:09,671] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-16 15:44:22,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=LNV HTTP/1.1" 200 1932002
+[2026-09-16 15:44:22,995] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=LNV HTTP/1.1" 200 1932002
+[2026-09-16 16:33:53,733] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=A31PCP HTTP/1.1" 200 43
+[2026-09-17 08:32:16,701] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=LNV HTTP/1.1" 302 0
+[2026-09-17 08:32:16,825] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
