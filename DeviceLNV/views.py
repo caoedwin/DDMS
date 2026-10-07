@@ -5763,8 +5763,8 @@ def M_edit(request):
         # {"value": "姚麗麗", "number": "20652552"}, {"value": "姚麗麗", "number": "20564439"},
         # {"value": "單桂萍", "number": "123333333"},
     ]
-    for i in UserInfo.objects.all().values('username', 'account').distinct().order_by('account'):
-        selectItem.append({"value": i['username'], "number": i["account"]})
+    for i in UserInfo.objects.all().values('CNname', 'account').distinct().order_by('account'):
+        selectItem.append({"value": i['CNname'], "number": i["account"]})
 
     # 歷史記錄
     tableData = [

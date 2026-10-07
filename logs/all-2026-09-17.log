@@ -2779,3 +2779,109 @@ KeyError: 'awesome'
 [2026-09-17 15:07:16,380] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 302 0
 [2026-09-17 15:07:16,754] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
 [2026-09-17 15:07:16,758] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-17 15:26:17,468] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /DeviceLNV/M_edit/ HTTP/1.1" 200 139749
+[2026-09-17 15:26:17,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-17 15:26:17,601] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-17 15:26:17,619] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-17 15:26:17,763] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-17 15:26:17,809] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-09-17 15:26:18,129] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-17 15:26:21,455] [UserIP.py:88] [UserIP:process_response] [INFO]- 2026-09-17 15:26:21: C1010S3/AnonymousUser/Cao.Edwin> None/EDWIN/bxbei > 127.0.0.1/127.0.0.1 > <WSGIRequest: POST '/DeviceLNV/M_edit/'>
+[2026-09-17 15:26:21,484] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /DeviceLNV/M_edit/ HTTP/1.1" 200 37109
+[2026-09-17 15:26:25,170] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 68575
+[2026-09-17 15:26:25,249] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-17 15:26:25,270] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-17 15:26:25,287] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-17 15:26:25,424] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-17 15:26:25,496] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-09-17 15:26:25,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?action=get_models HTTP/1.1" 200 422
+[2026-09-17 15:26:25,808] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-17 15:26:26,431] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?action=get_audit_list HTTP/1.1" 200 154554
+[2026-09-17 15:26:46,127] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=LNV HTTP/1.1" 200 2067157
+[2026-09-17 15:27:08,499] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=LNV HTTP/1.1" 200 2067157
+[2026-09-18 08:30:43,397] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?action=get_audit_list HTTP/1.1" 302 0
+[2026-09-18 08:30:43,568] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-18 08:30:53,006] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-score-page/
+Traceback (most recent call last):
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\djangoproject\DMS\TestDeviceLNV\views.py", line 642, in device_score_page
+    return render(request, 'TestDeviceLNV/device_score.html')
+  File "C:\Python372\mecheck\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\Python372\mecheck\lib\site-packages\django\template\library.py", line 192, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 260, in rbac_menu
+    menu_data = get_structure_data(request)
+  File "C:\djangoproject\DMS\app01\templatetags\custom_tag.py", line 11, in get_structure_data
+    menu = request.session[settings.SESSION_MENU_KEY]
+  File "C:\Python372\mecheck\lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+KeyError: 'awesome'
+[2026-09-18 08:30:53,048] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 302 0
+[2026-09-18 08:30:53,055] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-18 08:30:53,416] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 302 0
+[2026-09-18 08:30:53,431] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-18 08:30:53,492] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-18 08:30:53,717] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 303386
+[2026-09-18 08:30:53,796] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-09-18 08:30:53,803] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-09-18 08:30:55,801] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-18 08:30:56,468] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-18 08:30:56,731] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-09-18 08:31:20,325] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 2067157
+[2026-09-18 08:31:20,536] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-18 08:31:20,817] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-18 08:31:25,582] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-18 08:31:25,609] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-18 08:31:25,618] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-18 08:31:25,652] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-18 08:31:25,692] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-18 08:31:26,873] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-09-18 08:31:26,887] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-09-18 08:31:26,963] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/ HTTP/1.1" 200 2067157
+[2026-09-18 08:31:27,034] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-18 08:31:27,278] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-18 08:31:31,537] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV HTTP/1.1" 200 38274
+[2026-09-18 08:31:31,641] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-18 08:31:31,654] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-18 08:31:31,670] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/blue.jpg HTTP/1.1" 200 60343
+[2026-09-18 08:31:31,790] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-18 08:31:31,953] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-18 08:31:57,866] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 68575
+[2026-09-18 08:31:57,970] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-09-18 08:31:57,993] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-09-18 08:31:58,012] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-09-18 08:31:58,142] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-09-18 08:31:58,219] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/xlsx/FileSaver.min.js.map HTTP/1.1" 404 1809
+[2026-09-18 08:31:58,376] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=LNV HTTP/1.1" 200 2067157
+[2026-09-18 08:31:58,380] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?action=get_models HTTP/1.1" 200 422
+[2026-09-18 08:31:58,482] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-18 08:31:58,489] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?model=LNV HTTP/1.1" 200 2067157
+[2026-09-18 08:56:46,470] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score-page/ HTTP/1.1" 200 68575
+[2026-09-18 08:56:47,006] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-09-18 09:14:52,722] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-score/?action=get_audit_list HTTP/1.1" 200 154554
