@@ -120,7 +120,7 @@ class DeviceA32KS(models.Model):
     BrwStatus = models.CharField(max_length=64, choices=BR_Status_choice, null=True, blank=True, verbose_name='借還狀態')
     Usrname = models.CharField(max_length=64, null=True, blank=True, verbose_name='用戶名稱')
     BR_per_code = models.CharField(max_length=64, null=True, blank=True, verbose_name='借還人員工號')
-    ProjectCode = models.CharField(max_length=16, null=True, blank=True, verbose_name='機種')
+    ProjectCode = models.CharField(max_length=128, null=True, blank=True, verbose_name='機種')
     Phase = models.CharField(max_length=16, null=True, blank=True, verbose_name='Phase')
     useday = models.CharField(max_length=16, null=True, blank=True, verbose_name='使用天數')
     Plandate = models.DateField(max_length=64, null=True, blank=True, verbose_name='預計歸還日期')

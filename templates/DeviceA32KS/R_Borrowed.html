@@ -259,7 +259,7 @@ DevStatus{% extends 'base.html' %}
                 rules: {
                     Project: [
                          { required: true, message: '请输入Project', trigger: 'blur' },
-                         { max: 5, message: 'Project長度不能超過5位', trigger: 'blur' }
+                         { max: 32, message: 'Project長度不能超過32位', trigger: 'blur' }
                       ],
                     Phase: [
                          { required: true, message: "请输入Phase", trigger:['blur','change'] }
@@ -297,10 +297,18 @@ DevStatus{% extends 'base.html' %}
                     }
                 },
 
-                Phaseoptions:[{value: 'B(FVT)', label: 'B(FVT)'},
+                Phaseoptions:[
+                                    {% comment %}{value: 'B(FVT)', label: 'B(FVT)'},
                                     {value: 'C(SIT)', label: 'C(SIT)'},
                                     {value: 'INV', label: 'INV'},
-                                    {value: 'NPI', label: 'NPI'}],
+                                    {value: 'NPI', label: 'NPI'},{% endcomment %}
+                                    {value: 'DB', label: 'DB'},
+                                    {value: 'SI', label: 'SI'},
+                                    {value: 'PV', label: 'PV'},
+                                    {value: 'PVR', label: 'PVR'},
+                                    {value: 'MV', label: 'MV'},
+                                    {value: 'SUS', label: 'SUS'},
+                ],
             }
         },
         mounted(){        // 页面渲染后触发该区域内容 即页面初始化

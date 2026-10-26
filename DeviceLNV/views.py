@@ -5771,7 +5771,8 @@ def M_edit(request):
         # {
         #     "id": "1", "NID": "1514", "DevID": "UKB0022B", "DevModel": "SK-8815(L)",
         #     "DevName": "Lenovo Enhanced Performance USB Keyboard",
-        #     "uscyc": "100", "Btime": "2020-01-25", "Rtime": "2020-01-26", "Usrname": "單桂萍", "BR_per_code": "12345678",
+        #     "uscyc": "100", "Btime": "2020-
+        #     ·································01-25", "Rtime": "2020-01-26", "Usrname": "單桂萍", "BR_per_code": "12345678",
         # },
     ]
 
