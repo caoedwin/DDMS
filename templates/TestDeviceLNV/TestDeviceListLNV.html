@@ -441,6 +441,33 @@ label{
                       <el-input  v-model="form1.Purchase_period10" :disabled="true"></el-input>
                   </el-form-item>
 
+                  <!-- ===== 2026-11 新增：設備明細 8 列 ===== -->
+                  <el-divider content-position="left">設備明細（2026-11 新增）</el-divider>
+                  <el-form-item label="介面種類" prop="Interface_Type">
+                      <el-input  v-model="form1.Interface_Type" placeholder="如 USB / BT / Wi-Fi / Type-C"></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備種類" prop="Device_Category">
+                      <el-input  v-model="form1.Device_Category" placeholder="如 键鼠 / 顯示 / 存儲"></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備屬性" prop="Device_Attribute">
+                      <el-input  v-model="form1.Device_Attribute" placeholder="如 有線 / 無線 / 藍牙"></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備容量" prop="Device_Capacity">
+                      <el-input  v-model="form1.Device_Capacity" placeholder="如 256GB / 512MB / N/A"></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備廠家" prop="Device_Brand">
+                      <el-input  v-model="form1.Device_Brand" placeholder="如 Logitech / Rapoo"></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備型號" prop="Device_Model">
+                      <el-input  v-model="form1.Device_Model" placeholder="如 MX Master 3S"></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備名稱" prop="Device_Name">
+                      <el-input  v-model="form1.Device_Name" placeholder="如 無線雷射滑鼠"></el-input>
+                  </el-form-item>
+                  <el-form-item label="設備描述" prop="Device_Description">
+                      <el-input  v-model="form1.Device_Description" type="textarea" :rows="2" placeholder="設備補充說明"></el-input>
+                  </el-form-item>
+
 {#                <div class="el-form-item__content" style="margin-left: 220px;">#}
 {#                  <el-form-item>#}
 {#                        <el-button type="primary" @click="updateData('form')">確定</el-button>#}
@@ -513,6 +540,15 @@ label{
               <el-table-column  prop="Device10" label="Device #10" width="120" align="center"></el-table-column>
               <el-table-column  prop="Status10" label="Status" width="100" align="center"></el-table-column>
               <el-table-column  prop="Purchase_period10" label="購買年限" align="center"></el-table-column>
+              <!-- ===== 2026-11 新增 設備明細 8 列 ===== -->
+              <el-table-column  prop="Interface_Type" label="介面種類" width="100" align="center"></el-table-column>
+              <el-table-column  prop="Device_Category" label="設備種類" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Device_Attribute" label="設備屬性" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Device_Capacity" label="設備容量" width="110" align="center"></el-table-column>
+              <el-table-column  prop="Device_Brand" label="設備廠家" width="120" align="center"></el-table-column>
+              <el-table-column  prop="Device_Model" label="設備型號" width="160" align="center"></el-table-column>
+              <el-table-column  prop="Device_Name" label="設備名稱" width="160" align="center"></el-table-column>
+              <el-table-column  prop="Device_Description" label="設備描述" width="250" align="left"></el-table-column>
 
     </el-table>
       <div class="block">
@@ -636,6 +672,15 @@ label{
                     Device10: '',
                     Status10: '',
                     Purchase_period10: '',
+                    // ===== 2026-11 新增 =====
+                    Interface_Type: '',
+                    Device_Category: '',
+                    Device_Attribute: '',
+                    Device_Capacity: '',
+                    Device_Brand: '',
+                    Device_Model: '',
+                    Device_Name: '',
+                    Device_Description: '',
 
                 },
                 formData:[],
@@ -725,7 +770,26 @@ label{
                   { prop: 'grade', label: '年级' }
                 ],{% endcomment %}
                 //要合并的列
-                Hebing_dataColumns: ['Category', 'Class', 'Covered_range_for_case', 'Require_State', 'Comments',],
+                // key=列 prop, value=該列合併時要一起對齊的「父邊界列」
+                // Category/Class 是分組源頭，只按自身值合（父邊界就是自己）
+                // 其他列值可能跨 Class 重複（如 Covered range 在 USB KB/Mouse 都是同一值），
+                // 所以必須帶著 Class 邊界一起判斷，Class 一改就強制斷開
+                MergeGroupConfig: {
+                  'Category':               ['Category'],            // 只按自身值
+                  'Class':                  ['Class'],               // 只按自身值
+                  'Covered_range_for_case': ['Class','Covered_range_for_case'], // Class 邊界 + 值
+                  'Comments':               ['Class','Comments'],    // Class 邊界 + 值
+                  'ODM_status':             ['Class','ODM_status'],
+                  'Purchase_Plan':          ['Class','Purchase_Plan'],
+                  'Act_Status':             ['Class','Act_Status'],
+                  'Device_Know_Issue':      ['Class','Device_Know_Issue'],
+                  // Require_State 原始 Excel 幾乎沒有合併（只有 Audio 區塊 2 小塊），
+                  // 不配置就不做合併，與 Excel 視覺一致
+                },
+                // 舊配置保留，給 objectSpanMethod 判斷哪些列需要進入合併邏輯
+                Hebing_dataColumns: ['Category', 'Class', 'Covered_range_for_case',
+                                     'Comments', 'ODM_status', 'Purchase_Plan',
+                                     'Act_Status', 'Device_Know_Issue'],
 
                   // 合并配置存储
                     mergeConfig: new Map() /* new Map() 类似于 对象，属于键值对集合，但是此 键值 与 对象的键值 有所不同，此键值可以包含：string / number / Object / Array 或 undefined 等等 */
@@ -1410,7 +1474,9 @@ label{
                         // console.log(fromTo);
                         var datas = workbook.Sheets[sheet];
                         // 如果有不规范数据可以在这里进行处理datas
-                        persons = persons.concat(XLSX.utils.sheet_to_json(datas));
+                        // defval:'' 讓合併格下跳過的空單元格也出現在 JSON 裡（值為空字符串），
+                        // 後端 fix_merge_tags 會用「上一個真實值」把空字符串填回去
+                        persons = persons.concat(XLSX.utils.sheet_to_json(datas, { defval: '' }));
                         //break; // 只读了第一张表
                     }
             }
@@ -1985,6 +2051,15 @@ label{
                     this.formData.append('Device10', this.$refs.form1.model.Device10)
                     this.formData.append('Status10', this.$refs.form1.model.Status10)
                     this.formData.append('Purchase_period10', this.$refs.form1.model.Purchase_period10)
+                    // ===== 2026-11 新增 =====
+                    this.formData.append('Interface_Type', this.$refs.form1.model.Interface_Type)
+                    this.formData.append('Device_Category', this.$refs.form1.model.Device_Category)
+                    this.formData.append('Device_Attribute', this.$refs.form1.model.Device_Attribute)
+                    this.formData.append('Device_Capacity', this.$refs.form1.model.Device_Capacity)
+                    this.formData.append('Device_Brand', this.$refs.form1.model.Device_Brand)
+                    this.formData.append('Device_Model', this.$refs.form1.model.Device_Model)
+                    this.formData.append('Device_Name', this.$refs.form1.model.Device_Name)
+                    this.formData.append('Device_Description', this.$refs.form1.model.Device_Description)
                     this.formData.append("action", 'update');
                     axios.post("/TestDeviceLNV/TestDeviceListLNV/", this.formData, {
                         headers: {
@@ -2065,6 +2140,15 @@ label{
                  this.form1.Device10=row.Device10;
                  this.form1.Status10=row.Status10;
                  this.form1.Purchase_period10=row.Purchase_period10;
+                 // ===== 2026-11 新增 =====
+                 this.form1.Interface_Type=row.Interface_Type;
+                 this.form1.Device_Category=row.Device_Category;
+                 this.form1.Device_Attribute=row.Device_Attribute;
+                 this.form1.Device_Capacity=row.Device_Capacity;
+                 this.form1.Device_Brand=row.Device_Brand;
+                 this.form1.Device_Model=row.Device_Model;
+                 this.form1.Device_Name=row.Device_Name;
+                 this.form1.Device_Description=row.Device_Description;
                  this.editID = id;
 
             },
@@ -2165,44 +2249,62 @@ label{
               return spanMap
             },
 
-            // 计算合并规则 指定标记的合并
+            // 计算合并规则：按 MergeGroupConfig 指定的复合键分组
+            // - 舊模式（upload.xlsx）：該列含字面量 '合并标识'，按舊邏輯
+            // - 新模式（原始 Excel）：按「父邊界列 + 自身值」的複合鍵判斷
+            //   例如 Covered_range_for_case 的分組鍵是 [Class, Covered_range_for_case]，
+            //   所以 USB Keyboard 和 USB Mouse 雖然 Covered 值相同，但 Class 不同就不會跨組合併
             calculateSpansFlag(prop) {
-                {% comment %}// 自定义合并规则：
-                // 在 calculateSpans 方法中增加自定义判断条
-                            // ...
-              if (this.isSpecialColumn(prop)) {
-                // 特殊合并逻辑
-              } else {
-                // 默认合并逻辑
+              const spanMap = new Array(this.datas.length).fill(1)
+              if (this.datas.length === 0) return spanMap
+
+              // 舊模式判斷：有沒有 '合并标识' 字面量
+              let hasMergeTag = false
+              for (let i = 0; i < this.datas.length; i++) {
+                if (String(this.datas[i][prop]) === '合并标识') {
+                  hasMergeTag = true
+                  break
+                }
               }
-              // ...{% endcomment %}
-              const spanMap = new Array(this.datas.length).fill(1)//创建一个数组并填充对应的数
-                {% comment %}const data = new Array(5).fill().map((v, i) => {
-                        return { name: "XXX" + i, price: i, category: Math.random() > 0.5 ? '蔬菜' : '水果' }
-                    })
-                console.log(data)
-                // (5) [{…}, {…}, {…}, {…}, {…}]
-                //0: {name: "XXX0", price: 0, category: "蔬菜"}
-                //1: {name: "XXX1", price: 1, category: "蔬菜"}
-                //2: {name: "XXX2", price: 2, category: "蔬菜"}
-                //3: {name: "XXX3", price: 3, category: "水果"}
-                //4: {name: "XXX4", price: 4, category: "水果"}
-                //length: 5
-                //__proto__: Array(0){% endcomment %}
+
+              if (hasMergeTag) {
+                // --- 舊模式：遇到 '合并标识' 就跟上一行合併 ---
+                let mergeCount = 0
+                for (let i = 1; i < this.datas.length; i++) {
+                  if (String(this.datas[i][prop]) === '合并标识') {
+                    spanMap[mergeCount] += 1
+                    spanMap[i] = 0
+                  } else {
+                    mergeCount = i
+                  }
+                }
+                return spanMap
+              }
+
+              // --- 新模式：按复合键分组 ---
+              // 從 MergeGroupConfig 拿這個列的分組鍵（預設就是自身列）
+              const groupKeys = (this.MergeGroupConfig && this.MergeGroupConfig[prop]) || [prop]
+
+              // 幫助函數：從一行數據裡生成「複合鍵」
+              const makeGroupKey = (row) =>
+                groupKeys.map(k => String(row[k] === undefined ? '' : row[k]))
+                          .join('||')  // 分隔符不太可能出現在值裡
+
               let mergeCount = 0
+              let prevKey = makeGroupKey(this.datas[0])
 
               for (let i = 1; i < this.datas.length; i++) {
-                const current = this.datas[i][prop]
-                const prev = this.datas[i-1][prop]
-
-                if (current === '合并标识') {
+                const curKey = makeGroupKey(this.datas[i])
+                if (curKey === prevKey) {
+                  // 同一組 → 合併到組起始行
                   spanMap[mergeCount] += 1
                   spanMap[i] = 0
                 } else {
+                  // 分組邊界變了 → 強制斷開
                   mergeCount = i
+                  prevKey = curKey
                 }
               }
-              //console.log(spanMap)
               return spanMap
             },
 

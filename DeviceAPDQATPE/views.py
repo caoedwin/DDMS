@@ -717,11 +717,13 @@ def R_Borrowed(request):
 
 
     if request.method == "POST":
+        alert = 0  # 操作結果提示：0 表示成功，非 0 時前端顯示對應錯誤信息
         if request.POST:
             if request.POST.get('isGetData') == 'first':
                 # mock_data
                 mock_datalist = DeviceAPDQATPE.objects.filter(Usrname=request.session.get('CNname_DMS'),
-                                                         BR_per_code=request.session.get('account_DMS'), BrwStatus='已借出')
+                                                         BR_per_code=request.session.get('account_DMS'),
+                                                         BrwStatus__in=['已借出', '固定設備'])
                 # if checkAdaPow:
                 #     # print(checkAdaPow)
                 #     # mock_datalist = DeviceAPDQATPE.objects.filter(**checkAdaPow)
@@ -843,7 +845,7 @@ def R_Borrowed(request):
                     DevVendorOptions5[i.DevVendor] = DeviceDevsizeListvalue
                 # print(DevVendorOptions5)
             if request.POST.get('isGetData') == 'SEARCH5':
-                checkAdaPowfirst = {'Usrname': request.session.get('CNname_DMS'), 'BR_per_code': request.session.get('account_DMS'), 'BrwStatus': '已借出'}
+                checkAdaPowfirst = {'Usrname': request.session.get('CNname_DMS'), 'BR_per_code': request.session.get('account_DMS'), 'BrwStatus__in': ['已借出', '固定設備']}
                 checkAdaPow = {}
                 IntfCtgry = request.POST.get('IntfCtgry')
                 # if IntfCtgry and IntfCtgry != "All":
@@ -984,7 +986,7 @@ def R_Borrowed(request):
 
                 # mock_data
                 checkAdaPowfirst = {'Usrname': request.session.get('CNname_DMS'),
-                                    'BR_per_code': request.session.get('account_DMS'), 'BrwStatus': '已借出'}
+                                    'BR_per_code': request.session.get('account_DMS'), 'BrwStatus__in': ['已借出', '固定設備']}
                 checkAdaPow = {}
                 IntfCtgry = request.POST.get('IntfCtgry')
                 # if IntfCtgry and IntfCtgry != "All":
@@ -1119,6 +1121,10 @@ def R_Borrowed(request):
                                  "Last_uscyc": responseData['USE_NUM']
                                  }
                     for i in responseData['ReturnId']:
+                        # 固定設備需由管理員維護，禁止使用者自行歸還
+                        if DeviceAPDQATPE.objects.filter(id=i, BrwStatus='固定設備').first():
+                            alert = '固定設備不可歸還，請聯繫管理員維護！'
+                            continue
                         try:
                             with transaction.atomic():
                                 DeviceAPDQATPE.objects.filter(id=i).update(**updatedic)
@@ -1129,7 +1135,7 @@ def R_Borrowed(request):
 
                     # mock_data
                     checkAdaPowfirst = {'Usrname': request.session.get('CNname_DMS'),
-                                        'BR_per_code': request.session.get('account_DMS'), 'BrwStatus': '已借出'}
+                                        'BR_per_code': request.session.get('account_DMS'), 'BrwStatus__in': ['已借出', '固定設備']}
                     checkAdaPow = {}
                     IntfCtgry = responseData['IntfCtgry']
                     # if IntfCtgry and IntfCtgry != "All":
@@ -1247,6 +1253,7 @@ def R_Borrowed(request):
             "IntfCtgryOptions5": IntfCtgryOptions5,
             "DevVendorOptions5": DevVendorOptions5,
             "content": mock_data,
+            "alert": alert,
 
             "allIntfCtgry": allIntfCtgry,
             "allDevCtgry": allDevCtgry,

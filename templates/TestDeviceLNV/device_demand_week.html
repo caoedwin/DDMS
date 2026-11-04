@@ -139,7 +139,14 @@
 {% block content %}
 {% verbatim %}
 <div id="app" class="calendar-container">
-    <div class="calendar-header">
+    <!-- ===== Tab 切换（2026-11 新增）===== -->
+    <el-tabs v-model="activeTab" type="border-card" style="margin-bottom: 16px;">
+
+    {% comment %}
+    {# === 2026-11 暫時隱藏：原周統計 Tab，需要時移除此 comment 即可 === #}
+    <!-- Tab 1：原有 周统计 -->
+    <el-tab-pane label="📅 设备需求按周统计" name="week">
+    <div class="calendar-header" v-if="activeTab === 'week'">
         <h2>📅 设备需求日历</h2>
         <div class="nav-area">
             <el-button-group>
@@ -329,6 +336,98 @@
             <el-button @click="dialogVisible = false">关闭</el-button>
         </span>
     </el-dialog>
+    </el-tab-pane>
+    {% endcomment %}
+
+    <!-- Tab 2：2026-11 新增 逐行 Audit → DeviceLNV 精确匹配 -->
+    <el-tab-pane label="🔍 逐行 Audit → 設備匹配" name="audit">
+    <div style="margin-bottom: 12px; display: flex; gap: 12px; align-items: center;">
+        <h3 style="margin: 0; color: #303133;">Active + Must 設備需求清單（逐行對應 DeviceLNV）</h3>
+        <el-button size="medium" icon="el-icon-refresh" @click="fetchAuditData">刷新</el-button>
+        <el-tag type="info">共 ${ auditTotal } 條</el-tag>
+    </div>
+
+    <div v-loading="auditLoading" element-loading-text="載入 Audit 匹配數據...">
+    <el-table :data="auditData" border stripe size="small"
+              style="width: 100%"
+              :header-cell-style="{'background-color':'#f0f9eb','color':'#303133'}"
+              v-if="auditData.length > 0">
+
+        <!-- Audit 侧信息 -->
+        <el-table-column label="Audit List（需求）" align="center">
+            <el-table-column prop="audit.Category" label="Category" width="110"></el-table-column>
+            <el-table-column prop="audit.Class" label="Class" width="130"></el-table-column>
+            <el-table-column prop="audit.Type" label="Type" min-width="160"></el-table-column>
+            <el-table-column prop="audit.Require_State" label="Require State" width="110"></el-table-column>
+            <el-table-column prop="audit.Interface_Type" label="介面種類" width="90"></el-table-column>
+            <el-table-column prop="audit.Device_Category" label="設備種類" width="110"></el-table-column>
+            <el-table-column prop="audit.Device_Brand" label="設備廠家" width="100"></el-table-column>
+            <el-table-column prop="audit.Device_Model" label="設備型號" width="130"></el-table-column>
+        </el-table-column>
+
+        <!-- 匹配结果 -->
+        <el-table-column label="DeviceLNV（匹配）" align="center">
+            <el-table-column label="匹配狀態" width="110">
+                <template slot-scope="scope">
+                    <el-tag v-if="scope.row.match_count > 0" type="success">✔ 已匹配 ${scope.row.match_count} 台</el-tag>
+                    <el-tag v-else type="danger">✗ 未匹配</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column label="匹配設備列表" min-width="400">
+                <template slot-scope="scope">
+                    <div v-if="scope.row.match_count === 0" style="color: #909399;">
+                        <span v-if="!scope.row.audit.Interface_Type && !scope.row.audit.Device_Model">
+                            Audit 新增 8 列無數據，無法匹配（請先導入新 Excel）
+                        </span>
+                        <span v-else>無符合條件的 DeviceLNV 設備</span>
+                    </div>
+                    <div v-else>
+                        <div v-for="(m, idx) in scope.row.matched_devices" :key="idx"
+                             style="border: 1px solid #ebeef5; border-radius: 4px; padding: 6px 10px; margin-bottom: 6px;
+                                    background: ${idx === 0 ? '#f0f9eb' : '#fafafa'};">
+                            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                                <span><b>NID:</b> <code>${m.NID}</code></span>
+                                <span><b>型號:</b> ${m.DevModel}</span>
+                                <span><b>設備名:</b> ${m.DevName}</span>
+                                <el-tag :type="m.DevStatus === '在庫' ? 'success' : 'warning'" size="mini">
+                                    ${m.DevStatus || '未知'}
+                                </el-tag>
+                                <el-tag :type="m.BrwStatus === '在庫' ? 'success' : 'danger'" size="mini">
+                                    ${m.BrwStatus || '未知'}
+                                </el-tag>
+                                <el-tag size="mini">匹配分 ${m.match_score}</el-tag>
+                            </div>
+                            <div v-if="m.Usrname" style="color: #909399; font-size: 12px; margin-top: 4px;">
+                                借用人: ${m.Usrname}　機種: ${m.ProjectCode || '-'}
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </el-table-column>
+        </el-table-column>
+
+    </el-table>
+
+    <div v-if="auditData.length === 0 && !auditLoading" style="text-align: center; padding: 40px; color: #909399;">
+        <p>暫無 Active + Must 的 Audit 需求數據</p>
+    </div>
+    </div>
+
+    <!-- Audit 分页 -->
+    <div style="display: flex; justify-content: flex-end; margin-top: 12px;" v-if="auditTotal > auditPageSize">
+        <el-pagination
+            @size-change="auditSizeChange"
+            @current-change="auditPageChange"
+            :current-page="auditCurrentPage"
+            :page-sizes="[20, 50, 100]"
+            :page-size="auditPageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="auditTotal">
+        </el-pagination>
+    </div>
+
+    </el-tab-pane>
+    </el-tabs>
 </div>
 {% endverbatim %}
 {% endblock %}
@@ -354,6 +453,10 @@ new Vue({
     delimiters: ['${', '}'],
     data: function () {
         return {
+            // ============ Tab 切换 ============
+            activeTab: 'audit',   // 'week' 周统计（2026-11 暫時隱藏） | 'audit' 逐行 audit 匹配
+
+            // ============ 原有：周统计 ============
             loading: false,
             rawData: [],
             weekData: [],
@@ -367,7 +470,14 @@ new Vue({
                 week_start: '',
                 week_end: '',
                 details: []
-            }
+            },
+
+            // ============ 新增：逐行 Audit 匹配 ============
+            auditLoading: false,
+            auditData: [],          // 当前页 audit 数据（含 matched_devices）
+            auditTotal: 0,
+            auditCurrentPage: 1,
+            auditPageSize: 50,
         };
     },
     computed: {
@@ -391,7 +501,19 @@ new Vue({
     mounted: function () {
         this.fetchData();
     },
+    watch: {
+        // Tab 切换时自动加载对应数据
+        activeTab: function (val) {
+            if (val === 'audit') {
+                this.auditCurrentPage = 1;
+                this.fetchAuditData();
+            } else {
+                this.fetchData();
+            }
+        }
+    },
     methods: {
+        // ============ 原有：周统计 ============
         fetchData: function () {
             var self = this;
             self.loading = true;
@@ -412,6 +534,37 @@ new Vue({
                     self.$message.error('加载数据失败，请检查网络或后端服务。');
                 });
         },
+
+        // ============ 新增：逐行 Audit 匹配 ============
+        fetchAuditData: function () {
+            var self = this;
+            self.auditLoading = true;
+            axios.get('/TestDeviceLNV/device-demand-week/', {
+                params: {
+                    mode: 'audit',
+                    page: self.auditCurrentPage,
+                    page_size: self.auditPageSize,
+                }
+            }).then(function (response) {
+                self.auditData = (response.data && response.data.data) || [];
+                self.auditTotal = response.data && response.data.total ? response.data.total : 0;
+                self.auditLoading = false;
+            }).catch(function (e) {
+                console.error('加载 audit 匹配失败:', e);
+                self.auditLoading = false;
+                self.$message.error('加载 audit 匹配失败');
+            });
+        },
+        auditPageChange: function (p) {
+            this.auditCurrentPage = p;
+            this.fetchAuditData();
+        },
+        auditSizeChange: function (s) {
+            this.auditPageSize = s;
+            this.auditCurrentPage = 1;
+            this.fetchAuditData();
+        },
+
         buildWeekData: function () {
             var self = this;
             var weekMap = {};

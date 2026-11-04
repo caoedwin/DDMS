@@ -14,6 +14,125 @@ from django.core.mail import EmailMultiAlternatives
 from app01 import tasks
 from app01.models import UserInfo
 from .models import TestDeviceLNV
+
+# ---------- 合併標籤還原工具 ----------
+MERGE_TAG = '合并标识'
+
+# 哪些字段可能帶合併標籤（由 upload.xlsx 展平工具產生）
+MERGE_RESTORE_FIELDS = [
+    'Category', 'Class', 'Type',
+    'Covered_range_for_case', 'Require_State', 'Comments',
+    'Remark', 'ODM_status', 'Purchase_Plan',
+    'Act_Status', 'Device_Know_Issue',
+    # ===== 2026-11 新增 8 列 =====
+    'Interface_Type', 'Device_Category', 'Device_Attribute',
+    'Device_Capacity', 'Device_Brand', 'Device_Model',
+    'Device_Name', 'Device_Description',
+]
+
+
+def fix_merge_tags(rows, fields=None, also_fill_empty=True):
+    """把 upload.xlsx 展平後的「合併標籤」或空值還原成上一個真實值。
+
+    Args:
+        rows: list[dict]  要處理的字典列表（按順序、已排序）
+        fields: 要還原的字段列表；None 時用 MERGE_RESTORE_FIELDS
+        also_fill_empty: True 時 None / '' 也視為需要填充（處理原始 Excel 未展平就上傳的情況）；
+                         False 時只處理明確的 MERGE_TAG 字面量
+
+    Returns:
+        原地修改後的 rows（同一個 list，返回方便連鎖調用）
+    """
+    if not rows:
+        return rows
+    if fields is None:
+        fields = MERGE_RESTORE_FIELDS
+    current_vals = {f: '' for f in fields}
+    for row in rows:
+        for f in fields:
+            raw = row.get(f)
+            raw_str = str(raw).strip() if raw is not None else ''
+            is_tag = raw_str == MERGE_TAG
+            is_empty = also_fill_empty and raw_str == ''
+            if is_tag or is_empty:
+                # 如果當前既沒有標籤也不是空，說明是首行，current_vals 還是空
+                if current_vals[f] != '':
+                    row[f] = current_vals[f]
+                # 否則保持原值（首行就空著，用戶確實沒填）
+            else:
+                current_vals[f] = raw_str
+                row[f] = raw_str
+    return rows
+
+
+def read_excel_unfold_merge(file_obj):
+    """用 openpyxl 讀 Excel，自動展開合併單元格，返回 list[dict]。
+
+    處理後每一行的每一列都會有值（合併格的值會被複製到每一個被合併的格子裡）。
+    這樣可以直接上傳原始 SWTestDeviceAuditList.xlsx，不需要任何預處理。
+
+    Args:
+        file_obj: Django UploadedFile 或任何類文件對象（.read() 返回 bytes）
+
+    Returns:
+        list[dict]  第一行當 column headers；後續每行一個 dict
+    """
+    import openpyxl
+    import io
+    # 支持 Django UploadedFile（.read()）或路徑字符串
+    if isinstance(file_obj, str):
+        wb = openpyxl.load_workbook(file_obj, data_only=True)
+    else:
+        wb = openpyxl.load_workbook(io.BytesIO(file_obj.read()), data_only=True)
+
+    ws = wb.active
+
+    # ---------- 1. 先把所有合併區域展平 ----------
+    # openpyxl 的 MergedCell.value 是只讀的，必須先 unmerge 再把
+    # 左上角值複製到每一個被合併的格子
+    for merge in list(ws.merged_cells.ranges):
+        top_left = ws.cell(row=merge.min_row, column=merge.min_col).value
+        ws.unmerge_cells(str(merge))
+        for r in range(merge.min_row, merge.max_row + 1):
+            for c in range(merge.min_col, merge.max_col + 1):
+                ws.cell(row=r, column=c).value = top_left
+
+    # ---------- 2. 自動找真正的列頭行（跳過開頭全空的標題/備註行） ----------
+    header_row_idx = 1
+    for r in range(1, min(ws.max_row, 5) + 1):
+        vals = [ws.cell(row=r, column=c).value for c in range(1, ws.max_column + 1)]
+        non_empty = [v for v in vals if v is not None and str(v).strip() != '']
+        # 真正的列頭行應該有多個非空且像是英文列名的單元格
+        if len(non_empty) >= 3:
+            header_row_idx = r
+            break
+
+    headers = [
+        ws.cell(row=header_row_idx, column=c).value
+        for c in range(1, ws.max_column + 1)
+    ]
+
+    # 去掉全 None 的開頭列（原始文件 A 列就是 None）
+    # 但保留後續 None 列（只要 headers 裡有值）
+    result = []
+    for row in ws.iter_rows(min_row=header_row_idx + 1, values_only=True):
+        row_dict = {}
+        for i, col_val in enumerate(row):
+            header = headers[i] if i < len(headers) else None
+            if header is not None:
+                row_dict[header] = col_val
+        # 跳過完全空的行
+        if not any(v is not None and v != '' for v in row_dict.values()):
+            continue
+        # 跳過備註行：Category 列含 Note:/備註：/註：等關鍵詞
+        cat_val = str(row_dict.get('Category') or '').strip().lower()
+        if cat_val.startswith('note:') or cat_val.startswith('備註') or cat_val.startswith('註：'):
+            continue
+        result.append(row_dict)
+
+    return result
+
+
 # 尝试导入其他客户模型（若不存在则置为 None）
 try:
     from DeviceLNV.models import DeviceLNV
@@ -109,6 +228,15 @@ headermodel_TestDevice = {
     'Device #8': 'Device8',
     'Device #9': 'Device9',
     'Device #10': 'Device10',
+    # ===== 2026-11 新增 8 列 =====
+    '介面種類': 'Interface_Type',
+    '設備種類': 'Device_Category',
+    '設備屬性': 'Device_Attribute',
+    '設備容量': 'Device_Capacity',
+    '設備廠家': 'Device_Brand',
+    '設備型號': 'Device_Model',
+    '設備名稱': 'Device_Name',
+    '設備描述': 'Device_Description',
 }
 
 from django.db import models
@@ -362,35 +490,29 @@ def TestDeviceListLNV(request):
                     TestDeviceLNV_obj = TestDeviceLNV.objects.filter(**check_dic)
             if request.POST.get('action') == 'update':
                 ID = request.POST.get('ID')
-                update_dic = {
-                    "Category": request.POST.get('Category') if request.POST.get('Category') else '', #从有值变成空值的更新
-                    "Class": request.POST.get('Class') if request.POST.get('Class') else '',
-                    "Type": request.POST.get('Type') if request.POST.get('Type') else '',
-                    "Covered_range_for_case": request.POST.get('Covered_range_for_case') if request.POST.get('Covered_range_for_case') else '',
-                    "Require_State": request.POST.get('Require_State') if request.POST.get('Require_State') else '',
-                    "Comments": request.POST.get('Comments') if request.POST.get('Comments') else '',
-                    "Remark": request.POST.get('Remark') if request.POST.get('Remark') else '',
-                    "ODM_status": request.POST.get('ODM_status') if request.POST.get('ODM_status') else '',
-                    "Purchase_Plan": request.POST.get('Purchase_Plan') if request.POST.get('Purchase_Plan') else '',
-                    "Device_Price": request.POST.get('Device_Price') if request.POST.get('Device_Price') and request.POST.get('Device_Price') != 'null' else None, #从有值变成空值的更新,整型，浮点型，日期都是None
-                    "Act_Status": request.POST.get('Act_Status') if request.POST.get('Act_Status') else '',
-                    "Device_Know_Issue": request.POST.get('Device_Know_Issue') if request.POST.get('Device_Know_Issue') else '',
-                    "Device1": request.POST.get('Device1') if request.POST.get('Device1') else '',
-                    "Device2": request.POST.get('Device2') if request.POST.get('Device2') else '',
-                    "Device3": request.POST.get('Device3') if request.POST.get('Device3') else '',
-                    "Device4": request.POST.get('Device4') if request.POST.get('Device4') else '',
-                    "Device5": request.POST.get('Device5') if request.POST.get('Device5') else '',
-                    "Device6": request.POST.get('Device6') if request.POST.get('Device6') else '',
-                    "Device7": request.POST.get('Device7') if request.POST.get('Device7') else '',
-                    "Device8": request.POST.get('Device8') if request.POST.get('Device8') else '',
-                    "Device9": request.POST.get('Device9') if request.POST.get('Device9') else '',
-                    "Device10": request.POST.get('Device10') if request.POST.get('Device10') else '',
-                }
+                # 自動從模型 meta 生成 update_dic，以後加列只改 models.py + headermodel_TestDevice 即可
+                update_dic = {}
+                NUMERIC_TYPES = ("DateField", "DateTimeField",
+                                "FloatField", "IntegerField",
+                                "BigIntegerField", "SmallIntegerField",
+                                "PositiveIntegerField",
+                                "PositiveSmallIntegerField",)
+                for f in TestDeviceLNV._meta.fields:
+                    if f.name == 'id':
+                        continue
+                    raw = request.POST.get(f.name)
+                    if raw is None:
+                        continue  # 前端没传这个字段 → 保持原值不动
+                    if f.get_internal_type() in NUMERIC_TYPES:
+                        # 數字型：空字符串 / 'null' → None
+                        update_dic[f.name] = None if (raw.strip() == '' or raw == 'null') else raw
+                    else:
+                        # 字符串型：空字符串保留（用戶想從有值清空）
+                        update_dic[f.name] = raw if raw.strip() != '' else ''
                 try:
                     with transaction.atomic():
                         TestDeviceLNV.objects.filter(id=ID).update(**update_dic)
                 except Exception as e:
-                    # alert = '此数据正被其他使用者编辑中...'
                     errMsg = alert = str(e)
                     print(alert)
 
@@ -435,7 +557,99 @@ def TestDeviceListLNV(request):
                     if TestDeviceLNV.objects.all():
                         # print(1)
                         TestDeviceLNV.objects.all().delete()
-                # print('2')
+
+                # ---------- 路徑 A：前端直接上傳原始 .xlsx（multipart/form-data） ----------
+                # 後端用 openpyxl 讀，自動展開合併單元格；用戶不必用工具預處理
+                excel_file = (request.FILES.get('file')
+                              or request.FILES.get('excel_file')
+                              or request.FILES.get('file0'))
+                if excel_file:
+                    try:
+                        xlsxlist = read_excel_unfold_merge(excel_file)
+                    except Exception as e:
+                        errMsg = f'Excel 解析失敗: {e}'
+                        xlsxlist = []
+
+                    rownum = 0
+                    startupload = 0
+                    uploadxlsxlist = []
+                    for i in xlsxlist:
+                        rownum += 1
+                        modeldata = {}
+                        for key, value in i.items():
+                            if key in headermodel_TestDevice.keys():
+                                # openpyxl 可能返回 None，轉成空字符串方便後續處理
+                                modeldata[headermodel_TestDevice[key]] = (
+                                    value if value is not None else ''
+                                )
+                        if not modeldata.get('Category'):
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = f'第"{rownum}"條數據，Category不能爲空'
+                            break
+                        if not modeldata.get('Class'):
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = f'第"{rownum}"條數據，Class不能爲空'
+                            break
+                        if not modeldata.get('Type'):
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = f'第"{rownum}"條數據，Type不能爲空'
+                            break
+                        if not modeldata.get('Covered_range_for_case'):
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = f'第"{rownum}"條數據，Covered_range_for_case不能爲空'
+                            break
+                        if not modeldata.get('Require_State'):
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = f'第"{rownum}"條數據，Require_State不能爲空'
+                            break
+                        uploadxlsxlist.append(modeldata)
+
+                    TestDevieModelfiedlist = [
+                        [i.name, i.get_internal_type()]
+                        for i in TestDeviceLNV._meta.fields if i.name != 'id'
+                    ]
+                    NUMERIC_TYPES = ("DateField", "DateTimeField",
+                                    "FloatField", "IntegerField",
+                                    "BigIntegerField", "SmallIntegerField",
+                                    "PositiveIntegerField",
+                                    "PositiveSmallIntegerField",)
+                    for i in uploadxlsxlist:
+                        for j in TestDevieModelfiedlist:
+                            fname, ftype = j[0], j[1]
+                            if fname not in i.keys():
+                                i[fname] = None if ftype in NUMERIC_TYPES else ''
+                            else:
+                                # key 存在但值為空字符串時，也要按字段類型轉換
+                                v = i[fname]
+                                if v is None:
+                                    continue
+                                if isinstance(v, str) and v.strip() == '':
+                                    i[fname] = None if ftype in NUMERIC_TYPES else ''
+
+                    # openpyxl 已經展開合併格，這裡仍跑一次 fix_merge_tags 作為兜底
+                    # （萬一原始 Excel 某些合併格漏展開 / 某些字段本身就是空）
+                    fix_merge_tags(uploadxlsxlist, also_fill_empty=True)
+
+                    num1 = 0
+                    if startupload:
+                        create_list = []
+                        for i in uploadxlsxlist:
+                            num1 += 1
+                            create_list.append(TestDeviceLNV(**i))
+                        try:
+                            with transaction.atomic():
+                                TestDeviceLNV.objects.bulk_create(create_list)
+                            errMsg = '上傳成功'
+                        except Exception as e:
+                            errMsg = alert = '上傳失敗: ' + str(e)
+                            print(alert)
+
+                # ---------- 路徑 B：前端先把 Excel 轉成 JSON 再上傳（既有方式） ----------
                 if 'ExcelData' in str(request.body):
                     responseData = json.loads(request.body)
                     # print(responseData)
@@ -448,98 +662,92 @@ def TestDeviceListLNV(request):
                     #         'Number': '編號', }
                     # ]
                     rownum = 0
-                    startupload = 0
-                    # print(xlsxlist)
+                    startupload = 1
+                    # ---------- Step 1: 字段映射 + 过滤备注行 ----------
                     uploadxlsxlist = []
                     for i in xlsxlist:
-                        # print(type(i),i)
                         rownum += 1
-                        # print(rownum)
                         modeldata = {}
                         for key, value in i.items():
                             if key in headermodel_TestDevice.keys():
-                                modeldata[headermodel_TestDevice[key]] = value
-                        if 'Category' in modeldata.keys():
-                            startupload = 1
-                        else:
-                            # canEdit = 0
-                            startupload = 0
-                            err_ok = 2
-                            errMsg = err_msg = """
-                                                        第"%s"條數據，Category不能爲空
-                                                                            """ % rownum
-                            break
-                        if 'Class' in modeldata.keys():
-                            startupload = 1
-                        else:
-                            # canEdit = 0
-                            startupload = 0
-                            err_ok = 2
-                            errMsg = err_msg = """
-                                                        第"%s"條數據，Class不能爲空
-                                                                            """ % rownum
-                            break
-                        if 'Type' in modeldata.keys():
-                            startupload = 1
-                        else:
-                            # canEdit = 0
-                            startupload = 0
-                            err_ok = 2
-                            errMsg = err_msg = """
-                                                        第"%s"條數據，Type不能爲空
-                                                                            """ % rownum
-                            break
-                        if 'Covered_range_for_case' in modeldata.keys():
-                            startupload = 1
-                        else:
-                            # canEdit = 0
-                            startupload = 0
-                            err_ok = 2
-                            errMsg = err_msg = """
-                                                        第"%s"條數據，Covered_range_for_case不能爲空
-                                                                            """ % rownum
-                            break
-                        if 'Require_State' in modeldata.keys():
-                            startupload = 1
-                        else:
-                            # canEdit = 0
-                            startupload = 0
-                            err_ok = 2
-                            errMsg = err_msg = """
-                                                        第"%s"條數據，Require_State不能爲空
-                                                                            """ % rownum
-                            break
-
+                                modeldata[headermodel_TestDevice[key]] = value if value is not None else ''
+                        # 跳過備註行：Category 列以 Note:/備註：/註： 等關鍵詞開頭
+                        # 原始 SWTestDeviceAuditList.xlsx 裡混了一行說明性文字，不是真實分類
+                        cat_val = str(modeldata.get('Category') or '').strip().lower()
+                        if cat_val.startswith('note:') or cat_val.startswith('備註') or cat_val.startswith('註：'):
+                            continue
                         uploadxlsxlist.append(modeldata)
-                    # print(startupload)
-                    #让数据可以从有值更新为无值，空值
-                    TestDevieModelfiedlist = []
-                    for i in TestDeviceLNV._meta.fields:
-                        if i.name != 'id':
-                            TestDevieModelfiedlist.append([i.name,i.get_internal_type()])
+
+                    # ---------- Step 2: 统一还原合并空值 ----------
+                    # 前端 sheet_to_json(defval:'') 会把合并格下的 Category/Class 等
+                    # 输出为空字符串；这里用「上一个真实值」回填
+                    fix_merge_tags(uploadxlsxlist, also_fill_empty=True)
+
+                    # ---------- Step 3: 字段补齐（缺失字段按类型填空 / None） ----------
+                    NUMERIC_TYPES = ("DateField", "DateTimeField",
+                                    "FloatField", "IntegerField",
+                                    "BigIntegerField", "SmallIntegerField",
+                                    "PositiveIntegerField",
+                                    "PositiveSmallIntegerField",)
+                    TestDevieModelfiedlist = [
+                        [i.name, i.get_internal_type()]
+                        for i in TestDeviceLNV._meta.fields if i.name != 'id'
+                    ]
                     for i in uploadxlsxlist:
-                        for j in TestDevieModelfiedlist:
-                            if j[0] not in i.keys():
-                                # print(j)
-                                if j[1] == "DateField" or j[1] == "FloatField" or j[1] == "IntegerField":
-                                    i[j[0]] = None
-                                else:
-                                    i[j[0]] = ''
+                        for fname, ftype in TestDevieModelfiedlist:
+                            if fname not in i:
+                                i[fname] = None if ftype in NUMERIC_TYPES else ''
+                            else:
+                                v = i[fname]
+                                if v is None:
+                                    continue
+                                if isinstance(v, str) and v.strip() == '':
+                                    i[fname] = None if ftype in NUMERIC_TYPES else ''
+
+                    # ---------- Step 4: 逐行校验（还原后再校验，Category/Class 不会再空） ----------
+                    rownum = 0
+                    for modeldata in uploadxlsxlist:
+                        rownum += 1
+                        if not (modeldata.get('Category') or '').strip():
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = '第"%s"條數據，Category不能爲空' % rownum
+                            break
+                        if not (modeldata.get('Class') or '').strip():
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = '第"%s"條數據，Class不能爲空' % rownum
+                            break
+                        if not (modeldata.get('Type') or '').strip():
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = '第"%s"條數據，Type不能爲空' % rownum
+                            break
+                        if not (modeldata.get('Covered_range_for_case') or '').strip():
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = '第"%s"條數據，Covered_range_for_case不能爲空' % rownum
+                            break
+                        if not (modeldata.get('Require_State') or '').strip():
+                            startupload = 0
+                            err_ok = 2
+                            errMsg = '第"%s"條數據，Require_State不能爲空' % rownum
+                            break
+                    # print(startupload)
                     num1 = 0
                     if startupload:
                         create_list = []
                         for i in uploadxlsxlist:
-                            # print(i)
                             num1 += 1
                             create_list.append(TestDeviceLNV(**i))
                         try:
                             with transaction.atomic():
                                 TestDeviceLNV.objects.bulk_create(create_list)
+                            errMsg = '上傳成功'
                         except Exception as e:
                             # alert = '此数据正被其他使用者编辑中...'
-                            errMsg = alert = str(e)
+                            errMsg = alert = '上傳失敗: ' + str(e)
                             print(alert)
-                        errMsg = '上傳成功'
 
                     # mock_data
                     check_dic = {}
@@ -1497,6 +1705,28 @@ def device_demand_week_view(request):
     if request.method != 'GET':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
+    # ===== 2026-11 新增：?mode=audit 触发逐行 Audit 匹配 =====
+    mode = request.GET.get('mode', 'week')
+    if mode == 'audit':
+        try:
+            page = int(request.GET.get('page', 1))
+            page_size = int(request.GET.get('page_size', 50))
+        except ValueError:
+            page, page_size = 1, 50
+        page = max(1, page)
+        page_size = max(1, min(page_size, 500))
+        data = match_audit_with_inventory()
+        start = (page - 1) * page_size
+        end = start + page_size
+        return JsonResponse({
+            'mode': 'audit',
+            'total': len(data),
+            'page': page,
+            'page_size': page_size,
+            'data': data[start:end],
+        })
+    # else: 继续原有 week 统计逻辑 ↓
+
     # 固定测试日期，正式时改为 datetime.now().date()
     today = datetime(2019, 1, 29).date()
     # today = datetime.now().date()
@@ -1901,4 +2131,165 @@ def select_devices(candidates, required_count, required_vendors=0, require_a=Fal
                 selected.append(info)
 
     return selected
+
+
+# ============================================================
+# Device Demand：逐行 Audit List（Active+Must）→ DeviceLNV 精确匹配
+# 用 TestDeviceLNV 新增的 8 个设备明细字段匹配 DeviceLNV 对应字段
+# ============================================================
+
+# TestDeviceLNV 字段 → DeviceLNV 字段 映射（7 列硬匹配 + 1 列模糊辅助）
+AUDIT_TO_DEVICE_MATCH_MAP = [
+    # (audit_field, device_field, required)
+    ('Interface_Type',        'IntfCtgry',     True),   # 介面種類
+    ('Device_Category',       'DevCtgry',      True),   # 設備種類
+    ('Device_Attribute',      'Devproperties', True),   # 設備屬性
+    ('Device_Brand',          'DevVendor',     True),   # 設備廠家
+    ('Device_Capacity',       'Devsize',       False),  # 設備容量（可空）
+    ('Device_Model',          'DevModel',      True),   # 設備型號
+    ('Device_Name',           'DevName',       False),  # 設備名稱（辅助）
+    # Device_Description → DevDescription 只做模糊辅助，不进硬匹配
+]
+
+
+def _norm(v):
+    """值标准化：去空格、小写、None→空字符串"""
+    if v is None:
+        return ''
+    return str(v).strip().lower()
+
+
+def match_single_row_to_devices(audit_row, all_devices=None, min_required_match=None):
+    """
+    用 audit_row（dict，含 8 个设备明细字段）去 DeviceLNV 匹配。
+
+    返回 list[dict]，每个 dict:
+      - device: DeviceLNV 实例
+      - matched_count: 命中的硬匹配列数
+      - hard_match_total: 硬匹配列总数
+      - matched_fields: list[(audit_field, device_field, audit_val, device_val)]
+      - score: 匹配分（用于排序，越高越匹配）
+
+    min_required_match: 最少命中几个硬匹配列才算有效（默认自动 = 硬匹配列数的一半）
+    """
+    if all_devices is None:
+        all_devices = list(DeviceLNV.objects.all())
+
+    # audit_row 预处理：把空 / None 统一成 ''
+    audit_vals = {}
+    for audit_field, device_field, required in AUDIT_TO_DEVICE_MATCH_MAP:
+        audit_vals[audit_field] = _norm(audit_row.get(audit_field))
+
+    # 如果 audit_row 所有硬匹配列都是空 → 直接返回空（这条记录没有设备明细）
+    hard_fields = [(a, d) for a, d, req in AUDIT_TO_DEVICE_MATCH_MAP if req]
+    if not any(audit_vals[a] for a, _ in hard_fields):
+        return []
+
+    if min_required_match is None:
+        # 至少命中一半硬匹配列才算有效
+        min_required_match = max(1, len(hard_fields) // 2)
+
+    results = []
+    for dev in all_devices:
+        matched_fields = []
+        match_count = 0
+        dev_desc = _norm(getattr(dev, 'DevDescription', ''))
+        audit_desc = _norm(audit_row.get('Device_Description', ''))
+
+        for audit_field, device_field, required in AUDIT_TO_DEVICE_MATCH_MAP:
+            av = audit_vals[audit_field]
+            dv = _norm(getattr(dev, device_field, ''))
+            if not av or not dv:
+                continue  # 任一方空 → 不判定
+            if av == dv:
+                match_count += 1
+                matched_fields.append((audit_field, device_field, av, dv))
+
+        # 额外奖励：Description 包含匹配（模糊）
+        bonus = 0
+        if audit_desc and dev_desc and (audit_desc in dev_desc or dev_desc in audit_desc):
+            bonus = 1
+
+        if match_count >= min_required_match:
+            results.append({
+                'device': dev,
+                'matched_count': match_count,
+                'hard_match_total': len(hard_fields),
+                'matched_fields': matched_fields,
+                'desc_bonus': bonus,
+            })
+
+    # 按匹配列数降序 + desc bonus
+    results.sort(key=lambda r: (r['matched_count'], r['desc_bonus']), reverse=True)
+    return results
+
+
+def match_audit_with_inventory():
+    """
+    主函数：拿 Act_Status='Active' + Require_State='Must' 的 audit list，
+    每条匹配 DeviceLNV 设备库，返回逐行匹配结果。
+
+    返回 list[dict]：
+      - audit_row: 原始 audit list 行（audit 侧字段齐全）
+      - matched_devices: list[matched_result]（可能多个匹配设备，按匹配度排序）
+      - match_count: 该 audit row 匹配到几个设备
+    """
+    # 1. 过滤 audit list
+    audit_rows = list(TestDeviceLNV.objects.filter(
+        Act_Status__iexact='Active',
+        Require_State__iexact='Must',
+    ).order_by('id'))
+
+    # 2. 加载 DeviceLNV 全量（只加载一次）
+    all_devices = list(DeviceLNV.objects.all())
+
+    result = []
+    for row in audit_rows:
+        audit_dict = {
+            'id': row.id,
+            'Category': row.Category,
+            'Class': row.Class,
+            'Type': row.Type,
+            'Require_State': row.Require_State,
+            'Act_Status': row.Act_Status,
+            'Interface_Type': row.Interface_Type,
+            'Device_Category': row.Device_Category,
+            'Device_Attribute': row.Device_Attribute,
+            'Device_Capacity': row.Device_Capacity,
+            'Device_Brand': row.Device_Brand,
+            'Device_Model': row.Device_Model,
+            'Device_Name': row.Device_Name,
+            'Device_Description': row.Device_Description,
+            'Covered_range_for_case': row.Covered_range_for_case,
+            'Comments': row.Comments,
+        }
+        matches = match_single_row_to_devices(audit_dict, all_devices)
+        # 最多取前 5 个匹配（避免一行挂太多）
+        matched_devices_serial = []
+        for m in matches[:5]:
+            dev = m['device']
+            matched_devices_serial.append({
+                'NID': dev.NID,
+                'DevStatus': dev.DevStatus,
+                'IntfCtgry': dev.IntfCtgry,
+                'DevCtgry': dev.DevCtgry,
+                'Devproperties': dev.Devproperties,
+                'DevVendor': dev.DevVendor,
+                'Devsize': dev.Devsize,
+                'DevModel': dev.DevModel,
+                'DevName': dev.DevName,
+                'DevDescription': dev.DevDescription,
+                'BrwStatus': dev.BrwStatus,
+                'Usrname': dev.Usrname,
+                'ProjectCode': dev.ProjectCode,
+                'match_score': f"{m['matched_count']}/{m['hard_match_total']}",
+                'desc_bonus': m['desc_bonus'],
+            })
+        result.append({
+            'audit': audit_dict,
+            'matched_devices': matched_devices_serial,
+            'match_count': len(matches),
+        })
+
+    return result
 

@@ -393,6 +393,7 @@
 <el-dialog
     title="材料新增"
     width="80%"
+    :close-on-click-modal="false"
     :visible.sync="insert">
     <template>
 <el-form ref="form" :model="form" :rules="rules" label-width="120px" size="medium">
@@ -740,7 +741,7 @@
 </el-row>
 <div class="el-form-item__content" style="margin-left: 300px;">
   <el-form-item>
-    <el-button type="primary" @click="onSubmit('form')">新增</el-button>
+    <el-button type="primary" @click="onSubmit('form')" :loading="addLoading">新增</el-button>
   </el-form-item>
  </div>
 </el-form>
@@ -750,6 +751,7 @@
 <el-dialog
     title="材料修改"
     width="80%"
+    :close-on-click-modal="false"
     :visible.sync="update">
     <template>
 <el-form ref="form1" :model="form1" label-width="120px" size="medium">
@@ -1097,7 +1099,7 @@
 </el-row>
 <div class="el-form-item__content" style="margin-left: 300px;">
   <el-form-item>
-    <el-button type="primary" @click="onSubmit1()">保存修改</el-button>
+    <el-button type="primary" @click="onSubmit1()" :loading="updateLoading">保存修改</el-button>
   </el-form-item>
  </div>
 </el-form>
@@ -1109,7 +1111,7 @@
         <span style="font-weight: bold;color: black;font-size: 16px;">已選</span><span id="SelectNum" style="font-weight: bold;color: black;font-size: 16px;margin-left: 14px;">0</span><span class="col-md-4" style="font-weight: bold;color: black;font-size: 16px;">條</span>
             <el-button size="medium" style="background-color:#69ec57;border-color:black;color:black;margin: 2px;margin-left: 50px;" name="新增" @click="addData()" v-cloak>新增</el-button>
             <el-button size="medium" style="background-color:#00CCFF;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="修改" @click="updateData()" v-cloak>修改</el-button>
-            <el-button size="medium" style="background-color: #FF6666;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="刪除" @click="deleteData()" v-cloak>刪除</el-button>
+            <el-button size="medium" style="background-color: #FF6666;border-color:black;color:black;margin: 2px;margin-left: 10px;" name="刪除" @click="deleteData()" :loading="deleteLoading" v-cloak>刪除</el-button>
     </div>
     {% csrf_token %}
     <template>
@@ -1310,6 +1312,9 @@ ax<script type="text/babel">
              hisloading:false,
              search:'',
              elbuttonloading: false,
+             addLoading: false,      // 新增按鈕 loading
+             updateLoading: false,   // 保存修改按鈕 loading
+             deleteLoading: false,   // 刪除按鈕 loading
              tableloading: false,
              form: {
                   Customer: '',
@@ -2018,6 +2023,14 @@ ax<script type="text/babel">
                        let devstatus = this.$refs.DevStatus.value;
                        let data ={"isGetData":"MUTICANCEL","params": params,"IntfCtgry":intfCtgry,"DevCtgry":devCtgry,
                             "DevVendor":devVendor,"Devproperties":devproperties,"Devsize":devsize,"DevStatus":devstatus,"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()};
+                       this.deleteLoading = true;   // 按鈕 loading，防止重複點擊
+                       // 全頁 loading：lock:true 會遮罩整個頁面並攔截點擊，避免操作中誤觸
+                       const loading = this.$loading({
+                           lock: true,
+                           text: '刪除中，請稍後...',
+                           spinner: 'el-icon-loading',
+                           background: 'rgba(0, 0, 0, 0.7)'
+                       });
                        axios.post("/DeviceABO/M_edit/",data).then((res) => {
                              this.tableContent = res.data.content;
                              this.totalNum=this.tableContent.length;
@@ -2026,7 +2039,7 @@ ax<script type="text/babel">
                                  type: 'success'
                          });
                         this.$refs.multipleTable.clearSelection();
-                 })
+                 }).finally(() => { this.deleteLoading = false; loading.close(); })
              }else{
                  return false;
              }
@@ -2087,6 +2100,14 @@ ax<script type="text/babel">
                   this.formData.append('Purchase_NO', this.$refs.form.model.Purchase_NO);
                   this.formData.append("action",'submit');
                   console.log(this.formData);
+                  this.addLoading = true;   // 按鈕 loading，防止重複點擊
+                  // 全頁 loading：lock:true 會遮罩整個頁面並攔截點擊，避免操作中誤觸導致彈窗消失
+                  const loading = this.$loading({
+                      lock: true,
+                      text: '新增中，請稍後...',
+                      spinner: 'el-icon-loading',
+                      background: 'rgba(0, 0, 0, 0.7)'
+                  });
                   axios.post("/DeviceABO/M_edit/", this.formData,{
                               headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
                           }).then((res)=>{
@@ -2108,7 +2129,7 @@ ax<script type="text/babel">
                                   }
                                   this.insert = false;
                               }
-                  })
+                  }).finally(() => { this.addLoading = false; loading.close(); })
                 } else {
                   console.log('error submit!!');
                   return false;
@@ -2170,6 +2191,14 @@ ax<script type="text/babel">
                   this.formData1.append('Purchase_NO', this.$refs.form1.model.Purchase_NO);
                   this.formData1.append("action",'submit1');
                   console.log(this.formData1);
+                  this.updateLoading = true;   // 按鈕 loading，防止重複點擊
+                  // 全頁 loading：lock:true 會遮罩整個頁面並攔截點擊，避免操作中誤觸導致彈窗消失
+                  const loading = this.$loading({
+                      lock: true,
+                      text: '保存中，請稍後...',
+                      spinner: 'el-icon-loading',
+                      background: 'rgba(0, 0, 0, 0.7)'
+                  });
                   axios.post("/DeviceABO/M_edit/", this.formData1,{
                             headers:{ 'Content-Type': 'multipart/form-data','X-CSRFToken':$("[name='csrfmiddlewaretoken']").val()} //改变头格式，原生默认上传json格式
                         }).then((res)=>{
@@ -2177,7 +2206,7 @@ ax<script type="text/babel">
                             this.totalNum=this.tableContent.length;
                             this.update=false;
                             this.formData1 = new FormData();
-                  })
+                  }).finally(() => { this.updateLoading = false; loading.close(); })
           },
 
         alertData:function(id,pid){

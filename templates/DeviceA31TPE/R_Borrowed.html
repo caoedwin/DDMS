@@ -89,11 +89,11 @@ DevStatus{% extends 'base.html' %}
       </div>
     <div class="tableAround" v-cloak >
           <div class="111" style="margin-bottom:20px;">
-               <span class="showNum">已選 <span id="selectNum">0</span> 條</span> <el-button @click="Rt()" v-cloak size="medium" style="background-color:#69ec57; border-color:black;color:black;margin-left: 50px">歸還</el-button><el-button @click="RenewInfo()" v-cloak size="medium" style="background-color:#f9873a; border-color:black;color:black;margin-left: 50px">續借</el-button>
+               <span class="showNum">已選 <span id="selectNum">0</span> 條</span> <el-button @click="Rt()" v-cloak size="medium" style="background-color:#69ec57; border-color:black;color:black;margin-left: 50px">歸還</el-button><el-button @click="RenewInfo()" v-cloak size="medium" style="background-color:#f9873a; border-color:black;color:black;margin-left: 50px">續借</el-button><span style="margin-left:20px;font-weight:800;color:#1a7f1a">※ 固定設備由管理員維護，不可勾選歸還</span>
           </div>
           <el-table height="700" ref="multipleTable" border :data="tableContent.slice((currentPage -1 )*pageSize,(currentPage)*pageSize)" @selection-change="handleSelectionChange" :row-key="getRowKeys"  :cell-style="addColor"
           :header-cell-style="{color:'#333',fontFamily:'MicrosoftYaHeiUI',fontSize:'15px',fontWeight:900,background:'#CCDDFF','border-bottom':'1px solid rgb(103, 194, 58)'}" style="border-radius: 10px;word-break: keep-all" :row-style="changeRowColor">
-          <el-table-column type="selection" width="50" :reserve-selection="true"></el-table-column>
+          <el-table-column type="selection" width="50" :reserve-selection="true" :selectable="canSelect"></el-table-column>
           <el-table-column type="index" width="60" :index="indexMethod" v-if="show" align="center" fixed></el-table-column>
           <el-table-column  prop="Customer" label="客戶別" width="100" align="center" fixed></el-table-column>
 {#          <el-table-column  prop="Plant" label="廠區"></el-table-column>#}
@@ -310,7 +310,7 @@ DevStatus{% extends 'base.html' %}
             //获取数据
             getdata: function (e) {
                 let data = {"isGetData": e, "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()};
-                axios.post("/DeviceA31TPE/BorrowedDeviceA31TPE/", Qs.stringify(data), {
+                axios.post("/DeviceA31TPE/R_Borrowed/", Qs.stringify(data), {
                     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
                 }).then((res) => {
                     this.IntfCtgryOptions5=res.data.IntfCtgryOptions5;
@@ -383,7 +383,7 @@ DevStatus{% extends 'base.html' %}
                         "Devproperties": this.$refs.Devproperties5.value,
                         "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
                     }
-                    axios.post("/DeviceA31TPE/BorrowedDeviceA31TPE/", Qs.stringify(data), {
+                    axios.post("/DeviceA31TPE/R_Borrowed/", Qs.stringify(data), {
                         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
                     }).then((res) => {
                         this.DevVendorOptions5 = res.data.DevVendorOptions5;
@@ -396,7 +396,7 @@ DevStatus{% extends 'base.html' %}
                         "Devproperties": this.$refs.form5.model.Devproperties,
                         "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
                     }
-                    axios.post("/DeviceA31TPE/BorrowedDeviceA31TPE/", Qs.stringify(data), {
+                    axios.post("/DeviceA31TPE/R_Borrowed/", Qs.stringify(data), {
                         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
                     }).then((res) => {
                         this.DevVendorOptions5 = res.data.DevVendorOptions5;
@@ -437,7 +437,7 @@ DevStatus{% extends 'base.html' %}
                        "Devsize":Devsize,
                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
                    }
-                   axios.post("/DeviceA31TPE/BorrowedDeviceA31TPE/", Qs.stringify(data), {
+                   axios.post("/DeviceA31TPE/R_Borrowed/", Qs.stringify(data), {
                        headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
                    }).then((res) => {
                        this.tableContent=res.data.content;
@@ -468,6 +468,10 @@ DevStatus{% extends 'base.html' %}
             },
             getRowKeys (row) {
               return row.id;
+            },
+            // 固定設備由管理員維護，禁止使用者勾選（不可歸還/續借）
+            canSelect (row) {
+              return row.BrwStatus !== '固定設備';
             },
             Rt:function(){
                 if(this.multipleSelection.length==0){
@@ -509,17 +513,24 @@ DevStatus{% extends 'base.html' %}
                       "USE_NUM": USE_NUM,
                       "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
                   }
-                  axios.post("/DeviceA31TPE/BorrowedDeviceA31TPE/", data).then((res) => {
+                  axios.post("/DeviceA31TPE/R_Borrowed/", data).then((res) => {
                       this.tableContent = res.data.content;
                       this.moreDetails = this.tableContent;
                       this.totalNum = this.tableContent.length;
                       this.useNUM=false;
+                      if (res.data.alert) {
+                          this.$message({
+                              type: 'warning',
+                              message: res.data.alert
+                          });
+                      } else {
+                          this.$message({
+                              type: 'success',
+                              message: '歸還成功!'
+                          });
+                      }
                   })
                   this.$refs.multipleTable.clearSelection()
-                  this.$message({
-                      type: 'success',
-                      message: '歸還成功!'
-                  });
                 } else {
                   console.log('error submit!!');
                   return false;
@@ -562,7 +573,7 @@ DevStatus{% extends 'base.html' %}
                     this.formData.append('Project', this.$refs.form.model.Project)
                     this.formData.append('Phase', this.$refs.form.model.Phase)
                     this.formData.append('Predict_return', this.$refs.form.model.Predict_return)
-                     axios.post("/DeviceA31TPE/BorrowedDeviceA31TPE/", this.formData,{
+                     axios.post("/DeviceA31TPE/R_Borrowed/", this.formData,{
                        headers:{ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
                         }).then((res) => {
                           this.tableContent=res.data.content;

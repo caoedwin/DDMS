@@ -23,6 +23,15 @@ class TestDeviceLNV(models.Model):
     Device8 = models.CharField(max_length=64, null=True, blank=True, verbose_name='Device #8')
     Device9 = models.CharField(max_length=64, null=True, blank=True, verbose_name='Device #9')
     Device10 = models.CharField(max_length=64, null=True, blank=True, verbose_name='Device #10')
+    # ===== 2026-11 新增：設備明細 8 列 =====
+    Interface_Type = models.CharField(max_length=64, null=True, blank=True, verbose_name='介面種類')
+    Device_Category = models.CharField(max_length=128, null=True, blank=True, verbose_name='設備種類')
+    Device_Attribute = models.CharField(max_length=128, null=True, blank=True, verbose_name='設備屬性')
+    Device_Capacity = models.CharField(max_length=128, null=True, blank=True, verbose_name='設備容量')
+    Device_Brand = models.CharField(max_length=128, null=True, blank=True, verbose_name='設備廠家')
+    Device_Model = models.CharField(max_length=256, null=True, blank=True, verbose_name='設備型號')
+    Device_Name = models.CharField(max_length=256, null=True, blank=True, verbose_name='設備名稱')
+    Device_Description = models.CharField(max_length=2000, null=True, blank=True, verbose_name='設備描述')
     class Meta:
         verbose_name = 'TestDeviceLNV'#不写verbose_name, admin中默认的注册名会加s
         verbose_name_plural = verbose_name
