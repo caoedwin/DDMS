@@ -1,0 +1,107 @@
+[2026-11-04 13:12:10,977] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 302 0
+[2026-11-04 13:12:10,985] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-11-04 13:12:11,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 302 0
+[2026-11-04 13:12:11,573] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 4823
+[2026-11-04 13:12:26,979] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-11-04 13:12:28,725] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-11-04 13:12:29,157] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-11-04 13:12:29,899] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sensor) 无匹配设备
+[2026-11-04 13:12:30,601] [views.py:2098] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-11-04 13:12:30,848] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Stress External Device) 无匹配设备
+[2026-11-04 13:12:30,922] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media card) 无匹配设备
+[2026-11-04 13:12:31,143] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-11-04 13:12:31,341] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio) 无匹配设备
+[2026-11-04 13:12:31,379] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Cable) 无匹配设备
+[2026-11-04 13:12:31,380] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2026-11-04 13:12:31,678] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Adapter) 无匹配设备
+[2026-11-04 13:12:31,930] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Monitor) 无匹配设备
+[2026-11-04 13:12:32,352] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Game) 无匹配设备
+[2026-11-04 13:12:34,110] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media) 无匹配设备
+[2026-11-04 13:12:34,240] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Touch) 无匹配设备
+[2026-11-04 13:12:34,660] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Wireless) 无匹配设备
+[2026-11-04 13:12:36,087] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=BT) 无匹配设备
+[2026-11-04 13:12:37,879] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Lan) 无匹配设备
+[2026-11-04 13:12:37,897] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sever) 无匹配设备
+[2026-11-04 13:12:38,260] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Phone) 无匹配设备
+[2026-11-04 13:12:38,270] [views.py:2060] [views:get_requirement_items] [INFO]- 生成需求单元数: 549
+[2026-11-04 13:12:38,284] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 9.09s, 共 549 个需求单元
+[2026-11-04 13:12:39,074] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sensor) 无匹配设备
+[2026-11-04 13:12:40,093] [views.py:2098] [views:select_devices] [WARNING]- 要求 3 个厂商，实际只有 1 个
+[2026-11-04 13:12:40,650] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Stress External Device) 无匹配设备
+[2026-11-04 13:12:40,741] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media card) 无匹配设备
+[2026-11-04 13:12:41,204] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Audio) 无匹配设备
+[2026-11-04 13:12:41,243] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Cable) 无匹配设备
+[2026-11-04 13:12:41,570] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Adapter) 无匹配设备
+[2026-11-04 13:12:41,870] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Monitor) 无匹配设备
+[2026-11-04 13:12:42,089] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Game) 无匹配设备
+[2026-11-04 13:12:42,308] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Media) 无匹配设备
+[2026-11-04 13:12:42,386] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Touch) 无匹配设备
+[2026-11-04 13:12:42,894] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Wireless) 无匹配设备
+[2026-11-04 13:12:44,084] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=BT) 无匹配设备
+[2026-11-04 13:12:44,710] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=USB Lan) 无匹配设备
+[2026-11-04 13:12:44,718] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Sever) 无匹配设备
+[2026-11-04 13:12:44,950] [views.py:2024] [views:get_requirement_items] [WARNING]- Optional 组 (Category=Phone) 无匹配设备
+[2026-11-04 13:12:44,964] [views.py:2060] [views:get_requirement_items] [INFO]- 生成需求单元数: 549
+[2026-11-04 13:12:44,972] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 13.54s, 共 549 个需求单元
+[2026-11-04 13:12:45,987] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 2.49s, 共 0 个项目
+[2026-11-04 13:12:46,018] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:12:46,020] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:12:46,127] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 59
+[2026-11-04 13:12:47,451] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 2.08s, 共 0 个项目
+[2026-11-04 13:12:47,463] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:12:47,467] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:12:47,757] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-11-04 13:13:39,908] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 302 0
+[2026-11-04 13:13:40,053] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-11-04 13:13:49,397] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/ HTTP/1.1" 200 38274
+[2026-11-04 13:13:49,545] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/src/kiwi.jpg HTTP/1.1" 200 83786
+[2026-11-04 13:13:50,438] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-11-04 13:14:00,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 67789
+[2026-11-04 13:14:01,603] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-11-04 13:14:01,674] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-11-04 13:14:02,036] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-11-04 13:14:02,052] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:02,054] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:14:09,280] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-11-04 13:14:09,445] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-11-04 13:14:09,454] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-11-04 13:14:09,487] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-11-04 13:14:11,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 67789
+[2026-11-04 13:14:11,481] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-11-04 13:14:11,482] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-11-04 13:14:11,500] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-11-04 13:14:11,660] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-11-04 13:14:11,759] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-11-04 13:14:11,881] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-11-04 13:14:12,139] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-11-04 13:14:12,149] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:12,150] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:14:20,079] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-11-04 13:14:20,597] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-11-04 13:14:20,609] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:20,609] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:14:21,922] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week/?mode=audit&page=1&page_size=50 HTTP/1.1" 200 31548
+[2026-11-04 13:14:32,228] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-11-04 13:14:32,589] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-11-04 13:14:32,600] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:32,602] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:16:07,007] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 67789
+[2026-11-04 13:16:07,119] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-11-04 13:16:07,126] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-11-04 13:16:07,139] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-11-04 13:16:07,332] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-11-04 13:16:07,435] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-11-04 13:16:07,591] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-11-04 13:16:07,781] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-11-04 13:16:07,790] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:16:07,793] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:16:09,571] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /TestDeviceLNV/device-demand-week-page/ HTTP/1.1" 200 67789
+[2026-11-04 13:16:09,654] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 200 38274
+[2026-11-04 13:16:09,657] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 1800
+[2026-11-04 13:16:09,685] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/lib/bootstrap.min.js.map HTTP/1.1" 404 1806
+[2026-11-04 13:16:09,842] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/js/axios.min.map HTTP/1.1" 404 1773
+[2026-11-04 13:16:09,936] [views.py:1743] [views:device_demand_week_view] [INFO]- 获取需求项耗时: 0.00s, 共 549 个需求单元
+[2026-11-04 13:16:10,073] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /favicon.ico HTTP/1.1" 200 38274
+[2026-11-04 13:16:10,347] [views.py:1773] [views:device_demand_week_view] [INFO]- 获取项目计划耗时: 0.00s, 共 0 个项目
+[2026-11-04 13:16:10,357] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:16:10,359] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73

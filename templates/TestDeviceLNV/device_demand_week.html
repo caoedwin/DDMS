@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}设备需求按周统计（日历视图）{% endblock %}
+{% block title %}設備需求 Audit 匹配{% endblock %}
 
 {% block css %}
 <style>
@@ -142,8 +142,9 @@
     <!-- ===== Tab 切换（2026-11 新增）===== -->
     <el-tabs v-model="activeTab" type="border-card" style="margin-bottom: 16px;">
 
-    {% comment %}
-    {# === 2026-11 暫時隱藏：原周統計 Tab，需要時移除此 comment 即可 === #}
+{% endverbatim %}
+{% comment %}
+{# === 2026-11 暫時隱藏：原周統計 Tab，需要時刪除此處 comment/endcomment 及恢復 verbatim 邊界即可 === #}
     <!-- Tab 1：原有 周统计 -->
     <el-tab-pane label="📅 设备需求按周统计" name="week">
     <div class="calendar-header" v-if="activeTab === 'week'">
@@ -337,8 +338,8 @@
         </span>
     </el-dialog>
     </el-tab-pane>
-    {% endcomment %}
-
+{% endcomment %}
+{% verbatim %}
     <!-- Tab 2：2026-11 新增 逐行 Audit → DeviceLNV 精确匹配 -->
     <el-tab-pane label="🔍 逐行 Audit → 設備匹配" name="audit">
     <div style="margin-bottom: 12px; display: flex; gap: 12px; align-items: center;">
@@ -499,7 +500,12 @@ new Vue({
         }
     },
     mounted: function () {
-        this.fetchData();
+        // 依當前 Tab 加載對應數據（周統計暫時隱藏，默認進 audit）
+        if (this.activeTab === 'audit') {
+            this.fetchAuditData();
+        } else {
+            this.fetchData();
+        }
     },
     watch: {
         // Tab 切换时自动加载对应数据

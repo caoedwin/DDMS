@@ -1,0 +1,19 @@
+[2026-11-04 13:12:26,979] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-11-04 13:12:31,143] [UserIP.py:90] [UserIP:process_response] [CRITICAL]- 系统错误Expecting value: line 1 column 1 (char 0)
+[2026-11-04 13:12:46,018] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:12:46,020] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:12:46,127] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 59
+[2026-11-04 13:12:47,463] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:12:47,467] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:14:02,052] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:02,054] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:14:12,149] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:12,150] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:14:20,609] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:20,609] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:14:32,600] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:14:32,602] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:16:07,790] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:16:07,793] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
+[2026-11-04 13:16:10,357] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /TestDeviceLNV/device-demand-week/
+[2026-11-04 13:16:10,359] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /TestDeviceLNV/device-demand-week/ HTTP/1.1" 500 73
