@@ -1868,6 +1868,7 @@ def device_demand_week_view(request):
 import re
 from collections import defaultdict
 from rapidfuzz import fuzz, process
+from rapidfuzz.distance import Levenshtein
 from django.db.models import Q
 import logging
 
@@ -2138,18 +2139,22 @@ def select_devices(candidates, required_count, required_vendors=0, require_a=Fal
 # 用 TestDeviceLNV 新增的 8 个设备明细字段匹配 DeviceLNV 对应字段
 # ============================================================
 
-# TestDeviceLNV 字段 → DeviceLNV 字段 映射（7 列硬匹配 + 1 列模糊辅助）
-AUDIT_TO_DEVICE_MATCH_MAP = [
-    # (audit_field, device_field, required)
-    ('Interface_Type',        'IntfCtgry',     True),   # 介面種類
-    ('Device_Category',       'DevCtgry',      True),   # 設備種類
-    ('Device_Attribute',      'Devproperties', True),   # 設備屬性
-    ('Device_Brand',          'DevVendor',     True),   # 設備廠家
-    ('Device_Capacity',       'Devsize',       False),  # 設備容量（可空）
-    ('Device_Model',          'DevModel',      True),   # 設備型號
-    ('Device_Name',           'DevName',       False),  # 設備名稱（辅助）
-    # Device_Description → DevDescription 只做模糊辅助，不进硬匹配
-]
+# ============================================================
+# 匹配規則（2026-11 簡化版）
+#   Tier 1 完全匹配  ：設備廠家 + 設備型號 完全一致 → 回傳全部，標記是否不足 2 台需購買
+#   Tier 3 同類型匹配：介面種類 + 設備種類 + 設備屬性 一致 → 依廠家+型號相似度排序取 Top 3
+#   已移除 Tier 2（相似匹配 ≥90%）
+# ============================================================
+
+TOP_SIMILAR_N = 3           # Tier 3 參考設備上限
+EXACT_STOCK_MIN = 2         # Tier 1 完全匹配不足此數提示「需購買」
+
+MAX_DISPLAY_MATCHES = 10    # 前端初始展示台數（其餘可展開）
+
+MATCH_TIER_LABELS = {
+    'exact':    '① 完全匹配（廠家+型號）',
+    'category': '② 同類型匹配（相似參考 Top 3）',
+}
 
 
 def _norm(v):
@@ -2159,69 +2164,157 @@ def _norm(v):
     return str(v).strip().lower()
 
 
-def match_single_row_to_devices(audit_row, all_devices=None, min_required_match=None):
-    """
-    用 audit_row（dict，含 8 个设备明细字段）去 DeviceLNV 匹配。
+def _sim(a, b):
+    """兩字串相似度（0~100），任一為空回傳 0"""
+    if not a or not b:
+        return 0.0
+    return float(fuzz.ratio(a, b))
 
-    返回 list[dict]，每个 dict:
-      - device: DeviceLNV 实例
-      - matched_count: 命中的硬匹配列数
-      - hard_match_total: 硬匹配列总数
-      - matched_fields: list[(audit_field, device_field, audit_val, device_val)]
-      - score: 匹配分（用于排序，越高越匹配）
 
-    min_required_match: 最少命中几个硬匹配列才算有效（默认自动 = 硬匹配列数的一半）
-    """
-    if all_devices is None:
-        all_devices = list(DeviceLNV.objects.all())
+def _sort_devices(devs):
+    """可借（在庫）優先，其次按 NID 排序"""
+    def key(d):
+        brw = _norm(getattr(d, 'BrwStatus', ''))
+        on_shelf = 0 if brw in ('在庫', '') else 1
+        return (on_shelf, getattr(d, 'NID', '') or '')
+    return sorted(devs, key=key)
 
-    # audit_row 预处理：把空 / None 统一成 ''
-    audit_vals = {}
-    for audit_field, device_field, required in AUDIT_TO_DEVICE_MATCH_MAP:
-        audit_vals[audit_field] = _norm(audit_row.get(audit_field))
 
-    # 如果 audit_row 所有硬匹配列都是空 → 直接返回空（这条记录没有设备明细）
-    hard_fields = [(a, d) for a, d, req in AUDIT_TO_DEVICE_MATCH_MAP if req]
-    if not any(audit_vals[a] for a, _ in hard_fields):
-        return []
-
-    if min_required_match is None:
-        # 至少命中一半硬匹配列才算有效
-        min_required_match = max(1, len(hard_fields) // 2)
-
-    results = []
+def build_device_match_index(all_devices):
+    """預建二組索引，避免每行 audit 都對 2600+ 台設備全表掃描"""
+    by_vendor_model = defaultdict(list)   # '廠家||型號' -> [dev]
+    by_type = defaultdict(list)           # '介面||種類||屬性' -> [dev]
     for dev in all_devices:
-        matched_fields = []
-        match_count = 0
-        dev_desc = _norm(getattr(dev, 'DevDescription', ''))
-        audit_desc = _norm(audit_row.get('Device_Description', ''))
+        v = _norm(getattr(dev, 'DevVendor', ''))
+        m = _norm(getattr(dev, 'DevModel', ''))
+        by_vendor_model[v + '||' + m].append(dev)
+        t = '||'.join([
+            _norm(getattr(dev, 'IntfCtgry', '')),
+            _norm(getattr(dev, 'DevCtgry', '')),
+            _norm(getattr(dev, 'Devproperties', '')),
+        ])
+        by_type[t].append(dev)
+    return {
+        'by_vendor_model': by_vendor_model,
+        'by_type': by_type,
+    }
 
-        for audit_field, device_field, required in AUDIT_TO_DEVICE_MATCH_MAP:
-            av = audit_vals[audit_field]
-            dv = _norm(getattr(dev, device_field, ''))
-            if not av or not dv:
-                continue  # 任一方空 → 不判定
-            if av == dv:
-                match_count += 1
-                matched_fields.append((audit_field, device_field, av, dv))
 
-        # 额外奖励：Description 包含匹配（模糊）
-        bonus = 0
-        if audit_desc and dev_desc and (audit_desc in dev_desc or dev_desc in audit_desc):
-            bonus = 1
+def _serialize_device(dev, tier, similarity=None):
+    d = {
+        'NID': dev.NID,
+        'DevStatus': dev.DevStatus,
+        'IntfCtgry': dev.IntfCtgry,
+        'DevCtgry': dev.DevCtgry,
+        'Devproperties': dev.Devproperties,
+        'DevVendor': dev.DevVendor,
+        'Devsize': dev.Devsize,
+        'DevModel': dev.DevModel,
+        'DevName': dev.DevName,
+        'DevDescription': dev.DevDescription,
+        'BrwStatus': dev.BrwStatus,
+        'Usrname': dev.Usrname,
+        'ProjectCode': dev.ProjectCode,
+        'match_tier': tier,
+    }
+    if similarity is not None:
+        d['similarity'] = similarity   # Tier 3 參考設備才帶
+    return d
 
-        if match_count >= min_required_match:
-            results.append({
-                'device': dev,
-                'matched_count': match_count,
-                'hard_match_total': len(hard_fields),
-                'matched_fields': matched_fields,
-                'desc_bonus': bonus,
-            })
 
-    # 按匹配列数降序 + desc bonus
-    results.sort(key=lambda r: (r['matched_count'], r['desc_bonus']), reverse=True)
-    return results
+def _composite_similarity(a_vendor, a_model, dev_vendor, dev_model):
+    """
+    Tier 3 參考設備的綜合相似度（0~100）：
+      型號 權重 60%，廠家 權重 40%。任一為空時該項權重讓渡給另一項。
+    """
+    has_model = bool(a_model) and bool(dev_model)
+    has_vendor = bool(a_vendor) and bool(dev_vendor)
+    if not has_model and not has_vendor:
+        return 0.0
+    if has_model and has_vendor:
+        return _sim(a_model, dev_model) * 0.6 + _sim(a_vendor, dev_vendor) * 0.4
+    if has_model:
+        return _sim(a_model, dev_model)
+    return _sim(a_vendor, dev_vendor)
+
+
+def match_audit_row_all_tiers(audit_row, index):
+    """
+    單行 audit 一次算出兩個層級的匹配結果。
+
+    Tier 1：廠家 + 型號 完全一致 → 回傳全部，並標記是否不足 EXACT_STOCK_MIN 台需購買
+    Tier 2：介面 + 種類 + 屬性 同類型 → 依廠家+型號綜合相似度排序取 TOP_SIMILAR_N 台
+
+    回傳固定 2 項，未命中的層級 count=0、devices 為空。
+    """
+    a_vendor = _norm(audit_row.get('Device_Brand'))
+    a_model = _norm(audit_row.get('Device_Model'))
+    a_intf = _norm(audit_row.get('Interface_Type'))
+    a_ctgry = _norm(audit_row.get('Device_Category'))
+    a_props = _norm(audit_row.get('Device_Attribute'))
+
+    tiers = []
+
+    # ---------- ① 廠家 + 型號 完全一致 ----------
+    exact = []
+    if a_vendor and a_model:
+        exact = index['by_vendor_model'].get(a_vendor + '||' + a_model) or []
+    exact_sorted = _sort_devices(exact)
+    tiers.append({
+        'tier': 'exact',
+        'label': MATCH_TIER_LABELS['exact'],
+        'basis': _match_basis(audit_row, 'exact'),
+        'count': len(exact_sorted),
+        'need_purchase': len(exact_sorted) < EXACT_STOCK_MIN,
+        'threshold': EXACT_STOCK_MIN,
+        'devices': [_serialize_device(d, 'exact') for d in exact_sorted],
+    })
+
+    # ---------- ② 介面 + 種類 + 屬性 同類型（取相似度 Top 3） ----------
+    same_type = []
+    if a_intf and a_ctgry and a_props:
+        same_type = index['by_type'].get('||'.join([a_intf, a_ctgry, a_props])) or []
+
+    # 計算綜合相似度 → 排序 → 截断
+    scored = []
+    for d in same_type:
+        s = _composite_similarity(a_vendor, a_model,
+                                  _norm(getattr(d, 'DevVendor', '')),
+                                  _norm(getattr(d, 'DevModel', '')))
+        scored.append((s, d))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    top = scored[:TOP_SIMILAR_N]
+
+    tiers.append({
+        'tier': 'category',
+        'label': MATCH_TIER_LABELS['category'],
+        'basis': _match_basis(audit_row, 'category'),
+        'count': len(top),
+        'top_n': TOP_SIMILAR_N,
+        'pool_size': len(same_type),
+        'devices': [_serialize_device(d, 'category', similarity=round(s, 1))
+                    for s, d in top],
+    })
+
+    return tiers
+
+
+def _match_basis(audit_row, tier):
+    """回傳該行「靠什麼條件匹配上」的可讀說明，供前端直接展示"""
+    if not tier:
+        return ''
+    if tier == 'exact':
+        return '廠家「%s」+ 型號「%s」完全一致' % (
+            audit_row.get('Device_Brand') or '-',
+            audit_row.get('Device_Model') or '-',
+        )
+    if tier == 'category':
+        return '介面「%s」+ 種類「%s」+ 屬性「%s」一致（供參考 Top 3）' % (
+            audit_row.get('Interface_Type') or '-',
+            audit_row.get('Device_Category') or '-',
+            audit_row.get('Device_Attribute') or '-',
+        )
+    return ''
 
 
 def match_audit_with_inventory():
@@ -2230,9 +2323,12 @@ def match_audit_with_inventory():
     每条匹配 DeviceLNV 设备库，返回逐行匹配结果。
 
     返回 list[dict]：
-      - audit_row: 原始 audit list 行（audit 侧字段齐全）
-      - matched_devices: list[matched_result]（可能多个匹配设备，按匹配度排序）
-      - match_count: 该 audit row 匹配到几个设备
+      - audit: audit list 行（audit 侧字段齐全）
+      - tiers: 两个层级的匹配分区（固定 2 项：①exact → ②category，未命中 count=0），
+               ① 含 need_purchase（< 2 台時 True）、threshold；
+               ② 含 top_n、pool_size，每台 device 带 similarity 相似度
+      - match_tier / match_tier_label: 命中层级中优先级最高的一级（无命中为 None / ''）
+      - match_count: 两个层级命中的设备总数（① 的全部 + ② 的 top N）
     """
     # 1. 过滤 audit list
     audit_rows = list(TestDeviceLNV.objects.filter(
@@ -2240,8 +2336,9 @@ def match_audit_with_inventory():
         Require_State__iexact='Must',
     ).order_by('id'))
 
-    # 2. 加载 DeviceLNV 全量（只加载一次）
+    # 2. 加载 DeviceLNV 全量并预建索引（只做一次）
     all_devices = list(DeviceLNV.objects.all())
+    index = build_device_match_index(all_devices)
 
     result = []
     for row in audit_rows:
@@ -2263,32 +2360,14 @@ def match_audit_with_inventory():
             'Covered_range_for_case': row.Covered_range_for_case,
             'Comments': row.Comments,
         }
-        matches = match_single_row_to_devices(audit_dict, all_devices)
-        # 最多取前 5 个匹配（避免一行挂太多）
-        matched_devices_serial = []
-        for m in matches[:5]:
-            dev = m['device']
-            matched_devices_serial.append({
-                'NID': dev.NID,
-                'DevStatus': dev.DevStatus,
-                'IntfCtgry': dev.IntfCtgry,
-                'DevCtgry': dev.DevCtgry,
-                'Devproperties': dev.Devproperties,
-                'DevVendor': dev.DevVendor,
-                'Devsize': dev.Devsize,
-                'DevModel': dev.DevModel,
-                'DevName': dev.DevName,
-                'DevDescription': dev.DevDescription,
-                'BrwStatus': dev.BrwStatus,
-                'Usrname': dev.Usrname,
-                'ProjectCode': dev.ProjectCode,
-                'match_score': f"{m['matched_count']}/{m['hard_match_total']}",
-                'desc_bonus': m['desc_bonus'],
-            })
+        tiers = match_audit_row_all_tiers(audit_dict, index)
+        best = next((t for t in tiers if t['count'] > 0), None)
         result.append({
             'audit': audit_dict,
-            'matched_devices': matched_devices_serial,
-            'match_count': len(matches),
+            'tiers': tiers,
+            'match_tier': best['tier'] if best else None,
+            'match_tier_label': best['label'] if best else '',
+            'match_count': sum(t['count'] for t in tiers),
         })
 
     return result

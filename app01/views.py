@@ -88,6 +88,20 @@ def ImportPersonalInfo(Customer='', SAPNum='', GroupNum='', Status='', Departmen
     #         print(i)
         return getTestSpec.json()
 
+# 登入後不可自動跳轉的頁面（依賴外部後端服務、或 render 耗時嚴重）
+# 要擴充只需在列表末尾加一行即可
+_LOGIN_REDIRECT_BLOCKLIST = [
+    '/TestDeviceLNV/device-demand-week/',   # 需要 8002 port TestPlanSW，失敗時卡 5s + HTTP 500
+]
+
+
+def _is_blocked_redirect(path):
+    """判斷某個 path 是否落在登入後禁止自動跳轉的頁面裡"""
+    if not path:
+        return False
+    return any(path.startswith(p) for p in _LOGIN_REDIRECT_BLOCKLIST)
+
+
 @csrf_exempt
 def login(request):
     # 不允许重复登录
@@ -97,7 +111,10 @@ def login(request):
         # return redirect('/index/')
         # print(request.COOKIES)
         try:
-            return redirect(request.COOKIES['current_page_DMS'])
+            next_path = request.COOKIES['current_page_DMS']
+            if _is_blocked_redirect(next_path):
+                return redirect('/index/')
+            return redirect(next_path)
         except:
             return redirect('/index/')
     # print(request.method)
@@ -142,6 +159,9 @@ def login(request):
                 Non_login_path = request.session.get('Non_login_path')
                 # print(Non_login_path, 'Non_login_path')
                 if Non_login_path:
+                    # 命中 blocklist 就改跳首頁，避免登入後卡 5 秒
+                    if _is_blocked_redirect(Non_login_path):
+                        return redirect('/index/')
                     # 记住来源的url，如果没有则设置为首页('/')
                     return redirect(Non_login_path)
                 # print(request.POST.get('next', '/'),'postnext')

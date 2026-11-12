@@ -133,6 +133,67 @@
         color: #606266;
         margin-right: 8px;
     }
+    /* 匹配層級說明條 */
+    .match-tier-legend {
+        margin-bottom: 10px;
+        padding: 8px 16px;
+        background: #f0f2f5;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .match-tier-legend .legend-title {
+        font-weight: 600;
+        color: #606266;
+        margin-right: 4px;
+    }
+    /* 兩級匹配分區 */
+    .tier-block {
+        border: 1px solid #ebeef5;
+        border-radius: 4px;
+        padding: 8px 10px;
+        margin-bottom: 8px;
+        text-align: left;
+    }
+    .tier-block-exact { border-left: 4px solid #67C23A; }
+    .tier-block-category { border-left: 4px solid #909399; }
+    .tier-head {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        cursor: pointer;
+    }
+    .tier-basis {
+        color: #606266;
+        font-size: 12px;
+    }
+    .need-purchase-badge {
+        color: #F56C6C;
+        font-size: 12px;
+        font-weight: 600;
+        background: #fef0f0;
+        padding: 1px 8px;
+        border-radius: 3px;
+    }
+    .pool-info {
+        color: #909399;
+        font-size: 12px;
+    }
+    .tier-toggle {
+        margin-left: auto;
+        color: #409EFF;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    .dev-card {
+        border: 1px solid #ebeef5;
+        border-radius: 4px;
+        padding: 6px 10px;
+        margin-bottom: 6px;
+    }
 </style>
 {% endblock %}
 
@@ -348,6 +409,13 @@
         <el-tag type="info">共 ${ auditTotal } 條</el-tag>
     </div>
 
+    <!-- 匹配層級說明 -->
+    <div class="match-tier-legend">
+        <span class="legend-title">匹配規則：</span>
+        <el-tag type="success" size="small">① 完全匹配 = 設備廠家 + 設備型號 完全一致（不足 2 台提示需購買）</el-tag>
+        <el-tag type="info" size="small">② 同類型匹配 = 介面 + 種類 + 屬性 一致 → 依型號相似度取 Top 3 參考</el-tag>
+    </div>
+
     <div v-loading="auditLoading" element-loading-text="載入 Audit 匹配數據...">
     <el-table :data="auditData" border stripe size="small"
               style="width: 100%"
@@ -362,45 +430,80 @@
             <el-table-column prop="audit.Require_State" label="Require State" width="110"></el-table-column>
             <el-table-column prop="audit.Interface_Type" label="介面種類" width="90"></el-table-column>
             <el-table-column prop="audit.Device_Category" label="設備種類" width="110"></el-table-column>
+            <el-table-column prop="audit.Device_Attribute" label="設備屬性" width="110"></el-table-column>
             <el-table-column prop="audit.Device_Brand" label="設備廠家" width="100"></el-table-column>
             <el-table-column prop="audit.Device_Model" label="設備型號" width="130"></el-table-column>
         </el-table-column>
 
         <!-- 匹配结果 -->
         <el-table-column label="DeviceLNV（匹配）" align="center">
-            <el-table-column label="匹配狀態" width="110">
+            <!-- 匹配彙總：兩個層級各一行標籤（含 0 台） -->
+            <el-table-column label="匹配層級" width="250">
                 <template slot-scope="scope">
-                    <el-tag v-if="scope.row.match_count > 0" type="success">✔ 已匹配 ${scope.row.match_count} 台</el-tag>
-                    <el-tag v-else type="danger">✗ 未匹配</el-tag>
+                    <div v-for="t in (scope.row.tiers || [])" :key="t.tier" style="margin-bottom: 4px;">
+                        <el-tag :type="tierTagType(t.tier)" size="small">
+                            ${ t.label }　${ t.count } 台
+                        </el-tag>
+                        <el-tag v-if="t.tier === 'exact' && t.need_purchase"
+                                type="danger" size="mini" style="margin-left: 4px;">
+                            ⚠ 需購買（不足 ${ t.threshold } 台）
+                        </el-tag>
+                    </div>
                 </template>
             </el-table-column>
-            <el-table-column label="匹配設備列表" min-width="400">
+
+            <!-- 兩個層級分區展示 -->
+            <el-table-column label="匹配設備列表" min-width="500">
                 <template slot-scope="scope">
-                    <div v-if="scope.row.match_count === 0" style="color: #909399;">
-                        <span v-if="!scope.row.audit.Interface_Type && !scope.row.audit.Device_Model">
-                            Audit 新增 8 列無數據，無法匹配（請先導入新 Excel）
+                    <div v-if="scope.row.match_count === 0" style="color: #909399; margin-bottom: 6px;">
+                        <span v-if="!scope.row.audit.Device_Brand && !scope.row.audit.Device_Model && !scope.row.audit.Interface_Type">
+                             Audit 設備明細無數據，兩級均無法匹配（請先導入含設備明細的 Excel）
                         </span>
-                        <span v-else>無符合條件的 DeviceLNV 設備</span>
+                        <span v-else>兩個層級均無符合的 DeviceLNV 設備</span>
                     </div>
-                    <div v-else>
-                        <div v-for="(m, idx) in scope.row.matched_devices" :key="idx"
-                             style="border: 1px solid #ebeef5; border-radius: 4px; padding: 6px 10px; margin-bottom: 6px;
-                                    background: ${idx === 0 ? '#f0f9eb' : '#fafafa'};">
-                            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                                <span><b>NID:</b> <code>${m.NID}</code></span>
-                                <span><b>型號:</b> ${m.DevModel}</span>
-                                <span><b>設備名:</b> ${m.DevName}</span>
-                                <el-tag :type="m.DevStatus === '在庫' ? 'success' : 'warning'" size="mini">
-                                    ${m.DevStatus || '未知'}
-                                </el-tag>
-                                <el-tag :type="m.BrwStatus === '在庫' ? 'success' : 'danger'" size="mini">
-                                    ${m.BrwStatus || '未知'}
-                                </el-tag>
-                                <el-tag size="mini">匹配分 ${m.match_score}</el-tag>
+
+                    <div v-for="(t, ti) in (scope.row.tiers || [])" :key="t.tier"
+                         class="tier-block" :class="'tier-block-' + t.tier">
+                        <!-- 分區標題 -->
+                        <div class="tier-head" @click="toggleTier(scope.row, ti)">
+                            <el-tag :type="tierTagType(t.tier)" size="small">${ t.label }　${ t.count } 台</el-tag>
+                            <span class="tier-basis">匹配依據：${ t.basis }</span>
+                            <span v-if="t.tier === 'exact' && t.need_purchase" class="need-purchase-badge">
+                                ⚠ 需購買（不足 ${ t.threshold } 台）
+                            </span>
+                            <span v-if="t.tier === 'category' && t.pool_size > t.count" class="pool-info">
+                                同類型共 ${ t.pool_size } 台，取 Top ${ t.top_n } 參考
+                            </span>
+                            <span class="tier-toggle" v-if="t.count > 0">${ isTierOpen(scope.row, ti) ? '收起 ▾' : '展開 ▸' }</span>
+                        </div>
+
+                        <div v-show="isTierOpen(scope.row, ti)" style="margin-top: 6px;">
+                            <div v-if="t.count === 0" style="color: #c0c4cc; font-size: 12px;">無符合設備</div>
+                            <div v-for="(m, mi) in tierDevices(scope.row, ti)" :key="m.NID + '_' + mi"
+                                 class="dev-card" :style="{ background: mi === 0 ? '#f0f9eb' : '#fafafa' }">
+                                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                                    <span><b>NID:</b> <code>${m.NID}</code></span>
+                                    <span><b>廠家:</b> ${m.DevVendor}</span>
+                                    <span><b>型號:</b> ${m.DevModel}</span>
+                                    <span><b>設備名:</b> ${m.DevName}</span>
+                                    <el-tag :type="m.DevStatus === '在庫' ? 'success' : 'warning'" size="mini">
+                                        ${m.DevStatus || '未知'}
+                                    </el-tag>
+                                    <el-tag :type="m.BrwStatus === '在庫' ? 'success' : 'danger'" size="mini">
+                                        ${m.BrwStatus || '未知'}
+                                    </el-tag>
+                                    <el-tag v-if="t.tier === 'category' && m.similarity !== undefined"
+                                            type="info" size="mini">相似度 ${ m.similarity }%</el-tag>
+                                </div>
+                                <div v-if="m.Usrname" style="color: #909399; font-size: 12px; margin-top: 4px;">
+                                    借用人: ${m.Usrname}　機種: ${m.ProjectCode || '-'}
+                                </div>
                             </div>
-                            <div v-if="m.Usrname" style="color: #909399; font-size: 12px; margin-top: 4px;">
-                                借用人: ${m.Usrname}　機種: ${m.ProjectCode || '-'}
-                            </div>
+                            <el-button v-if="t.count > maxDisplayMatches"
+                                       type="text" size="mini"
+                                       @click.stop="toggleTierDevices(scope.row, ti)">
+                                ${ isTierDevicesExpanded(scope.row, ti) ? '收起' : '展開其餘 ' + (t.count - maxDisplayMatches) + ' 台' }
+                            </el-button>
                         </div>
                     </div>
                 </template>
@@ -475,10 +578,13 @@ new Vue({
 
             // ============ 新增：逐行 Audit 匹配 ============
             auditLoading: false,
-            auditData: [],          // 当前页 audit 数据（含 matched_devices）
+            auditData: [],          // 当前页 audit 数据（含 tiers 三级匹配分区）
             auditTotal: 0,
             auditCurrentPage: 1,
             auditPageSize: 50,
+            maxDisplayMatches: 10,   // 每个层级分区初始展示台数，其余点「展開」查看
+            expandedRows: {},        // { '审计id|层级': true/false } 层级分区展开状态
+            expandedDevices: {},     // { '审计id|层级': true } 该分区是否已展开全部设备
         };
     },
     computed: {
@@ -542,6 +648,12 @@ new Vue({
         },
 
         // ============ 新增：逐行 Audit 匹配 ============
+        // 匹配層級 -> el-tag 顏色
+        tierTagType: function (tier) {
+            if (tier === 'exact') { return 'success'; }
+            if (tier === 'category') { return 'info'; }
+            return 'danger';
+        },
         fetchAuditData: function () {
             var self = this;
             self.auditLoading = true;
@@ -569,6 +681,49 @@ new Vue({
             this.auditPageSize = s;
             this.auditCurrentPage = 1;
             this.fetchAuditData();
+        },
+        // 层级分区标识：auditId + 层级
+        tierKey: function (row, ti) {
+            var t = (row.tiers || [])[ti];
+            return row.audit.id + '|' + (t ? t.tier : ti);
+        },
+        // 分区是否展开：默认展开第一个有命中的层级，其余收合
+        isTierOpen: function (row, ti) {
+            var v = this.expandedRows[this.tierKey(row, ti)];
+            if (v !== undefined) {
+                return v;
+            }
+            var tiers = row.tiers || [];
+            if (!(tiers[ti] || {}).count) {
+                return false;
+            }
+            for (var i = 0; i < ti; i++) {
+                if ((tiers[i] || {}).count > 0) {
+                    return false;
+                }
+            }
+            return true;
+        },
+        toggleTier: function (row, ti) {
+            // Vue2 需用 $set 才能觸發物件新增屬性的響應式更新
+            this.$set(this.expandedRows, this.tierKey(row, ti), !this.isTierOpen(row, ti));
+        },
+        // 该分区實際展示的設備（超過 maxDisplayMatches 需點「展開」）
+        tierDevices: function (row, ti) {
+            var t = (row.tiers || [])[ti];
+            if (!t) { return []; }
+            var list = t.devices || [];
+            if (this.expandedDevices[this.tierKey(row, ti)]) {
+                return list;
+            }
+            return list.slice(0, this.maxDisplayMatches);
+        },
+        isTierDevicesExpanded: function (row, ti) {
+            return !!this.expandedDevices[this.tierKey(row, ti)];
+        },
+        toggleTierDevices: function (row, ti) {
+            var key = this.tierKey(row, ti);
+            this.$set(this.expandedDevices, key, !this.expandedDevices[key]);
         },
 
         buildWeekData: function () {
