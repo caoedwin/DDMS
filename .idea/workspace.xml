@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/all-2026-11-04.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2026-11-04.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error-2026-11-04.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2026-11-04.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info-2026-11-04.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2026-11-04.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/all-2026-11-12.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2026-11-12.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error-2026-11-12.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2026-11-12.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info-2026-11-12.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2026-11-12.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -560,7 +558,7 @@
       <workItem from="1792991990848" duration="6436000" />
       <workItem from="1794185668171" duration="201000" />
       <workItem from="1794189348391" duration="832000" />
-      <workItem from="1794460467271" duration="4194000" />
+      <workItem from="1794460467271" duration="7533000" />
     </task>
     <servers />
   </component>
