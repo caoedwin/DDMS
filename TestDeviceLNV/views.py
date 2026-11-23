@@ -18,16 +18,15 @@ from .models import TestDeviceLNV
 # ---------- 合併標籤還原工具 ----------
 MERGE_TAG = '合并标识'
 
-# 哪些字段可能帶合併標籤（由 upload.xlsx 展平工具產生）
+# 可能帶「合并标识」字面量的字段（由舊版 upload.xlsx 展平工具產生）
+# 注意：合併儲存格是在讀取 Excel 時依 ws['!merges'] 實際展開的，
+# 這裡只負責把字面量「合并标识」還原成上一個真實值；
+# 真正的空白單元格一律保持空白，不做向下填充。
 MERGE_RESTORE_FIELDS = [
     'Category', 'Class', 'Type',
     'Covered_range_for_case', 'Require_State', 'Comments',
     'Remark', 'ODM_status', 'Purchase_Plan',
     'Act_Status', 'Device_Know_Issue',
-    # ===== 2026-11 新增 8 列 =====
-    'Interface_Type', 'Device_Category', 'Device_Attribute',
-    'Device_Capacity', 'Device_Brand', 'Device_Model',
-    'Device_Name', 'Device_Description',
 ]
 
 
@@ -631,9 +630,9 @@ def TestDeviceListLNV(request):
                                 if isinstance(v, str) and v.strip() == '':
                                     i[fname] = None if ftype in NUMERIC_TYPES else ''
 
-                    # openpyxl 已經展開合併格，這裡仍跑一次 fix_merge_tags 作為兜底
-                    # （萬一原始 Excel 某些合併格漏展開 / 某些字段本身就是空）
-                    fix_merge_tags(uploadxlsxlist, also_fill_empty=True)
+                    # openpyxl 已經展開合併格，這裡只還原字面量「合并标识」，
+                    # 不再把真正的空白單元格向下填充（否則整段空白會被上一行的值污染）
+                    fix_merge_tags(uploadxlsxlist, also_fill_empty=False)
 
                     num1 = 0
                     if startupload:
@@ -678,10 +677,10 @@ def TestDeviceListLNV(request):
                             continue
                         uploadxlsxlist.append(modeldata)
 
-                    # ---------- Step 2: 统一还原合并空值 ----------
-                    # 前端 sheet_to_json(defval:'') 会把合并格下的 Category/Class 等
-                    # 输出为空字符串；这里用「上一个真实值」回填
-                    fix_merge_tags(uploadxlsxlist, also_fill_empty=True)
+                    # ---------- Step 2: 只还原字面量「合并标识」 ----------
+                    # 合併儲存格已由前端依 ws['!merges'] 展開後才轉成 JSON，
+                    # 因此真正的空白單元格必須保持空白，不能按上一行向下填充。
+                    fix_merge_tags(uploadxlsxlist, also_fill_empty=False)
 
                     # ---------- Step 3: 字段补齐（缺失字段按类型填空 / None） ----------
                     NUMERIC_TYPES = ("DateField", "DateTimeField",

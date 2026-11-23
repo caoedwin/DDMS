@@ -115,8 +115,9 @@ label{
     border-radius: 10px;
     background-color: rgba(255,255,255,0.1);
 }
+/* 分頁「共 N 條 / 前往 N 頁」文字：原本設為白色，在白色背景上看不清，改為深灰 */
 .el-pagination__total,.el-pagination__jump{
-        color:white;
+        color:#606266;
     }
 .gutter{
     display:block!important;
@@ -1473,9 +1474,24 @@ label{
                         var fromTo = workbook.Sheets[sheet]['!ref'];
                         // console.log(fromTo);
                         var datas = workbook.Sheets[sheet];
-                        // 如果有不规范数据可以在这里进行处理datas
-                        // defval:'' 讓合併格下跳過的空單元格也出現在 JSON 裡（值為空字符串），
-                        // 後端 fix_merge_tags 會用「上一個真實值」把空字符串填回去
+
+                        // 2026-11 修正：只展開「真正的合併儲存格」。
+                        // 把合併區域左上角的值寫入區域內每一格；真正的空白單元格保持空白，
+                        // 避免像以前那樣把「上一個非空值」錯誤地向下填充到整段空白區。
+                        if (datas['!merges'] && datas['!merges'].length) {
+                            datas['!merges'].forEach(function (m) {
+                                var srcCell = datas[XLSX.utils.encode_cell({ r: m.s.r, c: m.s.c })];
+                                if (!srcCell) { return; }
+                                for (var r = m.s.r; r <= m.e.r; r++) {
+                                    for (var c = m.s.c; c <= m.e.c; c++) {
+                                        datas[XLSX.utils.encode_cell({ r: r, c: c })] = {
+                                            t: srcCell.t, v: srcCell.v, w: srcCell.w
+                                        };
+                                    }
+                                }
+                            });
+                        }
+
                         persons = persons.concat(XLSX.utils.sheet_to_json(datas, { defval: '' }));
                         //break; // 只读了第一张表
                     }
