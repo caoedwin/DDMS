@@ -484,6 +484,10 @@
               :header-cell-style="{'background-color':'#f0f9eb','color':'#303133'}"
               v-if="auditData.length > 0">
 
+        <!-- 序號（跨頁連續） -->
+        <el-table-column type="index" label="序號" width="70" align="center"
+                         :index="auditIndexMethod"></el-table-column>
+
         <!-- Audit 侧信息 -->
         <el-table-column label="Audit List（需求）" align="center">
             <el-table-column prop="audit.Category" label="Category" width="110"></el-table-column>
@@ -802,6 +806,10 @@ new Vue({
                 self.exportLoading = false;
                 self.$message.error('導出失敗：' + (e.message || e));
             });
+        },
+        // 序號：跨頁連續（第 1 頁 1~50、第 2 頁 51~100 ...）
+        auditIndexMethod: function (index) {
+            return (this.auditCurrentPage - 1) * this.auditPageSize + index + 1;
         },
         auditPageChange: function (p) {
             this.auditCurrentPage = p;
