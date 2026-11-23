@@ -133,6 +133,45 @@
         color: #606266;
         margin-right: 8px;
     }
+    /* 彙總看板 */
+    .audit-summary {
+        display: flex;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+    .audit-summary .sum-card {
+        flex: 1 1 150px;
+        min-width: 140px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        background: #f5f7fa;
+        border-left: 4px solid #909399;
+    }
+    .audit-summary .sum-num {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #303133;
+    }
+    .audit-summary .sum-label {
+        font-size: 12px;
+        color: #909399;
+    }
+    .audit-summary .sum-total { border-left-color: #409EFF; background: #ecf5ff; }
+    .audit-summary .sum-total .sum-num { color: #409EFF; }
+    .audit-summary .sum-danger { border-left-color: #F56C6C; background: #fef0f0; }
+    .audit-summary .sum-danger .sum-num { color: #F56C6C; }
+    .audit-summary .sum-success { border-left-color: #67C23A; background: #f0f9eb; }
+    .audit-summary .sum-success .sum-num { color: #67C23A; }
+    .audit-summary .sum-warning { border-left-color: #E6A23C; background: #fdf6ec; }
+    .audit-summary .sum-warning .sum-num { color: #E6A23C; }
+    .audit-summary .sum-action {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
     /* 匹配層級說明條 */
     .match-tier-legend {
         margin-bottom: 10px;
@@ -409,11 +448,34 @@
         <el-tag type="info">共 ${ auditTotal } 條</el-tag>
     </div>
 
+    <!-- T2026-11：彙總看板 -->
+    <div class="audit-summary">
+        <div class="sum-card sum-total">
+            <div class="sum-num">${ auditSummary.total }</div>
+            <div class="sum-label">Must 設備需求總數</div>
+        </div>
+        <div class="sum-card sum-danger">
+            <div class="sum-num">${ auditSummary.need_purchase }</div>
+            <div class="sum-label">需購買（項）</div>
+        </div>
+        <div class="sum-card sum-success">
+            <div class="sum-num">${ auditSummary.satisfied }</div>
+            <div class="sum-label">已滿足需求</div>
+        </div>
+        
+        <div class="sum-action">
+            <el-button type="warning" icon="el-icon-download"
+                       :loading="exportLoading" size="medium"
+                       @click="exportNeedPurchase">一鍵導出需購買清單</el-button>
+        </div>
+    </div>
+
     <!-- 匹配層級說明 -->
     <div class="match-tier-legend">
         <span class="legend-title">匹配規則：</span>
-        <el-tag type="success" size="small">① 完全匹配 = 設備廠家 + 設備型號 完全一致（不足 2 台提示需購買）</el-tag>
+        <el-tag type="success" size="small">① 完全匹配 = 設備廠家 + 設備型號 完全一致</el-tag>
         <el-tag type="info" size="small">② 同類型匹配 = 介面 + 種類 + 屬性 一致 → 依型號相似度取 Top 3 參考</el-tag>
+        <el-tag type="danger" size="small">①② 皆無匹配時，提示需購買</el-tag>
     </div>
 
     <div v-loading="auditLoading" element-loading-text="載入 Audit 匹配數據...">
@@ -446,7 +508,7 @@
                         </el-tag>
                         <el-tag v-if="t.tier === 'exact' && t.need_purchase"
                                 type="danger" size="mini" style="margin-left: 4px;">
-                            ⚠ 需購買（不足 ${ t.threshold } 台）
+                            ⚠ 需購買（① ② 皆無匹配）
                         </el-tag>
                     </div>
                 </template>
@@ -469,7 +531,7 @@
                             <el-tag :type="tierTagType(t.tier)" size="small">${ t.label }　${ t.count } 台</el-tag>
                             <span class="tier-basis">匹配依據：${ t.basis }</span>
                             <span v-if="t.tier === 'exact' && t.need_purchase" class="need-purchase-badge">
-                                ⚠ 需購買（不足 ${ t.threshold } 台）
+                                ⚠ 需購買（① 完全匹配、② 同類型 皆無可用設備，合計不足 ${ t.threshold } 台）
                             </span>
                             <span v-if="t.tier === 'category' && t.pool_size > t.count" class="pool-info">
                                 同類型共 ${ t.pool_size } 台，取 Top ${ t.top_n } 參考
@@ -550,6 +612,9 @@
 <script src="/static/js/Element/table-column.js"></script>
 <script src="/static/js/Element/icon.js"></script>
 <script src="/static/js/Element/message.js"></script>
+{# 導出 Excel 用：SheetJS + FileSaver #}
+<script src="/static/js/xlsx/xlsx.core.min.js"></script>
+<script src="/static/js/xlsx/FileSaver.min.js"></script>
 
 <script type="text/babel">
 new Vue({
@@ -582,6 +647,8 @@ new Vue({
             auditTotal: 0,
             auditCurrentPage: 1,
             auditPageSize: 50,
+            auditSummary: { total: 0, need_purchase: 0, satisfied: 0, purchase_qty: 0 },
+            exportLoading: false,    // 導出需購買清單中
             maxDisplayMatches: 10,   // 每个层级分区初始展示台数，其余点「展開」查看
             expandedRows: {},        // { '审计id|层级': true/false } 层级分区展开状态
             expandedDevices: {},     // { '审计id|层级': true } 该分区是否已展开全部设备
@@ -666,11 +733,74 @@ new Vue({
             }).then(function (response) {
                 self.auditData = (response.data && response.data.data) || [];
                 self.auditTotal = response.data && response.data.total ? response.data.total : 0;
+                if (response.data && response.data.summary) {
+                    self.auditSummary = response.data.summary;
+                }
                 self.auditLoading = false;
             }).catch(function (e) {
                 console.error('加载 audit 匹配失败:', e);
                 self.auditLoading = false;
                 self.$message.error('加载 audit 匹配失败');
+            });
+        },
+
+        // ============ 2026-11：一鍵導出「需購買」Must 設備清單 ============
+        exportNeedPurchase: function () {
+            var self = this;
+            self.exportLoading = true;
+            // page_size 上限 500，取全量後在前端過濾
+            axios.get('/TestDeviceLNV/device-demand-week/', {
+                params: { mode: 'audit', page: 1, page_size: 500 }
+            }).then(function (response) {
+                var rows = (response.data && response.data.data) || [];
+                var sheetRows = [];
+                rows.forEach(function (r) {
+                    var tiers = r.tiers || [];
+                    var exact = tiers[0] || {};
+                    if (!exact.need_purchase) { return; }
+                    var cat = tiers[1] || {};
+                    var a = r.audit || {};
+                    sheetRows.push({
+                        'Category': a.Category || '',
+                        'Class': a.Class || '',
+                        'Type': a.Type || '',
+                        'Require State': a.Require_State || '',
+                        'Act_Status': a.Act_Status || '',
+                        '介面種類': a.Interface_Type || '',
+                        '設備種類': a.Device_Category || '',
+                        '設備屬性': a.Device_Attribute || '',
+                        '設備容量': a.Device_Capacity || '',
+                        '設備廠家': a.Device_Brand || '',
+                        '設備型號': a.Device_Model || '',
+                        '需購買數量': exact.purchase_qty !== undefined ? exact.purchase_qty : exact.threshold,
+                        '① 完全匹配台數': exact.count || 0,
+                        '② 同類型參考台數': cat.count || 0,
+                        '匹配合計台數': exact.matched_total !== undefined ? exact.matched_total : 0,
+                        '判定門檻（台）': exact.threshold !== undefined ? exact.threshold : 2,
+                    });
+                });
+
+                if (sheetRows.length === 0) {
+                    self.exportLoading = false;
+                    self.$message.warning('當前沒有需要購買的 Must 設備');
+                    return;
+                }
+
+                var ws = XLSX.utils.json_to_sheet(sheetRows);
+                var wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, '需購買Must設備');
+                var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'array' });
+                var d = new Date();
+                var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+                var fname = 'Must需購買設備清單_' + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + '_' +
+                            pad(d.getHours()) + pad(d.getMinutes()) + '.xlsx';
+                saveAs(new Blob([wbout], { type: 'application/octet-stream' }), fname);
+                self.exportLoading = false;
+                self.$message.success('已導出 ' + sheetRows.length + ' 條需購買需求');
+            }).catch(function (e) {
+                console.error('導出需購買清單失敗:', e);
+                self.exportLoading = false;
+                self.$message.error('導出失敗：' + (e.message || e));
             });
         },
         auditPageChange: function (p) {

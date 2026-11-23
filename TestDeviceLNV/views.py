@@ -789,6 +789,15 @@ def TestDeviceListLNV(request):
                         "Purchase_Plan": i.Purchase_Plan, "Device_Price": i.Device_Price,
                         "Act_Status": i.Act_Status,
                         "Device_Know_Issue": i.Device_Know_Issue,
+                        # ===== 2026-11 新增 設備明細 8 列 =====
+                        "Interface_Type": i.Interface_Type,
+                        "Device_Category": i.Device_Category,
+                        "Device_Attribute": i.Device_Attribute,
+                        "Device_Capacity": i.Device_Capacity,
+                        "Device_Brand": i.Device_Brand,
+                        "Device_Model": i.Device_Model,
+                        "Device_Name": i.Device_Name,
+                        "Device_Description": i.Device_Description,
                         # "Device1": i.Device1, "Status1": Status_dict['Status1'],
                         # "Purchase_period1": Useyears_dict['Useyears1'],
                         # "Device2": i.Device2, "Status2": Status_dict['Status2'],
@@ -1716,6 +1725,22 @@ def device_demand_week_view(request):
         page = max(1, page)
         page_size = max(1, min(page_size, 500))
         data = match_audit_with_inventory()
+
+        # 彙總（基於全量，不受分頁影響）
+        summary = {
+            'total': len(data),
+            'need_purchase': 0,
+            'satisfied': 0,
+            'purchase_qty': 0,
+        }
+        for row in data:
+            exact_tier = row['tiers'][0] if row.get('tiers') else {}
+            if exact_tier.get('need_purchase'):
+                summary['need_purchase'] += 1
+                summary['purchase_qty'] += exact_tier.get('purchase_qty', 0)
+            else:
+                summary['satisfied'] += 1
+
         start = (page - 1) * page_size
         end = start + page_size
         return JsonResponse({
@@ -1723,6 +1748,7 @@ def device_demand_week_view(request):
             'total': len(data),
             'page': page,
             'page_size': page_size,
+            'summary': summary,
             'data': data[start:end],
         })
     # else: 继续原有 week 统计逻辑 ↓
@@ -2242,8 +2268,11 @@ def match_audit_row_all_tiers(audit_row, index):
     """
     單行 audit 一次算出兩個層級的匹配結果。
 
-    Tier 1：廠家 + 型號 完全一致 → 回傳全部，並標記是否不足 EXACT_STOCK_MIN 台需購買
+    Tier 1：廠家 + 型號 完全一致 → 回傳全部
     Tier 2：介面 + 種類 + 屬性 同類型 → 依廠家+型號綜合相似度排序取 TOP_SIMILAR_N 台
+
+    need_purchase（掛在 Tier 1 上）：只有「① 與 ② 都沒有匹配到設備」且「兩者合計 < EXACT_STOCK_MIN 台」
+    時才為 True（提示需購買）；只要任一層級有設備，就不提示。
 
     回傳固定 2 項，未命中的層級 count=0、devices 為空。
     """
@@ -2260,15 +2289,6 @@ def match_audit_row_all_tiers(audit_row, index):
     if a_vendor and a_model:
         exact = index['by_vendor_model'].get(a_vendor + '||' + a_model) or []
     exact_sorted = _sort_devices(exact)
-    tiers.append({
-        'tier': 'exact',
-        'label': MATCH_TIER_LABELS['exact'],
-        'basis': _match_basis(audit_row, 'exact'),
-        'count': len(exact_sorted),
-        'need_purchase': len(exact_sorted) < EXACT_STOCK_MIN,
-        'threshold': EXACT_STOCK_MIN,
-        'devices': [_serialize_device(d, 'exact') for d in exact_sorted],
-    })
 
     # ---------- ② 介面 + 種類 + 屬性 同類型（取相似度 Top 3） ----------
     same_type = []
@@ -2284,6 +2304,24 @@ def match_audit_row_all_tiers(audit_row, index):
         scored.append((s, d))
     scored.sort(key=lambda x: x[0], reverse=True)
     top = scored[:TOP_SIMILAR_N]
+
+    # ---------- 需購買判定：① 與 ② 都沒有可用設備、且兩者合計不足 2 台 ----------
+    # 只要任一層級有匹配到設備，或兩層級合計 >= EXACT_STOCK_MIN，就不提示需購買
+    matched_total = len(exact_sorted) + len(top)
+    need_purchase = (not exact_sorted) and (not top) and matched_total < EXACT_STOCK_MIN
+    purchase_qty = max(0, EXACT_STOCK_MIN - matched_total) if need_purchase else 0
+
+    tiers.append({
+        'tier': 'exact',
+        'label': MATCH_TIER_LABELS['exact'],
+        'basis': _match_basis(audit_row, 'exact'),
+        'count': len(exact_sorted),
+        'need_purchase': need_purchase,
+        'threshold': EXACT_STOCK_MIN,
+        'matched_total': matched_total,
+        'purchase_qty': purchase_qty,   # 需購買數量（不需購買時為 0）
+        'devices': [_serialize_device(d, 'exact') for d in exact_sorted],
+    })
 
     tiers.append({
         'tier': 'category',
@@ -2325,7 +2363,7 @@ def match_audit_with_inventory():
     返回 list[dict]：
       - audit: audit list 行（audit 侧字段齐全）
       - tiers: 两个层级的匹配分区（固定 2 项：①exact → ②category，未命中 count=0），
-               ① 含 need_purchase（< 2 台時 True）、threshold；
+               ① 含 need_purchase（① 与 ② 都无设备且合計 < 2 台時 True）、threshold、matched_total；
                ② 含 top_n、pool_size，每台 device 带 similarity 相似度
       - match_tier / match_tier_label: 命中层级中优先级最高的一级（无命中为 None / ''）
       - match_count: 两个层级命中的设备总数（① 的全部 + ② 的 top N）

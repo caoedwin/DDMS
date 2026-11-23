@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d4498ca8-abfd-4b77-a2c5-6b17d22175cd" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestDeviceLNV/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDeviceLNV/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/all-2026-11-12.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/all-2026-11-12.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/error-2026-11-12.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error-2026-11-12.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info-2026-11-12.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info-2026-11-12.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/TestDeviceListLNV.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/src/modelfiles/SWTestDeviceAuditList.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/static/src/modelfiles/SWTestDeviceAuditList.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestDeviceLNV/device_demand_week.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,6 +256,21 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\djangoproject\DMS\static\css" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <myKeys>
+      <visibility group="Grunt" flag="true" />
+      <visibility group="Gulp" flag="true" />
+      <visibility group="HTTP 请求" flag="true" />
+      <visibility group="Node.js" flag="true" />
+      <visibility group="npm" flag="true" />
+      <visibility group="yarn" flag="true" />
+      <visibility group="最近的项目" flag="true" />
+      <visibility group="运行 Python 文件" flag="true" />
+      <visibility group="运行 conda 命令" flag="true" />
+      <visibility group="运行 pip 命令" flag="true" />
+      <visibility group="运行配置" flag="true" />
+    </myKeys>
   </component>
   <component name="RunManager" selected="Django 服务器.DMS">
     <configuration name="choujiang" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -558,7 +576,7 @@
       <workItem from="1792991990848" duration="6436000" />
       <workItem from="1794185668171" duration="201000" />
       <workItem from="1794189348391" duration="832000" />
-      <workItem from="1794460467271" duration="7533000" />
+      <workItem from="1794460467271" duration="27593000" />
     </task>
     <servers />
   </component>
